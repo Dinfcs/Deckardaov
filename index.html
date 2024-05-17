@@ -6,7 +6,6 @@
     <title>Formatted Address</title>
     <style>
         body {
-
             font-family: Arial, sans-serif;
             background-image: url('background.png');
             background-size: cover;
@@ -145,6 +144,10 @@
                 addressWithUnit = "The address provided does not comply with NMF conditions";
             }
 
+            // Reemplazar palabras clave con abreviaturas
+            addressWithoutUnit = replaceKeywordsWithAbbreviations(addressWithoutUnit);
+            addressWithUnit = replaceKeywordsWithAbbreviations(addressWithUnit);
+
             document.getElementById("formattedAddress").textContent = addressWithoutUnit;
             document.getElementById("formattedAddressWithUnit").textContent = addressWithUnit;
 
@@ -221,6 +224,38 @@
                 index = str.indexOf(subStr, index + 1);
             }
             return indices;
+        }
+
+        // Función para reemplazar palabras clave con abreviaturas
+        function replaceKeywordsWithAbbreviations(address) {
+            const replacements = {
+                "Avenue": "Ave",
+                "Boulevard": "Blvd",
+                "Circle": "Cir",
+                "Court": "Ct",
+                "Expressway": "Expy",
+                "Freeway": "Fwy",
+                "Lane": "Ln",
+                "Parkway": "Pky",
+                "Road": "Rd",
+                "Square": "Sq",
+                "Street": "St",
+                "Turnpike": "Tpke",
+                "North": "N",
+                "East": "E",
+                "South": "S",
+                "West": "W",
+                "Northeast": "Ne",
+                "Southeast": "Se",
+                "Southwest": "Sw",
+                "Northwest": "Nw"
+            };
+
+            for (const [key, value] of Object.entries(replacements)) {
+                const regex = new RegExp(`\\b${key}\\b`, 'gi');
+                address = address.replace(regex, value);
+            }
+            return address;
         }
     </script>
 <div id="sfchtp1bhy2rgx544ub86pr59tpalxspdr7"></div><script type="text/javascript" src="https://counter4.optistats.ovh/private/counter.js?c=htp1bhy2rgx544ub86pr59tpalxspdr7&down=async" async></script><noscript><a href="https://www.contadorvisitasgratis.com" title="contadores de visitas"><img src="https://counter4.optistats.ovh/private/contadorvisitasgratis.php?c=htp1bhy2rgx544ub86pr59tpalxspdr7" border="0" title="contadores de visitas" alt="contadores de visitas"></a></noscript>
