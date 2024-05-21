@@ -12,18 +12,15 @@
             background-repeat: no-repeat;
             margin: 0;
             padding: 40px;
-            line-height: 1.5; /* Ajusta este valor para aumentar la separación */
+            line-height: 1.5;
         }
-
         .wrapper {
             display: flex;
-            justify-content: space-between; /* Alinear los elementos a los extremos */
+            justify-content: space-between;
             max-width: 1500px;
             margin: 0 auto;
         }
-
-        .container,
-        .address-format-container {
+        .container, .address-format-container {
             flex: 1;
             padding: 20px;
             box-sizing: border-box;
@@ -31,24 +28,19 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-
         .container {
-            margin-left: 20px; /* Espacio entre los contenedores */
+            margin-left: 20px;
         }
-
         .form-container {
             text-align: left;
         }
-
         input[type="text"] {
-            width: calc(100% - 20px); /* Ajuste del ancho del cuadro de texto */
+            width: calc(100% - 20px);
             padding: 15px;
             margin-bottom: 20px;
             border-radius: 5px;
             border: 1px solid #ccc;
-          
         }
-
         button {
             background-color: #4CAF50;
             color: white;
@@ -58,7 +50,6 @@
             cursor: pointer;
             transition: background-color 0.3s;
         }
-
         button:hover {
             background-color: #45a049;
         }
@@ -116,48 +107,84 @@
 
             // Verificar si la dirección contiene alguna palabra clave y agregar "Unit # unk"
             const keywords = ["St", "Street", "Ave", "Avenue", "Rd", "Road", "Blvd", "Boulevard", "Dr", "Drive", "Ln", "Lane", "Ct", "Court", "Pl", "Place", "Cir", "Circle", "Way", "W", "Ter", "Terrace", "Pky", "Parkway", "Hwy", "Highway"];
-            let addressWithoutUnit = formattedAddress; // Dirección sin "Unit # unk"
-            let addressWithUnit = formattedAddress; // Dirección con "Unit # unk"
+            let addressWithoutUnit = formattedAddress;
+            let addressWithUnit = formattedAddress;
+
             for (let i = 0; i < keywords.length; i++) {
                 if (addressWithUnit.includes(keywords[i])) {
-                    // Agregar "Unit # unk" después de la palabra clave
                     addressWithUnit = addressWithUnit.replace(keywords[i], keywords[i] + " Unit # unk");
-                    break; // Salir del bucle después de encontrar la primera palabra clave
+                    break;
                 }
             }
 
-            // Validaciones adicionales
-            // 1. Si la dirección contiene "UNIT xxxx" o "Unit xxxx", agregar una coma después de la palabra o número
             addressWithoutUnit = addressWithoutUnit.replace(/(UNIT|Unit)\s+(\w+)/gi, (match, unit, value) => `${unit} ${value.toUpperCase()},`);
-            // 2. Si la dirección contiene "# xxxx", reemplazar "#" por "Unit" y agregar una coma después de la palabra o número
             addressWithoutUnit = addressWithoutUnit.replace(/#\s+(\w+)/g, (match, value) => `Unit ${value.toUpperCase()},`);
-            // 3. Eliminar la primera coma si hay tres comas en diferentes palabras
             const commaIndices = getAllIndexes(addressWithoutUnit, ",");
             if (commaIndices.length >= 3) {
                 addressWithoutUnit = addressWithoutUnit.replace(",", "");
             }
 
-            // Validar si la dirección con "Unit # unk" contiene dos veces "Unit" o dos veces "#"
             const countUnit = (addressWithUnit.match(/Unit/g) || []).length;
             const countHash = (addressWithUnit.match(/#/g) || []).length;
             if (countUnit === 2 || countHash === 2) {
                 addressWithUnit = "The address provided does not comply with NMF conditions";
             }
 
-            // Reemplazar palabras clave con abreviaturas
             addressWithoutUnit = replaceKeywordsWithAbbreviations(addressWithoutUnit);
             addressWithUnit = replaceKeywordsWithAbbreviations(addressWithUnit);
+
+            addressWithoutUnit = addressWithoutUnit.replace(/,+/g, ',');
 
             document.getElementById("formattedAddress").textContent = addressWithoutUnit;
             document.getElementById("formattedAddressWithUnit").textContent = addressWithUnit;
 
-            // Validar y eliminar comas consecutivas en la dirección sin "Unit # unk"
-            addressWithoutUnit = addressWithoutUnit.replace(/,+/g, ',');
+            addressWithoutUnit = validateDirectionAfterComma(addressWithoutUnit);
+            addressWithUnit = validateDirectionAfterComma(addressWithUnit);
 
             document.getElementById("formattedAddress").textContent = addressWithoutUnit;
+            document.getElementById("formattedAddressWithUnit").textContent = addressWithUnit;
         }
 
-        // Función para formatear la dirección
+        function replaceKeywordsWithAbbreviations(address) {
+            const replacements = {
+                "Avenue": "AVE",
+                "Boulevard": "BLVD",
+                "Circle": "CIR",
+                "Court": "CT",
+                "Expressway": "EXPY",
+                "Freeway": "FWY",
+                "Lane": "LN",
+                "Parkway": "PKY",
+                "Road": "RD",
+                "Square": "SQ",
+                "Street": "ST",
+                "Turnpike": "TPKE",
+                "North": "N",
+                "East": "E",
+                "South": "S",
+                "West": "W",
+                "Northeast": "NE",
+                "Southeast": "SE",
+                "Southwest": "SW",
+                "Northwest": "NW"
+            };
+
+            for (const [key, value] of Object.entries(replacements)) {
+                const regex = new RegExp(`\\b${key}\\b`, 'gi');
+                address = address.replace(regex, value);
+            }
+
+            return address;
+        }
+
+        function validateDirectionAfterComma(address) {
+            const parts = address.split(",");
+            if (parts.length > 1) {
+                parts[1] = parts[1].replace(/\bN\b/g, "North").replace(/\bS\b/g, "South");
+            }
+            return parts.join(",");
+        }
+
         function formatAddress(address) {
             let words = address.toLowerCase().split(" ");
             for (let i = 0; i < words.length; i++) {
@@ -178,34 +205,27 @@
                     }
                 }
             }
-            let formattedAddress = words.join(" ");
-            formattedAddress = formattedAddress.replace(/\s,+/g, ',').replace(/,+/g, ',');
-            return formattedAddress;
+            return words.join(" ").replace(/\s,+/g, ',').replace(/,+/g, ',');
         }
 
-        // Función para capitalizar una palabra
         function capitalize(word) {
             return word.charAt(0).toUpperCase() + word.slice(1);
         }
 
-        // Función para verificar si una palabra es una abreviatura
         function isAbbreviation(word) {
             const abbreviations = ["al", "ak", "az", "ar", "ca", "co", "ct", "de", "fl", "ga", "hi", "id", "il", "in", "ia", "ks", "ky", "la", "me", "md", "ma", "mi", "mn", "ms", "mo", "mt", "ne", "nv", "nh", "nj", "nm", "ny", "nc", "nd", "oh", "ok", "or", "pa", "ri", "sc", "sd", "tn", "tx", "ut", "vt", "va", "wa", "wv", "wi", "wy"];
             return abbreviations.includes(word.toLowerCase());
         }
 
-        // Función para verificar si una palabra es una abreviatura de ciudad
         function isCityAbbreviation(word) {
             return isAbbreviation(word.toUpperCase());
         }
 
-        // Función para verificar si una palabra es una palabra clave de calle
         function isStreetKeyword(word) {
             const keywords = ["st", "street", "ave", "avenue", "rd", "road", "blvd", "boulevard", "dr", "drive", "ln", "lane", "ct", "court", "pl", "place", "cir", "circle", "way", "w", "ter", "terrace", "pky", "parkway", "hwy", "highway"];
             return keywords.includes(word.toLowerCase());
         }
 
-        // Función para copiar texto al portapapeles
         function copyToClipboard(text) {
             const el = document.createElement('textarea');
             el.value = text;
@@ -215,7 +235,6 @@
             document.body.removeChild(el);
         }
 
-        // Función para obtener todos los índices de una subcadena en una cadena
         function getAllIndexes(str, subStr) {
             let indices = [];
             let index = str.indexOf(subStr);
@@ -225,39 +244,6 @@
             }
             return indices;
         }
-
-        // Función para reemplazar palabras clave con abreviaturas
-        function replaceKeywordsWithAbbreviations(address) {
-            const replacements = {
-                "Avenue": "Ave",
-                "Boulevard": "Blvd",
-                "Circle": "Cir",
-                "Court": "Ct",
-                "Expressway": "Expy",
-                "Freeway": "Fwy",
-                "Lane": "Ln",
-                "Parkway": "Pky",
-                "Road": "Rd",
-                "Square": "Sq",
-                "Street": "St",
-                "Turnpike": "Tpke",
-                "North": "N",
-                "East": "E",
-                "South": "S",
-                "West": "W",
-                "Northeast": "Ne",
-                "Southeast": "Se",
-                "Southwest": "Sw",
-                "Northwest": "Nw"
-            };
-
-            for (const [key, value] of Object.entries(replacements)) {
-                const regex = new RegExp(`\\b${key}\\b`, 'gi');
-                address = address.replace(regex, value);
-            }
-            return address;
-        }
     </script>
-<div id="sfchtp1bhy2rgx544ub86pr59tpalxspdr7"></div><script type="text/javascript" src="https://counter4.optistats.ovh/private/counter.js?c=htp1bhy2rgx544ub86pr59tpalxspdr7&down=async" async></script><noscript><a href="https://www.contadorvisitasgratis.com" title="contadores de visitas"><img src="https://counter4.optistats.ovh/private/contadorvisitasgratis.php?c=htp1bhy2rgx544ub86pr59tpalxspdr7" border="0" title="contadores de visitas" alt="contadores de visitas"></a></noscript>
 </body>
 </html>
