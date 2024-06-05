@@ -107,7 +107,7 @@
             let formattedAddress = formatAddress(inputAddress);
 
             // Verificar si la dirección contiene alguna palabra clave y agregar "Unit # unk"
-            const keywords = ["St", "Street", "Ave", "Avenue", "Rd", "Road", "Blvd", "Boulevard", "Dr", "Drive", "Ln", "Lane", "Ct", "Court","CT", "Pl", "Place", "Cir", "Circle", "Way", "W", "Ter", "Terrace", "Pky", "Parkway", "Hwy", "Highway"];
+            const keywords = ["ave", "blvd", "cir", "ct", "ct", "dr", "expy", "fwy", "ln", "pkwy", "pl", "rd", "sq", "st", "ter", "tpke", "way", "aly", "br", "brg", "brk", "bg", "byp", "cp", "cyn", "cpe", "cswy", "ctr", "clf", "clb", "cor", "cv", "crk", "cres", "xing", "dl", "dm", "dv", "est", "fall", "fry", "fld", "flt", "frd", "frst", "frg", "frk", "ft", "gdn", "gtwy", "gln", "grn", "grv", "hbr", "hvn", "hts", "hl", "holw", "inlt", "is", "jct", "ky", "knl", "lk", "lndg", "lgt", "lf", "lck", "ldg", "loop", "mall", "mnr", "mdw", "ml", "msn", "mtwy", "mt", "nck", "orch", "oval", "pass", "path", "pike", "pne", "pln", "plz", "pt", "prt", "pr", "radl", "rnch", "rpd", "rst", "rdg", "riv", "row", "run", "shl", "shr", "spg", "spur", "sta", "stra", "strm", "smt", "trce", "trak", "trfy", "trl", "tunl", "un", "vly", "via", "vw", "vlg", "vl", "vis", "walk", "wls", "n", "s", "e", "w", "ne", "se", "sw", "nw"];
             let addressWithoutUnit = formattedAddress;
             let addressWithUnit = formattedAddress;
 
@@ -330,7 +330,7 @@ const replacements = {
         }
 
         function isStreetKeyword(word) {
-            const keywords = ["st", "street", "ave", "avenue", "rd", "road", "blvd", "boulevard", "dr", "drive", "ln", "lane", "ct","CT", "court", "pl", "place", "cir", "circle", "way", "w", "ter", "terrace", "pky", "parkway", "hwy", "highway"];
+            const keywords = ["ave", "blvd", "cir", "ct", "ct", "dr", "expy", "fwy", "ln", "pkwy", "pl", "rd", "sq", "st", "ter", "tpke", "way", "aly", "br", "brg", "brk", "bg", "byp", "cp", "cyn", "cpe", "cswy", "ctr", "clf", "clb", "cor", "cv", "crk", "cres", "xing", "dl", "dm", "dv", "est", "fall", "fry", "fld", "flt", "frd", "frst", "frg", "frk", "ft", "gdn", "gtwy", "gln", "grn", "grv", "hbr", "hvn", "hts", "hl", "holw", "inlt", "is", "jct", "ky", "knl", "lk", "lndg", "lgt", "lf", "lck", "ldg", "loop", "mall", "mnr", "mdw", "ml", "msn", "mtwy", "mt", "nck", "orch", "oval", "pass", "path", "pike", "pne", "pln", "plz", "pt", "prt", "pr", "radl", "rnch", "rpd", "rst", "rdg", "riv", "row", "run", "shl", "shr", "spg", "spur", "sta", "stra", "strm", "smt", "trce", "trak", "trfy", "trl", "tunl", "un", "vly", "via", "vw", "vlg", "vl", "vis", "walk", "wls", "n", "s", "e", "w", "ne", "se", "sw", "nw"];
             return keywords.includes(word.toLowerCase());
         }
 
