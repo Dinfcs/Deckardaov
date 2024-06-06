@@ -82,9 +82,6 @@
                 <p id="formattedAddress"></p>
                 <button id="copyButton">Copy</button>
 
-                <h2>Formatted for NMF:</h2>
-                <p id="formattedAddressWithUnit"></p>
-                <button id="copyButtonWithUnit">Copy</button>
             </div>
         </div>
     </div>
@@ -107,7 +104,7 @@
             let formattedAddress = formatAddress(inputAddress);
 
             // Verificar si la dirección contiene alguna palabra clave y agregar "Unit # unk"
-            const keywords = ["ave", "blvd", "cir", "ct", "ct", "dr", "expy", "fwy", "ln", "pkwy", "pl", "rd", "sq", "st", "ter", "tpke", "way", "aly", "br", "brg", "brk", "bg", "byp", "cp", "cyn", "cpe", "cswy", "ctr", "clf", "clb", "cor", "cv", "crk", "cres", "xing", "dl", "dm", "dv", "est", "fall", "fry", "fld", "flt", "frd", "frst", "frg", "frk", "ft", "gdn", "gtwy", "gln", "grn", "grv", "hbr", "hvn", "hts", "hl", "holw", "inlt", "is", "jct", "ky", "knl", "lk", "lndg", "lgt", "lf", "lck", "ldg", "loop", "mall", "mnr", "mdw", "ml", "msn", "mtwy", "mt", "nck", "orch", "oval", "pass", "path", "pike", "pne", "pln", "plz", "pt", "prt", "pr", "radl", "rnch", "rpd", "rst", "rdg", "riv", "row", "run", "shl", "shr", "spg", "spur", "sta", "stra", "strm", "smt", "trce", "trak", "trfy", "trl", "tunl", "un", "vly", "via", "vw", "vlg", "vl", "vis", "walk", "wls", "n", "s", "e", "w", "ne", "se", "sw", "nw"];
+            const keywords = ["ave", "blvd", "cir", "ct", "ct", "dr", "expy", "fwy", "ln", "pkwy", "pl", "rd", "sq", "st", "ter", "tpke", "way", "aly", "br", "brg", "brk", "bg", "byp", "cp", "cyn", "cpe", "cswy", "ctr", "clf", "clb", "cor", "cv", "crk", "cres", "xing", "dl", "dm", "dv", "est", "fall", "fry", "fld", "flt", "frd", "frst", "frg", "frk", "ft", "gdn", "gtwy", "gln", "grn", "grv", "hbr", "hvn", "hts", "hl", "holw", "inlt", "is", "jct", "ky", "knl", "lk", "lndg", "lgt", "lf", "lck", "ldg", "loop", "mall", "mnr", "mdw", "ml", "msn", "mtwy", "mt", "nck", "orch", "oval", "pass", "path", "pike", "pne", "pln", "plz", "pt", "prt", "pr", "radl", "rnch", "rpd", "rst", "rdg", "riv", "row", "run", "shl", "shr", "spg", "spur", "sta", "stra", "strm", "smt", "trce", "trak", "trfy", "trl", "tunl", "un", "vly", "via", "vw", "vlg", "vl", "vis", "walk", "wls", "w","ne", "se", "sw", "nw"];
             let addressWithoutUnit = formattedAddress;
             let addressWithUnit = formattedAddress;
 
@@ -120,6 +117,7 @@
 
             addressWithoutUnit = addressWithoutUnit.replace(/(UNIT|Unit)\s+(\w+)/gi, (match, unit, value) => `${unit} ${value.toUpperCase()},`);
             addressWithoutUnit = addressWithoutUnit.replace(/#\s+(\w+)/g, (match, value) => `Unit ${value.toUpperCase()},`);
+            addressWithoutUnit = addressWithoutUnit.replace(/Apt\s+(\w+)/g, (match, value) => `Unit ${value.toUpperCase()},`);
             const commaIndices = getAllIndexes(addressWithoutUnit, ",");
             if (commaIndices.length >= 3) {
                 addressWithoutUnit = addressWithoutUnit.replace(",", "");
@@ -330,7 +328,7 @@ const replacements = {
         }
 
         function isStreetKeyword(word) {
-            const keywords = ["ave", "blvd", "cir", "ct", "ct", "dr", "expy", "fwy", "ln", "pkwy", "pl", "rd", "sq", "st", "ter", "tpke", "way", "aly", "br", "brg", "brk", "bg", "byp", "cp", "cyn", "cpe", "cswy", "ctr", "clf", "clb", "cor", "cv", "crk", "cres", "xing", "dl", "dm", "dv", "est", "fall", "fry", "fld", "flt", "frd", "frst", "frg", "frk", "ft", "gdn", "gtwy", "gln", "grn", "grv", "hbr", "hvn", "hts", "hl", "holw", "inlt", "is", "jct", "ky", "knl", "lk", "lndg", "lgt", "lf", "lck", "ldg", "loop", "mall", "mnr", "mdw", "ml", "msn", "mtwy", "mt", "nck", "orch", "oval", "pass", "path", "pike", "pne", "pln", "plz", "pt", "prt", "pr", "radl", "rnch", "rpd", "rst", "rdg", "riv", "row", "run", "shl", "shr", "spg", "spur", "sta", "stra", "strm", "smt", "trce", "trak", "trfy", "trl", "tunl", "un", "vly", "via", "vw", "vlg", "vl", "vis", "walk", "wls", "n", "s", "e", "w", "ne", "se", "sw", "nw"];
+            const keywords = ["ave", "blvd", "cir", "ct", "ct", "dr", "expy", "fwy", "ln", "pkwy", "pl", "rd", "sq", "st", "ter", "tpke", "way", "aly", "br", "brg", "brk", "bg", "byp", "cp", "cyn", "cpe", "cswy", "ctr", "clf", "clb", "cor", "cv", "crk", "cres", "xing", "dl", "dm", "dv", "est", "fall", "fry", "fld", "flt", "frd", "frst", "frg", "frk", "ft", "gdn", "gtwy", "gln", "grn", "grv", "hbr", "hvn", "hts", "hl", "holw", "inlt", "is", "jct", "ky", "knl", "lk", "lndg", "lgt", "lf", "lck", "ldg", "loop", "mall", "mnr", "mdw", "ml", "msn", "mtwy", "mt", "nck", "orch", "oval", "pass", "path", "pike", "pne", "pln", "plz", "pt", "prt", "pr", "radl", "rnch", "rpd", "rst", "rdg", "riv", "row", "run", "shl", "shr", "spg", "spur", "sta", "stra", "strm", "smt", "trce", "trak", "trfy", "trl", "tunl", "un", "vly", "via", "vw", "vlg", "vl", "vis", "walk", "wls", "w", "ne", "se", "sw", "nw"];
             return keywords.includes(word.toLowerCase());
         }
 
