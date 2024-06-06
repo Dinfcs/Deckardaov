@@ -133,13 +133,8 @@
             addressWithUnit = replaceKeywordsWithAbbreviations(addressWithUnit);
 
             addressWithoutUnit = addressWithoutUnit.replace(/,+/g, ',');
-
-            document.getElementById("formattedAddress").textContent = addressWithoutUnit;
-            document.getElementById("formattedAddressWithUnit").textContent = addressWithUnit;
-
             addressWithoutUnit = validateDirectionAfterComma(addressWithoutUnit);
             addressWithUnit = validateDirectionAfterComma(addressWithUnit);
-
             document.getElementById("formattedAddress").textContent = addressWithoutUnit;
             document.getElementById("formattedAddressWithUnit").textContent = addressWithUnit;
         }
