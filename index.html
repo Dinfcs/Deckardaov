@@ -120,8 +120,6 @@
 
             addressWithoutUnit = addressWithoutUnit.replace(/(UNIT|Unit)\s+(\w+)/gi, (match, unit, value) => `${unit} ${value.toUpperCase()},`);
             addressWithoutUnit = addressWithoutUnit.replace(/#\s+(\w+)/g, (match, value) => `Unit ${value.toUpperCase()},`);
-            addressWithoutUnit = addressWithoutUnit.replace(/APT\s+(\w+)/g, (match, value) => `Unit ${value.toUpperCase()},`);
-            addressWithoutUnit = addressWithoutUnit.replace(/Apt\s+(\w+)/g, (match, value) => `Unit ${value.toUpperCase()},`);
             const commaIndices = getAllIndexes(addressWithoutUnit, ",");
             if (commaIndices.length >= 3) {
                 addressWithoutUnit = addressWithoutUnit.replace(",", "");
@@ -252,3 +250,4 @@
 <div id="sfchtp1bhy2rgx544ub86pr59tpalxspdr7"></div><script type="text/javascript" src="https://counter4.optistats.ovh/private/counter.js?c=htp1bhy2rgx544ub86pr59tpalxspdr7&down=async" async></script><noscript><a href="https://www.contadorvisitasgratis.com" title="contadores de visitas"><img src="https://counter4.optistats.ovh/private/contadorvisitasgratis.php?c=htp1bhy2rgx544ub86pr59tpalxspdr7" border="0" title="contadores de visitas" alt="contadores de visitas"></a></noscript>
 <script src="https://www.drv.tw/inc/wd.js?s=deckardtechnologiesaov"></script></body>
 </html>
+
