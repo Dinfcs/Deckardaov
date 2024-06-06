@@ -81,10 +81,6 @@
                 <h2>Formatted Address:</h2>
                 <p id="formattedAddress"></p>
                 <button id="copyButton">Copy</button>
-
-                <h2>Formatted for NMF:</h2>
-                <p id="formattedAddressWithUnit"></p>
-                <button id="copyButtonWithUnit">Copy</button>
             </div>
         </div>
     </div>
@@ -224,7 +220,8 @@
         }
 
         function isStreetKeyword(word) {
-            const keywords = ["st", "street", "ave", "avenue", "rd", "road", "blvd", "boulevard", "dr", "drive", "ln", "lane", "ct","CT", "court", "pl", "place", "cir", "circle", "way", "w", "ter", "terrace", "pky", "parkway", "hwy", "highway"];
+const keywords = ["avenue", "ave", "boulevard", "blvd", "circle", "cir", "court", "ct", "ct", "drive", "dr", "expressway", "expy", "freeway", "fwy", "lane", "ln", "parkway", "pkwy", "place", "pl", "road", "rd", "square", "sq", "street", "st", "terrace", "ter", "turnpike", "tpke", "way", "alley", "aly", "branch", "br", "bridge", "brg", "brook", "brk", "burg", "bg", "bypass", "byp", "camp", "cp", "canyon", "cyn", "cape", "cpe", "causeway", "cswy", "center", "ctr", "cliff", "clf", "club", "clb", "corner", "cor", "cove", "cv", "creek", "crk", "crescent", "cres", "crossing", "xing", "dale", "dl", "dam", "dm", "divide", "dv", "estate", "est", "fall", "ferry", "fry", "field", "fld", "flats", "flt", "ford", "frd", "forest", "frst", "forge", "frg", "fork", "frk", "fort", "ft", "garden", "gdn", "gateway", "gtwy", "glen", "gln", "green", "grn", "grove", "grv", "harbor", "hbr", "haven", "hvn", "heights", "hts", "hill", "hl", "hollow", "holw", "inlet", "inlt", "island", "is", "junction", "jct", "key", "ky", "knoll", "knl", "lake", "lk", "landing", "lndg", "light", "lgt", "loaf", "lf", "lock", "lck", "lodge", "ldg", "loop", "mall", "manor", "mnr", "meadow", "mdw", "mill", "ml", "mission", "msn", "motorway", "mtwy", "mount", "mt", "neck", "nck", "orchard", "orch", "oval", "pass", "path", "pike", "pine", "pne", "plain", "pln", "plaza", "plz", "point", "pt", "port", "prt", "prairie", "pr", "radial", "radl", "ranch", "rnch", "rapid", "rpd", "rest", "rst", "ridge", "rdg", "river", "riv", "row", "run", "shoal", "shl", "shore", "shr", "spring", "spg", "spur", "station", "sta", "stravenue", "stra", "stream", "strm", "summit", "smt", "trace", "trce", "track", "trak", "trafficway", "trfy", "trail", "trl", "tunnel", "tunl", "union", "un", "valley", "vly", "viaduct", "via", "view", "vw", "village", "vlg", "ville", "vl", "vista", "vis", "walk", "wells", "wls"];
+
             return keywords.includes(word.toLowerCase());
         }
 
