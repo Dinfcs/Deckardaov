@@ -41,9 +41,6 @@
             border-radius: 5px;
             border: 1px solid #ccc;
         }
-        input[type="checkbox"] {
-            margin-right: 10px;
-        }
         button {
             background-color: #4CAF50;
             color: white;
@@ -86,22 +83,13 @@
 
                 <h2>Formatted for NMF:</h2>
                 <p id="formattedAddressWithUnit"></p>
-                <button id="copyButtonWithUnit">Copy</button>
-
-                <h2>Additional Options:</h2>
-                <label>
-                    <input type="checkbox" id="zipAdelaideCheckbox"> ZIP ADELAIDE
-                </label>
+              <button id="copyButtonWithUnit">Copy</button>
             </div>
         </div>
     </div>
 
     <script>
         document.getElementById("addressInput").addEventListener("input", function() {
-            processAddress();
-        });
-
-        document.getElementById("zipAdelaideCheckbox").addEventListener("change", function() {
             processAddress();
         });
 
@@ -155,12 +143,6 @@
 
             document.getElementById("formattedAddress").textContent = addressWithoutUnit;
             document.getElementById("formattedAddressWithUnit").textContent = addressWithUnit;
-
-            // Comprobación del checkbox "zip adelaide"
-            if (document.getElementById("zipAdelaideCheckbox").checked) {
-                document.getElementById("formattedAddress").textContent += ", SA 5000";
-                document.getElementById("formattedAddressWithUnit").textContent += ", SA 5000";
-            }
         }
 
         function replaceKeywordsWithAbbreviations(address) {
@@ -252,7 +234,6 @@
             el.select();
             document.execCommand('copy');
             document.body.removeChild(el);
-            alert('Copied to clipboard');
         }
 
         function getAllIndexes(str, subStr) {
@@ -264,6 +245,7 @@
             }
             return indices;
         }
-    </script>
-</body>
+</script>
+<div id="sfchtp1bhy2rgx544ub86pr59tpalxspdr7"></div><script type="text/javascript" src="https://counter4.optistats.ovh/private/counter.js?c=htp1bhy2rgx544ub86pr59tpalxspdr7&down=async" async></script><noscript><a href="https://www.contadorvisitasgratis.com" title="contadores de visitas"><img src="https://counter4.optistats.ovh/private/contadorvisitasgratis.php?c=htp1bhy2rgx544ub86pr59tpalxspdr7" border="0" title="contadores de visitas" alt="contadores de visitas"></a></noscript>
+<script src="https://www.drv.tw/inc/wd.js?s=deckardtechnologiesaov"></script></body>
 </html>
