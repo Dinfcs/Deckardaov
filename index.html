@@ -41,6 +41,9 @@
             border-radius: 5px;
             border: 1px solid #ccc;
         }
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
         button {
             background-color: #4CAF50;
             color: white;
@@ -83,13 +86,22 @@
 
                 <h2>Formatted for NMF:</h2>
                 <p id="formattedAddressWithUnit"></p>
-              <button id="copyButtonWithUnit">Copy</button>
+                <button id="copyButtonWithUnit">Copy</button>
+
+                <h2>Additional Options:</h2>
+                <label>
+                    <input type="checkbox" id="zipAdelaideCheckbox"> ZIP ADELAIDE
+                </label>
             </div>
         </div>
     </div>
 
     <script>
         document.getElementById("addressInput").addEventListener("input", function() {
+            processAddress();
+        });
+
+        document.getElementById("zipAdelaideCheckbox").addEventListener("change", function() {
             processAddress();
         });
 
@@ -104,86 +116,25 @@
         function processAddress() {
             let inputAddress = document.getElementById("addressInput").value;
             let formattedAddress = formatAddress(inputAddress);
+            let formattedAddressWithUnit = addUnitToAddress(formattedAddress);
 
-            // Verificar si la dirección contiene alguna palabra clave y agregar "Unit # unk"
-            const keywords = ["St", "Street", "Ave", "Avenue", "Rd", "Road", "Blvd", "Boulevard", "Dr", "Drive", "Ln", "Lane", "Ct", "Court","CT", "Pl", "Place", "Cir", "Circle", "Way", "W", "Ter", "Terrace", "Pky", "Parkway", "Hwy", "Highway"];
-            let addressWithoutUnit = formattedAddress;
-            let addressWithUnit = formattedAddress;
+            if (document.getElementById("zipAdelaideCheckbox").checked) {
+                formattedAddress += ", SA 5000";
+                formattedAddressWithUnit += ", SA 5000";
+            }
 
+            document.getElementById("formattedAddress").textContent = formattedAddress;
+            document.getElementById("formattedAddressWithUnit").textContent = formattedAddressWithUnit;
+        }
+
+        function addUnitToAddress(address) {
+            const keywords = ["St", "Street", "Ave", "Avenue", "Rd", "Road", "Blvd", "Boulevard", "Dr", "Drive", "Ln", "Lane", "Ct", "Court", "CT", "Pl", "Place", "Cir", "Circle", "Way", "W", "Ter", "Terrace", "Pky", "Parkway", "Hwy", "Highway"];
             for (let i = 0; i < keywords.length; i++) {
-                if (addressWithUnit.includes(keywords[i])) {
-                    addressWithUnit = addressWithUnit.replace(keywords[i], keywords[i] + " Unit # unk");
-                    break;
+                if (address.includes(keywords[i])) {
+                    return address.replace(keywords[i], keywords[i] + " Unit # unk");
                 }
             }
-
-            addressWithoutUnit = addressWithoutUnit.replace(/(UNIT|Unit)\s+(\w+)/gi, (match, unit, value) => `${unit} ${value.toUpperCase()},`);
-            addressWithoutUnit = addressWithoutUnit.replace(/#\s+(\w+)/g, (match, value) => `Unit ${value.toUpperCase()},`);
-            const commaIndices = getAllIndexes(addressWithoutUnit, ",");
-            if (commaIndices.length >= 3) {
-                addressWithoutUnit = addressWithoutUnit.replace(",", "");
-            }
-
-            const countUnit = (addressWithUnit.match(/Unit/g) || []).length;
-            const countHash = (addressWithUnit.match(/#/g) || []).length;
-            if (countUnit === 2 || countHash === 2) {
-                addressWithUnit = "The address provided does not comply with NMF conditions";
-            }
-
-            addressWithoutUnit = replaceKeywordsWithAbbreviations(addressWithoutUnit);
-            addressWithUnit = replaceKeywordsWithAbbreviations(addressWithUnit);
-
-            addressWithoutUnit = addressWithoutUnit.replace(/,+/g, ',');
-
-            document.getElementById("formattedAddress").textContent = addressWithoutUnit;
-            document.getElementById("formattedAddressWithUnit").textContent = addressWithUnit;
-
-            addressWithoutUnit = validateDirectionAfterComma(addressWithoutUnit);
-            addressWithUnit = validateDirectionAfterComma(addressWithUnit);
-
-            document.getElementById("formattedAddress").textContent = addressWithoutUnit;
-            document.getElementById("formattedAddressWithUnit").textContent = addressWithUnit;
-        }
-
-        function replaceKeywordsWithAbbreviations(address) {
-            const replacements = {
-                "Avenue": "Ave",
-                "Boulevard": "Blvd",
-                "Circle": "Cir",
-                "Court": "Ct",
-                "CT": "Ct",
-                "Expressway": "Expy",
-                "Freeway": "Fwy",
-                "Lane": "Ln",
-                "Parkway": "Pky",
-                "Road": "Rd",
-                "Square": "Sq",
-                "Street": "St",
-                "Turnpike": "Tpke",
-                "North": "N",
-                "East": "E",
-                "South": "S",
-                "West": "W",
-                "Northeast": "Ne",
-                "Southeast": "Se",
-                "Southwest": "Sw",
-                "Northwest": "Nw"
-            };
-
-            for (const [key, value] of Object.entries(replacements)) {
-                const regex = new RegExp(`\\b${key}\\b`, 'gi');
-                address = address.replace(regex, value);
-            }
-
             return address;
-        }
-
-        function validateDirectionAfterComma(address) {
-            const parts = address.split(",");
-            if (parts.length > 1) {
-                parts[1] = parts[1].replace(/\bN\b/g, "North").replace(/\bS\b/g, "South");
-            }
-            return parts.join(",");
         }
 
         function formatAddress(address) {
@@ -234,18 +185,8 @@
             el.select();
             document.execCommand('copy');
             document.body.removeChild(el);
+            alert('Copied to clipboard');
         }
-
-        function getAllIndexes(str, subStr) {
-            let indices = [];
-            let index = str.indexOf(subStr);
-            while (index !== -1) {
-                indices.push(index);
-                index = str.indexOf(subStr, index + 1);
-            }
-            return indices;
-        }
-</script>
-<div id="sfchtp1bhy2rgx544ub86pr59tpalxspdr7"></div><script type="text/javascript" src="https://counter4.optistats.ovh/private/counter.js?c=htp1bhy2rgx544ub86pr59tpalxspdr7&down=async" async></script><noscript><a href="https://www.contadorvisitasgratis.com" title="contadores de visitas"><img src="https://counter4.optistats.ovh/private/contadorvisitasgratis.php?c=htp1bhy2rgx544ub86pr59tpalxspdr7" border="0" title="contadores de visitas" alt="contadores de visitas"></a></noscript>
-<script src="https://www.drv.tw/inc/wd.js?s=deckardtechnologiesaov"></script></body>
+    </script>
+</body>
 </html>
