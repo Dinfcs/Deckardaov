@@ -87,18 +87,44 @@ button:hover {
     right: 20px;
     width: 150px;
 }
-/* Estilo para el texto de las ciudades */
-.city-info {
-    text-align: center;
-    margin: 20px 0;
+
+/* Estilo del modal */
+.modal {
+    display: none; /* Ocultar el modal por defecto */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4); /* Fondo negro con opacidad */
 }
 
-.city-info h1 {
-    font-size: 36px;
-    color: #fff;
+/* Estilo del contenido del modal */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
-.city-info h2 {
+/* Estilo del botón de cerrar */
+.close {
+    color: #aaa;
+    float: right;
     font-size: 28px;
-    color: #f0f0f0;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }
