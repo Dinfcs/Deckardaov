@@ -87,3 +87,18 @@ button:hover {
     right: 20px;
     width: 150px;
 }
+/* Estilo para el texto de las ciudades */
+.city-info {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.city-info h1 {
+    font-size: 36px;
+    color: #fff;
+}
+
+.city-info h2 {
+    font-size: 28px;
+    color: #f0f0f0;
+}
