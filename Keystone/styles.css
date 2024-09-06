@@ -1,0 +1,89 @@
+/* Fondo de pantalla con imagen */
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('background.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #f0f0f0; /* Texto claro */
+    margin: 0;
+    padding: 0;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 600px;
+    margin: 100px auto;
+    padding: 50px;
+    background-color: rgba(51, 51, 51, 0.8); /* Fondo oscuro con opacidad ajustada para el contraste */
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7); /* Sombra para resaltar el contenedor */
+}
+
+h2 {
+    color: #39A9DD; /* Azul claro del logo */
+}
+
+label, input, p {
+    color: #A1C935; /* Verde lima del logo */
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #535353; /* Gris oscuro del logo */
+    border-radius: 5px;
+    background-color: #222; /* Fondo oscuro del input */
+    color: #fff;
+}
+
+input[type="text"]::placeholder {
+    color: #aaa;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 10px 0;
+    background-color: #39A9DD; /* Azul claro del logo */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #A1C935; /* Verde lima al hacer hover */
+}
+
+/* Botones de navegación */
+.nav-buttons {
+    position: absolute;
+    top: 20px;
+    left: 10px;
+}
+
+.nav-buttons a {
+    text-decoration: none;
+    color: #fff;
+    background-color: #535353; /* Gris oscuro del logo */
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-buttons a:hover {
+    background-color: #A1C935;
+    color: #fff;
+}
+
+/* Estilo del logo */
+.logo {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 150px;
+}
