@@ -173,3 +173,24 @@ function getAllIndexes(str, subStr) {
     }
     return indices;
 }
+
+// Mostrar el modal al cargar la página
+document.addEventListener("DOMContentLoaded", function() {
+    var modal = document.getElementById("infoModal");
+    var closeBtn = document.getElementById("closeModal");
+
+    // Mostrar el modal
+    modal.style.display = "block";
+
+    // Cerrar el modal cuando el usuario haga clic en el botón de cerrar
+    closeBtn.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // Cerrar el modal si el usuario hace clic fuera del contenido del modal
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+});
