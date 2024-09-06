@@ -16,7 +16,7 @@
 
     <div class="container">
         <div class="form-container">
-            <h2>Enter an unformatted address:</h2>
+            <h2>Enter an unformatted KEYSTONE address:</h2>
             <form id="addressForm">
                 <label for="addressInput">Unformatted Address:</label>
                 <input type="text" id="addressInput" name="address" placeholder="Example: 319 ANTELOPE AVE PAGOSA SPRINGS CO 81147" autocomplete="off" required>
@@ -29,10 +29,6 @@
             <p id="formattedAddressWithUnit"></p>
             <button id="copyButtonWithUnit">Copy</button>
         </div>
-            <!-- Texto añadido -->
-    <div class="city-info">
-        <h2>ONLY FOR KEYSTONE</h2>
-    </div>
     </div>
 
     <!-- Contador de visitas -->
@@ -49,5 +45,15 @@
 
     <!-- Archivo JavaScript -->
     <script src="script.js"></script>
+    
+    <!-- Modal -->
+<div id="infoModal" class="modal">
+    <div class="modal-content">
+        <h2>Información Importante</h2>
+        <p>Copie la dirección proporcionada por Cyborg en el campo de conversión. Asegúrese de revisar en el PR si la dirección está dentro de Keystone. Si el Zip es diferente a 80435, validelo con Google Maps.</p>
+        <button id="closeModal">Cerrar</button>
+    </div>
+</div>
+
 </body>
 </html>
