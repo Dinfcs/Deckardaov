@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Feedback</title>
+    <style>
+        body {
+            background-color: #1f1f1f;
+            color: #f5f5f5;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #2a2a2a;
+            padding: 30px;
+            border-radius: 10px;
+            width: 400px;
+            text-align: center;
+        }
+
+        h1, label {
+            color: #00c9ff;
+        }
+
+        select, input, textarea, button {
+            width: 100%;
+            padding: 8px;
+            margin: 10px 0;
+            background-color: #2f2f2f;
+            color: #f5f5f5;
+            border: 1px solid #00c9ff;
+            border-radius: 5px;
+        }
+
+        textarea {
+            height: 80px;
+        }
+
+        button {
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .result {
+            background-color: #1f1f1f;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 10px;
+            text-align: left;
+        }
+
+        button:hover {
+            background-color: #00c9ff;
+            color: #1f1f1f;
+        }
+
+        .copy-btn {
+            background-color: #00c9ff;
+            color: #1f1f1f;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .copy-btn:hover {
+            background-color: #008fcc;
+        }
+
+        a {
+            color: #00c9ff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Generador de Feedback</h1>
+
+        <label for="template">Selecciona una plantilla:</label>
+        <select id="template">
+            <option value="">Selecciona una plantilla</option>
+            <option value="wrong-structure">Wrong Structure</option>
+            <option value="bad-apn">Bad Apn</option>
+            <option value="missing-address-override">Missing Address Override</option>
+        </select>
+
+        <!-- Inputs for the user to fill in -->
+        <label for="nombre">Nombre del destinatario:</label>
+        <input type="text" id="nombre" placeholder="Nombre del destinatario">
+        
+        <label for="proyecto">Nombre del proyecto:</label>
+        <input type="text" id="proyecto" placeholder="Nombre del proyecto">
+        
+        <label for="link">Link del Listing (URL):</label>
+        <input type="url" id="link" placeholder="https://example.com">
+
+        <div id="extra-fields">
+            <!-- Fields for additional data will appear here based on the template -->
+        </div>
+
+        <button onclick="generarFeedback()">Generar Feedback</button>
+
+        <h2>Resultado</h2>
+        <div class="result" id="resultado">
+            El feedback generado aparecerá aquí.
+        </div>
+        <button class="copy-btn" onclick="copiarTexto()">Copiar Feedback</button>
+    </div>
+
+    <script>
+        const extraFields = document.getElementById('extra-fields');
+        const resultado = document.getElementById('resultado');
+
+        // Handle template selection to show the correct fields
+        document.getElementById('template').addEventListener('change', function () {
+            extraFields.innerHTML = '';
+            const selectedTemplate = this.value;
+            if (selectedTemplate === 'wrong-structure') {
+                extraFields.innerHTML += `
+                    <label for="wrong-structure">Estructura incorrecta:</label>
+                    <select id="wrong-structure">
+                        <option value="Main">Main</option>
+                        <option value="Adu">Adu</option>
+                        <option value="U1OM">U1OM</option>
+                        <option value="Rv">Rv</option>
+                        <option value="Resort">Resort</option>
+                        <option value="Timeshared">Timeshared</option>
+                        <option value="Event Space">Event Space</option>
+                        <option value="Other">Other</option>
+                        <option value="Unknown">Unknown</option>
+                    </select>
+
+                    <label for="correct-structure">Estructura correcta:</label>
+                    <select id="correct-structure">
+                        <option value="Main">Main</option>
+                        <option value="Adu">Adu</option>
+                        <option value="U1OM">U1OM</option>
+                        <option value="Rv">Rv</option>
+                        <option value="Resort">Resort</option>
+                        <option value="Timeshared">Timeshared</option>
+                        <option value="Event Space">Event Space</option>
+                        <option value="Other">Other</option>
+                        <option value="Unknown">Unknown</option>
+                    </select>
+                `;
+            } else if (selectedTemplate === 'bad-apn') {
+                extraFields.innerHTML += `
+                    <label for="motivos">Motivos:</label>
+                    <textarea id="motivos" placeholder="Introduce los motivos"></textarea>
+                `;
+            } else if (selectedTemplate === 'missing-address-override') {
+                extraFields.innerHTML += `
+                    <label for="fuente">Fuente de información:</label>
+                    <input type="text" id="fuente" placeholder="Fuente de información (RP, LB, etc.)">
+                `;
+            }
+        });
+
+        // Generate feedback based on the selected template and user inputs
+        function generarFeedback() {
+            const nombre = document.getElementById('nombre').value;
+            const proyecto = document.getElementById('proyecto').value;
+            const link = document.getElementById('link').value;
+            const template = document.getElementById('template').value;
+
+            let feedback = '';
+            if (template === 'wrong-structure') {
+                const wrongStructure = document.getElementById('wrong-structure').value;
+                const correctStructure = document.getElementById('correct-structure').value;
+                feedback = `¡Hola ${nombre}! Espero que estés teniendo un día fantástico 😊. Hoy estoy realizando QA aleatorio y encontré <a href="${link}" target="_blank">esta propiedad tuya</a> en ${proyecto}. ¡Hiciste un trabajo increíble identificando la propiedad, es la correcta y la evidencia es clarísima! 🎉 Sin embargo, noté un pequeño error: mapeaste la estructura como ${wrongStructure} cuando en realidad es ${correctStructure}. Lo identifiqué porque los registros públicos lo indican y, además, con las imágenes aéreas se puede ver mejor el tipo de edificio. La próxima vez, puedes revisar estos detalles para estar 100% seguro. ¡Muchas gracias por tu tiempo! Si tienes alguna pregunta, no dudes en decírmelo 😊.`;
+            } else if (template === 'bad-apn') {
+                const motivos = document.getElementById('motivos').value;
+                feedback = `¡Hola ${nombre}! Espero que todo esté yendo bien 🤗. Hoy, mientras hacía QA aleatorio, revisé <a href="${link}" target="_blank">esta propiedad tuya</a>. Después de analizarla cuidadosamente, llegué a la conclusión de que no fue identificada correctamente. ¿Podrías explicarme por qué la mapeaste así? Quizás haya algo que no vi y me gustaría entender tu razonamiento. Mis motivos son ${motivos}, ¡déjame saber qué piensas al respecto! Gracias por tu tiempo 😊.`;
+            } else if (template === 'missing-address-override') {
+                const fuente = document.getElementById('fuente').value;
+                feedback = `¡Saludos ${nombre}! ¿Cómo estás? ¡Espero que todo esté de maravilla! Hoy, mientras realizaba QA aleatorio, apareció <a href="${link}" target="_blank">esta propiedad tuya</a> en ${proyecto}. La identificación fue precisa y la evidencia espectacular 😍. Sin embargo, al revisarla, noté que la dirección era un poco extraña, así que la busqué en ${fuente} y me di cuenta de que era necesario realizar AOV, ya que la que apareció era diferente. Por favor, tenlo en cuenta para la próxima vez. ¡Muchas gracias! 😊`;
+            }
+
+            resultado.innerHTML = feedback;
+        }
+
+        // Copy the generated text to clipboard
+        function copiarTexto() {
+            const feedbackText = resultado.innerHTML;
+            navigator.clipboard.writeText(feedbackText).then(() => {
+                alert('Feedback copiado al portapapeles');
+            }).catch(err => {
+                console.error('Error al copiar el texto: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
