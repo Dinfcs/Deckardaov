@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Feedback</title>
+    <style>
+        body {
+            background-color: #1f1f1f;
+            color: #f5f5f5;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+    display: flex;
+    justify-content: space-between;
+    background-color: #2a2a2a;
+    padding: 30px;
+    border-radius: 10px;
+    width: 80%; /* Ajustar al ancho total */
+    max-width: 1200px;
+    gap: 50px; /* Aumentar la separación entre las secciones */
+}
+
+.form-section, .result-section {
+    width: 48%; /* Ambas secciones toman el 48% del contenedor */
+}
+
+        .form-section h1, .form-section label {
+            color: #00c9ff;
+        }
+
+        select, input, textarea {
+    width: 100%; /* Asegura que todos los campos ocupen el ancho disponible */
+    box-sizing: border-box; /* Evita que el padding afecte el tamaño del campo */
+    padding: 10px; /* Espaciado interno para todos los campos */
+    margin: 10px 0; /* Margen entre los campos */
+    background-color: #2f2f2f;
+    color: #f5f5f5;
+    border: 1px solid #00c9ff;
+    border-radius: 5px;
+    font-size: 16px; /* Tamaño de fuente uniforme */
+}
+
+        textarea {
+            height: 80px;
+        }
+
+        button {
+    width: 100%; /* El botón ocupará todo el ancho disponible */
+    
+   
+padding: 15px 20px; /* Aumenta el padding para hacerlo más alto */
+    
+   
+font-size: 18px; /* Aumenta el tamaño del texto */
+    font-weight: bold; /* Negrita para el texto */
+    background-color: #00c9ff; /* Color de fondo */
+    color: #1f1f1f; /* Color del texto */
+    border: none; /* Elimina bordes adicionales */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+}
+
+/* Cambiar el estilo del botón al pasar el cursor */
+button:hover {
+    background-color: #008fcc; /* Color de fondo más oscuro en hover */
+}
+
+        .result-section {
+            background-color: #1f1f1f;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: justify;
+        }
+
+        h2 {
+            color: #00c9ff;
+        }
+
+        a {
+            color: #00c9ff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sección del formulario -->
+        <div class="form-section">
+            <h1>Generador de Feedback</h1>
+
+            <label for="template">Selecciona una plantilla:</label>
+            <select id="template">
+                <option value="">Selecciona una plantilla</option>
+                <option value="wrong-structure">Wrong Structure</option>
+                <option value="bad-apn">Bad APN</option>
+                <option value="missing-address-override">Missing Address Override</option>
+                <option value="missing-unit-box">Missing Unit Box</option>
+                <option value="nmf-address-override">Do Not Clear Previous Address Override In An NMF Listing</option>
+            </select>
+
+            <label for="nombre">Nombre del destinatario:</label>
+            <input type="text" id="nombre" placeholder="Nombre del destinatario">
+            
+            <label for="proyecto">Nombre del proyecto:</label>
+            <input type="text" id="proyecto" placeholder="Nombre del proyecto">
+            
+            <label for="link">Link del Listing (URL):</label>
+            <input type="url" id="link" placeholder="https://cyborg.deckard.com/listing/NC/avery/_/STR-AIR-1226751626855273525">
+
+            <div id="extra-fields">
+                <!-- Los campos adicionales aparecerán aquí según la plantilla -->
+            </div>
+
+            <button onclick="generarFeedback()">Generar Feedback</button>
+        </div>
+
+        <!-- Sección del resultado -->
+        <div class="result-section">
+            <h2>Resultado</h2>
+            <div class="result" id="resultado">
+                El feedback generado aparecerá aquí.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const extraFields = document.getElementById('extra-fields');
+        const resultado = document.getElementById('resultado');
+
+        // Manejar la selección de la plantilla para mostrar los campos correspondientes
+        document.getElementById('template').addEventListener('change', function () {
+            extraFields.innerHTML = '';
+            const selectedTemplate = this.value;
+            
+            // Generar campos específicos según la plantilla seleccionada
+            if (selectedTemplate === 'wrong-structure') {
+                extraFields.innerHTML += `
+                    <label for="wrong-structure">Estructura incorrecta:</label>
+                    <select id="wrong-structure">
+                        <option value="Main">Main</option>
+                        <option value="Adu">Adu</option>
+                        <option value="U1OM">U1OM</option>
+                        <option value="Rv">Rv</option>
+                        <option value="Resort">Resort</option>
+                        <option value="Timeshared">Time shared</option>
+                        <option value="Event Space">Event Space</option>
+                        <option value="Other">Other</option>
+                        <option value="Unknown">Unknown</option>
+                    </select>
+
+                    <label for="correct-structure">Estructura correcta:</label>
+                    <select id="correct-structure">
+                        <option value="Main">Main</option>
+                        <option value="Adu">Adu</option>
+                        <option value="U1OM">U1OM</option>
+                        <option value="Rv">Rv</option>
+                        <option value="Resort">Resort</option>
+                        <option value="Timeshared">Time shared</option>
+                        <option value="Event Space">Event Space</option>
+                        <option value="Other">Other</option>
+                        <option value="Unknown">Unknown</option>
+                    </select>
+                `;
+            } else if (selectedTemplate === 'bad-apn') {
+                extraFields.innerHTML += `
+                    <label for="motivos">Motivos:</label>
+                    <textarea id="motivos" placeholder="Introduce los motivos por los que piensas que la APN está mal"></textarea>
+                `;
+            } else if (selectedTemplate === 'missing-address-override') {
+                extraFields.innerHTML += `
+                    <label for="fuente">Fuente de información:</label>
+                    <input type="text" id="fuente" placeholder="Fuente de información (RP, LB, etc.)">
+                `;
+            } else if (selectedTemplate === 'missing-unit-box') {
+                extraFields.innerHTML += `
+                    <label for="unitBox">Unit Box:</label>
+                    <input type="text" id="unitBox" placeholder="Unit Box no completado">
+                `;
+            } 
+            // No se necesita campo adicional para 'nmf-address-override'
+        });
+
+        // Generar el feedback según la plantilla seleccionada y los datos del usuario
+        function generarFeedback() {
+            const nombre = document.getElementById('nombre').value;
+            const proyecto = document.getElementById('proyecto').value;
+            const link = document.getElementById('link').value;
+            const template = document.getElementById('template').value;
+
+            let feedback = '';
+            if (template === 'wrong-structure') {
+                const wrongStructure = document.getElementById('wrong-structure').value;
+                const correctStructure = document.getElementById('correct-structure').value;
+                feedback = `¡Hola ${nombre}! Espero que estés teniendo un buen día. Hoy estoy realizando QA aleatorio y encontré <a href="${link}" target="_blank">esta propiedad tuya</a> en ${proyecto}. Hiciste un buen trabajo identificando la propiedad, sin embargo noté que la mapeaste como ${wrongStructure}, cuando en realidad es ${correctStructure}. Esto lo identifiqué a través de los registros públicos y las imágenes aéreas. Te recomiendo revisarlo más a detalle una próxima vez. ¡Muchas Gracias!`;
+            } else if (template === 'bad-apn') {
+                const motivos = document.getElementById('motivos').value;
+                feedback = `Hola ${nombre}, ¡espero que todo esté yendo bien! 🤗 Hoy estoy realizando QA aleatorio y me encontré con <a href="${link}" target="_blank">esta propiedad tuya</a>, Después de revisarla cuidadosamente, llegué a la conclusión de que no fue identificada correctamente. ¿Podrías explicarme por qué la mapeaste de esta forma? Quizás haya algo que no vi, y me gustaría entender tu razonamiento. Mis motivos son: ${motivos}. Por favor, déjame saber qué piensas al respecto. ¡Gracias por tu tiempo!`;
+            } else if (template === 'missing-address-override') {
+                const fuente = document.getElementById('fuente').value;
+                feedback = `Saludos ${nombre}, espero que todo esté bien. Hoy mientras revisaba QA aleatorio, encontré <a href="${link}" target="_blank">esta propiedad tuya</a> en ${proyecto}. La identificación fue precisa y la evidencia espectacular 😍. Sin embargo, al revisarla, noté que la dirección era un poco extraña, así que la busqué en ${fuente} y me di cuenta de que era necesario realizar (Address Override), ya que la que apareció era diferente. Por favor, tenlo en cuenta para la próxima vez. ¡Muchas gracias!`;
+            } else if (template === 'missing-unit-box') {
+                const unitBox = document.getElementById('unitBox').value;
+                feedback = `¡Saludos ${nombre}!, ¡espero que todo esté yendo bien! 🤗 Hoy estoy realizando QA aleatorio y me encontré con <a href="${link}" target="_blank">esta propiedad tuya</a> en ${proyecto}. Noté que omitiste llenar el campo 'Unit Box', en este caso era (${unitBox}). Recuerda que este campo es importante para separar las property cards en RS. Este puede estar en las imágenes, descripción del listing o en los datos de Zillow. Tenlo presente para la próxima vez. ¡Muchas gracias!`;
+            } else if (template === 'nmf-address-override') {
+                feedback = `¡Saludos ${nombre}!, ¡espero que todo esté yendo bien! 🤗 Hoy estoy realizando QA aleatorio y me encontré con <a href="${link}" target="_blank">esta propiedad tuya</a> en ${proyecto}. Está muy bien identificada, sin embargo, olvidaste borrar el AOV anterior cuando estaba en NMF. Ten presente siempre validar esto antes de guardar el listing, sobre todo cuando estás en FP. ¡Muchas gracias!`;
+            }
+
+            resultado.innerHTML = feedback;
+        }
+    </script>
+</body>
+</html>
