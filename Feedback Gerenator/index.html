@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Feedback</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Enlace al archivo CSS -->
+</head>
+<body>
+    <div class="container">
+        <!-- Sección del formulario -->
+        <div class="form-section">
+            <h1>Generador de Feedback</h1>
+
+            <label for="template">Selecciona una plantilla:</label>
+            <select id="template">
+                <option value="">Selecciona una plantilla</option>
+                <option value="wrong-apn">Wrong APN</option>
+                <option value="wrong-structure">Wrong Structure</option>
+                <option value="wrong-unit-box">Wrong Unit Box</option>
+                <option value="missing-unit-box">Missing Unit Box</option>
+                <option value="missing-address-override">Missing Address Override</option>
+                <option value="wrong-address-override">Wrong Address Override</option>
+                <option value="nmf-address-override">Do Not Clear Previous Address Override In An NMF Listing</option>
+            </select>
+
+            <label for="nombre">Nombre del destinatario:</label>
+            <input type="text" id="nombre" placeholder="Nombre del destinatario">
+            
+            <label for="proyecto">Nombre del proyecto:</label>
+            <input type="text" id="proyecto" placeholder="Nombre del proyecto" list="listaProyectos">
+
+            <datalist id="listaProyectos">
+                <!-- Las opciones serán generadas dinámicamente por JavaScript -->
+            </datalist>
+
+            <label for="link">Link del Listing (URL):</label>
+            <input type="url" id="link" placeholder="https://cyborg.deckard.com/listing/NC/avery/_/STR-AIR-1226751626855273525">
+
+            <div id="extra-fields">
+                <!-- Los campos adicionales aparecerán aquí según la plantilla -->
+            </div>
+
+            <button onclick="generarFeedback()">Generar Feedback</button>
+        </div>
+
+        <!-- Sección del resultado -->
+        <div class="result-section">
+            <h2>Resultado</h2>
+            <div class="result" id="resultado">
+                El feedback generado aparecerá aquí.
+            </div>
+        </div>
+    </div>
+
+    <script src="proyectos.js"></script> <!-- Enlace al archivo de autocompletado -->
+    <script src="script.js"></script> <!-- Enlace al archivo JavaScript principal -->
+</body>
+</html>
