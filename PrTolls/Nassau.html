@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APN para Parcel number</title>
+    <style>
+        /* Estilos generales */
+        * {
+            box-sizing: border-box;
+        }
+        html, body {
+            margin: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+        .left {
+            flex-grow: 8; 
+            height: 100%;
+            border-right: 2px solid #ccc;
+        }
+        .right {
+            flex-grow: 0.3; 
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-width: 200px; 
+            background-image: url('background.png');
+            background-size: cover; 
+            background-position: right; 
+            color: white;
+            text-align: center;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        #formattedAPN {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+    <script>
+        function autoFormatAPN() {
+            let apnInput = document.getElementById('apn').value.replace(/-/g, '');
+
+            // Comprobar que el número tenga la longitud adecuada (18 caracteres)
+            if (apnInput.length === 18) {
+                // Separar la cadena en las partes correctas
+                let parte1 = apnInput.substring(0, 2);
+                let parte2 = apnInput.substring(2, 4);
+                let parte3 = apnInput.substring(4, 6);
+                let parte4 = apnInput.substring(6, 10);
+                let parte5 = apnInput.substring(10, 14);
+                let parte6 = apnInput.substring(14, 18);
+
+                
+            // Unir las partes con guiones
+                let formattedAPN = `${parte1}-${parte2}-${parte3}-${parte4}-${parte5}-${parte6}`;
+                document.getElementById('formattedAPN').innerText = formattedAPN;
+            } else {
+                document.getElementById('formattedAPN').innerText = 'El número debe tener exactamente 18 caracteres';
+            }
+        }
+        
+        async function copyPart(part) {
+            try {
+                await navigator.clipboard.writeText(part);
+                
+            } catch (err) {
+                console.error('Error al copiar: ', err);
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <iframe src="https://maps.nassauflpa.com/NassauTaxMap/" title="Search By"></iframe>
+        </div>
+
+        <div class="right">
+            <div class="background"></div> <!-- Contenedor para la imagen de fondo -->
+            <div class="content">
+                <h2>APN con guiones</h2>
+                <label for="apn">Ingresa la APN:</label>
+                <input type="text" id="apn" maxlength="18" placeholder="00SB30192000140000" oninput="autoFormatAPN()">
+
+                <p id="formattedAPN"></p>
+
+                <button onclick="copyPart(document.getElementById('formattedAPN').innerText)">Copiar APN Ajustada</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
