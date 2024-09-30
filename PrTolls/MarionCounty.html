@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APN para Geo ID</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        html, body {
+            margin: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+        .left {
+            flex-grow: 8; 
+            height: 100%;
+            border-right: 2px solid #ccc;
+        }
+        .right {
+            flex-grow: 0.3; 
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-width: 200px; 
+            background-image: url('https://dinfcs.github.io/Deckardaov/background.png');
+            background-size: cover; 
+            background-position: right; 
+            color: white; 
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        #formattedAPN {
+            margin-top: 10px;
+            font-weight: bold;
+            color: white;
+        }
+    </style>
+    <script>
+        function autoFormatAPN() {
+            const apnInput = document.getElementById('apn').value.replace(/-/g, '');
+            const formattedAPN = apnInput.replace(/^(\d{4})(\d{3})(\d{3})$/, (match, p1, p2, p3) => {
+                return `${p1}-${p2}-${p3}`;
+            });
+            document.getElementById('formattedAPN').innerText = formattedAPN;
+        }
+        
+        function validarAPN() {
+            const input = document.getElementById('apn');
+            const valor = input.value;
+            // Eliminar cualquier carácter que no sea un dígito y limitar a 10 caracteres
+            input.value = valor.replace(/\D/g, '').slice(0, 10);
+            autoFormatAPN(); // Formatear después de validar
+        }
+
+        async function copyPart(part) {
+            try {
+                await navigator.clipboard.writeText(part);
+            } catch (err) {
+                console.error('Error al copiar: ', err);
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <iframe src="https://www.pa.marion.fl.us/PropertySearch.aspx" title="Map Search"></iframe>
+        </div>
+
+        <div class="right">
+            <h2>APN con guiones</h2>
+            <label for="apn">Ingresa la APN:</label>
+            <input type="text" id="apn" maxlength="10" placeholder="APN sin guiones" oninput="validarAPN()">
+
+            <p id="formattedAPN"></p>
+
+            <button onclick="copyPart(document.getElementById('formattedAPN').innerText)">Copiar APN Ajustada</button>
+        </div>
+    </div>
+</body>
+</html>
