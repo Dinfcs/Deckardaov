@@ -4,80 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search County</title>
-    <link rel="stylesheet" href="styles.css">
     <style>
-
         body {
             font-family: Arial, sans-serif;
-            background-image: url('background.png');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: #f0f0f0;
+            background-color: #f0f0f0;
             margin: 0;
-            padding: 0;
+            padding: 20px;
         }
 
         .container {
-            max-width: 600px;
-            margin: 100px auto;
-            padding: 50px;
-            background-color: rgba(51, 51, 51, 0.8); /* Dark background with opacity */
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
-        }
-
-        .autocomplete-items {
-            border: 1px solid #535353;
-            border-bottom: none;
-            border-top: none;
-            z-index: 99;
-            position: absolute;
-            background-color: rgba(51, 51, 51, 0.95);
-            color: #f0f0f0;
-            max-height: 150px;
-            overflow-y: auto;
-        }
-
-        .autocomplete-items div {
+            width: 100%;
             padding: 10px;
-            cursor: pointer;
-            background-color: #222;
-            border-bottom: 1px solid #535353;
+            background-color: #ffffff;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
         }
 
-        .autocomplete-items div:hover {
-            background-color: #A1C935;
-            color: #fff;
+        .container h2 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: #333;
         }
 
-        .autocomplete-active {
-            background-color: #39A9DD !important;
-            color: #fff;
+        .container input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
         }
 
-        button {
+        .container button {
             padding: 10px 20px;
-            margin: 10px 0;
             background-color: #39A9DD;
             color: #fff;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            font-size: 1em;
         }
 
-        button:hover {
+        .container button:hover {
             background-color: #A1C935;
         }
 
-        select {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #535353;
+        /* Estilos para el autocompletado */
+        .autocomplete-items {
+            position: absolute;
+            border: 1px solid #d4d4d4;
+            background-color: #fff;
+            border-bottom: none;
+            border-top: none;
+            z-index: 99;
+            width: 80%;
+            margin-left: 10%;
             border-radius: 5px;
-            background-color: #222;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .autocomplete-items div {
+            padding: 10px;
+            cursor: pointer;
+            border-bottom: 1px solid #d4d4d4;
+        }
+
+        .autocomplete-items div:last-child {
+            border-bottom: none;
+        }
+
+        .autocomplete-items div:hover {
+            background-color: #f1f1f1;
+        }
+
+        .autocomplete-active {
+            background-color: #39A9DD !important;
             color: #fff;
         }
 
