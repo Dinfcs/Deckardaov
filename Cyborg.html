@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyborg</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Estilo del iframe izquierdo (cyborg) */
+        .iframe-left {
+            width: 90%; /* Prioridad al iframe izquierdo */
+            height: 100vh;
+            border: none;
+            transition: width 0.3s ease;
+        }
+
+        /* Estilo del iframe derecho (ParcelSearch) */
+        .iframe-right {
+            width: 15%; /* Menor tamaño para el iframe derecho */
+            height: 100vh;
+            border: none;
+            background-color: #f0f0f0;
+            transition: width 0.3s ease;
+        }
+
+        /* Añade una barra separadora */
+        .divider {
+            width: 2px;
+            background-color: #cccccc;
+            height: 100vh;
+            position: relative;
+        }
+
+        /* Botón de ocultar/mostrar */
+        .toggle-button {
+            position: absolute;
+            top: 50%;
+            left: -20px;
+            transform: translateY(-50%);
+            background-color: #cccccc;
+            border: none;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        .toggle-button:after {
+            content: '<<';
+            font-size: 12px;
+        }
+
+        /* Cuando la parte derecha está oculta */
+        .collapsed .iframe-right {
+            width: 0;
+        }
+
+        .collapsed .iframe-left {
+            width: calc(100% - 2px); /* Ancho completo menos el separador */
+        }
+
+        /* Cambia la dirección de la flecha cuando está colapsado */
+        .collapsed .toggle-button:after {
+            content: '>>';
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Iframe para la página de cyborg.deckard.com -->
+    <iframe id="leftIframe" src="https://cyborg.deckard.com/" class="iframe-left"></iframe>
+
+    <!-- Barra divisoria entre los dos iframes -->
+    <div class="divider">
+        <button class="toggle-button" onclick="toggleIframe()"><<</button>
+    </div>
+
+    <!-- Iframe para la página de dinfcs.github.io (ParcelSearch) -->
+    <iframe id="rightIframe" src="https://dinfcs.github.io/Deckardaov/ParcelSearch/index.html" class="iframe-right"></iframe>
+
+    <!-- Script para manejar la funcionalidad del botón Go y el colapso/expansión -->
+    <script>
+        function goToCounty() {
+            const countyName = prompt("Enter County Name and State (e.g., Los Angeles, CA):");
+
+            if (countyName) {
+                const state = countyName.split(",")[1].trim(); // Asume que se ingresa como 'Condado, Estado'
+                const county = countyName.split(",")[0].trim();
+                const url = `https://cyborg.deckard.com/parcel/${state}/${county}/_`;
+
+                // Cambia el src del iframe izquierdo para cargar la nueva URL
+                document.getElementById("leftIframe").src = url;
+            } else {
+                alert("Please enter a valid county and state.");
+            }
+        }
+
+        // Función para ocultar/mostrar el iframe derecho
+        function toggleIframe() {
+            document.body.classList.toggle("collapsed");
+        }
+    </script>
+
+</body>
+</html>
