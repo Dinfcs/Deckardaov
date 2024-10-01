@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search County</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('background.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 100px auto;
+            padding: 50px;
+            background-color: rgba(51, 51, 51, 0.8); /* Dark background with opacity */
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+        }
+
+        .autocomplete-items {
+            border: 1px solid #535353;
+            border-bottom: none;
+            border-top: none;
+            z-index: 99;
+            position: absolute;
+            background-color: rgba(51, 51, 51, 0.95);
+            color: #f0f0f0;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+
+        .autocomplete-items div {
+            padding: 10px;
+            cursor: pointer;
+            background-color: #222;
+            border-bottom: 1px solid #535353;
+        }
+
+        .autocomplete-items div:hover {
+            background-color: #A1C935;
+            color: #fff;
+        }
+
+        .autocomplete-active {
+            background-color: #39A9DD !important;
+            color: #fff;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px 0;
+            background-color: #39A9DD;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #A1C935;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #535353;
+            border-radius: 5px;
+            background-color: #222;
+            color: #fff;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Search for a County</h2>
+        <p>Type the county name and press "Go":</p>
+
+        <form autocomplete="off" action="">
+            <label for="countyInput">County name:</label>
+            <div class="autocomplete" style="width: 100%;">
+                <input id="countyInput" type="text" name="county" placeholder="County name">
+            </div>
+            <button type="button" onclick="goToCounty()">Go</button>
+        </form>
+    </div>
+
+    <!-- Incluye counties.js aquí -->
+    <script src="counties.js"></script>
+
+    <script>
+        // Crear una lista de condados y estados a partir del arreglo de countyStateMap
+        const counties = countyStateMap.map(entry => `${entry.county}, ${entry.state}`);
+
+        function autocomplete(input, array) {
+            let currentFocus;
+            input.addEventListener("input", function(e) {
+                let a, b, i, val = this.value;
+                closeAllLists();
+                if (!val) { return false; }
+                currentFocus = -1;
+                a = document.createElement("DIV");
+                a.setAttribute("id", this.id + "autocomplete-list");
+                a.setAttribute("class", "autocomplete-items");
+                this.parentNode.appendChild(a);
+                for (i = 0; i < array.length; i++) {
+                    // Filtrar las sugerencias que coinciden con la entrada del usuario
+                    if (array[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                        b = document.createElement("DIV");
+                        // Resaltar las coincidencias en la sugerencia
+                        b.innerHTML = "<strong>" + array[i].substr(0, val.length) + "</strong>";
+                        b.innerHTML += array[i].substr(val.length);
+                        b.innerHTML += "<input type='hidden' value='" + array[i] + "'>";
+                        b.addEventListener("click", function(e) {
+                            // Al hacer clic en la sugerencia, completar el campo de entrada
+                            input.value = this.getElementsByTagName("input")[0].value;
+                            closeAllLists();
+                        });
+                        a.appendChild(b);
+                    }
+                }
+            });
+
+            input.addEventListener("keydown", function(e) {
+                let x = document.getElementById(this.id + "autocomplete-list");
+                if (x) x = x.getElementsByTagName("div");
+                if (e.keyCode == 40) {
+                    currentFocus++;
+                    addActive(x);
+                } else if (e.keyCode == 38) {
+                    currentFocus--;
+                    addActive(x);
+                } else if (e.keyCode == 13) {
+                    e.preventDefault();
+                    if (currentFocus > -1) {
+                        if (x) x[currentFocus].click();
+                    }
+                }
+            });
+
+            function addActive(x) {
+                if (!x) return false;
+                removeActive(x);
+                if (currentFocus >= x.length) currentFocus = 0;
+                if (currentFocus < 0) currentFocus = (x.length - 1);
+                x[currentFocus].classList.add("autocomplete-active");
+            }
+
+            function removeActive(x) {
+                for (let i = 0; i < x.length; i++) {
+                    x[i].classList.remove("autocomplete-active");
+                }
+            }
+
+            function closeAllLists(elmnt) {
+                const items = document.getElementsByClassName("autocomplete-items");
+                for (let i = 0; i < items.length; i++) {
+                    if (elmnt != items[i] && elmnt != input) {
+                        items[i].parentNode.removeChild(items[i]);
+                    }
+                }
+            }
+
+            document.addEventListener("click", function (e) {
+                closeAllLists(e.target);
+            });
+        }
+
+        autocomplete(document.getElementById("countyInput"), counties);
+
+        function goToCounty() {
+            const countyNameState = document.getElementById("countyInput").value;
+            const [countyName, state] = countyNameState.split(',').map(item => item.trim());
+
+            if (countyName && state) {
+                const url = `https://cyborg.deckard.com/parcel/${state}/${countyName}/_`;
+                window.open(url, '_blank');
+            } else {
+                alert("Please enter a valid county and state.");
+            }
+        }
+    </script>
+
+</body>
+</html>
