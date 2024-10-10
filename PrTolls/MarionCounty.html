@@ -76,6 +76,14 @@
                 console.error('Error al copiar: ', err);
             }
         }
+
+        function goToGIS() {
+            const formattedAPN = document.getElementById('formattedAPN').innerText;
+            if (formattedAPN) {
+                const url = `https://www.pa.marion.fl.us/patviewer/?PARCEL=${formattedAPN}`;
+                window.open(url, '_blank');
+            }
+        }
     </script>
 </head>
 <body>
@@ -92,6 +100,7 @@
             <p id="formattedAPN"></p>
 
             <button onclick="copyPart(document.getElementById('formattedAPN').innerText)">Copiar APN Ajustada</button>
+            <button onclick="goToGIS()">Go to GIS</button> <!-- Botón agregado -->
         </div>
     </div>
 </body>
