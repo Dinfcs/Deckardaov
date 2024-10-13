@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,18 +17,17 @@
 
         /* Estilo del iframe izquierdo (cyborg) */
         .iframe-left {
-            width: 90%; /* Prioridad al iframe izquierdo */
+            width: 100%; /* Ocupa todo el espacio al inicio */
             height: 100vh;
             border: none;
             transition: width 0.3s ease;
         }
 
-        /* Estilo del iframe derecho (ParcelSearch) */
+        /* Estilo del iframe derecho (ParcelSearch, PDF, Voron AOV) */
         .iframe-right {
-            width: 15%; /* Menor tamaño para el iframe derecho */
+            width: 0%; /* Comienza oculto */
             height: 100vh;
             border: none;
-            background-color: #f0f0f0;
             transition: width 0.3s ease;
         }
 
@@ -39,36 +39,24 @@
             position: relative;
         }
 
-        /* Botón de ocultar/mostrar */
-        .toggle-button {
+        /* Contenedor para los botones */
+        .button-container {
             position: absolute;
-            top: 50%;
-            left: -20px;
-            transform: translateY(-50%);
+            bottom: 10px; /* Posiciona los botones lo más pegado al fondo posible */
+            left: 10px; /* Separación del lado izquierdo */
+            display: flex; /* Alinea los botones en fila */
+            gap: 10px; /* Espacio entre cada botón */
+        }
+
+        /* Botones de ocultar/mostrar */
+        .toggle-button, .pdf-button, .voron-button {
             background-color: #cccccc;
             border: none;
-            padding: 5px;
+            padding: 10px 15px;
             cursor: pointer;
+            font-size: 14px;
         }
 
-        .toggle-button:after {
-            content: '<<';
-            font-size: 12px;
-        }
-
-        /* Cuando la parte derecha está oculta */
-        .collapsed .iframe-right {
-            width: 0;
-        }
-
-        .collapsed .iframe-left {
-            width: calc(100% - 2px); /* Ancho completo menos el separador */
-        }
-
-        /* Cambia la dirección de la flecha cuando está colapsado */
-        .collapsed .toggle-button:after {
-            content: '>>';
-        }
 
     </style>
 </head>
@@ -78,33 +66,90 @@
     <iframe id="leftIframe" src="https://cyborg.deckard.com/" class="iframe-left"></iframe>
 
     <!-- Barra divisoria entre los dos iframes -->
-    <div class="divider">
-        <button class="toggle-button" onclick="toggleIframe()"><<</button>
+    <div class="divider"></div>
+
+    <!-- Contenedor para los botones en la parte inferior -->
+    <div class="button-container">
+        <button class="toggle-button" onclick="togglePS()">PS</button>
+        <button class="pdf-button" onclick="togglePR()">PR</button>
+        <button class="voron-button" onclick="toggleVoron()">AOV</button>
     </div>
 
-    <!-- Iframe para la página de dinfcs.github.io (ParcelSearch) -->
+    <!-- Iframe para la página de ParcelSearch -->
     <iframe id="rightIframe" src="https://dinfcs.github.io/Deckardaov/ParcelSearch/index.html" class="iframe-right"></iframe>
 
-    <!-- Script para manejar la funcionalidad del botón Go y el colapso/expansión -->
+    <!-- Iframe para mostrar el PDF -->
+    <iframe id="pdfIframe" src="pr.pdf#zoom=200" class="iframe-right"></iframe>
+
+    <!-- Iframe para mostrar la página de Voron AOV -->
+    <iframe id="voronIframe" src="https://dinfcs.github.io/Deckardaov/" class="iframe-right"></iframe>
+
+    <!-- Script para manejar la funcionalidad de los botones -->
     <script>
-        function goToCounty() {
-            const countyName = prompt("Enter County Name and State (e.g., Los Angeles, CA):");
+        let isLeftVisible = true; // Para saber si el lado izquierdo está visible
+        let currentView = ''; // Para saber qué está mostrando el lado derecho
 
-            if (countyName) {
-                const state = countyName.split(",")[1].trim(); // Asume que se ingresa como 'Condado, Estado'
-                const county = countyName.split(",")[0].trim();
-                const url = `https://cyborg.deckard.com/parcel/${state}/${county}/_`;
+        function togglePS() {
+            const leftIframe = document.getElementById("leftIframe");
+            const rightIframe = document.getElementById("rightIframe");
+            const pdfIframe = document.getElementById("pdfIframe");
+            const voronIframe = document.getElementById("voronIframe");
 
-                // Cambia el src del iframe izquierdo para cargar la nueva URL
-                document.getElementById("leftIframe").src = url;
+            if (currentView === 'PS') {
+                // Si ya está mostrando PS, cerramos el lado derecho y mostramos el izquierdo
+                rightIframe.style.width = '0%';
+                leftIframe.style.width = '100%';
+                currentView = ''; // No hay nada activo
             } else {
-                alert("Please enter a valid county and state.");
+                // Mostrar PS en el lado derecho y ocultar los demás
+                rightIframe.style.width = '20%';
+                leftIframe.style.width = '80%';
+                pdfIframe.style.width = '0%'; // Aseguramos que el PDF esté oculto
+                voronIframe.style.width = '0%'; // Ocultamos Voron AOV
+                currentView = 'PS'; // Actualizamos que se está mostrando PS
             }
         }
 
-        // Función para ocultar/mostrar el iframe derecho
-        function toggleIframe() {
-            document.body.classList.toggle("collapsed");
+        function togglePR() {
+            const leftIframe = document.getElementById("leftIframe");
+            const rightIframe = document.getElementById("rightIframe");
+            const pdfIframe = document.getElementById("pdfIframe");
+            const voronIframe = document.getElementById("voronIframe");
+
+            if (currentView === 'PR') {
+                // Si ya está mostrando PR, cerramos el lado derecho y mostramos el izquierdo
+                pdfIframe.style.width = '0%';
+                leftIframe.style.width = '100%';
+                currentView = ''; // No hay nada activo
+            } else {
+                // Mostrar el PDF en el lado derecho y ocultar los demás
+                pdfIframe.style.width = '80%';
+                leftIframe.style.width = '20%';
+                rightIframe.style.width = '0%'; // Ocultamos ParcelSearch
+                voronIframe.style.width = '0%'; // Ocultamos Voron AOV
+                currentView = 'PR'; // Actualizamos que se está mostrando PR
+            }
+        }
+
+        function toggleVoron() {
+            const leftIframe = document.getElementById("leftIframe");
+            const rightIframe = document.getElementById("rightIframe");
+            const pdfIframe = document.getElementById("pdfIframe");
+            const voronIframe = document.getElementById("voronIframe");
+
+            if (currentView === 'Voron') {
+                // Si ya está mostrando Voron AOV, cerramos el lado derecho y mostramos el izquierdo
+                voronIframe.style.width = '0%';
+                leftIframe.style.width = '100%';
+                currentView = ''; // No hay nada activo
+            } else {
+                // Mostrar Voron AOV en el lado derecho y ocultar los demás
+                voronIframe.style.width = '80%';
+                leftIframe.style.width = '20%';
+                rightIframe.style.width = '0%'; // Ocultamos ParcelSearch
+                pdfIframe.style.width = '0%'; // Ocultamos el PDF
+                currentView = 'Voron'; // Actualizamos que se está mostrando Voron AOV
+            }
         }
     </script>
 
