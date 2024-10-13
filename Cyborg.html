@@ -22,7 +22,7 @@
             transition: width 0.3s ease;
         }
 
-        /* Estilo del iframe derecho (ParcelSearch, Voron AOV) */
+        /* Estilo del iframe derecho (ParcelSearch, PrTools, Voron AOV) */
         .iframe-right {
             width: 0%; /* Comienza oculto */
             height: 100vh;
@@ -48,7 +48,7 @@
         }
 
         /* Botones de ocultar/mostrar */
-        .toggle-button, .pdf-button, .voron-button {
+        .toggle-button, .prtools-button, .voron-button, .prs-button {
             background-color: #cccccc;
             border: none;
             padding: 10px 15px;
@@ -69,12 +69,16 @@
     <!-- Contenedor para los botones en la parte inferior -->
     <div class="button-container">
         <button class="toggle-button" onclick="togglePS()">PS</button>
-        <button class="pdf-button" onclick="openPR()">PR</button>
+        <button class="prtools-button" onclick="togglePRTools()">PrTools</button>
         <button class="voron-button" onclick="toggleVoron()">AOV</button>
+        <button class="prs-button" onclick="openPRS()">PRs</button>
     </div>
 
     <!-- Iframe para la página de ParcelSearch -->
     <iframe id="rightIframe" src="https://dinfcs.github.io/Deckardaov/ParcelSearch/index.html" class="iframe-right"></iframe>
+
+    <!-- Iframe para mostrar PrTools -->
+    <iframe id="prtoolsIframe" src="https://dinfcs.github.io/Deckardaov/PrTools/" class="iframe-right"></iframe>
 
     <!-- Iframe para mostrar la página de Voron AOV -->
     <iframe id="voronIframe" src="https://dinfcs.github.io/Deckardaov/" class="iframe-right"></iframe>
@@ -87,6 +91,7 @@
         function togglePS() {
             const leftIframe = document.getElementById("leftIframe");
             const rightIframe = document.getElementById("rightIframe");
+            const prtoolsIframe = document.getElementById("prtoolsIframe");
             const voronIframe = document.getElementById("voronIframe");
 
             if (currentView === 'PS') {
@@ -98,20 +103,38 @@
                 // Mostrar PS en el lado derecho y ocultar los demás
                 rightIframe.style.width = '20%';
                 leftIframe.style.width = '80%';
+                prtoolsIframe.style.width = '0%'; // Aseguramos que PrTools esté oculto
                 voronIframe.style.width = '0%'; // Ocultamos Voron AOV
                 currentView = 'PS'; // Actualizamos que se está mostrando PS
             }
         }
 
-        function openPR() {
-            // Abrir la URL en una nueva ventana o pestaña
-            window.open('https://deckardtech.atlassian.net/wiki/spaces/PC/pages/1717403844/Project+Resources', '_blank');
+        function togglePRTools() {
+            const leftIframe = document.getElementById("leftIframe");
+            const prtoolsIframe = document.getElementById("prtoolsIframe");
+            const voronIframe = document.getElementById("voronIframe");
+            const rightIframe = document.getElementById("rightIframe");
+
+            if (currentView === 'PrTools') {
+                // Si ya está mostrando PrTools, cerramos el lado derecho y mostramos el izquierdo
+                prtoolsIframe.style.width = '0%';
+                leftIframe.style.width = '100%';
+                currentView = ''; // No hay nada activo
+            } else {
+                // Mostrar PrTools en el lado derecho y ocultar los demás
+                prtoolsIframe.style.width = '20%';
+                leftIframe.style.width = '80%';
+                rightIframe.style.width = '0%'; // Ocultamos ParcelSearch
+                voronIframe.style.width = '0%'; // Ocultamos Voron AOV
+                currentView = 'PrTools'; // Actualizamos que se está mostrando PrTools
+            }
         }
 
         function toggleVoron() {
             const leftIframe = document.getElementById("leftIframe");
-            const rightIframe = document.getElementById("rightIframe");
             const voronIframe = document.getElementById("voronIframe");
+            const prtoolsIframe = document.getElementById("prtoolsIframe");
+            const rightIframe = document.getElementById("rightIframe");
 
             if (currentView === 'Voron') {
                 // Si ya está mostrando Voron AOV, cerramos el lado derecho y mostramos el izquierdo
@@ -123,8 +146,14 @@
                 voronIframe.style.width = '80%';
                 leftIframe.style.width = '20%';
                 rightIframe.style.width = '0%'; // Ocultamos ParcelSearch
+                prtoolsIframe.style.width = '0%'; // Ocultamos PrTools
                 currentView = 'Voron'; // Actualizamos que se está mostrando Voron AOV
             }
+        }
+
+        function openPRS() {
+            // Abrir la URL en una nueva ventana o pestaña
+            window.open('https://deckardtech.atlassian.net/wiki/spaces/PC/pages/1717403844/Project+Resources', '_blank');
         }
     </script>
 
