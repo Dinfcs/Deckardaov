@@ -164,8 +164,15 @@ function formatAddress(address) {
     // Abreviar puntos cardinales, pero solo si están como el segundo elemento después del número de la casa
     address = abbreviateCardinalPoints(address);
 
-    // Convertir el # a "Unit" (tanto con o sin espacio entre el # y el número)
-    address = address.replace(/#\s?([\w-]+)/, "Unit $1");
+// Convertir #, Apt, Apartment o Unit pegado al número a "Unit" y asegurarse de que esté separado
+address = address.replace(/(#|Apt|Apartment|Unit)\s?([\w-]+)/i, function(match, prefix, unitNumber) {
+    return `Unit ${unitNumber}`;
+});
+
+ // Mayúsculas para la palabra que esté después de "Unit"
+ address = address.replace(/(Unit\s)([\w-]+)/, function(match, unitText, unitNumber) {
+    return unitText + unitNumber.toUpperCase();
+});
 
     // Mayúsculas para abreviaturas de estados
     stateAbbreviations.forEach(state => {
@@ -178,6 +185,7 @@ function formatAddress(address) {
 
     return address;
 }
+
 
 function removeExtraAfterZip(address) {
     // Buscar la abreviatura del estado seguida de un código postal
