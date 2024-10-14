@@ -23,16 +23,38 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start; /* Alinea el contenido al inicio (parte superior) */
-            margin-top: 20px; /* Espacio entre el borde superior y los elementos */
+            justify-content: flex-start;
+            margin-top: 20px;
             gap: 10px;
         }
 
-        select {
+        input[type="text"] {
             padding: 10px;
             font-size: 16px;
             border-radius: 5px;
             border: 1px solid #ccc;
+            width: 250px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            width: 250px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: white;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+
+        li {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        li:hover {
+            background-color: #eee;
         }
 
         button {
@@ -55,21 +77,61 @@
     <h1>PrTools</h1>
     
     <div class="container">
-        <select id="prSelect">
-            <option value="https://dinfcs.github.io/Deckardaov/PrTools/SouthPadre.html">SouthPadre</option>
-            <option value="https://dinfcs.github.io/Deckardaov/PrTools/Nassau.html">Nassau</option>
-            <option value="https://dinfcs.github.io/Deckardaov/PrTools/MarionCounty.html">MarionCounty</option>
-        </select>
-        
+        <input type="text" id="projectInput" placeholder="Start typing a project..." oninput="showSuggestions()" onclick="showSuggestions(true)">
+        <ul id="suggestions"></ul>
         <button onclick="goToPR()">Go to PR</button>
     </div>
 
     <script>
-        function goToPR() {
-            const selectElement = document.getElementById('prSelect');
-            const selectedValue = selectElement.value;
-            window.open(selectedValue, '_blank');
+        const projects = [
+            { name: "SouthPadre", url: "https://dinfcs.github.io/Deckardaov/PrTools/SouthPadre.html" },
+            { name: "Nassau", url: "https://dinfcs.github.io/Deckardaov/PrTools/Nassau.html" },
+            { name: "MarionCounty", url: "https://dinfcs.github.io/Deckardaov/PrTools/MarionCounty.html" }
+        ];
+
+        function showSuggestions(showAll = false) {
+            const input = document.getElementById('projectInput').value.toLowerCase();
+            const suggestions = document.getElementById('suggestions');
+            suggestions.innerHTML = '';
+
+            const filteredProjects = projects.filter(project => 
+                showAll || project.name.toLowerCase().includes(input)
+            );
+
+            filteredProjects.forEach(project => {
+                const li = document.createElement('li');
+                li.textContent = project.name;
+                li.onclick = () => selectProject(project);
+                suggestions.appendChild(li);
+            });
         }
+
+        function selectProject(project) {
+            document.getElementById('projectInput').value = project.name;
+            document.getElementById('suggestions').innerHTML = ''; // Clear suggestions
+            document.getElementById('projectInput').setAttribute('data-url', project.url); // Store URL in data attribute
+        }
+
+        function goToPR() {
+            const input = document.getElementById('projectInput');
+            const selectedUrl = input.getAttribute('data-url');
+
+            if (selectedUrl) {
+                window.open(selectedUrl, '_blank');
+            } else {
+                alert('Please select a project from the suggestions.');
+            }
+        }
+
+        // Hide suggestions when clicking outside the input or suggestions
+        document.addEventListener('click', function(event) {
+            const input = document.getElementById('projectInput');
+            const suggestions = document.getElementById('suggestions');
+
+            if (!input.contains(event.target) && !suggestions.contains(event.target)) {
+                suggestions.innerHTML = ''; // Hide suggestions
+            }
+        });
     </script>
 
 </body>
