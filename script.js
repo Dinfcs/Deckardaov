@@ -256,8 +256,10 @@ function addCommas(address) {
         streetAndCity = streetWords.join(" ");
     }
 
-    // Combinar la calle + ciudad con el estado y el código postal
-    return `${streetAndCity}, ${stateZip}`;
+    // Eliminar cualquier espacio antes de las comas
+    address = `${streetAndCity}, ${stateZip}`.replace(/\s+,/g, ',');
+
+    return address;
 }
 
 // Gestión de la sección para Direcciones de Condominios
