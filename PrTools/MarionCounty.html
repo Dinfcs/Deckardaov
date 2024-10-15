@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>APN para Geo ID</title>
+    <title>APN to Geo ID</title>
     <style>
         * {
             box-sizing: border-box;
@@ -61,19 +61,19 @@
             document.getElementById('formattedAPN').innerText = formattedAPN;
         }
         
-        function validarAPN() {
+        function validateAPN() {
             const input = document.getElementById('apn');
-            const valor = input.value;
-            // Eliminar cualquier carácter que no sea un dígito y limitar a 10 caracteres
-            input.value = valor.replace(/\D/g, '').slice(0, 10);
-            autoFormatAPN(); // Formatear después de validar
+            const value = input.value;
+            // Remove any non-digit characters and limit to 10 characters
+            input.value = value.replace(/\D/g, '').slice(0, 10);
+            autoFormatAPN(); // Format after validation
         }
 
-        async function copyPart(part) {
-            try {
-                await navigator.clipboard.writeText(part);
-            } catch (err) {
-                console.error('Error al copiar: ', err);
+        function goToProperty() {
+            const formattedAPN = document.getElementById('formattedAPN').innerText;
+            if (formattedAPN) {
+                const url = `https://www.pa.marion.fl.us/PropertySearch.aspx?SearchBy=ParcelR&Parms=${formattedAPN}`;
+                document.querySelector('.left iframe').src = url; // Load the URL in the left iframe
             }
         }
 
@@ -81,7 +81,7 @@
             const formattedAPN = document.getElementById('formattedAPN').innerText;
             if (formattedAPN) {
                 const url = `https://www.pa.marion.fl.us/patviewer/?PARCEL=${formattedAPN}`;
-                window.open(url, '_blank');
+                document.querySelector('.left iframe').src = url; // Load the URL in the left iframe
             }
         }
     </script>
@@ -93,14 +93,14 @@
         </div>
 
         <div class="right">
-            <h2>APN con guiones</h2>
-            <label for="apn">Ingresa la APN:</label>
-            <input type="text" id="apn" maxlength="10" placeholder="APN sin guiones" oninput="validarAPN()">
+            <h2>Formatted APN</h2>
+            <label for="apn">Enter APN:</label>
+            <input type="text" id="apn" maxlength="10" placeholder="APN without dashes" oninput="validateAPN()">
 
             <p id="formattedAPN"></p>
 
-            <button onclick="copyPart(document.getElementById('formattedAPN').innerText)">Copiar APN Ajustada</button>
-            <button onclick="goToGIS()">Go to GIS</button> <!-- Botón agregado -->
+            <button onclick="goToProperty()">Go to Property</button> <!-- Button to go to the property -->
+            <button onclick="goToGIS()">Go to GIS</button> <!-- Button to go to GIS -->
         </div>
     </div>
 </body>
