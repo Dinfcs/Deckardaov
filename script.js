@@ -232,16 +232,21 @@ function abbreviateCardinalPoints(address) {
 }
 
 function addCommas(address) {
-    // Buscar el estado seguido de cualquier código postal
-    const regex = new RegExp(`\\b(${stateAbbreviations.join("|")})\\s+\\d+`, "i");
+    // Buscar el estado seguido de cualquier código postal que sea un número entero positivo
+    const regex = new RegExp(`\\b(${stateAbbreviations.join("|")})\\s+\\d+\\b`, "gi");
 
-    let parts = address.match(regex);  // Buscar el estado + código postal
-    if (!parts) {
+    let matches = address.match(regex);  // Buscar todas las coincidencias de estado + código postal
+
+    if (!matches || matches.length === 0) {
         return address;  // Si no coincide con el patrón, devolver sin cambios
     }
 
-    let [streetAndCity] = address.split(regex);  // Dividir antes del estado
-    let stateZip = parts[0];  // Obtener estado + código postal
+    // Usar la última coincidencia encontrada (el estado + código postal correctos)
+    let lastMatch = matches[matches.length - 1];
+    let lastIndex = address.lastIndexOf(lastMatch);
+
+    let streetAndCity = address.substring(0, lastIndex).trim();  // Todo lo que está antes del último estado y código postal
+    let stateZip = lastMatch.trim();  // Estado + código postal correctos
 
     // Verificar si la dirección contiene una unidad (Unit o #)
     let unitPattern = /\b(Unit|#)\s?([\w-]+)/i;
@@ -269,6 +274,7 @@ function addCommas(address) {
 
     return address;
 }
+
 
 // Gestión de la sección para Direcciones de Condominios
 function handleCondoAddress(formattedAddress) {
