@@ -22,7 +22,7 @@
             transition: width 0.3s ease;
         }
 
-        /* Estilo del iframe derecho (ParcelSearch, PrTools, Voron AOV) */
+        /* Estilo del iframe derecho (ParcelSearch, PrTools, Voron AOV, LB, PQ) */
         .iframe-right {
             width: 0%; /* Comienza oculto */
             height: 100vh;
@@ -48,12 +48,24 @@
         }
 
         /* Botones de ocultar/mostrar */
-        .toggle-button, .prtools-button, .voron-button, .prs-button {
+        .toggle-button, .prtools-button, .voron-button, .prs-button, .lb-button, .pq-button {
             background-color: #cccccc;
             border: none;
             padding: 10px 15px;
             cursor: pointer;
             font-size: 14px;
+        }
+
+        /* Estilo específico para el botón LB */
+        .lb-button {
+            background-color: blue;
+            color: white;
+        }
+
+        /* Estilo específico para el botón PQ */
+        .pq-button {
+            background-color: red;
+            color: white;
         }
 
     </style>
@@ -69,85 +81,59 @@
     <!-- Contenedor para los botones en la parte inferior -->
     <div class="button-container">
         <button class="toggle-button" onclick="togglePS()">PS</button>
-        <button class="prtools-button" onclick="togglePRTools()">PrTools</button>
         <button class="voron-button" onclick="toggleVoron()">AOV</button>
         <button class="prs-button" onclick="openPRS()">PRs</button>
+        <button class="prtools-button" onclick="togglePRTools()">PrTools</button>
+        <button class="lb-button" onclick="toggleLB()">LB</button>
+        <button class="pq-button" onclick="togglePQ()">PQ</button>
     </div>
 
-    <!-- Iframe para la página de ParcelSearch -->
+    <!-- Iframes para las distintas vistas -->
     <iframe id="rightIframe" src="https://dinfcs.github.io/Deckardaov/ParcelSearch/index.html" class="iframe-right"></iframe>
-
-    <!-- Iframe para mostrar PrTools -->
     <iframe id="prtoolsIframe" src="https://dinfcs.github.io/Deckardaov/PrTools/" class="iframe-right"></iframe>
-
-    <!-- Iframe para mostrar la página de Voron AOV -->
     <iframe id="voronIframe" src="https://dinfcs.github.io/Deckardaov/" class="iframe-right"></iframe>
+    <iframe id="lbIframe" src="https://login-spatialstream.prod.lightboxre.com/MemberPages/Login.aspx?ReturnUrl=%2fmemberpages%2fdefault.aspx%3fma%3ddeckardtech&ma=deckardtech" class="iframe-right"></iframe>
+    <iframe id="pqIframe" src="https://pqweb.parcelquest.com/#login" class="iframe-right"></iframe>
 
     <!-- Script para manejar la funcionalidad de los botones -->
     <script>
-        let isLeftVisible = true; // Para saber si el lado izquierdo está visible
         let currentView = ''; // Para saber qué está mostrando el lado derecho
 
         function togglePS() {
-            const leftIframe = document.getElementById("leftIframe");
-            const rightIframe = document.getElementById("rightIframe");
-            const prtoolsIframe = document.getElementById("prtoolsIframe");
-            const voronIframe = document.getElementById("voronIframe");
-
-            if (currentView === 'PS') {
-                // Si ya está mostrando PS, cerramos el lado derecho y mostramos el izquierdo
-                rightIframe.style.width = '0%';
-                leftIframe.style.width = '100%';
-                currentView = ''; // No hay nada activo
-            } else {
-                // Mostrar PS en el lado derecho y ocultar los demás
-                rightIframe.style.width = '20%';
-                leftIframe.style.width = '80%';
-                prtoolsIframe.style.width = '0%'; // Aseguramos que PrTools esté oculto
-                voronIframe.style.width = '0%'; // Ocultamos Voron AOV
-                currentView = 'PS'; // Actualizamos que se está mostrando PS
-            }
+            toggleView('PS', 'rightIframe');
         }
 
         function togglePRTools() {
-            const leftIframe = document.getElementById("leftIframe");
-            const prtoolsIframe = document.getElementById("prtoolsIframe");
-            const voronIframe = document.getElementById("voronIframe");
-            const rightIframe = document.getElementById("rightIframe");
-
-            if (currentView === 'PrTools') {
-                // Si ya está mostrando PrTools, cerramos el lado derecho y mostramos el izquierdo
-                prtoolsIframe.style.width = '0%';
-                leftIframe.style.width = '100%';
-                currentView = ''; // No hay nada activo
-            } else {
-                // Mostrar PrTools en el lado derecho y ocultar los demás
-                prtoolsIframe.style.width = '20%';
-                leftIframe.style.width = '80%';
-                rightIframe.style.width = '0%'; // Ocultamos ParcelSearch
-                voronIframe.style.width = '0%'; // Ocultamos Voron AOV
-                currentView = 'PrTools'; // Actualizamos que se está mostrando PrTools
-            }
+            toggleView('PrTools', 'prtoolsIframe');
         }
 
         function toggleVoron() {
-            const leftIframe = document.getElementById("leftIframe");
-            const voronIframe = document.getElementById("voronIframe");
-            const prtoolsIframe = document.getElementById("prtoolsIframe");
-            const rightIframe = document.getElementById("rightIframe");
+            toggleView('Voron', 'voronIframe');
+        }
 
-            if (currentView === 'Voron') {
-                // Si ya está mostrando Voron AOV, cerramos el lado derecho y mostramos el izquierdo
-                voronIframe.style.width = '0%';
+        function toggleLB() {
+            toggleView('LB', 'lbIframe', '95%');
+        }
+
+        function togglePQ() {
+            toggleView('PQ', 'pqIframe', '95%');
+        }
+
+        function toggleView(viewName, iframeId, width='20%') {
+            const leftIframe = document.getElementById("leftIframe");
+            const iframes = document.querySelectorAll(".iframe-right");
+
+            if (currentView === viewName) {
+                // Si ya está mostrando el mismo, cerrar y restaurar el espacio completo al lado izquierdo
+                document.getElementById(iframeId).style.width = '0%';
                 leftIframe.style.width = '100%';
                 currentView = ''; // No hay nada activo
             } else {
-                // Mostrar Voron AOV en el lado derecho y ocultar los demás
-                voronIframe.style.width = '30%';
-                leftIframe.style.width = '70%';
-                rightIframe.style.width = '0%'; // Ocultamos ParcelSearch
-                prtoolsIframe.style.width = '0%'; // Ocultamos PrTools
-                currentView = 'Voron'; // Actualizamos que se está mostrando Voron AOV
+                // Mostrar el iframe especificado y ocultar los demás
+                iframes.forEach(iframe => iframe.style.width = '0%');
+                document.getElementById(iframeId).style.width = width;
+                leftIframe.style.width = (100 - parseInt(width)) + '%';
+                currentView = viewName; // Actualizamos la vista actual
             }
         }
 
