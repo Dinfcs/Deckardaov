@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,34 +56,67 @@
     <script>
         function autoFormatAPN() {
             const apnInput = document.getElementById('apn').value.replace(/-/g, '');
-            const formattedAPN = apnInput.replace(/^(\d{4})(\d{4})(\d{2})$/, (match, p1, p2, p3) => {
-                return `${p1}-${p2}-${p3}`;
-            });
+            const selectedFormat = document.querySelector('input[name="format"]:checked').value;
+            let formattedAPN = '';
+
+            switch (selectedFormat) {
+                case 'format1': // xxxx-xxx-xxx
+                    formattedAPN = apnInput.replace(/^(\d{4})(\d{3})(\d{3})$/, (match, p1, p2, p3) => {
+                        return `${p1}-${p2}-${p3}`;
+                    });
+                    break;
+                case 'format2': // xxxx-xxxx-xx
+                    formattedAPN = apnInput.replace(/^(\d{4})(\d{4})(\d{2})$/, (match, p1, p2, p3) => {
+                        return `${p1}-${p2}-${p3}`;
+                    });
+                    break;
+                case 'format3': // xxxxx-xxx-xx
+                    formattedAPN = apnInput.replace(/^(\d{5})(\d{3})(\d{2})$/, (match, p1, p2, p3) => {
+                        return `${p1}-${p2}-${p3}`;
+                    });
+                    break;
+                default:
+                    formattedAPN = apnInput;
+            }
             document.getElementById('formattedAPN').innerText = formattedAPN;
         }
         
         function validateAPN() {
             const input = document.getElementById('apn');
             const value = input.value;
-            // Remove any non-digit characters and limit to 10 characters
-            input.value = value.replace(/\D/g, '').slice(0, 10);
-            autoFormatAPN(); // Format after validation
+            input.value = value.replace(/\D/g, '');
+            autoFormatAPN(); 
         }
 
         function goToProperty() {
             const formattedAPN = document.getElementById('formattedAPN').innerText;
-            if (formattedAPN) {
-                const url = `https://www.pa.marion.fl.us/PropertySearch.aspx?SearchBy=ParcelR&Parms=${formattedAPN}`;
-                document.querySelector('.left iframe').src = url; // Load the URL in the left iframe
+            const selectedFormat = document.querySelector('input[name="format"]:checked').value;
+            let url = '';
+
+            if (selectedFormat === 'format2') { // xxxx-xxxx-xx, GIS uses xxxx-xxx-xxx format
+                const gisFormat = formattedAPN.replace(/^(\d{4})-(\d{4})-(\d{2})$/, (match, p1, p2, p3) => {
+                    return `${p1}-${p2.slice(0, 3)}-${p3}`;
+                });
+                url = `https://www.pa.marion.fl.us/PropertySearch.aspx?SearchBy=ParcelR&Parms=${formattedAPN}`;
+                document.querySelector('.left iframe').src = url;
+            } else {
+                url = `https://www.pa.marion.fl.us/PropertySearch.aspx?SearchBy=ParcelR&Parms=${formattedAPN}`;
+                document.querySelector('.left iframe').src = url;
             }
         }
 
         function goToGIS() {
             const formattedAPN = document.getElementById('formattedAPN').innerText;
-            if (formattedAPN) {
-                const url = `https://www.pa.marion.fl.us/patviewer/?PARCEL=${formattedAPN}`;
-                document.querySelector('.left iframe').src = url; // Load the URL in the left iframe
+            const selectedFormat = document.querySelector('input[name="format"]:checked').value;
+            let gisAPN = formattedAPN;
+
+            if (selectedFormat === 'format2') { // xxxx-xxxx-xx, GIS uses xxxx-xxx-xxx format
+                gisAPN = formattedAPN.replace(/^(\d{4})-(\d{4})-(\d{2})$/, (match, p1, p2, p3) => {
+                    return `${p1}-${p2.slice(0, 3)}-${p3}`;
+                });
             }
+            const url = `https://www.pa.marion.fl.us/patviewer/?PARCEL=${gisAPN}`;
+            document.querySelector('.left iframe').src = url;
         }
     </script>
 </head>
@@ -95,12 +129,25 @@
         <div class="right">
             <h2>Formatted APN</h2>
             <label for="apn">Enter APN:</label>
-            <input type="text" id="apn" maxlength="10" placeholder="APN without dashes" oninput="validateAPN()">
+            <input type="text" id="apn" placeholder="APN without dashes" oninput="validateAPN()">
+
+            <fieldset onchange="autoFormatAPN()">
+                <legend>Select APN Format:</legend>
+                <label>
+                    <input type="radio" name="format" value="format1" checked> xxxx-xxx-xxx
+                </label>
+                <label>
+                    <input type="radio" name="format" value="format2"> xxxx-xxxx-xx
+                </label>
+                <label>
+                    <input type="radio" name="format" value="format3"> xxxxx-xxx-xx
+                </label>
+            </fieldset>
 
             <p id="formattedAPN"></p>
 
-            <button onclick="goToProperty()">Go to Property</button> <!-- Button to go to the property -->
-            <button onclick="goToGIS()">Go to GIS</button> <!-- Button to go to GIS -->
+            <button onclick="goToProperty()">Go to Property</button>
+            <button onclick="goToGIS()">Go to GIS</button>
         </div>
     </div>
 </body>
