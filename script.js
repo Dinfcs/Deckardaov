@@ -78,7 +78,6 @@ const replacements = {
     "Hill": "Hl",
     "Hollow": "Holw",
     "Inlet": "Inlt",
-    "Island": "Is",
     "Junction": "Jct",
     "Key": "Ky",
     "Knoll": "Knl",
