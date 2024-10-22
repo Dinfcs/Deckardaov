@@ -249,6 +249,7 @@
         showButton.style.left = '10px';
         showButton.style.zIndex = '9999';
         showButton.style.padding = '5px 10px';
+        showButton.style.borderRadius = '0';
         showButton.style.cursor = 'pointer';
         showButton.style.backgroundColor = 'blue';
         showButton.style.color = 'white';
