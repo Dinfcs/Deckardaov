@@ -54,7 +54,7 @@
             container.appendChild(button);
         });
 
-        // Botón LB
+        // === Botón LB (Lightbox) ===
         const lbButton = document.createElement('button');
         lbButton.textContent = 'LB';
         lbButton.style.padding = '5px 8px';
@@ -69,7 +69,7 @@
         };
         container.appendChild(lbButton);
 
-        // Botón PQ
+        // === Botón PQ (ParcelQuest) ===
         const pqButton = document.createElement('button');
         pqButton.textContent = 'PQ';
         pqButton.style.padding = '5px 8px';
@@ -84,7 +84,7 @@
         };
         container.appendChild(pqButton);
 
-        // Botón Pr/Gis
+        // === Botón Pr/Gis ===
         const prgisButton = document.createElement('button');
         prgisButton.textContent = 'Pr/Gis';
         prgisButton.style.padding = '5px 8px';
@@ -101,7 +101,7 @@
         };
         container.appendChild(prgisButton);
 
-        // Botón Regrid
+        // === Botón Regrid ===
         const regridButton = document.createElement('button');
         regridButton.textContent = 'Regrid';
         regridButton.style.padding = '5px 8px';
@@ -120,7 +120,8 @@
         startHideTimer(); // Iniciar el temporizador para ocultar los botones
     }
 
-    // Funciones para manejar iframes
+    // === Funciones para manejar iframes ===
+
     // Oculta todos los iframes
     function hideAllIframes() {
         const iframes = document.querySelectorAll('iframe');
@@ -162,7 +163,7 @@
         setTimeout(() => newIframe.style.width = '95%', 10);
     }
 
-    // Crea los controles para el iframe "Pr/Gis"
+    // === Crea los controles para el iframe "Pr/Gis" ===
     function createPrGisControls() {
         const controlsContainer = document.createElement('div');
         controlsContainer.id = 'prgis-controls';
@@ -200,9 +201,19 @@
         const saveButton = document.createElement('button');
         saveButton.textContent = 'Guardar';
         saveButton.onclick = () => {
-            localStorage.setItem('prgisUrl', urlInput.value); // Guardar en localStorage
-            toggleIframe(urlInput.value, 'prgis-iframe'); // Cargar la URL en el iframe
+            const newUrl = urlInput.value;
+            localStorage.setItem('prgisUrl', newUrl); // Guardar en localStorage
+        
+            // Si el iframe ya existe, actualizar su URL
+            const iframe = document.getElementById('prgis-iframe');
+            if (iframe) {
+                iframe.src = newUrl; // Actualizar la URL del iframe
+            } else {
+                // Si el iframe no existe, crearlo
+                toggleIframe(newUrl, 'prgis-iframe');
+            }
         };
+        
 
         const clearButton = document.createElement('button');
         clearButton.textContent = 'Borrar';
@@ -212,63 +223,67 @@
         };
 
         const projectButton = document.createElement('button');
-        projectButton.textContent = 'Project Resources';
+        projectButton.textContent = 'Abrir Proyecto';
         projectButton.onclick = () => {
-            window.open('https://deckardtech.atlassian.net/wiki/spaces/PC/pages/1717403844', '_blank');
+            window.open(urlInput.value, '_blank'); // Abrir la URL en una nueva pestaña
         };
 
-        controlsContainer.appendChild(closeButton); // Añadir el botón de cerrar
+        controlsContainer.appendChild(closeButton);
         controlsContainer.appendChild(urlInput);
         controlsContainer.appendChild(saveButton);
         controlsContainer.appendChild(clearButton);
         controlsContainer.appendChild(projectButton);
+
         document.body.appendChild(controlsContainer);
     }
 
-    // Oculta los botones después de 30 segundos
-    function hideButtons() {
+    // === Funciones para manejar los botones y el contenedor ===
+
+    // Crea el botón para volver a mostrar el contenedor de botones
+    function createShowButton() {
+        const showButton = document.createElement('button');
+        showButton.id = 'show-button';
+        showButton.textContent = 'Mostrar Iframes';
+        showButton.style.position = 'fixed';
+        showButton.style.bottom = '10px';
+        showButton.style.left = '10px';
+        showButton.style.zIndex = '9999';
+        showButton.style.padding = '5px 10px';
+        showButton.style.cursor = 'pointer';
+        showButton.style.backgroundColor = 'green';
+        showButton.style.color = 'white';
+        showButton.style.border = 'none';
+        showButton.style.borderRadius = '5px';
+        showButton.style.display = 'none';
+
+        showButton.onclick = () => {
+            document.getElementById(buttonContainerId).style.display = 'flex';
+            showButton.style.display = 'none';
+            startHideTimer();
+        };
+
+        document.body.appendChild(showButton);
+    }
+
+    // Oculta el contenedor de botones y muestra el botón para volver a mostrarlos
+    function hideButtonContainer() {
         document.getElementById(buttonContainerId).style.display = 'none';
         document.getElementById('show-button').style.display = 'block';
     }
 
-    // Muestra los botones
-    function showButtons() {
-        document.getElementById(buttonContainerId).style.display = 'flex';
-        document.getElementById('show-button').style.display = 'none';
-        startHideTimer();
-    }
-
-    // Crea el botón para mostrar los botones ocultos
-    function createShowButton() {
-        const showButton = document.createElement('button');
-        showButton.id = 'show-button';
-        showButton.textContent = '➤';
-        showButton.style.position = 'fixed';
-        showButton.style.bottom = '10px';
-        showButton.style.left = '10px';
-        showButton.style.zIndex = '10000';
-        showButton.style.display = 'none';
-        showButton.style.padding = '5px';
-        showButton.style.borderRadius = '0';
-        showButton.style.backgroundColor = '#0096d2';
-        showButton.style.color = 'white';
-        showButton.style.border = 'none';
-        showButton.style.cursor = 'pointer';
-        showButton.onclick = showButtons;
-        document.body.appendChild(showButton);
-    }
-
-    // Inicia el temporizador para ocultar los botones después de 30 segundos
+    // Inicia un temporizador para ocultar el contenedor de botones
     function startHideTimer() {
-        if (hideTimeout) clearTimeout(hideTimeout);
-        hideTimeout = setTimeout(hideButtons, 30000);
+        hideTimeout = setTimeout(() => {
+            hideButtonContainer();
+        }, 10000); // Ocultar después de 10 segundos
     }
 
-    // Reinicia el temporizador de ocultación
+    // Reinicia el temporizador de ocultar
     function resetHideTimer() {
         clearTimeout(hideTimeout);
         startHideTimer();
     }
 
-    createButtonContainer(); // Crea el contenedor de botones al cargar el script
+    // Inicia el script
+    createButtonContainer();
 })();
