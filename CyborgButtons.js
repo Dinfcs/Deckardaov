@@ -247,15 +247,14 @@
         showButton.style.position = 'fixed';
         showButton.style.bottom = '10px';
         showButton.style.left = '10px';
-        showButton.style.zIndex = '9999';
-        showButton.style.padding = '5px 10px';
+        showButton.style.zIndex = '10000';
+        showButton.style.display = 'none';
+        showButton.style.padding = '5px';
         showButton.style.borderRadius = '0';
-        showButton.style.cursor = 'pointer';
-        showButton.style.backgroundColor = 'blue';
+        showButton.style.backgroundColor = '#0096d2';
         showButton.style.color = 'white';
         showButton.style.border = 'none';
-        showButton.style.borderRadius = '5px';
-        showButton.style.display = 'none';
+        showButton.style.cursor = 'pointer';
 
         showButton.onclick = () => {
             document.getElementById(buttonContainerId).style.display = 'flex';
