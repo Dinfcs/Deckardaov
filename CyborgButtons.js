@@ -203,7 +203,7 @@
         saveButton.onclick = () => {
             const newUrl = urlInput.value;
             localStorage.setItem('prgisUrl', newUrl); // Guardar en localStorage
-        
+
             // Si el iframe ya existe, actualizar su URL
             const iframe = document.getElementById('prgis-iframe');
             if (iframe) {
@@ -213,7 +213,7 @@
                 toggleIframe(newUrl, 'prgis-iframe');
             }
         };
-        
+
 
         const clearButton = document.createElement('button');
         clearButton.textContent = 'Borrar';
@@ -243,18 +243,18 @@
     function createShowButton() {
         const showButton = document.createElement('button');
         showButton.id = 'show-button';
-        showButton.textContent = '➤';
+        showButton.textContent = 'Mostrar Iframes';
         showButton.style.position = 'fixed';
         showButton.style.bottom = '10px';
         showButton.style.left = '10px';
-        showButton.style.zIndex = '10000';
-        showButton.style.display = 'none';
-        showButton.style.padding = '5px';
-        showButton.style.borderRadius = '0';
-        showButton.style.backgroundColor = '#0096d2';
+        showButton.style.zIndex = '9999';
+        showButton.style.padding = '5px 10px';
+        showButton.style.cursor = 'pointer';
+        showButton.style.backgroundColor = 'green';
         showButton.style.color = 'white';
         showButton.style.border = 'none';
-        showButton.style.cursor = 'pointer';
+        showButton.style.borderRadius = '5px';
+        showButton.style.display = 'none';
 
         showButton.onclick = () => {
             document.getElementById(buttonContainerId).style.display = 'flex';
