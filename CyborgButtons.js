@@ -243,14 +243,14 @@
     function createShowButton() {
         const showButton = document.createElement('button');
         showButton.id = 'show-button';
-        showButton.textContent = 'Urrea SapoPerro';
+        showButton.textContent = '➤';
         showButton.style.position = 'fixed';
         showButton.style.bottom = '10px';
         showButton.style.left = '10px';
         showButton.style.zIndex = '9999';
         showButton.style.padding = '5px 10px';
         showButton.style.cursor = 'pointer';
-        showButton.style.backgroundColor = 'green';
+        showButton.style.backgroundColor = '#0096d2';
         showButton.style.color = 'white';
         showButton.style.border = 'none';
         showButton.style.borderRadius = '5px';
