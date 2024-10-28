@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         Iframe Switcher
 // @namespace    http://tampermonkey.net/
-// @version      2.2
-// @description  Añade botones para abrir iframes en la parte inferior izquierda de la página, con funcionalidad personalizada para PRs, LB, PQ y Pr/Gis, con iframes siempre con fondo blanco.
+// @version      2.5
+// @description  Añade botones para abrir iframes en la parte inferior izquierda de la página, con funcionalidad personalizada y botones de cierre para cada iframe en la parte inferior izquierda que desaparecen al cerrarse cualquier iframe.
 // @author       Tú
 // @match        *://cyborg.deckard.com/*
 // @grant        none
@@ -13,7 +13,6 @@
 
     // Identificador del contenedor de botones
     const buttonContainerId = 'iframe-button-container';
-    let hideTimeout;
 
     // Crea el contenedor de botones en la parte inferior izquierda
     function createButtonContainer() {
@@ -23,34 +22,36 @@
         container.id = buttonContainerId;
         container.style.position = 'fixed';
         container.style.bottom = '10px';
-        container.style.left = '10px';
+        container.style.left = '50px';
         container.style.backgroundColor = '#f1f1f1';
-        container.style.display = 'flex';
+        container.style.display = 'none'; // Empieza oculto
         container.style.gap = '5px';
-        container.style.padding = '5px';
+        container.style.padding = '8px';
         container.style.zIndex = '9999';
         container.style.borderRadius = '5px';
+        container.style.boxShadow = '0px 4px 8px rgba(0, 0, 0, 0.2)';
 
         // Botones principales con URLs
         const buttons = [
-            { text: 'PS', url: 'https://dinfcs.github.io/Deckardaov/ParcelSearch/index.html', color: '#cccccc' },
-            { text: 'AOV', url: 'https://dinfcs.github.io/Deckardaov/', color: '#cccccc' },
-            { text: 'PrTools', url: 'https://dinfcs.github.io/Deckardaov/PrTools/', color: '#cccccc' }
+            { text: 'PS', url: 'https://dinfcs.github.io/Deckardaov/ParcelSearch/index.html', color: '#6c757d' },
+            { text: 'AOV', url: 'https://dinfcs.github.io/Deckardaov/', color: '#6c757d' },
+            { text: 'PrTools', url: 'https://dinfcs.github.io/Deckardaov/PrTools/', color: '#6c757d' }
         ];
 
         buttons.forEach(({ text, url, color }) => {
             const button = document.createElement('button');
             button.textContent = text;
             button.onclick = () => {
-                resetHideTimer();
-                toggleIframe(url, `${text.toLowerCase()}-iframe`);
+                toggleIframe(url, `${text.toLowerCase()}-iframe`, 40); // Cambiar ancho a 40%
             };
             button.style.padding = '5px 8px';
             button.style.cursor = 'pointer';
             button.style.backgroundColor = color;
             button.style.color = 'white';
             button.style.border = 'none';
-            button.style.borderRadius = '3px';
+            button.style.borderRadius = '4px';
+            button.style.fontWeight = 'bold';
+            button.style.fontSize = '14px';
             container.appendChild(button);
         });
 
@@ -59,13 +60,14 @@
         lbButton.textContent = 'LB';
         lbButton.style.padding = '5px 8px';
         lbButton.style.cursor = 'pointer';
-        lbButton.style.backgroundColor = 'blue';
+        lbButton.style.backgroundColor = '#007bff';
         lbButton.style.color = 'white';
         lbButton.style.border = 'none';
-        lbButton.style.borderRadius = '3px';
+        lbButton.style.borderRadius = '4px';
+        lbButton.style.fontWeight = 'bold';
+        lbButton.style.fontSize = '14px';
         lbButton.onclick = () => {
-            resetHideTimer();
-            toggleIframe('https://login-spatialstream.prod.lightboxre.com/MemberPages/Login.aspx?ReturnUrl=%2fmemberpages%2fdefault.aspx%3fma%3ddeckardtech&ma=deckardtech', 'lb-iframe');
+            toggleIframe('https://login-spatialstream.prod.lightboxre.com/MemberPages/Login.aspx?ReturnUrl=%2fmemberpages%2fdefault.aspx%3fma%3ddeckardtech&ma=deckardtech', 'lb-iframe', 95, 'white'); // Añadir fondo blanco
         };
         container.appendChild(lbButton);
 
@@ -74,50 +76,35 @@
         pqButton.textContent = 'PQ';
         pqButton.style.padding = '5px 8px';
         pqButton.style.cursor = 'pointer';
-        pqButton.style.backgroundColor = 'red';
+        pqButton.style.backgroundColor = '#dc3545';
         pqButton.style.color = 'white';
         pqButton.style.border = 'none';
-        pqButton.style.borderRadius = '3px';
+        pqButton.style.borderRadius = '4px';
+        pqButton.style.fontWeight = 'bold';
+        pqButton.style.fontSize = '14px';
         pqButton.onclick = () => {
-            resetHideTimer();
-            toggleIframe('https://pqweb.parcelquest.com/#login', 'pq-iframe');
+            window.open('https://pqweb.parcelquest.com/#login', '_blank');
         };
         container.appendChild(pqButton);
-
-        // === Botón Pr/Gis ===
-        const prgisButton = document.createElement('button');
-        prgisButton.textContent = 'Pr/Gis';
-        prgisButton.style.padding = '5px 8px';
-        prgisButton.style.cursor = 'pointer';
-        prgisButton.style.backgroundColor = 'orange';
-        prgisButton.style.color = 'white';
-        prgisButton.style.border = 'none';
-        prgisButton.style.borderRadius = '3px';
-        prgisButton.onclick = () => {
-            resetHideTimer();
-            const savedUrl = localStorage.getItem('prgisUrl'); // Cargar la URL guardada
-            toggleIframe(savedUrl || 'about:blank', 'prgis-iframe'); // Cargar la URL o about:blank
-            createPrGisControls(); // Crea los controles del iframe Pr/Gis
-        };
-        container.appendChild(prgisButton);
 
         // === Botón Regrid ===
         const regridButton = document.createElement('button');
         regridButton.textContent = 'Regrid';
         regridButton.style.padding = '5px 8px';
         regridButton.style.cursor = 'pointer';
-        regridButton.style.backgroundColor = 'green';
+        regridButton.style.backgroundColor = '#28a745';
         regridButton.style.color = 'white';
         regridButton.style.border = 'none';
-        regridButton.style.borderRadius = '3px';
+        regridButton.style.borderRadius = '4px';
+        regridButton.style.fontWeight = 'bold';
+        regridButton.style.fontSize = '14px';
         regridButton.onclick = () => {
-            window.open('https://app.regrid.com/', '_blank'); // Abre en una nueva pestaña
+            window.open('https://app.regrid.com/', '_blank');
         };
         container.appendChild(regridButton);
 
         document.body.appendChild(container);
-        createShowButton(); // Crear el botón para volver a mostrar los botones
-        startHideTimer(); // Iniciar el temporizador para ocultar los botones
+        createToggleButton(); // Crear el botón para alternar la visibilidad de los botones
     }
 
     // === Funciones para manejar iframes ===
@@ -127,161 +114,126 @@
         const iframes = document.querySelectorAll('iframe');
         iframes.forEach(iframe => {
             iframe.style.width = '0%';
-            if (iframe.id === 'prgis-iframe') {
-                document.getElementById('prgis-controls').style.display = 'none'; // Oculta los controles
-            }
         });
+        hideCloseButton(); // Oculta el botón de cierre cuando se cierran todos los iframes
     }
 
     // Alterna la visibilidad de un iframe dado su URL y su ID
-    function toggleIframe(url, iframeId) {
-        const iframe = document.getElementById(iframeId);
+function toggleIframe(url, iframeId, widthPercentage, backgroundColor = 'transparent') {
+    const iframe = document.getElementById(iframeId);
 
-        if (iframe) {
-            if (iframe.style.width === '95%') {
-                iframe.style.width = '0%';
-            } else {
-                hideAllIframes();
-                iframe.style.width = '95%';
-            }
-            return;
+    if (iframe) {
+        if (iframe.style.width === `${widthPercentage}%`) {
+            iframe.style.width = '0%';
+            hideCloseButton();
+        } else {
+            hideAllIframes();
+            iframe.style.width = `${widthPercentage}%`;
+            showCloseButton(iframeId);
         }
-
-        const newIframe = document.createElement('iframe');
-        newIframe.src = url; // Usar la URL proporcionada
-        newIframe.style.position = 'fixed';
-        newIframe.style.top = '0';
-        newIframe.style.right = '0';
-        newIframe.style.width = '0';
-        newIframe.style.height = '100%';
-        newIframe.style.border = 'none';
-        newIframe.style.zIndex = '9998';
-        newIframe.style.transition = 'width 0.3s ease';
-        newIframe.style.backgroundColor = 'white';
-        newIframe.id = iframeId;
-        document.body.appendChild(newIframe);
-        setTimeout(() => newIframe.style.width = '95%', 10);
+        return;
     }
 
-    // === Crea los controles para el iframe "Pr/Gis" ===
-    function createPrGisControls() {
-        const controlsContainer = document.createElement('div');
-        controlsContainer.id = 'prgis-controls';
-        controlsContainer.style.position = 'fixed';
-        controlsContainer.style.bottom = '10px';
-        controlsContainer.style.right = '10px';
-        controlsContainer.style.zIndex = '9999';
-        controlsContainer.style.backgroundColor = '#f1f1f1';
-        controlsContainer.style.padding = '10px';
-        controlsContainer.style.borderRadius = '5px';
+    const newIframe = document.createElement('iframe');
+    newIframe.src = url;
+    newIframe.style.position = 'fixed';
+    newIframe.style.top = '0';
+    newIframe.style.right = '0';
+    newIframe.style.width = '0';
+    newIframe.style.height = '100%';
+    newIframe.style.border = 'none';
+    newIframe.style.zIndex = '9998';
+    newIframe.style.transition = 'width 0.3s ease';
+    newIframe.style.backgroundColor = backgroundColor; // Establece el fondo del iframe
+    newIframe.id = iframeId;
 
-        // Botón para cerrar los controles
-        const closeButton = document.createElement('button');
-        closeButton.textContent = 'X';
-        closeButton.style.cursor = 'pointer';
-        closeButton.style.backgroundColor = 'red';
-        closeButton.style.color = 'white';
-        closeButton.style.border = 'none';
-        closeButton.style.borderRadius = '3px';
-        closeButton.onclick = () => {
-            controlsContainer.style.display = 'none'; // Oculta los controles
-        };
+    // Aquí agregamos el atributo allow
+    newIframe.setAttribute('allow', 'clipboard-write');
 
-        const urlInput = document.createElement('input');
-        urlInput.type = 'text';
-        urlInput.placeholder = 'Introduce la URL';
-        urlInput.style.width = '300px';
+    document.body.appendChild(newIframe);
+    setTimeout(() => newIframe.style.width = `${widthPercentage}%`, 10);
+    showCloseButton(iframeId);
+}
 
-        // Cargar la URL guardada en localStorage si existe
-        const savedUrl = localStorage.getItem('prgisUrl');
-        if (savedUrl) {
-            urlInput.value = savedUrl; // Cargar URL guardada en el campo
+
+    // Muestra el botón de cierre para el iframe
+    function showCloseButton(iframeId) {
+        let closeButton = document.getElementById('iframe-close-button');
+
+        if (!closeButton) {
+            closeButton = document.createElement('button');
+            closeButton.id = 'iframe-close-button';
+            closeButton.textContent = 'Cerrar';
+            closeButton.style.position = 'fixed';
+            closeButton.style.top = '20px';
+            closeButton.style.right = '20px';
+            closeButton.style.zIndex = '9999';
+            closeButton.style.padding = '10px 20px';
+            closeButton.style.cursor = 'pointer';
+            closeButton.style.backgroundColor = 'red';
+            closeButton.style.color = 'white';
+            closeButton.style.border = 'none';
+            closeButton.style.borderRadius = '8px';
+            closeButton.style.fontSize = '16px';
+            closeButton.onclick = hideAllIframes;
+
+            document.body.appendChild(closeButton);
         }
 
-        const saveButton = document.createElement('button');
-        saveButton.textContent = 'Guardar';
-        saveButton.onclick = () => {
-            const newUrl = urlInput.value;
-            localStorage.setItem('prgisUrl', newUrl); // Guardar en localStorage
+        closeButton.style.display = 'block';
+    }
 
-            // Si el iframe ya existe, actualizar su URL
-            const iframe = document.getElementById('prgis-iframe');
-            if (iframe) {
-                iframe.src = newUrl; // Actualizar la URL del iframe
-            } else {
-                // Si el iframe no existe, crearlo
-                toggleIframe(newUrl, 'prgis-iframe');
-            }
-        };
-
-
-        const clearButton = document.createElement('button');
-        clearButton.textContent = 'Borrar';
-        clearButton.onclick = () => {
-            localStorage.removeItem('prgisUrl'); // Borrar de localStorage
-            urlInput.value = ''; // Limpiar el campo
-        };
-
-        const projectButton = document.createElement('button');
-        projectButton.textContent = 'Abrir Proyecto';
-        projectButton.onclick = () => {
-            window.open(urlInput.value, '_blank'); // Abrir la URL en una nueva pestaña
-        };
-
-        controlsContainer.appendChild(closeButton);
-        controlsContainer.appendChild(urlInput);
-        controlsContainer.appendChild(saveButton);
-        controlsContainer.appendChild(clearButton);
-        controlsContainer.appendChild(projectButton);
-
-        document.body.appendChild(controlsContainer);
+    // Oculta el botón de cierre del iframe
+    function hideCloseButton() {
+        const closeButton = document.getElementById('iframe-close-button');
+        if (closeButton) {
+            closeButton.style.display = 'none';
+        }
     }
 
     // === Funciones para manejar los botones y el contenedor ===
 
-    // Crea el botón para volver a mostrar el contenedor de botones
-    function createShowButton() {
-        const showButton = document.createElement('button');
-        showButton.id = 'show-button';
-        showButton.textContent = '➤';
-        showButton.style.position = 'fixed';
-        showButton.style.bottom = '10px';
-        showButton.style.left = '10px';
-        showButton.style.zIndex = '9999';
-        showButton.style.padding = '5px 10px';
-        showButton.style.cursor = 'pointer';
-        showButton.style.backgroundColor = '#0096d2';
-        showButton.style.color = 'white';
-        showButton.style.border = 'none';
-        showButton.style.borderRadius = '5px';
-        showButton.style.display = 'none';
+    // Crea el botón para alternar la visibilidad del contenedor de botones
+    function createToggleButton() {
+        const toggleButton = document.createElement('button');
+        toggleButton.id = 'toggle-button';
+        toggleButton.textContent = '➤';
+        toggleButton.style.position = 'fixed';
+        toggleButton.style.bottom = '13px';
+        toggleButton.style.left = '10px';
+        toggleButton.style.zIndex = '9999';
+        toggleButton.style.padding = '8px 10px';
+        toggleButton.style.cursor = 'pointer';
+        toggleButton.style.backgroundColor = '#0096d2';
+        toggleButton.style.color = 'white';
+        toggleButton.style.border = 'none';
+        toggleButton.style.borderRadius = '5px';
 
-        showButton.onclick = () => {
-            document.getElementById(buttonContainerId).style.display = 'flex';
-            showButton.style.display = 'none';
-            startHideTimer();
+        // Variable para almacenar el temporizador
+        let hideTimeout;
+
+        toggleButton.onclick = () => {
+            const container = document.getElementById(buttonContainerId);
+
+            if (container.style.display === 'none') {
+                container.style.display = 'flex';
+                toggleButton.textContent = '⮜';
+
+                // Inicia un temporizador de 30 segundos para ocultar automáticamente el contenedor
+                hideTimeout = setTimeout(() => {
+                    container.style.display = 'none';
+                    toggleButton.textContent = '➤';
+                }, 30000); // 30000 ms = 30 segundos
+
+            } else {
+                // Oculta el contenedor y cancela el temporizador
+                container.style.display = 'none';
+                toggleButton.textContent = '➤';
+                clearTimeout(hideTimeout); // Cancela el temporizador si se oculta manualmente
+            }
         };
 
-        document.body.appendChild(showButton);
-    }
-
-    // Oculta el contenedor de botones y muestra el botón para volver a mostrarlos
-    function hideButtonContainer() {
-        document.getElementById(buttonContainerId).style.display = 'none';
-        document.getElementById('show-button').style.display = 'block';
-    }
-
-    // Inicia un temporizador para ocultar el contenedor de botones
-    function startHideTimer() {
-        hideTimeout = setTimeout(() => {
-            hideButtonContainer();
-        }, 10000); // Ocultar después de 10 segundos
-    }
-
-    // Reinicia el temporizador de ocultar
-    function resetHideTimer() {
-        clearTimeout(hideTimeout);
-        startHideTimer();
+        document.body.appendChild(toggleButton);
     }
 
     // Inicia el script
