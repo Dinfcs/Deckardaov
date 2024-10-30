@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         Iframe Switcher
+// @name         Iframe qa
 // @namespace    http://tampermonkey.net/
-// @version      2.5
+// @version      2.7
 // @description  Añade botones para abrir iframes en la parte inferior izquierda de la página, con funcionalidad personalizada y botones de cierre para cada iframe en la parte inferior izquierda que desaparecen al cerrarse cualquier iframe.
 // @author       Tú
 // @match        *://cyborg.deckard.com/*
@@ -31,18 +31,31 @@
         container.style.borderRadius = '5px';
         container.style.boxShadow = '0px 4px 8px rgba(0, 0, 0, 0.2)';
 
-        // Botones principales con URLs
+        // Botones en el orden especificado
         const buttons = [
+            { text: 'Qa', url: 'https://docs.google.com/spreadsheets/d/14N1pWw7fVIDgTko2A7faqbmkPVXM8LnHaeR0bd_TGxw/edit?gid=0#gid=0', color: '#8e44ad', openMultiple: true },
+            { text: 'Fbg', url: 'https://dinfcs.github.io/Deckardaov/Feedback%20Gerenator/', color: '#17a2b8' },
             { text: 'PS', url: 'https://dinfcs.github.io/Deckardaov/ParcelSearch/index.html', color: '#6c757d' },
             { text: 'AOV', url: 'https://dinfcs.github.io/Deckardaov/', color: '#6c757d' },
-            { text: 'PrTools', url: 'https://dinfcs.github.io/Deckardaov/PrTools/', color: '#6c757d' }
+            { text: 'PrTools', url: 'https://dinfcs.github.io/Deckardaov/PrTools/', color: '#6c757d' },
+            { text: 'LB', url: 'https://login-spatialstream.prod.lightboxre.com/MemberPages/Login.aspx?ReturnUrl=%2fmemberpages%2fdefault.aspx%3fma%3ddeckardtech&ma=deckardtech', color: '#007bff' },
+            { text: 'PQ', url: 'https://pqweb.parcelquest.com/#login', color: '#dc3545', openInNewTab: true },
+            { text: 'Regrid', url: 'https://app.regrid.com/', color: '#28a745', openInNewTab: true }
         ];
 
-        buttons.forEach(({ text, url, color }) => {
+        buttons.forEach(({ text, url, color, openInNewTab, openMultiple }) => {
             const button = document.createElement('button');
             button.textContent = text;
             button.onclick = () => {
-                toggleIframe(url, `${text.toLowerCase()}-iframe`, 40); // Cambiar ancho a 40%
+                if (openInNewTab) {
+                    window.open(url, '_blank');
+                } else if (openMultiple) {
+                    window.open(url, '_blank');
+                    window.open('https://docs.google.com/forms/d/e/1FAIpQLScy1lhhAZ4ToD24DDpR_lZBS-cTuSGwlBJgthaaRKIOMdP2SA/viewform', '_blank');
+                    window.open('https://netorgft4047789.sharepoint.com/:x:/r/sites/DeckardTech/_layouts/15/Doc.aspx?sourcedoc=%7B47368938-EB2C-4EFE-9DAA-121BFE647C8B%7D&file=Random%20QA%20projects.xlsx&action=default&mobileredirect=true', '_blank');
+                } else {
+                    toggleIframe(url, `${text.toLowerCase()}-iframe`, text === 'LB' ? 95 : 50);
+                }
             };
             button.style.padding = '5px 8px';
             button.style.cursor = 'pointer';
@@ -51,112 +64,58 @@
             button.style.border = 'none';
             button.style.borderRadius = '4px';
             button.style.fontWeight = 'bold';
-            button.style.fontSize = '14px';
+            button.style.fontSize = '12px';  // Tamaño de letra más pequeño
             container.appendChild(button);
         });
 
-        // === Botón LB (Lightbox) ===
-        const lbButton = document.createElement('button');
-        lbButton.textContent = 'LB';
-        lbButton.style.padding = '5px 8px';
-        lbButton.style.cursor = 'pointer';
-        lbButton.style.backgroundColor = '#007bff';
-        lbButton.style.color = 'white';
-        lbButton.style.border = 'none';
-        lbButton.style.borderRadius = '4px';
-        lbButton.style.fontWeight = 'bold';
-        lbButton.style.fontSize = '14px';
-        lbButton.onclick = () => {
-            toggleIframe('https://login-spatialstream.prod.lightboxre.com/MemberPages/Login.aspx?ReturnUrl=%2fmemberpages%2fdefault.aspx%3fma%3ddeckardtech&ma=deckardtech', 'lb-iframe', 95, 'white'); // Añadir fondo blanco
-        };
-        container.appendChild(lbButton);
-
-        // === Botón PQ (ParcelQuest) ===
-        const pqButton = document.createElement('button');
-        pqButton.textContent = 'PQ';
-        pqButton.style.padding = '5px 8px';
-        pqButton.style.cursor = 'pointer';
-        pqButton.style.backgroundColor = '#dc3545';
-        pqButton.style.color = 'white';
-        pqButton.style.border = 'none';
-        pqButton.style.borderRadius = '4px';
-        pqButton.style.fontWeight = 'bold';
-        pqButton.style.fontSize = '14px';
-        pqButton.onclick = () => {
-            window.open('https://pqweb.parcelquest.com/#login', '_blank');
-        };
-        container.appendChild(pqButton);
-
-        // === Botón Regrid ===
-        const regridButton = document.createElement('button');
-        regridButton.textContent = 'Regrid';
-        regridButton.style.padding = '5px 8px';
-        regridButton.style.cursor = 'pointer';
-        regridButton.style.backgroundColor = '#28a745';
-        regridButton.style.color = 'white';
-        regridButton.style.border = 'none';
-        regridButton.style.borderRadius = '4px';
-        regridButton.style.fontWeight = 'bold';
-        regridButton.style.fontSize = '14px';
-        regridButton.onclick = () => {
-            window.open('https://app.regrid.com/', '_blank');
-        };
-        container.appendChild(regridButton);
-
         document.body.appendChild(container);
-        createToggleButton(); // Crear el botón para alternar la visibilidad de los botones
+        createToggleButton();
     }
 
     // === Funciones para manejar iframes ===
 
-    // Oculta todos los iframes
     function hideAllIframes() {
         const iframes = document.querySelectorAll('iframe');
         iframes.forEach(iframe => {
             iframe.style.width = '0%';
         });
-        hideCloseButton(); // Oculta el botón de cierre cuando se cierran todos los iframes
+        hideCloseButton();
     }
 
-    // Alterna la visibilidad de un iframe dado su URL y su ID
-function toggleIframe(url, iframeId, widthPercentage, backgroundColor = 'transparent') {
-    const iframe = document.getElementById(iframeId);
+    function toggleIframe(url, iframeId, widthPercentage, backgroundColor = 'transparent') {
+        const iframe = document.getElementById(iframeId);
 
-    if (iframe) {
-        if (iframe.style.width === `${widthPercentage}%`) {
-            iframe.style.width = '0%';
-            hideCloseButton();
-        } else {
-            hideAllIframes();
-            iframe.style.width = `${widthPercentage}%`;
-            showCloseButton(iframeId);
+        if (iframe) {
+            if (iframe.style.width === `${widthPercentage}%`) {
+                iframe.style.width = '0%';
+                hideCloseButton();
+            } else {
+                hideAllIframes();
+                iframe.style.width = `${widthPercentage}%`;
+                showCloseButton(iframeId);
+            }
+            return;
         }
-        return;
+
+        const newIframe = document.createElement('iframe');
+        newIframe.src = url;
+        newIframe.style.position = 'fixed';
+        newIframe.style.top = '0';
+        newIframe.style.right = '0';
+        newIframe.style.width = '0';
+        newIframe.style.height = '100%';
+        newIframe.style.border = 'none';
+        newIframe.style.zIndex = '9998';
+        newIframe.style.transition = 'width 0.3s ease';
+        newIframe.style.backgroundColor = backgroundColor;
+        newIframe.id = iframeId;
+        newIframe.setAttribute('allow', 'clipboard-write');
+
+        document.body.appendChild(newIframe);
+        setTimeout(() => newIframe.style.width = `${widthPercentage}%`, 10);
+        showCloseButton(iframeId);
     }
 
-    const newIframe = document.createElement('iframe');
-    newIframe.src = url;
-    newIframe.style.position = 'fixed';
-    newIframe.style.top = '0';
-    newIframe.style.right = '0';
-    newIframe.style.width = '0';
-    newIframe.style.height = '100%';
-    newIframe.style.border = 'none';
-    newIframe.style.zIndex = '9998';
-    newIframe.style.transition = 'width 0.3s ease';
-    newIframe.style.backgroundColor = backgroundColor; // Establece el fondo del iframe
-    newIframe.id = iframeId;
-
-    // Aquí agregamos el atributo allow
-    newIframe.setAttribute('allow', 'clipboard-write');
-
-    document.body.appendChild(newIframe);
-    setTimeout(() => newIframe.style.width = `${widthPercentage}%`, 10);
-    showCloseButton(iframeId);
-}
-
-
-    // Muestra el botón de cierre para el iframe
     function showCloseButton(iframeId) {
         let closeButton = document.getElementById('iframe-close-button');
 
@@ -183,7 +142,6 @@ function toggleIframe(url, iframeId, widthPercentage, backgroundColor = 'transpa
         closeButton.style.display = 'block';
     }
 
-    // Oculta el botón de cierre del iframe
     function hideCloseButton() {
         const closeButton = document.getElementById('iframe-close-button');
         if (closeButton) {
@@ -191,9 +149,6 @@ function toggleIframe(url, iframeId, widthPercentage, backgroundColor = 'transpa
         }
     }
 
-    // === Funciones para manejar los botones y el contenedor ===
-
-    // Crea el botón para alternar la visibilidad del contenedor de botones
     function createToggleButton() {
         const toggleButton = document.createElement('button');
         toggleButton.id = 'toggle-button';
@@ -209,7 +164,6 @@ function toggleIframe(url, iframeId, widthPercentage, backgroundColor = 'transpa
         toggleButton.style.border = 'none';
         toggleButton.style.borderRadius = '5px';
 
-        // Variable para almacenar el temporizador
         let hideTimeout;
 
         toggleButton.onclick = () => {
@@ -219,23 +173,20 @@ function toggleIframe(url, iframeId, widthPercentage, backgroundColor = 'transpa
                 container.style.display = 'flex';
                 toggleButton.textContent = '⮜';
 
-                // Inicia un temporizador de 30 segundos para ocultar automáticamente el contenedor
                 hideTimeout = setTimeout(() => {
                     container.style.display = 'none';
                     toggleButton.textContent = '➤';
-                }, 30000); // 30000 ms = 30 segundos
+                }, 30000);
 
             } else {
-                // Oculta el contenedor y cancela el temporizador
                 container.style.display = 'none';
                 toggleButton.textContent = '➤';
-                clearTimeout(hideTimeout); // Cancela el temporizador si se oculta manualmente
+                clearTimeout(hideTimeout);
             }
         };
 
         document.body.appendChild(toggleButton);
     }
 
-    // Inicia el script
     createButtonContainer();
 })();
