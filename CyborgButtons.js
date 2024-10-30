@@ -82,7 +82,7 @@
         hideCloseButton();
     }
 
-    function toggleIframe(url, iframeId, widthPercentage, backgroundColor = 'transparent') {
+    function toggleIframe(url, iframeId, widthPercentage, backgroundColor = 'White') {
         const iframe = document.getElementById(iframeId);
 
         if (iframe) {
