@@ -63,7 +63,7 @@
         let searchLink = '';
 
         function formatAPN() {
-            const apnInput = document.getElementById('apn').value.replace(/-/g, '');
+            const apnInput = document.getElementById('apn').value.replace(/[-\s]/g, ''); // Remove spaces and hyphens
             let formattedAPN = '';
 
             if (apnInput.length === 16) {
@@ -71,6 +71,11 @@
                 const digits = apnInput.substring(6);
                 formattedAPN = `${digits.substring(0, 3)}.${digits.substring(3, 5)}-${digits.substring(5, 6)}-${digits.substring(6, 8)}.${digits.substring(8)}`;
                 searchLink = `https://greene.sdgnys.com/propdetail.aspx?swis=${swis}&printkey=${digits.substring(0, 3)}0000${digits.substring(3, 5)}${digits.charAt(5)}0${digits.substring(6)}00000`;
+            } else if (apnInput.length === 15) {
+                const swis = apnInput.substring(0, 6);
+                const digits = apnInput.substring(6);
+                formattedAPN = `${digits.substring(0, 3)}.${digits.substring(3, 5)}-${digits.substring(5, 6)}-${digits.substring(6)}`;
+                searchLink = `https://greene.sdgnys.com/propdetail.aspx?swis=${swis}&printkey=${digits.substring(0, 3)}0000${digits.substring(3, 5)}${digits.charAt(5)}0${digits.substring(6, 15)}000000`;
             } else if (apnInput.length === 14) {
                 const swis = apnInput.substring(0, 6);
                 const digits = apnInput.substring(6);
@@ -105,10 +110,10 @@
 <body>
     <h1>PR Search in Town of Jewett</h1>
     <div class="container">
-        <input type="text" id="apn" placeholder="Ingrese APN de 13, 14 o 16 dígitos" oninput="formatAPN()">
+        <input type="text" id="apn" placeholder="Ingrese APN de 13, 14, 15 o 16 dígitos" oninput="formatAPN()">
         <p id="formattedAPN"></p>
-        <button onclick="goToSearch()">Search APN </button>
-        <button onclick="goToGIS()">Go to GIS</button>
+        <button onclick="goToSearch()">Buscar APN</button>
+        <button onclick="goToGIS()">Ir al GIS</button>
     </div>
 </body>
 </html>
