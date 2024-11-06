@@ -47,51 +47,55 @@ function toggleFields(checkbox, savedData = null) {
         filterGroup.classList.add('filter-group');
         filterGroup.id = columnName + '_group';
 
+        // Selector de operador lógico
+        const logicalOperatorSelect = document.createElement('select');
+        ['AND', 'OR', 'NOT'].forEach(op => {
+            const option = document.createElement('option');
+            option.value = op;
+            option.textContent = op;
+            logicalOperatorSelect.appendChild(option);
+        });
+
+        // Selector de operador de columna
         const operatorSelect = document.createElement('select');
         operatorSelect.innerHTML = columnConfigs[columnName].operators.map(op => `<option value="${op}">${op}</option>`).join('');
         
-        let valueInput;
-        if (columnName === 'updated_at') {
-            // Si es updated_at, usar un selector de fecha
-            valueInput = document.createElement('input');
-            valueInput.type = 'date';
-            valueInput.placeholder = `YYYY-MM-DD`;  // formato de ejemplo
-        } else {
-            // Para otros campos, usar input de texto
-            valueInput = document.createElement('input');
-            valueInput.type = 'text';
-            valueInput.placeholder = `Valor para ${columnName}`;
-            
-            // Añadir lista de sugerencias si existen
-            const suggestionsList = document.createElement('datalist');
-            suggestionsList.id = `${columnName}_suggestions`;
-            columnConfigs[columnName].suggestions.forEach(suggestion => {
-                const option = document.createElement('option');
-                option.value = suggestion;
-                suggestionsList.appendChild(option);
-            });
-            valueInput.setAttribute('list', `${columnName}_suggestions`);
-            filtersDiv.appendChild(suggestionsList);
-        }
+        const valueInput = document.createElement('input');
+        valueInput.type = 'text';
+        valueInput.placeholder = `Value for ${columnName}`;
 
+        // Suggestions
+        const suggestionsList = document.createElement('datalist');
+        suggestionsList.id = `${columnName}_suggestions`;
+        columnConfigs[columnName].suggestions.forEach(suggestion => {
+            const option = document.createElement('option');
+            option.value = suggestion;
+            suggestionsList.appendChild(option);
+        });
+
+        valueInput.setAttribute('list', `${columnName}_suggestions`);
+        
+        filterGroup.appendChild(logicalOperatorSelect);
         filterGroup.appendChild(document.createTextNode(columnName + ' '));
         filterGroup.appendChild(operatorSelect);
         filterGroup.appendChild(valueInput);
         filtersDiv.appendChild(filterGroup);
+        filtersDiv.appendChild(suggestionsList);
 
-        // Restaurar datos guardados si existen
+        // Restore saved data
         if (savedData) {
+            logicalOperatorSelect.value = savedData.logicalOperator || 'AND';
             operatorSelect.value = savedData.operator;
             valueInput.value = savedData.value;
         }
 
-        // Guardar cambios cuando el usuario cambia operador o valor
-        operatorSelect.addEventListener('change', () => saveFilters());
-        valueInput.addEventListener('input', () => saveFilters());
+        // Save filter changes
+        logicalOperatorSelect.addEventListener('change', saveFilters);
+        operatorSelect.addEventListener('change', saveFilters);
+        valueInput.addEventListener('input', saveFilters);
 
-        // Guardar los filtros seleccionados inicialmente
+        // Initial save of selected filters
         saveFilters();
-
     } else {
         const filterGroup = document.getElementById(columnName + '_group');
         if (filterGroup) {
@@ -100,6 +104,53 @@ function toggleFields(checkbox, savedData = null) {
         }
     }
 }
+
+function saveFilters() {
+    const filtersDiv = document.getElementById('filters');
+    const filtersToSave = {};
+    
+    filtersDiv.childNodes.forEach(group => {
+        if (group.classList && group.classList.contains('filter-group')) {
+            const logicalOperator = group.childNodes[0].value;
+            const column = group.childNodes[1].nodeValue.trim();
+            const operator = group.childNodes[2].value;
+            const value = group.childNodes[3].value;
+
+            filtersToSave[column] = {
+                logicalOperator: logicalOperator,
+                operator: operator,
+                value: value
+            };
+        }
+    });
+
+    localStorage.setItem('filters', JSON.stringify(filtersToSave));
+}
+
+function generateFilter() {
+    const filtersDiv = document.getElementById('filters');
+    const filterExpressions = [];
+    const filterGroups = filtersDiv.childNodes;
+
+    filterGroups.forEach(group => {
+        if (group.classList && group.classList.contains('filter-group')) {
+            const logicalOperator = group.childNodes[0].value;
+            const column = group.childNodes[1].nodeValue.trim();
+            const operator = group.childNodes[2].value;
+            const value = group.childNodes[3].value;
+
+            const filterExpression = operator === 'is' 
+                ? `${column} ${operator} ${value}`
+                : `${column} ${operator} "${value}"`;
+
+            filterExpressions.push(`${logicalOperator} ${filterExpression}`);
+        }
+    });
+
+    const finalFilter = filterExpressions.join(' ');
+    document.getElementById('result').innerText = finalFilter;
+}
+
 
 
 // Función para guardar los filtros actuales en localStorage
