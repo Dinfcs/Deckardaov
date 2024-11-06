@@ -319,7 +319,7 @@ const proyectos = [
     "FL - City of Margate",
     "CO - Town of Silverthorne",
     "TX - City of Lubbock",
-    "MA - City of Revere"
+    "MA - City of Revere",
     "CA - City of Vista",
     "CA - City of Santa Clara",
     "CO - City of Leadville",
