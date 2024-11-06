@@ -318,7 +318,22 @@ const proyectos = [
     "VT - Town of Londonderry",
     "FL - City of Margate",
     "CO - Town of Silverthorne",
-    "TX - City of Lubbock"
+    "TX - City of Lubbock",
+    "MA - City of Revere"
+    "CA - City of Vista",
+    "CA - City of Santa Clara",
+    "CO - City of Leadville",
+    "NJ - City of Atlantic City",
+    "OR - City of Newberg",
+    "ME - Town of Camdem",
+    "NY - Sullivan County",
+    "PA - Township of College",
+    "TX - City of Grand Prairie",
+    "NY - Town of Jewett",
+   "CA - City of Jurupa Valley",
+    "TX - Wood County"
+
+    
 
 
     // para agregar un nuevo proyecto a la lista añada una coma al final del ultimo proyecto existente y escriba el nombre del nuevo debajo entre comillas 
