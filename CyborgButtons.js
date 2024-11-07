@@ -41,6 +41,7 @@
             { text: 'LB', url: 'https://login-spatialstream.prod.lightboxre.com/MemberPages/Login.aspx?ReturnUrl=%2fmemberpages%2fdefault.aspx%3fma%3ddeckardtech&ma=deckardtech', color: '#007bff' },
             { text: 'PQ', url: 'https://pqweb.parcelquest.com/#login', color: '#dc3545', openInNewTab: true },
             { text: 'Regrid', url: 'https://app.regrid.com/', color: '#28a745', openInNewTab: true }
+            { text: 'PR', url: 'https://deckardtech.atlassian.net/wiki/spaces/PC/pages/1717403844', color: '#6c757d', openInNewTab: true },
         ];
 
         buttons.forEach(({ text, url, color, openInNewTab, openMultiple }) => {
