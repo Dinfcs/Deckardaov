@@ -33,15 +33,16 @@
 
         // Botones en el orden especificado
         const buttons = [
-            { text: 'Qa', url: 'https://docs.google.com/spreadsheets/d/14N1pWw7fVIDgTko2A7faqbmkPVXM8LnHaeR0bd_TGxw/edit?gid=0#gid=0', color: '#8e44ad', openMultiple: true },
-            { text: 'Fbg', url: 'https://dinfcs.github.io/Deckardaov/Feedback%20Gerenator/', color: '#17a2b8' },
+            { text: 'QA', url: 'https://docs.google.com/spreadsheets/d/14N1pWw7fVIDgTko2A7faqbmkPVXM8LnHaeR0bd_TGxw/edit?gid=0#gid=0', color: '#8e44ad', openMultiple: true },
+            { text: 'FG', url: 'https://dinfcs.github.io/Deckardaov/Feedback%20Gerenator/', color: '#17a2b8' },
             { text: 'PS', url: 'https://dinfcs.github.io/Deckardaov/ParcelSearch/index.html', color: '#6c757d' },
-            { text: 'AOV', url: 'https://dinfcs.github.io/Deckardaov/', color: '#6c757d' },
+            { text: 'AO', url: 'https://dinfcs.github.io/Deckardaov/', color: '#6c757d' },
             { text: 'PrTools', url: 'https://dinfcs.github.io/Deckardaov/PrTools/', color: '#6c757d' },
+            { text: 'PR', url: 'https://deckardtech.atlassian.net/wiki/spaces/PC/pages/1717403844', color: '#6c757d', openInNewTab: true },
             { text: 'LB', url: 'https://login-spatialstream.prod.lightboxre.com/MemberPages/Login.aspx?ReturnUrl=%2fmemberpages%2fdefault.aspx%3fma%3ddeckardtech&ma=deckardtech', color: '#007bff' },
             { text: 'PQ', url: 'https://pqweb.parcelquest.com/#login', color: '#dc3545', openInNewTab: true },
-            { text: 'Regrid', url: 'https://app.regrid.com/', color: '#28a745', openInNewTab: true },
-            { text: 'PR', url: 'https://deckardtech.atlassian.net/wiki/spaces/PC/pages/1717403844', color: '#6c757d', openInNewTab: true }
+            { text: 'Regrid', url: 'https://app.regrid.com/', color: '#28a745', openInNewTab: true }
+            
         ];
 
         buttons.forEach(({ text, url, color, openInNewTab, openMultiple }) => {
