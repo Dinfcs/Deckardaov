@@ -51,8 +51,7 @@
                     window.open(url, '_blank');
                 } else if (openMultiple) {
                     window.open(url, '_blank');
-                    window.open('https://docs.google.com/forms/d/e/1FAIpQLScy1lhhAZ4ToD24DDpR_lZBS-cTuSGwlBJgthaaRKIOMdP2SA/viewform', '_blank');
-                    window.open('https://netorgft4047789.sharepoint.com/:x:/r/sites/DeckardTech/_layouts/15/Doc.aspx?sourcedoc=%7B47368938-EB2C-4EFE-9DAA-121BFE647C8B%7D&file=Random%20QA%20projects.xlsx&action=default&mobileredirect=true', '_blank');
+                    window.open('https://www.appsheet.com/start/0e4a5be2-014b-4c32-a963-9cced65a14e5#appName=QAProductivity-985429461-24-10-30&group=%5B%5D&page=fastTable&sort=%5B%7B%22Column%22%3A%22Fecha%22%2C%22Order%22%3A%22Descending%22%7D%5D&table=Form+responses+1&view=QA+planning', '_blank');
                 } else {
                     toggleIframe(url, `${text.toLowerCase()}-iframe`, text === 'LB' ? 95 : 50);
                 }
