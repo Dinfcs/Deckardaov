@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Generador de Filtros Avanzados</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Generador de Filtros Avanzados</h1>
+  
+  <div class="filter-row">
+    <select id="logical-operator-select">
+      <option value="">(Ninguno)</option>
+      <option value="and" selected>AND</option>
+      <option value="or">OR</option>
+      <option value="and not">AND NOT</option>
+    </select>
+
+    <select id="column-select" onchange="updateSuggestions()">
+        <option value="">Seleccionar Columna</option>
+        <option value="apn_mapped_via_cyborg">apn_mapped_via_cyborg</option>
+        <option value="resolved_apn">resolved_apn</option>
+        <option value="title">title</option>
+        <option value="description">description</option>
+        <option value="host_name">host_name</option>
+        <option value="location_exact">location</option>
+        <option value="property_type">property_type</option>
+        <option value="visibility">visibility</option>
+        <option value="activity">activity</option>
+        <option value="bathrooms">bathrooms</option>
+        <option value="bedrooms">bedrooms</option>
+        <option value="occupancy">occupancy</option>
+        <option value="partial_apn">partial_apn</option>
+        <option value="geo_cluster">geo_cluster</option>
+        <option value="structure">structure</option>
+        <option value="rental">rental</option>
+        <option value="address">address</option>
+        <option value="override_address">override_address</option>
+        <option value="unit_number">unit_number</option>
+        <option value="use_type">use_type</option>
+        <option value="by_who">by_who</option>
+        <option value="updated_at">updated_at</option>
+        <option value="hoe_violation">hoe_violation</option>
+        <option value="suggest_qa">suggest_qa</option>
+      </select>
+
+      <select id="operator-select" onchange="handleOperatorChange()">
+        <option value="=" selected>=</option>
+        <option value="!=">≠</option>
+        <option value="icontains">contains</option>
+        <option value="is blank">is blank</option>
+        <option value=">">></option>
+        <option value="<"><</option>
+        <option value=">=">≥</option>
+        <option value="<=">≤</option>
+    </select>
+
+    <input type="text" id="value-input" placeholder="Valor de filtro" oninput="showSuggestions()" autocomplete="off">
+    <button onclick="addFilter()">Agregar</button>
+    <button onclick="clearFields()">Limpiar Campos</button>
+  </div>
+
+  <div id="filter-list"></div>
+  <textarea id="final-script" readonly placeholder="Script del filtro final"></textarea>
+  <div id="suggestions-container" class="suggestions-dropdown"></div>
+
+  <button id="copy-button" onclick="copyToClipboard()">Copiar Script</button>
+  
+  <div id="notification">¡Filtro copiado al portapapeles!</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
