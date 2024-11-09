@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Filtros Avanzado</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1 {
+            color: #007bff;
+        }
+        h2 {
+            margin-top: 20px;
+        }
+        .filter-row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+        .filter-group {
+            margin-right: 15px;
+            margin-bottom: 10px;
+        }
+        select, input[type="text"] {
+            margin-left: 5px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 15px;
+            border: none;
+            background-color: #28a745;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #result {
+            background-color: #e9ecef;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+        }
+        #notification {
+            display: none;
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Generador de Filtros Avanzado</h1>
+    <form id="filterForm">
+
+        <div>
+            <h2>Selecciona las columnas</h2>
+            <div class="filter-row">
+                <div class="filter-group">
+                    <input type="checkbox" id="apn_mapped_via_cyborg" onclick="toggleFields(this)">
+                    <label for="apn_mapped_via_cyborg">apn_mapped_via_cyborg</label>
+                </div>
+                <div class="filter-group">
+                    <input type="checkbox" id="resolved_apn" onclick="toggleFields(this)">
+                    <label for="resolved_apn">resolved_apn</label>
+                </div>
+                <div class="filter-group">
+                    <input type="checkbox" id="title" onclick="toggleFields(this)">
+                    <label for="title">title</label>
+                </div>
+                <div class="filter-group">
+                    <input type="checkbox" id="description" onclick="toggleFields(this)">
+                    <label for="description">description</label>
+                </div>
+                <div class="filter-group">
+                    <input type="checkbox" id="host_name" onclick="toggleFields(this)">
+                    <label for="host_name">host_name</label>
+                </div>
+                <div class="filter-group">
+                    <input type="checkbox" id="location_exact" onclick="toggleFields(this)">
+                    <label for="location_exact">location_exact</label>
+                </div>
+                <div class="filter-group">
+                    <input type="checkbox" id="property_type" onclick="toggleFields(this)">
+                    <label for="property_type">property_type</label>
+                </div>
+                <div class="filter-group">
+                    <input type="checkbox" id="visibility" onclick="toggleFields(this)">
+                    <label for="visibility">visibility</label>
+                </div>
+                <div class="filter-group">
+                    <input type="checkbox" id="activity" onclick="toggleFields(this)">
+                    <label for="activity">activity</label>
+                </div>
+                <div class="filter-group">
+                    <input type="checkbox" id="bathrooms" onclick="toggleFields(this)">
+                    <label for="bathrooms">bathrooms</label>
+                </div>
+                <div class="filter-group">
+                    <input type="checkbox" id="bedrooms" onclick="toggleFields(this)">
+                    <label for="bedrooms">bedrooms</label>
+                </div>
+                <div class="filter-group">
+                    <input type="checkbox" id="occupancy" onclick="toggleFields(this)">
+                    <label for="occupancy">occupancy</label>
+                </div>
+                <div class="filter-group">
+                    <input type="checkbox" id="partial_apn" onclick="toggleFields(this)">
+                    <label for="partial_apn">partial_apn</label>
+                </div>
+                <div class="filter-group">
+                    <input type="checkbox" id="geo_cluster" onclick="toggleFields(this)">
+                    <label for="geo_cluster">geo_cluster</label>
+                </div>
+                <div class="filter-group">
+                    <input type="checkbox" id="structure" onclick="toggleFields(this)">
+                    <label for="structure">structure</label>
+                </div>
+                <div class="filter-group">
+                    <input type="checkbox" id="rental" onclick="toggleFields(this)">
+                    <label for="rental">rental</label>
+                </div>
+                <div class="filter-group">
+                    <input type="checkbox" id="address" onclick="toggleFields(this)">
+                    <label for="address">address</label>
+                </div>
+                <div class="filter-group">
+                    <input type="checkbox" id="override_address" onclick="toggleFields(this)">
+                    <label for="override_address">override_address</label>
+                </div>
+                <div class="filter-group">
+                    <input type="checkbox" id="unit_number" onclick="toggleFields(this)">
+                    <label for="unit_number">unit_number</label>
+                </div>
+                <div class="filter-group">
+                    <input type="checkbox" id="use_type" onclick="toggleFields(this)">
+                    <label for="use_type">use_type</label>
+                </div>
+                <div class="filter-group">
+                    <input type="checkbox" id="by_who" onclick="toggleFields(this)">
+                    <label for="by_who">by_who</label>
+                </div>
+                <div class="filter-group">
+                    <input type="checkbox" id="updated_at" onclick="toggleFields(this)">
+                    <label for="updated_at">updated_at</label>
+                </div>
+                <div class="filter-group">
+                    <input type="checkbox" id="hoe_violation" onclick="toggleFields(this)">
+                    <label for="hoe_violation">hoe_violation</label>
+                </div>
+                <div class="filter-group">
+                    <input type="checkbox" id="suggest_qa" onclick="toggleFields(this)">
+                    <label for="suggest_qa">suggest_qa</label>
+                </div>
+            </div>
+        </div>
+
+        <div id="filters"></div>
+
+        <button type="button" onclick="generateFilter()">Generar Filtro</button>
+        <button type="button" onclick="copyToClipboard()">Copiar Filtro</button>
+        <h3>Filtro Generado:</h3>
+        <p id="result"></p>
+        <div id="notification">Filtro copiado al portapapeles!</div>
+    </form>
+
+    <script>
+        // Configuración de columnas con operadores y valores sugeridos específicos
+        const columnConfigs = {
+            "apn_mapped_via_cyborg": { operators: ['=', '!=', 'icontains', 'is blank'], suggestions: [] },
+            "resolved_apn": { operators: ['=', '!=', 'icontains', 'is blank'], suggestions: [] },
+            "title": { operators: ['=', '!=', 'icontains', 'is blank'], suggestions: [] },
+            "description": { operators: ['=', '!=', 'icontains', 'is blank'], suggestions: [] },
+            "host_name": { operators: ['=', '!=', 'icontains', 'is blank'], suggestions: [] },
+            "location_exact": { operators: ['is'], suggestions: ['true', 'false'] },
+            "property_type": { operators: ['=', '!=', 'icontains'], suggestions: ['Apart-hotel', 'Apartment', 'B&B', 'Barn', 'Bed & breakfast', 'Building', 'Bungalow', 'Bus', 'Cabin', 'Camp ground', 'Camper/RV', 'Campervan/Motorhome', 'Campervan/RV', 'Campsite', 'Casa particular', 'Castle', 'Chalet', 'Condo', 'Cottage', 'Entire bungalow', 'Entire condominium (condo)', 'Entire guest suite', 'Entire guesthouse', 'Entire home', 'Entire rental unit', 'Entire residential home', 'Entire villa', 'House', 'Private room in apartment', 'Private room in condominium', 'Private room in guest suite', 'Private room in guesthouse', 'Private room in home', 'Private room in rental unit', 'Private room in residential home', 'Private room in townhouse', 'Shared room in apartment', 'Shared room in rental unit', 'Tiny home', 'Yurt'] },
+            "visibility": { operators: ['=', '!='], suggestions: ['now', 'not_live', 'upcoming', 'no_bookings', 'past_30'] },
+            "activity": { operators: ['=', '!=', 'icontains'], suggestions: ['blocked', 'upcoming', 'no_bookings'] },
+            "bathrooms": { operators: ['=', '!=', '>', '<'], suggestions: [] },
+            "bedrooms": { operators: ['=', '!=', '>', '<'], suggestions: [] },
+            "occupancy": { operators: ['=', '!=', '>', '<'], suggestions: [] },
+            "partial_apn": { operators: ['=', '!=', 'icontains', 'is blank'], suggestions: [] },
+            "geo_cluster": { operators: ['=', '!=', 'icontains'], suggestions: [] },
+            "structure": { operators: ['=', '!=', 'icontains'], suggestions: [] },
+            "rental": { operators: ['=', '!='], suggestions: ['true', 'false'] },
+            "address": { operators: ['=', '!=', 'icontains', 'is blank'], suggestions: [] },
+            "override_address": { operators: ['=', '!=', 'icontains', 'is blank'], suggestions: [] },
+            "unit_number": { operators: ['=', '!=', 'icontains', 'is blank'], suggestions: [] },
+            "use_type": { operators: ['=', '!=', 'icontains'], suggestions: [] },
+            "by_who": { operators: ['=', '!=', 'icontains'], suggestions: [] },
+            "updated_at": { operators: ['>', '<', '=', '!='], suggestions: [] },
+            "hoe_violation": { operators: ['=', '!='], suggestions: ['true', 'false'] },
+            "suggest_qa": { operators: ['=', '!='], suggestions: ['true', 'false'] }
+        };
+
+        // Activar o desactivar campos en función de la casilla de verificación
+        function toggleFields(checkbox) {
+            const filtersContainer = document.getElementById('filters');
+            if (checkbox.checked) {
+                const columnId = checkbox.id;
+                const config = columnConfigs[columnId];
+
+                const filterDiv = document.createElement('div');
+                filterDiv.className = 'filter';
+                filterDiv.innerHTML = `
+                    <label for="${columnId}-operator">Operador:</label>
+                    <select id="${columnId}-operator">
+                        ${config.operators.map(op => `<option value="${op}">${op}</option>`).join('')}
+                    </select>
+                    <label for="${columnId}-value">Valor:</label>
+                    <input type="text" id="${columnId}-value" list="${columnId}-suggestions">
+                    <datalist id="${columnId}-suggestions">
+                        ${config.suggestions.map(s => `<option value="${s}">${s}</option>`).join('')}
+                    </datalist>
+                `;
+                filtersContainer.appendChild(filterDiv);
+            } else {
+                const filters = filtersContainer.getElementsByClassName('filter');
+                for (let i = filters.length - 1; i >= 0; i--) {
+                    const filter = filters[i];
+                    if (filter.querySelector('select').id.startsWith(checkbox.id)) {
+                        filtersContainer.removeChild(filter);
+                    }
+                }
+            }
+        }
+
+        // Generar el filtro basado en las entradas
+        function generateFilter() {
+            const filtersContainer = document.getElementById('filters');
+            const resultContainer = document.getElementById('result');
+            resultContainer.innerHTML = '';
+            const filters = [];
+
+            Array.from(filtersContainer.getElementsByClassName('filter')).forEach(filter => {
+                const operator = filter.querySelector('select').value;
+                const columnId = filter.querySelector('select').id.split('-')[0];
+                const value = filter.querySelector('input[type="text"]').value;
+                filters.push(`${columnId} ${operator} ${value}`);
+            });
+
+            resultContainer.innerHTML = filters.join(' AND ');
+        }
+
+        // Copiar el filtro al portapapeles
+        function copyToClipboard() {
+            const resultContainer = document.getElementById('result');
+            const textToCopy = resultContainer.innerText;
+
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                const notification = document.getElementById('notification');
+                notification.style.display = 'block';
+                setTimeout(() => {
+                    notification.style.display = 'none';
+                }, 3000);
+            });
+        }
+    </script>
+</body>
+</html>
