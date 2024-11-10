@@ -8,7 +8,7 @@
 <body>
 <!-- Contenedor del logo de carga -->
 <div id="loading-container">
-  <img src="https://dinfcs.github.io/Deckardaov/logo.png" alt="Cargando..." id="loading-logo">
+  <img src="logo.png" alt="Cargando..." id="loading-logo">
   <div id="loading-circle"></div>
 </div>
 
@@ -24,19 +24,23 @@
 
     <select id="column-select" onchange="updateSuggestions()">
         <option value="">Seleccionar Columna</option>
-        <option value="apn_mapped_via_cyborg">apn_mapped_via_cyborg</option>
-        <option value="resolved_apn">resolved_apn</option>
         <option value="title">title</option>
         <option value="description">description</option>
         <option value="host_name">host_name</option>
         <option value="location_exact">location</option>
-        <option value="property_type">property_type</option>
         <option value="visibility">visibility</option>
         <option value="activity">activity</option>
+        <option value="by_who">by_who</option>
+        <option value="updated_at">updated_at</option>
+        <option value="hoe_violation">hoe_violation</option>
+        <option value="suggest_qa">suggest_qa</option>
+        <option value="apn_mapped_via_cyborg">apn_mapped_via_cyborg</option>
+        <option value="resolved_apn">resolved_apn</option>
+        <option value="partial_apn">partial_apn</option>
+        <option value="property_type">property_type</option>
         <option value="bathrooms">bathrooms</option>
         <option value="bedrooms">bedrooms</option>
         <option value="occupancy">occupancy</option>
-        <option value="partial_apn">partial_apn</option>
         <option value="geo_cluster">geo_cluster</option>
         <option value="structure">structure</option>
         <option value="rental">rental</option>
@@ -44,10 +48,6 @@
         <option value="override_address">override_address</option>
         <option value="unit_number">unit_number</option>
         <option value="use_type">use_type</option>
-        <option value="by_who">by_who</option>
-        <option value="updated_at">updated_at</option>
-        <option value="hoe_violation">hoe_violation</option>
-        <option value="suggest_qa">suggest_qa</option>
       </select>
 
       <select id="operator-select" onchange="handleOperatorChange()">
