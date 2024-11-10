@@ -259,15 +259,24 @@ function addCommas(address) {
     let hasUnit = unitPattern.test(streetAndCity);
 
     let streetWords = streetAndCity.trim().split(" ");
-    const suffixes = Object.values(replacements);  // Obtener todas las abreviaciones de sufijos
+    const suffixesAbbreviations = Object.values(replacements);  // Obtener todas las abreviaciones de sufijos
 
+    // Detectar si hay un sufijo en la calle
+    let containsSuffix = streetWords.some(word => suffixesAbbreviations.includes(word));
+
+    // Si no hay sufijo, mostrar mensaje flotante y devolver la dirección tal como está
+    if (!containsSuffix) {
+        showFloatingMessage("Address without suffix or street type. Add commas manually if necessary");
+        return address;
+    }
+
+    // Si tiene unidad, agregar la coma después de la unidad
     if (hasUnit) {
-        // Si tiene unidad, agregar la coma después de la unidad
         streetAndCity = streetAndCity.replace(unitPattern, (match) => `${match},`);
     } else {
         // Si no tiene unidad, buscar el último sufijo abreviado y agregar la coma después de él
         for (let i = streetWords.length - 1; i >= 0; i--) {
-            if (suffixes.includes(streetWords[i])) {
+            if (suffixesAbbreviations.includes(streetWords[i])) {
                 streetWords[i] = streetWords[i] + ",";
                 break;
             }
@@ -280,6 +289,43 @@ function addCommas(address) {
 
     return address;
 }
+
+// Función para mostrar el mensaje flotante
+function showFloatingMessage(message) {
+    const floatingMessage = document.createElement("div");
+    floatingMessage.textContent = message;
+    floatingMessage.style.position = "fixed";
+    floatingMessage.style.top = "20px";
+    floatingMessage.style.left = "50%";
+    floatingMessage.style.transform = "translateX(-50%)";
+    floatingMessage.style.padding = "20px 40px";  // Aumentar el tamaño del padding
+    floatingMessage.style.backgroundColor = "#ff4747";  // Color rojo brillante de fondo
+    floatingMessage.style.color = "#ffffff";  // Texto blanco
+    floatingMessage.style.borderRadius = "10px";  // Bordes redondeados más grandes
+    floatingMessage.style.fontSize = "18px";  // Aumentar el tamaño de la fuente
+    floatingMessage.style.fontWeight = "bold";  // Poner el texto en negrita
+    floatingMessage.style.textAlign = "center";  // Centrar el texto
+    floatingMessage.style.zIndex = "1000";
+    floatingMessage.style.display = "none";  // Inicialmente oculto
+
+    // Agregar una sombra para que resalte más
+    floatingMessage.style.boxShadow = "0px 4px 10px rgba(0, 0, 0, 0.3)";  // Sombra para el mensaje
+
+    // Agregar un borde blanco si se desea más contraste
+    floatingMessage.style.border = "2px solid #ffffff";  
+
+    document.body.appendChild(floatingMessage);
+
+    // Mostrar el mensaje
+    floatingMessage.style.display = "block";
+
+    // Después de 3 segundos, ocultar el mensaje
+    setTimeout(() => {
+        floatingMessage.style.display = "none";
+    }, 5000);
+}
+
+
 
 
 // Gestión de la sección para Direcciones de Condominios
