@@ -392,3 +392,11 @@ function showCopyNotification() {
         notification.remove();
     }, 2000);
 }
+
+// animacion de carga
+window.addEventListener('load', function() {
+    setTimeout(function() {
+      document.getElementById('loading-container').style.display = 'none';
+    }, 1000); // 1.5segundos
+  });
+  
