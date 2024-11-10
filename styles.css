@@ -1,3 +1,41 @@
+/* Estilo del contenedor de carga */
+#loading-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(35, 35, 35, 0.7); /* Fondo negro con 70% de opacidad */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 9999;
+  }
+  
+  
+  /* Estilo del logo de carga */
+  #loading-logo {
+    width: 150px; /* Ajusta el tamaño del logo */
+    height: auto;
+    margin-bottom: 20px; /* Espacio entre el logo y el círculo de carga */
+  }
+  /* Estilo del círculo animado */
+  #loading-circle {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #3498db; /* Color del borde */
+    border-radius: 50%;
+    border-top: 5px solid transparent; /* Crear el efecto de movimiento */
+    animation: spin 2s linear infinite, pulse 1.5s ease-in-out infinite; /* Animaciones */
+  }
+  /* Animación para girar el círculo */
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+
 /* Fondo de pantalla con imagen */
 body {
     font-family: Arial, sans-serif;
