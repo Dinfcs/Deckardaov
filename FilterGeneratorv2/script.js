@@ -192,10 +192,46 @@ function clearAllFilters() {
 }
 // Asignamos la función al botón
 document.getElementById('clear-filters-btn').addEventListener('click', clearAllFilters);
-
+// animacion de carga
 window.addEventListener('load', function() {
   setTimeout(function() {
     document.getElementById('loading-container').style.display = 'none';
   }, 1000); // 1.5segundos
 });
 
+
+// ajusta tipo de dato y operadores en 'updated_at'
+document.getElementById("column-select").addEventListener("change", function () {
+  const valueInput = document.getElementById("value-input");
+  const operatorSelect = document.getElementById("operator-select");
+
+  if (this.value === "updated_at") {
+    valueInput.type = "date";  // Cambia el campo a tipo fecha para mostrar el calendario
+    valueInput.placeholder = "Selecciona una fecha";
+
+    // Actualiza las opciones de operadores solo para 'updated_at'
+    operatorSelect.innerHTML = `
+      <option value="icontains" selected>=</option>
+      <option value="!=">≠</option>
+      <option value=">">></option>
+      <option value="<"><</option>
+      <option value=">=">≥</option>
+      <option value="<=">≤</option>
+    `;
+  } else {
+    valueInput.type = "text";  // Vuelve a tipo texto para otros campos
+    valueInput.placeholder = "Valor de filtro";
+
+    // Restaura las opciones de operadores estándar
+    operatorSelect.innerHTML = `
+      <option value="=" selected>=</option>
+      <option value="!=">≠</option>
+      <option value="icontains">contains</option>
+      <option value="is blank">is blank</option>
+      <option value=">">></option>
+      <option value="<"><</option>
+      <option value=">=">≥</option>
+      <option value="<=">≤</option>
+    `;
+  }
+});
