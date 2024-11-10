@@ -198,23 +198,29 @@ function removeExtraAfterZip(address) {
 
 // Función para abreviar solo el último sufijo encontrado que aún no está abreviado
 function abbreviateLastSuffix(address) {
+
     let words = address.split(" ");
     let lastSuffixIndex = -1;
 
-    // Recorremos todas las palabras para identificar el último sufijo no abreviado
+    // Recorremos todas las palabras para identificar el último sufijo (abierto o abreviado)
     for (let i = 0; i < words.length; i++) {
-        if (replacements[words[i]] && words[i] !== replacements[words[i]]) {
-            lastSuffixIndex = i;  // Guardamos el índice del último sufijo no abreviado
+        if (replacements[words[i]] || Object.values(replacements).includes(words[i])) {
+            lastSuffixIndex = i;  // Guardamos el índice del último sufijo, ya sea abreviado o no
         }
     }
 
-    // Si encontramos al menos un sufijo no abreviado, abreviamos el último
+    // Si encontramos al menos un sufijo, abreviamos el último
     if (lastSuffixIndex !== -1) {
-        words[lastSuffixIndex] = replacements[words[lastSuffixIndex]];  // Abreviamos el último sufijo no abreviado encontrado
+        let lastSuffix = words[lastSuffixIndex];
+        // Si el sufijo ya está abreviado, lo vuelve a abreviar, si es necesario
+        if (replacements[lastSuffix] && lastSuffix !== replacements[lastSuffix]) {
+            words[lastSuffixIndex] = replacements[lastSuffix];  // Abreviamos el último sufijo
+        }
     }
 
     return words.join(" ");  // Reconstruimos la dirección
 }
+
 
 
 // Función para abreviar puntos cardinales solo si están en la segunda posición
