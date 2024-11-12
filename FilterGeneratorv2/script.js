@@ -122,13 +122,20 @@ function clearFields() {
 }
 
 function updateFinalScript() {
+  const booleanColumns = ["location_exact", "hoe_violation", "suggest_qa"];
+  
   const filterExpressions = filters.map((filter, index) => {
     const { logicalOperator, column, operator, value } = filter;
 
-    // Crear la expresión de la condición, con o sin valor dependiendo del operador
-    const condition = operator === "is blank" ? 
-      `${column} ${operator}` : 
-      `${column} ${operator} '${value}'`;
+    // Condición para omitir comillas si la columna es booleana y el valor es "true" o "false"
+    const formattedValue = (booleanColumns.includes(column) && (value === "true" || value === "false")) 
+      ? value // No agregar comillas si es un valor booleano
+      : `'${value}'`; // Agregar comillas para otros valores
+
+    // Crear la expresión de la condición
+    const condition = operator === "is blank" 
+      ? `${column} ${operator}` 
+      : `${column} ${operator} ${formattedValue}`;
 
     // Agregar paréntesis si el operador lógico es "and not" o "or not"
     if (logicalOperator === "and not" || logicalOperator === "or not") {
@@ -142,6 +149,7 @@ function updateFinalScript() {
   const finalScript = filterExpressions.join(' ');
   document.getElementById('final-script').textContent = finalScript;
 }
+
 
 function copyToClipboard() {
   const finalScript = document.getElementById('final-script');
