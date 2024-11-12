@@ -205,24 +205,35 @@ document.getElementById("column-select").addEventListener("change", function () 
   const valueInput = document.getElementById("value-input");
   const operatorSelect = document.getElementById("operator-select");
 
+  // Columnas con sugerencias true y false
+  const booleanColumns = ["location_exact", "hoe_violation", "suggest_qa"];
+
   if (this.value === "updated_at") {
-    valueInput.type = "date";  // Cambia el campo a tipo fecha para mostrar el calendario
+    // Para 'updated_at', cambia a tipo fecha y muestra solo operadores de comparación de fecha
+    valueInput.type = "date";
     valueInput.placeholder = "Selecciona una fecha";
 
-    // Actualiza las opciones de operadores solo para 'updated_at'
     operatorSelect.innerHTML = `
-      <option value="icontains" selected>=</option>
+      <option value="=" selected>=</option>
       <option value="!=">≠</option>
       <option value=">">></option>
       <option value="<"><</option>
       <option value=">=">≥</option>
       <option value="<=">≤</option>
     `;
+  } else if (booleanColumns.includes(this.value)) {
+    // Para columnas booleanas, muestra solo el operador "is"
+    valueInput.type = "text";
+    valueInput.placeholder = "Valor de filtro (true/false)";
+
+    operatorSelect.innerHTML = `
+      <option value="is" selected>is</option>
+    `;
   } else {
-    valueInput.type = "text";  // Vuelve a tipo texto para otros campos
+    // Restaura opciones estándar para otras columnas
+    valueInput.type = "text";
     valueInput.placeholder = "Valor de filtro";
 
-    // Restaura las opciones de operadores estándar
     operatorSelect.innerHTML = `
       <option value="=" selected>=</option>
       <option value="!=">≠</option>
