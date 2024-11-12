@@ -204,7 +204,7 @@ document.getElementById('clear-filters-btn').addEventListener('click', clearAllF
 window.addEventListener('load', function() {
   setTimeout(function() {
     document.getElementById('loading-container').style.display = 'none';
-  }, 1000); // 1.5segundos
+  }, 500); // .5segundos
 });
 
 
