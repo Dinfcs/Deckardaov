@@ -33,7 +33,7 @@
 
         // Botones en el orden especificado
         const buttons = [
-            { text: 'QA', url: 'https://docs.google.com/spreadsheets/d/14N1pWw7fVIDgTko2A7faqbmkPVXM8LnHaeR0bd_TGxw/edit?gid=0#gid=0', color: '#8e44ad', openMultiple: true },
+            { text: 'QA', url: 'https://www.appsheet.com/start/0e4a5be2-014b-4c32-a963-9cced65a14e5?platform=desktop#vss=H4sIAAAAAAAAA6WQwU7DMBBEfwXtOUWN26LKN2gBIQQIGnGg7sHEG7Bw7Ch2gCryv7MORXDgQrnZ43nj2e3hVePbKsjyBfi6_75d4hY49AKKbYMCuICFs6F1RkAm4FrWn-Lt8UFjpLXaPgmIEDfZV0RAD7z_cwL_d4cMtEIbdKWxTXEJppgdSs8JJOEHBjGDugvy0eDQPGE7_y_mDO6cCyRW0ociQSQtZZDE1g3pbMymozwf5bOCTXg-52x-yKaT2ZgdPZD1vHVdc0KjrWlbK9eG4Zx-NF1tiT_D8lmS8aZVaQRYoi_RqqHoJkYqW7my86juaVP7bchf2NP3Rlp15RTNV0njMX4AWUgV5w0CAAA=&view=QA%20planning&appName=QAProductivity-985429461-24-10-30', color: '#8e44ad', openMultiple: true },
             { text: 'FG', url: 'https://dinfcs.github.io/Deckardaov/Feedback%20Gerenator/', color: '#17a2b8' },
             { text: 'PS', url: 'https://dinfcs.github.io/Deckardaov/ParcelSearch/index.html', color: '#6c757d' },
             { text: 'AO', url: 'https://dinfcs.github.io/Deckardaov/', color: '#6c757d' },
