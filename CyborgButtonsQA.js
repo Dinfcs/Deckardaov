@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Cyborg Buttons
 // @namespace    http://tampermonkey.net/
-// @version      2.8
+// @version      2.7
 // @description  Añade botones para abrir iframes en la parte inferior izquierda de la página, con funcionalidad personalizada y botones de cierre para cada iframe en la parte inferior izquierda que desaparecen al cerrarse cualquier iframe.
 // @author       Tú
 // @match        *://cyborg.deckard.com/*
@@ -33,7 +33,7 @@
 
         // Botones en el orden especificado
         const buttons = [
-            { text: 'QA', url: 'https://docs.google.com/spreadsheets/d/14N1pWw7fVIDgTko2A7faqbmkPVXM8LnHaeR0bd_TGxw/edit?gid=0#gid=0', color: '#8e44ad', openMultiple: true },
+            { text: 'QA', url: 'https://www.appsheet.com/start/0e4a5be2-014b-4c32-a963-9cced65a14e5?platform=desktop#vss=H4sIAAAAAAAAA6WQwU7DMBBEfwXtOUWN26LKN2gBIQQIGnGg7sHEG7Bw7Ch2gCryv7MORXDgQrnZ43nj2e3hVePbKsjyBfi6_75d4hY49AKKbYMCuICFs6F1RkAm4FrWn-Lt8UFjpLXaPgmIEDfZV0RAD7z_cwL_d4cMtEIbdKWxTXEJppgdSs8JJOEHBjGDugvy0eDQPGE7_y_mDO6cCyRW0ociQSQtZZDE1g3pbMymozwf5bOCTXg-52x-yKaT2ZgdPZD1vHVdc0KjrWlbK9eG4Zx-NF1tiT_D8lmS8aZVaQRYoi_RqqHoJkYqW7my86juaVP7bchf2NP3Rlp15RTNV0njMX4AWUgV5w0CAAA=&view=QA%20planning&appName=QAProductivity-985429461-24-10-30', color: '#8e44ad', openMultiple: true },
             { text: 'FG', url: 'https://dinfcs.github.io/Deckardaov/Feedback%20Gerenator/', color: '#17a2b8' },
             { text: 'PS', url: 'https://dinfcs.github.io/Deckardaov/ParcelSearch/index.html', color: '#6c757d' },
             { text: 'AO', url: 'https://dinfcs.github.io/Deckardaov/', color: '#6c757d' },
@@ -43,6 +43,7 @@
             { text: 'LB', url: 'https://login-spatialstream.prod.lightboxre.com/MemberPages/Login.aspx?ReturnUrl=%2fmemberpages%2fdefault.aspx%3fma%3ddeckardtech&ma=deckardtech', color: '#007bff' },
             { text: 'PQ', url: 'https://pqweb.parcelquest.com/#login', color: '#dc3545', openInNewTab: true },
             { text: 'Regrid', url: 'https://app.regrid.com/', color: '#28a745', openInNewTab: true }
+            
         ];
 
         buttons.forEach(({ text, url, color, openInNewTab, openMultiple }) => {
@@ -53,7 +54,7 @@
                     window.open(url, '_blank');
                 } else if (openMultiple) {
                     window.open(url, '_blank');
-                    window.open('https://www.appsheet.com/start/0e4a5be2-014b-4c32-a963-9cced65a14e5#appName=QAProductivity-985429461-24-10-30&group=%5B%5D&page=fastTable&sort=%5B%7B%22Column%22%3A%22Fecha%22%2C%22Order%22%3A%22Descending%22%7D%5D&table=Form+responses+1&view=QA+planning', '_blank');
+                    window.open('https://www.appsheet.com/start/f9378e0d-cef0-48b9-bd15-618bac8a35a4?platform=desktop#vss=H4sIAAAAAAAAA6WOywrCMBBFf0XuOl-QnYgLEQUfuDEuYjOFYJuUJlVLyL879blWl3OHc-5NOFu6bKIuTpD79Lnm1EMiKWz7hhSkwsS72PpKQSgsdf0IV-PRmhrfRoWMfBAvQaQAmb7k5Z_9AtaQi7a01A6yAWXJE-T3gHHwhpAF6i7qY0X3zQzlzFnpiy6Q2fGYX0aEmZteG-3Mwht2lroKlG_kad0ragEAAA==&view=QA%20Report&appName=RandomQAReport-985429461-24-11-28', '_blank');
                 } else {
                     toggleIframe(url, `${text.toLowerCase()}-iframe`, text === 'LB' ? 95 : 50);
                 }
@@ -65,7 +66,7 @@
             button.style.border = 'none';
             button.style.borderRadius = '4px';
             button.style.fontWeight = 'bold';
-            button.style.fontSize = '12px'; // Tamaño de letra más pequeño
+            button.style.fontSize = '12px';  // Tamaño de letra más pequeño
             container.appendChild(button);
         });
 
@@ -167,24 +168,18 @@
 
         let hideTimeout;
 
-        toggleButton.onmouseover = () => {
-            const container = document.getElementById(buttonContainerId);
-            container.style.display = 'flex';
-            toggleButton.textContent = '⮜';
-
-            hideTimeout = setTimeout(() => {
-                container.style.display = 'none';
-                toggleButton.textContent = '➤';
-            }, 30000);
-        };
-
         toggleButton.onclick = () => {
             const container = document.getElementById(buttonContainerId);
 
             if (container.style.display === 'none') {
                 container.style.display = 'flex';
                 toggleButton.textContent = '⮜';
-                clearTimeout(hideTimeout);
+
+                hideTimeout = setTimeout(() => {
+                    container.style.display = 'none';
+                    toggleButton.textContent = '➤';
+                }, 30000);
+
             } else {
                 container.style.display = 'none';
                 toggleButton.textContent = '➤';
