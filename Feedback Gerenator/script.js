@@ -1,5 +1,5 @@
 const extraFields = document.getElementById('extra-fields');
-const resultado = document.getElementById('resultado');
+const resultado = document.getElementById('result');
 
 // Manejar la selección de la plantilla para mostrar los campos correspondientes
 document.getElementById('template').addEventListener('change', function () {
