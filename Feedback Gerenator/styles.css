@@ -15,13 +15,13 @@ body {
     background-color: #2a2a2a;
     padding: 30px;
     border-radius: 10px;
-    width: 80%; /* Ajustar al ancho total */
+    width: 80%; /* Adjust to full width */
     max-width: 1200px;
-    gap: 50px; /* Aumentar la separación entre las secciones */
+    gap: 50px; /* Increase spacing between sections */
 }
 
 .form-section, .result-section {
-    width: 48%; /* Ambas secciones toman el 48% del contenedor */
+    width: 48%; /* Both sections take up 48% of the container */
 }
 
 .form-section h1, .form-section label {
@@ -29,15 +29,15 @@ body {
 }
 
 select, input, textarea {
-    width: 100%; /* Asegura que todos los campos ocupen el ancho disponible */
-    box-sizing: border-box; /* Evita que el padding afecte el tamaño del campo */
-    padding: 10px; /* Espaciado interno para todos los campos */
-    margin: 10px 0; /* Margen entre los campos */
+    width: 100%; /* Ensure all fields take up available width */
+    box-sizing: border-box; /* Prevent padding from affecting field size */
+    padding: 10px; /* Internal spacing for all fields */
+    margin: 10px 0; /* Margin between fields */
     background-color: #2f2f2f;
     color: #f5f5f5;
     border: 1px solid #00c9ff;
     border-radius: 5px;
-    font-size: 16px; /* Tamaño de fuente uniforme */
+    font-size: 16px; /* Uniform font size */
 }
 
 textarea {
@@ -45,20 +45,20 @@ textarea {
 }
 
 button {
-    width: 100%; /* El botón ocupará todo el ancho disponible */
-    padding: 15px 20px; /* Aumenta el padding para hacerlo más alto */
-    font-size: 18px; /* Aumenta el tamaño del texto */
-    font-weight: bold; /* Negrita para el texto */
-    background-color: #00c9ff; /* Color de fondo */
-    color: #1f1f1f; /* Color del texto */
-    border: none; /* Elimina bordes adicionales */
-    border-radius: 5px; /* Bordes redondeados */
-    cursor: pointer; /* Cambia el cursor al pasar por encima */
+    width: 100%; /* Button takes up full available width */
+    padding: 15px 20px; /* Increase padding for height */
+    font-size: 18px; /* Increase text size */
+    font-weight: bold; /* Bold text */
+    background-color: #00c9ff; /* Background color */
+    color: #1f1f1f; /* Text color */
+    border: none; /* Remove additional borders */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Change cursor on hover */
 }
 
-/* Cambiar el estilo del botón al pasar el cursor */
+/* Change button style on hover */
 button:hover {
-    background-color: #008fcc; /* Color de fondo más oscuro en hover */
+    background-color: #008fcc; /* Darker background color on hover */
 }
 
 .result-section {
