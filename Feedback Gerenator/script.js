@@ -1,15 +1,15 @@
 const extraFields = document.getElementById('extra-fields');
-const result = document.getElementById('result');
+const resultado = document.getElementById('resultado');
 
-// Handle template selection to show the corresponding fields
+// Manejar la selección de la plantilla para mostrar los campos correspondientes
 document.getElementById('template').addEventListener('change', function () {
     extraFields.innerHTML = '';
     const selectedTemplate = this.value;
 
-    // Generate specific fields according to the selected template
+    // Generar campos específicos según la plantilla seleccionada
     if (selectedTemplate === 'wrong-structure') {
         extraFields.innerHTML += `
-            <label for="wrong-structure">Wrong structure:</label>
+            <label for="wrong-structure">Estructura incorrecta:</label>
             <select id="wrong-structure">
                 <option value="Main">Main</option>
                 <option value="Adu">Adu</option>
@@ -22,7 +22,7 @@ document.getElementById('template').addEventListener('change', function () {
                 <option value="Unknown">Unknown</option>
             </select>
 
-            <label for="correct-structure">Correct structure:</label>
+            <label for="correct-structure">Estructura correcta:</label>
             <select id="correct-structure">
                 <option value="Main">Main</option>
                 <option value="Adu">Adu</option>
@@ -37,46 +37,46 @@ document.getElementById('template').addEventListener('change', function () {
         `;
     } else if (selectedTemplate === 'wrong-apn') {
         extraFields.innerHTML += `
-            <label for="motivos">Reasons:</label>
-            <textarea id="motivos" placeholder="Enter the reasons why you think the APN is wrong"></textarea>
+            <label for="motivos">Motivos:</label>
+            <textarea id="motivos" placeholder="Introduce los motivos por los que piensas que la APN está mal"></textarea>
         `;
     } else if (selectedTemplate === 'missing-address-override') {
         extraFields.innerHTML += `
-            <label for="fuente">Source of information:</label>
-            <input type="text" id="fuente" placeholder="Source of information (RP, LB, etc.)">
+            <label for="fuente">Fuente de información:</label>
+            <input type="text" id="fuente" placeholder="Fuente de información (RP, LB, etc.)">
         `;
     } else if (selectedTemplate === 'missing-unit-box') {
         extraFields.innerHTML += `
             <label for="unitBox">Unit Box:</label>
-            <input type="text" id="unitBox" placeholder="Unit Box not completed">
+            <input type="text" id="unitBox" placeholder="Unit Box no completado">
         `;
     } else if (selectedTemplate === 'nmf-address-override') {
         extraFields.innerHTML += `
-            <!-- No additional field needed -->
+            <!-- No se necesita campo adicional -->
         `;
     } else if (selectedTemplate === 'wrong-unit-box') {
         extraFields.innerHTML += `
-            <label for="wrong-unit-box">Wrong Unit Box:</label>
-            <input type="text" id="wrong-unit-box" placeholder="No information / Wrong Unit Box">
+            <label for="wrong-unit-box">Unit Box incorrecto:</label>
+            <input type="text" id="wrong-unit-box" placeholder="Sin informacion / Unit Box incorrecto">
             
-            <label for="correct-unit-box">Correct Unit Box:</label>
-            <input type="text" id="correct-unit-box" placeholder="Correct Unit Box">
+            <label for="correct-unit-box">Unit Box correcto:</label>
+            <input type="text" id="correct-unit-box" placeholder="Unit Box correcto">
         `;
     } else if (selectedTemplate === 'wrong-address-override') {
         extraFields.innerHTML += `
-            <label for="fuente-override">Source of information:</label>
-            <input type="text" id="fuente-override" placeholder="Source of information (RP, LB, etc.)">
+            <label for="fuente-override">Fuente de información:</label>
+            <input type="text" id="fuente-override" placeholder="Fuente de información (RP, LB, etc.)">
             
-            <label for="correct-override">Correct override:</label>
-            <input type="text" id="correct-override" placeholder="Correct override">
+            <label for="correct-override">Override correcto:</label>
+            <input type="text" id="correct-override" placeholder="Override correcto">
         `;
     }
 });
 
-// Generate feedback according to the selected template and user data
-function generateFeedback() {
-    const name = document.getElementById('nombre').value;
-    const project = document.getElementById('proyecto').value;
+// Generar el feedback según la plantilla seleccionada y los datos del usuario
+function generarFeedback() {
+    const nombre = document.getElementById('nombre').value;
+    const proyecto = document.getElementById('proyecto').value;
     const link = document.getElementById('link').value;
     const template = document.getElementById('template').value;
 
@@ -84,28 +84,28 @@ function generateFeedback() {
     if (template === 'wrong-structure') {
         const wrongStructure = document.getElementById('wrong-structure').value;
         const correctStructure = document.getElementById('correct-structure').value;
-        feedback = `Hi ${name}! I hope you're having a good day. Today I'm conducting Random QA and found <a href="${link}" target="_blank">this property of yours</a> in ${project}. You did a good job identifying the property, but I noticed you mapped it as ${wrongStructure}, when in reality it is ${correctStructure}. I identified this through public records and aerial images. I recommend reviewing it more thoroughly next time. Thank you!`;
+        feedback = `¡Hola ${nombre}! Espero que estés teniendo un buen día. Hoy estoy realizando Random QA y encontré <a href="${link}" target="_blank">esta propiedad tuya</a> en ${proyecto}. Hiciste un buen trabajo identificando la propiedad, sin embargo noté que la mapeaste como ${wrongStructure}, cuando en realidad es ${correctStructure}. Esto lo identifiqué a través de los registros públicos y las imágenes aéreas. Te recomiendo revisarlo más a detalle una próxima vez. ¡Muchas Gracias!`;
     } else if (template === 'wrong-apn') {
-        const reasons = document.getElementById('motivos').value;
-        feedback = `Hi ${name}, I hope everything is going well! 🤗 Today I'm conducting Random QA and came across <a href="${link}" target="_blank">this property of yours</a> in ${project}. After carefully reviewing it, I concluded that it was not identified correctly. My reasons are: ${reasons}. Please let me know if you have any questions about it. Thanks for your time!`;
+        const motivos = document.getElementById('motivos').value;
+        feedback = `Hola ${nombre}, ¡espero que todo esté yendo bien! 🤗 Hoy estoy realizando Random QA y me encontré con <a href="${link}" target="_blank">esta propiedad tuya</a> en ${proyecto}, Después de revisarla cuidadosamente, llegué a la conclusión de que no fue identificada correctamente. Mis motivos son: ${motivos}. Por favor, déjame saber si tienes alguna duda al respecto. ¡Gracias por tu tiempo!`;
     } else if (template === 'missing-address-override') {
-        const source = document.getElementById('fuente').value;
-        feedback = `Greetings ${name}, I hope everything is fine. Today while reviewing Random QA, I found <a href="${link}" target="_blank">this property of yours</a> in ${project}. The identification was accurate and the evidence spectacular 😍. However, upon reviewing it, I noticed that the address was a bit strange, so I searched it on ${source} and realized it was necessary to perform an Address Override, as the one that appeared was different. Please keep this in mind for next time. Thank you!`;
+        const fuente = document.getElementById('fuente').value;
+        feedback = `Saludos ${nombre}, espero que todo esté bien. Hoy mientras revisaba Random QA, encontré <a href="${link}" target="_blank">esta propiedad tuya</a> en ${proyecto}. La identificación fue precisa y la evidencia espectacular 😍. Sin embargo, al revisarla, noté que la dirección era un poco extraña, así que la busqué en ${fuente} y me di cuenta de que era necesario realizar (Address Override), ya que la que apareció era diferente. Por favor, tenlo en cuenta para la próxima vez. ¡Muchas gracias!`;
     } else if (template === 'missing-unit-box') {
         const unitBox = document.getElementById('unitBox').value;
-        feedback = `Greetings ${name}!, I hope everything is going well! 🤗 Today I'm conducting Random QA and came across <a href="${link}" target="_blank">this property of yours</a> in ${project}. I noticed you omitted filling out the 'Unit Box' field, in this case it was "${unitBox}". Remember that this field is important for separating the Property Cards in RS. It can be found in the images or in the listing description. Keep it in mind for next time. Thank you!`;
+        feedback = `¡Saludos ${nombre}!, ¡espero que todo esté yendo bien! 🤗 Hoy estoy realizando Random QA y me encontré con <a href="${link}" target="_blank">esta propiedad tuya</a> en ${proyecto}. Noté que omitiste llenar el campo 'Unit Box', en este caso era "${unitBox}". Recuerda que este campo es importante para separar las Property Cards en RS. Este puede estar en las imágenes o en la descripción del listing. Tenlo presente para una próxima vez. ¡Muchas gracias!`;
     } else if (template === 'nmf-address-override') {
-        feedback = `Greetings ${name}!, I hope everything is going well! 🤗 Today I'm conducting Random QA and came across <a href="${link}" target="_blank">this property of yours</a> in ${project}. It is very well identified, but you forgot to delete the previous AOV when it was in NMF. Always validate this before saving the listing, especially when you are in FP. Thank you!`;
+        feedback = `¡Saludos ${nombre}!, ¡espero que todo esté yendo bien! 🤗 Hoy estoy realizando Random QA y me encontré con <a href="${link}" target="_blank">esta propiedad tuya</a> en ${proyecto}. Está muy bien identificada, sin embargo, olvidaste borrar el AOV anterior cuando estaba en NMF. Ten presente siempre validar esto antes de guardar el listing, sobre todo cuando estás en FP. ¡Muchas gracias!`;
 
     } else if (template === 'wrong-unit-box') {
         const wrongUnitBox = document.getElementById('wrong-unit-box').value;
         const correctUnitBox = document.getElementById('correct-unit-box').value;
-        feedback = `Hi ${name}! I hope you're having a good day. Today I'm conducting Random QA and found <a href="${link}" target="_blank">this property of yours</a> in ${project}. You did a good job identifying the property, but I noticed you left ${wrongUnitBox} in the Unit Box, when it should be "${correctUnitBox}". I recommend reviewing it more thoroughly next time. Thank you!`;
+        feedback = `¡Hola ${nombre}! Espero que estés teniendo un buen día. Hoy estoy realizando Random QA y encontré <a href="${link}" target="_blank">esta propiedad tuya</a> en ${proyecto}. Hiciste un buen trabajo identificando la propiedad, sin embargo, noté que dejaste ${wrongUnitBox} en el Unit Box, cuando en realidad va "${correctUnitBox}". Te recomiendo revisarlo más a detalle en una próxima ocasión. ¡Muchas Gracias!`;
     } else if (template === 'wrong-address-override') {
-        const sourceOverride = document.getElementById('fuente-override').value;
+        const fuenteOverride = document.getElementById('fuente-override').value;
         const correctOverride = document.getElementById('correct-override').value;
-        feedback = `Hi ${name}! I hope you're having a good day. Today I'm conducting Random QA and found <a href="${link}" target="_blank">this property of yours</a> in ${project}. The identification was accurate and the evidence spectacular. However, upon reviewing it on ${sourceOverride}, I noticed that the correct override for it is "${correctOverride}". Please keep this in mind for next time. Thank you!`;
+        feedback = `¡Hola ${nombre}! Espero que estés teniendo un buen día. Hoy estoy realizando Random QA y encontré <a href="${link}" target="_blank">esta propiedad tuya</a> en ${proyecto}. La identificación fue precisa y la evidencia espectacular. Sin embargo, al revisarla en ${fuenteOverride}, noté que el override correcto para la misma es "${correctOverride}". Por favor, tenlo en cuenta para la próxima. ¡Muchas Gracias!`;
     }
 
-    result.innerHTML = feedback;
+    resultado.innerHTML = feedback;
 }
