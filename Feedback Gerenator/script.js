@@ -9,7 +9,7 @@ document.getElementById('template').addEventListener('change', function () {
     // Generar campos específicos según la plantilla seleccionada
     if (selectedTemplate === 'wrong-structure') {
         extraFields.innerHTML += `
-            <label for="wrong-structure">Estructura incorrecta:</label>
+            <label for="wrong-structure">Incorrect structure:</label>
             <select id="wrong-structure">
                 <option value="Main">Main</option>
                 <option value="Adu">Adu</option>
@@ -22,7 +22,7 @@ document.getElementById('template').addEventListener('change', function () {
                 <option value="Unknown">Unknown</option>
             </select>
 
-            <label for="correct-structure">Estructura correcta:</label>
+            <label for="correct-structure">Correct structure:</label>
             <select id="correct-structure">
                 <option value="Main">Main</option>
                 <option value="Adu">Adu</option>
@@ -37,18 +37,18 @@ document.getElementById('template').addEventListener('change', function () {
         `;
     } else if (selectedTemplate === 'wrong-apn') {
         extraFields.innerHTML += `
-            <label for="motivos">Motivos:</label>
-            <textarea id="motivos" placeholder="Introduce los motivos por los que piensas que la APN está mal"></textarea>
+            <label for="motivos">Reasons:</label>
+            <textarea id="motivos" placeholder="Enter the reasons why you think the APN is wrong"></textarea>
         `;
     } else if (selectedTemplate === 'missing-address-override') {
         extraFields.innerHTML += `
-            <label for="fuente">Fuente de información:</label>
-            <input type="text" id="fuente" placeholder="Fuente de información (RP, LB, etc.)">
+            <label for="fuente">Source of information:</label>
+            <input type="text" id="fuente" placeholder="Source of information (RP, LB, etc.)">
         `;
     } else if (selectedTemplate === 'missing-unit-box') {
         extraFields.innerHTML += `
             <label for="unitBox">Unit Box:</label>
-            <input type="text" id="unitBox" placeholder="Unit Box no completado">
+            <input type="text" id="unitBox" placeholder="Unit Box no completed">
         `;
     } else if (selectedTemplate === 'nmf-address-override') {
         extraFields.innerHTML += `
@@ -56,19 +56,19 @@ document.getElementById('template').addEventListener('change', function () {
         `;
     } else if (selectedTemplate === 'wrong-unit-box') {
         extraFields.innerHTML += `
-            <label for="wrong-unit-box">Unit Box incorrecto:</label>
-            <input type="text" id="wrong-unit-box" placeholder="Sin informacion / Unit Box incorrecto">
+            <label for="wrong-unit-box">Unit Box incorrect:</label>
+            <input type="text" id="wrong-unit-box" placeholder="Sin informacion / Unit Box incorrect">
             
-            <label for="correct-unit-box">Unit Box correcto:</label>
-            <input type="text" id="correct-unit-box" placeholder="Unit Box correcto">
+            <label for="correct-unit-box">Unit Box correct:</label>
+            <input type="text" id="correct-unit-box" placeholder="Unit Box correct">
         `;
     } else if (selectedTemplate === 'wrong-address-override') {
         extraFields.innerHTML += `
-            <label for="fuente-override">Fuente de información:</label>
-            <input type="text" id="fuente-override" placeholder="Fuente de información (RP, LB, etc.)">
+            <label for="fuente-override">Source of information:</label>
+            <input type="text" id="fuente-override" placeholder="Source of information (RP, LB, etc.)">
             
-            <label for="correct-override">Override correcto:</label>
-            <input type="text" id="correct-override" placeholder="Override correcto">
+            <label for="correct-override">Override correct:</label>
+            <input type="text" id="correct-override" placeholder="Override correct">
         `;
     }
 });
