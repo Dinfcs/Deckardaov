@@ -12,9 +12,9 @@
         <div class="form-section">
             <h1>Generador de Feedback</h1>
 
-            <label for="template">Selecciona una plantilla:</label>
+            <label for="template">Select a template:</label>
             <select id="template">
-                <option value="">Selecciona una plantilla</option>
+                <option value="">Select a template</option>
                 <option value="wrong-apn">Wrong APN</option>
                 <option value="wrong-structure">Wrong Structure</option>
                 <option value="wrong-unit-box">Wrong Unit Box</option>
@@ -24,17 +24,17 @@
                 <option value="nmf-address-override">Do Not Clear Previous Address Override In An NMF Listing</option>
             </select>
 
-            <label for="nombre">Nombre del destinatario:</label>
+            <label for="nombre">Recipient's name:</label>
             <input type="text" id="nombre" placeholder="Nombre del destinatario">
             
-            <label for="proyecto">Nombre del proyecto:</label>
+            <label for="proyecto">Project name:</label>
             <input type="text" id="proyecto" placeholder="Nombre del proyecto" list="listaProyectos">
 
             <datalist id="listaProyectos">
                 <!-- Las opciones serán generadas dinámicamente por JavaScript -->
             </datalist>
 
-            <label for="link">Link del Listing (URL):</label>
+            <label for="link">Link of the Listing (URL):</label>
             <input type="url" id="link" placeholder="https://cyborg.deckard.com/listing/NC/avery/_/STR-AIR-1226751626855273525">
 
             <div id="extra-fields">
@@ -48,7 +48,7 @@
         <div class="result-section">
             <h2>Resultado</h2>
             <div class="result" id="resultado">
-                El feedback generado aparecerá aquí.
+                The generated feedback will appear here.
             </div>
         </div>
     </div>
