@@ -37,7 +37,7 @@
             { text: 'AO', url: 'https://dinfcs.github.io/Deckardaov/', color: '#6c757d' },
             { text: 'PrTools', url: 'https://dinfcs.github.io/Deckardaov/PrTools/', color: '#6c757d' },
             { text: 'Filter', url: 'https://dinfcs.github.io/Deckardaov/FilterGeneratorv2/index.html', color: '#6c757d' },
-            { text: 'PR', url: 'https://deckardtech.atlassian.net/wiki/spaces/PC/pages/1717403844', color: '#6c757d', openInNewTab: true },
+            { text: 'PR', url: 'https://dinfcs.github.io/Deckardaov/Project%20Resources.pdf', color: '#6c757d'},
             { text: 'LB', url: 'https://login-spatialstream.prod.lightboxre.com/MemberPages/Login.aspx?ReturnUrl=%2fmemberpages%2fdefault.aspx%3fma%3ddeckardtech&ma=deckardtech', color: '#007bff' },
             { text: 'PQ', url: 'https://pqweb.parcelquest.com/#login', color: '#dc3545', openInNewTab: true },
             { text: 'Regrid', url: 'https://app.regrid.com/', color: '#28a745', openInNewTab: true }
