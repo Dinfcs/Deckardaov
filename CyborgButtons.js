@@ -33,7 +33,7 @@
 
         // Botones en el orden especificado
         const buttons = [
-            { text: 'PS', url: 'https://dinfcs.github.io/Deckardaov/ParcelSearch/index.html', color: '#6c757d' },
+            { text: 'Parcel', url: 'https://dinfcs.github.io/Deckardaov/ParcelSearch/index.html', color: '#6c757d' },
             { text: 'AO', url: 'https://dinfcs.github.io/Deckardaov/', color: '#6c757d' },
             { text: 'PrTools', url: 'https://dinfcs.github.io/Deckardaov/PrTools/', color: '#6c757d' },
             { text: 'Filter', url: 'https://dinfcs.github.io/Deckardaov/FilterGeneratorv2/index.html', color: '#6c757d' },
