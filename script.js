@@ -380,10 +380,10 @@ function showCopyNotification() {
     notification.style.borderRadius = "10px";
     document.body.appendChild(notification);
 
-    // Desaparecer después de 2 segundos
+    // Desaparecer después de 0.5 segundos
     setTimeout(() => {
         notification.remove();
-    }, 2000);
+    }, 500);
 }
 
 // animacion de carga
