@@ -1,0 +1,78 @@
+body {
+    background-color: #1f1f1f;
+    color: #f5f5f5;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    background-color: #2a2a2a;
+    padding: 30px;
+    border-radius: 10px;
+    width: 80%; /* Ajustar al ancho total */
+    max-width: 1200px;
+    gap: 50px; /* Aumentar la separación entre las secciones */
+}
+
+.form-section, .result-section {
+    width: 48%; /* Ambas secciones toman el 48% del contenedor */
+}
+
+.form-section h1, .form-section label {
+    color: #00c9ff;
+}
+
+select, input, textarea {
+    width: 100%; /* Asegura que todos los campos ocupen el ancho disponible */
+    box-sizing: border-box; /* Evita que el padding afecte el tamaño del campo */
+    padding: 10px; /* Espaciado interno para todos los campos */
+    margin: 10px 0; /* Margen entre los campos */
+    background-color: #2f2f2f;
+    color: #f5f5f5;
+    border: 1px solid #00c9ff;
+    border-radius: 5px;
+    font-size: 16px; /* Tamaño de fuente uniforme */
+}
+
+textarea {
+    height: 80px;
+}
+
+button {
+    width: 100%; /* El botón ocupará todo el ancho disponible */
+    padding: 15px 20px; /* Aumenta el padding para hacerlo más alto */
+    font-size: 18px; /* Aumenta el tamaño del texto */
+    font-weight: bold; /* Negrita para el texto */
+    background-color: #00c9ff; /* Color de fondo */
+    color: #1f1f1f; /* Color del texto */
+    border: none; /* Elimina bordes adicionales */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+}
+
+/* Cambiar el estilo del botón al pasar el cursor */
+button:hover {
+    background-color: #008fcc; /* Color de fondo más oscuro en hover */
+}
+
+.result-section {
+    background-color: #1f1f1f;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: justify;
+}
+
+h2 {
+    color: #00c9ff;
+}
+
+a {
+    color: #00c9ff;
+    text-decoration: none;
+}
