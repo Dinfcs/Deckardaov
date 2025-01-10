@@ -9,7 +9,7 @@ document.getElementById('template').addEventListener('change', function () {
     // Generar campos específicos según la plantilla seleccionada
     if (selectedTemplate === 'wrong-structure') {
         extraFields.innerHTML += `
-            <label for="wrong-structure">Incorrect structure:</label>
+            <label for="wrong-structure">Estructura incorrecta:</label>
             <select id="wrong-structure">
                 <option value="Main">Main</option>
                 <option value="Adu">Adu</option>
@@ -22,7 +22,7 @@ document.getElementById('template').addEventListener('change', function () {
                 <option value="Unknown">Unknown</option>
             </select>
 
-            <label for="correct-structure">Correct structure:</label>
+            <label for="correct-structure">Estructura correcta:</label>
             <select id="correct-structure">
                 <option value="Main">Main</option>
                 <option value="Adu">Adu</option>
@@ -37,13 +37,13 @@ document.getElementById('template').addEventListener('change', function () {
         `;
     } else if (selectedTemplate === 'wrong-apn') {
         extraFields.innerHTML += `
-            <label for="motivos">Reasons:</label>
-            <textarea id="motivos" placeholder="Enter the reasons why you think the APN is wrong"></textarea>
+            <label for="motivos">Motivos:</label>
+            <textarea id="motivos" placeholder="Introduce los motivos por los que piensas que la APN está mal"></textarea>
         `;
     } else if (selectedTemplate === 'missing-address-override') {
         extraFields.innerHTML += `
-            <label for="fuente">Source of information:</label>
-            <input type="text" id="fuente" placeholder="Source of information (RP, LB, etc.)">
+            <label for="fuente">Fuente de información:</label>
+            <input type="text" id="fuente" placeholder="Fuente de información (RP, LB, etc.)">
         `;
     } else if (selectedTemplate === 'missing-unit-box') {
         extraFields.innerHTML += `
@@ -56,19 +56,19 @@ document.getElementById('template').addEventListener('change', function () {
         `;
     } else if (selectedTemplate === 'wrong-unit-box') {
         extraFields.innerHTML += `
-            <label for="wrong-unit-box">Unit Box incorrect:</label>
+            <label for="wrong-unit-box">Unit Box incorrecto:</label>
             <input type="text" id="wrong-unit-box" placeholder="Sin informacion / Unit Box incorrecto">
             
             <label for="correct-unit-box">Unit Box correcto:</label>
-            <input type="text" id="correct-unit-box" placeholder="Unit Box correct">
+            <input type="text" id="correct-unit-box" placeholder="Unit Box correcto">
         `;
     } else if (selectedTemplate === 'wrong-address-override') {
         extraFields.innerHTML += `
-            <label for="fuente-override">Source of information:</label>
-            <input type="text" id="fuente-override" placeholder="Source of information (RP, LB, etc.)">
+            <label for="fuente-override">Fuente de información:</label>
+            <input type="text" id="fuente-override" placeholder="Fuente de información (RP, LB, etc.)">
             
-            <label for="correct-override">Override correct:</label>
-            <input type="text" id="correct-override" placeholder="Override correct">
+            <label for="correct-override">Override correcto:</label>
+            <input type="text" id="correct-override" placeholder="Override correcto">
         `;
     }
 });
@@ -87,7 +87,7 @@ function generarFeedback() {
         feedback = `¡Hola ${nombre}! Espero que estés teniendo un buen día. Hoy estoy realizando Random QA y encontré <a href="${link}" target="_blank">esta propiedad tuya</a> en ${proyecto}. Hiciste un buen trabajo identificando la propiedad, sin embargo noté que la mapeaste como ${wrongStructure}, cuando en realidad es ${correctStructure}. Esto lo identifiqué a través de los registros públicos y las imágenes aéreas. Te recomiendo revisarlo más a detalle una próxima vez. ¡Muchas Gracias!`;
     } else if (template === 'wrong-apn') {
         const motivos = document.getElementById('motivos').value;
-        feedback = `Hi ${nombre}, ¡I hope everything is going well! 🤗 Today I'm performing Random QA and I came across. <a href="${link}" target="_blank">this property of yours</a> en ${proyecto}, After reviewing it carefully, I came to the conclusion that it was not correctly identified. My reasons are: ${motivos}. Please let me know if you have any questions about this, thank you for your time!`;
+        feedback = `Hola ${nombre}, ¡espero que todo esté yendo bien! 🤗 Hoy estoy realizando Random QA y me encontré con <a href="${link}" target="_blank">esta propiedad tuya</a> en ${proyecto}, Después de revisarla cuidadosamente, llegué a la conclusión de que no fue identificada correctamente. Mis motivos son: ${motivos}. Por favor, déjame saber si tienes alguna duda al respecto. ¡Gracias por tu tiempo!`;
     } else if (template === 'missing-address-override') {
         const fuente = document.getElementById('fuente').value;
         feedback = `Saludos ${nombre}, espero que todo esté bien. Hoy mientras revisaba Random QA, encontré <a href="${link}" target="_blank">esta propiedad tuya</a> en ${proyecto}. La identificación fue precisa y la evidencia espectacular 😍. Sin embargo, al revisarla, noté que la dirección era un poco extraña, así que la busqué en ${fuente} y me di cuenta de que era necesario realizar (Address Override), ya que la que apareció era diferente. Por favor, tenlo en cuenta para la próxima vez. ¡Muchas gracias!`;
