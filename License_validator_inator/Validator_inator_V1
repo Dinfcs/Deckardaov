@@ -1,0 +1,25 @@
+import pandas as pd
+import re
+
+# Cargar el archivo Excel
+file_path = "ruta_del_excel.xlsx"  # Cambia esto por la ruta de tu archivo
+df = pd.read_excel(file_path)
+
+# Función para validar y ajustar una columna según las reglas
+def ajustar_apn(apn):
+    # Regla: Longitud de 10 caracteres, separada por guiones cada 3 caracteres
+    apn = str(apn).replace("-", "")  # Quitar guiones si los tiene
+    if len(apn) < 10:
+        apn = apn.zfill(10)  # Agregar ceros al inicio si la longitud es menor a 10
+    elif len(apn) > 10:
+        apn = apn[:10]  # Truncar si excede 10 caracteres
+    return "-".join(re.findall(".{1,3}", apn))  # Insertar guiones cada 3 caracteres
+
+# Aplicar las reglas a la columna "APN"
+if "APN" in df.columns:
+    df["APN"] = df["APN"].apply(ajustar_apn)
+
+# Guardar el archivo ajustado
+output_path = "ruta_salida.xlsx"
+df.to_excel(output_path, index=False)
+print(f"Archivo procesado guardado en {output_path}")
