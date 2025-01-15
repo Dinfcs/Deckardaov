@@ -7,15 +7,16 @@
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=evolve.com
 // @grant        none
 // ==/UserScript==
-// create a disposable over layer than show all the address information.
-const createLayer = (data) => {
+
+// create a disposable over layer that shows the property address information.
+const createLayer = (propertyAddress) => {
     const overlay = document.createElement('div');
     overlay.style.position = 'fixed';
     overlay.style.zIndex = '9999';
     overlay.style.top = '10px';
     overlay.style.right = '10px';
     overlay.style.width = '300px';
-    overlay.style.height = '370px';
+    overlay.style.height = '100px';
     overlay.style.padding = '1rem';
     overlay.style.background = 'rgba(255, 255, 255, 0.9)';
     overlay.style.overflow = 'auto';
@@ -23,26 +24,22 @@ const createLayer = (data) => {
     closeButton.style.position = 'absolute';
     closeButton.style.top = '0';
     closeButton.style.right = '0';
-    closeButton.html = 'X';
+    closeButton.innerHTML = 'X';
     closeButton.addEventListener('click', () => {
         overlay.remove();
     });
-    let html = "";
-    html += `<h4>Add Content</h4>`;
-    data?.props?.pageProps?.listing?.adContent.forEach(ad => {
-        if(ad.text === "") return;
-        html += `<p><b>${ad.type}:</b> ${ad.text}</p>`;
-    });
-    overlay.innerHTML = html;
+    overlay.innerHTML = `<h4>Property Address</h4><p>${propertyAddress}</p>`;
     overlay.appendChild(closeButton);
     document.body.appendChild(overlay);
 }
+
 (function() {
     'use strict';
     const nextData = document.getElementById('__NEXT_DATA__');
     if (nextData) {
         const data = JSON.parse(nextData.textContent);
-        createLayer(data);
-        console.log(data?.props?.pageProps?.listing?.units[0]?.addresses[0])
+        const propertyAddress = data?.props?.pageProps?.listing?.adContent.find(ad => ad.text.includes("PROPERTY ADDRESS:"))?.text || "Address not found";
+        createLayer(propertyAddress);
+        console.log(propertyAddress);
     }
 })();
