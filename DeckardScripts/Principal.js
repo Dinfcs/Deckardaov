@@ -15,7 +15,7 @@
     const scripts = [
         {
             urlPattern: /^https:\/\/cyborg\.deckard\.com\//,
-            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgButtonsQA.js'
+            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgButtons.js'
         },
         {
             urlPattern: /^https:\/\/evolve\.com\/vacation-rentals\//,
