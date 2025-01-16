@@ -1,16 +1,25 @@
 {
-    "tabla": [
-      {
-        "Project": "CA - City of Santa Clara",
-        "Public Records & GIS": [
-          "https://www.sccassessor.org/index.php/online-services/property-search/real-property",
-          "https://geoess.sccgov.org/discovergis/sccmap"
-        ],
-        "License List": [
-          "https://geoess.sccgov.org/discovergis/sccmap"
-        ],
-        "Important Info": "Please work with filters: Unresolved + yet_to_review + rental  = self_contained.\n\nTo use GIS optimally, activate the following: Land Management - Property and Planning. Select the following options:\n\nLand Divisions: Divides the parcels.\nParcel Cadastre: Shows the APNs.\nValuation Cadastre: Shows the Land Use and Property Address.\n\nThere are no public records, as privacy laws in the country protect property data."
-      }
-    ]
-  }
-  
+  "tabla": [
+    {
+      "Project": "CA - City of Santa Clara",
+      "Public Records & GIS": [
+        { "type": "PR", "url": "https://www.sccassessor.org/index.php/online-services/property-search/real-property" },
+        { "type": "GIS", "url": "https://geoess.sccgov.org/discovergis/sccmap" }
+      ],
+      "License List": [
+        { "type": "License", "url": "https://geoess.sccgov.org/discovergis/sccmap" }
+      ],
+      "Important Info": "Please work with filters: Unresolved + yet_to_review + rental  = self_contained.\n\nTo use GIS optimally, activate the following: Land Management - Property and Planning. Select the following options:\n\nLand Divisions: Divides the parcels.\nParcel Cadastre: Shows the APNs.\nValuation Cadastre: Shows the Land Use and Property Address.\n\nThere are no public records, as privacy laws in the country protect property data."
+    },
+    {
+      "Project": "CA - Sonoma County",
+      "Public Records & GIS": [
+        { "type": "PR1", "url": "https://common1.mptsweb.com/mbap/SONOMA/asr" },
+        { "type": "PR2", "url": "https://parcelsearch.permitsonoma.org/PermitSearch" },
+        { "type": "GIS", "url": "https://www.arcgis.com/apps/webappviewer/index.html?id=790a6977918e47559a06ae0b65c14cbc" }
+      ],
+      "License List": [],
+      "Important Info": "The license finder only works with licenses starting with THR."
+    }
+  ]
+}
