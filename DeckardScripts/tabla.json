@@ -11,8 +11,6 @@
       ],
       "Important Info": "Please work with filters: Unresolved + yet_to_review + rental  = self_contained.\n\nTo use GIS optimally, activate the following: Land Management - Property and Planning. Select the following options:\n\nLand Divisions: Divides the parcels.\nParcel Cadastre: Shows the APNs.\nValuation Cadastre: Shows the Land Use and Property Address.\n\nThere are no public records, as privacy laws in the country protect property data."
     },
-
-    
     {
       "Project": "CA - Sonoma County",
       "Public Records & GIS": [
@@ -25,4 +23,3 @@
     }
   ]
 }
-
