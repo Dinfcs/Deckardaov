@@ -41,8 +41,6 @@
             { text: 'Filter', url: 'https://dinfcs.github.io/Deckardaov/FilterGeneratorv2/index.html', color: '#6c757d' },
             { text: 'PR', url: 'https://dinfcs.github.io/Deckardaov/Project%20Resources.pdf', color: '#6c757d'},
             { text: 'Accounts', url: 'https://script.google.com/a/macros/deckard.com/s/AKfycbziAFj6j4YU0oDpCIVc0EQfcYjx5RG-RtXZPLbA43eAaA91SpQ2ZDf7rJFVESnBCVk9/exec',color: '#6c757d', openInNewTab: true },
-            { text: 'LB', url: 'https://login-spatialstream.prod.lightboxre.com/MemberPages/Login.aspx?ReturnUrl=%2fmemberpages%2fdefault.aspx%3fma%3ddeckardtech&ma=deckardtech', color: '#007bff' },
-            { text: 'PQ', url: 'https://pqweb.parcelquest.com/#login', color: '#dc3545', openInNewTab: true },
             { text: 'Regrid', url: 'https://app.regrid.com/', color: '#28a745', openInNewTab: true }
             
         ];
