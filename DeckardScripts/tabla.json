@@ -23,7 +23,7 @@
         { "type": "GIS", "url": "https://www.arcgis.com/apps/webappviewer/index.html?id=790a6977918e47559a06ae0b65c14cbc" }
       ],
       "License List": [],
-      "Important Info": "The license finder only works with licenses starting with THR.\n\n![image](https://path_to_your_image_on_github/imagen.jpg)",
+      "Important Info": "The license finder only works with licenses starting with THR.",
       "Media": [
         { "type": "Image", "url": "https://path_to_your_image_on_github/image2.jpg" },
         { "type": "Video", "url": "https://path_to_your_video_on_github/video2.mp4" }
