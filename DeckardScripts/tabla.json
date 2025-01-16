@@ -11,7 +11,7 @@
       ],
       "Important Info": "Please work with filters: Unresolved + yet_to_review + rental  = self_contained.\n\nTo use GIS optimally, activate the following: Land Management - Property and Planning. Select the following options:\n\nLand Divisions: Divides the parcels.\nParcel Cadastre: Shows the APNs.\nValuation Cadastre: Shows the Land Use and Property Address.\n\nThere are no public records, as privacy laws in the country protect property data.",
       "Media": [
-        { "type": "Image", "url": "blob:https://deckardtech.atlassian.net/0336d9f6-c665-4e3f-ba4d-288a4607f780#media-blob-url=true&id=160a50a0-1531-406a-8141-29379ad375b0&contextId=1717403844&collection=contentId-1717403844" },
+        { "type": "Image", "url": "https://thumbs.dreamstime.com/z/imagine-colorful-light-bulb-art-vibrant-light-bulb-imagine-text-surrounded-colorful-paint-splashes-inspiring-creativity-338995704.jpg?ct=jpeg" },
         { "type": "Video", "url": "https://path_to_your_video_on_github/video1.mp4" }
       ]
     },
@@ -25,7 +25,7 @@
       "License List": [],
       "Important Info": "The license finder only works with licenses starting with THR.",
       "Media": [
-        { "type": "Image", "url": "blob:https://deckardtech.atlassian.net/0336d9f6-c665-4e3f-ba4d-288a4607f780#media-blob-url=true&id=160a50a0-1531-406a-8141-29379ad375b0&contextId=1717403844&collection=contentId-1717403844" },
+        { "type": "Image", "url": "https://thumbs.dreamstime.com/z/imagine-colorful-light-bulb-art-vibrant-light-bulb-imagine-text-surrounded-colorful-paint-splashes-inspiring-creativity-338995704.jpg?ct=jpeg" },
         { "type": "Video", "url": "https://path_to_your_video_on_github/video2.mp4" }
       ]
     }
