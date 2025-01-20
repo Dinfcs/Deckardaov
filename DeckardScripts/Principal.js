@@ -1,9 +1,9 @@
 // ==UserScript==
-// @name         Script Principal
+// @name         Principal Script 
 // @namespace    http://tampermonkey.net/
-// @version      1.1
-// @description  Define y carga scripts auxiliares según la URL
-// @author       Tu Nombre
+// @version      1.2
+// @description  Define and load auxiliary scripts according to the URL
+// @author       Luis Escalante
 // @match        *://*/*
 // @grant        none
 // ==/UserScript==
@@ -24,6 +24,10 @@
         {
             urlPattern: /^https:\/\/www\.misterbandb\.com\//,
             scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/Misterb&b%20Address.js'
+        },
+        {
+            urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/.*\/STR.*$/,
+            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/ProjectResourses%20Floating.js'
         }
     ];
 
