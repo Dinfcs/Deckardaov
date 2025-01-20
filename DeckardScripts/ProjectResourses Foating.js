@@ -44,14 +44,13 @@
     const contenedor = document.createElement('div');
     contenedor.style.width = '100%';
     contenedor.style.backgroundColor = '#fff';
-    contenedor.style.marginTop = '20px';
-    contenedor.style.boxShadow = '0 2px 5px rgba(0, 0, 0, 0.1)';
+    contenedor.style.marginTop = '0px';
     document.body.appendChild(contenedor);
 
     const barraTitulo = document.createElement('div');
     barraTitulo.style.backgroundColor = '#ecebea';
     barraTitulo.style.color = '#000';
-    barraTitulo.style.padding = '10px';
+    barraTitulo.style.padding = '0px';
     barraTitulo.style.display = 'flex';
     barraTitulo.style.justifyContent = 'space-between';
     barraTitulo.style.alignItems = 'center';
@@ -59,9 +58,9 @@
     contenedor.appendChild(barraTitulo);
 
     const contenedorDatos = document.createElement('div');
-    contenedorDatos.style.padding = '10px';
+    contenedorDatos.style.padding = '0px';
     contenedorDatos.style.overflowY = 'auto';
-    contenedorDatos.style.height = '400px';
+    contenedorDatos.style.height = '200px';
     contenedor.appendChild(contenedorDatos);
 
     async function cargarDatos() {
@@ -85,7 +84,7 @@
             const table = document.createElement('table');
             table.style.width = '100%';
             table.style.borderCollapse = 'collapse';
-            table.style.marginTop = '10px';
+            table.style.marginTop = '5px';
             table.style.backgroundColor = '#f9f9f9';
             table.style.boxShadow = '0 2px 5px rgba(0, 0, 0, 0.1)';
 
@@ -96,7 +95,7 @@
             headers.forEach(header => {
                 const th = document.createElement('th');
                 th.textContent = header;
-                th.style.backgroundColor = '#4c98af';
+                th.style.backgroundColor = '#093140';
                 th.style.color = '#fff';
                 th.style.padding = '10px';
                 th.style.textAlign = 'left';
