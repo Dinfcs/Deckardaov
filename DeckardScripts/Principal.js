@@ -28,6 +28,10 @@
         {
             urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/.*\/STR.*$/,
             scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/ProjectResourses%20Foating.js'
+        },
+        {
+            urlPattern: /^https:\/\/www\.michaelsvacationrentals\.com\//,
+            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/MichaelVacationRentalsAddress.js'
         }
     ];
 
