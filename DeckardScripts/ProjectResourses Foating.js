@@ -45,13 +45,13 @@ const ventana = document.createElement('div');
 ventana.style.position = 'fixed'; // Fijo en la pantalla
 ventana.style.top = '0px'; // Ajustar a la parte superior
 ventana.style.left = '50%'; // Centrarse horizontalmente
-ventana.style.transform = 'translateX(50%)'; // Centrar el elemento
+ventana.style.transform = 'translateX(53%)'; // Centrar el elemento
 ventana.style.width = '500px';
-ventana.style.height = '28px';
+ventana.style.height = '26px';
 ventana.style.backgroundColor = '#fff';
 ventana.style.border = '-1px solid #ccc';
 ventana.style.borderRadius = '0px';
-ventana.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
+
 ventana.style.overflow = 'hidden';
 ventana.style.zIndex = '10000';
 ventana.style.transition = 'height 0.3s ease';
