@@ -16,6 +16,17 @@
     function obtenerNombreProyectoDesdeURL() {
         const url = window.location.href;
 
+        // Detectar nombre de proyecto para condados tipo town (contiene "..." antes de "/_")
+        const regexTown = /\/listing\/([A-Za-z]+)\/([^\/]+)\.\.\.(town|township)_of_([^\/]+)\/_/;
+        const matchTown = url.match(regexTown);
+        if (matchTown) {
+            const estado = matchTown[1].toUpperCase();
+            const tipo = matchTown[3].charAt(0).toUpperCase() + matchTown[3].slice(1); // "Town" o "Township"
+            const nombreTown = matchTown[4].replace(/_/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase());
+            return `${estado} - ${tipo} Of ${nombreTown}`;
+        }
+
+        // Detectar nombre de proyecto para condados normales (sin "..." antes de "/_")
         const regexCondado = /\/listing\/([A-Za-z]+)\/([^\/]+)\/_/;
         const matchCondado = url.match(regexCondado);
         if (matchCondado) {
@@ -24,6 +35,7 @@
             return `${estado} - ${nombreCondado} County`;
         }
 
+        // Detectar nombre de proyecto para ciudades
         const regexCiudad = /\/listing\/([A-Za-z]+)\/([^\/]+)\/([^\/]+)\//;
         const matchCiudad = url.match(regexCiudad);
         if (matchCiudad) {
