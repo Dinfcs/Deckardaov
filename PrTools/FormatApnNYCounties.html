@@ -76,10 +76,11 @@
             } else if (apnInput.length === 15) {
                 const swis = apnInput.substring(0, 6);
                 const digits = apnInput.substring(6);
-                formattedAPN = `${digits.substring(0, 3)}.${digits.substring(3, 5)}-${digits.substring(5, 6)}.${digits.substring(6, 7)}-${digits.substring(7)}`;
+                formattedAPN = `${digits.substring(0, 3)}.${digits.substring(3, 5)}-${digits.substring(5, 6)}-${digits.substring(6, 8)}.${digits.substring(8)}`;
                 searchLink = `https://columbia.sdgnys.com/propdetail.aspx?swisprintkey=${swis}-${formattedAPN}`;
                 gisLink = `https://sdgnys.maps.arcgis.com/apps/webappviewer/index.html?id=da3c6800168b4deca14dcdc7e8dcb580&find=${swis}-${formattedAPN}`;
             }
+
                  else if (apnInput.length === 14) {
                 const swis = apnInput.substring(0, 6);
                 const digits = apnInput.substring(6);
