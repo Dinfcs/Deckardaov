@@ -55,7 +55,7 @@
     barraTitulo.style.display = 'flex';
     barraTitulo.style.justifyContent = 'space-between';
     barraTitulo.style.alignItems = 'center';
-    barraTitulo.textContent = `Proyecto Detectado: ${nombreProyecto}`;
+    barraTitulo.textContent = `Project Detected: ${nombreProyecto}`;
     contenedor.appendChild(barraTitulo);
 
     const contenedorDatos = document.createElement('div');
