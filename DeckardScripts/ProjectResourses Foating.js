@@ -43,9 +43,9 @@
 
     const ventana = document.createElement('div');
     ventana.style.position = 'fixed';
-    ventana.style.bottom = '48px';
-    ventana.style.left = '0px';
-    ventana.style.width = '600px';
+    ventana.style.bottom = '58px';
+    ventana.style.left = '8px';
+    ventana.style.width = '800px';
     ventana.style.height = '40px';
     ventana.style.backgroundColor = '#fff';
     ventana.style.border = '1px solid #ccc';
@@ -57,7 +57,7 @@
     document.body.appendChild(ventana);
 
     const barraTitulo = document.createElement('div');
-    barraTitulo.style.backgroundColor = '#4CAF50';
+    barraTitulo.style.backgroundColor = '#4c98af';
     barraTitulo.style.color = '#fff';
     barraTitulo.style.padding = '10px';
     barraTitulo.style.cursor = 'pointer';
@@ -73,7 +73,7 @@
         if (minimizado) {
             ventana.style.height = '40px';
         } else {
-            ventana.style.height = '600px';
+            ventana.style.height = '400px';
         }
     });
 
@@ -115,7 +115,7 @@
             headers.forEach(header => {
                 const th = document.createElement('th');
                 th.textContent = header;
-                th.style.backgroundColor = '#4CAF50';
+                th.style.backgroundColor = '#4c98af';
                 th.style.color = '#fff';
                 th.style.padding = '10px';
                 th.style.textAlign = 'left';
