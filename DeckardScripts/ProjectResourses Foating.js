@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         ProjectResourses Foating
+// @name         ProjectResourses Embedded
 // @namespace    http://tampermonkey.net/
-// @version      1.14
-// @description  Mostrar el nombre del proyecto detectado en la URL y la tabla completa de datos en una ventana flotante.
+// @version      1.15
+// @description  Mostrar el nombre del proyecto detectado en la URL y la tabla completa de datos en la parte inferior de la página.
 // @author       Tu Nombre
 // @match        https://cyborg.deckard.com/listing/*/STR*
 // @grant        none
@@ -41,49 +41,28 @@
         return;
     }
 
-const ventana = document.createElement('div');
-ventana.style.position = 'fixed'; // Fijo en la pantalla
-ventana.style.top = '0px'; // Ajustar a la parte superior
-ventana.style.left = '50%'; // Centrarse horizontalmente
-ventana.style.transform = 'translateX(53%)'; // Centrar el elemento
-ventana.style.width = '500px';
-ventana.style.height = '26px';
-ventana.style.backgroundColor = '#fff';
-ventana.style.border = '-1px solid #ccc';
-ventana.style.borderRadius = '0px';
-
-ventana.style.overflow = 'hidden';
-ventana.style.zIndex = '10000';
-ventana.style.transition = 'height 0.3s ease';
-document.body.appendChild(ventana);
-
+    const contenedor = document.createElement('div');
+    contenedor.style.width = '100%';
+    contenedor.style.backgroundColor = '#fff';
+    contenedor.style.marginTop = '20px';
+    contenedor.style.boxShadow = '0 2px 5px rgba(0, 0, 0, 0.1)';
+    document.body.appendChild(contenedor);
 
     const barraTitulo = document.createElement('div');
-    barraTitulo.style.backgroundColor = '#093140';
-    barraTitulo.style.color = '#fff';
-    barraTitulo.style.padding = '4px';
-    barraTitulo.style.cursor = 'pointer';
+    barraTitulo.style.backgroundColor = '#ecebea';
+    barraTitulo.style.color = '#000';
+    barraTitulo.style.padding = '10px';
     barraTitulo.style.display = 'flex';
     barraTitulo.style.justifyContent = 'space-between';
     barraTitulo.style.alignItems = 'center';
     barraTitulo.textContent = `Proyecto Detectado: ${nombreProyecto}`;
-    ventana.appendChild(barraTitulo);
-
-    let minimizado = true;
-    barraTitulo.addEventListener('click', () => {
-        minimizado = !minimizado;
-        if (minimizado) {
-            ventana.style.height = '28px';
-        } else {
-            ventana.style.height = '400px';
-        }
-    });
+    contenedor.appendChild(barraTitulo);
 
     const contenedorDatos = document.createElement('div');
     contenedorDatos.style.padding = '10px';
     contenedorDatos.style.overflowY = 'auto';
-    contenedorDatos.style.height = 'calc(100% - 40px)';
-    ventana.appendChild(contenedorDatos);
+    contenedorDatos.style.height = '400px';
+    contenedor.appendChild(contenedorDatos);
 
     async function cargarDatos() {
         try {
