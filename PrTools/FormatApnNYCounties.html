@@ -86,6 +86,11 @@
                 const digits = apnInput.substring(6);
                 formattedAPN = `${digits.substring(0, 3)}.${digits.substring(3, 5)}-${digits.substring(5, 6)}-${digits.substring(6)}`;
                 searchLink = `https://columbia.sdgnys.com/propdetail.aspx?swis=${swis}&printkey=${digits.substring(0, 3)}0000${digits.substring(3, 5)}${digits.charAt(5)}00${digits.charAt(6)}0000000`;
+            } else if (apnInput.length === 12) {
+                const swis = apnInput.substring(0, 6);
+                const digits = apnInput.substring(6);
+                formattedAPN = `${digits.substring(0, 3)}.${digits.substring(3, 5)}-${digits.substring(5, 6)}-${digits.substring(6)}`;
+                searchLink = `https://columbia.sdgnys.com/propdetail.aspx?swis=${swis}&printkey=${digits.substring(0, 3)}0000${digits.substring(3, 5)}${digits.charAt(5)}00${digits.charAt(6)}0000000`;
             } else {
                 formattedAPN = 'Formato de APN inválido';
                 searchLink = '';
