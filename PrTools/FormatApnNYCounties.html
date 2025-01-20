@@ -61,6 +61,7 @@
     </style>
     <script>
         let searchLink = '';
+        let gisLink = '';
 
         function formatAPN() {
             const apnInput = document.getElementById('apn').value.replace(/[-\s]/g, ''); // Elimina espacios y guiones
@@ -70,30 +71,36 @@
                 const swis = apnInput.substring(0, 6);
                 const digits = apnInput.substring(6);
                 formattedAPN = `${digits.substring(0, 3)}.${digits.substring(3, 5)}-${digits.substring(5, 6)}-${digits.substring(6, 8)}.${digits.substring(8)}`;
-                searchLink = `https://columbia.sdgnys.com/propdetail.aspx?swis=${swis}&printkey=${digits.substring(0, 3)}0000${digits.substring(3, 5)}${digits.charAt(5)}0${digits.substring(6)}00000`;
+                searchLink = `https://columbia.sdgnys.com/propdetail.aspx?swisprintkey=${swis}-${formattedAPN}`;
+                gisLink = `https://sdgnys.maps.arcgis.com/apps/webappviewer/index.html?id=da3c6800168b4deca14dcdc7e8dcb580&find=${swis}-${formattedAPN}`;
             } else if (apnInput.length === 15) {
                 const swis = apnInput.substring(0, 6);
                 const digits = apnInput.substring(6);
                 formattedAPN = `${digits.substring(0, 3)}.${digits.substring(3, 5)}-${digits.substring(5, 6)}-${digits.substring(6)}`;
-                searchLink = `https://columbia.sdgnys.com/propdetail.aspx?swis=${swis}&printkey=${digits.substring(0, 3)}0000${digits.substring(3, 5)}${digits.charAt(5)}0${digits.substring(6, 15)}000000`;
+                searchLink = `https://columbia.sdgnys.com/propdetail.aspx?swisprintkey=${swis}-${formattedAPN}`;
+                gisLink = `https://sdgnys.maps.arcgis.com/apps/webappviewer/index.html?id=da3c6800168b4deca14dcdc7e8dcb580&find=${swis}-${formattedAPN}`;
             } else if (apnInput.length === 14) {
                 const swis = apnInput.substring(0, 6);
                 const digits = apnInput.substring(6);
                 formattedAPN = `${digits.substring(0, 3)}.${digits.substring(3, 5)}-${digits.substring(5, 6)}-${digits.substring(6)}`;
-                searchLink = `https://columbia.sdgnys.com/propdetail.aspx?swis=${swis}&printkey=${digits.substring(0, 3)}0${digits.substring(3, 5)}${digits.substring(5, 6)}0${digits.substring(6, 7)}${digits.substring(7, 9)}0000000`;
+                searchLink = `https://columbia.sdgnys.com/propdetail.aspx?swisprintkey=${swis}-${formattedAPN}`;
+                gisLink = `https://sdgnys.maps.arcgis.com/apps/webappviewer/index.html?id=da3c6800168b4deca14dcdc7e8dcb580&find=${swis}-${formattedAPN}`;
             } else if (apnInput.length === 13) {
                 const swis = apnInput.substring(0, 6);
                 const digits = apnInput.substring(6);
                 formattedAPN = `${digits.substring(0, 3)}.${digits.substring(3, 5)}-${digits.substring(5, 6)}-${digits.substring(6)}`;
-                searchLink = `https://columbia.sdgnys.com/propdetail.aspx?swis=${swis}&printkey=${digits.substring(0, 3)}0000${digits.substring(3, 5)}${digits.charAt(5)}00${digits.charAt(6)}0000000`;
+                searchLink = `https://columbia.sdgnys.com/propdetail.aspx?swisprintkey=${swis}-${formattedAPN}`;
+                gisLink = `https://sdgnys.maps.arcgis.com/apps/webappviewer/index.html?id=da3c6800168b4deca14dcdc7e8dcb580&find=${swis}-${formattedAPN}`;
             } else if (apnInput.length === 12) {
                 const swis = apnInput.substring(0, 6);
                 const digits = apnInput.substring(6);
                 formattedAPN = `${digits.substring(0, 3)}.-${digits.substring(3, 4)}-${digits.substring(4, 6)}`;
-                searchLink = `https://columbia.sdgnys.com/propdetail.aspx?swis=${swis}&printkey=${digits.substring(0, 3)}0000${digits.substring(3, 5)}${digits.charAt(5)}00${digits.charAt(6)}0000000`;
+                searchLink = `https://columbia.sdgnys.com/propdetail.aspx?swisprintkey=${swis}-${formattedAPN}`;
+                gisLink = `https://sdgnys.maps.arcgis.com/apps/webappviewer/index.html?id=da3c6800168b4deca14dcdc7e8dcb580&find=${swis}-${formattedAPN}`;
             } else {
                 formattedAPN = 'Formato de APN inválido';
                 searchLink = '';
+                gisLink = '';
             }
 
             document.getElementById('formattedAPN').innerText = formattedAPN;
@@ -107,11 +114,19 @@
         }
 
         function goToSearch() {
-            window.open('https://columbia.sdgnys.com/search.aspx', '_blank');
+            if (searchLink) {
+                window.open(searchLink, '_blank');
+            } else {
+                alert('Por favor, ingrese un APN válido para generar el enlace de búsqueda.');
+            }
         }
 
         function goToGIS() {
-            window.open('https://cc-ny.maps.arcgis.com/apps/webappviewer/index.html?id=73ddd97e6ace4698a1b85b24606636cd/', '_blank');
+            if (gisLink) {
+                window.open(gisLink, '_blank');
+            } else {
+                alert('Por favor, ingrese un APN válido para generar el enlace de búsqueda.');
+            }
         }
     </script>
 </head>
@@ -119,7 +134,7 @@
     <h1>Format Apn for various NY counties</h1>
     <p>When you click on go to pr the formatted apn copies itself to the clipboard.</p>
     <div class="container">
-        <input type="text" id="apn" placeholder="Ingrese APN de 13, 14, 15 o 16 dígitos" oninput="formatAPN()">
+        <input type="text" id="apn" placeholder="Ingrese APN de 12, 13, 14, 15 o 16 dígitos" oninput="formatAPN()">
         <p id="formattedAPN"></p>
         <button onclick="goToSearch()">Go to PR</button>
         <button onclick="goToGIS()">Ir al GIS</button>
