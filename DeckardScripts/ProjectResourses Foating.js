@@ -44,7 +44,7 @@
     const contenedor = document.createElement('div');
     contenedor.style.width = '100%';
     contenedor.style.backgroundColor = '#fff';
-    contenedor.style.marginTop = '0px';
+    contenedor.style.marginTop = '10px';
     document.body.appendChild(contenedor);
 
     const barraTitulo = document.createElement('div');
@@ -60,7 +60,6 @@
     const contenedorDatos = document.createElement('div');
     contenedorDatos.style.padding = '0px';
     contenedorDatos.style.overflowY = 'auto';
-    contenedorDatos.style.height = '200px';
     contenedor.appendChild(contenedorDatos);
 
     async function cargarDatos() {
@@ -125,6 +124,9 @@
             });
 
             contenedorDatos.appendChild(table);
+
+            // Ajusta la altura del contenedor de datos según el contenido
+            contenedorDatos.style.height = `${contenedorDatos.scrollHeight}px`;
         } catch (error) {
             console.error('Error al cargar los datos:', error);
         }
@@ -132,6 +134,3 @@
 
     cargarDatos();
 })();
-
-
-
