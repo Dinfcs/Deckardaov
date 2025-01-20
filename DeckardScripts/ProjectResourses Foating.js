@@ -43,8 +43,8 @@
 
     const ventana = document.createElement('div');
     ventana.style.position = 'fixed';
-    ventana.style.bottom = '20px';
-    ventana.style.right = '20px';
+    ventana.style.bottom = '48px';
+    ventana.style.left = '0px';
     ventana.style.width = '600px';
     ventana.style.height = '40px';
     ventana.style.backgroundColor = '#fff';
