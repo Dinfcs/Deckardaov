@@ -26,7 +26,10 @@
       "Media": [
         {
           "type": "Image",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/DeckardTech/_layouts/15/doc2.aspx?sourcedoc=%7B64FBCE56-BDE7-4665-B60F-776CCB30148C%7D&file=Work_allocation_Address_Mapping.xlsx&action=default&mobileredirect=true&cid=ade1cebe-87ab-473b-b5fb-6e0ef099ddf2"
+          "url": {
+            "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/DeckardTech/_layouts/15/doc2.aspx?sourcedoc=%7B64FBCE56-BDE7-4665-B60F-776CCB30148C%7D&file=Work_allocation_Address_Mapping.xlsx&action=default&mobileredirect=true&cid=ade1cebe-87ab-473b-b5fb-6e0ef099ddf2",
+            "type": "Video"
+          }
         }
       ]
     }
