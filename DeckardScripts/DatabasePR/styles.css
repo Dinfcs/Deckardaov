@@ -6,8 +6,8 @@ body {
 }
 
 .container {
-  width: 50%;
-  max-width: 800px; /* Ajustado para una mayor vista en pantallas grandes */
+  width: 90%;
+  max-width: 600px; /* Ajustado para una mejor vista en pantallas grandes */
   margin: 20px auto;
   background-color: #fff;
   padding: 20px;
