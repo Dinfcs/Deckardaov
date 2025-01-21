@@ -1,15 +1,15 @@
 {
   "tabla": [
     {
-      "Project": "CA - City of Santa Clara",
+      "Project": "CA - Sonoma County",
       "Public Records & GIS": [
         {
           "type": "PR",
-          "url": "https://www.sccassessor.org/index.php/online-services/property-search/real-property"
+          "url": "https://www.deltacomputersystems.com/al/al20/plinkquerya.html"
         },
         {
           "type": "GIS",
-          "url": "https://geoess.sccgov.org/discovergis/sccmap"
+          "url": "https://isv.kcsgis.com/al.colbert_revenue/"
         }
       ],
       "License List": [
@@ -18,44 +18,11 @@
           "url": "https://geoess.sccgov.org/discovergis/sccmap"
         }
       ],
-      "Important Info": "Please work with filters: Unresolved + yet_to_review + rental  = self_contained.\n\nTo use GIS optimally, activate the following: Land Management - Property and Planning. Select the following options:\n\nLand Divisions: Divides the parcels.\nParcel Cadastre: Shows the APNs.\nValuation Cadastre: Shows the Land Use and Property Address.\n\nThere are no public records, as privacy laws in the country protect property data.",
+      "Important Info": "Probando envio a git.ssssss",
       "Media": [
         {
           "type": "Image",
           "url": "https://thumbs.dreamstime.com/z/imagine-colorful-light-bulb-art-vibrant-light-bulb-imagine-text-surrounded-colorful-paint-splashes-inspiring-creativity-338995704.jpg?ct=jpeg"
-        },
-        {
-          "type": "Video",
-          "url": "https://path_to_your_video_on_github/video1.mp4"
-        }
-      ]
-    },
-    {
-      "Project": "CA - Sonoma County",
-      "Public Records & GIS": [
-        {
-          "type": "PR1",
-          "url": "https://common1.mptsweb.com/mbap/SONOMA/asr"
-        },
-        {
-          "type": "PR2",
-          "url": "https://parcelsearch.permitsonoma.org/PermitSearch"
-        },
-        {
-          "type": "GIS",
-          "url": "https://www.arcgis.com/apps/webappviewer/index.html?id=790a6977918e47559a06ae0b65c14cbc"
-        }
-      ],
-      "License List": [],
-      "Important Info": "The license finder only works with licenses starting with THR.",
-      "Media": [
-        {
-          "type": "Image",
-          "url": "https://thumbs.dreamstime.com/z/imagine-colorful-light-bulb-art-vibrant-light-bulb-imagine-text-surrounded-colorful-paint-splashes-inspiring-creativity-338995704.jpg?ct=jpeg"
-        },
-        {
-          "type": "Video",
-          "url": "https://path_to_your_video_on_github/video2.mp4"
         }
       ]
     }
