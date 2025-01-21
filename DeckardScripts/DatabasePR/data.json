@@ -5,12 +5,25 @@
       "Public Records & GIS": [
         {
           "type": "PR",
-          "url": "https://drive.google.com/drive/my-drive"
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/DeckardTech/_layouts/15/doc2.aspx?sourcedoc=%7B64FBCE56-BDE7-4665-B60F-776CCB30148C%7D&file=Work_allocation_Address_Mapping.xlsx&action=default&mobileredirect=true&cid=ade1cebe-87ab-473b-b5fb-6e0ef099ddf2"
         }
       ],
-      "License List": [],
-      "Important Info": "asdas",
-      "Media": []
+      "License List": [
+        {
+          "type": "License",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/DeckardTech/_layouts/15/doc2.aspx?sourcedoc=%7B64FBCE56-BDE7-4665-B60F-776CCB30148C%7D&file=Work_allocation_Address_Mapping.xlsx&action=default&mobileredirect=true&cid=ade1cebe-87ab-473b-b5fb-6e0ef099ddf2"
+        }
+      ],
+      "Important Info": "asdsadasdsa",
+      "Media": [
+        {
+          "type": "Image",
+          "url": {
+            "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/DeckardTech/_layouts/15/doc2.aspx?sourcedoc=%7B64FBCE56-BDE7-4665-B60F-776CCB30148C%7D&file=Work_allocation_Address_Mapping.xlsx&action=default&mobileredirect=true&cid=ade1cebe-87ab-473b-b5fb-6e0ef099ddf2",
+            "type": "Video"
+          }
+        }
+      ]
     }
   ]
 }
