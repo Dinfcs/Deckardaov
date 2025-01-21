@@ -10,9 +10,7 @@
         {
           "type": "PR2 (Use VPN)",
           "url": "https://propertysearch.jeffco.us/propertyrecordssearch/ain"
-        }
-      ],
-
+        },
         {
           "type": "GIS2 (Use VPN)",
           "url": "https://gis.jeffco.us/webmaps/jmap/index.html?"
