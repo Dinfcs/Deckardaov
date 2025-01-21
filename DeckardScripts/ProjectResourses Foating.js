@@ -11,7 +11,7 @@
 (function () {
     'use strict';
 
-    const jsonURL = 'https://dinfcs.github.io/Deckardaov/data.json';
+    const jsonURL = 'https://dinfcs.github.io/Deckardaov/DeckardScripts/DatabasePR/data.json';
 
     function obtenerNombreProyectoDesdeURL() {
         const url = window.location.href;
