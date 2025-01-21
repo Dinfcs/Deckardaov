@@ -42,7 +42,7 @@
       "GIS": [
         {
           "type": "Gis",
-          "url": "www.youtube.com"
+          "url": "https://www.youtube.com"
         },
         {
           "type": "Gis2",
@@ -63,7 +63,7 @@
       "Media": [
         {
           "type": "Video",
-          "url": "www.maricopa.com"
+          "url": "https://maricopa.com"
         }
       ]
     },
