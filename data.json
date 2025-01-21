@@ -21,10 +21,10 @@
           "type": "License List",
           "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EaHqQE_4z9FGuArl_yroCmYB8EAHxWzZg09nEjz7wruT_w?e=ByRnar"
         }
-      ,
+      ],
       "Important Info": "N/a",
       "Media": []
-    ],
+    },
     {
       "Project": "CA - City of Santa Clara",
       "Public Records & GIS": [
@@ -35,16 +35,6 @@
         {
           "type": "PR2",
           "url": "https://www.sccassessor.org/index.php/online-services/property-search/real-property"
-        }
-      ],
-      "GIS": [
-        {
-          "type": "Gis",
-          "url": "https://www.youtube.com"
-        },
-        {
-          "type": "Gis2",
-          "url": "https://gis.jeffco.us/webmaps/jmap/index.html?"
         }
       ],
       "License List": [
@@ -75,16 +65,6 @@
         {
           "type": "PR2",
           "url": "https://www.denvergov.org/Maps/map/property"
-        }
-      ],
-      "GIS": [
-        {
-          "type": "Gis",
-          "url": "https://www.sccassessor.org/index.php/online-services/property-search/real-property"
-        },
-        {
-          "type": "GIS2 (Use VPN)",
-          "url": "https://gis.jeffco.us/webmaps/jmap/index.html?"
         }
       ],
       "License List": [
