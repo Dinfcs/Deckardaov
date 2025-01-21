@@ -51,6 +51,40 @@
           "url": "https://empresas.blogthinkbig.com/wp-content/uploads/2019/11/Imagen3-245003649.jpg?w=800"
         }
       ]
+    },
+    {
+      "Project": "CA - Sonoma Countys",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://drive.google.com/drive/my-drive"
+        },
+        {
+          "type": "PR",
+          "url": "https://drive.google.com/drive/my-drive"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License",
+          "url": "https://drive.google.com/drive/my-drive"
+        },
+        {
+          "type": "License",
+          "url": "https://drive.google.com/drive/my-drive"
+        }
+      ],
+      "Important Info": "asd",
+      "Media": [
+        {
+          "type": "Image",
+          "url": "https://drive.google.com/drive/my-drive"
+        },
+        {
+          "type": "Image",
+          "url": "https://drive.google.com/drive/my-drive"
+        }
+      ]
     }
   ]
 }
