@@ -22,7 +22,7 @@
         { "type": "PR2", "url": "https://parcelsearch.permitsonoma.org/PermitSearch" },
         { "type": "GIS", "url": "https://www.arcgis.com/apps/webappviewer/index.html?id=790a6977918e47559a06ae0b65c14cbc" }
       ],
-      "License List": [],
+      "License List": [{ "type": "License", "url": "https://geoess.sccgov.org/discovergis/sccmap" }],
       "Important Info": "The license finder only works with licenses starting with THR.",
       "Media": [
         { "type": "Image", "url": "https://thumbs.dreamstime.com/z/imagine-colorful-light-bulb-art-vibrant-light-bulb-imagine-text-surrounded-colorful-paint-splashes-inspiring-creativity-338995704.jpg?ct=jpeg" },
