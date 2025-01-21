@@ -1,28 +1,28 @@
 {
   "tabla": [
     {
-      "Project": "CO - City Of Lakewood",
+      "Project": "CO - City of Lakewood",
       "Public Records & GIS": [
         {
           "type": "PR",
-          "url": "https://www.deltacomputersystems.com/al/al20/plinkquerya.html"
+          "url": "https://propertysearch.jeffco.us/propertyrecordssearch/ain"
         },
         {
           "type": "GIS",
-          "url": "https://isv.kcsgis.com/al.colbert_revenue/"
+          "url": "https://gis.jeffco.us/webmaps/jmap/index.html?"
         }
       ],
       "License List": [
         {
           "type": "License",
-          "url": "https://geoess.sccgov.org/discovergis/sccmap"
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EaHqQE_4z9FGuArl_yroCmYB8EAHxWzZg09nEjz7wruT_w?e=ByRnar"
         }
       ],
-      "Important Info": "PRueba \n\nSalto de linea sigue la prueba para visualizar los datos en cborg",
+      "Important Info": "-The video is specified for the City of Nevada, but it involves the PR and GIS of Nevada County, and it applies to the project.\n\nClick on continue, fill in the street number and street name, and do not enter street name suffixes (Avenue, Lane, etc).\n\nNote: You can use the \\d{5} regex to filter out everything that has a license.\n\nCO - Town of Mount Crested Butte\n\nPR\n\nGIS\n\nLicense\n\nNot required to do AO for the City Name.\nExample: \nCity name in All Cyborg data: CRESTED BUTTE\nPublic Records City Name: MT CRESTED BUTTE\nIt is not required to do AO just to add MT\n\nThe Grand Lodge (6 Emmons Rd), Elevation Hotel (500 Gothic Rd), and Nordic Inn (16 Treasury) do not require an STR license. These are categorized as hotels, not STRs. Please assign the correct APN to each unit.\n\nThere are some listings with permit number \"306512\", please link these listings to the APN \"317726143004\" and set the structure as main.\n\nThis rental platform www.prproperty.com allows you to find exclusive properties in the Town of Crested Butte.\n\nBusiness license repository \nBusiness Address 1: (Main)\nBusiness Address 2: (Unit number)\n\nRegex code for licenses: \\d{6}",
       "Media": [
         {
           "type": "Image",
-          "url": "https://thumbs.dreamstime.com/z/imagine-colorful-light-bulb-art-vibrant-light-bulb-imagine-text-surrounded-colorful-paint-splashes-inspiring-creativity-338995704.jpg?ct=jpeg"
+          "url": "N/a"
         }
       ]
     }
