@@ -36,6 +36,10 @@
         {
           "type": "PR",
           "url": "https://drive.google.com/drive/my-drive2"
+        },
+        {
+          "type": "https://drive.google.com/drive/my-drive233",
+          "url": "PR3"
         }
       ],
       "License List": [
