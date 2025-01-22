@@ -4,27 +4,41 @@
       "Project": "CA - Sonoma County",
       "Public Records & GIS": [
         {
-          "type": "PR",
-          "url": "https://script.google.com/a/macros/deckard.com/s/1"
+          "type": "PR1",
+          "url": "https://script.google.com/a/macros/d11"
         },
         {
-          "type": "GIS",
-          "url": "https://script.google.com/a/macros/deckard.c2"
+          "type": "PR2",
+          "url": "https://script.google.com/a/macros/d22"
+        },
+        {
+          "type": "PR3",
+          "url": "https://script.google.com/a33"
+        },
+        {
+          "type": "PR4",
+          "url": "https://script.google.com/a/macros43"
         }
       ],
       "License List": [
         {
-          "type": "License",
-          "name": "Nombre no especificado",
-          "url": "https://script.google.com/a/macros/deckard.c2"
+          "type": "License|",
+          "url": "https://script.google.com/a/macros55"
+        },
+        {
+          "type": "License2",
+          "url": "https://script.google.com/a/macros/de66"
         }
       ],
       "Important Info": "Este es un texto informativo relevante para el proyecto. Puede incluir detalles, notas o cualquier otra información importante.",
       "Media": [
         {
-          "type": "Image",
-          "name": "Nombre no especificado",
-          "url": "https://script.google.com/a/macros/deckard.c2"
+          "type": "Image1",
+          "url": "https://script.google.com/a/macros/deckar77"
+        },
+        {
+          "type": "Video",
+          "url": "https://script.google.com/a/macros/deck88"
         }
       ]
     },
@@ -38,10 +52,6 @@
         {
           "type": "PR",
           "url": "https://drive.google.com/drive/my-drive2"
-        },
-        {
-          "type": "https://drive.google.com/drive/my-drive233",
-          "url": "PR3"
         }
       ],
       "License List": [
@@ -55,75 +65,6 @@
         {
           "type": "Image",
           "url": "https://drive.google.com/drive/my-drive4"
-        }
-      ]
-    },
-    {
-      "Project": "CA - City of Santa Clara",
-      "Public Records & GIS": [
-        {
-          "type": "https://script.google.com/a1",
-          "name": "Nombre no especificado",
-          "url": "PRueba1"
-        },
-        {
-          "type": "https://script.google.com/a1",
-          "name": "Nombre no especificado",
-          "url": "PRueba12"
-        }
-      ],
-      "License List": [
-        {
-          "name": "Nombre no especificado",
-          "url": "https://script.google.com/a3"
-        },
-        {
-          "name": "Nombre no especificado",
-          "url": "https://script.google.com/a4"
-        }
-      ],
-      "Important Info": "probando \nsalto de linea",
-      "Media": [
-        {
-          "name": "Nombre no especificado",
-          "url": "https://script.google.com/a5"
-        },
-        {
-          "name": "Nombre no especificado",
-          "url": "https://script.google.com/a6"
-        }
-      ]
-    },
-    {
-      "Project": "Luis",
-      "Public Records & GIS": [
-        {
-          "type": "PR",
-          "url": "https://script.google.com/a/macros/deckard.com/s/AKfycbwnwihgcu_azPhumj8m5WJlyp9vY0CRxpSA69LpKnAi/dev"
-        },
-        {
-          "type": "GIs",
-          "url": "https://script.google.com/a/macros/deckard.com/s/AKfycbwnwihgcu_azPhumj8m5WJlyp9vY0CRxpSA69LpKnAi/dev"
-        }
-      ],
-      "License List": [
-        {
-          "type": "lic1",
-          "name": "Nombre no especificado",
-          "url": "https://script.google.com/a/macros/deckard.com/s/AKfycbwnwihgcu_azPhumj8m5WJlyp9vY0CRxpSA69LpKnAi/dev"
-        },
-        {
-          "type": "lic2",
-          "name": "Nombre no especificado",
-          "url": "https://script.google.com/a/macros/deckard.com/s/AKfycbwnwihgcu_azPhumj8m5WJlyp9vY0CRxpSA69LpKnAi/dev"
-        }
-      ],
-      "Important Info": "hola\noa",
-      "Media": [
-        {
-          "type": "ima",
-          "name": "Nombre no especificado",
-          "url": "https://script.google.com/a/macros/deckard.com/s/AKfycbwnwihgcu_azPhumj8m5WJlyp9vY0CRxpSA69LpKnAi/dev"
         }
       ]
     }
