@@ -72,33 +72,33 @@
       "Project": "CO - City of Lakewood",
       "Public Records & GIS": [
         {
-          "type": "PR1s",
-          "url": "https://script.google2s"
+          "type": "PR1",
+          "url": "https://script.google2"
         },
         {
-          "type": "GIS1s",
-          "url": "https://script.google.com/a/macros/deckard.com/s/AKfyc2s"
+          "type": "GIS1",
+          "url": "https://script.google.com/a/macros/deckard.com/s/AKfyc2"
         }
       ],
       "License List": [
         {
-          "type": "License12s",
-          "url": "https://script.google.com/a/macrosss"
+          "type": "License12",
+          "url": "https://script.google.com/a/macro"
         },
         {
-          "type": "License2s",
-          "url": "https://script.google.coss"
+          "type": "License2",
+          "url": "https://script.google.co"
         }
       ],
-      "Important Info": "ción importante: Este es un texto informativo relevante para el proyecto. Puede incluir detalles, notas o cualquier otrasss",
+      "Important Info": "ción importante: Este es un texto informativo relevante para el proyecto. Puede incluir detalles, notas o cualquier otras",
       "Media": [
         {
-          "type": "Image1s",
-          "url": "https://script.google.com/a/macross"
+          "type": "Image1",
+          "url": "https://script.google.com/a/macro"
         },
         {
-          "type": "Image2s",
-          "url": "https://script.google.com/a/macros/decs"
+          "type": "Image2",
+          "url": "https://script.google.com/a/macros/dec"
         }
       ]
     }
