@@ -3,7 +3,7 @@
 // @namespace    http://tampermonkey.net/
 // @version      1.15
 // @description  Mostrar el nombre del proyecto detectado en la URL y la tabla completa de datos en la parte inferior de la página.
-// @author       Tu Nombre
+// @author       Luis Escalante
 // @match        https://cyborg.deckard.com/listing/*/STR*
 // @grant        none
 // ==/UserScript==
@@ -49,7 +49,7 @@
 
     const nombreProyecto = obtenerNombreProyectoDesdeURL();
     if (!nombreProyecto) {
-        console.error('No se pudo detectar el nombre del proyecto desde la URL.');
+        console.error('Project name could not be detected from URL.');
         return;
     }
 
@@ -60,7 +60,7 @@
     document.body.appendChild(contenedor);
 
     const barraTitulo = document.createElement('div');
-    barraTitulo.style.backgroundColor = '#ecebea';
+    barraTitulo.style.backgroundColor = '#C9D82B';
     barraTitulo.style.color = '#000';
     barraTitulo.style.padding = '0px';
     barraTitulo.style.display = 'flex';
@@ -78,7 +78,7 @@
         try {
             const response = await fetch(jsonURL);
             if (!response.ok) {
-                throw new Error(`Error al cargar el archivo JSON: ${response.statusText}`);
+                throw new Error(`Error reading database: ${response.statusText}`);
             }
 
             const data = await response.json();
@@ -88,27 +88,29 @@
             );
 
             if (!proyectoFiltrado) {
-                contenedorDatos.textContent = 'No se encontraron datos para el proyecto detectado.';
+                contenedorDatos.textContent = 'No data found for the detected project.';
                 return;
             }
 
             const table = document.createElement('table');
             table.style.width = '100%';
             table.style.borderCollapse = 'collapse';
-            table.style.marginTop = '5px';
+            table.style.marginTop = '0px';
             table.style.backgroundColor = '#f9f9f9';
             table.style.boxShadow = '0 2px 5px rgba(0, 0, 0, 0.1)';
 
             const headers = ['Project', 'Public Records & GIS', 'License List', 'Important Info', 'Media'];
+            const headerWidths = ['5%', '5%', '5%', '80%', '5%']; // Ajustar los tamaños según lo especificado
 
             const thead = table.createTHead();
             const headerRow = thead.insertRow();
-            headers.forEach(header => {
+            headers.forEach((header, index) => {
                 const th = document.createElement('th');
                 th.textContent = header;
-                th.style.backgroundColor = '#093140';
+                th.style.width = headerWidths[index];
+                th.style.backgroundColor = '#23A9D8';
                 th.style.color = '#fff';
-                th.style.padding = '10px';
+                th.style.padding = '5px';
                 th.style.textAlign = 'left';
                 headerRow.appendChild(th);
             });
@@ -119,9 +121,19 @@
                 const cell = row.insertCell();
                 cell.style.padding = '10px';
                 cell.style.borderBottom = '1px solid #ddd';
+                cell.style.verticalAlign = 'top'; // Alinear el contenido en la parte superior
                 if (Array.isArray(proyectoFiltrado[header])) {
                     proyectoFiltrado[header].forEach(link => {
-                        if (link.url && link.type) {
+                        if (link.url && (link.type === 'Image' || /\.(jpg|jpeg|png|gif)$/.test(link.url))) { // Verificar si el enlace es de imagen
+                            const img = document.createElement('img');
+                            img.src = link.url;
+                            img.alt = 'Image';
+                            img.style.width = '60px'; // Ajustar tamaño de la miniatura
+                            img.style.height = 'auto'; // Mantener proporción
+                            img.style.cursor = 'pointer'; // Cambiar cursor al pasar sobre la imagen
+                            img.onclick = () => window.open(link.url, '_blank'); // Abrir la imagen en una nueva pestaña al hacer clic
+                            cell.appendChild(img);
+                        } else {
                             const a = document.createElement('a');
                             a.href = link.url;
                             a.textContent = link.type;
@@ -131,7 +143,13 @@
                         }
                     });
                 } else {
-                    cell.textContent = proyectoFiltrado[header] || '';
+                    // Procesar saltos de línea para "Important Info"
+                    if (header === 'Important Info' && proyectoFiltrado[header]) {
+                        const textoConSaltosDeLinea = proyectoFiltrado[header].replace(/\n/g, '<br>');
+                        cell.innerHTML = textoConSaltosDeLinea;
+                    } else {
+                        cell.textContent = proyectoFiltrado[header] || '';
+                    }
                 }
             });
 
@@ -140,7 +158,7 @@
             // Ajusta la altura del contenedor de datos según el contenido
             contenedorDatos.style.height = `${contenedorDatos.scrollHeight}px`;
         } catch (error) {
-            console.error('Error al cargar los datos:', error);
+            console.error('Error loading data:', error);
         }
     }
 
