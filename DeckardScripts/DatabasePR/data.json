@@ -14,14 +14,40 @@
       ],
       "License List": [
         {
-          "type": "License",
-          "url": "N/A"
+          "type": "Sin datos",
+          "url": "Sin datos"
         }
       ],
-      "Important Info": "N/A",
+      "Important Info": "N/a",
       "Media": [
         {
-          "type": "Image",
+          "type": "Sin datos",
+          "url": "Sin datos"
+        }
+      ]
+    },
+    {
+      "Project": "CA - Sonoma County",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://common1.mptsweb.com/mbap/SONOMA/asr"
+        },
+        {
+          "type": "GIS",
+          "url": "https://www.arcgis.com/apps/webappviewer/index.html?id=790a6977918e47559a06ae0b65c14cbc"
+        }
+      ],
+      "License List": [
+        {
+          "type": "PR2 and License Search",
+          "url": "https://parcelsearch.permitsonoma.org/PermitSearch"
+        }
+      ],
+      "Important Info": "The license finder only works with licenses starting with THR",
+      "Media": [
+        {
+          "type": "N/A",
           "url": "N/A"
         }
       ]
