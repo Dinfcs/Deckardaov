@@ -64,7 +64,7 @@
     document.body.appendChild(contenedor);
 
     const barraTitulo = document.createElement('div');
-    barraTitulo.style.backgroundColor = '#1E90FF';
+    barraTitulo.style.backgroundColor = '#093140';
     barraTitulo.style.color = '#fff';
     barraTitulo.style.padding = '1px';
     barraTitulo.style.fontSize = '16px';
