@@ -41,32 +41,6 @@
           "url": "https://script.google.com/a/macros/deckard.com/s/AKfycbwnwihgcu_azPhumj8m5WJlyp9vY0CRxpSA69LpKnAi/dev"
         }
       ]
-    },
-    {
-      "Project": "AL - City of Tuscumbia",
-      "Public Records & GIS": [
-        {
-          "type": "GIS",
-          "url": "https://script.gugisuno"
-        },
-        {
-          "type": "GIS",
-          "url": "https://script.gugisdos"
-        }
-      ],
-      "License List": [
-        {
-          "type": "License",
-          "url": "https://script.google.com/a/macros/deckard.com/s/AKfycbwnwihgcu_azPhumj8m5WJlyp9vY0CRxpSA69LpKnAi/dev"
-        }
-      ],
-      "Important Info": "asdasd",
-      "Media": [
-        {
-          "type": "Image",
-          "url": "https://script.google.com/a/macros/deckard.com/s/AKfycbwnwihgcu_azPhumj8m5WJlyp9vY0CRxpSA69LpKnAi/dev"
-        }
-      ]
     }
   ]
 }
