@@ -48,7 +48,9 @@
             fetch(scriptUrl)
                 .then(response => response.text())
                 .then(scriptContent => {
-                    eval(scriptContent); // Ejecuta el script cargado
+                    const scriptElement = document.createElement('script');
+                    scriptElement.textContent = scriptContent;
+                    document.head.appendChild(scriptElement);
                 })
                 .catch(error => console.error('Error al cargar el script:', error));
         }
