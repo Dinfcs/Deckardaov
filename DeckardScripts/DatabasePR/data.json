@@ -209,6 +209,40 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "SC - Charleston County",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://sc-charleston.publicaccessnow.com/RealPropertyRecordSearch.aspx"
+        },
+        {
+          "type": "GIS",
+          "url": "https://gisccweb.charlestoncounty.org/public_search/"
+        },
+        {
+          "type": "PR Colleton county",
+          "url": "https://qpublic.schneidercorp.com/Application.aspx?AppID=1046&LayerID=23500&PageTypeID=2&PageID=9798"
+        },
+        {
+          "type": "GIS Colleton county",
+          "url": "https://colletoncounty.maps.arcgis.com/apps/webappviewer/index.html?id=dcd2d7443dc9448ea910b9788a2c6b05"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "When a duplex has a unit number in the address: override the address based on the listed unit and also include the unit in the unit box. \n\nCondo Spinnaker Beachhouses Rentals does not need any AO at the moment, some units use “Seabrook Island Rd“ and others “Beach Club Villas“, leave it just as cyborg brings it.",
+      "Media": [
+        {
+          "type": "Media",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
