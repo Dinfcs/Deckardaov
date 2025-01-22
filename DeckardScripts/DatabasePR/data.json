@@ -8,37 +8,37 @@
           "url": "https://script.google.com/a/macros/d11"
         },
         {
-          "type": "GIS",
-          "url": "https://script.google.com/a/macros/d22"
+          "type": "PR2",
+          "url": "https://script.google.com/a/macros/d21"
         },
         {
           "type": "PR3",
-          "url": "https://script.google.com/a33"
+          "url": "https://script.google.com/a31"
         },
         {
           "type": "PR4",
-          "url": "https://script.google.com/a/macros43"
+          "url": "https://script.google.com/a/macros41"
         }
       ],
       "License List": [
         {
           "type": "License1",
-          "url": "https://script.google.com/a/macros55"
+          "url": "https://script.google.com/a/macros51"
         },
         {
           "type": "License2",
-          "url": "https://script.google.com/a/macros/de66"
+          "url": "https://script.google.com/a/macros/de61"
         }
       ],
       "Important Info": "Este es un texto informativo relevante para el proyecto. Puede incluir detalles, notas o cualquier otra información importante.",
       "Media": [
         {
-          "type": "Image1",
-          "url": "https://script.google.com/a/macros/deckar77"
+          "type": "Image3",
+          "url": "https://script.google.com/a/macros/deckar71"
         },
         {
-          "type": "Video",
-          "url": "https://script.google.com/a/macros/deck88"
+          "type": "Image4",
+          "url": "https://script.google.com/a/macros/deck8|1"
         }
       ]
     },
@@ -65,40 +65,6 @@
         {
           "type": "Image",
           "url": "https://drive.google.com/drive/my-drive4"
-        }
-      ]
-    },
-    {
-      "Project": "CO - City of Lakewood",
-      "Public Records & GIS": [
-        {
-          "type": "PR1",
-          "url": "https://script.google2"
-        },
-        {
-          "type": "GIS1",
-          "url": "https://script.google.com/a/macros/deckard.com/s/AKfyc2"
-        }
-      ],
-      "License List": [
-        {
-          "type": "License12",
-          "url": "https://script.google.com/a/macro"
-        },
-        {
-          "type": "License2",
-          "url": "https://script.google.co"
-        }
-      ],
-      "Important Info": "ción importante: Este es un texto informativo relevante para el proyecto. Puede incluir detalles, notas o cualquier otras",
-      "Media": [
-        {
-          "type": "Image1",
-          "url": "https://script.google.com/a/macro"
-        },
-        {
-          "type": "Image2",
-          "url": "https://script.google.com/a/macros/dec"
         }
       ]
     }
