@@ -32,6 +32,14 @@
         {
             urlPattern: /^https:\/\/www\.michaelsvacationrentals\.com\//,
             scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/MichaelVacationRentalsAddress.js'
+        },
+        {
+            urlPattern: /^https:\/\/www\.bing\.com\/maps/,
+            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/Buscador.js'
+        },
+        {
+            urlPattern: /^https:\/\/www\.google\.com\/maps/,
+            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/Buscador.js'
         }
     ];
 
