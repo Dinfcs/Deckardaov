@@ -5,9 +5,6 @@
 // @description  Define and load auxiliary scripts according to the URL
 // @author       Luis Escalante
 // @match        *://*/*
-// @match        https://www.bing.com/maps*
-// @match        https://www.google.com/maps*
-// @match        https://cyborg.deckard.com/listing/*
 // @grant        none
 // ==/UserScript==
 
