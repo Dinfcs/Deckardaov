@@ -4,7 +4,7 @@
 // @version      1.4
 // @description  Abre las direcciones de los hipervínculos de Google en Google Maps
 // @author       Luis Escalante
-// @match        https://cyborg.deckard.com/listing/*
+// @match        https://cyborg.deckard.com/listing/*/STR*
 // @grant        none
 // ==/UserScript==
 
