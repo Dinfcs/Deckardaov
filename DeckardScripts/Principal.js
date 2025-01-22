@@ -27,7 +27,7 @@
         },
         {
             urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/.*\/STR.*$/,
-            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/ProjectResourses%20Foating.js'
+            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/NearbyParcels.js'
         },
         {
             urlPattern: /^https:\/\/www\.michaelsvacationrentals\.com\//,
@@ -43,7 +43,7 @@
         },
         {
             urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/.*\/STR.*$/,
-            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/NearbyParcels.js'
+            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/ProjectResourses%20Foating.js'
         }
     ];
 
