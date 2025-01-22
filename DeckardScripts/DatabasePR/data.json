@@ -3,22 +3,10 @@
     {
       "Project": "CA - Sonoma County",
       "Public Records & GIS": [
-        {
-          "type": "PR",
-          "url": "https://script.google.com/a/macros/d1"
-        },
-        {
-          "type": "PR",
-          "url": "https://script.google.com/a/macros/d2"
-        },
-        {
-          "type": "PR",
-          "url": "https://script.google.com/a3"
-        },
-        {
-          "type": "PR",
-          "url": "https://script.google.com/a/macros4"
-        }
+        {},
+        {},
+        {},
+        {}
       ],
       "License List": [
         {
