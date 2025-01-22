@@ -1,70 +1,28 @@
 {
   "tabla": [
     {
-      "Project": "CA - Sonoma County",
+      "Project": "CA - City of Stanton",
       "Public Records & GIS": [
         {
-          "type": "asd",
-          "url": "https://script.google.com/a/macros/d11"
+          "type": "PR (PQ)",
+          "url": "https://script.google.com/a/macros/deckard.com/s/AKfycbziAFj6j4YU0oDpCIVc0EQfcYjx5RG-RtXZPLbA43eAaA91SpQ2ZDf7rJFVESnBCVk9/exec"
         },
         {
-          "type": "PR2",
-          "url": "https://script.google.com/a/macros/d21"
-        },
-        {
-          "type": "PR3",
-          "url": "https://script.google.com/a31"
-        },
-        {
-          "type": "PR4",
-          "url": "https://script.google.com/a/macros41"
-        }
-      ],
-      "License List": [
-        {
-          "type": "License1",
-          "url": "https://script.google.com/a/macros51"
-        },
-        {
-          "type": "License2",
-          "url": "https://script.google.com/a/macros/de61"
-        }
-      ],
-      "Important Info": "Este es un texto informativo relevante para el proyecto. Puede incluir detalles, notas o cualquier otra información importante.",
-      "Media": [
-        {
-          "type": "Image3",
-          "url": "https://script.google.com/a/macros/deckar71"
-        },
-        {
-          "type": "Image4",
-          "url": "https://script.google.com/a/macros/deck8|1"
-        }
-      ]
-    },
-    {
-      "Project": "CA - Sonoma Countys",
-      "Public Records & GIS": [
-        {
-          "type": "PR",
-          "url": "https://drive.google.com/drive/my-drive1"
-        },
-        {
-          "type": "PR",
-          "url": "https://drive.google.com/drive/my-drive2"
+          "type": "GIS ( Use VPN)",
+          "url": "https://www.stantonca.gov/community/moving_to_stanton/learn_about_your_neighborhood_.php"
         }
       ],
       "License List": [
         {
           "type": "License",
-          "url": "https://drive.google.com/drive/my-drive3"
+          "url": "N/A"
         }
       ],
-      "Important Info": "gtas",
+      "Important Info": "N/A",
       "Media": [
         {
           "type": "Image",
-          "url": "https://drive.google.com/drive/my-drive4"
+          "url": "N/A"
         }
       ]
     }
