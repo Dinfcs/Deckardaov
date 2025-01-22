@@ -1,10 +1,12 @@
 // ==UserScript==
 // @name         Principal Script 
 // @namespace    http://tampermonkey.net/
-// @version      2.1
+// @version      3
 // @description  Define and load auxiliary scripts according to the URL
 // @author       Luis Escalante
 // @match        *://*/*
+// @match        https://www.bing.com/maps*
+// @match        https://www.google.com/maps*
 // @grant        none
 // ==/UserScript==
 
@@ -26,6 +28,10 @@
             scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/Misterb&b%20Address.js'
         },
         {
+            urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/.*\/STR.*$/,
+            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/ProjectResourses%20Foating.js'
+        },
+        {
             urlPattern: /^https:\/\/www\.michaelsvacationrentals\.com\//,
             scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/MichaelVacationRentalsAddress.js'
         },
@@ -36,32 +42,17 @@
         {
             urlPattern: /^https:\/\/www\.google\.com\/maps/,
             scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/Buscador.js'
-        },
-        {
-            urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/.*\/STR.*$/,
-            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/ProjectResourses%20Foating.js'
         }
     ];
 
     scripts.forEach(({urlPattern, scriptUrl}) => {
         if (window.location.href.match(urlPattern)) {
-            if (Array.isArray(scriptUrl)) {
-                scriptUrl.forEach(url => {
-                    fetch(url)
-                        .then(response => response.text())
-                        .then(scriptContent => {
-                            eval(scriptContent); // Ejecuta el script cargado
-                        })
-                        .catch(error => console.error('Error al cargar el script:', error));
-                });
-            } else {
-                fetch(scriptUrl)
-                    .then(response => response.text())
-                    .then(scriptContent => {
-                        eval(scriptContent); // Ejecuta el script cargado
-                    })
-                    .catch(error => console.error('Error al cargar el script:', error));
-            }
+            fetch(scriptUrl)
+                .then(response => response.text())
+                .then(scriptContent => {
+                    eval(scriptContent); // Ejecuta el script cargado
+                })
+                .catch(error => console.error('Error al cargar el script:', error));
         }
     });
 })();
