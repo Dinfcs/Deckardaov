@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ProjectResources Enhanced Visualization
 // @namespace    http://tampermonkey.net/
-// @version      1.16
+// @version      2
 // @description  Mostrar el nombre del proyecto detectado en la URL y una tabla de datos mejorada en la parte inferior de la página.
 // @author
 // @match        https://cyborg.deckard.com/listing/*/STR*
