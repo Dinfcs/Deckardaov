@@ -61,21 +61,21 @@
       "Public Records & GIS": [
         {
           "type": "https://script.google.com/a1",
-          "url": "PR1s"
+          "url": "PRueba1"
         },
         {
           "type": "https://script.google.com/a1",
-          "url": "GIS2s"
+          "url": "PRueba12"
         }
       ],
       "License List": [
         {
-          "type": "License",
+          "type": "License1",
           "name": "Nombre no especificado",
           "url": "https://script.google.com/a3"
         },
         {
-          "type": "License",
+          "type": "License2",
           "name": "Nombre no especificado",
           "url": "https://script.google.com/a4"
         }
@@ -83,7 +83,7 @@
       "Important Info": "probando \nsalto de linea",
       "Media": [
         {
-          "type": "Image2",
+          "type": "Video",
           "name": "Nombre no especificado",
           "url": "https://script.google.com/a5"
         },
