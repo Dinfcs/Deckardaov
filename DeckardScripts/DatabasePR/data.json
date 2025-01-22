@@ -15,6 +15,7 @@
       "License List": [
         {
           "type": "License",
+          "name": "Nombre no especificado",
           "url": "https://script.google.com/a/macros/deckard.c2"
         }
       ],
@@ -22,6 +23,7 @@
       "Media": [
         {
           "type": "Image",
+          "name": "Nombre no especificado",
           "url": "https://script.google.com/a/macros/deckard.c2"
         }
       ]
