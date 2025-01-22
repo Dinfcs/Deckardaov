@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Principal Script 
 // @namespace    http://tampermonkey.net/
-// @version      3
+// @version      1.2
 // @description  Define and load auxiliary scripts according to the URL
 // @author       Luis Escalante
 // @match        *://*/*
@@ -48,23 +48,12 @@
 
     scripts.forEach(({urlPattern, scriptUrl}) => {
         if (window.location.href.match(urlPattern)) {
-            if (Array.isArray(scriptUrl)) {
-                scriptUrl.forEach(url => {
-                    fetch(url)
-                        .then(response => response.text())
-                        .then(scriptContent => {
-                            eval(scriptContent); // Ejecuta el script cargado
-                        })
-                        .catch(error => console.error('Error al cargar el script:', error));
-                });
-            } else {
-                fetch(scriptUrl)
-                    .then(response => response.text())
-                    .then(scriptContent => {
-                        eval(scriptContent); // Ejecuta el script cargado
-                    })
-                    .catch(error => console.error('Error al cargar el script:', error));
-            }
+            fetch(scriptUrl)
+                .then(response => response.text())
+                .then(scriptContent => {
+                    eval(scriptContent); // Ejecuta el script cargado
+                })
+                .catch(error => console.error('Error al cargar el script:', error));
         }
     });
 })();
