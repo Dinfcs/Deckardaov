@@ -1,10 +1,12 @@
 // ==UserScript==
 // @name         Principal Script 
 // @namespace    http://tampermonkey.net/
-// @version      1.2
+// @version      1.3
 // @description  Define and load auxiliary scripts according to the URL
 // @author       Luis Escalante
 // @match        *://*/*
+// @match        https://www.bing.com/maps*
+// @match        https://www.google.com/maps*
 // @grant        none
 // ==/UserScript==
 
@@ -32,6 +34,14 @@
         {
             urlPattern: /^https:\/\/www\.michaelsvacationrentals\.com\//,
             scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/MichaelVacationRentalsAddress.js'
+        },
+        {
+            urlPattern: /^https:\/\/www\.bing\.com\/maps/,
+            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/Buscador.js'
+        },
+        {
+            urlPattern: /^https:\/\/www\.google\.com\/maps/,
+            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/Buscador.js'
         }
     ];
 
