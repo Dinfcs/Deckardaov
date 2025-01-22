@@ -55,6 +55,40 @@
           "url": "https://drive.google.com/drive/my-drive4"
         }
       ]
+    },
+    {
+      "Project": "CA - City of Santa Clara",
+      "Public Records & GIS": [
+        {
+          "type": "https://script.google.com/a1",
+          "url": "PR1"
+        },
+        {
+          "type": "https://script.google.com/a1",
+          "url": "GIS2"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License",
+          "url": "https://script.google.com/a3"
+        },
+        {
+          "type": "License",
+          "url": "https://script.google.com/a4"
+        }
+      ],
+      "Important Info": "probando \nsalto de linea",
+      "Media": [
+        {
+          "type": "Image",
+          "url": "https://script.google.com/a5"
+        },
+        {
+          "type": "Image",
+          "url": "https://script.google.com/a6"
+        }
+      ]
     }
   ]
 }
