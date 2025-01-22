@@ -4,12 +4,17 @@
 // @version      1.4
 // @description  Abre las direcciones de los hipervínculos de Google en Google Maps
 // @author       Luis Escalante
-// @match        *://*/*
+// @match        *://cyborg.deckard.com/listing/*
 // @grant        none
 // ==/UserScript==
 
 (function() {
     'use strict';
+
+    // Verifica si la URL actual contiene 'STR'
+    if (!window.location.href.includes('/STR')) {
+        return; // Sale si la URL no es relevante
+    }
 
     function createButton() {
         // Crea el botón "Abrir Nparcels"
@@ -47,9 +52,6 @@
             });
         });
     }
-
-
-    
 
     window.addEventListener('load', createButton);
 })();
