@@ -5,6 +5,7 @@
 // @description  Mostrar el nombre del proyecto detectado en la URL y una tabla de datos mejorada en la parte inferior de la página.
 // @author
 // @match        https://cyborg.deckard.com/listing/*/STR*
+// @require      https://dinfcs.github.io/Deckardaov/DeckardScripts/NearbyParcels.js
 // @grant        none
 // ==/UserScript==
 
