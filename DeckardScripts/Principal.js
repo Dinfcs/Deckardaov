@@ -1,12 +1,13 @@
 // ==UserScript==
 // @name         Principal Script 
 // @namespace    http://tampermonkey.net/
-// @version      1.3
+// @version      1.4
 // @description  Define and load auxiliary scripts according to the URL
 // @author       Luis Escalante
 // @match        *://*/*
 // @match        https://www.bing.com/maps*
 // @match        https://www.google.com/maps*
+// @match        https://cyborg.deckard.com/listing/*
 // @grant        none
 // ==/UserScript==
 
@@ -42,6 +43,10 @@
         {
             urlPattern: /^https:\/\/www\.google\.com\/maps/,
             scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/Buscador.js'
+        },
+        {
+            urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/*/,
+            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/NearbyParcels.js'
         }
     ];
 
