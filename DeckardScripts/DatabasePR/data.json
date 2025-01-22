@@ -12,9 +12,19 @@
           "url": "https://www.stantonca.gov/community/moving_to_stanton/learn_about_your_neighborhood_.php"
         }
       ],
-      "License List": [],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
       "Important Info": "N/A",
-      "Media": []
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
