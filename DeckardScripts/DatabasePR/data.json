@@ -61,31 +61,35 @@
       "Public Records & GIS": [
         {
           "type": "https://script.google.com/a1",
-          "url": "PR1"
+          "url": "PR1s"
         },
         {
           "type": "https://script.google.com/a1",
-          "url": "GIS2"
+          "url": "GIS2s"
         }
       ],
       "License List": [
         {
           "type": "License",
+          "name": "Nombre no especificado",
           "url": "https://script.google.com/a3"
         },
         {
           "type": "License",
+          "name": "Nombre no especificado",
           "url": "https://script.google.com/a4"
         }
       ],
       "Important Info": "probando \nsalto de linea",
       "Media": [
         {
-          "type": "Image",
+          "type": "Image2",
+          "name": "Nombre no especificado",
           "url": "https://script.google.com/a5"
         },
         {
-          "type": "Image",
+          "type": "Image1",
+          "name": "Nombre no especificado",
           "url": "https://script.google.com/a6"
         }
       ]
