@@ -151,7 +151,7 @@
         },
         {
           "type": "GIS",
-          "url": "https://www.richlandmaps.com/apps/dataviewer/?lat=33.99754&lon=-81.02384&zoom=20&base=aerial&pane=hidden&pane=layers&expanded=26937%7C53759%7C52088%7C18518%7C38669%7C39665&layers=33844%7C24029"
+          "url": "https://www.richlandmaps.com/apps/dataviewer/?lat=33.99754&lon=-81.02384&zoom=20&base=aerial&pane=hidden&expanded=26937|53759|52088|18518|38669|39665&layers=33844|24029"
         }
       ],
       "License List": [
