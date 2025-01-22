@@ -27,7 +27,10 @@
         },
         {
             urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/.*\/STR.*$/,
-            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/ProjectResourses%20Foating.js'
+            scriptUrl: [
+                'https://dinfcs.github.io/Deckardaov/DeckardScripts/ProjectResourses%20Foating.js',
+                'https://dinfcs.github.io/Deckardaov/DeckardScripts/NearbyParcels.js'
+            ]
         },
         {
             urlPattern: /^https:\/\/www\.michaelsvacationrentals\.com\//,
@@ -45,12 +48,23 @@
 
     scripts.forEach(({urlPattern, scriptUrl}) => {
         if (window.location.href.match(urlPattern)) {
-            fetch(scriptUrl)
-                .then(response => response.text())
-                .then(scriptContent => {
-                    eval(scriptContent); // Ejecuta el script cargado
-                })
-                .catch(error => console.error('Error al cargar el script:', error));
+            if (Array.isArray(scriptUrl)) {
+                scriptUrl.forEach(url => {
+                    fetch(url)
+                        .then(response => response.text())
+                        .then(scriptContent => {
+                            eval(scriptContent); // Ejecuta el script cargado
+                        })
+                        .catch(error => console.error('Error al cargar el script:', error));
+                });
+            } else {
+                fetch(scriptUrl)
+                    .then(response => response.text())
+                    .then(scriptContent => {
+                        eval(scriptContent); // Ejecuta el script cargado
+                    })
+                    .catch(error => console.error('Error al cargar el script:', error));
+            }
         }
     });
 })();
