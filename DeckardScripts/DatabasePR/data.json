@@ -77,6 +77,40 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "NY - City of Hudson",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://columbia.sdgnys.com/search.aspx"
+        },
+        {
+          "type": "GIS",
+          "url": "https://cc-ny.maps.arcgis.com/apps/webappviewer/index.html?id=73ddd97e6ace4698a1b85b24606636cd"
+        },
+        {
+          "type": "APN TOOL",
+          "url": "https://dinfcs.github.io/Deckardaov/PrTools/FormatApnNYCounties.html"
+        },
+        {
+          "type": "Property type codes ",
+          "url": "https://www.tax.ny.gov/research/property/assess/manuals/prclas.htm"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "Search APN in the Tax ID field.\n",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
