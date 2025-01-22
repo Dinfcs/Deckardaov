@@ -43,10 +43,14 @@
       ]
     },
     {
-      "Project": "CA - Sonoma Countys",
+      "Project": "AL - City of Tuscumbia",
       "Public Records & GIS": [
         {
           "type": "GIS",
+          "url": "https://script.google.com/a/macros/deckard.com/s/AKfycbwnwihgcu_azPhumj8m5WJlyp9vY0CRxpSA69LpKnAi/dev"
+        },
+        {
+          "type": "PR",
           "url": "https://script.google.com/a/macros/deckard.com/s/AKfycbwnwihgcu_azPhumj8m5WJlyp9vY0CRxpSA69LpKnAi/dev"
         }
       ],
@@ -56,7 +60,7 @@
           "url": "https://script.google.com/a/macros/deckard.com/s/AKfycbwnwihgcu_azPhumj8m5WJlyp9vY0CRxpSA69LpKnAi/dev"
         }
       ],
-      "Important Info": "asdasdasdasdasd",
+      "Important Info": "asdasd",
       "Media": [
         {
           "type": "Image",
