@@ -51,6 +51,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "OH - Washington County",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://mn-washington.manatron.com/Tabs/TaxSearch.aspx"
+        },
+        {
+          "type": "GIS",
+          "url": "https://wcmn.maps.arcgis.com/apps/webappviewer/index.html?id=5c2fe2b598e744afbc07cc0550162984"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
