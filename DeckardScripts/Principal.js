@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Principal Script 
 // @namespace    http://tampermonkey.net/
-// @version      1.2
+// @version      1.9
 // @description  Define and load auxiliary scripts according to the URL
 // @author       Luis Escalante
 // @match        *://*/*
@@ -32,6 +32,10 @@
         {
             urlPattern: /^https:\/\/www\.michaelsvacationrentals\.com\//,
             scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/MichaelVacationRentalsAddress.js'
+        },
+        {
+            urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing.*$/,
+            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/NearbyParcels.js'
         }
     ];
 
