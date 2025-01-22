@@ -40,8 +40,7 @@
         {
             urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/.*\/STR.*$/,
             scriptUrl: [
-                'https://dinfcs.github.io/Deckardaov/DeckardScripts/NearbyParcels.js',
-                'https://dinfcs.github.io/Deckardaov/DeckardScripts/ProjectResourses%20Foating.js'
+                'https://dinfcs.github.io/Deckardaov/DeckardScripts/NearbyParcels.js'
             ]
         }
     ];
