@@ -42,7 +42,7 @@
             scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/Buscador.js'
         },
         {
-            urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/*/,
+            urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/.*\/STR.*$/,
             scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/NearbyParcels.js'
         }
     ];
