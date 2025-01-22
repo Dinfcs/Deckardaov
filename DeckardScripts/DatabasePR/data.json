@@ -141,6 +141,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "SC - City Of Columbia",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://property.spatialest.com/sc/richland#/"
+        },
+        {
+          "type": "GIS",
+          "url": "https://www.richlandmaps.com/apps/dataviewer/?lat=33.99754&lon=-81.02384&zoom=20&base=aerial&pane=hidden&pane=layers&expanded=26937%7C53759%7C52088%7C18518%7C38669%7C39665&layers=33844%7C24029"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B95DD14DB-1905-4467-AFC6-A71BE699F0EE%7D&file=CoC_Current_STR_2023_10_23_w_TMS_PermitNum.%20Copy%20-%20EM.xlsx&action=default&mobileredirect=true"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "Image",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
