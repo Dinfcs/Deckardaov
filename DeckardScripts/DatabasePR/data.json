@@ -97,21 +97,21 @@
       "Public Records & GIS": [
         {
           "type": "PR",
-          "name": "Nombre no especificado",
           "url": "https://script.google.com/a/macros/deckard.com/s/AKfycbwnwihgcu_azPhumj8m5WJlyp9vY0CRxpSA69LpKnAi/dev"
         },
         {
           "type": "GIs",
-          "name": "Nombre no especificado",
           "url": "https://script.google.com/a/macros/deckard.com/s/AKfycbwnwihgcu_azPhumj8m5WJlyp9vY0CRxpSA69LpKnAi/dev"
         }
       ],
       "License List": [
         {
+          "type": "lic1",
           "name": "Nombre no especificado",
           "url": "https://script.google.com/a/macros/deckard.com/s/AKfycbwnwihgcu_azPhumj8m5WJlyp9vY0CRxpSA69LpKnAi/dev"
         },
         {
+          "type": "lic2",
           "name": "Nombre no especificado",
           "url": "https://script.google.com/a/macros/deckard.com/s/AKfycbwnwihgcu_azPhumj8m5WJlyp9vY0CRxpSA69LpKnAi/dev"
         }
@@ -119,6 +119,7 @@
       "Important Info": "hola\noa",
       "Media": [
         {
+          "type": "ima",
           "name": "Nombre no especificado",
           "url": "https://script.google.com/a/macros/deckard.com/s/AKfycbwnwihgcu_azPhumj8m5WJlyp9vY0CRxpSA69LpKnAi/dev"
         }
