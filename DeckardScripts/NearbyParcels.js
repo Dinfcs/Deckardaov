@@ -48,8 +48,8 @@
         });
     }
 
-    // Ejecuta la creación del botón 5 segundos después de cargar la página
-    window.addEventListener('load', () => {
-        setTimeout(createButton, 2000);
-    });
+
+    
+
+    window.addEventListener('load', createButton);
 })();
