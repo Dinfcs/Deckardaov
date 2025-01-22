@@ -1,42 +1,30 @@
 {
-  "Project": "CA - Sonoma County",
-  "Public Records & GIS": [
+  "tabla": [
     {
-      "type": "PR1",
-      "url": "https://script.google.com/a/macros/deckard.com/s/AKfycbwnwihgcu_azPhumj8m5WJlyp9vY0CRxpSA69LpKnAi/dev"
-    },
-    {
-      "type": "PR2",
-      "url": "https://script.google.com/a/macros/deckard.com/s/AKfycbwnwihgcu_azPhumj8m5WJlyp9vY0CRxpSA69LpKnAi/dev"
-    },
-    {
-      "type": "GIS1",
-      "url": "https://script.google.com/a/macros/deckard.com/s/AKfycbwnwihgcu_azPhumj8m5WJlyp9vY0CRxpSA69LpKnAi/dev"
-    },
-    {
-      "type": "GIS2",
-      "url": "https://script.google.com/a/macros/deckard.com/s/AKfycbwnwihgcu_azPhumj8m5WJlyp9vY0CRxpSA69LpKnAi/dev"
-    }
-  ],
-  "License List": [
-    {
-      "type": "License1",
-      "url": "https://script.google.com/a/macros/deckard.com/s/AKfycbwnwihgcu_azPhumj8m5WJlyp9vY0CRxpSA69LpKnAi/dev"
-    },
-    {
-      "type": "License2",
-      "url": "https://script.google.com/a/macros/deckard.com/s/AKfycbwnwihgcu_azPhumj8m5WJlyp9vY0CRxpSA69LpKnAi/dev"
-    }
-  ],
-  "Important Info": "Este es un texto informativo relevante para el proyecto. Puede incluir detalles, notas o cualquier otra información importante.",
-  "Media": [
-    {
-      "type": "Image",
-      "url": "https://script.google.com/a/macros/deckard.com/s/AKfycbwnwihgcu_azPhumj8m5WJlyp9vY0CRxpSA69LpKnAi/dev"
-    },
-    {
-      "type": "Video",
-      "url": "https://script.google.com/a/macros/deckard.com/s/AKfycbwnwihgcu_azPhumj8m5WJlyp9vY0CRxpSA69LpKnAi/dev"
+      "Project": "CA - Sonoma County",
+      "Media": [
+        {
+          "type": "IMA",
+          "url": "https://drive.google.com/file/d/1ONKo5aV_arfWd9C5iFjVdyNWKYkJ7RQ5/view?usp=share_link"
+        }
+      ],
+      "Important Info": "he city is in two counties: Jefferson County and Shelby County. Be very careful with the boundaries because the limit is very complex and share the two counties.",
+      "License List": [
+        {
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B4E91752E-DCF5-47F5-A734-35AEB9619782%7D&file=LicenseUploadTemplate%20SL.xlsx&action=default&mobileredirect=true",
+          "type": "LIC"
+        }
+      ],
+      "Public Records & GIS": [
+        {
+          "type": "PR1",
+          "url": "https://morgan.capturecama.com/CA_ParcelSearch.aspx#down"
+        },
+        {
+          "url": "https://isv.kcsgis.com/al.morgan_revenue/",
+          "type": "GIS"
+        }
+      ]
     }
   ]
 }
