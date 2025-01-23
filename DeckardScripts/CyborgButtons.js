@@ -43,7 +43,7 @@
             { text: 'PR', url: 'https://dinfcs.github.io/Deckardaov/Project%20Resources.pdf', color: '#6c757d'},
             { text: 'Accounts', url: 'https://script.google.com/a/macros/deckard.com/s/AKfycbziAFj6j4YU0oDpCIVc0EQfcYjx5RG-RtXZPLbA43eAaA91SpQ2ZDf7rJFVESnBCVk9/exec',color: '#75a2c9', openInNewTab: true },
             { text: 'Regrid', url: 'https://app.regrid.com/', color: '#28a745', openInNewTab: true },
-            { text: 'Regrid', url: 'https://script.google.com/a/macros/deckard.com/s/AKfycbx3yRYrh8o8giGHQsNHgfshZJgdDq6-Uxi1_H4wd03v6pWgvly2hXjoiQxcGGL8DRt2CQ/exec', color: '#28a745', openInNewTab: true }
+            { text: 'PrEdit', url: 'https://script.google.com/a/macros/deckard.com/s/AKfycbx3yRYrh8o8giGHQsNHgfshZJgdDq6-Uxi1_H4wd03v6pWgvly2hXjoiQxcGGL8DRt2CQ/exec', color: '#75a2c9', openInNewTab: true }
 
         ];
         buttons.forEach(({ text, url, color, openInNewTab, openMultiple }) => {
