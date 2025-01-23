@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Script Principal
 // @namespace    http://tampermonkey.net/
-// @version      1.5
+// @version      1.7
 // @description  Define y carga scripts auxiliares según la URL
 // @author       Tu Nombre
 // @match        *://*/*
@@ -30,7 +30,7 @@
         },
         {
             urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/.*\/STR.*$/,
-            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/ProjectResourses%20Floating.js'
+            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/ProjectResourses%20Foating.js'
         },
         {
             urlPattern: /^https:\/\/www\.google\.com\/maps/,
@@ -45,12 +45,20 @@
     for (const {urlPattern, scriptUrl} of scripts) {
         if (window.location.href.match(urlPattern)) {
             try {
-                const response = await fetch(scriptUrl);
-                const scriptContent = await response.text();
-                eval(scriptContent);
-                console.log(`Script loaded: ${scriptUrl}`);
+                console.log(`Loading script: ${scriptUrl}`);
+                const script = document.createElement('script');
+                script.src = scriptUrl;
+                script.onload = () => {
+                    console.log(`Script loaded and executed: ${scriptUrl}`);
+                };
+                script.onerror = () => {
+                    console.error(`Error loading script ${scriptUrl}`);
+                    alert(`Error loading script ${scriptUrl}. Check console for details.`);
+                };
+                document.head.appendChild(script);
             } catch (error) {
                 console.error(`Error loading script ${scriptUrl}:`, error);
+                alert(`Error loading script ${scriptUrl}. Check console for details.`);
             }
         }
     }
