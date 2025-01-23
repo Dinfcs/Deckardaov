@@ -503,7 +503,7 @@
       ]
     },
     {
-      "Project": "CA - City of Stanton1",
+      "Project": "CA - City of Stanton2",
       "Public Records & GIS": [
         {
           "type": "PR (PQ)",
@@ -525,88 +525,6 @@
         {
           "type": "N/A",
           "url": "N/A"
-        }
-      ]
-    },
-    {
-      "Project": "TX - City of Rowlett2",
-      "Public Records & GIS": [
-        {
-          "type": "PR Dallas",
-          "url": "https://www.dallascad.org/SearchOwner.aspx"
-        },
-        {
-          "type": "PR Rockwall",
-          "url": "https://www.rockwallcad.com/property-search"
-        },
-        {
-          "type": "GIS Rockwall",
-          "url": "https://www.rockwallcad.com/maps"
-        }
-      ],
-      "License List": [
-        {
-          "type": "License",
-          "url": "N/A"
-        }
-      ],
-      "Important Info": "This city is in Dallas and Rockwall counties.",
-      "Media": [
-        {
-          "type": "Image",
-          "url": "N/A"
-        }
-      ]
-    },
-    {
-      "Project": "TX - City of Rowl",
-      "Public Records & GIS": [
-        {
-          "type": "PR Dallas",
-          "url": "https://www.dallascad.org/SearchOwner.aspx"
-        },
-        {
-          "type": "PR Rockwall",
-          "url": "https://www.rockwallcad.com/property-search"
-        },
-        {
-          "type": "GIS Rockwall",
-          "url": "https://www.rockwallcad.com/maps"
-        }
-      ],
-      "License List": [
-        {
-          "type": "License",
-          "url": "N/A"
-        }
-      ],
-      "Important Info": "This city is in Dallas and Rockwall counties.",
-      "Media": [
-        {
-          "type": "Image",
-          "url": "N/A"
-        }
-      ]
-    },
-    {
-      "Project": "xxcsdfsdfddf",
-      "Public Records & GIS": [
-        {
-          "type": "PR",
-          "url": "https://script.google.com/a/deckard.com/macros/s/AKfycbwnwihgcu_azPhumj8m5WJlyp9vY0CRxpSA69LpKnAi/dev"
-        }
-      ],
-      "License List": [
-        {
-          "type": "License",
-          "url": "https://script.google.com/a/deckard.com/macros/s/AKfycbwnwihgcu_azPhumj8m5WJlyp9vY0CRxpSA69LpKnAi/dev"
-        }
-      ],
-      "Important Info": "PR",
-      "Media": [
-        {
-          "type": "Image",
-          "url": "https://script.google.com/a/deckard.com/macros/s/AKfycbwnwihgcu_azPhumj8m5WJlyp9vY0CRxpSA69LpKnAi/dev"
         }
       ]
     }
