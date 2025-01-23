@@ -18,7 +18,7 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "N/A",
+      "Important Info": "N/Asadasd",
       "Media": [
         {
           "type": "N/A",
@@ -112,82 +112,6 @@
       "Media": [
         {
           "type": "Image",
-          "url": "N/A"
-        }
-      ]
-    },
-    {
-      "Project": "SC - City Of Charleston",
-      "Public Records & GIS": [
-        {
-          "type": "PR Charleston County ",
-          "url": "https://sc-charleston.publicaccessnow.com/RealPropertyRecordSearch.aspx"
-        },
-        {
-          "type": "GIS Charleston County",
-          "url": "https://gisccweb.charlestoncounty.org/public_search/"
-        },
-        {
-          "type": "Land Use Classification",
-          "url": "https://lowcountryrapidtransit.com/docs/Appendix_B_Quantitative_Summary_of_Land_Use.pdf"
-        },
-        {
-          "type": "PR Berkeley County",
-          "url": "https://berkeleycountysc.gov/propcards/prop_card_search.php?searchmethod=address&streetnum=201+&streetname=sawyer&rpsearch=rpsearch&searchoption=contains&ownername="
-        },
-        {
-          "type": "PR Colleton County",
-          "url": "https://qpublic.schneidercorp.com/Application.aspx?AppID=1046&LayerID=23500&PageTypeID=2&PageID=9798&KeyValue=354-08-00-357.000"
-        }
-      ],
-      "License List": [
-        {
-          "type": "License",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EYktf4CP4JFPuF4ugc_j0PMBjOxMwr1mNogNuPAa851QIA?e=GjTDKy"
-        },
-        {
-          "type": "License list web",
-          "url": "https://egcss.charleston-sc.gov/energov_prod/selfservice/#/search?m=1&fm=1&ps=10&pn=1&em=true&st=OP2019-00576"
-        }
-      ],
-      "Important Info": "When a duplex has a unit number in the address:Override the address based on the listed unit and also include the unit in the unit box.",
-      "Media": [
-        {
-          "type": "Image",
-          "url": "N/A"
-        }
-      ]
-    },
-    {
-      "Project": "SC - Charleston County",
-      "Public Records & GIS": [
-        {
-          "type": "PR",
-          "url": "https://sc-charleston.publicaccessnow.com/RealPropertyRecordSearch.aspx"
-        },
-        {
-          "type": "GIS",
-          "url": "https://gisccweb.charlestoncounty.org/public_search/"
-        },
-        {
-          "type": "PR Colleton county",
-          "url": "https://qpublic.schneidercorp.com/Application.aspx?AppID=1046&LayerID=23500&PageTypeID=2&PageID=9798"
-        },
-        {
-          "type": "GIS Colleton county",
-          "url": "https://colletoncounty.maps.arcgis.com/apps/webappviewer/index.html?id=dcd2d7443dc9448ea910b9788a2c6b05"
-        }
-      ],
-      "License List": [
-        {
-          "type": "License",
-          "url": "N/A"
-        }
-      ],
-      "Important Info": "When a duplex has a unit number in the address: override the address based on the listed unit and also include the unit in the unit box. \n\nCondo Spinnaker Beachhouses Rentals does not need any AO at the moment, some units use “Seabrook Island Rd“ and others “Beach Club Villas“, leave it just as cyborg brings it.",
-      "Media": [
-        {
-          "type": "Media",
           "url": "N/A"
         }
       ]
