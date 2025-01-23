@@ -30,9 +30,9 @@
         button.style.border = 'none';
         button.style.fontSize = '14px';
         button.style.cursor = 'pointer';
-        document.body.appendChild(button);
 
-        console.log('Botón "Abrir Nparcels" añadido al DOM');
+        document.body.appendChild(button);
+        console.log('Botón "Abrir Nparcels" añadido al DOM:', button);
 
         // Agrega el evento de click al botón
         button.addEventListener('click', () => {
