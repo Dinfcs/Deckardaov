@@ -1,32 +1,6 @@
 {
   "tabla": [
     {
-      "Project": "CA - Sonoma County",
-      "Public Records & GIS": [
-        {
-          "type": "PR",
-          "url": "https://common1.mptsweb.com/mbap/SONOMA/asr"
-        },
-        {
-          "type": "GIS",
-          "url": "https://www.arcgis.com/apps/webappviewer/index.html?id=790a6977918e47559a06ae0b65c14cbc"
-        }
-      ],
-      "License List": [
-        {
-          "type": "PR2 and License Search",
-          "url": "https://parcelsearch.permitsonoma.org/PermitSearch"
-        }
-      ],
-      "Important Info": "The license finder only works with licenses starting with THR PRueba para Carito",
-      "Media": [
-        {
-          "type": "N/A",
-          "url": "N/A"
-        }
-      ]
-    },
-    {
       "Project": "OH - Washington County",
       "Public Records & GIS": [
         {
@@ -214,32 +188,6 @@
       "Media": [
         {
           "type": "Media",
-          "url": "N/A"
-        }
-      ]
-    },
-    {
-      "Project": "CO - Pitkin County",
-      "Public Records & GIS": [
-        {
-          "type": "PR",
-          "url": "https://beacon.schneidercorp.com/Application.aspx?AppID=1071&LayerID=26013&PageTypeID=2&PageID=10531&KeyValue=R014483"
-        },
-        {
-          "type": "GIS ",
-          "url": "https://maps.pitkincounty.com/gvh/?viewer=portal"
-        }
-      ],
-      "License List": [
-        {
-          "type": "License",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/Efatbhz-zi5Ei0nmHgLqGE4BqMR1XKE7HqiGAy0sRUqSqg?e=KqkSoa"
-        }
-      ],
-      "Important Info": "Please check if the \"Property Type\" in the PR or the \"Account Type\" in Regrid is \"Fractional\", the property is a timeshare, select the APN with the most associated listings.",
-      "Media": [
-        {
-          "type": "N/A",
           "url": "N/A"
         }
       ]
