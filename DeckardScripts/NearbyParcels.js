@@ -18,7 +18,7 @@
 
         // Crea el botón "Abrir Nparcels"
         const button = document.createElement('button');
-        button.innerHTML = '<b>NerbyParcels</b>'; // Texto en negrita
+        button.innerHTML = '<b>NearbyParcels</b>'; // Texto en negrita
         button.style.position = 'fixed';
         button.style.top = '0px'; // Totalmente pegado a la parte superior
         button.style.left = '50%';
