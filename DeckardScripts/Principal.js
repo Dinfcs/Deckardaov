@@ -1,17 +1,16 @@
 // ==UserScript==
-// @name         Principal Script 
+// @name         Script Principal
 // @namespace    http://tampermonkey.net/
-// @version      1.9
-// @description  Define and load auxiliary scripts according to the URL
-// @author       Luis Escalante
+// @version      1.5
+// @description  Define y carga scripts auxiliares según la URL
+// @author       Tu Nombre
 // @match        *://*/*
 // @grant        none
 // ==/UserScript==
 
-(function() {
+(async function() {
     'use strict';
 
-    // Lista de scripts secundarios con las URLs correspondientes
     const scripts = [
         {
             urlPattern: /^https:\/\/cyborg\.deckard\.com\//,
@@ -27,32 +26,32 @@
         },
         {
             urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/.*\/STR.*$/,
-            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/ProjectResourses%20Foating.js'
+            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/NearbyParcels.js'
         },
         {
-            urlPattern: /^https:\/\/www\.michaelsvacationrentals\.com\//,
-            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/MichaelVacationRentalsAddress.js'
-        },
-        {
-            urlPattern: /^https:\/\/www\.bing\.com\/maps/,
-            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/Buscador.js'
+            urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/.*\/STR.*$/,
+            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/ProjectResourses%20Floating.js'
         },
         {
             urlPattern: /^https:\/\/www\.google\.com\/maps/,
             scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/Buscador.js'
+        },
+        {
+            urlPattern: /^https:\/\/www\.bing\.com\/maps/,
+            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/Buscador.js'
         }
     ];
 
-    scripts.forEach(({urlPattern, scriptUrl}) => {
+    for (const {urlPattern, scriptUrl} of scripts) {
         if (window.location.href.match(urlPattern)) {
-            fetch(scriptUrl)
-                .then(response => response.text())
-                .then(scriptContent => {
-                    const scriptElement = document.createElement('script');
-                    scriptElement.textContent = scriptContent;
-                    document.head.appendChild(scriptElement);
-                })
-                .catch(error => console.error('Error al cargar el script:', error));
+            try {
+                const response = await fetch(scriptUrl);
+                const scriptContent = await response.text();
+                eval(scriptContent);
+                console.log(`Script loaded: ${scriptUrl}`);
+            } catch (error) {
+                console.error(`Error loading script ${scriptUrl}:`, error);
+            }
         }
-    });
+    }
 })();
