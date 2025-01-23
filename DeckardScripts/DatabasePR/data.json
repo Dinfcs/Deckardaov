@@ -467,6 +467,36 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "TX - City of New Braunfels",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://esearch.comalad.org/"
+        },
+        {
+          "type": "GIS",
+          "url": "https://gis.bisclient.com/comalcad/"
+        },
+        {
+          "type": "GIS (Use VPN)",
+          "url": "https://newbraunfels.maps.arcgis.com/apps/webappviewer/index.html?id=65adb598a5be4171a5bbc1407a9bd30f"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "1.If you find the following condos:\n\n-371 W Lincoln St, New Braunfels, TX 78130\n-730 E Mather St, New Braunfels, TX 78130\nPlease review the APN for the units in the PR.\n\n2. Use the Property ID as the APN. ",
+      "Media": [
+        {
+          "type": "Image",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
