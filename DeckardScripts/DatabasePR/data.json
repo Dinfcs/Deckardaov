@@ -527,6 +527,36 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "TX - City of Rowlett2",
+      "Public Records & GIS": [
+        {
+          "type": "PR Dallas",
+          "url": "https://www.dallascad.org/SearchOwner.aspx"
+        },
+        {
+          "type": "PR Rockwall",
+          "url": "https://www.rockwallcad.com/property-search"
+        },
+        {
+          "type": "GIS Rockwall",
+          "url": "https://www.rockwallcad.com/maps"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "This city is in Dallas and Rockwall counties.",
+      "Media": [
+        {
+          "type": "Image",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
