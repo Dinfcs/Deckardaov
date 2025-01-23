@@ -497,6 +497,58 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "CA - Sonoma County2",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://common1.mptsweb.com/mbap/SONOMA/asr"
+        },
+        {
+          "type": "GIS",
+          "url": "https://www.arcgis.com/apps/webappviewer/index.html?id=790a6977918e47559a06ae0b65c14cbc"
+        }
+      ],
+      "License List": [
+        {
+          "type": "PR2 and License Search",
+          "url": "https://parcelsearch.permitsonoma.org/PermitSearch"
+        }
+      ],
+      "Important Info": "The license finder only works with licenses starting with THR.",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
+    },
+    {
+      "Project": "CA - Sonoma County2",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://common1.mptsweb.com/mbap/SONOMA/asr"
+        },
+        {
+          "type": "GIS",
+          "url": "https://www.arcgis.com/apps/webappviewer/index.html?id=790a6977918e47559a06ae0b65c14cbc"
+        }
+      ],
+      "License List": [
+        {
+          "type": "PR2 and License Search",
+          "url": "https://parcelsearch.permitsonoma.org/PermitSearch"
+        }
+      ],
+      "Important Info": "The license finder only works with licenses starting with THR.",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
