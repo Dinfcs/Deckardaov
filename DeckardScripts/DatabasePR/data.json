@@ -381,6 +381,36 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "OK - City Of Norman",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://property.spatialest.com/ok/cleveland/#/"
+        },
+        {
+          "type": "GIS",
+          "url": "https://property.spatialest.com/ok/cleveland#/map/search/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B11205EB7-CD74-40D0-AA85-CC0E77640A0C%7D&file=Norman%2C%20OK%20Granicus%20data%2012-5-23%20(1).xlsx&action=default&mobileredirect=true"
+        },
+        {
+          "type": "License 23-02-2024",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B1DCAE741-118A-430B-862A-67D3876D2914%7D&file=STRs-Active_and_Pending-022024%20(1)Copy%20EM.xlsx&action=default&mobileredirect=true"
+        }
+      ],
+      "Important Info": "Public records may include images of house fronts for each property.",
+      "Media": [
+        {
+          "type": "Image",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
