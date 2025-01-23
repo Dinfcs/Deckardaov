@@ -1,4 +1,30 @@
 /* Estilos generales */
+.notification {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #333;
+  color: #fff;
+  padding: 20px 40px;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  z-index: 1000;
+  opacity: 0.9;
+  text-align: center;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+.notification.success {
+  background-color: #4CAF50; /* Verde */
+}
+
+.notification.error {
+  background-color: #F44336; /* Rojo */
+}
+
 body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f9;
