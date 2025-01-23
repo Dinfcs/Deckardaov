@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         NearbyParcels
 // @namespace    http://tampermonkey.net/
-// @version      1.5
-// @description  Añade un botón en la parte superior de la página para abrir direcciones en Google Maps
+// @version      1.9
+// @description  Añade un botón fijo para abrir direcciones en Google Maps que solo aparece cuando el scroll está arriba
 // @author       Luis Escalante
 // @match        https://cyborg.deckard.com/listing/*
 // @grant        none
@@ -15,12 +15,12 @@
 
     function createButton() {
         console.log('Creando el botón "Abrir Nparcels"');
-        
+
         // Crea el botón "Abrir Nparcels"
         const button = document.createElement('button');
-        button.innerHTML = '<b>OPEN NP</b>'; // Texto en negrita
+        button.innerHTML = '<b>NerbyParcels</b>'; // Texto en negrita
         button.style.position = 'fixed';
-        button.style.top = '0px';
+        button.style.top = '0px'; // Totalmente pegado a la parte superior
         button.style.left = '50%';
         button.style.transform = 'translateX(-50%)';
         button.style.zIndex = 9999;
@@ -28,8 +28,12 @@
         button.style.backgroundColor = '#093140';
         button.style.color = 'white';
         button.style.border = 'none';
+        button.style.borderRadius = '5px';
         button.style.fontSize = '14px';
+        button.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
         button.style.cursor = 'pointer';
+        button.style.transition = 'opacity 0.3s ease'; // Transición suave para la visibilidad
+        button.style.opacity = '1'; // Totalmente visible al cargar
 
         document.body.appendChild(button);
         console.log('Botón "Abrir Nparcels" añadido al DOM:', button);
@@ -57,6 +61,19 @@
                     }
                 }
             });
+        });
+
+        // Agrega el evento de scroll para ocultar/mostrar el botón
+        window.addEventListener('scroll', () => {
+            const currentScrollTop = window.scrollY || document.documentElement.scrollTop;
+
+            if (currentScrollTop === 0) {
+                // Si el usuario está completamente arriba, muestra el botón
+                button.style.opacity = '1';
+            } else {
+                // Si el usuario se desplaza hacia abajo, oculta el botón
+                button.style.opacity = '0';
+            }
         });
     }
 
