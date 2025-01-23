@@ -243,6 +243,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "CO - Pitkin County",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://beacon.schneidercorp.com/Application.aspx?AppID=1071&LayerID=26013&PageTypeID=2&PageID=10531&KeyValue=R014483"
+        },
+        {
+          "type": "GIS ",
+          "url": "https://maps.pitkincounty.com/gvh/?viewer=portal"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/Efatbhz-zi5Ei0nmHgLqGE4BqMR1XKE7HqiGAy0sRUqSqg?e=KqkSoa"
+        }
+      ],
+      "Important Info": "Please check if the \"Property Type\" in the PR or the \"Account Type\" in Regrid is \"Fractional\", the property is a timeshare, select the APN with the most associated listings.",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
