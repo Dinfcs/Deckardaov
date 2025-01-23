@@ -297,15 +297,15 @@
       ]
     },
     {
-      "Project": "CA - City of Stanton2",
+      "Project": "MI - City of Saint Ignace2",
       "Public Records & GIS": [
         {
-          "type": "PR (PQ)",
-          "url": "https://script.google.com/a/macros/deckard.com/s/AKfycbziAFj6j4YU0oDpCIVc0EQfcYjx5RG-RtXZPLbA43eAaA91SpQ2ZDf7rJFVESnBCVk9/exec"
+          "type": "PR",
+          "url": "https://bsaonline.com/SiteSearch/SiteSearchDetails?SearchFocus=All+Records&SearchCategory=Address&SearchText=49+S+Marley+St&uid=798&PageIndex=1&ReferenceKey=CALDWELL+A&ReferenceType=1&SortBy=&SearchOrigin=0&RecordKeyDisplayString=CALDWELL+A&RecordKey=356&RecordKeyType=1"
         },
         {
-          "type": "GIS ( Use VPN)",
-          "url": "https://www.stantonca.gov/community/moving_to_stanton/learn_about_your_neighborhood_.php"
+          "type": "Rental Platform",
+          "url": "https://www.century21.com/real-estate/st-ignace-mi/LCMISTIGNACE/"
         }
       ],
       "License List": [
