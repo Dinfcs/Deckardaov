@@ -34,7 +34,7 @@
         // Botones en el orden especificado
 
              const buttons = [
-            { text: 'QA', url: 'https://www.appsheet.com/start/0e4a5be2-014b-4c32-a963-9cced65a14e5?platform=desktop#vss=H4sIAAAAAAAAA6WQwU7DMBBEfwXtOUWN26LKN2gBIQQIGnGg7sHEG7Bw7Ch2gCryv7MORXDgQrnZ43nj2e3hVePbKsjyBfi6_75d4hY49AKKbYMCuICFs6F1RkAm4FrWn-Lt8UFjpLXaPgmIEDfZV0RAD7z_cwL_d4cMtEIbdKWxTXEJppgdSs8JJOEHBjGDugvy0eDQPGE7_y_mDO6cCyRW0ociQSQtZZDE1g3pbMymozwf5bOCTXg-52x-yKaT2ZgdPZD1vHVdc0KjrWlbK9eG4Zx-NF1tiT_D8lmS8aZVaQRYoi_RqqHoJkYqW7my86juaVP7bchf2NP3Rlp15RTNV0njMX4AWUgV5w0CAAA=&view=QA%20planning&appName=QAProductivity-985429461-24-10-30', color: '#8e44ad', openMultiple: true },
+            { text: 'QA', url: 'https://www.appsheet.com/start/f9378e0d-cef0-48b9-bd15-618bac8a35a4?platform=desktop#vss=H4sIAAAAAAAAA6WOywrCMBBFf0XuOl-QnYgLEQUfuDEuYjOFYJuUJlVLyL879blWl3OHc-5NOFu6bKIuTpD79Lnm1EMiKWz7hhSkwsS72PpKQSgsdf0IV-PRmhrfRoWMfBAvQaQAmb7k5Z_9AtaQi7a01A6yAWXJE-T3gHHwhpAF6i7qY0X3zQzlzFnpiy6Q2fGYX0aEmZteG-3Mwht2lroKlG_kad0ragEAAA==&view=QA%20Report&appName=RandomQAReport-985429461-24-11-28', color: '#8e44ad', openMultiple: true },
             { text: 'FG', url: 'https://dinfcs.github.io/Deckardaov/Feedback%20Gerenator/', color: '#17a2b8' },
             { text: 'Parcel', url: 'https://dinfcs.github.io/Deckardaov/ParcelSearch/index.html', color: '#6c757d' },
             { text: 'AO', url: 'https://dinfcs.github.io/Deckardaov/', color: '#6c757d' },
@@ -42,7 +42,8 @@
             { text: 'Filter', url: 'https://dinfcs.github.io/Deckardaov/FilterGeneratorv2/index.html', color: '#6c757d' },
             { text: 'PR', url: 'https://dinfcs.github.io/Deckardaov/Project%20Resources.pdf', color: '#6c757d'},
             { text: 'Accounts', url: 'https://script.google.com/a/macros/deckard.com/s/AKfycbziAFj6j4YU0oDpCIVc0EQfcYjx5RG-RtXZPLbA43eAaA91SpQ2ZDf7rJFVESnBCVk9/exec',color: '#75a2c9', openInNewTab: true },
-            { text: 'Regrid', url: 'https://app.regrid.com/', color: '#28a745', openInNewTab: true }
+            { text: 'Regrid', url: 'https://app.regrid.com/', color: '#28a745', openInNewTab: true },
+            { text: 'Regrid', url: 'https://script.google.com/a/macros/deckard.com/s/AKfycbx3yRYrh8o8giGHQsNHgfshZJgdDq6-Uxi1_H4wd03v6pWgvly2hXjoiQxcGGL8DRt2CQ/exec', color: '#28a745', openInNewTab: true }
 
         ];
         buttons.forEach(({ text, url, color, openInNewTab, openMultiple }) => {
@@ -53,7 +54,7 @@
                     window.open(url, '_blank');
                 } else if (openMultiple) {
                     window.open(url, '_blank');
-                    window.open('https://www.appsheet.com/start/0e4a5be2-014b-4c32-a963-9cced65a14e5#appName=QAProductivity-985429461-24-10-30&group=%5B%5D&page=fastTable&sort=%5B%7B%22Column%22%3A%22Fecha%22%2C%22Order%22%3A%22Descending%22%7D%5D&table=Form+responses+1&view=QA+planning', '_blank');
+                    window.open('https://www.appsheet.com/start/0e4a5be2-014b-4c32-a963-9cced65a14e5?platform=desktop#vss=H4sIAAAAAAAAA6WQwU7DMBBEfwXt2UVJWqjwDSgghABBIw7UPZh4AxGJbdkOUEX-d9ahCA5cgJs9njee3QFeGnxdBlk9A18NX7cL3ACHQUC5sSiACzg2OjjTCmACrmT3Id4c7thWat3oRwER4pp9RgT0wIdfJ_B_d2DQKNShqRt0KS7BFLNF6TmBJHzDIDLo-iAfWhybJ2zr_8HM4NaYQGItfSgTRNJCBklsZ0kvsmI2yfNJsVdmOc_3eTbdzWbzg_k0vyfrmTO9PaLRVrStpXFhPKcf277TxJ9i9STJeO1UGgEW6CvUaiy6jpHK1qbqPao72tTfNuTP9cmblVpdGkXz1bL1GN8Beq_D3g0CAAA=&view=QA%20planning&appName=QAProductivity-985429461-24-10-30', '_blank');
                 } else {
                     toggleIframe(url, `${text.toLowerCase()}-iframe`, text === 'LB' ? 95 : 50);
                 }
