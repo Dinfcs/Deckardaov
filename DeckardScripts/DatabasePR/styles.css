@@ -1,170 +1,170 @@
-/* Estilos generales */
+/* General styles */
+
+ .notification {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #333;
+      color: #fff;
+      padding: 20px 40px;
+      border-radius: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      z-index: 1000;
+      opacity: 0.9;
+      text-align: center;
+      max-width: 80%;
+      word-wrap: break-word;
+    }
+
+    .notification.success {
+      background-color: #4CAF50; /* Verde */
+    }
+
+    .notification.error {
+      background-color: #F44336; /* Rojo */
+    }
+
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Roboto', Arial, sans-serif;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  background-color: #eef2f7;
+  color: #333;
 }
 
 h1 {
   text-align: center;
   margin: 20px 0;
-  font-size: 1.5em;
+  font-size: 28px;
+  color: #34495e;
 }
 
-/* Contenedor principal */
+/* Main container */
 .main-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 20px;
-}
-
-/* Contenedor del formulario */
-.form-container {
-  width: 100%;
-  max-width: 800px;
+  width: 90%;
+  max-width: 1200px;
+  margin: 20px auto;
   padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #f9f9f9;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-form {
-  display: flex;
-  flex-direction: column;
+/* Form container */
+.form-container {
+  width: 50%;
+  margin: 0 auto 40px;
+  padding: 25px;
+  background-color: #f9fbfd;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e0e6ed;
 }
 
 label {
+  display: block;
   margin-bottom: 8px;
-  font-weight: bold;
+  font-weight: 600;
+  color: #34495e;
 }
 
-input, textarea {
-  margin-bottom: 15px;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-input[type="text"] {
+input, textarea, button {
   width: 100%;
+  margin-bottom: 20px;
+  padding: 12px 15px;
+  border: 1px solid #d0d7de;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 16px;
+  color: #333;
+  background-color: #fefefe;
+  transition: all 0.3s ease-in-out;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
 }
 
 textarea {
-  width: 100%;
-  min-height: 100px;
+  height: 150px;
+  resize: vertical;
 }
 
 button {
-  padding: 6px 12px;
-  font-size: 0.9em;
   background-color: #007bff;
-  color: #fff;
+  color: white;
   border: none;
-  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
   cursor: pointer;
-  margin-top: 10px;
+  padding: 12px;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
 }
 
 button:hover {
   background-color: #0056b3;
 }
 
-/* Contenedores de registros */
-#public-records-container, #license-list-container, #media-container {
-  display: flex;
-  flex-direction: column;
-}
-
-.record-entry, .license-entry, .media-entry {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 10px;
-}
-
-.record-entry input, .license-entry input, .media-entry input {
-  margin-bottom: 5px;
-}
-
-button[type="button"] {
-  width: auto;
-  background-color: #e53e3e;
-}
-
-button[type="button"]:hover {
-  background-color: #c53030;
-}
-
-/* Estilos para los proyectos */
+/* Projects container */
 #projects-container {
-  margin-top: 40px;
-  width: 100%;
-  max-width: 800px;
+  margin-top: 30px;
 }
 
 .project {
   margin-bottom: 20px;
   padding: 20px;
-  background-color: #f1f1f1;
-  border-radius: 8px;
+  background-color: #f9fbfd;
+  border: 1px solid #e0e6ed;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease-in-out;
 }
 
-.project-buttons button {
-  padding: 6px 12px;
-  margin-right: 10px;
-  font-size: 0.9em;
+.project:hover {
+  transform: translateY(-5px);
 }
 
-.project-buttons button:hover {
-  background-color: #0056b3;
+.project h2 {
+  margin: 0 0 10px;
+  font-size: 22px;
+  color: #007bff;
 }
 
-/* Estilos para las notificaciones */
-.notification {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  padding: 10px 20px;
-  border-radius: 5px;
-  color: #fff;
-  font-weight: bold;
-  z-index: 9999;
+.project p {
+  margin: 6px 0;
+  font-size: 16px;
+  color: #555;
 }
 
-.notification.success {
+.project button {
+  margin-top: 10px;
   background-color: #28a745;
+  color: white;
+  padding: 10px 15px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
 }
 
-.notification.error {
-  background-color: #dc3545;
+.project button:hover {
+  background-color: #218838;
 }
 
-/* Asegurarse que los proyectos no tengan espacio innecesario */
-.project-details {
+/* Utility classes */
+.text-center {
+  text-align: center;
+}
+
+.mt-20 {
   margin-top: 20px;
 }
 
-.project-details div {
-  margin-bottom: 10px;
-}
-
-.project-details label {
-  font-weight: bold;
-}
-
-/* Responsive - Ajustes para pantallas pequeñas */
-@media screen and (max-width: 768px) {
-  .main-container {
-    margin: 10px;
-  }
-
-  .form-container {
-    width: 100%;
-    padding: 15px;
-  }
-
-  h1 {
-    font-size: 1.2em;
-  }
+.mb-20 {
+  margin-bottom: 20px;
 }
