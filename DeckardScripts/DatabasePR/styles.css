@@ -1,30 +1,30 @@
 /* General styles */
 
- .notification {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: #333;
-      color: #fff;
-      padding: 20px 40px;
-      border-radius: 10px;
-      font-size: 18px;
-      font-weight: bold;
-      z-index: 1000;
-      opacity: 0.9;
-      text-align: center;
-      max-width: 80%;
-      word-wrap: break-word;
-    }
+.notification {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #333;
+  color: #fff;
+  padding: 20px 40px;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  z-index: 1000;
+  opacity: 0.9;
+  text-align: center;
+  max-width: 80%;
+  word-wrap: break-word;
+}
 
-    .notification.success {
-      background-color: #4CAF50; /* Verde */
-    }
+.notification.success {
+  background-color: #4CAF50; /* Verde */
+}
 
-    .notification.error {
-      background-color: #F44336; /* Rojo */
-    }
+.notification.error {
+  background-color: #F44336; /* Rojo */
+}
 
 body {
   font-family: 'Roboto', Arial, sans-serif;
@@ -46,17 +46,15 @@ h1 {
   width: 90%;
   max-width: 1200px;
   margin: 20px auto;
-  padding: 20px;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex; /* Coloca los elementos en línea */
+  gap: 20px; /* Espacio entre los contenedores */
+  flex-wrap: wrap; /* Asegura que los contenedores se ajusten si no hay suficiente espacio */
 }
 
 /* Form container */
 .form-container {
-  width: 50%;
-  margin: 0 auto 40px;
-  padding: 25px;
+  width: 48%; /* Ocupa aproximadamente la mitad del contenedor */
+  padding: 20px;
   background-color: #f9fbfd;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -70,27 +68,30 @@ label {
   color: #34495e;
 }
 
-input, textarea, button {
+input,
+textarea,
+button {
   width: 100%;
-  margin-bottom: 20px;
-  padding: 12px 15px;
+  margin-bottom: 10px;
+  padding: 10px 12px; /* Ajuste más compacto */
   border: 1px solid #d0d7de;
   border-radius: 8px;
   box-sizing: border-box;
-  font-size: 16px;
+  font-size: 14px; /* Tamaño reducido */
   color: #333;
   background-color: #fefefe;
   transition: all 0.3s ease-in-out;
 }
 
-input:focus, textarea:focus {
+input:focus,
+textarea:focus {
   outline: none;
   border-color: #007bff;
   box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
 }
 
 textarea {
-  height: 150px;
+  height: 120px; /* Más compacto */
   resize: vertical;
 }
 
@@ -98,11 +99,11 @@ button {
   background-color: #007bff;
   color: white;
   border: none;
-  font-size: 16px;
+  font-size: 14px; /* Tamaño reducido */
   font-weight: bold;
   cursor: pointer;
-  padding: 12px;
-  border-radius: 8px;
+  padding: 8px 10px; /* Botones más pequeños */
+  border-radius: 6px;
   transition: all 0.3s ease-in-out;
 }
 
@@ -112,15 +113,19 @@ button:hover {
 
 /* Projects container */
 #projects-container {
-  margin-top: 30px;
+  width: 48%; /* Ocupa aproximadamente la mitad del contenedor */
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .project {
-  margin-bottom: 20px;
-  padding: 20px;
+  margin-bottom: 15px;
+  padding: 15px;
   background-color: #f9fbfd;
   border: 1px solid #e0e6ed;
-  border-radius: 12px;
+  border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   transition: transform 0.2s ease-in-out;
 }
@@ -131,13 +136,13 @@ button:hover {
 
 .project h2 {
   margin: 0 0 10px;
-  font-size: 22px;
+  font-size: 18px; /* Más pequeño */
   color: #007bff;
 }
 
 .project p {
   margin: 6px 0;
-  font-size: 16px;
+  font-size: 14px;
   color: #555;
 }
 
@@ -145,8 +150,8 @@ button:hover {
   margin-top: 10px;
   background-color: #28a745;
   color: white;
-  padding: 10px 15px;
-  font-size: 14px;
+  padding: 6px 10px; /* Botones más pequeños */
+  font-size: 12px; /* Tamaño reducido */
   border-radius: 6px;
   border: none;
   cursor: pointer;
