@@ -1,9 +1,9 @@
 // ==UserScript==
-// @name         Principal Script 
+// @name         Script Principal
 // @namespace    http://tampermonkey.net/
-// @version      1.2
-// @description  Define and load auxiliary scripts according to the URL
-// @author       Luis Escalante
+// @version      1.3
+// @description  Define y carga scripts auxiliares según la URL
+// @author       Tu Nombre
 // @match        *://*/*
 // @grant        none
 // ==/UserScript==
@@ -27,11 +27,11 @@
         },
         {
             urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/.*\/STR.*$/,
-            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/ProjectResourses%20Foating.js'
+            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/ProjectResourses%20Floating.js'
         },
         {
-            urlPattern: /^https:\/\/www\.michaelsvacationrentals\.com\//,
-            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/MichaelVacationRentalsAddress.js'
+            urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/.*\/STR.*$/,
+            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/NearbyParcels.js'
         }
     ];
 
