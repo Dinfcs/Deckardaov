@@ -127,6 +127,9 @@ button[type="button"]:hover {
 /* Estilos de los proyectos */
 #projects-container {
   margin-top: 40px;
+  display: flex;
+  flex-wrap: wrap; /* Permite que los proyectos se acomoden en varias filas */
+  gap: 20px; /* Espacio entre los proyectos */
 }
 
 .project {
@@ -135,6 +138,11 @@ button[type="button"]:hover {
   border-radius: 8px;
   margin-bottom: 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  width: 30%; /* Ancho de los proyectos, ajustable */
+  min-width: 250px; /* Evita que los proyectos se vuelvan demasiado pequeños */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .project h2 {
@@ -146,6 +154,27 @@ button[type="button"]:hover {
 .project p {
   margin-bottom: 5px;
   font-size: 16px;
+}
+
+.project .project-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.project .project-details div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.project .project-details div label {
+  font-weight: bold;
+  color: #A1C935;
+}
+
+.project .project-details div p {
+  font-size: 14px;
+  color: #ddd; /* Colores suaves para el texto */
 }
 
 .project button {
@@ -168,11 +197,10 @@ button[type="button"]:hover {
   }
 
   .project {
-    padding: 15px;
+    width: 100%; /* Los proyectos ocuparán todo el ancho en pantallas más pequeñas */
   }
 
   h1 {
     font-size: 24px;
   }
 }
-
