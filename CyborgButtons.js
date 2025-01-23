@@ -1,17 +1,16 @@
 // ==UserScript==
-// @name         Principal Script 
+// @name         Script Principal
 // @namespace    http://tampermonkey.net/
-// @version      1.2
-// @description  Define and load auxiliary scripts according to the URL
-// @author       Luis Escalante
+// @version      1.7
+// @description  Define y carga scripts auxiliares según la URL
+// @author       Tu Nombre
 // @match        *://*/*
 // @grant        none
 // ==/UserScript==
 
-(function() {
+(async function() {
     'use strict';
 
-    // Lista de scripts secundarios con las URLs correspondientes
     const scripts = [
         {
             urlPattern: /^https:\/\/cyborg\.deckard\.com\//,
@@ -27,22 +26,40 @@
         },
         {
             urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/.*\/STR.*$/,
+            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/NearbyParcels.js'
+        },
+        {
+            urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/.*\/STR.*$/,
             scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/ProjectResourses%20Foating.js'
         },
         {
-            urlPattern: /^https:\/\/www\.michaelsvacationrentals\.com\//,
-            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/MichaelVacationRentalsAddress.js'
+            urlPattern: /^https:\/\/www\.google\.com\/maps/,
+            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/Buscador.js'
+        },
+        {
+            urlPattern: /^https:\/\/www\.bing\.com\/maps/,
+            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/Buscador.js'
         }
     ];
 
-    scripts.forEach(({urlPattern, scriptUrl}) => {
+    for (const {urlPattern, scriptUrl} of scripts) {
         if (window.location.href.match(urlPattern)) {
-            fetch(scriptUrl)
-                .then(response => response.text())
-                .then(scriptContent => {
-                    eval(scriptContent); // Ejecuta el script cargado
-                })
-                .catch(error => console.error('Error al cargar el script:', error));
+            try {
+                console.log(`Loading script: ${scriptUrl}`);
+                const script = document.createElement('script');
+                script.src = scriptUrl;
+                script.onload = () => {
+                    console.log(`Script loaded and executed: ${scriptUrl}`);
+                };
+                script.onerror = () => {
+                    console.error(`Error loading script ${scriptUrl}`);
+                    alert(`Error loading script ${scriptUrl}. Check console for details.`);
+                };
+                document.head.appendChild(script);
+            } catch (error) {
+                console.error(`Error loading script ${scriptUrl}:`, error);
+                alert(`Error loading script ${scriptUrl}. Check console for details.`);
+            }
         }
-    });
+    }
 })();
