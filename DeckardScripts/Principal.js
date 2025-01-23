@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Script Principal
 // @namespace    http://tampermonkey.net/
-// @version      1.5
+// @version      1.6
 // @description  Define y carga scripts auxiliares según la URL
 // @author       Tu Nombre
 // @match        *://*/*
@@ -45,12 +45,15 @@
     for (const {urlPattern, scriptUrl} of scripts) {
         if (window.location.href.match(urlPattern)) {
             try {
+                console.log(`Loading script: ${scriptUrl}`);
                 const response = await fetch(scriptUrl);
+                if (!response.ok) throw new Error(`Failed to load script: ${response.statusText}`);
                 const scriptContent = await response.text();
                 eval(scriptContent);
-                console.log(`Script loaded: ${scriptUrl}`);
+                console.log(`Script loaded and executed: ${scriptUrl}`);
             } catch (error) {
                 console.error(`Error loading script ${scriptUrl}:`, error);
+                alert(`Error loading script ${scriptUrl}. Check console for details.`);
             }
         }
     }
