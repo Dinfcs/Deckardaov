@@ -1,176 +1,213 @@
-/* General styles */
-.notification {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #333;
-  color: #fff;
-  padding: 20px 40px;
-  border-radius: 10px;
-  font-size: 18px;
-  font-weight: bold;
-  z-index: 1000;
-  opacity: 0.9;
-  text-align: center;
-  max-width: 80%;
-  word-wrap: break-word;
-}
+  <style>
+    /* Estilos generales */
+    .notification {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #444;
+      color: #fff;
+      padding: 20px 40px;
+      border-radius: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      z-index: 1000;
+      opacity: 0.9;
+      text-align: center;
+      max-width: 80%;
+      word-wrap: break-word;
+    }
 
-.notification.success {
-  background-color: #4CAF50; /* Verde */
-}
+    .notification.success {
+      background-color: #4CAF50; /* Verde */
+    }
 
-.notification.error {
-  background-color: #F44336; /* Rojo */
-}
+    .notification.error {
+      background-color: #F44336; /* Rojo */
+    }
 
-/* General styles */
-body {
-  font-family: 'Roboto', Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #eef2f7;
-  color: #333;
-}
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f2f5;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      color: #333;
+    }
 
-h1 {
-  text-align: center;
-  margin: 20px 0;
-  font-size: 28px;
-  color: #34495e;
-}
+    h1 {
+      font-size: 1.5em;
+      text-align: center;
+      margin-bottom: 5px;
+      color: #4A90E2; /* Azul suave */
+    }
 
-/* Main container */
-.main-container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 20px auto;
-  display: flex; /* Flexbox para alinear los contenedores */
-  gap: 20px; /* Espacio entre el formulario y el contenedor de proyectos */
-}
+    h2 {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+      color: #4A90E2; /* Azul suave */
+    }
 
-/* Form container */
-.form-container {
-  width: 50%; /* El formulario ocupa el 50% del ancho */
-  padding: 20px;
-  background-color: #f9fbfd;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  border: 1px solid #e0e6ed;
-}
+    /* Estilo para los contenedores principales */
+    .main-container {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+      gap: 20px;
+    }
 
-/* Projects container */
-#projects-container {
-  width: 50%; /* El contenedor de proyectos ocupa el 50% del ancho */
-  padding: 20px;
-  background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
+    .form-container {
+      width: 48%;
+    }
 
-/* Project styles */
-.project {
-  margin-bottom: 15px;
-  padding: 15px;
-  background-color: #f9fbfd;
-  border: 1px solid #e0e6ed;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  transition: transform 0.2s ease-in-out;
-}
+    #projects-container {
+      width: 48%;
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
 
-.project:hover {
-  transform: translateY(-5px);
-}
+    /* Estilos del formulario */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
 
-.project h2 {
-  margin: 0 0 10px;
-  font-size: 18px;
-  color: #007bff;
-}
+    label {
+      font-size: 1.1em;
+      margin-bottom: 5px;
+      color: #7B8DAB; /* Azul grisáceo */
+    }
 
-.project p {
-  margin: 6px 0;
-  font-size: 14px;
-  color: #555;
-}
+    input[type="text"],
+    textarea {
+      padding: 8px;
+      font-size: 1em;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
 
-.project button {
-  margin-top: 10px;
-  background-color: #28a745;
-  color: white;
-  padding: 6px 10px;
-  font-size: 12px;
-  border-radius: 6px;
-  border: none;
-  cursor: pointer;
-}
+    textarea {
+      height: 100px;
+    }
 
-.project button:hover {
-  background-color: #218838;
-}
+    button {
+      padding: 5px 10px;
+      font-size: 1.2em;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
 
-/* Form elements */
-label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: 600;
-  color: #34495e;
-}
+    button:hover {
+      background-color: #45a049;
+    }
 
-input,
-textarea,
-button {
-  width: 100%;
-  margin-bottom: 10px;
-  padding: 10px 12px;
-  border: 1px solid #d0d7de;
-  border-radius: 8px;
-  box-sizing: border-box;
-  font-size: 14px;
-  color: #333;
-  background-color: #fefefe;
-  transition: all 0.3s ease-in-out;
-}
+    button[type="button"] {
+      background-color: #065d96;
+    }
 
-input:focus,
-textarea:focus {
-  outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
-}
+    button[type="button"]:hover {
+      background-color: #e64a19;
+    }
 
-textarea {
-  height: 120px;
-  resize: vertical;
-}
+    /* Estilo para los botones pequeños */
+    button[type="button"] {
+      font-size: 1em;
+      padding: 6px 8px;
+    }
 
-button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  font-size: 14px;
-  font-weight: bold;
-  cursor: pointer;
-  padding: 8px 10px;
-  border-radius: 6px;
-  transition: all 0.3s ease-in-out;
-}
+    /* Estilo para los contenedores de entradas dinámicas */
+    #public-records-container,
+    #license-list-container,
+    #media-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
 
-button:hover {
-  background-color: #0056b3;
-}
+    .record-entry,
+    .license-entry,
+    .media-entry {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
 
+    .record-entry input,
+    .license-entry input,
+    .media-entry input {
+      flex: 1;
+    }
 
-@media (max-width: 768px) {
-  .main-container {
-    flex-direction: column; /* Pone los contenedores uno debajo del otro */
-  }
+    input[type="text"]:focus {
+      border-color: #4CAF50;
+      outline: none;
+    }
 
-  .form-container,
-  #projects-container {
-    width: 100%; /* Cada contenedor ocupa todo el ancho */
-  }
-}
+    /* Estilo para los contenedores de proyectos */
+    .project {
+      background-color: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
 
+    .project-buttons {
+      display: flex;
+      flex-direction: row; /* Botones alineados Horizontal */
+      gap: 5px; /* Espacio entre botones */
+    }
+
+    .project-buttons button {
+      font-size: 1.2em;
+      padding: 5px 10px;
+    }
+
+    .project-details {
+      margin-top: 15px;
+    }
+
+    .project-details div {
+      margin-bottom: 10px;
+    }
+
+    .project-details a {
+      color: #4CAF50;
+      text-decoration: none;
+    }
+
+    .project-details a:hover {
+      text-decoration: underline;
+    }
+
+    /* Estilo para limpiar campos */
+    button[type="button"].clear-button {
+      background-color: #ccc;
+      color: #333;
+      margin-top: 5px;
+    }
+
+    .clear-button:hover {
+      background-color: #bbb;
+    }
+
+    /* Estilos de los formularios al lado */
+    @media (max-width: 768px) {
+      .main-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .form-container,
+      #projects-container {
+        width: 100%;
+      }
+    }
+</style>
