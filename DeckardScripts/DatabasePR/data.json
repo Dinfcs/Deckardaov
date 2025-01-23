@@ -27,32 +27,6 @@
       ]
     },
     {
-      "Project": "CA - Sonoma County",
-      "Public Records & GIS": [
-        {
-          "type": "PR",
-          "url": "https://common1.mptsweb.com/mbap/SONOMA/asr"
-        },
-        {
-          "type": "GIS",
-          "url": "https://www.arcgis.com/apps/webappviewer/index.html?id=790a6977918e47559a06ae0b65c14cbc"
-        }
-      ],
-      "License List": [
-        {
-          "type": "PR2 and License Search",
-          "url": "https://parcelsearch.permitsonoma.org/PermitSearch"
-        }
-      ],
-      "Important Info": "The license finder only works with licenses starting with THR.",
-      "Media": [
-        {
-          "type": "N/A",
-          "url": "N/A"
-        }
-      ]
-    },
-    {
       "Project": "OH - Washington County",
       "Public Records & GIS": [
         {
@@ -499,27 +473,31 @@
       ]
     },
     {
-      "Project": "CA - City of Stanton2",
+      "Project": "TX - City of Rowlett",
       "Public Records & GIS": [
         {
-          "type": "PR (PQ)",
-          "url": "https://script.google.com/a/macros/deckard.com/s/AKfycbziAFj6j4YU0oDpCIVc0EQfcYjx5RG-RtXZPLbA43eAaA91SpQ2ZDf7rJFVESnBCVk9/exec"
+          "type": "PR Dallas",
+          "url": "https://www.dallascad.org/SearchOwner.aspx"
         },
         {
-          "type": "GIS ( Use VPN)",
-          "url": "https://www.stantonca.gov/community/moving_to_stanton/learn_about_your_neighborhood_.php"
+          "type": "PR Rockwall",
+          "url": "https://www.rockwallcad.com/property-search"
+        },
+        {
+          "type": "GIS Rockwall",
+          "url": "https://www.rockwallcad.com/maps"
         }
       ],
       "License List": [
         {
-          "type": "N/A",
+          "type": "License",
           "url": "N/A"
         }
       ],
-      "Important Info": "N/A",
+      "Important Info": "This city is in Dallas and Rockwall counties.",
       "Media": [
         {
-          "type": "N/A",
+          "type": "Image",
           "url": "N/A"
         }
       ]
