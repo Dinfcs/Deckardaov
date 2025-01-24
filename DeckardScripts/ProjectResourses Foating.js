@@ -72,7 +72,7 @@
 
     barraTitulo.style.borderTopLeftRadius = '0px';
     barraTitulo.style.borderTopRightRadius = '0px';
-    barraTitulo.textContent = `Proyecto Detectado: ${nombreProyecto}`;
+    barraTitulo.textContent = `Project Detected: ${nombreProyecto}`;
     contenedor.appendChild(barraTitulo);
 
     const contenedorDatos = document.createElement('div');
