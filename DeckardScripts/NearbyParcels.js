@@ -21,7 +21,7 @@
         button.innerHTML = '<b>NearbyParcels</b>'; // Texto en negrita
         button.style.position = 'fixed';
         button.style.top = '0px'; // Totalmente pegado a la parte superior
-        button.style.left = '50%';
+        button.style.left = '60%';
         button.style.transform = 'translateX(-50%)';
         button.style.zIndex = 9999;
         button.style.padding = '2px';
