@@ -527,6 +527,28 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "CA - Humboldt County1s",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://script.google.com/a/deckard.com/macros/s/AKfycbx3yRYrh8o8giGHQsNHgfshZJgdDq6-Uxi1_H4wd03v6pWgvly2hXjoiQxcGGL8DRt2CQ/exec"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License",
+          "url": "https://script.google.com/a/deckard.com/macros/s/AKfycbx3yRYrh8o8giGHQsNHgfshZJgdDq6-Uxi1_H4wd03v6pWgvly2hXjoiQxcGGL8DRt2CQ/exec"
+        }
+      ],
+      "Important Info": "sadas",
+      "Media": [
+        {
+          "type": "Image",
+          "url": "https://script.google.com/a/deckard.com/macros/s/AKfycbx3yRYrh8o8giGHQsNHgfshZJgdDq6-Uxi1_H4wd03v6pWgvly2hXjoiQxcGGL8DRt2CQ/exec"
+        }
+      ]
     }
   ]
 }
