@@ -713,6 +713,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "TX - City of Nacogdoches",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://esearch.nacocad.org/"
+        },
+        {
+          "type": "GIS",
+          "url": "https://nacocad.maps.arcgis.com/apps/webappviewer/index.html?id=58a300ad9bfe466381bb3ff83941079a&find=22843"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License o N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "Image o Video",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
