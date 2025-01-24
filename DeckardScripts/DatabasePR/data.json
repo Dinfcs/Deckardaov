@@ -501,6 +501,36 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "CA - Humboldt County1",
+      "Public Records & GIS": [
+        {
+          "type": "PR1",
+          "url": "https://california.propertychecker.com/humboldt-county"
+        },
+        {
+          "type": "PR2",
+          "url": "https://map.netronline.com/california-humboldt/06023"
+        },
+        {
+          "type": "GIS",
+          "url": "https://www.arcgis.com/home/webmap/viewer.html?webmap=512a661aa0644309b0c4aaf1169f771a&extent=-123.9763,40.6974,-123.8758,40.7395"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
