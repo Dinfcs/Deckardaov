@@ -503,50 +503,32 @@
       ]
     },
     {
-      "Project": "CA - City of Stanton3",
+      "Project": "TX - City of Rowlett2",
       "Public Records & GIS": [
         {
-          "type": "PR (PQ)",
-          "url": "https://script.google.com/a/macros/deckard.com/s/AKfycbziAFj6j4YU0oDpCIVc0EQfcYjx5RG-RtXZPLbA43eAaA91SpQ2ZDf7rJFVESnBCVk9/exec"
+          "type": "PR Dallas",
+          "url": "https://www.dallascad.org/SearchOwner.aspx"
         },
         {
-          "type": "GIS ( Use VPN)",
-          "url": "https://www.stantonca.gov/community/moving_to_stanton/learn_about_your_neighborhood_.php"
-        }
-      ],
-      "License List": [
+          "type": "PR Rockwall",
+          "url": "https://www.rockwallcad.com/property-search"
+        },
         {
-          "type": "N/A",
-          "url": "N/A"
-        }
-      ],
-      "Important Info": "N/A",
-      "Media": [
-        {
-          "type": "N/A",
-          "url": "N/A"
-        }
-      ]
-    },
-    {
-      "Project": "CA - Humboldt County1s",
-      "Public Records & GIS": [
-        {
-          "type": "PR",
-          "url": "https://script.google.com/a/deckard.com/macros/s/AKfycbx3yRYrh8o8giGHQsNHgfshZJgdDq6-Uxi1_H4wd03v6pWgvly2hXjoiQxcGGL8DRt2CQ/exec"
+          "type": "GIS Rockwall",
+          "url": "https://www.rockwallcad.com/maps"
         }
       ],
       "License List": [
         {
           "type": "License",
-          "url": "https://script.google.com/a/deckard.com/macros/s/AKfycbx3yRYrh8o8giGHQsNHgfshZJgdDq6-Uxi1_H4wd03v6pWgvly2hXjoiQxcGGL8DRt2CQ/exec"
+          "url": "N/A"
         }
       ],
-      "Important Info": "sadas",
+      "Important Info": "This city is in Dallas and Rockwall counties.",
       "Media": [
         {
           "type": "Image",
-          "url": "https://script.google.com/a/deckard.com/macros/s/AKfycbx3yRYrh8o8giGHQsNHgfshZJgdDq6-Uxi1_H4wd03v6pWgvly2hXjoiQxcGGL8DRt2CQ/exec"
+          "url": "N/A"
         }
       ]
     }
