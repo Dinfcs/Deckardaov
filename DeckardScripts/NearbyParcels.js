@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         NearbyParcels
 // @namespace    http://tampermonkey.net/
-// @version      1.9
+// @version      2.0
 // @description  Añade un botón fijo para abrir direcciones en Google Maps que solo aparece cuando el scroll está arriba
 // @author       Luis Escalante
 // @match        https://cyborg.deckard.com/listing/*
