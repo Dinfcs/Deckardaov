@@ -36,15 +36,12 @@
              const buttons = [
             { text: 'QA', url: 'https://www.appsheet.com/start/f9378e0d-cef0-48b9-bd15-618bac8a35a4?platform=desktop#vss=H4sIAAAAAAAAA6WOywrCMBBFf0XuOl-QnYgLEQUfuDEuYjOFYJuUJlVLyL879blWl3OHc-5NOFu6bKIuTpD79Lnm1EMiKWz7hhSkwsS72PpKQSgsdf0IV-PRmhrfRoWMfBAvQaQAmb7k5Z_9AtaQi7a01A6yAWXJE-T3gHHwhpAF6i7qY0X3zQzlzFnpiy6Q2fGYX0aEmZteG-3Mwht2lroKlG_kad0ragEAAA==&view=QA%20Report&appName=RandomQAReport-985429461-24-11-28', color: '#8e44ad', openMultiple: true },
             { text: 'FG', url: 'https://dinfcs.github.io/Deckardaov/Feedback%20Gerenator/', color: '#17a2b8' },
-            { text: 'Parcel', url: 'https://dinfcs.github.io/Deckardaov/ParcelSearch/index.html', color: '#6c757d' },
+            { text: 'Parcel-S', url: 'https://dinfcs.github.io/Deckardaov/ParcelSearch/index.html', color: '#6c757d' },
             { text: 'AO', url: 'https://dinfcs.github.io/Deckardaov/', color: '#6c757d' },
-            { text: 'PrTools', url: 'https://dinfcs.github.io/Deckardaov/PrTools/', color: '#6c757d' },
-            { text: 'Filter', url: 'https://dinfcs.github.io/Deckardaov/FilterGeneratorv2/index.html', color: '#6c757d' },
-            { text: 'PR', url: 'https://dinfcs.github.io/Deckardaov/Project%20Resources.pdf', color: '#6c757d'},
+            { text: 'Adv-Filter', url: 'https://dinfcs.github.io/Deckardaov/FilterGeneratorv2/index.html', color: '#6c757d' },
             { text: 'Accounts', url: 'https://script.google.com/a/macros/deckard.com/s/AKfycbziAFj6j4YU0oDpCIVc0EQfcYjx5RG-RtXZPLbA43eAaA91SpQ2ZDf7rJFVESnBCVk9/exec',color: '#75a2c9', openInNewTab: true },
             { text: 'Regrid', url: 'https://app.regrid.com/', color: '#28a745', openInNewTab: true },
-            { text: 'PrEdit', url: 'https://script.google.com/a/macros/deckard.com/s/AKfycbx3yRYrh8o8giGHQsNHgfshZJgdDq6-Uxi1_H4wd03v6pWgvly2hXjoiQxcGGL8DRt2CQ/exec', color: '#75a2c9', openInNewTab: true }
-
+            { text: 'Predit', url: 'https://script.google.com/a/macros/deckard.com/s/AKfycbx3yRYrh8o8giGHQsNHgfshZJgdDq6-Uxi1_H4wd03v6pWgvly2hXjoiQxcGGL8DRt2CQ/exec', color: '#75a2c9', openInNewTab: true }
         ];
         buttons.forEach(({ text, url, color, openInNewTab, openMultiple }) => {
             const button = document.createElement('button');
