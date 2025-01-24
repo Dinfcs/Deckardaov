@@ -765,6 +765,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "AZ - City Of Phoenix",
+      "Public Records & GIS": [
+        {
+          "type": "Public Records",
+          "url": "https://mcassessor.maricopa.gov/"
+        },
+        {
+          "type": "GIS",
+          "url": "https://maps.mcassessor.maricopa.gov/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "When mapping 6235 E Thunderbird Rd, Scottsdale, AZ 85254, be careful about the structure: If they rent everything all together is the main structure; if they rent the Guest Suites and Suite B is the main structure + NSC, if they rent any of the other units is unit one of many (Refer to the photo down below)",
+      "Media": [
+        {
+          "type": "Image",
+          "url": "blob:https://deckardtech.atlassian.net/b8740196-ce6a-484a-962a-0aa491012964#media-blob-url=true&id=c459c856-56c9-4278-b96e-879cf5e67f2a&collection=contentId-1717403844&contextId=1717403844&mimeType=image%2Fpng&name=image-20231205-214806.png&size=1799535&width=1200&height=900&alt="
+        }
+      ]
     }
   ]
 }
