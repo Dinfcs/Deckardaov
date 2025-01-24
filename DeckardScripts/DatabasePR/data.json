@@ -739,6 +739,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "AZ - City of Surprise",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://www.mcassessor.maricopa.gov/"
+        },
+        {
+          "type": "GIS",
+          "url": "https://maps.mcassessor.maricopa.gov/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EYyiYR1x8_lGmriS-fb3mX4B7mCAgfoq6NJ4GIPnN_bgFQ?e=LhkVty"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "Image o Video",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
