@@ -687,6 +687,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "AZ - Maricopa County",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://www.mcassessor.maricopa.gov/"
+        },
+        {
+          "type": "GIS",
+          "url": "https://maps.mcassessor.maricopa.gov/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License o N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
