@@ -70,8 +70,8 @@
     barraTitulo.style.fontSize = '16px';
     barraTitulo.style.fontWeight = 'bold';
 
-    barraTitulo.style.borderTopLeftRadius = '8px';
-    barraTitulo.style.borderTopRightRadius = '8px';
+    barraTitulo.style.borderTopLeftRadius = '0px';
+    barraTitulo.style.borderTopRightRadius = '0px';
     barraTitulo.textContent = `Proyecto Detectado: ${nombreProyecto}`;
     contenedor.appendChild(barraTitulo);
 
@@ -79,6 +79,15 @@
     contenedorDatos.style.padding = '0px';
     contenedorDatos.style.overflowX = 'auto';
     contenedor.appendChild(contenedorDatos);
+
+    // Evento para mostrar/ocultar la tabla al hacer clic en la barra de título
+    barraTitulo.addEventListener('click', () => {
+        if (contenedorDatos.style.display === 'none') {
+            contenedorDatos.style.display = 'block';
+        } else {
+            contenedorDatos.style.display = 'none';
+        }
+    });
 
     async function cargarDatos() {
         try {
