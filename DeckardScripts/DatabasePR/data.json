@@ -821,32 +821,6 @@
           "url": "N/A"
         }
       ]
-    },
-    {
-      "Project": "hola",
-      "Public Records & GIS": [
-        {
-          "type": "PR / GIS",
-          "url": "asd"
-        },
-        {
-          "type": "PR / GIS",
-          "url": "asd"
-        }
-      ],
-      "License List": [
-        {
-          "type": "License o N/A",
-          "url": "N/A"
-        }
-      ],
-      "Important Info": "asdasdggggg",
-      "Media": [
-        {
-          "type": "Image,Video Or N/A",
-          "url": "N/A"
-        }
-      ]
     }
   ]
 }
