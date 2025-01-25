@@ -795,6 +795,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "CA - City of Stanton2",
+      "Public Records & GIS": [
+        {
+          "type": "PR (PQ)",
+          "url": "https://script.google.com/a/macros/deckard.com/s/AKfycbziAFj6j4YU0oDpCIVc0EQfcYjx5RG-RtXZPLbA43eAaA91SpQ2ZDf7rJFVESnBCVk9/exec"
+        },
+        {
+          "type": "GIS ( Use VPN)",
+          "url": "https://www.stantonca.gov/community/moving_to_stanton/learn_about_your_neighborhood_.php"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License",
+          "url": "https://drive.google.com/file/d/1f4-EGPJLMuVZHiqSCeCY4Tk8SGPYYpCB/view?usp=sharing"
+        }
+      ],
+      "Important Info": "N/A.",
+      "Media": [
+        {
+          "type": "Image",
+          "url": "https://drive.usercontent.google.com/download?id=14Lfflg-x_oZpx42FRXtlRCLGbGK1jmZ0&authuser=0"
+        }
+      ]
     }
   ]
 }
