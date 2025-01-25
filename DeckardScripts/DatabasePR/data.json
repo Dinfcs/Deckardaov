@@ -825,36 +825,6 @@
           "url": "N/A"
         }
       ]
-    },
-    {
-      "Project": "TX -   Cameron County24",
-      "Public Records & GIS": [
-        {
-          "type": "PR1",
-          "url": "https://camerontax.go2gov.net/cameron/cart/search/showSitusSearch.do"
-        },
-        {
-          "type": "PR2",
-          "url": "https://datastore.netronline.com/search"
-        },
-        {
-          "type": "GIS",
-          "url": "https://www.cameroncad.org/Pages/MapSearch"
-        }
-      ],
-      "License List": [
-        {
-          "type": "License o N/A",
-          "url": "N/A"
-        }
-      ],
-      "Important Info": "sdccc",
-      "Media": [
-        {
-          "type": "Image,Video Or N/A",
-          "url": "N/A"
-        }
-      ]
     }
   ]
 }
