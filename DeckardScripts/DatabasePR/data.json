@@ -801,28 +801,28 @@
       ]
     },
     {
-      "Project": "NY - Village Of Catskill",
+      "Project": "lucho",
       "Public Records & GIS": [
         {
-          "type": "PR / GIS",
-          "url": "https://script.google.com/a/deckard.com/macros/s/AKfycbwnwihgcu_azPhumj8m5WJlyp9vY0CRxpSA69LpKnAi/dev"
+          "type": "PR (PQ)",
+          "url": "https://script.google.com/a/macros/deckard.com/s/AKfycbziAFj6j4YU0oDpCIVc0EQfcYjx5RG-RtXZPLbA43eAaA91SpQ2ZDf7rJFVESnBCVk9/exec"
+        },
+        {
+          "type": "GIS ( Use VPN)",
+          "url": "https://www.stantonca.gov/community/moving_to_stanton/learn_about_your_neighborhood_.php"
         }
       ],
       "License List": [
         {
-          "type": "License o N/A",
+          "type": "N/A",
           "url": "N/A"
         }
       ],
-      "Important Info": "PR DE PRUEBA SE DEBE BORRAR SOLO SE USO PARA PRUEBAS",
+      "Important Info": "N/A",
       "Media": [
         {
-          "type": "Image",
-          "url": "https://drive.usercontent.google.com/download?id=1ri_mL7TBaGwtwcGFrhhFkNFnz8RIeg7h&authuser=0"
-        },
-        {
-          "type": "Video",
-          "url": "https://drive.usercontent.google.com/download?id=1ri_mL7TBaGwtwcGFrhhFkNFnz8RIeg7h&authuser=0"
+          "type": "N/A",
+          "url": "https://drive.usercontent.google.com/download?id=1yPvTHHzAFMjljXTrwa2p-q_ndkkfrJo2&authuser=0"
         }
       ]
     }
