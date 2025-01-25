@@ -851,28 +851,6 @@
           "url": "blob:https://deckardtech.atlassian.net/b8740196-ce6a-484a-962a-0aa491012964#media-blob-url=true&id=c459c856-56c9-4278-b96e-879cf5e67f2a&collection=contentId-1717403844&contextId=1717403844&mimeType=image%2Fpng&name=image-20231205-214806.png&size=1799535&width=1200&height=900&alt="
         }
       ]
-    },
-    {
-      "Project": "hola",
-      "Public Records & GIS": [
-        {
-          "type": "PR / GIS",
-          "url": "dsfsdf"
-        }
-      ],
-      "License List": [
-        {
-          "type": "License o N/A",
-          "url": "N/A"
-        }
-      ],
-      "Important Info": "N/A",
-      "Media": [
-        {
-          "type": "Image,Video Or N/A",
-          "url": "N/A"
-        }
-      ]
     }
   ]
 }
