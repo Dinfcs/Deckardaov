@@ -817,6 +817,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "AUS - Adelaide4",
+      "Public Records & GIS": [
+        {
+          "type": "GIS (Use VPN In Australia)",
+          "url": "https://location.sa.gov.au/viewer/"
+        },
+        {
+          "type": "Land Use",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B2B59AF27-D243-4583-A3F4-029344FB0B3F%7D&file=Properties%20LandUse.xlsx&action=default&mobileredirect=true&wdsle=0"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "*) Please work with filters: Unresolved + yet_to_review + rental = self_contained + hoe_violation = true.\n\n*) The client is only interested in whole houses and apartments (not interested in rooms or ADUs).\n\n*) To use GIS optimally, activate the following: Land Management - Property and Planning. Select the following options:\n\n*) Land Divisions: Divides the parcels.\n\n*) Parcel Cadastre: Shows the APNs.\n\n*) Valuation Cadastre: Shows the Land Use and Property Address.\n\n*) There are no public records, as privacy laws in the country protect property data.\n\n*) Some addresses don’t have the Zip Code, in these cases, it's mandatory to perform AO.\n\n*) This is an example of an address in Adelaide: Floor 16 1701/10 Balfours Way, Adelaide, SA 5000. The floor is determined by the unit number. In this case, the unit is 1701, which means it is on the 17th floor.",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
