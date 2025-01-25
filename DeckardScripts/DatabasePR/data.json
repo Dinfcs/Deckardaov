@@ -795,6 +795,36 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "TX -   Cameron County2",
+      "Public Records & GIS": [
+        {
+          "type": "PR1",
+          "url": "https://camerontax.go2gov.net/cameron/cart/search/showSitusSearch.do"
+        },
+        {
+          "type": "PR2",
+          "url": "https://datastore.netronline.com/search"
+        },
+        {
+          "type": "GIS",
+          "url": "https://www.cameroncad.org/Pages/MapSearch"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License o N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "Address Alert: Be cautious with the address 404 N Tarnava St, Port Isabel, TX 78578, as it consists of multiple apartments, each with a unique APN.\n\nProperties in Harbor Town, Laguna Vista, TX 78578, and Monte Bonito, N Valencia do not require an Address Override (AO); they are accurate as reflected in the Cyborg data.\n\nCameron County Listings: Several property listings in Cameron County are located in Mexico. As a best practice, these should be marked in Cyborg as \"The listing is outside of the current region\" rather than \"NMF\". This ensures they won’t appear on Rentalscape or remain pending for review in FP, as they are unmappable listings.\n\nSouth Padre Island Condos: For condos in South Padre Island, exercise caution since each unit has its own APN. Always utilize the Unit Box, even if Cyborg includes the unit in the address and Address Overrides for Units: If the Cyborg address does not include the unit, you must perform an Address Override to incorporate the unit and ensure it is also added to the Unit Box.",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
