@@ -769,6 +769,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "OR - City of Hood River",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://records.co.hood-river.or.us/PSO/"
+        },
+        {
+          "type": "GIS",
+          "url": "https://webmap.hoodrivercounty.gov/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License o N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "You can search by address. Click on “Account” for further information.\nTo search by APN use Map.\n",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
