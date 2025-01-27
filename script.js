@@ -107,7 +107,6 @@ const replacements = {
     "Rapid": "Rpd",
     "Rest": "Rst",
     "Ridge": "Rdg",
-    "River": "Riv",
     "Row": "Row",
     "Run": "Run",
     "Shoal": "Shl",
