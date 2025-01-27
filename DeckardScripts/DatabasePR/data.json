@@ -911,6 +911,36 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "TX - Llano County",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://esearch.llanocad.net/"
+        },
+        {
+          "type": "GIS",
+          "url": "https://gis.bisclient.com/llanocad/?"
+        },
+        {
+          "type": "Burnet PR",
+          "url": "https://esearch.burnet-cad.org/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7BD06D989E-E956-4F99-8164-F2D3DA4FCE18%7D&file=Tax%20Roll%207.2.2024%20(2)%20-%20Copy%20EM.xls&action=default&mobileredirect=true"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
