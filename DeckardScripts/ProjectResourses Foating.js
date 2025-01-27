@@ -5,7 +5,6 @@
 // @description  Mostrar el nombre del proyecto detectado en la URL y una tabla de datos mejorada en la parte inferior de la página.
 // @author
 // @match        https://cyborg.deckard.com/listing/*/STR*
-// @require      https://dinfcs.github.io/Deckardaov/DeckardScripts/NearbyParcels.js
 // @grant        none
 // ==/UserScript==
 
@@ -13,40 +12,71 @@
     'use strict';
 
     const jsonURL = 'https://dinfcs.github.io/Deckardaov/DeckardScripts/DatabasePR/data.json';
+    const targetPattern = /https:\/\/cyborg\.deckard\.com\/listing\/[^\/]+\/[^\/]+\/STR[^\/]+/;
 
-    function obtenerNombreProyectoDesdeURL() {
-        const url = window.location.href;
 
-        // Detectar nombre de proyecto para condados tipo town
-        const regexTown = /\/listing\/([A-Za-z]+)\/([^\/]+)\.\.\.(town|township)_of_([^\/]+)\/_/;
-        const matchTown = url.match(regexTown);
-        if (matchTown) {
-            const estado = matchTown[1].toUpperCase();
-            const tipo = matchTown[3].charAt(0).toUpperCase() + matchTown[3].slice(1); // "Town" o "Township"
-            const nombreTown = matchTown[4].replace(/_/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase());
-            return `${estado} - ${tipo} Of ${nombreTown}`;
+function obtenerNombreProyectoDesdeURL() {
+    const url = window.location.href;
+
+    // Detectar CiudadesAustralia
+    const regexCiudadesAustralia = /\/listing\/AUS\/([^\/]+)\/([^\/]+)\/(STR[^\/]+)/;
+    const matchCiudadesAustralia = url.match(regexCiudadesAustralia);
+    if (matchCiudadesAustralia) {
+        const estadoAustralia = 'AUS';
+        const nombreCiudadAustralia = matchCiudadesAustralia[2].replace(/_/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase());
+        if (nombreCiudadAustralia === 'Bass Coast') {
+            return `${estadoAustralia} - ${nombreCiudadAustralia}`;
+        } else {
+            return `${estadoAustralia} - City of ${nombreCiudadAustralia}`;
         }
-
-        // Detectar nombre de proyecto para condados normales
-        const regexCondado = /\/listing\/([A-Za-z]+)\/([^\/]+)\/_/;
-        const matchCondado = url.match(regexCondado);
-        if (matchCondado) {
-            const estado = matchCondado[1].toUpperCase();
-            const nombreCondado = matchCondado[2].replace(/_/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase());
-            return `${estado} - ${nombreCondado} County`;
-        }
-
-        // Detectar nombre de proyecto para ciudades
-        const regexCiudad = /\/listing\/([A-Za-z]+)\/([^\/]+)\/([^\/]+)\//;
-        const matchCiudad = url.match(regexCiudad);
-        if (matchCiudad) {
-            const estado = matchCiudad[1].toUpperCase();
-            const nombreCiudad = matchCiudad[3].replace(/_/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase());
-            return `${estado} - ${nombreCiudad}`;
-        }
-
-        return null;
     }
+
+    // Detectar nombre de proyecto para condados tipo town
+    const regexTown = /\/listing\/([A-Za-z]+)\/([^\/]+)\.\.\.(town|township)_of_([^\/]+)\/_/;
+    const matchTown = url.match(regexTown);
+    if (matchTown) {
+        const estado = matchTown[1].toUpperCase();
+        const tipo = matchTown[3].charAt(0).toUpperCase() + matchTown[3].slice(1); // "Town" o "Township"
+        const nombreTown = matchTown[4].replace(/_/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase());
+        return `${estado} - ${tipo} Of ${nombreTown}`;
+    }
+
+    // Detectar nombre de proyecto para condados normales
+    const regexCondado = /\/listing\/([A-Za-z]+)\/([^\/]+)\/_/;
+    const matchCondado = url.match(regexCondado);
+    if (matchCondado) {
+        const estado = matchCondado[1].toUpperCase();
+        const nombreCondado = matchCondado[2].replace(/_/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase());
+        return `${estado} - ${nombreCondado} County`;
+    }
+
+    // Detectar nombre de proyecto para ciudades
+    const regexCiudad = /\/listing\/([A-Za-z]+)\/([^\/]+)\/([^\/]+)\//;
+    const matchCiudad = url.match(regexCiudad);
+    if (matchCiudad) {
+        const estado = matchCiudad[1].toUpperCase();
+        const nombreCiudad = matchCiudad[3].replace(/_/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase());
+        return `${estado} - ${nombreCiudad}`;
+    }
+
+    return null;
+}
+
+
+    function clearSiteCache(urlPattern) {
+        if ('caches' in window) {
+            caches.keys().then(function (cacheNames) {
+                cacheNames.forEach(function (cacheName) {
+                    if (urlPattern.test(window.location.href)) {
+                        caches.delete(cacheName);
+                    }
+                });
+            });
+        }
+    }
+
+    // Limpiar caché del sitio web específico
+    clearSiteCache(targetPattern);
 
     const nombreProyecto = obtenerNombreProyectoDesdeURL();
     if (!nombreProyecto) {
@@ -91,7 +121,7 @@
 
     async function cargarDatos() {
         try {
-            const response = await fetch(jsonURL);
+            const response = await fetch(jsonURL, { cache: 'no-store' });
             if (!response.ok) {
                 throw new Error(`Error al leer la base de datos: ${response.statusText}`);
             }
@@ -113,7 +143,7 @@
             table.style.marginTop = '0px';
 
             const headers = ['Project', 'Public Records & GIS', 'License List', 'Important Info', 'Media'];
-            const headerWidths = ['20%', '20%', '20%', '30%', '10%'];
+            const headerWidths = ['10%', '10%', '10%', '60%', '10%'];
 
             const thead = table.createTHead();
             const headerRow = thead.insertRow();
@@ -177,8 +207,8 @@
                         paragraphs.forEach(paragraph => {
                             const p = document.createElement('p');
                             p.textContent = paragraph;
-                            p.style.marginBottom = '10px';
-                            p.style.lineHeight = '1.6';
+                            p.style.marginBottom = '5px'; // Ajustar esta línea para reducir el espacio entre párrafos
+                            p.style.lineHeight = '1.2'; // Ajustar esta línea para reducir la altura de línea
                             cell.appendChild(p);
                         });
                     } else {
