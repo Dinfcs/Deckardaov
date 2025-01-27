@@ -971,6 +971,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "TX - City Of Galveston",
+      "Public Records & GIS": [
+        {
+          "type": "PR (You need the VPN)",
+          "url": "http://esearch.galvestoncad.org/"
+        },
+        {
+          "type": "GIS (You need the VPN)",
+          "url": "https://galvcountymaps.maps.arcgis.com/apps/webappviewer/index.html?id=d619c89878cd4c399b376b51996a7541"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License ",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EbaO5a2AZaJIh55DCVi866YBQ5nM3OXuCD_PZikrmES1gw?e=mMkHTa"
+        }
+      ],
+      "Important Info": "When working with the unit number \"condos,\" which are the main structure and have their own APN, even if the address includes the unit in Cyborg, please use the unit box and re-enter it there.\n\nExample:  \nCB address: 123 Main St C-304, Galveston, TX 77550.\nAO: 123 Main St Unit C-304, Galveston, TX 77550.  \n[UNIT BOX: C-304]\n\nPlease use the unit box when you are mapping ADUs as well if it has a unit number attached to it. \n\nSome addresses are different in their structure than the ones on the Public Records. Use Address Override to correct it.\n\nHere is an example\n\nCyborg’s address: 1821 1/2 Avenue O, Galveston, TX 77550.\n\nPublic Record’s address: 1821 Avenue O 1/2, Galveston, TX 77550.",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
