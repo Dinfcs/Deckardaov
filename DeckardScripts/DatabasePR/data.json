@@ -795,6 +795,36 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "TX - Town Of South Padre Island",
+      "Public Records & GIS": [
+        {
+          "type": "Public Records",
+          "url": "https://cameron.prodigycad.com/property-search"
+        },
+        {
+          "type": "GIS",
+          "url": "https://cameron.prodigycad.com/maps"
+        },
+        {
+          "type": "GIS with the APN tool ",
+          "url": "https://dinfcs.github.io/Deckardaov/PrTools/SouthPadre.html"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License List",
+          "url": "https://deckardtech.atlassian.net/wiki/spaces/PC/pages/1717403844/Project+Resources#:~:text=the%20APN%20tool-,License%20List,-PPD"
+        }
+      ],
+      "Important Info": "When working with the unit number \"condos,\" which are the main structure and have their own APN, even if the address includes the unit in Cyborg, please use the unit box and re-enter it there.\n\nExample:\n103 E Marlin St Unit 123, South Padre Island, TX 78597\nUnit number in unit box. (123) \n\nPlease ensure that you review the AO and also include the unit number in the unit box in this type of listing. If you don't, RS will not display the correct unit.\n\n ",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
