@@ -1023,6 +1023,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "TX - City Of Canyon",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://www.prad.org/property-search"
+        },
+        {
+          "type": "GIS",
+          "url": "https://www.prad.org/maps"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
