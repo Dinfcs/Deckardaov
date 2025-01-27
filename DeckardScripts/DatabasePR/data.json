@@ -546,7 +546,7 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "N/A",
+      "Important Info": "Please be aware of this \"resort's address\": 2000 S Worldmark Dr, Pinetop-Lakeside. It appears that they have units with their own APN. Make sure to match the unit or leave it as a NMF with the override.",
       "Media": [
         {
           "type": "N/A",
