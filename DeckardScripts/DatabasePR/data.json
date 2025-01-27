@@ -859,6 +859,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "VT - Town Of Stowe",
+      "Public Records & GIS": [
+        {
+          "type": "GIS",
+          "url": "https://mangomap.com/stowezoning/maps/63313/Town-of-Stowe-Parcel-and-Zoning-Map#"
+        },
+        {
+          "type": "GIS2",
+          "url": "https://experience.arcgis.com/experience/b5a5cc7663c84761a305f70b913e1a60#widget_23=active_datasource_id:dataSource_1,center:-8099755.605440229%2C5544700.687567595%2C102100,scale:7417.1772180662665&widget_59=search_status:%7B%22searchText%22%3A%22179%20MOUNT%20MANSFIELD%20DR%2C%20STOWE%2C%20VT%2C%2005672%22%2C%22status%22%3A%7B%22configId%22%3A%22config_7%22%2C%22magicKey%22%3A%22U3ViU291cmNlTmFtZT1HQ1NfRTkxMV9FU0lURV9TUF92MmJ8R0NTX0U5MTFfQ09NUE9TSVRFX1NQX3YyYiNobj0xNzkjbGJzPTEwOToxMjUwMiNsbmc9MCNsb2M9MTU4OTIjdHA9MA%3D%3D%22%7D%7D"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
