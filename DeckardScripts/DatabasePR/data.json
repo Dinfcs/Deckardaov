@@ -769,36 +769,6 @@
           "url": "N/A"
         }
       ]
-    },
-    {
-      "Project": "AL - City Of Northport",
-      "Public Records & GIS": [
-        {
-          "type": "GIS and PR (Use VPN)",
-          "url": "https://www.alabamagis.com/Tuscaloosa/frameset.cfm"
-        },
-        {
-          "type": "GIS Demo",
-          "url": "https://www.loom.com/share/580704ff9fe84a628730893446d0f058"
-        },
-        {
-          "type": "GIS Northport",
-          "url": "https://northportgis.maps.arcgis.com/apps/webappviewer/index.html?id=c6716b9535db4adb8bfc9afcdd8ef06f"
-        }
-      ],
-      "License List": [
-        {
-          "type": "N/A",
-          "url": "N/A"
-        }
-      ],
-      "Important Info": "N/A",
-      "Media": [
-        {
-          "type": "N/A",
-          "url": "N/A"
-        }
-      ]
     }
   ]
 }
