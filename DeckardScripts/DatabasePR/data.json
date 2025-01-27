@@ -885,6 +885,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "AZ - Coconino County",
+      "Public Records & GIS": [
+        {
+          "type": "PR (Use VPN)",
+          "url": "https://eagleassessor.coconino.az.gov:444/assessor/taxweb/search.jsp"
+        },
+        {
+          "type": "GIS (Use VPN)",
+          "url": "https://experience.arcgis.com/experience/c35f5fe6d6a54b388cd177f66084e39c/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EXT5k8IvLzJCpXA_lQ9a9csBGJ4J6vAZ3B-gC-ecb9e2Sw?e=Hf5nzB"
+        }
+      ],
+      "Important Info": "The PRs have photos of the front of the house.",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
