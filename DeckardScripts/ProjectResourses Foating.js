@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         ProjectResources Enhanced Visualization
-// @namespace    http://tampermonkey.net/
-// @version      2
+// @name         PREDIT
+// @namespace    ProjectResources Cyborg
+// @version      2.1
 // @description  Mostrar el nombre del proyecto detectado en la URL y una tabla de datos mejorada en la parte inferior de la página.
 // @author
 // @match        https://cyborg.deckard.com/listing/*/STR*
@@ -11,7 +11,7 @@
 (function () {
     'use strict';
 
-    const jsonURL = 'https://dinfcs.github.io/Deckardaov/DeckardScripts/DatabasePR/data.json';
+    const jsonURL = 'https://script.google.com/macros/s/AKfycbzKRzrnEtgTaGmSDN0daIjtquhBWL5rwn_ZQR8FRYbn5fHtODKSQSTKoi1bXWmrlR0vSg/exec';
     const targetPattern = /https:\/\/cyborg\.deckard\.com\/listing\/[^\/]+\/[^\/]+\/STR[^\/]+/;
 
 
