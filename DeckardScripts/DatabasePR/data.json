@@ -1812,6 +1812,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "LA - City Of Shreveport",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://www.actdatascout.com/RealProperty/Louisiana/Caddo"
+        },
+        {
+          "type": "GIS",
+          "url": "https://shreveport.maps.arcgis.com/apps/webappviewer/index.html?id=473e88d950914bae881e607005eacb1a"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7BC1C816E7-5FB5-40DE-9C07-5E0463A6CCF0%7D&file=Rentalscape%20tracking%20list.xlsx&action=default&mobileredirect=true"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
