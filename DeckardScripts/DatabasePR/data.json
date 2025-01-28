@@ -1708,6 +1708,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "CA - City of Glendora",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://assr.parcelquest.com/Statewide"
+        },
+        {
+          "type": "GIS",
+          "url": "https://rpgis.isd.lacounty.gov/Html5Viewer/index.html?viewer=GISNET_Public.GIS-NET_Public"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B16B7C2E6-1981-4B80-81D2-281B88FEAE23%7D&file=Glendora%20STRs%20-%20Copy%20-%20SM.xlsx&action=default&mobileredirect=true"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
