@@ -3230,6 +3230,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "MO - City of Florissant",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://revenue.stlouisco.com/IAS/"
+        },
+        {
+          "type": "GIS",
+          "url": "https://data-stlcogis.opendata.arcgis.com/apps/e70f8f1814a34cd7bf8f6766bd950c68/explore"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License o N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "Use VPN when using the GIS",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
