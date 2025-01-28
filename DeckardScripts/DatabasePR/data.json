@@ -3152,6 +3152,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "GA - Fayette County",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://qpublic.schneidercorp.com/Application.aspx?AppID=942&LayerID=18406&PageTypeID=2&PageID=8204&KeyValue=130201082"
+        },
+        {
+          "type": "GIS",
+          "url": "https://qpublic.schneidercorp.com/Application.aspx?AppID=942&LayerID=18406&PageTypeID=1&PageID=8203&KeyValue=130201082"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EQoljjb5vlhAqlmbph6hCo0B7_E4GzqSuex9Zr0ajWyXlg?e=Fqswc6"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
