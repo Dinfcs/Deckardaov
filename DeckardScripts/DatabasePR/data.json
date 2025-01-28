@@ -2682,6 +2682,32 @@
           "url": "https://www.loom.com/share/f16a28df26464f51b334bb473e119a6b"
         }
       ]
+    },
+    {
+      "Project": "CA - San Joaquin County",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://common1.mptsweb.com/mbap/sanjoaquin/asr"
+        },
+        {
+          "type": "GIS",
+          "url": "https://www.sjmap.org/PW_GIS-Parcel_Viewer/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License o N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "Public Records: You can use the APN with or without the last 4 zeros.\n\nGIS: You must use the APN without the last 4 zeros.\n\nCyborg shows the APN with the last 4 zeros, so if you try to map it and it shows the wrong APN, you should take a look at this.",
+      "Media": [
+        {
+          "type": "GIS and Public Records demonstration ",
+          "url": "https://www.loom.com/share/b9bdf7b84c794f649e60358e26c9e9fb"
+        }
+      ]
     }
   ]
 }
