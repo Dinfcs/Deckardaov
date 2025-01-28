@@ -1509,6 +1509,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "NY - Town Of Chatham",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://columbia.sdgnys.com/search.aspx?advanced=true"
+        },
+        {
+          "type": "GIS",
+          "url": "https://sdg.giscloud.com/map/311797/columbia"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License o N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "Public records work by entering the address, not the APN.",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
