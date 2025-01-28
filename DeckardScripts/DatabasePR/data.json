@@ -3286,6 +3286,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "NY - Town of Babylon",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://property.townofbabylon.com/Filter"
+        },
+        {
+          "type": "GIS",
+          "url": "https://gisapps.suffolkcountyny.gov/gisviewer/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License o N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "Use VPN for both, PR and GIS.",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
