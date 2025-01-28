@@ -2128,6 +2128,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": " CA - City Of Riverside",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://ca-riverside-acr.publicaccessnow.com/Search.aspx"
+        },
+        {
+          "type": "GIS",
+          "url": "https://gis1.countyofriverside.us/Html5Viewer/?viewer=MMC_Public"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
