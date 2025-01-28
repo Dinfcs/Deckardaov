@@ -1760,6 +1760,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "IL -  City of Ottawa",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://lasallecountysa.org/propertysearch/searchoption.html"
+        },
+        {
+          "type": "GIS",
+          "url": "https://cityofottawa-il.maps.arcgis.com/apps/webappviewer/index.html?id=610a02343e37490e8c44880ca6d94763"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License o N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "The PR provides access to property photos, along with details such as the property type. You can also perform a search using the following options:\n\n-PIN Search\n\n-Address Search\n\n-Map Reference Number Search\n\nFor the Map Reference Number Search, you’ll need to input the First Alternative Parcel ID found in Regrid under Additional Items.",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
