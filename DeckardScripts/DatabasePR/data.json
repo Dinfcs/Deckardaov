@@ -1301,6 +1301,58 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "PA - Centre County",
+      "Public Records & GIS": [
+        {
+          "type": "GIS (Need the VPN)",
+          "url": "https://gissites4.centrecountypa.gov/java/publicparcelviewer/"
+        },
+        {
+          "type": "Property Type Codes ",
+          "url": "https://centrecountypa.gov/DocumentCenter/View/5031/Property-Type-Codes?bidId="
+        }
+      ],
+      "License List": [
+        {
+          "type": "License",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B31E14227-D044-4D90-8F02-5ECB97A7ADF3%7D&file=Short%20term%20rental%20permits%20-%20Copy%20EM.xlsx&action=default&mobileredirect=true"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
+    },
+    {
+      "Project": "AZ - Town of Fountain Hills",
+      "Public Records & GIS": [
+        {
+          "type": "GIS",
+          "url": "https://maps.mcassessor.maricopa.gov/"
+        },
+        {
+          "type": "PR",
+          "url": "https://www.mcassessor.maricopa.gov/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EcLT4HMb71hLja6ZQSQaAAEBz150LW1yd0dDqT3t3PzjZg?e=leZc4x"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
