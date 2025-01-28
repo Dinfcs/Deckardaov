@@ -3204,6 +3204,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "MN - Otter Tail County",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://ottertail.minnesotaassessors.com/search.php"
+        },
+        {
+          "type": "GIS",
+          "url": "https://otcgis.maps.arcgis.com/apps/webappviewer/index.html?id=3d83daccb80c440eb0ea26dca79250e3"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License o N/A",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/ETH-pH804n5AmbPeba1GhYIBaFdoapVqQr6FidKnXMI6GA?e=jNKpCj"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
