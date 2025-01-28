@@ -2708,6 +2708,32 @@
           "url": "https://www.loom.com/share/b9bdf7b84c794f649e60358e26c9e9fb"
         }
       ]
+    },
+    {
+      "Project": "AZ - City Of Tempe",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://www.mcassessor.maricopa.gov/"
+        },
+        {
+          "type": "GIS",
+          "url": "https://maps.mcassessor.maricopa.gov/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License o N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "Unit numbers may appear different in cyborg, each person doing address mapping should check the APN and the unit are correct in the public records.",
+      "Media": [
+        {
+          "type": "Video",
+          "url": "https://www.loom.com/share/f16a28df26464f51b334bb473e119a6b"
+        }
+      ]
     }
   ]
 }
