@@ -1734,6 +1734,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "CA - City of Half Moon Bay",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://sanmateo-ca.county-taxes.com/public/search/gsgx_property_tax"
+        },
+        {
+          "type": "GIS",
+          "url": "https://gis.smcgov.org/Html5Viewer/?viewer=raster"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License o N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
