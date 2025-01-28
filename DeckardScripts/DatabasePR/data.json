@@ -2786,6 +2786,36 @@
           "url": "https://www.loom.com/share/f16a28df26464f51b334bb473e119a6b"
         }
       ]
+    },
+    {
+      "Project": "CA - Santa Cruz County",
+      "Public Records & GIS": [
+        {
+          "type": "PR ",
+          "url": "https://sccounty01.co.santa-cruz.ca.us/ASR/"
+        },
+        {
+          "type": "GIS ",
+          "url": "https://gis.santacruzcounty.us/gisweb/"
+        },
+        {
+          "type": "Classification Codes (VPN)",
+          "url": "https://www.santacruzcountyca.gov/Departments/AssessorsOffice/AssessorUseCodesDisclaimer/AssessorUseCodes.aspx"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License o N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "Use VPN for GIS and PR",
+      "Media": [
+        {
+          "type": "PR and GIS Demonstration",
+          "url": "https://www.loom.com/share/00171126bc3a45fa9ae856dc0c4b8c49"
+        }
+      ]
     }
   ]
 }
