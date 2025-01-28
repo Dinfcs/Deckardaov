@@ -3074,6 +3074,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "GA - City of Dalton",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://beacon.schneidercorp.com/Application.aspx?AppID=1049&LayerID=23759&PageTypeID=2&PageID=9914"
+        },
+        {
+          "type": "GIS",
+          "url": "https://gis.whitfieldcountyga.com/portal/apps/webappviewer/index.html?id=264009de213643a6803490216f78f8cc"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License o N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
