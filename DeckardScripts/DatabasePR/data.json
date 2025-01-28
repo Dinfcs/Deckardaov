@@ -2656,6 +2656,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "AZ - Town Of Carefree",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://www.mcassessor.maricopa.gov/"
+        },
+        {
+          "type": "GIS",
+          "url": "https://maps.mcassessor.maricopa.gov/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "Video",
+          "url": "https://www.loom.com/share/f16a28df26464f51b334bb473e119a6b"
+        }
+      ]
     }
   ]
 }
