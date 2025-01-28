@@ -1153,6 +1153,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "UT - City of Hurricane",
+      "Public Records & GIS": [
+        {
+          "type": "PR ",
+          "url": "https://eweb.washco.utah.gov:8443/recorder/web/login.jsp?submit=Enter"
+        },
+        {
+          "type": "GIS",
+          "url": "https://geoprodvm.washco.utah.gov/Html5Viewer/?viewer=WashingtonCounty"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License ",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B310E5E9B-7BE7-4043-B1B0-7368C0D8F09D%7D&file=10162024rentals%20-%20revised%2011-04-2024.xlsx&action=default&mobileredirect=true"
+        }
+      ],
+      "Important Info": "To Public Records, use the VPN, and click Account Search.\n\n\nBe sure to tick the remodeled box if it applies.",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
