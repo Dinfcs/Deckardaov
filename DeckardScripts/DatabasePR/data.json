@@ -1786,6 +1786,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "CA - City of Lakeport",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://assr.parcelquest.com/Statewide"
+        },
+        {
+          "type": "GIS",
+          "url": "https://maps.lakecountyil.gov/taxparcelviewer/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License o N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
