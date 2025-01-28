@@ -1375,6 +1375,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "OH - Ross County",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://auditor.rosscountyohio.gov/"
+        },
+        {
+          "type": "GIS",
+          "url": "https://auditor.rosscountyohio.gov/Map"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7BE0096C4E-CA28-4E15-A6C1-8344DEBA0FB9%7D&file=Copy%20of%20LicenseUploadTemplate-Generic%20-%20copy%20EM.xlsx&action=default&mobileredirect=true"
+        }
+      ],
+      "Important Info": "If the LB address does not match the PR address. Please override the address with the address provided by public records.",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
