@@ -1890,6 +1890,28 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": " ID - Bear Lake County",
+      "Public Records & GIS": [
+        {
+          "type": "GIS",
+          "url": "https://experience.arcgis.com/experience/80eab38489484e0f96eca9880942a2d4/#data_s=id%3AdataSource_3-1917ae04c8a-layer-47%3A8679"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
