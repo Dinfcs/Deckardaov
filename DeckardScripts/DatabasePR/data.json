@@ -2816,6 +2816,32 @@
           "url": "https://www.loom.com/share/00171126bc3a45fa9ae856dc0c4b8c49"
         }
       ]
+    },
+    {
+      "Project": "CA - Town of Corte Madera",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://apps.marincounty.org/TaxBillOnline"
+        },
+        {
+          "type": "GIS",
+          "url": "https://www.marinmap.org/Html5Viewer/Index.html?viewer=smmdataviewer"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EQdQlsIAGZtMnw7zN1wV3dsBB50NQaWJwrSz0riU5KMKew?e=puQf8u"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
