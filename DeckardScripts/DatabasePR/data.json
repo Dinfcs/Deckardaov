@@ -2414,6 +2414,58 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "CA - City Of Fresno",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://www.fresnocountyca.gov/Departments/Assessor/Value"
+        },
+        {
+          "type": "GIS",
+          "url": "https://cityoffresno.maps.arcgis.com/apps/webappviewer/index.html?id=dbd9813b2fa74382b3096b9613e7470d"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B3C462DE4-4D66-421B-86D8-F977F74A684B%7D&file=STR%208-23-2024--%20Copy%20EM.xlsx&action=default&mobileredirect=true"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
+    },
+    {
+      "Project": "CA - City Of Diamond Bar",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://portal.assessor.lacounty.gov/"
+        },
+        {
+          "type": "GIS",
+          "url": "https://db.maps.arcgis.com/apps/webappviewer/index.html?id=605f2597e7d14ed388f57eb90f40682e"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
