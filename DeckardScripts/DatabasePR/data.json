@@ -1101,6 +1101,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "UT - Kane County",
+      "Public Records & GIS": [
+        {
+          "type": "PR ",
+          "url": "https://eagleweb.kane.utah.gov/eaglesoftware/web/login.jsp"
+        },
+        {
+          "type": "GIS",
+          "url": "https://eagleweb.kane.utah.gov/eaglesoftware/web/custom/map.html?loc=kanab"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License o N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "It's important to take a look at the dashes of APNs because this is important to identify the property, please check the APNs with dashes on Public Records.\n\n\n\nBe sure to tick the remodeled box if it applies.",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
