@@ -2492,6 +2492,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": " CA - City Of Clovis",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://www.fresnocountyca.gov/Departments/Assessor/Value"
+        },
+        {
+          "type": "GIS",
+          "url": "https://cloviswebgis.maps.arcgis.com/apps/webappviewer/index.html?id=9717e63667a8474eae3919c9c6485e63"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
