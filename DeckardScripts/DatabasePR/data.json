@@ -2362,6 +2362,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "CA - City Of Grass Valley",
+      "Public Records & GIS": [
+        {
+          "type": "PR (Use VPN)",
+          "url": "https://reports.nevcounty.net/property/rdPage.aspx?rdReport=parcel.ParcelReport"
+        },
+        {
+          "type": "GIS (Use VPN)",
+          "url": "https://gis.nevcounty.net/MyNeighborhood/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B56FCBC63-458D-44C5-8CCD-5FECB394137B%7D&file=Rental%20Units%20Tracking%20Sheet%20(Updated)%20(4)%20-%20Copy%20EM.xlsx&action=default&mobileredirect=true"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
