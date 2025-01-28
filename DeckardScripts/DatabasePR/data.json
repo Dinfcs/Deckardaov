@@ -2760,6 +2760,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "AZ - City Of Goodyear",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://www.mcassessor.maricopa.gov/"
+        },
+        {
+          "type": "GIS",
+          "url": "https://maps.mcassessor.maricopa.gov/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "Dustin wants everything to be identified (including not live and blocked), and the customer sends their letters to the non-compliant listings.",
+      "Media": [
+        {
+          "type": "Video",
+          "url": "https://www.loom.com/share/f16a28df26464f51b334bb473e119a6b"
+        }
+      ]
     }
   ]
 }
