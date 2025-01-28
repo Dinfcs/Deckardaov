@@ -2876,6 +2876,36 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "AL - City of Auburn",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://www.deltacomputersystems.com/al/al43/pappraisala.html"
+        },
+        {
+          "type": "GIS",
+          "url": "https://www.alabamagis.com/Lee/frameset.cfm?cfid=1617882&cftoken=89503038"
+        },
+        {
+          "type": "GIS2",
+          "url": "https://webgis.auburnalabama.org/coamap/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B2FC4F1A5-5621-43D8-AE53-7B86B9A1706C%7D&file=COA_Rental_Permit_Licenses%20(6).xlsx&action=default&mobileredirect=true"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
