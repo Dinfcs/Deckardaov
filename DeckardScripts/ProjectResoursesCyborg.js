@@ -133,7 +133,7 @@ function obtenerNombreProyectoDesdeURL() {
             );
 
             if (!proyectoFiltrado) {
-                contenedorDatos.textContent = 'No se encontraron datos para el proyecto detectado.';
+                contenedorDatos.textContent = 'No data found for the detected project.';
                 return;
             }
 
