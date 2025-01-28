@@ -2566,6 +2566,40 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "AZ - Town Of Queen Creek",
+      "Public Records & GIS": [
+        {
+          "type": "PR Maricopa County",
+          "url": "https://www.mcassessor.maricopa.gov/"
+        },
+        {
+          "type": "PR Pinal County",
+          "url": "https://www.pinalcountyaz.gov/ASSESSOR/Pages/ParcelSearch.aspx"
+        },
+        {
+          "type": "GIS Maricopa County",
+          "url": "https://maps.mcassessor.maricopa.gov/"
+        },
+        {
+          "type": "GIS Pinal County",
+          "url": "https://pinal.maps.arcgis.com/apps/webappviewer/index.html?id=d92bad11160e425ca191f048ef6ca556"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/Eemk-aB0zJZPuKQNzIm2kkQB2feeHQUbIxXcfRXzxmBACQ?e=5GfMWR"
+        }
+      ],
+      "Important Info": "The Town is in two different counties, so It’s important to consider both PR and GIS.",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
