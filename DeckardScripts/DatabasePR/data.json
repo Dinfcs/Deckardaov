@@ -2992,6 +2992,36 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "GA - Athens-Clarke County",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://qpublic.schneidercorp.com/Application.aspx?AppID=630&LayerID=11199&PageTypeID=2&PageID=4599&KeyValue=184A6%20B005"
+        },
+        {
+          "type": "GIS",
+          "url": "https://qpublic.schneidercorp.com/Application.aspx?AppID=630&LayerID=11199&PageTypeID=1"
+        },
+        {
+          "type": "PR / GIS Oconee County",
+          "url": "https://qpublic.schneidercorp.com/Application.aspx?AppID=686&LayerID=11376&PageTypeID=2&PageID=4791&KeyValue=B%2001%20%20021"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "The Public Record has photo of the front of the house.",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
