@@ -2336,6 +2336,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": " CA - City Of Manteca",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://common1.mptsweb.com/mbap/sanjoaquin/asr"
+        },
+        {
+          "type": "GIS",
+          "url": "https://www.sjmap.org/PW_GIS-Parcel_Viewer/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "The format of the APN in Cyborg has 4 zeros at the end of the number.\nThe aerial view in Regrid works well!",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
