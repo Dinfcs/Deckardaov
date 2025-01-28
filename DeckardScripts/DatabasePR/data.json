@@ -2314,6 +2314,28 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "CA - City Of Mission Viejo",
+      "Public Records & GIS": [
+        {
+          "type": "GIS",
+          "url": "https://missionviejo.geoviewer.io/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "In the Gis; On the right side, you will find several rows; please go to “Land Use” to see the type of property. you can also use LB",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
