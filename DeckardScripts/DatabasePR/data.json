@@ -1483,6 +1483,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "NY - Town Of Copake",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://columbia.sdgnys.com/search.aspx"
+        },
+        {
+          "type": "GIS",
+          "url": "https://cc-ny.maps.arcgis.com/apps/webappviewer/index.html?id=73ddd97e6ace4698a1b85b24606636cd&extent=-8344454.7764%2C5126282.5211%2C-8050936.5878%2C5269525.5121%2C102100"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
