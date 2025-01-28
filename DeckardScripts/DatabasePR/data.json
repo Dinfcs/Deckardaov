@@ -1127,6 +1127,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "UT - Salt Lake City",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://slco.org/assessor/new/query.cfm"
+        },
+        {
+          "type": "GIS",
+          "url": "https://slco.org/assessor/new/ParcelViewer/index.html?query=Parcel_Viewer_external_3634_5,parcel_id,"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "When we identify properties whose structure is U1OM this address format (two street numbers) in PR:\n\n637- 639 S WASHINGTON ST \n\nplease, don't use Address Override, only if we identify the unit number, add this info to the unit box.",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
