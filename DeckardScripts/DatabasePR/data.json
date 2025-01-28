@@ -3256,6 +3256,36 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "MO - City of Independence",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://jccweb.jacksongov.org/SalesSearch/(S(amfj4m45zlckvejymn1baiml))/default.aspx"
+        },
+        {
+          "type": "PR2",
+          "url": "https://ascendweb.jacksongov.org/default.aspx"
+        },
+        {
+          "type": "GIS",
+          "url": "https://jcgis.jacksongov.org/parcelviewer/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License o N/A",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/ESNy_TJyTkNJu6_S_JL5zPgBs5QcwIMUPdd00tMJQPViaQ?e=TuB4Gt"
+        }
+      ],
+      "Important Info": "Use VPN when using the GIS.",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
