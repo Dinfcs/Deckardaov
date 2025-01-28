@@ -2210,6 +2210,58 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "City Of Pacific Grove",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://assr.parcelquest.com/Statewide/Disclaimer"
+        },
+        {
+          "type": "GIS",
+          "url": "https://citypacificgrove.maps.arcgis.com/apps/webappviewer/index.html?id=a9c76858b6604b9dbfc6ef30d56656b1"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B53CC53C9-DBED-45E0-B50C-F19E253644ED%7D&file=Active%20STR%20licenses%2012-09-24%20-%20Copy%20EM.xlsx&action=default&mobileredirect=true"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
+    },
+    {
+      "Project": "CA - City Of Novato",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://apps.marincounty.org/TaxBillOnline/"
+        },
+        {
+          "type": "GIS",
+          "url": "https://www.marinmap.org/Html5Viewer/Index.html?viewer=smmdataviewer"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
