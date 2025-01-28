@@ -2388,6 +2388,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "CA - City Of Gardena",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://portal.assessor.lacounty.gov/"
+        },
+        {
+          "type": "GIS",
+          "url": "https://rpgis.isd.lacounty.gov/Html5Viewer/index.html?viewer=GISNET_Public.GIS-NET_Public"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
