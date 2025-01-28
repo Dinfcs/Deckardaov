@@ -1535,6 +1535,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "NY - City Of Glens Falls",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://imo.warrencountyny.gov/search.aspx"
+        },
+        {
+          "type": "GIS",
+          "url": "https://warrencountyny.maps.arcgis.com/apps/webappviewer/index.html?id=8d1eadedc64445439cadeaa5c957b512/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
