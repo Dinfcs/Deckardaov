@@ -2540,6 +2540,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "CA - City Of Big Bear Lake",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://assr.parcelquest.com/Statewide?IndexViewModel=PQGov.Models.IndexViewModel"
+        },
+        {
+          "type": "GIS",
+          "url": "https://arcpropertyinfo.sbcounty.gov/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B514EA2DC-F7DC-4C70-A11A-0CBA63E5532A%7D&file=BBL%20Deckard%20report%20VR%20Registration%20Data%207.15.2024%20FINAL.xlsx&action=default&mobileredirect=true"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
