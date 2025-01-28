@@ -3424,6 +3424,40 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "AL - City of Madison",
+      "Public Records & GIS": [
+        {
+          "type": "PR Limestone County",
+          "url": "https://www.limestonerevenue.net/CAPortal_MainPage.aspx"
+        },
+        {
+          "type": "GIS Limestone County",
+          "url": "https://isv.kcsgis.com/al.limestone_revenue_public/"
+        },
+        {
+          "type": "PR Madison County",
+          "url": "https://madisonproperty.countygovservices.com/Property/Property/Search?taxyear=2023"
+        },
+        {
+          "type": "GIS Madison County",
+          "url": "https://madisonal.maps.arcgis.com/apps/webappviewer/index.html?id=5ed0d274940545018c6a0815e5e30327"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "This city belongs to two counties: Limestone and Madison County. Use VPN for search",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
