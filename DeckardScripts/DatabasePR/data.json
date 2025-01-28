@@ -2102,6 +2102,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "CA - Town Of Mammoth Lakes",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://assr.parcelquest.com/Statewide"
+        },
+        {
+          "type": "GIS (Use VPN)",
+          "url": "https://gis.mono.ca.gov/apps/pv/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7BC0943B28-979F-48BC-B473-63FFA64E58AF%7D&file=Certified_Properties%20(3)%20(2)%20-Copy%20EM.csv&action=default&mobileredirect=true"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
