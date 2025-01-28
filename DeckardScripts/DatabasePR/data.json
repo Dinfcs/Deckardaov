@@ -2288,6 +2288,32 @@
           "url": "https://www.loom.com/share/b9392408426e4d919ef0a198575202e9"
         }
       ]
+    },
+    {
+      "Project": "CA - City Of Monterey",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://assr.parcelquest.com/Statewide"
+        },
+        {
+          "type": "GIS",
+          "url": "https://maps.co.monterey.ca.us/wab/parcelreportwebapp/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "For Carmel-by-the-Sea, only input the APN (no address override required). Include the coordinates in the comments if readily available; otherwise, it will result in a 'NO MATCH FOUND.' In summary, properties in this city are not of interest to the client",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
