@@ -1561,6 +1561,28 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "NM - Village Of Cloudcroft",
+      "Public Records & GIS": [
+        {
+          "type": "PR ",
+          "url": "https://oterocountynm-assessor.tylerhost.net/assessor/taxweb/search.jsp"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
