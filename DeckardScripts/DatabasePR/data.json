@@ -2630,6 +2630,32 @@
           "url": "https://deckardtech.slack.com/files/U024Z0VTGLT/F05AP04ET4M/screenshare_-_2023-06-02_12_10_48_pm.webm"
         }
       ]
+    },
+    {
+      "Project": "AZ - City Of Avondale",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://www.mcassessor.maricopa.gov/"
+        },
+        {
+          "type": "GIS",
+          "url": "https://maps.mcassessor.maricopa.gov/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7BB8BADD06-0100-45CA-AA09-B42C500DF01D%7D&file=LicenseUploadTemplate-Generic%2011-14-2024%20(emailed%20to%20vendor)1%20-%20Copy%20EM.xlsx&action=default&mobileredirect=true"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
