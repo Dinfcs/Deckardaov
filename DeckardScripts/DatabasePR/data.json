@@ -3474,6 +3474,36 @@
       "License List": [],
       "Important Info": "N/A",
       "Media": []
+    },
+    {
+      "Project": "OR - City of Newberg",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://ascendweb.co.yamhill.or.us/AcsendWeb/(S(v1cokcqgitwhwui5dktmh3hv))/default.aspx"
+        },
+        {
+          "type": "GIS",
+          "url": "https://map-newberg.hub.arcgis.com/apps/6e04b90c27a94b2b972c87695f2f4c4d/explore"
+        },
+        {
+          "type": "GIS 2",
+          "url": "https://www.yamhillcountymaps.com/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License o N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "Run VPN when using the PR.",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
