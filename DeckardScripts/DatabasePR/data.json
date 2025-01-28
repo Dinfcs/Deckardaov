@@ -1626,6 +1626,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "CA - City of Cathedral City",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://ca-riverside-acr.publicaccessnow.com/Search.aspx"
+        },
+        {
+          "type": "GIS",
+          "url": "https://gis1.countyofriverside.us/Html5Viewer/?viewer=MMC_Public"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License ",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B47C6257B-D729-4D63-8E21-3B9E6ABFFCCF%7D&file=STVR%20Property%20List%20(9.5.24).xlsx&action=default&mobileredirect=true"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
