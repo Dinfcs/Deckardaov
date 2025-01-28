@@ -2962,6 +2962,36 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "CO - Town of Mount Crested Butte",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://property.spatialest.com/co/gunnison#/"
+        },
+        {
+          "type": "GIS",
+          "url": "https://gis.gunnisoncounty.org/default_map.aspx"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/ESpkEQdtLpdMiOUHn6rngEcBV1LB2cVoV0VOrSE08ckKuQ?e=z5kGDT"
+        },
+        {
+          "type": "Business License Repository",
+          "url": "https://mtcb.munirevs.com/business-list/?cityid=322"
+        }
+      ],
+      "Important Info": "Not required to do AO for the City Name.\nExample: \nCity name in All Cyborg data: CRESTED BUTTE\nPublic Records City Name: MT CRESTED BUTTE\nIt is not required to do AO just to add MT\n\nThe Grand Lodge (6 Emmons Rd), Elevation Hotel (500 Gothic Rd), and Nordic Inn (16 Treasury) do not require an STR license. These are categorized as hotels, not STRs. Please assign the correct APN to each unit.\n\nThere are some listings with permit number \"306512\", please link these listings to the APN \"317726143004\" and set the structure as main.\n\nThis rental platform www.prproperty.com allows you to find exclusive properties in the Town of Crested Butte.",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
