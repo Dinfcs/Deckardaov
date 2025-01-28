@@ -2842,6 +2842,40 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "CO - Archuleta County",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://www.archuletatax.com/Treasurer/treasurerweb/search.jsp"
+        },
+        {
+          "type": "PR 2",
+          "url": "https://archuleta.infoenvoy.com/Search"
+        },
+        {
+          "type": "GIS",
+          "url": "https://portico.mygisonline.com/html5/?viewer=archuletaco"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License Internet",
+          "url": "https://docs.google.com/spreadsheets/d/1yQFrJVIUMH7ITXPps5oPRobmoB4lNDRq/edit?usp=sharing&ouid=116811820201301531853&rtpof=true&sd=true"
+        },
+        {
+          "type": "License",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EZ9vkUg1am5PioiqeOh45sUB76AQ-OJ5T6E8KTYxnJio9A?e=lbnrNR"
+        }
+      ],
+      "Important Info": "Listings of Wyndham Pagosa map under address 45 pinon and timeshare",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
