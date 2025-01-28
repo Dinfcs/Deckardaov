@@ -2734,6 +2734,32 @@
           "url": "https://www.loom.com/share/f16a28df26464f51b334bb473e119a6b"
         }
       ]
+    },
+    {
+      "Project": "AZ - City Of Litchfield Park",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://www.mcassessor.maricopa.gov/"
+        },
+        {
+          "type": "GIS",
+          "url": "https://maps.mcassessor.maricopa.gov/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EQoCGpdgHTNOmwQMecQepkwB-REXiNXeWn5vvm6b1U2lmA?e=kY0mZk"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
