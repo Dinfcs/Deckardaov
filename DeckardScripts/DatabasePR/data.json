@@ -1652,6 +1652,36 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "CA - City of Glendale",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://portal.assessor.lacounty.gov/"
+        },
+        {
+          "type": "GIS",
+          "url": "https://www.arcgis.com/apps/webappviewer/index.html?id=79315f9193f8454ba277ca12019d3226"
+        },
+        {
+          "type": "GIS L.A.",
+          "url": "https://rpgis.isd.lacounty.gov/Html5Viewer/index.html?viewer=GISNET_Public.GIS-NET_Public"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License o N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "Use the rental override classification in this project, the client needs to know when a property is self_contained or non_self_contained.\n\nThe satellite imagery on Bing Maps is excellent, use the bird's eye view option.",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
