@@ -1990,6 +1990,62 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "FL - Duval County",
+      "Public Records & GIS": [
+        {
+          "type": "PR (Use VPN)",
+          "url": "https://paopropertysearch.coj.net/Basic/Search.aspx"
+        },
+        {
+          "type": "PR 2 (Use VPN)",
+          "url": "https://duval.county-taxes.com/public/search/property_tax"
+        },
+        {
+          "type": "GIS  (Use VPN)",
+          "url": "https://maps.coj.net/duvalproperty/default.aspx?RE="
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": " N/A",
+          "url": "N/A"
+        }
+      ]
+    },
+    {
+      "Project": "FL - City Of Delray Beach",
+      "Public Records & GIS": [
+        {
+          "type": "Palm Beach PR",
+          "url": "https://www.pbcgov.org/papa/?redirect=1"
+        },
+        {
+          "type": "Palm Beach GIS",
+          "url": "https://maps.co.palm-beach.fl.us/cwgis/papa.html?qvalue=12434616D70000030"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
