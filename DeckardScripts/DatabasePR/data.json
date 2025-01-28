@@ -2906,6 +2906,36 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "CO - City of Lakewood",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://propertysearch.jeffco.us/propertyrecordssearch/ain"
+        },
+        {
+          "type": "GIS",
+          "url": "https://gis.jeffco.us/webmaps/jmap/index.html?"
+        },
+        {
+          "type": "GIS of Denver",
+          "url": "https://www.denvergov.org/Maps/map/property"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EaHqQE_4z9FGuArl_yroCmYB8EAHxWzZg09nEjz7wruT_w?e=ByRnar"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
