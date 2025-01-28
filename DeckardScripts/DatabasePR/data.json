@@ -1075,6 +1075,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "UT - Uintah County",
+      "Public Records & GIS": [
+        {
+          "type": "PR ",
+          "url": "https://apps.uintah.utah.gov/ords/ucdev/r/public-searches/property-search?session=5258286647306"
+        },
+        {
+          "type": "GIS",
+          "url": "https://www.arcgis.com/apps/webappviewer/index.html?id=52c1c3a98f4845f68f05749619d54b86&marker=-109.94053606684433%2C40.29150279780144%2C%2C%2C%2C&markertemplate=%7B%22title%22%3A%22170480056%22%2C%22longitude%22%3A-109.94053606684433%2C%22latitude%22%3A40.29150279780144%2C%22isIncludeShareUrl%22%3Atrue%7D&level=18"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License o N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "Be sure to tick the remodeled box if it applies.\n\nWhen mapping if there is a missing letter before or after the street name is likely to need an Address Override performed.",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
