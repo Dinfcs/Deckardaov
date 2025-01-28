@@ -3312,6 +3312,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "NY - Town of Skaneateles",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://ocfintax.ongov.net/Imate/search.aspx"
+        },
+        {
+          "type": "GIS",
+          "url": "https://spatial.vhb.com/onondaga/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License o N/A",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EXXxCOdhiBpIhSQonfAd71UBjCLX7XD1QP_jgaWvWV9djg?e=88sipC"
+        }
+      ],
+      "Important Info": "Public records work by entering the address, not the APN.\n\nSelect the Miami location in the VPN.\n\nPlease do the AO according to the PRs.",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
