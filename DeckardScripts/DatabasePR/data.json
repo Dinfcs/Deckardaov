@@ -1682,6 +1682,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "CA - City of Burlingame",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://county-taxes.net/ca-sanmateo/services/property-tax"
+        },
+        {
+          "type": "GIS",
+          "url": "https://gis.smcgov.org/Html5Viewer/?viewer=raster"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License o N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "Use VPN for PR",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
