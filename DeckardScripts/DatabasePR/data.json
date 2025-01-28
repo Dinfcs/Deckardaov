@@ -2600,6 +2600,36 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "CA - Monterey County",
+      "Public Records & GIS": [
+        {
+          "type": "GIS",
+          "url": "https://maps.co.monterey.ca.us/wab/parcelreportwebapp/"
+        },
+        {
+          "type": "GIS Camel by the Sea",
+          "url": "https://planningsites.org/CarmelPlanning/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License o N/A",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EeGdMydTrERDsdVSMjgRsCUBxvEiXNMEdS56oMFBX74AGQ?e=36NwX5"
+        }
+      ],
+      "Important Info": "For the zone Carmel-by-the-sea put the address from the GIS (location), please watch the video attached.",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "blob:https://deckardtech.atlassian.net/c35d411e-2091-4df2-921e-85e221eeb978#media-blob-url=true&id=45278f68-ade9-49d3-b6f3-9310d95d5745&collection=contentId-1717403844&contextId=1717403844&mimeType=image%2Fpng&name=image-20240119-164023.png&size=658264&width=902&height=212&alt=image-20240119-164023.png"
+        },
+        {
+          "type": "Video",
+          "url": "https://deckardtech.slack.com/files/U024Z0VTGLT/F05AP04ET4M/screenshare_-_2023-06-02_12_10_48_pm.webm"
+        }
+      ]
     }
   ]
 }
