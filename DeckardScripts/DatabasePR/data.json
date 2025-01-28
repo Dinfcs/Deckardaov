@@ -1604,6 +1604,28 @@
       ],
       "Important Info": "Use ParcelQuest for parcel data information.",
       "Media": []
+    },
+    {
+      "Project": "MA - City Of Revere",
+      "Public Records & GIS": [
+        {
+          "type": "GIS",
+          "url": "https://gis.revere.org/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
