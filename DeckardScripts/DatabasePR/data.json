@@ -1864,6 +1864,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "KY - Estill County",
+      "Public Records & GIS": [
+        {
+          "type": "PR ",
+          "url": "https://qpublic.schneidercorp.com/Application.aspx?AppID=1162&LayerID=31497&PageTypeID=2&PageID=12738"
+        },
+        {
+          "type": "GIS",
+          "url": "https://explore.kyfromabove.ky.gov/#"
+        }
+      ],
+      "License List": [
+        {
+          "type": " N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "PR information is limited. Please use LB or Regrid.",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
