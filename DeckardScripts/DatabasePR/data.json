@@ -2936,6 +2936,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "CO - Clear Creek County",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://assessor.co.clear-creek.co.us/eagleassessor/taxweb/search.jsp"
+        },
+        {
+          "type": "GIS",
+          "url": "https://gis.clearcreekcounty.us/HTML5Viewer/?viewer=clearmap"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EbOY5EIxt2tDu1dPMF2Gf3cBGoOzY_oTdjAwL3N83-kjzg?e=C5stYI"
+        }
+      ],
+      "Important Info": "Use VPN for both, PR and GIS.\nPR has the house front photo for each property",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
