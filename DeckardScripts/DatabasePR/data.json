@@ -224,6 +224,10 @@
         {
           "type": "GIS ",
           "url": "https://maps.pitkincounty.com/gvh/?viewer=portal"
+        },
+        {
+          "type": "Types of property",
+          "url": "https://pitkincounty.com/DocumentCenter/View/1796/Pitkin-County-Assessor-Property-Codes-PDF"
         }
       ],
       "License List": [
