@@ -1201,6 +1201,28 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "ME - City of Bangor",
+      "Public Records & GIS": [
+        {
+          "type": "GIS",
+          "url": "https://www.arcgis.com/apps/webappviewer/index.html?id=542e4d3d42e3454ebd8f35bcbebf8368"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License o N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "When you select a parcel on the GIS the Property information is under the “Tax Cards and Photos”\n(VPN NEEDED) for GIS",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
