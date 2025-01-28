@@ -3022,6 +3022,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "GA - Bulloch County",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://qpublic.schneidercorp.com/Application.aspx?App=BullochCountyGA&Layer=Parcels&PageType=Search"
+        },
+        {
+          "type": "GIS",
+          "url": "https://qpublic.schneidercorp.com/Application.aspx?AppID=637&LayerID=11293&PageTypeID=1"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License o N/A",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B1C9AC0BA-7D12-4D3F-A058-EF738370F7CF%7D&file=License%20Info-%20CopyAna.xlsx&action=default&mobileredirect=true"
+        }
+      ],
+      "Important Info": "The PRs has photos of the house.",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
