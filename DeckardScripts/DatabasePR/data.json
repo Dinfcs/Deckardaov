@@ -2158,6 +2158,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "CA - City Of Pasadena",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://pqweb.parcelquest.com/#login"
+        },
+        {
+          "type": "GIS",
+          "url": "https://rpgis.isd.lacounty.gov/Html5Viewer/index.html?viewer=GISNET_Public.GIS-NET_Public"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7BD4628F12-EB2B-4B35-B988-C1576C99BB49%7D&file=Active%20Permit%20Data%209.11.231%20-%20copy%20EM%20.xlsx&action=default&mobileredirect=true"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
