@@ -3178,6 +3178,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "IL - Village of Forest View",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://www.cookcountyassessor.com/address-search"
+        },
+        {
+          "type": "GIS",
+          "url": "https://maps.cookcountyil.gov/cookviewer/mapViewer.html"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License o N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "Use VPN for both, PR and GIS.",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
