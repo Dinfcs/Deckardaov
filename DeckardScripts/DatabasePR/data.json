@@ -3338,6 +3338,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "OH - Ashland County",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://oh-ashland-auditor.publicaccessnow.com/PropertyNumberSearch.aspx"
+        },
+        {
+          "type": "GIS",
+          "url": "https://ashland-oh.bhamaps.com/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License o N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
