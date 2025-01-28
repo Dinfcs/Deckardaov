@@ -3126,6 +3126,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "GA - Douglas County",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://douglasnv-search.gsacorp.io/"
+        },
+        {
+          "type": "GIS",
+          "url": "https://gisservices.douglasnv.us/portal/apps/webappviewer/index.html?id=7b7b59383f484fe1a581c93d47e06fef"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/ESfTTfB4LIdMi6naTY-cvfsBgPA8vGGO1GdgMQSv11_dhQ?e=67PcKL"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
