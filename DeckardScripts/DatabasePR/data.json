@@ -2046,6 +2046,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "CO - Mineral County",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://eagleweb.mineralcountycolorado.com/assessor/taxweb/search.jsp"
+        },
+        {
+          "type": "GIS",
+          "url": "https://portico.mygisonline.com/html5/?viewer=mineralco"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
