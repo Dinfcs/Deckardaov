@@ -3458,6 +3458,22 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "OH - Township of Put-In-Bay",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://beacon.schneidercorp.com/Application.aspx?AppID=1112&LayerID=28099&PageTypeID=2&PageID=11487&KeyValue=0240924921264001"
+        },
+        {
+          "type": "GIS",
+          "url": "https://gis.co.ottawa.oh.us/portal/apps/webappviewer/index.html?id=f3d55facd3fe454681361639a662a67b"
+        }
+      ],
+      "License List": [],
+      "Important Info": "N/A",
+      "Media": []
     }
   ]
 }
