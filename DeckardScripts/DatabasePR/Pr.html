@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Resources</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #555;
+        }
+        #tableContainer {
+            overflow-x: auto;
+            margin-top: 20px;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #093140;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        td {
+            background-color: #fff;
+            color: #555;
+        }
+        a {
+            color: #1E90FF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            color: #3742fa;
+        }
+        @media (max-width: 768px) {
+            body {
+                margin: 10px;
+            }
+            table {
+                font-size: 14px;
+            }
+            th, td {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Project Resources</h1>
+    <div id="tableContainer"></div>
+
+    <script>
+        const jsonURL = 'https://dinfcs.github.io/Deckardaov/DeckardScripts/DatabasePR/data.json';
+
+        async function cargarDatos() {
+            try {
+                const response = await fetch(jsonURL);
+                if (!response.ok) {
+                    throw new Error(`Error al leer la base de datos: ${response.statusText}`);
+                }
+
+                const data = await response.json();
+                displayTable(data.tabla);
+
+            } catch (error) {
+                console.error('Error al cargar los datos:', error);
+            }
+        }
+
+        function displayTable(data) {
+            const tableContainer = document.getElementById('tableContainer');
+            tableContainer.innerHTML = '';
+
+            const table = document.createElement('table');
+
+            // Crear encabezado de la tabla
+            const headers = ['Project', 'Public Records & GIS', 'License List', 'Important Info', 'Media'];
+            const thead = document.createElement('thead');
+            const headerRow = document.createElement('tr');
+            headers.forEach(header => {
+                const th = document.createElement('th');
+                th.textContent = header;
+                headerRow.appendChild(th);
+            });
+            thead.appendChild(headerRow);
+            table.appendChild(thead);
+
+            // Crear cuerpo de la tabla
+            const tbody = document.createElement('tbody');
+            data.forEach(item => {
+                const row = document.createElement('tr');
+                headers.forEach(header => {
+                    const td = document.createElement('td');
+                    if (Array.isArray(item[header])) {
+                        item[header].forEach(link => {
+                            const a = document.createElement('a');
+                            a.href = link.url;
+                            a.textContent = link.type;
+                            a.target = '_blank';
+                            td.appendChild(a);
+                            td.appendChild(document.createElement('br'));
+                        });
+                    } else if (header === 'Important Info') {
+                        const paragraphs = item[header].split('\n');
+                        paragraphs.forEach(paragraph => {
+                            const p = document.createElement('p');
+                            p.textContent = paragraph;
+                            td.appendChild(p);
+                        });
+                    } else {
+                        td.textContent = item[header];
+                    }
+                    row.appendChild(td);
+                });
+                tbody.appendChild(row);
+            });
+            table.appendChild(tbody);
+
+            tableContainer.appendChild(table);
+        }
+
+        cargarDatos();
+    </script>
+</body>
+</html>
