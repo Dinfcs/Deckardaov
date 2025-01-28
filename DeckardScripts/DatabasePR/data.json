@@ -1583,6 +1583,27 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "CA - City of Folsom",
+      "Public Records & GIS": [
+        {
+          "type": "GIS",
+          "url": "https://assessorparcelviewer.saccounty.gov/jsviewer/assessor.html"
+        },
+        {
+          "type": "PR",
+          "url": "https://pqweb.parcelquest.com/#login"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": " N/A"
+        }
+      ],
+      "Important Info": "Use ParcelQuest for parcel data information.",
+      "Media": []
     }
   ]
 }
