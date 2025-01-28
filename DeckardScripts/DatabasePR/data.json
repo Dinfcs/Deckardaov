@@ -1912,6 +1912,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": " FL - Seminole County",
+      "Public Records & GIS": [
+        {
+          "type": "PR (Use VPN)",
+          "url": "https://www.scpafl.org/"
+        },
+        {
+          "type": "GIS (Use VPN)",
+          "url": "https://seminolegis.maps.arcgis.com/home/webmap/viewer.html?useExisting=1"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
