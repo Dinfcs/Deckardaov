@@ -2072,6 +2072,36 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "MD - Town of Ocean city",
+      "Public Records & GIS": [
+        {
+          "type": "PR (Use VPN)",
+          "url": "https://sdat.dat.maryland.gov/RealProperty/Pages/default.aspx"
+        },
+        {
+          "type": "GIS",
+          "url": "https://tocgis.maps.arcgis.com/apps/webappviewer/index.html?id=7d3cb508ee5b4779990f9966d134f1ff"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License o N/A",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B22025BCD-53E0-4136-9DCF-7633FFF5F35C%7D&file=Rental_Lic_AS400_Export_122020241%20Copy%20-%20IR.xls&action=default&mobileredirect=true"
+        },
+        {
+          "type": "Ocean city licenses",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B54D74334-6F99-43B2-B0B9-D53BB0F1C65F%7D&file=OCEAN%20LICENSES%20Copy%20-%20IR2.xlsx&action=default&mobileredirect=true"
+        }
+      ],
+      "Important Info": "How to Search Public Records:\n\n1.Select the county: Worcester.\n2.Choose the search method: Street Address.\n3.Click Continue.\n4.Enter the following details:\n-Street Number\n-Street Name",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
