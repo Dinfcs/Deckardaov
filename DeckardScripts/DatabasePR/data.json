@@ -1179,6 +1179,28 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "ME - Town of Rockport",
+      "Public Records & GIS": [
+        {
+          "type": "GIS",
+          "url": "https://www.axisgis.com/rockportme/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License o N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "The APN is created with a Format in LB “ROCT M:014 B:017” And in the GIS is the same as “Map: 014 Lot: 017”",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
