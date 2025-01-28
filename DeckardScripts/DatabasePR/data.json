@@ -1353,6 +1353,28 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "OH - Tuscarawas County",
+      "Public Records & GIS": [
+        {
+          "type": "GIS",
+          "url": "https://pat.bhamaps.com/?appId=723e9ac16d684c7d9e9201dfe1593816"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
