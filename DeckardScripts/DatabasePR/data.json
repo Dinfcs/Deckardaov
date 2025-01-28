@@ -1938,6 +1938,36 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "CA - City of San Rafael",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://apps.marincounty.org/TaxRollSearch"
+        },
+        {
+          "type": "GIS",
+          "url": "https://www.marinmap.org/Html5Viewer/Index.html?viewer=smmdataviewer"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License o N/A",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/Ea4NF9vJ7SlCuIS9nhjLAuABOwNVzj09OX-EEHgSkKrOeQ?e=MjxH02"
+        },
+        {
+          "type": "License 2",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/ESl5uQTYrzpImv_onuB3PQIBsNslMUkXBUbK8f-JSTynTQ?e=f0yPgm"
+        }
+      ],
+      "Important Info": "VPN Needed for both GIS and PR",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
