@@ -1457,6 +1457,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "CA - City of Citrus Heights",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://apps.gis.saccounty.gov/jsviewer/assessor.html?"
+        },
+        {
+          "type": "GIS",
+          "url": "https://experience.arcgis.com/experience/426bbcca678342c6abf3855df7e0dc1a/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EdwKh5i9x8xGnfnf2JtxMi8BR9qmiQoX19jQ2WP127NOwA?e=Pe8NXb"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
