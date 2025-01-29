@@ -2990,36 +2990,6 @@
       ]
     },
     {
-      "Project": "FL - City of Jacksonville (Propertyscape)",
-      "Public Records & GIS": [
-        {
-          "type": "Public Records",
-          "url": "https://duval.county-taxes.com/public/search/property_tax?search_query="
-        },
-        {
-          "type": "Public Records",
-          "url": "https://paopropertysearch.coj.net/Basic/Search.aspx"
-        },
-        {
-          "type": "GIS",
-          "url": "https://maps.coj.net/DuvalProperty/"
-        }
-      ],
-      "License List": [
-        {
-          "type": "N/A",
-          "url": "N/A"
-        }
-      ],
-      "Important Info": "N/A",
-      "Media": [
-        {
-          "type": "N/A",
-          "url": "N/A"
-        }
-      ]
-    },
-    {
       "Project": "FL - City of Neptune Beach",
       "Public Records & GIS": [
         {
@@ -10016,6 +9986,36 @@
         }
       ],
       "Important Info": "1.Map only listings within the city. 2.If it is outside: oMark as\"outside of boundaries\". oAdd theMUS. oLeave theAPNblank. 3.Always assign the MUS,even with\"No Match Found.\" 4.Classify the MUS as follows: o“-S”:Within Sunny Isles Beach. o“-O”:Outside Sunny Isles Beach.",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
+    },
+    {
+      "Project": "FL - City of Jacksonville",
+      "Public Records & GIS": [
+        {
+          "type": "Public Records",
+          "url": "https://duval.county-taxes.com/public/search/property_tax?search_query="
+        },
+        {
+          "type": "Public Records",
+          "url": "https://paopropertysearch.coj.net/Basic/Search.aspx"
+        },
+        {
+          "type": "GIS",
+          "url": "https://maps.coj.net/DuvalProperty/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "N/A",
       "Media": [
         {
           "type": "N/A",
