@@ -8891,7 +8891,7 @@
       "Project": "NY - Town of Southold",
       "Public Records & GIS": [
         {
-          "type": "GIS",
+          "type": "GIS (Use VPN)",
           "url": "https://gisapps.suffolkcountyny.gov/gisviewer/"
         }
       ],
@@ -9156,24 +9156,28 @@
       ]
     },
     {
-      "Project": "OR - City of Cannon Beach",
+      "Project": "OR - City of Hood River",
       "Public Records & GIS": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "type": "PR",
+          "url": "https://records.co.hood-river.or.us/PSO/"
+        },
+        {
+          "type": "GIS",
+          "url": "https://webmap.hoodrivercounty.gov/"
         }
       ],
       "License List": [
         {
-          "type": "STR Permits Lists",
-          "url": "N/Ahttps://www.ci.cannon-beach.or.us/planning/page/current-short-term-rental-permits-lists"
+          "type": "N/A",
+          "url": "N/A"
         }
       ],
-      "Important Info": "N/A",
+      "Important Info": "You can search by address. Click on “Account” for further information.\nTo search by APN use Map.\n",
       "Media": [
         {
           "type": "N/A",
-          "url": "N/A"
+          "url": "https://drive.usercontent.google.com/download?id=1RZg7KXhdr1tq2y7Nc5D4Fnm6tzLEJRSi&authuser=0"
         }
       ]
     },
