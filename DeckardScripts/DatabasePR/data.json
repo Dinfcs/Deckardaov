@@ -3866,6 +3866,28 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "CA - City of Chula Vista",
+      "Public Records & GIS": [
+        {
+          "type": "GIS",
+          "url": "https://gisweb.chulavistaca.gov/cvmapper/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B1B3611B4-16B6-4DE7-B126-87BBA3CB33D7%7D&file=Rentalscape%20-%20Deckard%20STR%20Licenses%20Information%20(3).xlsx&action=default&mobileredirect=true"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
