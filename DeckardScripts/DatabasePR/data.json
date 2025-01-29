@@ -4788,36 +4788,6 @@
       ]
     },
     {
-      "Project": "FL - Holmes Beach",
-      "Public Records & GIS": [
-        {
-          "type": "PR",
-          "url": "https://www.manateepao.gov/search/"
-        },
-        {
-          "type": "GIS",
-          "url": "https://www.mymanatee.org/gisapps/gis/clipzipship/map2.html"
-        },
-        {
-          "type": "GIS 2",
-          "url": "https://www.manateepao.gov/parcel/?display=fullaerial&referer=search"
-        }
-      ],
-      "License List": [
-        {
-          "type": "License",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EbmX47VDRRxJmTLazJidXq0Bd9M1vu98mN_BwVpfX61QmQ?e=eM5sy3"
-        }
-      ],
-      "Important Info": "When working onU1OMbe careful with the following cases: ·If the address cyborg brings up has a unit on it, ex: 3154 Almaneda Ave # A, Holmes Beach, FL 34217, it can: 1.Be thesame unitas the one cyborg pops up, in this case, the address remains the same (Unit A for this example) 2.Be adifferent unitas the one cyborg pops up, in this case, you have to perform AO and input your unit in the unit box (Unit B for this example, 3154 Almaneda Ave Unit B, Holmes Beach, FL 34217) 3.Not be sureabout which unit they are renting, in this case, the address remains the same cyborg brings up. ·If within the main address there are more main addresses with their own unit use the unit box and AO to separate them. Example:202 Ave F Unit 1, Holmes Beach, FL 34217204 Ave F Unit 1, Holmes Beach, FL 34217",
-      "Media": [
-        {
-          "type": "N/A",
-          "url": "N/A"
-        }
-      ]
-    },
-    {
       "Project": "ID - Bonner County",
       "Public Records & GIS": [
         {
@@ -7316,40 +7286,24 @@
       ]
     },
     {
-      "Project": "CA - Calaveras County",
+      "Project": "NH - Town of Sunapee",
       "Public Records & GIS": [
         {
-          "type": "PR 1",
-          "url": "https://pmaps.calaverasgov.us/"
-        },
-        {
-          "type": "PR 2",
-          "url": "https://common3.mptsweb.com/mbc/calaveras/tax/search"
+          "type": "PR",
+          "url": "https://nhtaxkiosk.com/?KIOSKID=SUNAPEE"
         },
         {
           "type": "GIS",
-          "url": "https://gisportal.calaverascounty.gov/portal/apps/webappviewer/index.html?id=6e2681937019448b8f4e761b22d11a6e"
-        },
-        {
-          "type": "Rental Platform",
-          "url": "https://www.premierproperties.com/luxury-homes-for-sale-in-calaveras-county?p=4"
+          "url": "https://next.axisgis.com/Tri_TownNH/"
         }
       ],
       "License List": [
         {
-          "type": "License list July 7",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7BFAA25B90-019C-4FA8-A646-30DE46F39C15%7D&file=IR%20Removed%20inactive%20Copy%20of%20051524%20-%20HC%20Registration%20-%20LicenseUploadTemplate%20Rentalscape%20(1).xlsx&action=default&mobileredirect=true&wdsle=0"
-        },
-        {
-          "type": "License list 16-07-2024",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7BD037FE10-3EBC-4D0B-9D17-F01E8EE55BEF%7D&file=071624%20Final%20Data%20File%20-%20WHOLE%20from%20HC%20updated%20-%20Copy%20-%20IR.xlsx&action=default&mobileredirect=true"
-        },
-        {
-          "type": "License list 29-07-2024",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B6FF48C02-5F59-46F1-936A-628979F93EED%7D&file=071624%20Final%20Data%20File%20-%20WHOLE%20from%20HC%20updated12%20-%20Copy%20-%20IR.xlsx&action=default&mobileredirect=true"
+          "type": "License list",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B6B31501E-0D40-44E7-A657-CC990D0F8D36%7D&file=Updated%20STR%20List-Sunapee%20NH%20Copy%20JC.xlsx&action=default&mobileredirect=true"
         }
       ],
-      "Important Info": "-To search by APN in the GIS and Public records, you should omit the last 3 digits which are usually zeros. -To search by address in PR 2, you need to enter the address up to the street name. For example 4663 KIVA DR",
+      "Important Info": "The GIS has photo of the front of the house.",
       "Media": [
         {
           "type": "N/A",
@@ -10060,6 +10014,36 @@
         }
       ],
       "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
+    },
+    {
+      "Project": "FL - City Of Holmes Beach",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://www.manateepao.gov/search/"
+        },
+        {
+          "type": "GIS",
+          "url": "https://www.mymanatee.org/gisapps/gis/clipzipship/map2.html"
+        },
+        {
+          "type": "GIS 2",
+          "url": "https://www.manateepao.gov/parcel/?display=fullaerial&referer=search"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EbmX47VDRRxJmTLazJidXq0Bd9M1vu98mN_BwVpfX61QmQ?e=eM5sy3"
+        }
+      ],
+      "Important Info": "When working onU1OMbe careful with the following cases: ·If the address cyborg brings up has a unit on it, ex: 3154 Almaneda Ave # A, Holmes Beach, FL 34217, it can: 1.Be thesame unitas the one cyborg pops up, in this case, the address remains the same (Unit A for this example) 2.Be adifferent unitas the one cyborg pops up, in this case, you have to perform AO and input your unit in the unit box (Unit B for this example, 3154 Almaneda Ave Unit B, Holmes Beach, FL 34217) 3.Not be sureabout which unit they are renting, in this case, the address remains the same cyborg brings up. ·If within the main address there are more main addresses with their own unit use the unit box and AO to separate them. Example:202 Ave F Unit 1, Holmes Beach, FL 34217204 Ave F Unit 1, Holmes Beach, FL 34217",
       "Media": [
         {
           "type": "N/A",
