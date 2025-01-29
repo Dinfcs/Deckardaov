@@ -3814,6 +3814,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "SC - City of Folly Beach",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://sc-charleston.publicaccessnow.com/RealPropertyRecordSearch.aspx"
+        },
+        {
+          "type": "GIS",
+          "url": "https://gisccweb.charlestoncounty.org/public_search/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EflrvREiRQFFhB4SSrc-bksB8lvpoOdTnN6zUoqtRse8SQ?e=P2hmdm"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
