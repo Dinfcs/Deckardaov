@@ -3728,6 +3728,40 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "AL - City of Vestavia Hills",
+      "Public Records & GIS": [
+        {
+          "type": "PR Jefferson County (Use VPN)",
+          "url": "https://eringcapture.jccal.org/caportal/"
+        },
+        {
+          "type": "GIS - Jefferson County (Use VPN)",
+          "url": "https://jeffco-al.maps.arcgis.com/apps/View/index.html?appid=b5118cb926c64ebeac59c8d0b01f6e45"
+        },
+        {
+          "type": "PR - Shelby County (Use VPN)",
+          "url": "https://ptc.shelbyal.com/propsearch"
+        },
+        {
+          "type": "GIS - Shelby County (Use VPN)",
+          "url": "https://maps.shelbyal.com/html5/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "N/AThe city is in two counties: Jefferson County and Shelby County. Be very careful with the boundaries because the limit is very complex and share the two counties.",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
