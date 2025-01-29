@@ -7978,24 +7978,24 @@
       ]
     },
     {
-      "Project": "GA - Stephens County",
+      "Project": "CA - City of Oxnard",
       "Public Records & GIS": [
         {
-          "type": "PR",
-          "url": "https://stephenscountyga.governmentwindow.com/tax.html"
+          "type": "GIS (Use VPN)",
+          "url": "https://maps.ventura.org/countyview/"
         },
         {
-          "type": "GIS & PR 2",
-          "url": "https://qpublic.schneidercorp.com/Application.aspx?AppID=779&LayerID=11815&PageTypeID=2&PageID=5674&KeyValue=064C%20%20%20051"
+          "type": "PR (Use VPN)",
+          "url": "https://assessor.countyofventura.org/assessor-data/property-search/"
         }
       ],
       "License List": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "type": "License List",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B7FE9D27E-EBC9-4543-9B95-EAB30792DB77%7D&file=List%20without%20denied%26expired_APN%20included%20Template-MM%20name%20seperated-hotline%209.30.24%20JR%20update.xlsx&action=default&mobileredirect=true"
         }
       ],
-      "Important Info": "N/A",
+      "Important Info": "To APN searching in GIS, use the following format, i.e. \nAPN provided by cyborg: 0803401400 the last zero, translate it as the fourth digit, like this: 080034014-0 \nThe last digit is the suffix in GIS, delete it to search: 080034014",
       "Media": [
         {
           "type": "N/A",
