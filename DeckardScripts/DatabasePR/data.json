@@ -8476,28 +8476,6 @@
       ]
     },
     {
-      "Project": "CA -City of Buena Park",
-      "Public Records & GIS": [
-        {
-          "type": "PR",
-          "url": "https://pqweb.parcelquest.com/#home"
-        }
-      ],
-      "License List": [
-        {
-          "type": "License list",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B53CEBB2F-DBA4-433A-BA5D-9A06B170E30C%7D&file=list%20of%20short-term%20rental%20registrants%20-%20Copy%20EM.xlsx&action=default&mobileredirect=true"
-        }
-      ],
-      "Important Info": "Please be careful when performing address mapping in the project. At the client's request, we must work with theself-containedfilter in therentalbucket.",
-      "Media": [
-        {
-          "type": "N/A",
-          "url": "N/A"
-        }
-      ]
-    },
-    {
       "Project": "VT - Town of Londonderry",
       "Public Records & GIS": [
         {
@@ -10034,6 +10012,28 @@
         }
       ],
       "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
+    },
+    {
+      "Project": "CA - City of Buena Park",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://pqweb.parcelquest.com/#home"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License list",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B53CEBB2F-DBA4-433A-BA5D-9A06B170E30C%7D&file=list%20of%20short-term%20rental%20registrants%20-%20Copy%20EM.xlsx&action=default&mobileredirect=true"
+        }
+      ],
+      "Important Info": "Please be careful when performing address mapping in the project. At the client's request, we must work with theself-containedfilter in therentalbucket.",
       "Media": [
         {
           "type": "N/A",
