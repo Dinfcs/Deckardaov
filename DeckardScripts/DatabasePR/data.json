@@ -7987,7 +7987,7 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "You need to use dashes when looking at the pan in the GIS. Example: 123-456-789-012",
+      "Important Info": "Use dashes to search the GIS. Example: 123-456-789-012",
       "Media": [
         {
           "type": "N/A",
