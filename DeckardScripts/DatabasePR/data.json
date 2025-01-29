@@ -3435,7 +3435,7 @@
       "Project": "IL - City of Moline",
       "Public Records & GIS": [
         {
-          "type": "PR",
+          "type": "PR (Use VPN)",
           "url": "https://rockislandil.devnetwedge.com/"
         },
         {
@@ -4939,7 +4939,7 @@
       "Project": "IL - City of Princeton",
       "Public Records & GIS": [
         {
-          "type": "GIS",
+          "type": "GIS Bureau County",
           "url": "https://portico.mygisonline.com/html5/bureauil/"
         },
         {
