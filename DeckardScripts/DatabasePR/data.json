@@ -2850,64 +2850,6 @@
       ]
     },
     {
-      "Project": "FL - City ofSunny Isles Beach",
-      "Public Records & GIS": [
-        {
-          "type": "Miami Dade PR",
-          "url": "https://www.miamidade.gov/Apps/PA/propertysearch/#/"
-        },
-        {
-          "type": "Sunny Isles Condos",
-          "url": "https://www.miamiresidence.com/ocean-view/ocean-view-a.htm"
-        },
-        {
-          "type": "Sunny Isles Floor Plans",
-          "url": "https://netorgft4047789.sharepoint.com/:w:/r/sites/DeckardTech/_layouts/15/Doc.aspx?sourcedoc=%7B096BC5BD-8E6E-4DB1-AF1D-B82073659D6E%7D&file=Sunny%20Isles%20Resort%20Plans.docx&action=default&mobileredirect=true"
-        },
-        {
-          "type": "Sunny Isles Beach Codes",
-          "url": "https://gis-mdc.opendata.arcgis.com/datasets/dor-code/explore?showTable=true"
-        },
-        {
-          "type": "Winston Tower 600 Condo Association Plans",
-          "url": "http://nebula.wsimg.com/63c88fe2eea27ab9e5aaf6c64416fa7c?AccessKeyId=993E9173C7153F9FA6C4&disposition=0&alloworigin=1"
-        },
-        {
-          "type": "Florida License",
-          "url": "https://www.myfloridalicense.com/wl11.asp?mode=0&SID=&brd=&typ=N"
-        },
-        {
-          "type": "Meeting Recording",
-          "url": "https://drive.google.com/file/d/1Y1Jeu2MuUBSRreF0K4Q-4AF5g3khS7hw/view?usp=share_link"
-        },
-        {
-          "type": "Sunny Isles/Hallandale Part 1",
-          "url": "https://www.loom.com/share/8dbd5630d6b44f49b5d6ffda3bb951fa"
-        },
-        {
-          "type": "Sunny Isles/Hallandale Part 2",
-          "url": "https://www.loom.com/share/a2d2186959894faeb4eb3c25cf1a8114"
-        },
-        {
-          "type": "Sunny Isles/Hallandale Part 3",
-          "url": "https://www.loom.com/share/9bf4ac724ebc438c8b93fe75afe74a0a"
-        }
-      ],
-      "License List": [
-        {
-          "type": "License",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EV6R10g6GylJkI49YCw6f2MBYWIt6ebHvcbb2xoutktnCg?e=DXNL55"
-        }
-      ],
-      "Important Info": "1.Map only listings within the city. 2.If it is outside: oMark as\"outside of boundaries\". oAdd theMUS. oLeave theAPNblank. 3.Always assign the MUS,even with\"No Match Found.\" 4.Classify the MUS as follows: o“-S”:Within Sunny Isles Beach. o“-O”:Outside Sunny Isles Beach.",
-      "Media": [
-        {
-          "type": "N/A",
-          "url": "N/A"
-        }
-      ]
-    },
-    {
       "Project": "FL - City of Cocoa Beach",
       "Public Records & GIS": [
         {
@@ -10050,6 +9992,64 @@
         }
       ],
       "Important Info": "When working onU1OM, take note of the following scenarios: 1.If the address provided by Cyborg includes a unit number(e.g.,246 Tyler Ave #101, Cape Canaveral, FL 32920): oSame unit: If the unit number matches the one Cyborg shows, keep the address as is (e.g.,Unit 101in this example). oDifferent unit: If the unit number is different from the one Cyborg shows, perform Address Override and enter the correct unit in the Unit Box (e.g.,Unit 102would become246 Tyler Ave Unit 102, Cape Canaveral, FL 32920). oUncertain unit: If you’re unsure which unit they are renting, leave the address as Cyborg originally provides it.",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
+    },
+    {
+      "Project": "FL - City Of Sunny Isles Beach",
+      "Public Records & GIS": [
+        {
+          "type": "Miami Dade PR",
+          "url": "https://www.miamidade.gov/Apps/PA/propertysearch/#/"
+        },
+        {
+          "type": "Sunny Isles Condos",
+          "url": "https://www.miamiresidence.com/ocean-view/ocean-view-a.htm"
+        },
+        {
+          "type": "Sunny Isles Floor Plans",
+          "url": "https://netorgft4047789.sharepoint.com/:w:/r/sites/DeckardTech/_layouts/15/Doc.aspx?sourcedoc=%7B096BC5BD-8E6E-4DB1-AF1D-B82073659D6E%7D&file=Sunny%20Isles%20Resort%20Plans.docx&action=default&mobileredirect=true"
+        },
+        {
+          "type": "Sunny Isles Beach Codes",
+          "url": "https://gis-mdc.opendata.arcgis.com/datasets/dor-code/explore?showTable=true"
+        },
+        {
+          "type": "Winston Tower 600 Condo Association Plans",
+          "url": "http://nebula.wsimg.com/63c88fe2eea27ab9e5aaf6c64416fa7c?AccessKeyId=993E9173C7153F9FA6C4&disposition=0&alloworigin=1"
+        },
+        {
+          "type": "Florida License",
+          "url": "https://www.myfloridalicense.com/wl11.asp?mode=0&SID=&brd=&typ=N"
+        },
+        {
+          "type": "Meeting Recording",
+          "url": "https://drive.google.com/file/d/1Y1Jeu2MuUBSRreF0K4Q-4AF5g3khS7hw/view?usp=share_link"
+        },
+        {
+          "type": "Sunny Isles/Hallandale Part 1",
+          "url": "https://www.loom.com/share/8dbd5630d6b44f49b5d6ffda3bb951fa"
+        },
+        {
+          "type": "Sunny Isles/Hallandale Part 2",
+          "url": "https://www.loom.com/share/a2d2186959894faeb4eb3c25cf1a8114"
+        },
+        {
+          "type": "Sunny Isles/Hallandale Part 3",
+          "url": "https://www.loom.com/share/9bf4ac724ebc438c8b93fe75afe74a0a"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EV6R10g6GylJkI49YCw6f2MBYWIt6ebHvcbb2xoutktnCg?e=DXNL55"
+        }
+      ],
+      "Important Info": "1.Map only listings within the city. 2.If it is outside: oMark as\"outside of boundaries\". oAdd theMUS. oLeave theAPNblank. 3.Always assign the MUS,even with\"No Match Found.\" 4.Classify the MUS as follows: o“-S”:Within Sunny Isles Beach. o“-O”:Outside Sunny Isles Beach.",
       "Media": [
         {
           "type": "N/A",
