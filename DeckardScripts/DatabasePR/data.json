@@ -2017,10 +2017,6 @@
         {
           "type": "PR",
           "url": "https://parcel.edcgov.us/"
-        },
-        {
-          "type": "PR & Gis demonstration",
-          "url": "https://drive.google.com/file/d/1TFOsqgwx2IWx0aZMFWwLhcdjYqmeqY4l/view?usp=sharing"
         }
       ],
       "License List": [
@@ -2032,8 +2028,8 @@
       "Important Info": "N/A",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "type": "PR & GIS tutorial",
+          "url": "https://drive.google.com/file/d/1TFOsqgwx2IWx0aZMFWwLhcdjYqmeqY4l/view?usp=sharing"
         }
       ]
     },
