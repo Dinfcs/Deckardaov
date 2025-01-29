@@ -9197,7 +9197,7 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "Search APN in the Tax ID field.\n",
+      "Important Info": "Search APN in the Tax ID field.\nIn this project, sometimes there are addresses with 2 street numbers. This is completely normal, and you can match them as you normally do. You don’t need to do AO\nExample:\n16-18 Fairview Ave Hudson NY 12534",
       "Media": [
         {
           "type": "N/A",
