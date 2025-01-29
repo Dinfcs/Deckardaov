@@ -7986,31 +7986,31 @@
       ]
     },
     {
-      "Project": "CA - City of Glendale",
+      "Project": "MN - Saint Louis County",
       "Public Records & GIS": [
         {
           "type": "PR",
-          "url": "https://portal.assessor.lacounty.gov/"
+          "url": "https://apps.stlouiscountymn.gov/assessor/propertydetails/"
         },
         {
           "type": "GIS",
-          "url": "https://www.arcgis.com/apps/webappviewer/index.html?id=79315f9193f8454ba277ca12019d3226"
+          "url": "https://gis.stlouiscountymn.gov/LandExplorer/"
         },
         {
-          "type": "GIS L.A.",
-          "url": "https://rpgis.isd.lacounty.gov/Html5Viewer/index.html?viewer=GISNET_Public.GIS-NET_Public"
+          "type": "Class Codes PR Guide",
+          "url": "https://reports.stlouiscountymn.gov/ssrswrapper/ShowSSRSReport.aspx?reportPath=/Assessor/PropertyDetails/ClassCodeLegend&pdf=true"
         }
       ],
       "License List": [
         {
-          "type": "License o N/A",
+          "type": "N/A",
           "url": "N/A"
         }
       ],
-      "Important Info": "Use the rental override classification in this project, the client needs to know when a property is self_contained or non_self_contained.\n\nThe satellite imagery on Bing Maps is excellent, use the bird's eye view option.",
+      "Important Info": "To search in the GIS by APN it is necessary to add the dashes so that the APN is recognized. Ex: 010-4380-02380",
       "Media": [
         {
-          "type": "Image,Video Or N/A",
+          "type": "N/A",
           "url": "N/A"
         }
       ]
