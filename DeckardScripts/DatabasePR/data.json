@@ -5167,7 +5167,7 @@
           "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EXzUQ6rNpG1EmnUnks0mo4MBu4Wpf4NIUtoNKAhcR82kBw?e=qaXpop"
         }
       ],
-      "Important Info": "When working onU1OM, take note of the following scenarios: 1.If the address provided by Cyborg includes a unit number(e.g.,246 Tyler Ave #101, Cape Canaveral, FL 32920): oSame unit: If the unit number matches the one Cyborg shows, keep the address as is (e.g.,Unit 101in this example). oDifferent unit: If the unit number is different from the one Cyborg shows, perform Address Override and enter the correct unit in the Unit Box (e.g.,Unit 102would become246 Tyler Ave Unit 102, Cape Canaveral, FL 32920). oUncertain unit: If you’re unsure which unit they are renting, leave the address as Cyborg originally provides it.",
+      "Important Info": "When working on U1OM, take note of the following scenarios: \n\n1.If the address provided by Cyborg includes a unit number (e.g.,246 Tyler Ave #101, Cape Canaveral, FL 32920): \n\no Same unit: If the unit number matches the one Cyborg shows, keep the address as is (e.g.,Unit 101in this example). \no Different unit: If the unit number is different from the one Cyborg shows, perform Address Override and enter the correct unit in the Unit Box (e.g.,Unit 102 would become 246 Tyler Ave Unit 102, Cape Canaveral, FL 32920). \no Uncertain unit: If you’re unsure which unit they are renting, leave the address as Cyborg originally provides it.",
       "Media": [
         {
           "type": "N/A",
