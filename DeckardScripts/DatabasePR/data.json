@@ -1765,11 +1765,11 @@
       "Project": "CA - City of Ridgecrest",
       "Public Records & GIS": [
         {
-          "type": "Public Records",
+          "type": "Public Records (Use VPN)",
           "url": "https://www.kerncounty.com/government/departments/assessor-recorder/property/assessor-property-search"
         },
         {
-          "type": "GIS",
+          "type": "GIS (Use VPN)",
           "url": "https://maps.kerncounty.com/H5/index.html?viewer=KCPublic"
         }
       ],
@@ -5209,11 +5209,11 @@
           "url": "https://esearch.comalad.org/"
         },
         {
-          "type": "GIS",
+          "type": "Comal County GIS",
           "url": "https://gis.bisclient.com/comalcad/"
         },
         {
-          "type": "GIS",
+          "type": "GIS Use VPN",
           "url": "https://newbraunfels.maps.arcgis.com/apps/webappviewer/index.html?id=65adb598a5be4171a5bbc1407a9bd30f"
         }
       ],
