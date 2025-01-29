@@ -6891,11 +6891,11 @@
           "url": "https://maps.vermont.gov/vcgi/html5viewer/?viewer=vtmapviewer"
         },
         {
-          "type": "https://www.dutchrentalsvt.com/vacation-rentals/",
+          "type": "Vacation Rentals",
           "url": "https://www.dutchrentalsvt.com/vacation-rentals/"
         },
         {
-          "type": "https://deerfieldvalleyrealestate.com/",
+          "type": "Mount Snow Homes",
           "url": "https://deerfieldvalleyrealestate.com/"
         }
       ],
@@ -6905,7 +6905,7 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "When you select the parcel in the GIS there is a link called “CAI Property Card” It will provide all the property details clearer. To display the imagery, go to the right options and select the 3 lines symbol, then go to base map and select “imagery”. Also, there is a street view symbol on the left panel right to the Abutters symbol (The three houses) is very useful and comes in handy to verify it. You can use the followig pages to find listings",
+      "Important Info": "When you select the parcel in the GIS there is a link called “CAI Property Card” It will provide all the property details clearer.\n\nTo display the imagery, go to the right options and select the 3 lines symbol, then go to base map and select “imagery”.\n\nAlso, there is a street view symbol on the left panel right to the Abutters symbol (The three houses) is very useful and comes in handy to verify it. \n\nYou can use the followig pages to find listings",
       "Media": [
         {
           "type": "N/A",
