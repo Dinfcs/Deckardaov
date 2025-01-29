@@ -1851,7 +1851,7 @@
           "url": "https://roseville.maps.arcgis.com/apps/webappviewer/index.html?id=2a67e5a4e1cc4f489868b6563589bf19"
         },
         {
-          "type": "GIS",
+          "type": "GIS (Use VPN)",
           "url": "http://maps.placer.ca.gov/Html5viewer/Index.html?configBase=http://arcgis/Geocortex/Essentials/REST/sites/LIS_Public/viewers/LIS_Base-Public/virtualdirectory/Resources/Config/Default"
         }
       ],
