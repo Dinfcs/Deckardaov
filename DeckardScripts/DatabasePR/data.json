@@ -3414,32 +3414,6 @@
       ]
     },
     {
-      "Project": "IL - City Of Decatur",
-      "Public Records & GIS": [
-        {
-          "type": "GIS",
-          "url": "https://decatur.maps.arcgis.com/apps/webappviewer/index.html?id=78eb93be3c4b4b9faef958f98c0a85c8"
-        },
-        {
-          "type": "PR",
-          "url": "https://maconcountyil.us/#/Record/F726BC97A381A5C53CA90281DCD4287E"
-        }
-      ],
-      "License List": [
-        {
-          "type": "N/A",
-          "url": "N/A"
-        }
-      ],
-      "Important Info": "N/A",
-      "Media": [
-        {
-          "type": "N/A",
-          "url": "N/A"
-        }
-      ]
-    },
-    {
       "Project": "IL - City of Joliet",
       "Public Records & GIS": [
         {
@@ -9876,6 +9850,32 @@
         }
       ],
       "Important Info": "The APN that identifies Cyborg is from Regrid and not from the PR.",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
+    },
+    {
+      "Project": "FL - Village Of Islamorada Village Of Islands",
+      "Public Records & GIS": [
+        {
+          "type": "Monroe County PR",
+          "url": "https://qpublic.schneidercorp.com/Application.aspx?AppID=605&LayerID=9946&PageTypeID=2&PageID=4381"
+        },
+        {
+          "type": "Monroe County GIS",
+          "url": "https://monroecounty-fl.maps.arcgis.com/apps/webappviewer/index.html?id=2e52d422378e4b48a471d02959265ecc"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License List",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EWCynBlnRB5Osjs_EQWQB8wBTCb5OdqAg-2NlLDRFssZyg?e=VsYmT1"
+        }
+      ],
+      "Important Info": "Some small islands are part of Islamorada. When searching: \n1. Regrid: The search result will say \"Islamorada,\" which is accurate. \n2. PR or GIS: The search may show the name of the specific island, but it is still part of Islamorada. \nKey Notes: \n·APNs: Cyborg’s APNs include 6 extra numbers compared to PR or GIS. However, the APN matches the one in Regrid. \n·Maps: Sometimes, Bing Maps provides better results than Google Maps.",
       "Media": [
         {
           "type": "N/A",
