@@ -8357,7 +8357,7 @@
       "Project": "CA - City of Vista",
       "Public Records & GIS": [
         {
-          "type": "GIS",
+          "type": "GIS (Use VPN)",
           "url": "https://gis.cityofvista.com/VistaGIS/"
         }
       ],
@@ -8367,7 +8367,7 @@
           "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EcyDtqWbRuRBogwhWaYOGRsBi-vGaVdUi7_V3eDr8b7kuQ?e=FEjdE5"
         }
       ],
-      "Important Info": "N/A",
+      "Important Info": "Use Parcel Quest as Public Provider.",
       "Media": [
         {
           "type": "N/A",
