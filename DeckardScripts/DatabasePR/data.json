@@ -3513,18 +3513,22 @@
       "Project": "MI - Muskegon County",
       "Public Records & GIS": [
         {
-          "type": "PR",
+          "type": "PR (Use VPN)",
           "url": "https://bsaonline.com/SiteSearch/SiteSearchResults?SearchFocus=All+Records&ubHideName=false&ubHideAddress=false&ubHideParcelNumber=false&ubHideAccount=false&SearchCategory=Parcel+Number&SearchText=09-900-251-0006-00&AddrSearchStreetName=&AddrSearchStreetNumFrom=&AddrSearchStreetNumTo=&UseAdvancedAddrSearch=false&v3h=Lm7Up8I-PnUZg27yLzBN4w2&uid=329"
         },
         {
           "type": "GIS",
           "url": "https://maps.muskegoncountygis.com/portal/apps/webappviewer/index.html?id=4741564b03aa46de80769afacae95f2c"
+        },
+        {
+          "type": "Michigan Property Class Description",
+          "url": "https://www.michigan.gov/-/media/Project/Websites/treasury/Delta/1/ApprovedCTR.pdf?rev=c5563e65d2c943318ec7a9c0a301bf09"
         }
       ],
       "License List": [
         {
-          "type": "Michigan Property Class Description",
-          "url": "https://www.michigan.gov/-/media/Project/Websites/treasury/Delta/1/ApprovedCTR.pdf?rev=c5563e65d2c943318ec7a9c0a301bf09"
+          "type": "License o N/A",
+          "url": "N/A"
         }
       ],
       "Important Info": "N/A",
@@ -9892,6 +9896,36 @@
         }
       ],
       "Important Info": "The addresses 100 S North Carolina Ave and 60 N Maine Ave are resorts.\n\nPlease map the address 60 N Maine Ave to the following APN: 0200086000000001.\n\nWhen searching in PR2 by address, make sure to separate the address and city with a comma.",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
+    },
+    {
+      "Project": "NC - City of Asheville",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://prc-buncombe.spatialest.com/#/"
+        },
+        {
+          "type": "GIS (Use VPN)",
+          "url": "https://gis.buncombecounty.org/buncomap/"
+        },
+        {
+          "type": "PR Henderson county",
+          "url": "https://lrcpwa.ncptscloud.com/Henderson/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "Asheville PPD",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7BA2C383AE-A898-4FD5-B4C1-6406F3A6DEA9%7D&file=Copy%20of%20Asheville%2C%20NC%20-%20Listings%20Record_2021_11_10.xlsx&action=default&mobileredirect=true"
+        }
+      ],
+      "Important Info": "N/A",
       "Media": [
         {
           "type": "N/A",
