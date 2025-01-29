@@ -22,8 +22,13 @@
         },
         {
             urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/.*\/STR.*$/,
+            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/BingAndDuck.js'
+        },
+        {
+            urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/.*\/STR.*$/,
             scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/ProjectResoursesCyborg.js'
         }
+        
     ];
 
     for (const {urlPattern, scriptUrl} of scripts) {
