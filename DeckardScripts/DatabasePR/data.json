@@ -9156,24 +9156,20 @@
       ]
     },
     {
-      "Project": "OR - City of Hood River",
+      "Project": "OR - City of Cannon Beach",
       "Public Records & GIS": [
-        {
-          "type": "PR",
-          "url": "https://records.co.hood-river.or.us/PSO/"
-        },
-        {
-          "type": "GIS",
-          "url": "https://webmap.hoodrivercounty.gov/"
-        }
-      ],
-      "License List": [
         {
           "type": "N/A",
           "url": "N/A"
         }
       ],
-      "Important Info": "You can search by address. Click on “Account” for further information.\nTo search by APN use Map.\n",
+      "License List": [
+        {
+          "type": "STR Permits Lists",
+          "url": "N/Ahttps://www.ci.cannon-beach.or.us/planning/page/current-short-term-rental-permits-lists"
+        }
+      ],
+      "Important Info": "N/A",
       "Media": [
         {
           "type": "N/A",
