@@ -207,7 +207,7 @@ function obtenerNombreProyectoDesdeURL() {
                         paragraphs.forEach(paragraph => {
                             const p = document.createElement('p');
                             p.textContent = paragraph;
-                            p.style.marginBottom = '5px'; // Ajustar esta línea para reducir el espacio entre párrafos
+                            p.style.marginBottom = '10px'; // Ajustar esta línea para reducir el espacio entre párrafos
                             p.style.lineHeight = '1.2'; // Ajustar esta línea para reducir la altura de línea
                             cell.appendChild(p);
                         });
