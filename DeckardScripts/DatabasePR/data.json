@@ -6741,15 +6741,15 @@
       "Project": "OH - Fairfield County",
       "Public Records & GIS": [
         {
-          "type": "PR & GIS",
+          "type": "PR & GIS Fairfield County",
           "url": "https://beacon.schneidercorp.com/Application.aspx?AppID=1131&LayerID=28628&PageTypeID=2&PageID=11899"
         },
         {
-          "type": "PR & GIS",
+          "type": "PR & GIS Licking County",
           "url": "https://ontrac.lickingcounty.gov/"
         },
         {
-          "type": "GIS",
+          "type": "GIS Perry County",
           "url": "https://pceo.maps.arcgis.com/apps/webappviewer/index.html?id=3bea51d5db1144d184287bb943087dcd"
         }
       ],
