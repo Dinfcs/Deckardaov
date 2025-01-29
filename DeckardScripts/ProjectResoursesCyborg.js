@@ -11,7 +11,7 @@
 (function () {
     'use strict';
 
-    const jsonURL = 'https://dinfcs.github.io/Deckardaov/DeckardScripts/DatabasePR/data.json';
+    const jsonURL = 'https://script.google.com/macros/s/AKfycbzKRzrnEtgTaGmSDN0daIjtquhBWL5rwn_ZQR8FRYbn5fHtODKSQSTKoi1bXWmrlR0vSg/exec';
     const targetPattern = /https:\/\/cyborg\.deckard\.com\/listing\/[^\/]+\/[^\/]+\/STR[^\/]+/;
 
 
