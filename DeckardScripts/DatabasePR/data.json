@@ -9918,6 +9918,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "AZ - Town Of Carefree",
+      "Public Records & GIS": [
+        {
+          "type": "PR ",
+          "url": "https://www.mcassessor.maricopa.gov/"
+        },
+        {
+          "type": "GIS",
+          "url": "https://maps.mcassessor.maricopa.gov/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License o N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "Be careful with unit numbers in Cyborg as they may differ from the ones in the public records.",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
