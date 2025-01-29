@@ -7259,11 +7259,11 @@
       "Project": "OK - Edmond City",
       "Public Records & GIS": [
         {
-          "type": "PR",
+          "type": "PR (Use VPN)",
           "url": "https://docs.oklahomacounty.org/AssessorWP5/DefaultSearch.asp"
         },
         {
-          "type": "GIS",
+          "type": "GIS (Use VPN)",
           "url": "https://oklahomacounty.geocortex.com/Html5Viewer/Index.html?configBase=http://oklahomacounty.geocortex.com/Geocortex/Essentials/REST/sites/OKCAssessor/viewers/OKCAssessor_gvh/virtualdirectory/Resources/Config/Default"
         }
       ],
