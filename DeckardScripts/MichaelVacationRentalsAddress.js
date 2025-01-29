@@ -11,7 +11,7 @@
 (function() {
     'use strict';
 
-    console.log("✅ Tampermonkey Script Cargado, esperando que propDetails aparezca...");
+    console.log("✅ Tampermonkey Script Uploaded, waiting for propDetails to appear...");
 
     // Función para crear la ventana flotante
     function mostrarVentanaFlotante(mensaje) {
@@ -42,7 +42,7 @@
             document.body.removeChild(tempTextArea);
 
             // Notificar al usuario
-            alert("📋 ¡Dirección copiada al portapapeles!");
+            alert("📋 ¡Address copied to clipboard!");
         });
 
         // Si deseas que la ventana no se cierre automáticamente, simplemente elimina o comenta la siguiente línea:
@@ -76,7 +76,7 @@
 
                 return true; // Se encontró, detener la búsqueda
             } catch (error) {
-                console.error("❌ Error al analizar JSON:", error);
+                console.error("❌ Error parsing JSON:", error);
             }
         }
         return false; // No encontrado aún
@@ -87,7 +87,7 @@
     let intervalo = setInterval(() => {
         if (buscarPropDetails() || intentos > 15) {
             clearInterval(intervalo); // Detener búsqueda si se encuentra o se agota el tiempo
-            if (intentos > 15) console.warn("⏳ Se agotó el tiempo de espera para encontrar propDetails.");
+            if (intentos > 15) console.warn("⏳ The timeout for finding propDetails has expired.");
         }
         intentos++;
     }, 1000);
