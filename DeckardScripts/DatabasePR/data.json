@@ -5581,7 +5581,7 @@
           "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B0476128A-0955-41BA-A5AF-083ED8F43430%7D&file=Permitted%20STR%20detail-CopyAM.xlsx&action=default&mobileredirect=true"
         }
       ],
-      "Important Info": "To look at the property by the APN, please delete the last 3 digits of the APN that normally are zeros.Example:017-073-008-000Delete the last 3 zero:017-073-008.",
+      "Important Info": "To look at the property by the APN, please delete the last 3 digits of the APN that normally are zeros. \nExample:017-073-008-000.\nDelete the last 3 zero:017-073-008.",
       "Media": [
         {
           "type": "N/A",
