@@ -2613,7 +2613,7 @@
           "url": "https://tuolumne.maps.arcgis.com/apps/webappviewer/index.html?id=3e926c5038e74b729ed2e78dcfe490d9&extent=-13476902.3442%2C4529999.5288%2C-13309352.3782%2C4633648.1392%2C102100"
         },
         {
-          "type": "PR",
+          "type": "PR (PQ)",
           "url": "https://assr.parcelquest.com/Home/Usage"
         }
       ],
@@ -5253,11 +5253,11 @@
       "Project": "CA - Town of Fairfax",
       "Public Records & GIS": [
         {
-          "type": "PR",
+          "type": "PR (Use VPN)",
           "url": "https://apps.marincounty.org/TaxBillOnline"
         },
         {
-          "type": "GIS",
+          "type": "GIS (Use VPN)",
           "url": "https://www.marinmap.org/Html5Viewer/Index.html?viewer=smmdataviewer"
         }
       ],
