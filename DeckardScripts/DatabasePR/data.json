@@ -1899,11 +1899,11 @@
       "Project": "CA - City of San Mateo",
       "Public Records & GIS": [
         {
-          "type": "San Mateo PR",
+          "type": "PR (Use VPN)",
           "url": "https://www.countyoffice.org/ca-san-mateo-county-property-records/"
         },
         {
-          "type": "San Mateo GIS",
+          "type": "GIS (Use VPN)",
           "url": "https://gis.smcgov.org/Html5Viewer/?viewer=raster"
         }
       ],
@@ -9659,7 +9659,7 @@
           "url": "https://www.arcgis.com/apps/mapviewer/index.html?webmap=fa3545a29dac49aeacc81669b956e3e5"
         },
         {
-          "type": "PR",
+          "type": "PR (PQ)",
           "url": "https://assr.parcelquest.com/Statewide/Disclaimer"
         }
       ],
