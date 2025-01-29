@@ -9906,6 +9906,40 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "NJ - City of Atlantic City",
+      "Public Records & GIS": [
+        {
+          "type": "PR 1",
+          "url": "https://datastore.netronline.com/search"
+        },
+        {
+          "type": "PR 2",
+          "url": "https://www.taxdatahub.com/622e0489f94ca0ce44f394e3/Atlantic%20County"
+        },
+        {
+          "type": "GIS 1",
+          "url": "https://map.govpilot.com/map/NJ/atlanticcity"
+        },
+        {
+          "type": "GIS 2",
+          "url": "https://script.google.com/a/deckard.com/macros/s/AKfycbx3yRYrh8o8giGHQsNHgfshZJgdDq6-Uxi1_H4wd03v6pWgvly2hXjoiQxcGGL8DRt2CQ/exec"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7BA04A2030-6F86-47AC-B288-5F3927EBB089%7D&file=Property%20List%20Final%20-%20Rentalscape%2011-12-2024%20Copy%20-%20IR.xlsx&action=default&mobileredirect=true"
+        }
+      ],
+      "Important Info": "The addresses 100 S North Carolina Ave and 60 N Maine Ave are resorts.\n\nPlease map the address 60 N Maine Ave to the following APN: 0200086000000001.\n\nWhen searching in PR2 by address, make sure to separate the address and city with a comma.",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
