@@ -33,9 +33,10 @@
             scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/EvolveAddress.js'
         },
         {
-            urlPattern: /^https:\/\/www\.misterbandb\.com\//,
-            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/Misterb&b%20Address.js'
+            urlPattern: /^https:\/\/www\.michaelsvacationrentals\.com\//,
+            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/MichaelVacationRentalsAddress.js'
         }
+
         
     ];
 
