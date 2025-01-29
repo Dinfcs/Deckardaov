@@ -4445,11 +4445,11 @@
       "Project": "TX - City of Euless",
       "Public Records & GIS": [
         {
-          "type": "Public Records (Use VPN)",
+          "type": "Public Records",
           "url": "https://www.tad.org/"
         },
         {
-          "type": "GIS (Use VPN)",
+          "type": "GIS",
           "url": "https://tad.maps.arcgis.com/apps/webappviewer/index.html?id=89623a2c35ff41f5b409d28a306e3b51"
         }
       ],
