@@ -2331,10 +2331,6 @@
         {
           "type": "GIS",
           "url": "https://gis1.countyofriverside.us/Html5Viewer/?viewer=MMC_Public"
-        },
-        {
-          "type": "City of Palm Springs PRs and Permits",
-          "url": "https://palmspringsca-energovweb.tylerhost.net/apps/SelfService#/search"
         }
       ],
       "License List": [
@@ -2343,7 +2339,7 @@
           "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/Ec1cNNdaynpClCrcdXsP8Q4BUAPORY3s32NzGabeTlEKPg?e=wPd8Tg"
         }
       ],
-      "Important Info": "Be careful about the APNs since there are two for each address, those whose owner is USA BIA, USA 511 tend to be wrong, use the correct APN from parcels, licenses, or Public Records. \n\nThe right address tends to have a direction indicative (N, S, W, E) on parcels.",
+      "Important Info": "Be careful about the APNs since there are two for each address, those whose owner is \"USA BIA, USA 511\" tend to be wrong, use the correct APN from parcels, licenses, or Public Records. \n\nThe right address have a direction indicative (N, S, W, E) on parcels.",
       "Media": [
         {
           "type": "Image",
