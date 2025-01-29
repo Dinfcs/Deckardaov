@@ -3762,6 +3762,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "KY - Spencer County",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://qpublic.schneidercorp.com/Application.aspx?App=SpencerCountyKY&Layer=Parcels&PageType=Search"
+        },
+        {
+          "type": "GIS",
+          "url": "https://explore.kyfromabove.ky.gov/#"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "Please mark all listings found at these coordinates: 38.01550021066446, -85.28953017008469, with APN 051706 and the resort structure. The APN and structure have been confirmed by the client. Also, please input the unit number in the unit box, regardless of whether it is a resort.",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
