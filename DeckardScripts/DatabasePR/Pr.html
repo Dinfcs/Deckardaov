@@ -71,7 +71,7 @@
         }
         /* Estilo para la barra de búsqueda */
         #searchBar {
-            background-color: #fdcdcd;
+            background-color: #e0e0e0;
             width: 60%;
             padding: 10px;
             margin: 2px 0;
@@ -110,6 +110,9 @@
         }
 
         function displayTable(data) {
+            // Ordenar los datos por el nombre del proyecto en orden alfabético
+            data.sort((a, b) => a.Project.localeCompare(b.Project));
+
             const tableContainer = document.getElementById('tableContainer');
             tableContainer.innerHTML = '';
 
