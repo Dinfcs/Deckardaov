@@ -6453,19 +6453,19 @@
       "Project": "TX - City of Amarillo",
       "Public Records & GIS": [
         {
-          "type": "PR (Use VPN)",
+          "type": "PR Potter - Randall Counties (Use VPN)",
           "url": "https://www.prad.org/property-search"
         },
         {
-          "type": "GIS (Use VPN)",
+          "type": "GIS Potter - Randall Counties (Use VPN)",
           "url": "https://www.prad.org/maps"
         },
         {
-          "type": "GIS2 (Use VPN)",
+          "type": "GIS2 City of Amarillo (Use VPN)",
           "url": "https://www.arcgis.com/apps/webappviewer/index.html?id=dc33584c8aa3439498aa914f7d438c7b"
         },
         {
-          "type": "GIS (Use VPN)",
+          "type": "GIS  Potter County (Use VPN)",
           "url": "https://www.arcgis.com/apps/webappviewer/index.html?id=547f103ec17a4e90bf5ab1f463fa9810"
         }
       ],
@@ -6475,7 +6475,7 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "Two Counties: Randall County and Potter County",
+      "Important Info": "The project is in two Counties: Randall County and Potter County.",
       "Media": [
         {
           "type": "N/A",
