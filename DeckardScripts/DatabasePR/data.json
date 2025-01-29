@@ -9840,6 +9840,36 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "NY - Village Of Saranac Lake",
+      "Public Records & GIS": [
+        {
+          "type": "Franklin PR",
+          "url": "https://franklin.sdgnys.com/search.aspx"
+        },
+        {
+          "type": " GIS Franklin County (Use VPN)",
+          "url": "https://maps.dancgis.org/ima/?IMA=Franklin"
+        },
+        {
+          "type": "GIS Essex County (Use VPN)",
+          "url": "https://essex-gis.co.essex.ny.us/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7BC7110E77-020C-4368-9264-EA93D8F35E09%7D&file=STR%20Permit%20List%20as%20of%2011.26.24%20(1)%20Copy%20EM.xlsx&action=default&mobileredirect=true"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
