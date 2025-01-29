@@ -3401,11 +3401,7 @@
       "Project": "IL - City of Joliet",
       "Public Records & GIS": [
         {
-          "type": "County of Will - Public Records",
-          "url": "http://www.willcountysoa.com/section/Property-Search-Portal"
-        },
-        {
-          "type": "County of Will - GIS",
+          "type": "County of Will - GIS (Use VPN)",
           "url": "https://gisapp.willcountyillinois.com/Html5Viewer/Index.html?viewer=Data_Viewer"
         },
         {
