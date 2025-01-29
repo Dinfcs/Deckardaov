@@ -3888,6 +3888,36 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "MI - Township of Chikaming",
+      "Public Records & GIS": [
+        {
+          "type": "PR1",
+          "url": "https://beacon.schneidercorp.com/Application.aspx?AppID=346&LayerID=4427&PageTypeID=2&PageID=2615"
+        },
+        {
+          "type": "PR2",
+          "url": "https://bsaonline.com/SiteSearch/SiteSearchResults?SearchFocus=All+Records&SearchCategory=Address&SearchText=&AddrSearchStreetName=&AddrSearchStreetNumFrom=&AddrSearchStreetNumTo=&UseAdvancedAddrSearch=false&v3h=v492D5EOpEqhAgo-luoPKg2&uid=797"
+        },
+        {
+          "type": "GIS",
+          "url": "https://beacon.schneidercorp.com/Application.aspx?AppID=346&LayerID=4427&PageTypeID=1&PageID=2614"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7BFA3B9B77-4250-4901-8A13-1611DA457D36%7D&file=deckard%20final%20rental%20data%20Chikaming-%20Copy%20-%20IR.xlsx&action=default&mobileredirect=true"
+        }
+      ],
+      "Important Info": "To search for APN in PR 2, the 11 in front must be removed.",
+      "Media": [
+        {
+          "type": "Image",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
