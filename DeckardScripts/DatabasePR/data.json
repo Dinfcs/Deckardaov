@@ -2635,11 +2635,7 @@
       "Project": "CO - City of Durango",
       "Public Records & GIS": [
         {
-          "type": "Public Records",
-          "url": "https://eagleweb.laplata.co.us/assessor/web/"
-        },
-        {
-          "type": "GIS",
+          "type": "GIS (Use VPN)",
           "url": "https://gis.laplata.co.us/laplatajs/"
         }
       ],
