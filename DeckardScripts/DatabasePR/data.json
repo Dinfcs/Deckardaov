@@ -4706,32 +4706,6 @@
       ]
     },
     {
-      "Project": "WA - College Place",
-      "Public Records & GIS": [
-        {
-          "type": "PR",
-          "url": "https://propertysearch.co.walla-walla.wa.us/PropertyAccess/propertysearch.aspx?cid=0"
-        },
-        {
-          "type": "GIS",
-          "url": "https://cocp.maps.arcgis.com/apps/webappviewer/index.html?id=86f9039347fa48749100523105fc84bb"
-        }
-      ],
-      "License List": [
-        {
-          "type": "N/A",
-          "url": "N/A"
-        }
-      ],
-      "Important Info": "N/A",
-      "Media": [
-        {
-          "type": "N/A",
-          "url": "N/A"
-        }
-      ]
-    },
-    {
       "Project": "WI - Burnett County",
       "Public Records & GIS": [
         {
@@ -10044,6 +10018,32 @@
         }
       ],
       "Important Info": "The place “Cabins in Hocking” is mapped with the APN The place “13701 St Rt 664, Logan, OH 43138” is a U1OMDon’t use the Unit Box, even if it has a visible unit number or ADU.In this link you will find a lot of properties with their addresses:",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
+    },
+    {
+      "Project": "WA - City Of College Place",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://propertysearch.co.walla-walla.wa.us/PropertyAccess/propertysearch.aspx?cid=0"
+        },
+        {
+          "type": "GIS",
+          "url": "https://cocp.maps.arcgis.com/apps/webappviewer/index.html?id=86f9039347fa48749100523105fc84bb"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "N/A",
       "Media": [
         {
           "type": "N/A",
