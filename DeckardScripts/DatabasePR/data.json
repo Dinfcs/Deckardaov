@@ -3810,7 +3810,7 @@
       "Important Info": "For more details about the property on the GIS, you can also check the PR’s information. When searching on the GIS using parcels, the system initially displays the number “63.” Ignore this number and instead enter the APN provided by Cyborg.",
       "Media": [
         {
-          "type": "Image,Video Or N/A",
+          "type": "N/A",
           "url": "N/A"
         }
       ]
