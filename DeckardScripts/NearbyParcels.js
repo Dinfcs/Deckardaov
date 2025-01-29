@@ -34,6 +34,7 @@
         button.style.cursor = 'pointer';
         button.style.transition = 'opacity 0.3s ease'; // Transición suave para la visibilidad
         button.style.opacity = '1'; // Totalmente visible al cargar
+        iconContainer.style.zIndex = '0'; // Ajusta este valor para que quede detrás de otras ventanas
 
         document.body.appendChild(button);
         console.log('Botón "Abrir Nparcels" añadido al DOM:', button);
