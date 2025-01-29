@@ -1877,11 +1877,11 @@
       "Project": "CA - City of San Buenaventura",
       "Public Records & GIS": [
         {
-          "type": "PR",
+          "type": "PR (Use VPN)",
           "url": "https://assessor.countyofventura.org/assessor-data/property-search/"
         },
         {
-          "type": "GIS",
+          "type": "GIS (Use VPN)",
           "url": "https://maps.ventura.org/countyview/"
         }
       ],
