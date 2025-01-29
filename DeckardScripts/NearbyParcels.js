@@ -80,6 +80,6 @@
 
     // Ejecuta la creación del botón 2 segundos después de cargar la página
     window.addEventListener('load', () => {
-        setTimeout(createButton, 6000);
+        setTimeout(createButton, 4000);
     });
 })();
