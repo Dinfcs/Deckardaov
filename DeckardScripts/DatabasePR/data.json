@@ -1203,7 +1203,7 @@
           "url": "https://esearch.orangecad.net/"
         },
         {
-          "type": "GIS",
+          "type": "GIS (Use VPN)",
           "url": "https://www.ocgis.com/ocpw/landrecords/"
         }
       ],
@@ -3810,6 +3810,40 @@
         }
       ],
       "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
+    },
+    {
+      "Project": "OH-Hocking County",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://hockingoh-auditor-classic.schneidergis.com/Search.aspx?ActiveTab=Real%20Estate%20Parcel"
+        },
+        {
+          "type": "GIS",
+          "url": "https://beacon.schneidercorp.com/Application.aspx?AppID=1111&LayerID=28082&PageTypeID=1&PageID=11467"
+        },
+        {
+          "type": "020002416000",
+          "url": "https://hockingoh-auditor-classic.ddti.net/Data.aspx?ParcelID=020002416000"
+        },
+        {
+          "type": "https://www.booked.net/bungalows/us/hocking-hills",
+          "url": "https://www.booked.net/bungalows/us/hocking-hills"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License List",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EQXVF8ZgpxBFkf5BPgJXZ6IB2S2pS8WtomDqEl72K-GzyA?e=fsM190"
+        }
+      ],
+      "Important Info": "The place “Cabins in Hocking” is mapped with the APN The place “13701 St Rt 664, Logan, OH 43138” is a U1OMDon’t use the Unit Box, even if it has a visible unit number or ADU.In this link you will find a lot of properties with their addresses:",
       "Media": [
         {
           "type": "N/A",
