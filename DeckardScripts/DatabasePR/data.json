@@ -6511,11 +6511,11 @@
       "Project": "WA - City of Bainbridge Island",
       "Public Records & GIS": [
         {
-          "type": "PR",
+          "type": "PR (Use VPN)",
           "url": "https://psearch.kitsap.gov/pdetails/Default"
         },
         {
-          "type": "GIS",
+          "type": "GIS (Use VPN)",
           "url": "https://psearch.kitsap.gov/psearch/"
         }
       ],
