@@ -3918,6 +3918,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "TX - Real County",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://esearch.realcad.org/"
+        },
+        {
+          "type": "GIS",
+          "url": "https://gis.bisclient.com/realcad/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "Image",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
