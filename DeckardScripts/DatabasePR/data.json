@@ -266,24 +266,12 @@
           "url": "https://qldglobe.information.qld.gov.au/"
         },
         {
-          "type": "https://www.resources.qld.gov.au/qld/environment/land/title/valuation/search (Use VPN)",
+          "type": "You can check the property ID here (only when the property is outside of the city",
           "url": "https://www.resources.qld.gov.au/qld/environment/land/title/valuation/search"
         },
         {
-          "type": "https://www.brisbane.qld.gov.au/about-council/council-information-and-rates/brisbane-suburbs (Use VPN)",
+          "type": "The city of Brisbane is divided into suburbs. You can see the complete list here:",
           "url": "https://www.brisbane.qld.gov.au/about-council/council-information-and-rates/brisbane-suburbs"
-        },
-        {
-          "type": "https://deckardtech.atlassian.net/wiki/spaces/mappingtutorials/pages/1841758216/Address+mapping+in+Australia?atlOrigin=eyJpIjoiNmRjNDUyNzA2YTliNDk4MmJmYzAwNmI1MmNjYjNiNWYiLCJwIjoiY29uZmx1ZW5jZS1jaGF0cy1pbnQifQ (Use VPN)",
-          "url": "https://deckardtech.atlassian.net/wiki/spaces/mappingtutorials/pages/1841758216/Address+mapping+in+Australia?atlOrigin=eyJpIjoiNmRjNDUyNzA2YTliNDk4MmJmYzAwNmI1MmNjYjNiNWYiLCJwIjoiY29uZmx1ZW5jZS1jaGF0cy1pbnQifQ"
-        },
-        {
-          "type": "https://www.loom.com/share/2e7229e222dd420796880fdd6a53ad31 (Use VPN)",
-          "url": "https://www.loom.com/share/2e7229e222dd420796880fdd6a53ad31"
-        },
-        {
-          "type": "https://drive.google.com/file/d/1ONKo5aV_arfWd9C5iFjVdyNWKYkJ7RQ5/view?usp=share_link (Use VPN)",
-          "url": "https://drive.google.com/file/d/1ONKo5aV_arfWd9C5iFjVdyNWKYkJ7RQ5/view?usp=share_link"
         }
       ],
       "License List": [
@@ -292,11 +280,15 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "·Please work with filters:Unresolved+yet_to_review+rental= self_contained +hoe_violation= true. ·Bing Maps has better aerial images than Google Maps. ·There are no free public records, as privacy laws in the country protect property data. ·You can check the owner’s name in Core Logic. ·FV Brisbane by Peppers, 191, Brunswick St:Officially first unit is on floor 1. In practice first residential floor is floor 6. For example, the 5-floor offset between official and day-to-day addresses means the 19th floor in the listing description relates to floor 14 on the official address. ·Please send to the Data Lead all listings that are located in Tangalooma Island Resort.",
+      "Important Info": "Please work with filters: Unresolved + yet_to_review + rental  = self_contained  + hoe_violation = true.\n\nBing Maps has better aerial images than Google Maps.\n\nThere are no free public records, as privacy laws in the country protect property data.\n\nYou can check the owner’s name in Core Logic.\n\nFV Brisbane by Peppers, 191, Brunswick St: Officially first unit is on floor 1. In practice first residential floor is floor 6. For example, the 5-floor offset between official and day-to-day addresses means the 19th floor in the listing description relates to floor 14 on the official address.\n\nPlease send to the Data Lead all listings that are located in Tangalooma Island Resort.",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "type": "Confluece",
+          "url": "https://deckardtech.atlassian.net/wiki/spaces/PC/pages/1841758216/Address+Mapping+in+Australia?atlOrigin=eyJpIjoiNmRjNDUyNzA2YTliNDk4MmJmYzAwNmI1MmNjYjNiNWYiLCJwIjoiY29uZmx1ZW5jZS1jaGF0cy1pbnQifQ"
+        },
+        {
+          "type": "Trainig ",
+          "url": "https://www.loom.com/share/2e7229e222dd420796880fdd6a53ad31"
         }
       ]
     },
