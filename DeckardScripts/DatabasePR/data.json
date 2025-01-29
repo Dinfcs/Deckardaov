@@ -5231,7 +5231,7 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "1.If you find the following condos:\n\n-371 W Lincoln St, New Braunfels, TX 78130\n-730 E Mather St, New Braunfels, TX 78130\nPlease review the APN for the units in the PR.\n\n2. Use the Property ID as the APN. ",
+      "Important Info": "1.If you find the following condos:\n\n-371 W Lincoln St, New Braunfels, TX 78130\n\n-730 E Mather St, New Braunfels, TX 78130\n\nPlease review the APN for the units in the PR.\n\n2. Use the Property ID as the APN. ",
       "Media": [
         {
           "type": "Image",
@@ -9511,7 +9511,7 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "1.Address Alert: Be cautious with the address404 N Tarnava St, Port Isabel, TX 78578, as it consists of multiple apartments, each with a unique APN. 2.Properties inHarbor Town, Laguna Vista, TX 78578, andMonte Bonito, N Valenciado not require an Address Override (AO); they are accurate as reflected in the Cyborg data. 3.Cameron County Listings: Several property listings in Cameron County are located in Mexico. As a best practice, these should be marked in Cyborg as\"The listing is outside of the current region\"rather than\"NMF\". This ensures they won’t appear on Rentalscape or remain pending for review in FP, as they are unmappable listings. 4.South Padre Island Condos: For condos inSouth Padre Island, exercise caution since each unit has its own APN. Always utilize theUnit Box, even if Cyborg includes the unit in the address andAddress Overrides for Units: If the Cyborg address does not include the unit, you must perform anAddress Overrideto incorporate the unit and ensure it is also added to theUnit Box.",
+      "Important Info": "1.Address Alert: Be cautious with the address 404 N Tarnava St, Port Isabel, TX 78578, as it consists of multiple apartments, each with a unique APN. \n\n2.Properties in Harbor Town, Laguna Vista, TX 78578, andMonte Bonito, N Valenciado not require an Address Override (AO); they are accurate as reflected in the Cyborg data.\n\n3.Cameron County Listings: Several property listings in Cameron County are located in Mexico. As a best practice, these should be marked in Cyborg as\"The listing is outside of the current region\"rather than\"NMF\". This ensures they won’t appear on Rentalscape or remain pending for review in FP, as they are unmappable listings.\n\n4.South Padre Island Condos: For condos inSouth Padre Island, exercise caution since each unit has its own APN. Always utilize theUnit Box, even if Cyborg includes the unit in the address andAddress Overrides for Units: If the Cyborg address does not include the unit, you must perform anAddress Overrideto incorporate the unit and ensure it is also added to theUnit Box.",
       "Media": [
         {
           "type": "N/A",
