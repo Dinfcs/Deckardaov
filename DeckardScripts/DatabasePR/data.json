@@ -3620,6 +3620,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "AL - City of Prattville",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://autauga.capturecama.com/propsearch"
+        },
+        {
+          "type": "GIS",
+          "url": "https://prattvilleal.maps.arcgis.com/apps/View/index.html?appid=f6f2c7984c5f4c1a8bdc530fd8d9740e"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License o N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "Use VPN for both. ",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
