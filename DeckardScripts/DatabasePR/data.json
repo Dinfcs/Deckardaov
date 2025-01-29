@@ -8615,7 +8615,7 @@
       "Project": "AZ - City of Casa Grande",
       "Public Records & GIS": [
         {
-          "type": "PR",
+          "type": "PR (Use VPN)",
           "url": "https://app1.pinal.gov/Search/Parcel-Search.aspx"
         },
         {
@@ -8629,7 +8629,7 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "For search in PR use VPN",
+      "Important Info": "N/A",
       "Media": [
         {
           "type": "Image,Video Or N/A",
@@ -9668,32 +9668,6 @@
         }
       ],
       "Important Info": "To search by APN you must search with this format, i.e. 00.0X.0.00-0X",
-      "Media": [
-        {
-          "type": "N/A",
-          "url": "N/A"
-        }
-      ]
-    },
-    {
-      "Project": "AZ - Town of Pinetop-Lakeside",
-      "Public Records & GIS": [
-        {
-          "type": "PR",
-          "url": "https://apps.navajocountyaz.gov/webmap/WebMap.aspx"
-        },
-        {
-          "type": "GIS",
-          "url": "https://ncaz.maps.arcgis.com/apps/webappviewer/index.html?id=6d54bfeb0b7a4a8591bd8034e00008e4"
-        }
-      ],
-      "License List": [
-        {
-          "type": "N/A",
-          "url": "N/A"
-        }
-      ],
-      "Important Info": "N/A",
       "Media": [
         {
           "type": "N/A",
