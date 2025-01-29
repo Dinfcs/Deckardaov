@@ -3944,6 +3944,58 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "AZ - City of Scottsdale",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://www.mcassessor.maricopa.gov/"
+        },
+        {
+          "type": "GIS",
+          "url": "https://maps.mcassessor.maricopa.gov/"
+        },
+        {
+          "type": "GIS demo/How to active frontal view?",
+          "url": "https://www.loom.com/share/f16a28df26464f51b334bb473e119a6b"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License o N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "Unit numbers in Cyborg might look different. Please double-check the APN and unit number in the public records to make sure they are correct.",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
+    },
+    {
+      "Project": "CA - City of Claremont",
+      "Public Records & GIS": [
+        {
+          "type": "GIS",
+          "url": "https://rpgis.isd.lacounty.gov/Html5Viewer/index.html?viewer=GISNET_Public.GIS-NET_Public"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License o N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "Click onh \"AIN\" for futher details of the parcel.\nThe satellite imagery on Bing Maps is excellent, use the bird's eye view option.",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
