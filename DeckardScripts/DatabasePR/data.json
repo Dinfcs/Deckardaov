@@ -9892,6 +9892,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "CA - City Of Novato",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://apps.marincounty.org/TaxBillOnline/"
+        },
+        {
+          "type": "GIS",
+          "url": "https://www.marinmap.org/Html5Viewer/Index.html?viewer=smmdataviewer"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
