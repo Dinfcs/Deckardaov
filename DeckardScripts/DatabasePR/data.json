@@ -109,7 +109,7 @@
       ]
     },
     {
-      "Project": "Al - CIty of Prattville",
+      "Project": "AL - City of Prattville",
       "Public Records & GIS": [
         {
           "type": "PR",
@@ -10010,28 +10010,6 @@
         }
       ],
       "Important Info": "The PR provides access to property photos, along with details such as the property type. \n\nYou can also perform a search using the following options: \n\n·PIN Search \n\n·Address Search \n\n·Map Reference Number Search\n\nFor the Map Reference Number Search, you’ll need to input the First Alternative Parcel ID found in Regrid under Additional Items.",
-      "Media": [
-        {
-          "type": "N/A",
-          "url": "N/A"
-        }
-      ]
-    },
-    {
-      "Project": "AZ - Town Of Pinetop Lakeside",
-      "Public Records & GIS": [
-        {
-          "type": "PR",
-          "url": "https://apps.navajocountyaz.gov/webmap/WebMap.aspx"
-        }
-      ],
-      "License List": [
-        {
-          "type": "GIS",
-          "url": "N/Ahttps://ncaz.maps.arcgis.com/apps/webappviewer/index.html?id=6d54bfeb0b7a4a8591bd8034e00008e4"
-        }
-      ],
-      "Important Info": "Please leave all listings at this address as NMF: 2000 S Worldmark Dr, Pinetop-Lakeside. It looks like a resort or timeshare but might have individual units. The account manager has already asked the client, and we are waiting for an answer to determine the property's real structure.",
       "Media": [
         {
           "type": "N/A",
