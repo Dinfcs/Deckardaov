@@ -7537,6 +7537,10 @@
         {
           "type": "GIS Burke County",
           "url": "https://gis.burkenc.org/"
+        },
+        {
+          "type": "GIS Watauga County ",
+          "url": "https://www.arcgis.com/apps/View/index.html?appid=3cfacb022e9c4ae1af2b20ea19612dea"
         }
       ],
       "License List": [
