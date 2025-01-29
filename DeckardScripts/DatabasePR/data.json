@@ -4719,7 +4719,7 @@
       "Project": "OR - City of Klamath Falls",
       "Public Records & GIS": [
         {
-          "type": "PR",
+          "type": "PR (Use VPN)",
           "url": "https://assessor.klamathcounty.org/PSO/"
         },
         {
@@ -4731,10 +4731,6 @@
         {
           "type": "License List",
           "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B98029242-E701-4426-AC7D-77E833E89D9F%7D&file=STR%20License%20Spreadsheet%20-%20Rentalscape%20CopyIR.xlsx&action=default&mobileredirect=true"
-        },
-        {
-          "type": "License List 11-07-2024",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B03C07F88-CF8C-4EE6-91DF-8C91394337BF%7D&file=STR%20License%20Spreadsheet%20-%20Rentalscape%20-%20Copy%20-%20IR.xlsx&action=default&mobileredirect=true&wdsle=0"
         }
       ],
       "Important Info": "N/A",
