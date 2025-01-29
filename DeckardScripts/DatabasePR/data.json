@@ -3840,6 +3840,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "CA - City of Chico",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://assr.parcelquest.com/Statewide"
+        },
+        {
+          "type": "GIS",
+          "url": "http://gis.buttecounty.net/Public/index.html?viewer=dssearch"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License ",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7BAA77E11C-09FB-4B91-9642-0B1E9D8677FE%7D&file=Chico%20Prime%20Data%2020210706%20-%20Copy%20-%20SMM.xlsx&action=default&mobileredirect=true&cid=d9d8e225-8742-4bf4-8ec7-6892db87eb57"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
