@@ -7,17 +7,19 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            margin: 20px;
+            margin: 0px;
             background-color: #f4f4f9;
             color: #333;
         }
         h1 {
             text-align: center;
             color: #555;
+            margin-top: 0px;
+            margin: 2px 0;
         }
         #tableContainer {
             overflow-x: auto;
-            margin-top: 20px;
+            margin-top: 0px;
             border-radius: 8px;
             background-color: #fff;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -25,13 +27,13 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
+            margin-top: 0px;
         }
         table, th, td {
             border: 1px solid #ddd;
         }
         th, td {
-            padding: 12px;
+            padding: 8px;
             text-align: left;
             max-width: 200px; /* Ajustar el ancho máximo de las celdas */
             word-wrap: break-word; /* Permitir que las palabras se ajusten al ancho de la celda */
@@ -67,14 +69,29 @@
                 max-width: 100px; /* Ajustar el ancho máximo de las celdas para pantallas más pequeñas */
             }
         }
+        /* Estilo para la barra de búsqueda */
+        #searchBar {
+            background-color: #fdcdcd;
+            width: 60%;
+            padding: 10px;
+            margin: 2px 0;
+            border: 1px solid #c9c3c3;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-top: 0px;
+        }
     </style>
 </head>
 <body>
     <h1>Project Resources</h1>
+    <!-- Barra de búsqueda -->
+    <input type="text" id="searchBar" onkeyup="searchProjects()" placeholder="Search for project names...">
+
     <div id="tableContainer"></div>
 
     <script>
         const jsonURL = 'https://script.google.com/macros/s/AKfycbzKRzrnEtgTaGmSDN0daIjtquhBWL5rwn_ZQR8FRYbn5fHtODKSQSTKoi1bXWmrlR0vSg/exec';
+        let projectData = [];
 
         async function cargarDatos() {
             try {
@@ -84,7 +101,8 @@
                 }
 
                 const data = await response.json();
-                displayTable(data.tabla);
+                projectData = data.tabla;
+                displayTable(projectData);
 
             } catch (error) {
                 console.error('Error al cargar los datos:', error);
@@ -141,6 +159,12 @@
             table.appendChild(tbody);
 
             tableContainer.appendChild(table);
+        }
+
+        function searchProjects() {
+            const input = document.getElementById('searchBar').value.toLowerCase();
+            const filteredData = projectData.filter(project => project.Project.toLowerCase().includes(input));
+            displayTable(filteredData);
         }
 
         cargarDatos();
