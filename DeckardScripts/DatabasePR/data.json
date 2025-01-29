@@ -8450,66 +8450,6 @@
       ]
     },
     {
-      "Project": "NJ - City of Atlantic City",
-      "Public Records & GIS": [
-        {
-          "type": "PR",
-          "url": "https://datastore.netronline.com/search"
-        },
-        {
-          "type": "PR 2",
-          "url": "https://www.taxdatahub.com/622e0489f94ca0ce44f394e3/Atlantic%20County"
-        },
-        {
-          "type": "GIS 1",
-          "url": "https://map.govpilot.com/map/NJ/atlanticcity"
-        },
-        {
-          "type": "GIS 2",
-          "url": "https://www.arcgis.com/apps/mapviewer/index.html?webmap=16b849625e8b4039a3f735cc9a3f67c9"
-        }
-      ],
-      "License List": [
-        {
-          "type": "License list",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7BA04A2030-6F86-47AC-B288-5F3927EBB089%7D&file=Property%20List%20Final%20-%20Rentalscape%2011-12-2024%20Copy%20-%20IR.xlsx&action=default&mobileredirect=true"
-        }
-      ],
-      "Important Info": "The address 100 S North Carolina Ave and 60 N Maine Ave are resort. Map this address: 60 N Maine Ave with this APN: 0200086000000001 To search in PR2 by address, you must put a comma separating the address from the city.",
-      "Media": [
-        {
-          "type": "N/A",
-          "url": "N/A"
-        }
-      ]
-    },
-    {
-      "Project": "TX - City of Grand Prairie",
-      "Public Records & GIS": [
-        {
-          "type": "PR",
-          "url": "https://www.tad.org/search-results"
-        },
-        {
-          "type": "GIS",
-          "url": "https://www.tad.org/resources/interactive-map"
-        }
-      ],
-      "License List": [
-        {
-          "type": "License List",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EZfMgk9iRMVFgNUB35ZdSWwBQLabQbOJMeP1CgR7vLf_Fw?e=fXHMcv"
-        }
-      ],
-      "Important Info": "Use the GEO ID as the APN of the propject.please do not use APN from regrid.",
-      "Media": [
-        {
-          "type": "N/A",
-          "url": "N/A"
-        }
-      ]
-    },
-    {
       "Project": "NY - Sullivan County",
       "Public Records & GIS": [
         {
@@ -8631,7 +8571,7 @@
           "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EZt8NUzINnlOorhkj19dEfUBNZBMG2cTArTdYfo9Z5dQNg?e=0VglSQ"
         }
       ],
-      "Important Info": "Search APN in theTax IDfield. ",
+      "Important Info": "Search APN in the Tax ID field. ",
       "Media": [
         {
           "type": "N/A",
