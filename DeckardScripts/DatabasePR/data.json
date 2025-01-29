@@ -3115,11 +3115,11 @@
       "Project": "GA - City of Chamblee",
       "Public Records & GIS": [
         {
-          "type": "GIS",
+          "type": "GIS 1",
           "url": "https://chamblee.maps.arcgis.com/apps/webappviewer/index.html?id=e86681311a8a434984e9cced0e4d470e"
         },
         {
-          "type": "PR",
+          "type": "PR (Use VPN)",
           "url": "https://dekalbtax.org/property-information"
         },
         {
@@ -3127,11 +3127,11 @@
           "url": "https://www.loom.com/share/6e18bcae00354c749b1d6b1e0445d276"
         },
         {
-          "type": "PR",
+          "type": "PR Dekalb County",
           "url": "https://propertyappraisal.dekalbcountyga.gov/search/commonsearch.aspx?mode=realprop"
         },
         {
-          "type": "GIS",
+          "type": "GIS Dekalb County",
           "url": "https://www.arcgis.com/apps/webappviewer/index.html?id=f241af753f414cdfa31c1fdef0924584"
         }
       ],
@@ -3141,7 +3141,7 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "Please remove the layer: zony districts, the GIS has a Nearmap imagery, also inside the GIS if you want more information about the home, please click: here for more information from Dekalb County.",
+      "Important Info": "INFORMATION FOR THE GIS 1: \n\nPlease remove the layer: zony districts, the GIS has a Nearmap imagery, also inside the GIS if you want more information about the home, please click: here for more information from Dekalb County.",
       "Media": [
         {
           "type": "N/A",
