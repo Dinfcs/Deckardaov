@@ -3592,44 +3592,6 @@
       ]
     },
     {
-      "Project": "NC - City of Asheville",
-      "Public Records & GIS": [
-        {
-          "type": "Public Records",
-          "url": "https://prc-buncombe.spatialest.com/#/"
-        },
-        {
-          "type": "GIS",
-          "url": "https://gis.buncombecounty.org/buncomap/"
-        },
-        {
-          "type": "PR Henderson County",
-          "url": "https://lrcpwa.ncptscloud.com/Henderson/"
-        }
-      ],
-      "License List": [
-        {
-          "type": "Asheville PPD",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7BA2C383AE-A898-4FD5-B4C1-6406F3A6DEA9%7D&file=Copy%20of%20Asheville%2C%20NC%20-%20Listings%20Record_2021_11_10.xlsx&action=default&mobileredirect=true"
-        },
-        {
-          "type": "Properties with addresses",
-          "url": "https://townsproperty.com/search-results/?area_id=12887"
-        },
-        {
-          "type": "https://www.arrasvacationrentals.com/",
-          "url": "https://www.arrasvacationrentals.com/"
-        }
-      ],
-      "Important Info": "N/A",
-      "Media": [
-        {
-          "type": "N/A",
-          "url": "N/A"
-        }
-      ]
-    },
-    {
       "Project": "NM - Lincoln County",
       "Public Records & GIS": [
         {
