@@ -4415,15 +4415,15 @@
       "Project": "TX - City of Dripping Springs",
       "Public Records & GIS": [
         {
-          "type": "Public Records (Use VPN)",
+          "type": "Public Records",
           "url": "https://tax.co.hays.tx.us/"
         },
         {
-          "type": "Public Records 2 (Use VPN)",
+          "type": "Public Records 2",
           "url": "https://esearch.hayscad.com/Search/Result?keywords=R14306"
         },
         {
-          "type": "GIS (Use VPN)",
+          "type": "GIS",
           "url": "https://gis.bisclient.com/hayscad/"
         }
       ],
