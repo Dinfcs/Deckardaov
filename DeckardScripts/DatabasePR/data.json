@@ -8473,11 +8473,11 @@
       "Project": "AZ - City of Flagstaff",
       "Public Records & GIS": [
         {
-          "type": "PR",
+          "type": "PR (Use VPN)",
           "url": "https://eagleassessor.coconino.az.gov:444/assessor/taxweb/search.jsp"
         },
         {
-          "type": "GIS",
+          "type": "GIS (Use VPN)",
           "url": "https://experience.arcgis.com/experience/c35f5fe6d6a54b388cd177f66084e39c/"
         }
       ],
@@ -8487,7 +8487,7 @@
           "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7BAF192F74-B29E-4141-A542-D64CD7B2715C%7D&file=License%20Upload%20-%20JR%20edit%2010.29.24%20Copy%20-%20IR.xlsx&action=default&mobileredirect=true"
         }
       ],
-      "Important Info": "N/A",
+      "Important Info": "Bing maps map works.",
       "Media": [
         {
           "type": "N/A",
