@@ -27,6 +27,14 @@
         {
             urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/.*\/STR.*$/,
             scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/ProjectResoursesCyborg.js'
+        },
+        {
+            urlPattern: /^https:\/\/evolve\.com\/vacation-rentals\//,
+            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/EvolveAddress.js'
+        },
+        {
+            urlPattern: /^https:\/\/www\.misterbandb\.com\//,
+            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/Misterb&b%20Address.js'
         }
         
     ];
