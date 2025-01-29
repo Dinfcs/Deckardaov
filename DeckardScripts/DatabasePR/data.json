@@ -7170,48 +7170,6 @@
       ]
     },
     {
-      "Project": "CA - Calaveras County",
-      "Public Records & GIS": [
-        {
-          "type": "PR 1",
-          "url": "https://pmaps.calaverasgov.us/"
-        },
-        {
-          "type": "PR 2",
-          "url": "https://common3.mptsweb.com/mbc/calaveras/tax/search"
-        },
-        {
-          "type": "GIS",
-          "url": "https://gisportal.co.calaveras.ca.us/portal/apps/webappviewer/index.html?id=fa903a4622014f1eb0a6ea5f4d11f121"
-        },
-        {
-          "type": "Rental Platform",
-          "url": "https://www.premierproperties.com/luxury-homes-for-sale-in-calaveras-county?p=4"
-        }
-      ],
-      "License List": [
-        {
-          "type": "License list July 7",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7BFAA25B90-019C-4FA8-A646-30DE46F39C15%7D&file=IR%20Removed%20inactive%20Copy%20of%20051524%20-%20HC%20Registration%20-%20LicenseUploadTemplate%20Rentalscape%20(1).xlsx&action=default&mobileredirect=true&wdsle=0"
-        },
-        {
-          "type": "License list 16-07-2024",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7BD037FE10-3EBC-4D0B-9D17-F01E8EE55BEF%7D&file=071624%20Final%20Data%20File%20-%20WHOLE%20from%20HC%20updated%20-%20Copy%20-%20IR.xlsx&action=default&mobileredirect=true"
-        },
-        {
-          "type": "License list 29-07-2024",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B6FF48C02-5F59-46F1-936A-628979F93EED%7D&file=071624%20Final%20Data%20File%20-%20WHOLE%20from%20HC%20updated12%20-%20Copy%20-%20IR.xlsx&action=default&mobileredirect=true"
-        }
-      ],
-      "Important Info": "-To search by APN in the GIS and Public records, you should omit the last 3 digits which are usually zeros.\n \n-To search by address in PR 2, you need to enter the address up to the street name. For example 4663 KIVA DR",
-      "Media": [
-        {
-          "type": "N/A",
-          "url": "N/A"
-        }
-      ]
-    },
-    {
       "Project": "NY - Village Of Ocean Beach",
       "Public Records & GIS": [
         {
