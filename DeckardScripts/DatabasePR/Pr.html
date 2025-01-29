@@ -33,6 +33,9 @@
         th, td {
             padding: 12px;
             text-align: left;
+            max-width: 200px; /* Ajustar el ancho máximo de las celdas */
+            word-wrap: break-word; /* Permitir que las palabras se ajusten al ancho de la celda */
+            text-overflow: ellipsis; /* Mostrar elipsis (...) para texto que sobrepase el ancho de la celda */
         }
         th {
             background-color: #093140;
@@ -61,6 +64,7 @@
             }
             th, td {
                 padding: 10px;
+                max-width: 100px; /* Ajustar el ancho máximo de las celdas para pantallas más pequeñas */
             }
         }
     </style>
