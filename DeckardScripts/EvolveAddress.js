@@ -2,44 +2,55 @@
 // @name         Evolve Address
 // @version      2025-01-10
 // @description  Get the address from evolve vacation rentals
-// @author       Erika
+// @author       Lucho
 // @match        https://evolve.com/vacation-rentals/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=evolve.com
 // @grant        none
 // ==/UserScript==
 
-// create a disposable over layer that shows the property address information.
+const extractAddress = (text) => {
+    const start = text.indexOf("PROPERTY ADDRESS:\n - ") + "PROPERTY ADDRESS:\n - ".length;
+    const end = text.indexOf("\n\nGUEST CONTACT");
+    if (start !== -1 && end !== -1) {
+        return text.substring(start, end).trim();
+    }
+    return "Address not found";
+};
+
 const createLayer = (propertyAddress) => {
     const overlay = document.createElement('div');
     overlay.style.position = 'fixed';
+    overlay.style.bottom = '20px';
+    overlay.style.right = '20px';
+    overlay.style.background = 'rgba(0, 0, 0, 0.8)';
+    overlay.style.color = 'white';
+    overlay.style.padding = '15px';
+    overlay.style.borderRadius = '10px';
+    overlay.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.3)';
+    overlay.style.fontSize = '16px';
     overlay.style.zIndex = '9999';
-    overlay.style.top = '10px';
-    overlay.style.right = '10px';
-    overlay.style.width = '300px'; // Ancho original
-    overlay.style.height = '130px'; // Alto original
-    overlay.style.padding = '1rem';
-    overlay.style.background = 'rgba(255, 255, 255, 0.9)';
-    overlay.style.overflow = 'auto';
-    const closeButton = document.createElement('button');
-    closeButton.style.position = 'absolute';
-    closeButton.style.top = '2px';
-    closeButton.style.right = '2px';
-    closeButton.style.fontSize = '10px'; // Tamaño de fuente más pequeño
-    closeButton.innerHTML = 'X';
-    closeButton.addEventListener('click', () => {
-        overlay.remove();
-    });
+    overlay.style.maxWidth = '300px';
+    overlay.style.cursor = 'pointer';
     overlay.innerHTML = `<h4>Property Address</h4><p>${propertyAddress}</p>`;
-    overlay.appendChild(closeButton);
+
+    overlay.addEventListener('click', () => {
+        navigator.clipboard.writeText(propertyAddress).then(() => {
+            alert('Address copied to clipboard!');
+        }).catch(err => {
+            console.error('Error copying address: ', err);
+        });
+    });
+
     document.body.appendChild(overlay);
-}
+};
 
 (function() {
     'use strict';
     const nextData = document.getElementById('__NEXT_DATA__');
     if (nextData) {
         const data = JSON.parse(nextData.textContent);
-        const propertyAddress = data?.props?.pageProps?.listing?.adContent.find(ad => ad.text.includes("PROPERTY ADDRESS:"))?.text || "Address not found";
+        const fullText = data?.props?.pageProps?.listing?.adContent.find(ad => ad.text.includes("PROPERTY ADDRESS:"))?.text || "Address not found";
+        const propertyAddress = extractAddress(fullText);
         createLayer(propertyAddress);
         console.log(propertyAddress);
     }
