@@ -1157,15 +1157,15 @@
       ],
       "License List": [
         {
-          "type": "https://www.cityoforange.org/business/business-license-information/business-search",
-          "url": "https://www.cityoforange.org/business/business-license-information/business-search"
+          "type": "License o N/A",
+          "url": "N/A"
         }
       ],
       "Important Info": "Please, also work part-time on Cyborg in CA - Orange County with the keyword \"Irvine\". ",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "type": "Image",
+          "url": "https://drive.usercontent.google.com/download?id=1C__OElflMmWp1AfO1qG2_io11FSdtMKx&authuser=0"
         }
       ]
     },
@@ -4729,19 +4729,15 @@
       "Project": "TX - City of Wimberley",
       "Public Records & GIS": [
         {
-          "type": "Public Records",
+          "type": "Public Records (Use VPN)",
           "url": "https://esearch.hayscad.com/"
         },
         {
-          "type": "GIS",
+          "type": "GIS (Use VPN)",
           "url": "https://gis.bisclient.com/hayscad/"
         },
         {
-          "type": "https://esearch.hayscad.com/Property/View/R87591",
-          "url": "https://esearch.hayscad.com/Property/View/R87591"
-        },
-        {
-          "type": "GIS2",
+          "type": "GIS2 (Use VPN)",
           "url": "https://www.arcgis.com/home/webmap/viewer.html?webmap=0591d38052ac490f87f5248adf9b57ba"
         }
       ],
