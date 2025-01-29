@@ -3594,6 +3594,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "AL - City of Irondale",
+      "Public Records & GIS": [
+        {
+          "type": "PR (Use VPN)",
+          "url": "https://eringcapture.jccal.org/caportal/"
+        },
+        {
+          "type": "GIS (Use VPN)",
+          "url": "https://jeffco-al.maps.arcgis.com/apps/View/index.html?appid=b5118cb926c64ebeac59c8d0b01f6e45"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License o N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
