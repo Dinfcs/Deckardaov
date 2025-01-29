@@ -3020,40 +3020,6 @@
       ]
     },
     {
-      "Project": "FL - City of Marathon",
-      "Public Records & GIS": [
-        {
-          "type": "Monroe County GIS",
-          "url": "https://monroecounty-fl.maps.arcgis.com/apps/webappviewer/index.html?id=2e52d422378e4b48a471d02959265ecc"
-        },
-        {
-          "type": "Monroe County GIS2",
-          "url": "https://qpublic.schneidercorp.com/Application.aspx?AppID=605&LayerID=9946&PageTypeID=1&KeyValue=00093241-006400"
-        },
-        {
-          "type": "Monroe County PR",
-          "url": "https://qpublic.schneidercorp.com/Application.aspx?AppID=605&LayerID=9946&PageTypeID=2&PageID=4381"
-        },
-        {
-          "type": "City of Marathon PR",
-          "url": "https://marathonfl.viewpointcloud.com/search"
-        }
-      ],
-      "License List": [
-        {
-          "type": "License List",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/ERuQAEw_e6hIp375cGONwg8Bgzd4sDtDGlHdt1c_37YIgA?e=snnDHI"
-        }
-      ],
-      "Important Info": "The APN that identifies Cyborg is from Regrid and not from the PR.",
-      "Media": [
-        {
-          "type": "N/A",
-          "url": "N/A"
-        }
-      ]
-    },
-    {
       "Project": "FL - City of Neptune Beach",
       "Public Records & GIS": [
         {
