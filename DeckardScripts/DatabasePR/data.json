@@ -7181,6 +7181,10 @@
           "url": "https://common3.mptsweb.com/mbc/calaveras/tax/search"
         },
         {
+          "type": "GIS",
+          "url": "https://gisportal.co.calaveras.ca.us/portal/apps/webappviewer/index.html?id=fa903a4622014f1eb0a6ea5f4d11f121"
+        },
+        {
           "type": "Rental Platform",
           "url": "https://www.premierproperties.com/luxury-homes-for-sale-in-calaveras-county?p=4"
         }
@@ -7199,7 +7203,7 @@
           "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B6FF48C02-5F59-46F1-936A-628979F93EED%7D&file=071624%20Final%20Data%20File%20-%20WHOLE%20from%20HC%20updated12%20-%20Copy%20-%20IR.xlsx&action=default&mobileredirect=true"
         }
       ],
-      "Important Info": "-To search by APN in the GIS and Public records, you should omit the last 3 digits which are usually zeros. -To search by address in PR 2, you need to enter the address up to the street name. For example 4663 KIVA DR",
+      "Important Info": "-To search by APN in the GIS and Public records, you should omit the last 3 digits which are usually zeros.\n \n-To search by address in PR 2, you need to enter the address up to the street name. For example 4663 KIVA DR",
       "Media": [
         {
           "type": "N/A",
