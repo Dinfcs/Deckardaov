@@ -7412,24 +7412,40 @@
       ]
     },
     {
-      "Project": "OH - Vinton County",
+      "Project": "CA - Calaveras County",
       "Public Records & GIS": [
         {
-          "type": "PR",
-          "url": "https://beacon.schneidercorp.com/Application.aspx?AppID=1118&LayerID=28105&PageTypeID=2&PageID=11535"
+          "type": "PR 1 (Use VPN)",
+          "url": "https://pmaps.calaverasgov.us/"
+        },
+        {
+          "type": "PR 2",
+          "url": "https://common3.mptsweb.com/mbc/calaveras/tax/search"
         },
         {
           "type": "GIS",
-          "url": "https://app.camo.ag/map/plat/ohio/vinton-county?address=Vinton+County%2C+OH%2C+USA&southwest=39.027674%2C-82.7628919&northeast=39.395767%2C-82.260243"
+          "url": "https://gisportal.co.calaveras.ca.us/portal/apps/webappviewer/index.html?id=fa903a4622014f1eb0a6ea5f4d11f121"
+        },
+        {
+          "type": "Rental Platform",
+          "url": "https://www.premierproperties.com/luxury-homes-for-sale-in-calaveras-county?p=4"
         }
       ],
       "License List": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "type": "License list July 7",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7BFAA25B90-019C-4FA8-A646-30DE46F39C15%7D&file=IR%20Removed%20inactive%20Copy%20of%20051524%20-%20HC%20Registration%20-%20LicenseUploadTemplate%20Rentalscape%20(1).xlsx&action=default&mobileredirect=true&wdsle=0"
+        },
+        {
+          "type": "License list 16-07-2024",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7BD037FE10-3EBC-4D0B-9D17-F01E8EE55BEF%7D&file=071624%20Final%20Data%20File%20-%20WHOLE%20from%20HC%20updated%20-%20Copy%20-%20IR.xlsx&action=default&mobileredirect=true"
+        },
+        {
+          "type": "License list 29-07-2024",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B6FF48C02-5F59-46F1-936A-628979F93EED%7D&file=071624%20Final%20Data%20File%20-%20WHOLE%20from%20HC%20updated12%20-%20Copy%20-%20IR.xlsx&action=default&mobileredirect=true"
         }
       ],
-      "Important Info": "N/A",
+      "Important Info": "-To search by APN in the GIS and Public records, you should omit the last 3 digits which are usually zeros. \n\n-To search by address in PR 2, you need to enter the address up to the street name. For example 4663 KIVA DR",
       "Media": [
         {
           "type": "N/A",
@@ -10016,6 +10032,40 @@
         }
       ],
       "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
+    },
+    {
+      "Project": "OH - Hocking County",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://hockingoh-auditor-classic.schneidergis.com/Search.aspx?ActiveTab=Real%20Estate%20Parcel"
+        },
+        {
+          "type": "GIS",
+          "url": "https://beacon.schneidercorp.com/Application.aspx?AppID=1111&LayerID=28082&PageTypeID=1&PageID=11467"
+        },
+        {
+          "type": "020002416000",
+          "url": "https://hockingoh-auditor-classic.ddti.net/Data.aspx?ParcelID=020002416000"
+        },
+        {
+          "type": "https://www.booked.net/bungalows/us/hocking-hills",
+          "url": "https://www.booked.net/bungalows/us/hocking-hills"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License List",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EQXVF8ZgpxBFkf5BPgJXZ6IB2S2pS8WtomDqEl72K-GzyA?e=fsM190"
+        }
+      ],
+      "Important Info": "The place “Cabins in Hocking” is mapped with the APN The place “13701 St Rt 664, Logan, OH 43138” is a U1OMDon’t use the Unit Box, even if it has a visible unit number or ADU.In this link you will find a lot of properties with their addresses:",
       "Media": [
         {
           "type": "N/A",
