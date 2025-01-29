@@ -8402,28 +8402,6 @@
       ]
     },
     {
-      "Project": "VT - Town of Londonderry",
-      "Public Records & GIS": [
-        {
-          "type": "GIS/PR",
-          "url": "https://next.axisgis.com/LondonderryVT/"
-        }
-      ],
-      "License List": [
-        {
-          "type": "List",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/ETndrYfVbE1AiwMwdlRArxUBAqCja1WwfGnKu0-myC3Jrg?e=BGjGPm"
-        }
-      ],
-      "Important Info": "Regrid has better aerial images than Google Maps or Bing. For the APN, you can search the GIS by address, using the parcel number without the three zeros after the decimal point and adding \"110\" to the beginning. For example:  The APN in Cyborg is: 110 071012 ",
-      "Media": [
-        {
-          "type": "N/A",
-          "url": "N/A"
-        }
-      ]
-    },
-    {
       "Project": "TN - Blount County",
       "Public Records & GIS": [
         {
