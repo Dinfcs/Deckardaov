@@ -3648,36 +3648,6 @@
       ]
     },
     {
-      "Project": "AL- City of Northport",
-      "Public Records & GIS": [
-        {
-          "type": "PR and GIS (Use VPN)",
-          "url": "https://www.alabamagis.com/Tuscaloosa/frameset.cfm"
-        },
-        {
-          "type": "GIS Northport",
-          "url": "https://northportgis.maps.arcgis.com/apps/webappviewer/index.html?id=c6716b9535db4adb8bfc9afcdd8ef06f"
-        },
-        {
-          "type": "GIS Demo",
-          "url": "https://www.loom.com/share/580704ff9fe84a628730893446d0f058"
-        }
-      ],
-      "License List": [
-        {
-          "type": "License o N/A",
-          "url": "N/A"
-        }
-      ],
-      "Important Info": "For more details about the property on the GIS, you can also check the PR’s information. When searching on the GIS using parcels, the system initially displays the number “63.” Ignore this number and instead enter the APN provided by Cyborg.",
-      "Media": [
-        {
-          "type": "Image,Video Or N/A",
-          "url": "N/A"
-        }
-      ]
-    },
-    {
       "Project": "AZ - City of Casa Grande",
       "Public Records & GIS": [
         {
@@ -3808,6 +3778,36 @@
         }
       ],
       "Important Info": "For search in PR- Use \"ANGELES 1\" VPN.",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
+    },
+    {
+      "Project": "AL - City of Northport",
+      "Public Records & GIS": [
+        {
+          "type": "PR and GIS (Use VPN)",
+          "url": "https://www.alabamagis.com/Tuscaloosa/frameset.cfm"
+        },
+        {
+          "type": "GIS Northport",
+          "url": "https://northportgis.maps.arcgis.com/apps/webappviewer/index.html?id=c6716b9535db4adb8bfc9afcdd8ef06f"
+        },
+        {
+          "type": "GIS Demo",
+          "url": "https://www.loom.com/share/580704ff9fe84a628730893446d0f058"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License o N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "For more details about the property on the GIS, you can also check the PR’s information. When searching on the GIS using parcels, the system initially displays the number “63.” Ignore this number and instead enter the APN provided by Cyborg.",
       "Media": [
         {
           "type": "Image,Video Or N/A",
