@@ -5371,10 +5371,6 @@
       "Project": "IL - Village of Orland Park",
       "Public Records & GIS": [
         {
-          "type": "GIS",
-          "url": "https://orlandpark-vop.hub.arcgis.com/apps/0f97ff6f619346ddbd54de3fc1a0fd08/explore"
-        },
-        {
           "type": "PR",
           "url": "https://assessorpropertydetails.cookcountyil.gov/search/commonsearch.aspx?mode=address"
         }
@@ -9597,7 +9593,7 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "To search in the PR: 1.Enter the address and click on \"Start Your Search.\" 2.Then click on \"Build Your Report.\" 3.Click on \"Info of My Property,\" and then click \"Next.\" 4.You’ll be able to see property information such as the address and APN. PR information is limited. Please use LB or Regrid.",
+      "Important Info": "To search in the PR: \n\n1.Enter the address and click on \"Start Your Search.\" \n\n2.Then click on \"Build Your Report.\" \n\n3.Click on \"Info of My Property,\" and then click \"Next.\" \n\n4.You’ll be able to see property information such as the address and APN. PR information is limited. Please use LB or Regrid.",
       "Media": [
         {
           "type": "N/A",
