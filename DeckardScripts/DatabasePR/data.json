@@ -2981,7 +2981,7 @@
           "url": "https://hallandalebeachfl.gov/1134/Vacation-Rentals"
         }
       ],
-      "Important Info": "1.We are only interested in properties within the city.If it is a MUS and located outside the city: ·Add the MUS. ·Leave the APN blank. 2.For MUS in general: ·Always assign the MUS, even if it is \"No Match Found.\" ·Classify the MUS: o“-H”: Within the city. o“-O”: Outside the city. Mark as \"outside boundaries\" and assign the MUS. 3.For the condo located at2602 E Hallandale Beach Blvd, Hallandale Beach, FL 33009, there are two types of units based on the initial of the APN: ·“R”: Hotel units (Resort). ·“T”: Residential units (Main Structure). When a MUS is located outside the city:assign the MUSanddo not try to identify it.It would be without APN or NMF.",
+      "Important Info": "1.We are only interested in properties within the city. \nIf it is a MUS and located outside the city: \n·Add the MUS. \n·Leave the APN blank. \n2.For MUS in general: \n·Always assign the MUS, even if it is \"No Match Found.\" \n·Classify the MUS: \no “-H”: Within the city. \no “-O”: Outside the city. Mark as \"outside boundaries\" and assign the MUS. \n3.For the condo located at2602 E Hallandale Beach Blvd, Hallandale Beach, FL 33009, there are two types of units based on the initial of the APN: \n·“R”: Hotel units (Resort). \n·“T”: Residential units (Main Structure). \nWhen a MUS is located outside the city:\nAssign the MUS and do not try to identify it. It would be without APN or NMF.",
       "Media": [
         {
           "type": "N/A",
