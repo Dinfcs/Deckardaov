@@ -3788,6 +3788,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "CA - City of Carpinteria",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://sbcassessor.com/assessor/AssessorParcelMap.aspx"
+        },
+        {
+          "type": "GIS",
+          "url": "https://www.arcgis.com/apps/mapviewer/index.html?webmap=fa3545a29dac49aeacc81669b956e3e5"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License",
+          "url": "https://carpinteriaca.gov/wp-content/uploads/2023/02/Carp-STR-List-Current-Licenses-and-Contacts-for-Website-2-9-23.pdf"
+        }
+      ],
+      "Important Info": "For search in PR- Use \"ANGELES 1\" VPN.",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
