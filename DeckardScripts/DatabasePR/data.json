@@ -4329,15 +4329,15 @@
       "Project": "TX - City of Haltom",
       "Public Records & GIS": [
         {
-          "type": "PR",
+          "type": "PR (Use VPN)",
           "url": "https://taxonline.tarrantcounty.com/TaxPayer/search"
         },
         {
-          "type": "GIS",
+          "type": "GIS (Use VPN)",
           "url": "https://www.arcgis.com/apps/View/index.html?appid=05ecc93203fd45c49c86fda576dbfb59"
         },
         {
-          "type": "GIS 2",
+          "type": "GIS 2 (Use VPN)",
           "url": "https://gisit.tarrantcounty.com/publicmapviewer/"
         }
       ],
@@ -7541,7 +7541,7 @@
       "Project": "VT - City of South Burlington",
       "Public Records & GIS": [
         {
-          "type": "PR",
+          "type": "PR (Use VPN)",
           "url": "https://property.burlingtonvt.gov/"
         },
         {
@@ -7559,7 +7559,7 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "To search APNs in Public Records: ·Delete 035 ·Write using the format: 123-1-123-123 Example: ",
+      "Important Info": "To search APNs in Public Records: \n·Delete 035 \n·Write using the format: 123-1-123-123 ",
       "Media": [
         {
           "type": "N/A",
