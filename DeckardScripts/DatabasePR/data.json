@@ -5486,32 +5486,6 @@
       ]
     },
     {
-      "Project": "CA-City of Solvang",
-      "Public Records & GIS": [
-        {
-          "type": "GIS",
-          "url": "https://www.arcgis.com/apps/mapviewer/index.html?webmap=fa3545a29dac49aeacc81669b956e3e5"
-        },
-        {
-          "type": "PR",
-          "url": "https://assr.parcelquest.com/Statewide/Disclaimer"
-        }
-      ],
-      "License List": [
-        {
-          "type": "License list",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EUMlG8zzyg9AhCE0qdApptIBcarVGmFvVCJvypu8MueS0g?e=X3J2jl"
-        }
-      ],
-      "Important Info": "N/A",
-      "Media": [
-        {
-          "type": "N/A",
-          "url": "N/A"
-        }
-      ]
-    },
-    {
       "Project": "IL - Village of Orland Park",
       "Public Records & GIS": [
         {
@@ -10018,6 +9992,32 @@
         }
       ],
       "Important Info": "When working onU1OMbe careful with the following cases: ·If the address cyborg brings up has a unit on it, ex: 3154 Almaneda Ave # A, Holmes Beach, FL 34217, it can: 1.Be thesame unitas the one cyborg pops up, in this case, the address remains the same (Unit A for this example) 2.Be adifferent unitas the one cyborg pops up, in this case, you have to perform AO and input your unit in the unit box (Unit B for this example, 3154 Almaneda Ave Unit B, Holmes Beach, FL 34217) 3.Not be sureabout which unit they are renting, in this case, the address remains the same cyborg brings up. ·If within the main address there are more main addresses with their own unit use the unit box and AO to separate them. Example:202 Ave F Unit 1, Holmes Beach, FL 34217204 Ave F Unit 1, Holmes Beach, FL 34217",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
+    },
+    {
+      "Project": "CA - City of Solvang",
+      "Public Records & GIS": [
+        {
+          "type": "GIS",
+          "url": "https://www.arcgis.com/apps/mapviewer/index.html?webmap=fa3545a29dac49aeacc81669b956e3e5"
+        },
+        {
+          "type": "PR",
+          "url": "https://assr.parcelquest.com/Statewide/Disclaimer"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License list",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EUMlG8zzyg9AhCE0qdApptIBcarVGmFvVCJvypu8MueS0g?e=X3J2jl"
+        }
+      ],
+      "Important Info": "N/A",
       "Media": [
         {
           "type": "N/A",
