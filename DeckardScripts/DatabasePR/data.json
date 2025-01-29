@@ -3102,36 +3102,6 @@
       ]
     },
     {
-      "Project": "FL - Seminole County (Propertyscape)",
-      "Public Records & GIS": [
-        {
-          "type": "PR",
-          "url": "https://www.scpafl.org/"
-        },
-        {
-          "type": "GIS",
-          "url": "https://seminolegis.maps.arcgis.com/home/webmap/viewer.html?useExisting=1"
-        },
-        {
-          "type": "Tax Collector",
-          "url": "https://seminolecounty.tax/services/tax-search"
-        }
-      ],
-      "License List": [
-        {
-          "type": "N/A",
-          "url": "N/A"
-        }
-      ],
-      "Important Info": "N/A",
-      "Media": [
-        {
-          "type": "N/A",
-          "url": "N/A"
-        }
-      ]
-    },
-    {
       "Project": "FL - Village of Islamorada",
       "Public Records & GIS": [
         {
@@ -10007,6 +9977,36 @@
         {
           "type": "GIS",
           "url": "https://maps.coj.net/DuvalProperty/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
+    },
+    {
+      "Project": "FL - Seminole County",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://www.scpafl.org/"
+        },
+        {
+          "type": "GIS",
+          "url": "https://seminolegis.maps.arcgis.com/home/webmap/viewer.html?useExisting=1"
+        },
+        {
+          "type": "Tax Collector",
+          "url": "https://seminolecounty.tax/services/tax-search"
         }
       ],
       "License List": [
