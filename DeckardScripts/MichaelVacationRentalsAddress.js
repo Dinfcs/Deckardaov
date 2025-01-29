@@ -1,66 +1,95 @@
 // ==UserScript==
-// @name         Michael's Vacation Rentals Address
-// @version      2025-01-20
-// @description  Get the address from Michael's Vacation Rentals
-// @author       Lucho
+// @name         Extraer Dirección de Propiedad (con ventana flotante)
+// @namespace    http://tampermonkey.net/
+// @version      1.6
+// @description  Extrae la dirección de la propiedad desde propDetails y la muestra en la página, con opción de copiar al portapapeles
+// @author       Tu Nombre
 // @match        https://www.michaelsvacationrentals.com/*
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=michaelsvacationrentals.com
 // @grant        none
 // ==/UserScript==
 
-const createLayer = (propertyDetails) => {
-    const overlay = document.createElement('div');
-    overlay.style.position = 'fixed';
-    overlay.style.zIndex = '9999';
-    overlay.style.top = '10px';
-    overlay.style.right = '10px';
-    overlay.style.width = '300px';
-    overlay.style.height = '200px';
-    overlay.style.padding = '1rem';
-    overlay.style.background = 'rgba(255, 255, 255, 0.9)';
-    overlay.style.overflow = 'auto';
-
-    const closeButton = document.createElement('button');
-    closeButton.style.position = 'absolute';
-    closeButton.style.top = '2px';
-    closeButton.style.right = '2px';
-    closeButton.style.fontSize = '10px';
-    closeButton.innerHTML = 'X';
-    closeButton.addEventListener('click', () => {
-        overlay.remove();
-    });
-
-    if (propertyDetails) {
-        overlay.innerHTML = `<h4>Property Details</h4>
-                             <p><strong>Address:</strong> ${propertyDetails.address}</p>
-                             <p><strong>Name:</strong> ${propertyDetails.prop_name}</p>`;
-    } else {
-        overlay.innerHTML = `<h4>Property Details</h4><p>No se encontraron datos específicos.</p>`;
-    }
-
-    overlay.appendChild(closeButton);
-    document.body.appendChild(overlay);
-}
-
 (function() {
     'use strict';
-    const scriptTags = document.getElementsByTagName('script');
-    let propertyDetails = null;
 
-    for (let tag of scriptTags) {
-        if (tag.textContent.includes('prop_name":"') && tag.textContent.includes('address":"')) {
-            const propNameMatch = tag.textContent.match(/prop_name":"([^"]*)"/);
-            const addressMatch = tag.textContent.match(/address":"([^"]*)"/);
+    console.log("✅ Tampermonkey Script Cargado, esperando que propDetails aparezca...");
 
-            if (propNameMatch && addressMatch) {
-                propertyDetails = {
-                    prop_name: propNameMatch[1],
-                    address: addressMatch[1]
-                };
-                break;
-            }
-        }
+    // Función para crear la ventana flotante
+    function mostrarVentanaFlotante(mensaje) {
+        let ventana = document.createElement("div");
+        ventana.style.position = "fixed";
+        ventana.style.bottom = "20px";
+        ventana.style.right = "20px";
+        ventana.style.background = "rgba(0, 0, 0, 0.8)";
+        ventana.style.color = "white";
+        ventana.style.padding = "15px";
+        ventana.style.borderRadius = "10px";
+        ventana.style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.3)";
+        ventana.style.fontSize = "16px";
+        ventana.style.zIndex = "9999";
+        ventana.style.maxWidth = "300px";
+        ventana.innerHTML = mensaje;
+
+        document.body.appendChild(ventana);
+
+        // Función para copiar al portapapeles
+        ventana.addEventListener("click", () => {
+            // Crear un elemento de texto temporal para copiar
+            let tempTextArea = document.createElement("textarea");
+            tempTextArea.value = mensaje.replace(/<br>/g, "\n").replace(/<[^>]+>/g, ""); // Eliminar HTML y convertir <br> en saltos de línea
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempTextArea);
+
+            // Notificar al usuario
+            alert("📋 ¡Dirección copiada al portapapeles!");
+        });
+
+        // Si deseas que la ventana no se cierre automáticamente, simplemente elimina o comenta la siguiente línea:
+        // setTimeout(() => {
+        //     ventana.remove();
+        // }, 10000); // 10 segundos
     }
 
-    createLayer(propertyDetails);
+    // Función para buscar `propDetails` en el código fuente
+    function buscarPropDetails() {
+        let pageSource = document.body.innerHTML;
+        let match = pageSource.match(/propDetails:\s*({.*?"unit_id":.*?})/s);
+
+        if (match && match[1]) {
+            try {
+                console.log("✅ propDetails encontrado, analizando JSON...");
+                let propDetails = JSON.parse(match[1]);
+
+                let address = propDetails.address || "Address not found";
+                let address2 = propDetails.address2 || "N/A";
+                let city = propDetails.city || "City not found";
+                let state = propDetails.state || "Estado no encontrado";
+                let zip = propDetails.zip || "Postal Code not found";
+
+                 // Mostrar la ventana flotante con la dirección completa
+                let mensaje = `
+                    📍 <b>Property address:</b><br>
+                    ${address}, ${city}, ${state} ${zip}, ${address2}
+                `;
+                mostrarVentanaFlotante(mensaje);
+
+                return true; // Se encontró, detener la búsqueda
+            } catch (error) {
+                console.error("❌ Error al analizar JSON:", error);
+            }
+        }
+        return false; // No encontrado aún
+    }
+
+    // Intentar cada segundo hasta 15 intentos (máx. 15 segundos)
+    let intentos = 0;
+    let intervalo = setInterval(() => {
+        if (buscarPropDetails() || intentos > 15) {
+            clearInterval(intervalo); // Detener búsqueda si se encuentra o se agota el tiempo
+            if (intentos > 15) console.warn("⏳ Se agotó el tiempo de espera para encontrar propDetails.");
+        }
+        intentos++;
+    }, 1000);
+
 })();
