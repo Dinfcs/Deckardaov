@@ -7967,40 +7967,6 @@
           "url": "https://gis.stlouiscountymn.gov/LandExplorer/"
         },
         {
-          "type": "Public Records Tools to get easier copy and paste the APN",
-          "url": "https://dinfcs.github.io/Deckardaov/st_louis/index.html"
-        },
-        {
-          "type": "Class Codes PR Guide",
-          "url": "https://reports.stlouiscountymn.gov/ssrswrapper/ShowSSRSReport.aspx?reportPath=/Assessor/PropertyDetails/ClassCodeLegend&pdf=true"
-        }
-      ],
-      "License List": [
-        {
-          "type": "N/A",
-          "url": "N/A"
-        }
-      ],
-      "Important Info": "To search in the GIS by APN it is necessary to add the dashes so that the APN is recognized.Ex: 010-4380-02380",
-      "Media": [
-        {
-          "type": "N/A",
-          "url": "N/A"
-        }
-      ]
-    },
-    {
-      "Project": "MN - Saint Louis County",
-      "Public Records & GIS": [
-        {
-          "type": "PR",
-          "url": "https://apps.stlouiscountymn.gov/assessor/propertydetails/"
-        },
-        {
-          "type": "GIS",
-          "url": "https://gis.stlouiscountymn.gov/LandExplorer/"
-        },
-        {
           "type": "Class Codes PR Guide",
           "url": "https://reports.stlouiscountymn.gov/ssrswrapper/ShowSSRSReport.aspx?reportPath=/Assessor/PropertyDetails/ClassCodeLegend&pdf=true"
         }
@@ -8563,11 +8529,11 @@
       "Project": "NY - Sullivan County",
       "Public Records & GIS": [
         {
-          "type": "PR",
+          "type": "PR (Use VPN)",
           "url": "https://secure.sullivanny.us/IMO/search.aspx"
         },
         {
-          "type": "GIS",
+          "type": "GIS (Use VPN)",
           "url": "https://gis.sullivanny.us/portal/apps/webappviewer/index.html?id=7bc08b0aa879400196398ca1db03937e"
         }
       ],
