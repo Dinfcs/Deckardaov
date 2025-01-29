@@ -7351,7 +7351,7 @@
           "url": "https://assessor.co.grand.co.us/assessor/taxweb/search.jsp"
         },
         {
-          "type": "GIS",
+          "type": "GIS (Use VPN)",
           "url": "https://gcgeo.maps.arcgis.com/apps/webappviewer/index.html?id=19227102adf34489bb7311fc1ddb39f0"
         },
         {
@@ -7365,7 +7365,7 @@
           "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EXf4TrtZ_zZDpbrCq4vz9I0BwxUBtBV6Cil2kJOZMwqx3A?e=tCkdVf"
         }
       ],
-      "Important Info": "·Public Records have two addresses. If a cyborg has one of them and it is correct, there is no need to do the AO.If the information from Cyborg is wrong and you need to do the Address Override, please do it with the address that comes with the street name and NOT with the GCR. For example, if PR has the following Addresses: 48 GCR 8500 #F-2 and 48 Jabberwocky #F-2, you must do the AO with the48 Jabberwocky Unit F-2. ·For most of the condos, you must put the unit number first and then the building number. For example51 River Dr Unit 1021, Winter Park, CO 80482In this case, the unit is10and the bldg is21. ·Some condos could have 2 units with the same APN. For those cases, we will use the unit numbers first and then, the building number, following the next format:51 River Dr Unit 13-1410, Winter Park, CO 80482In this case, the unit number is13-14and the building number is10. ·In the PR you can search for the name of the building in the subdivision option. ·If you find a listing of the condo Hi Country Haus, it is not necessary to do AO because it is not inside the town.",
+      "Important Info": "Public Records have two addresses. If a cyborg has one of them and it is correct, there is no need to do the AO. \nIf the information from Cyborg is wrong and you need to do the Address Override, please do it with the address that comes with the street name and NOT with the GCR. For example, if PR has the following Addresses: 48 GCR 8500 #F-2 and 48 Jabberwocky #F-2, you must do the AO with the 48 Jabberwocky Unit F-2.\n\n·Some condos have 2 units with the same APN. For those cases, we will use the unit numbers first and then, the building number, following the next format:\n51 River Dr Unit 13-1410, Winter Park, CO 80482. \n\nIn this case, the unit number is 13-14 and the building number is 10. \n\n·In the PR you can search for the name of the building in the subdivision option. \n\n·If you find a listing of the condo Hi Country Haus, it is not necessary to do AO because it is not inside the town.",
       "Media": [
         {
           "type": "N/A",
