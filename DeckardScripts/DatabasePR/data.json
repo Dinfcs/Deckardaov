@@ -7260,32 +7260,6 @@
       ]
     },
     {
-      "Project": "CAN - City of Gimli",
-      "Public Records & GIS": [
-        {
-          "type": "GIS 1",
-          "url": "https://www.gov.mb.ca/mao/public/map.aspx"
-        },
-        {
-          "type": "GIS 2",
-          "url": "https://www.arcgis.com/home/webmap/viewer.html?layers=8106acf39b124422a5f03a5c4e55d269"
-        }
-      ],
-      "License List": [
-        {
-          "type": "License list",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B9CC375C7-B58E-4D25-BEFB-AC3617D15118%7D&file=Gimli_Business_List_Upload_08-07-2024%20Copy%20JC.xlsx&action=default&mobileredirect=true"
-        }
-      ],
-      "Important Info": "·It's mandatory to perform AO, as the data comes without a Zip Code. Example of the AO: 30 Canoba Cres, Gimli, MB R0C 0C0. ·There are no public records, as privacy laws in the country protect property data.",
-      "Media": [
-        {
-          "type": "N/A",
-          "url": "N/A"
-        }
-      ]
-    },
-    {
       "Project": "TX - City of League",
       "Public Records & GIS": [
         {
