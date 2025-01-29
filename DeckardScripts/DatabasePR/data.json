@@ -7181,10 +7181,6 @@
           "url": "https://common3.mptsweb.com/mbc/calaveras/tax/search"
         },
         {
-          "type": "GIS",
-          "url": "https://gisportal.co.calaveras.ca.us/portal/apps/webappviewer/index.html?id=fa903a4622014f1eb0a6ea5f4d11f121"
-        },
-        {
           "type": "Rental Platform",
           "url": "https://www.premierproperties.com/luxury-homes-for-sale-in-calaveras-county?p=4"
         }
@@ -10038,6 +10034,28 @@
         }
       ],
       "Important Info": "To search in the PR: 1.Enter the address and click on \"Start Your Search.\" 2.Then click on \"Build Your Report.\" 3.Click on \"Info of My Property,\" and then click \"Next.\" 4.You’ll be able to see property information such as the address and APN. PR information is limited. Please use LB or Regrid.",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
+    },
+    {
+      "Project": "ID - Bear Lake County",
+      "Public Records & GIS": [
+        {
+          "type": "GIS",
+          "url": "https://experience.arcgis.com/experience/80eab38489484e0f96eca9880942a2d4/#data_s=id%3AdataSource_3-1917ae04c8a-layer-47%3A8679"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "N/A",
       "Media": [
         {
           "type": "N/A",
