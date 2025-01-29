@@ -3676,6 +3676,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "AZ - City of Casa Grande",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://app1.pinal.gov/Search/Parcel-Search.aspx"
+        },
+        {
+          "type": "GIS",
+          "url": "https://www.arcgis.com/apps/webappviewer/index.html?id=d92bad11160e425ca191f048ef6ca556&find=104983900"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License o N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "For search in PR use VPN",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
