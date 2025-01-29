@@ -71,7 +71,7 @@
         }
         /* Estilo para la barra de búsqueda */
         #searchBar {
-            background-color: #e0e0e0;
+            background-color: #f5eeee;
             width: 60%;
             padding: 10px;
             margin: 2px 0;
@@ -80,9 +80,14 @@
             font-size: 16px;
             margin-top: 0px;
         }
+        /* Estilo para nombres repetidos */
+        .duplicate {
+            color: red; /* Color rojo para nombres repetidos */
+        }
     </style>
 </head>
 <body>
+    <h1>Project Resources</h1>
     <!-- Barra de búsqueda -->
     <input type="text" id="searchBar" onkeyup="searchProjects()" placeholder="Search for project names...">
 
@@ -112,6 +117,12 @@
             // Ordenar los datos por el nombre del proyecto en orden alfabético
             data.sort((a, b) => a.Project.localeCompare(b.Project));
 
+            // Contar los nombres de proyectos para detectar duplicados
+            const projectCounts = {};
+            data.forEach(project => {
+                projectCounts[project.Project] = (projectCounts[project.Project] || 0) + 1;
+            });
+
             const tableContainer = document.getElementById('tableContainer');
             tableContainer.innerHTML = '';
 
@@ -135,6 +146,12 @@
                 const row = document.createElement('tr');
                 headers.forEach(header => {
                     const td = document.createElement('td');
+
+                    // Aplicar la clase 'duplicate' si el nombre del proyecto está duplicado
+                    if (header === 'Project' && projectCounts[item[header]] > 1) {
+                        td.classList.add('duplicate');
+                    }
+
                     if (Array.isArray(item[header])) {
                         item[header].forEach(link => {
                             const a = document.createElement('a');
