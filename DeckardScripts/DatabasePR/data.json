@@ -8242,44 +8242,6 @@
       ]
     },
     {
-      "Project": "KY -Menifee County",
-      "Public Records & GIS": [
-        {
-          "type": "PR",
-          "url": "https://www.publicdatacheck.com/property/index?gclid=Cj0KCQjw7Py4BhCbARIsAMMx-_LATWKag2ILAsHsCgBlAv05HRroiSZv3BE_irPWIOMV_SWTDAYP0bEaAjxvEALw_wcB"
-        },
-        {
-          "type": "Rental Platform",
-          "url": "https://www.century21.com/real-estate/menifee-county-ky/LNKYMENIFEE/"
-        },
-        {
-          "type": "GIS",
-          "url": "https://eppcgis.ky.gov/minemapping/?esearch=&slayer=5"
-        },
-        {
-          "type": "GIS 2",
-          "url": "http://minemaps.ky.gov/Maps/InteractiveMaps"
-        },
-        {
-          "type": "GIS 3",
-          "url": "https://explore.kyfromabove.ky.gov/"
-        }
-      ],
-      "License List": [
-        {
-          "type": "N/A",
-          "url": "N/A"
-        }
-      ],
-      "Important Info": "To search in the PR: 1.Enter the address and click on \"Start Your Search.\" 2.Then click on \"Build Your Report.\" 3.Click on \"Info of My Property,\" and then click \"Next.\" 4.You’ll be able to see property information such as the address and APN. PR information is limited. Please use LB or Regrid.",
-      "Media": [
-        {
-          "type": "N/A",
-          "url": "N/A"
-        }
-      ]
-    },
-    {
       "Project": "UT - Emery County",
       "Public Records & GIS": [
         {
@@ -10038,6 +10000,44 @@
         }
       ],
       "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
+    },
+    {
+      "Project": "KY - Menifee County",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://www.publicdatacheck.com/property/index?gclid=Cj0KCQjw7Py4BhCbARIsAMMx-_LATWKag2ILAsHsCgBlAv05HRroiSZv3BE_irPWIOMV_SWTDAYP0bEaAjxvEALw_wcB"
+        },
+        {
+          "type": "Rental Platform",
+          "url": "https://www.century21.com/real-estate/menifee-county-ky/LNKYMENIFEE/"
+        },
+        {
+          "type": "GIS",
+          "url": "https://eppcgis.ky.gov/minemapping/?esearch=&slayer=5"
+        },
+        {
+          "type": "GIS 2",
+          "url": "http://minemaps.ky.gov/Maps/InteractiveMaps"
+        },
+        {
+          "type": "GIS 3",
+          "url": "https://explore.kyfromabove.ky.gov/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "To search in the PR: 1.Enter the address and click on \"Start Your Search.\" 2.Then click on \"Build Your Report.\" 3.Click on \"Info of My Property,\" and then click \"Next.\" 4.You’ll be able to see property information such as the address and APN. PR information is limited. Please use LB or Regrid.",
       "Media": [
         {
           "type": "N/A",
