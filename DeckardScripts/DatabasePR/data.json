@@ -6571,7 +6571,7 @@
           "url": "https://experience.arcgis.com/experience/a51155e46d504bfab3b7a107c3eb6643/page/Planning/"
         },
         {
-          "type": "County of San Luis Obispo -PR",
+          "type": "PR (Use VPN)",
           "url": "https://propertyinquiryportal.slocounty.ca.gov/#/property-inquiry"
         }
       ],
@@ -6581,7 +6581,7 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "N/A",
+      "Important Info": "Use PQ as a public provider",
       "Media": [
         {
           "type": "N/A",
