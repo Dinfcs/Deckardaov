@@ -3568,6 +3568,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "AL - City of Decatur",
+      "Public Records & GIS": [
+        {
+          "type": "PR (Use VPN)",
+          "url": "https://morgan.capturecama.com/CA_ParcelSearch.aspx#down"
+        },
+        {
+          "type": "GIS (Use VPN)",
+          "url": "https://isv.kcsgis.com/al.morgan_revenue/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License o N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "Image,Video Or N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
