@@ -4591,11 +4591,11 @@
       "Project": "TX - City of La Porte",
       "Public Records & GIS": [
         {
-          "type": "Public Records (Use VPN)",
+          "type": "Public Records",
           "url": "https://hcad.org/quick-search/"
         },
         {
-          "type": "GIS (Use VPN)",
+          "type": "GIS",
           "url": "https://arcweb.hcad.org/parcelviewer/"
         }
       ],
