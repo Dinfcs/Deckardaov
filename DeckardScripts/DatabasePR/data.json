@@ -4839,44 +4839,6 @@
       "Project": "WA - Chelan County",
       "Public Records & GIS": [
         {
-          "type": "PR",
-          "url": "https://pacs.co.chelan.wa.us/PropertyAccess/PropertySearch.aspx?cid=91"
-        },
-        {
-          "type": "GIS",
-          "url": "https://maps.co.chelan.wa.us/GIS/"
-        },
-        {
-          "type": "Land Use Codes",
-          "url": "https://www.co.chelan.wa.us/files/assessor/documents/Land%20Use%20Codes.pdf"
-        },
-        {
-          "type": "https://wapatopoint.com/sales/",
-          "url": "https://wapatopoint.com/sales/"
-        }
-      ],
-      "License List": [
-        {
-          "type": "License list",
-          "url": "https://docs.google.com/spreadsheets/d/1p0wQc6hp9u_bHX_PH77gIn9Qfb1Ct1bE/edit?usp=sharing&ouid=116772286113869768763&rtpof=true&sd=true"
-        },
-        {
-          "type": "License list 15-08-2024",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B16C59D68-7340-4B26-A94C-E8476712EB84%7D&file=2024%20STR%20Contact%20List%20(6)%20Chelan%20Copy%20-%20IR.xlsx&action=default&mobileredirect=true"
-        }
-      ],
-      "Important Info": "Address Override will be performed on the property when any of these cases:The house Number, Street name, and ZIP Code are incorrect with respect to the PR. If we see that the only inconsistency concerning the PR information is the City Name (and the ZIP code is correct), it is not necessary to perform AO.- Property that is U1OM and has a Unit number. Please use a unit box and also, use Address Override with Unit number in this. Examples:Address Override: 105 Chelan View Dr, Manson, WA 98831 is a parcel with mixed-use (Residential and Resort). Structure: U1OM. If we know the unit number: use the unit box for the unit number and this AO: 105 Chelan View Dr Unit #, Manson, WA 98831Map information of this parcel: Please note that the following properties are timeshares, if you're going to map them, take the APN associated with the majority of the listing: 1.WorldMark Lake Chelan Shores. Address: 100 Lake Chelan Shores Dr, Chelan, WA 98816, United States - 2.Peterson's Waterfront Resort. Address: 103 N Park St, Chelan, WA 98816, United States - 3.Grandview On the Lake. Address: 322 W Woodin Ave, Chelan, WA 98816, United States - 4.WorldMark Chelan Lake House. Address: 402 W Manson Hwy, Chelan, WA 98816, United States 5.WorldMark Leavenworth. Address: 100 Enchantment Park Way, Leavenworth, WA 98826, United States -",
-      "Media": [
-        {
-          "type": "N/A",
-          "url": "N/A"
-        }
-      ]
-    },
-    {
-      "Project": "WA - Chelan County",
-      "Public Records & GIS": [
-        {
           "type": "PR (Use VPN)",
           "url": "https://pacs.co.chelan.wa.us/PropertyAccess/PropertySearch.aspx?cid=91"
         },
