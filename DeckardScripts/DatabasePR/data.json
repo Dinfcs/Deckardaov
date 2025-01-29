@@ -4940,14 +4940,10 @@
       "Public Records & GIS": [
         {
           "type": "GIS",
-          "url": "https://www.princeton-il.com/interactive-mapping/"
-        },
-        {
-          "type": "GIS 2",
           "url": "https://portico.mygisonline.com/html5/bureauil/"
         },
         {
-          "type": "PR",
+          "type": "PR Bureau County",
           "url": "https://propertytaxonline.org/Bureau/InquiryCriteria.aspx"
         }
       ],
