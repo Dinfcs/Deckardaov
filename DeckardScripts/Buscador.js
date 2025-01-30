@@ -1,10 +1,11 @@
 // ==UserScript==
 // @name         Buscador
 // @namespace    http://tampermonkey.net/
-// @version      1.3
-// @description  Detecta coordenadas en el portapapeles y las busca en el otro servicio de mapas (Google Maps o Bing Maps).
+// @version      1.5
+// @description  Detecta coordenadas en el portapapeles y las busca en el otro servicio de mapas (Google Maps, Bing Maps, DuckDuckGo Maps).
 // @match        https://www.bing.com/maps*
 // @match        https://www.google.com/maps*
+// @match        https://duckduckgo.com/*
 // @grant        GM_getClipboard
 // @grant        GM_addStyle
 // ==/UserScript==
@@ -30,22 +31,20 @@
     }
 
     // Función para crear y mostrar el botón flotante
-    function crearBotonFlotante(textoBoton, onClick) {
+    function crearBotonFlotante(icono, onClick, topOffset) {
         const btnContainer = document.createElement('div');
         btnContainer.style.position = 'fixed';
-        btnContainer.style.top = '50%'; // Centrar verticalmente
+        btnContainer.style.top = `calc(50% + ${topOffset}px)`; // Centrar verticalmente con desplazamiento
         btnContainer.style.right = '20px';
-        btnContainer.style.transform = 'translateY(-50%)'; // Ajustar para centrar completamente
         btnContainer.style.zIndex = '9999';
 
         const btn = document.createElement('button');
-        btn.textContent = textoBoton;
-        btn.style.padding = '8px 8px';
-        btn.style.fontSize = '10px';
-        btn.style.backgroundColor = '#1E90FF';
-        btn.style.color = '#fff';
+        btn.innerHTML = icono;
+        btn.style.padding = '8px';
+        btn.style.fontSize = '24px';
+        btn.style.backgroundColor = 'transparent';
+        btn.style.color = '#000';
         btn.style.border = 'none';
-        btn.style.borderRadius = '5px';
         btn.style.cursor = 'pointer';
         btn.onclick = onClick;
 
@@ -53,24 +52,62 @@
         document.body.appendChild(btnContainer);
     }
 
-    // Determinar el sitio web actual y crear el botón correspondiente
-    if (window.location.host.includes('bing.com')) {
-        crearBotonFlotante('Buscar en Google Maps', async () => {
-            const coordenada = await obtenerCoordenadasDesdePortapapeles();
-            if (coordenada) {
-                window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(coordenada)}`, '_blank');
-            } else {
-                alert('No se encontraron coordenadas válidas en el portapapeles.');
-            }
-        });
-    } else if (window.location.host.includes('google.com')) {
-        crearBotonFlotante('Buscar en Bing Maps', async () => {
-            const coordenada = await obtenerCoordenadasDesdePortapapeles();
-            if (coordenada) {
-                window.open(`https://www.bing.com/maps?q=${encodeURIComponent(coordenada)}`, '_blank');
-            } else {
-                alert('No se encontraron coordenadas válidas en el portapapeles.');
-            }
-        });
+    // Función para inicializar los botones
+    function inicializarBotones() {
+        if (window.location.host.includes('bing.com')) {
+            crearBotonFlotante('🌐', async () => {
+                const coordenada = await obtenerCoordenadasDesdePortapapeles();
+                if (coordenada) {
+                    window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(coordenada)}`, '_blank');
+                } else {
+                    alert('No se encontraron coordenadas válidas en el portapapeles.');
+                }
+            }, -30);
+            crearBotonFlotante('🦆', async () => {
+                const coordenada = await obtenerCoordenadasDesdePortapapeles();
+                if (coordenada) {
+                    window.open(`https://duckduckgo.com/?va=i&t=hv&q=${encodeURIComponent(coordenada)}+Show+on+Map&ia=web&iaxm=maps&bbox=`, '_blank');
+                } else {
+                    alert('No se encontraron coordenadas válidas en el portapapeles.');
+                }
+            }, 30);
+        } else if (window.location.host.includes('google.com')) {
+            crearBotonFlotante('📍', async () => {
+                const coordenada = await obtenerCoordenadasDesdePortapapeles();
+                if (coordenada) {
+                    window.open(`https://www.bing.com/maps?q=${encodeURIComponent(coordenada)}`, '_blank');
+                } else {
+                    alert('No se encontraron coordenadas válidas en el portapapeles.');
+                }
+            }, -30);
+            crearBotonFlotante('🦆', async () => {
+                const coordenada = await obtenerCoordenadasDesdePortapapeles();
+                if (coordenada) {
+                    window.open(`https://duckduckgo.com/?va=i&t=hv&q=${encodeURIComponent(coordenada)}+Show+on+Map&ia=web&iaxm=maps&bbox=`, '_blank');
+                } else {
+                    alert('No se encontraron coordenadas válidas en el portapapeles.');
+                }
+            }, 30);
+        } else if (window.location.host.includes('duckduckgo.com')) {
+            crearBotonFlotante('🌐', async () => {
+                const coordenada = await obtenerCoordenadasDesdePortapapeles();
+                if (coordenada) {
+                    window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(coordenada)}`, '_blank');
+                } else {
+                    alert('No se encontraron coordenadas válidas en el portapapeles.');
+                }
+            }, -30);
+            crearBotonFlotante('📍', async () => {
+                const coordenada = await obtenerCoordenadasDesdePortapapeles();
+                if (coordenada) {
+                    window.open(`https://www.bing.com/maps?q=${encodeURIComponent(coordenada)}`, '_blank');
+                } else {
+                    alert('No se encontraron coordenadas válidas en el portapapeles.');
+                }
+            }, 30);
+        }
     }
+
+    // Inicializar los botones una vez que la página ha cargado
+    window.addEventListener('load', inicializarBotones);
 })();
