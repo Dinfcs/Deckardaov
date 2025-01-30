@@ -40,7 +40,14 @@
             urlPattern: /^https:\/\/sedona\.org\//,
             scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/sedona.org.js'
 
+        },
+                {
+            urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/CA\/sonoma\/.*\/STR.*$/,
+            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/PrSonoma.js'
+
+
         }
+
 
         
     ];
