@@ -2683,19 +2683,19 @@
       "Project": "CO - City of Westminster",
       "Public Records & GIS": [
         {
-          "type": "GIS",
+          "type": "GIS Jefferson",
           "url": "https://data-jeffersoncounty.opendata.arcgis.com/datasets/48a988d664a642c7bdc8a17c229582c3_1/explore?location=39.825495%2C-105.059752%2C17.83"
         },
         {
-          "type": "PR",
+          "type": "PR Jefferson",
           "url": "https://propertysearch.jeffco.us/propertyrecordssearch/dashboard"
         },
         {
-          "type": "GIS",
+          "type": "GIS Adams",
           "url": "https://gisapp.adcogov.org/Html5Viewer/index.html?viewer=AdvancedExt.Advanced_HTML"
         },
         {
-          "type": "PR",
+          "type": "PR Adams",
           "url": "https://gisapp.adcogov.org/PropertySearch"
         }
       ],
@@ -2705,7 +2705,7 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "N/A",
+      "Important Info": "The city is part of 2 counties: Jefferson and Adams county.",
       "Media": [
         {
           "type": "N/A",
