@@ -7781,11 +7781,11 @@
       "Project": "CA - City of Morro Bay",
       "Public Records & GIS": [
         {
-          "type": "PR",
+          "type": "PR (Use VPN)",
           "url": "https://propertyinquiryportal.slocounty.ca.gov/#/property-inquiry"
         },
         {
-          "type": "GIS",
+          "type": "GIS (Use VPN)",
           "url": "https://city-of-morro-bay.hub.arcgis.com/apps/54739ab3e2824e9099b7e3839e1e827e/explore"
         }
       ],
