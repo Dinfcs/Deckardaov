@@ -5953,16 +5953,12 @@
           "url": "https://assr.parcelquest.com/Statewide?IndexViewModel=PQGov.Models.IndexViewModel"
         },
         {
-          "type": "PR 2",
+          "type": "PR 2 (Use VPN)",
           "url": "https://reports.nevcounty.net/property/rdPage.aspx?rdReport=parcel.ParcelReport&APN"
         },
         {
           "type": "GIS",
           "url": "https://maps.nevadacountyca.gov/myneighborhood/"
-        },
-        {
-          "type": "Video PR Y GIS of Nevada County",
-          "url": "https://www.loom.com/share/b9392408426e4d919ef0a198575202e9"
         }
       ],
       "License List": [
@@ -5979,7 +5975,7 @@
           "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7BD51A23E7-ED06-4538-81C0-C57818B8643E%7D&file=Nevada%20County%20Active%20Inactive%20STR%20Registrations%2017-05-2024%20Copy%20-%20IR.xlsx&action=default&mobileredirect=true"
         }
       ],
-      "Important Info": "-The video is specified for the City of Nevada, but it involves the PR and GIS of Nevada County, and it applies to the project. 3.Click on continue, fill in the street number and street name, and do not enter street name suffixes (Avenue, Lane, etc). Note: You can use the \\d{5} regex to filter out everything that has a license.",
+      "Important Info": "You can use the \\d{5} regex to filter out all licensed entries.",
       "Media": [
         {
           "type": "N/A",
@@ -9907,6 +9903,32 @@
         {
           "type": "Asheville PPD",
           "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7BA2C383AE-A898-4FD5-B4C1-6406F3A6DEA9%7D&file=Copy%20of%20Asheville%2C%20NC%20-%20Listings%20Record_2021_11_10.xlsx&action=default&mobileredirect=true"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
+    },
+    {
+      "Project": "CA - City of Santa Clara",
+      "Public Records & GIS": [
+        {
+          "type": "PR ",
+          "url": "https://www.sccassessor.org/index.php/online-services/property-search/real-property"
+        },
+        {
+          "type": "GIS",
+          "url": "https://geoess.sccgov.org/discovergis/sccmap"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License o N/A",
+          "url": "N/A"
         }
       ],
       "Important Info": "N/A",
