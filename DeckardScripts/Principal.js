@@ -37,8 +37,9 @@
             scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/MichaelVacationRentalsAddress.js'
         },
         {
-            urlPattern: /^https:\/\/www\.sedona\.org\//,
+            urlPattern: /^https:\/\/sedona\.org\//,
             scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/sedona.org.js'
+
         }
 
         
