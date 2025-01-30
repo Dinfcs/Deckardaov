@@ -5567,24 +5567,16 @@
       "Project": "KY - Kenton County",
       "Public Records & GIS": [
         {
-          "type": "PR",
-          "url": "https://kcor.org/cgi-bin/wpi-free-access.exe"
-        },
-        {
-          "type": "PR",
+          "type": "PR 1 (Use VPN)",
           "url": "https://kcor.org/"
         },
         {
-          "type": "GIS",
+          "type": "GIS (Use VPN)",
           "url": "https://kcky.maps.arcgis.com/apps/webappviewer/index.html?id=d0f76de39b3044e0801ba3e2ad236ecb"
         },
         {
-          "type": "PR",
+          "type": "PR Hamilton",
           "url": "https://wedge1.hcauditor.org/"
-        },
-        {
-          "type": "https://kcor.org/",
-          "url": "https://kcor.org/"
         }
       ],
       "License List": [
@@ -5593,11 +5585,11 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "In the GIS when you select a parcel it shows a housefront photo. When using the PRs from the beginning follow the steps below: 1.Go to the link 2.Click on \"Click for free access menu\" 3.Write down the given letters 4.Click on PVA Real State Inquiry 5.You will be presented with different searching options and can use the property location address. Use AO if the address is different from the one on the PR. Some units have a “unit” within the address after a #, be sure to map it as on the PR since it might be a wrong address. ",
+      "Important Info": "In the GIS when you select a parcel it shows a housefront photo.\n\nWhen using the PRs 1 from the beginning follow the steps below:\n\n1.Go to the link https://kcor.org/\n\n2.Click on \"Click for free access menu\" \n\n3.Write down the given letters\n\n4.Click on PVA Real State Inquiry\n\n5.You will be presented with different searching options and can use the property location address.\n\nUse AO if the address is different from the one on the PR. Some units have a “unit” within the address after a #, be sure to map it as on the PR since it might be a wrong address. ",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "type": "Example of case",
+          "url": "https://drive.usercontent.google.com/download?id=17AA9FC8Mbt1IQ-jPSn8jrWs0ZNyqQ0cA&authuser=0"
         }
       ]
     },
