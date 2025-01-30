@@ -5889,15 +5889,15 @@
       "Project": "CO - City of Longmont",
       "Public Records & GIS": [
         {
-          "type": "PR&GIS",
+          "type": "PR&GIS Boulder County",
           "url": "https://maps.boco.solutions/propertysearch/"
         },
         {
-          "type": "PR",
+          "type": "PR Weld County",
           "url": "https://www.weld.gov/Live-Work/Property"
         },
         {
-          "type": "GIS",
+          "type": "GIS Weld County",
           "url": "https://www.co.weld.co.us/maps/propertyportal/"
         }
       ],
