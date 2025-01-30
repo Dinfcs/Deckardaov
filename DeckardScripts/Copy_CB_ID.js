@@ -4,7 +4,7 @@
 // @version      1.0
 // @description  Agrega un botón para copiar el identificador de la URL en páginas que contengan "/listing/"
 // @author       Luchito & Dilan
-// @match        *://*/*listing/*
+// @match        *://*/*
 // @grant        GM_setClipboard
 // ==/UserScript==
 
