@@ -5511,8 +5511,8 @@
           "url": "https://boonepva.ky.gov/"
         },
         {
-          "type": "GIS",
-          "url": "https://secure.boonecountygis.com/JavaScript/BoonePVA/"
+          "type": "GIS (Use Vpn)",
+          "url": "https://secure.boonecountygis.com/portal/apps/webappviewer/index.html?id=d2eaf4cf27194c20a8fbed4aa892cac5"
         }
       ],
       "License List": [
@@ -5521,7 +5521,7 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "When using the GIS unmark “buildings” as a label to see the aerial correctly",
+      "Important Info": "N/A",
       "Media": [
         {
           "type": "N/A",
