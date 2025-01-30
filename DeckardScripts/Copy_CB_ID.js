@@ -10,7 +10,7 @@
 
 (function () {
     'use strict';
-
+    
     function getIdentifier() {
         const pathSegments = window.location.pathname.split("/");
         return pathSegments[pathSegments.length - 1]; // Último segmento de la URL
