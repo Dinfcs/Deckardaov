@@ -2,7 +2,7 @@
 // @name         PR Sonoma
 // @namespace    http://tampermonkey.net/
 // @version      0.7
-// @description  Mostrar botón flotante para buscar APN en PR al detectar un cambio en el portapapeles
+// @description  Mostrar botón flotante para buscar APN en PR al detectar un cambio en el portapapeles en el proyecto de SonomaCounty
 // @author       Tu nombre
 // @match        https://cyborg.deckard.com/listing/CA/sonoma/_/STR*
 // @grant        none
