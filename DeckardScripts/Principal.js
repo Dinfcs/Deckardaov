@@ -46,7 +46,7 @@
         },
                 {
             urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/.*\/STR.*$/,
-            scriptUrl: 'https://github.com/Dinfcs/Deckardaov/blob/main/DeckardScripts/Copy_CB_ID.js'
+            scriptUrl: 'https://github.com/Deckardaov/DeckardScripts/Copy_CB_ID.js'
         
                 
         }
