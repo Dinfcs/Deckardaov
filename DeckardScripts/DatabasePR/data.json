@@ -6099,7 +6099,7 @@
       "Project": "ME - City of Bangor",
       "Public Records & GIS": [
         {
-          "type": "GIS",
+          "type": "GIS(use VPN)",
           "url": "https://www.arcgis.com/apps/webappviewer/index.html?id=542e4d3d42e3454ebd8f35bcbebf8368"
         }
       ],
