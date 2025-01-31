@@ -6950,11 +6950,11 @@
       "Project": "NY - Town of Babylon",
       "Public Records & GIS": [
         {
-          "type": "PR",
+          "type": "PR (use VPN)",
           "url": "https://property.townofbabylon.com/Filter"
         },
         {
-          "type": "GIS",
+          "type": "GIS (use VPN)",
           "url": "https://gisapps.suffolkcountyny.gov/gisviewer/"
         }
       ],
