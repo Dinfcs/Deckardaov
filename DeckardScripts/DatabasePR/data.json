@@ -280,7 +280,7 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "Please work with filters: Unresolved + yet_to_review + rental  = self_contained  + hoe_violation = true.\n\nBing Maps has better aerial images than Google Maps.\n\nThere are no free public records, as privacy laws in the country protect property data.\n\nYou can check the owner’s name in Core Logic.\n\nFV Brisbane by Peppers, 191, Brunswick St: Officially first unit is on floor 1. In practice first residential floor is floor 6. For example, the 5-floor offset between official and day-to-day addresses means the 19th floor in the listing description relates to floor 14 on the official address.\n\nPlease send to the Data Lead all listings that are located in Tangalooma Island Resort.",
+      "Important Info": "Please work with filters: Unresolved + yet_to_review + rental  = self_contained  + hoe_violation = true.\nBing Maps has better aerial images than Google Maps.\nThere are no free public records, as privacy laws in the country protect property data.\nYou can check the owner’s name in Core Logic.\nFV Brisbane by Peppers, 191, Brunswick St: Officially first unit is on floor 1. In practice first residential floor is floor 6. For example, the 5-floor offset between official and day-to-day addresses means the 19th floor in the listing description relates to floor 14 on the official address.\nPlease send to the Data Lead all listings that are located in Tangalooma Island Resort.",
       "Media": [
         {
           "type": "Confluece",
@@ -1551,7 +1551,7 @@
           "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B7CF367C3-5E13-40C3-BD23-61DE7F9BB377%7D&file=Ojai%20STRs.xlsx&action=default&mobileredirect=true"
         }
       ],
-      "Important Info": "The APNs are diferent from Regrid, Lightbox or PR. If you copy the number from Lightbox, erase a 0 from the middle, and add it at the end. Ex:\n\nIn Regrid: 022-0-051-050\n\nIn Cyborg: 022-051-050-0",
+      "Important Info": "The APNs are diferent from Regrid, Lightbox or PR. If you copy the number from Lightbox, erase a 0 from the middle, and add it at the end. Ex:\nIn Regrid: 022-0-051-050\nIn Cyborg: 022-051-050-0",
       "Media": [
         {
           "type": "N/A",
@@ -2339,7 +2339,7 @@
           "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/Ec1cNNdaynpClCrcdXsP8Q4BUAPORY3s32NzGabeTlEKPg?e=wPd8Tg"
         }
       ],
-      "Important Info": "Be careful about the APNs since there are two for each address, those whose owner is \"USA BIA, USA 511\" tend to be wrong, use the correct APN from parcels, licenses, or Public Records. \n\nThe right address have a direction indicative (N, S, W, E) on parcels.",
+      "Important Info": "Be careful about the APNs since there are two for each address, those whose owner is \"USA BIA, USA 511\" tend to be wrong, use the correct APN from parcels, licenses, or Public Records. \nThe right address have a direction indicative (N, S, W, E) on parcels.",
       "Media": [
         {
           "type": "Image",
@@ -3141,7 +3141,7 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "INFORMATION FOR THE GIS 1: \n\nPlease remove the layer: zony districts, the GIS has a Nearmap imagery, also inside the GIS if you want more information about the home, please click: here for more information from Dekalb County.",
+      "Important Info": "INFORMATION FOR THE GIS 1: \nPlease remove the layer: zony districts, the GIS has a Nearmap imagery, also inside the GIS if you want more information about the home, please click: here for more information from Dekalb County.",
       "Media": [
         {
           "type": "N/A",
@@ -3219,7 +3219,7 @@
           "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/ERu9qC-N-1pKmmIeloiNB2kBCBU7TibY6bdssiFyhFsOsA?e=cKrQtD"
         }
       ],
-      "Important Info": "The Public Record has photo of the front of the house.\n\nCyborg loads the address with a comma between the state and the ZIP code, is not necessary to do AO.",
+      "Important Info": "The Public Record has photo of the front of the house.\nCyborg loads the address with a comma between the state and the ZIP code, is not necessary to do AO.",
       "Media": [
         {
           "type": "N/A",
@@ -4587,7 +4587,7 @@
           "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B310E5E9B-7BE7-4043-B1B0-7368C0D8F09D%7D&file=10162024rentals%20-%20revised%2011-04-2024.xlsx&action=default&mobileredirect=true"
         }
       ],
-      "Important Info": "To Public Records, use the VPN, and click Account Search.\n\n\nBe sure to tick the remodeled box if it applies.",
+      "Important Info": "To Public Records, use the VPN, and click Account Search.\n\nBe sure to tick the remodeled box if it applies.",
       "Media": [
         {
           "type": "N/A",
@@ -4613,7 +4613,7 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "It's important to take a look at the dashes of APNs because this is important to identify the property, please check the APNs with dashes on Public Records.\n\n\n\nBe sure to tick the remodeled box if it applies.",
+      "Important Info": "It's important to take a look at the dashes of APNs because this is important to identify the property, please check the APNs with dashes on Public Records.\n\nBe sure to tick the remodeled box if it applies.",
       "Media": [
         {
           "type": "N/A",
@@ -4777,7 +4777,7 @@
           "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B16C59D68-7340-4B26-A94C-E8476712EB84%7D&file=2024%20STR%20Contact%20List%20(6)%20Chelan%20Copy%20-%20IR.xlsx&action=default&mobileredirect=true"
         }
       ],
-      "Important Info": "Address Override will be performed on the property when any of these cases:\nThe house Number, Street name, and ZIP Code are incorrect with respect to the PR. If we see that the only inconsistency concerning the PR information is the City Name (and the ZIP code is correct), it is not necessary to perform AO.\n- Property that is U1OM and has a Unit number. Please use a unit box and also, use Address Override with Unit number in this.\n\nExamples: \nAddress Override: 105 Chelan View Dr, Manson, WA 98831 is a parcel with mixed-use (Residential and Resort). Structure: U1OM. If we know the unit number: use the unit box for the unit number and this AO: 105 Chelan View Dr Unit #, Manson, WA 98831\nMap information of this parcel: Sales - Wapato Point Lake Chelan Resort \n\nPlease note that the following properties are timeshares, if you're going to map them, take the APN associated with the majority of the listing:\n\nWorldMark Lake Chelan Shores. Address: 100 Lake Chelan Shores Dr, Chelan, WA 98816, United States -\n\nPeterson's Waterfront Resort. Address: 103 N Park St, Chelan, WA 98816, United States -\n\nGrandview On the Lake. Address: 322 W Woodin Ave, Chelan, WA 98816, United States -\n\nWorldMark Chelan Lake House. Address: 402 W Manson Hwy, Chelan, WA 98816, United States\n\nWorldMark Leavenworth. Address: 100 Enchantment Park Way, Leavenworth, WA 98826, United States",
+      "Important Info": "Address Override will be performed on the property when any of these cases:\nThe house Number, Street name, and ZIP Code are incorrect with respect to the PR. If we see that the only inconsistency concerning the PR information is the City Name (and the ZIP code is correct), it is not necessary to perform AO.\n- Property that is U1OM and has a Unit number. Please use a unit box and also, use Address Override with Unit number in this.\nExamples: \nAddress Override: 105 Chelan View Dr, Manson, WA 98831 is a parcel with mixed-use (Residential and Resort). Structure: U1OM. If we know the unit number: use the unit box for the unit number and this AO: 105 Chelan View Dr Unit #, Manson, WA 98831\nMap information of this parcel: Sales - Wapato Point Lake Chelan Resort \nPlease note that the following properties are timeshares, if you're going to map them, take the APN associated with the majority of the listing:\nWorldMark Lake Chelan Shores. Address: 100 Lake Chelan Shores Dr, Chelan, WA 98816, United States -\nPeterson's Waterfront Resort. Address: 103 N Park St, Chelan, WA 98816, United States -\nGrandview On the Lake. Address: 322 W Woodin Ave, Chelan, WA 98816, United States -\nWorldMark Chelan Lake House. Address: 402 W Manson Hwy, Chelan, WA 98816, United States\nWorldMark Leavenworth. Address: 100 Enchantment Park Way, Leavenworth, WA 98826, United States",
       "Media": [
         {
           "type": "N/A",
@@ -4833,7 +4833,7 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "1.If you find the following condos:\n\n-371 W Lincoln St, New Braunfels, TX 78130\n\n-730 E Mather St, New Braunfels, TX 78130\n\nPlease review the APN for the units in the PR.\n\n2. Use the Property ID as the APN. ",
+      "Important Info": "1.If you find the following condos:\n-371 W Lincoln St, New Braunfels, TX 78130\n-730 E Mather St, New Braunfels, TX 78130\nPlease review the APN for the units in the PR.\n2. Use the Property ID as the APN. ",
       "Media": [
         {
           "type": "Image",
@@ -4889,7 +4889,7 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "When mapping 6235 E Thunderbird Rd, Scottsdale, AZ 85254, be careful about the structure: \n\nIf they rent everything all together is the main structure; if they rent the Guest Suites and Suite B is the main\n \nstructure + NSC, if they rent any of the other units is unit one of many.",
+      "Important Info": "When mapping 6235 E Thunderbird Rd, Scottsdale, AZ 85254, be careful about the structure: \nIf they rent everything all together is the main structure; if they rent the Guest Suites and Suite B is the main\n \nstructure + NSC, if they rent any of the other units is unit one of many.",
       "Media": [
         {
           "type": "A photo relevant to the details mentioned in the important info",
@@ -5265,7 +5265,7 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "Be sure to tick the remodeled box if it applies.\n\nWhen mapping if there is a missing letter before or after the street name is likely to need an Address Override performed.",
+      "Important Info": "Be sure to tick the remodeled box if it applies.\nWhen mapping if there is a missing letter before or after the street name is likely to need an Address Override performed.",
       "Media": [
         {
           "type": "N/A",
@@ -5585,7 +5585,7 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "In the GIS when you select a parcel it shows a housefront photo.\n\nWhen using the PRs 1 from the beginning follow the steps below:\n\n1.Go to the link https://kcor.org/\n\n2.Click on \"Click for free access menu\" \n\n3.Write down the given letters\n\n4.Click on PVA Real State Inquiry\n\n5.You will be presented with different searching options and can use the property location address.\n\nUse AO if the address is different from the one on the PR. Some units have a “unit” within the address after a #, be sure to map it as on the PR since it might be a wrong address. ",
+      "Important Info": "In the GIS when you select a parcel it shows a housefront photo.\nWhen using the PRs 1 from the beginning follow the steps below:\n1.Go to the link https://kcor.org/\n2.Click on \"Click for free access menu\" \n3.Write down the given letters\n4.Click on PVA Real State Inquiry\n5.You will be presented with different searching options and can use the property location address.\nUse AO if the address is different from the one on the PR. Some units have a “unit” within the address after a #, be sure to map it as on the PR since it might be a wrong address. ",
       "Media": [
         {
           "type": "Example of case",
@@ -5637,7 +5637,7 @@
           "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EVVI_oLnEFlJmeh0GZ9JVoUBN9ICsEUQoqsmN-kWPyvGjA?e=H90dgP"
         }
       ],
-      "Important Info": "Please check the \"Legal description\" in PR to determine the unit number.  The cyborg data in some cases only contains the main address so, it is necessary to do AO. Also, validate that the address provided by Cyborg matches the Rentalscape format.\n\nThere is a condo with \"weird\" addresses (APNs are in the range 4000806016-4000806023).\nIn this case, the 1 is the building (with address 1B 2 17th St), the B refers to the unit and the 17th St is the street where the condo is located. Therefore, it is necessary to do AO to 2 17th St Unit 2.\n\nSometimes the cardinal points are at the end of the address, use address override to change it to the right place.\n\nIf the main address has a comma after the state, it is not necessary to make the AO.",
+      "Important Info": "Please check the \"Legal description\" in PR to determine the unit number.  The cyborg data in some cases only contains the main address so, it is necessary to do AO. Also, validate that the address provided by Cyborg matches the Rentalscape format.\nThere is a condo with \"weird\" addresses (APNs are in the range 4000806016-4000806023).\nIn this case, the 1 is the building (with address 1B 2 17th St), the B refers to the unit and the 17th St is the street where the condo is located. Therefore, it is necessary to do AO to 2 17th St Unit 2.\nSometimes the cardinal points are at the end of the address, use address override to change it to the right place.\nIf the main address has a comma after the state, it is not necessary to make the AO.",
       "Media": [
         {
           "type": "N/A",
@@ -5757,7 +5757,7 @@
           "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EWBEmSxUce9Dqq0tKJWnIqMBpDRY9dol_qtjXpPE4rc-bQ?e=AmH4Z7"
         }
       ],
-      "Important Info": "You can use PQ as a Public Provider.\n\nTo APN searching in GIS, use the following format, i.e. APN provided by cyborg: 0803401400 the last zero, translate it as the fourth digit, like this: 080034014-0 The last digit is the suffix in GIS, delete it to search: 080034014 \n\nIn some cases, city information for an address may differ across various resources. To resolve these discrepancies, follow these options: \n-Verify city limits: Use a map service like Google Maps to confirm the address falls within the designated city boundaries.\n-Cross-reference ZIP code: Check the ZIP code with the USPS database to see if it aligns with the listed city.\n-Compare mailing address: If available, compare the mailing address provided by PQ with the rental property address. In some instances, the mailing address might accurately reflect the city.",
+      "Important Info": "You can use PQ as a Public Provider.\nTo APN searching in GIS, use the following format, i.e. APN provided by cyborg: 0803401400 the last zero, translate it as the fourth digit, like this: 080034014-0 The last digit is the suffix in GIS, delete it to search: 080034014 \nIn some cases, city information for an address may differ across various resources. To resolve these discrepancies, follow these options: \n-Verify city limits: Use a map service like Google Maps to confirm the address falls within the designated city boundaries.\n-Cross-reference ZIP code: Check the ZIP code with the USPS database to see if it aligns with the listed city.\n-Compare mailing address: If available, compare the mailing address provided by PQ with the rental property address. In some instances, the mailing address might accurately reflect the city.",
       "Media": [
         {
           "type": "N/A",
@@ -5997,7 +5997,7 @@
           "url": "https://mtcb.munirevs.com/business-list/?cityid=322"
         }
       ],
-      "Important Info": "Not required to do AO for the City Name.\nExample: \nCity name in All Cyborg data: CRESTED BUTTE\nPublic Records City Name: MT CRESTED BUTTE\nIt is not required to do AO just to add MT\n\nThe Grand Lodge (6 Emmons Rd), Elevation Hotel (500 Gothic Rd), and Nordic Inn (16 Treasury) do not require an STR license. These are categorized as hotels, not STRs. Please assign the correct APN to each unit.\n\nThere are some listings with permit number \"306512\", please link these listings to the APN \"317726143004\" and set the structure as main.\n\nThis rental platform www.prproperty.com allows you to find exclusive properties in the Town of Crested Butte.",
+      "Important Info": "Not required to do AO for the City Name.\nExample: \nCity name in All Cyborg data: CRESTED BUTTE\nPublic Records City Name: MT CRESTED BUTTE\nIt is not required to do AO just to add MT\nThe Grand Lodge (6 Emmons Rd), Elevation Hotel (500 Gothic Rd), and Nordic Inn (16 Treasury) do not require an STR license. These are categorized as hotels, not STRs. Please assign the correct APN to each unit.\nThere are some listings with permit number \"306512\", please link these listings to the APN \"317726143004\" and set the structure as main.\nThis rental platform www.prproperty.com allows you to find exclusive properties in the Town of Crested Butte.",
       "Media": [
         {
           "type": "N/A",
@@ -6265,7 +6265,7 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "When we identify properties whose structure is U1OM this address format (two street numbers) in PR:\n\n637- 639 S WASHINGTON ST \n\nplease, don't use Address Override, only if we identify the unit number, add this info to the unit box.",
+      "Important Info": "When we identify properties whose structure is U1OM this address format (two street numbers) in PR:\n637- 639 S WASHINGTON ST \nplease, don't use Address Override, only if we identify the unit number, add this info to the unit box.",
       "Media": [
         {
           "type": "N/A",
@@ -6477,7 +6477,7 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "When you select the parcel in the GIS there is a link called “CAI Property Card” It will provide all the property details clearer.\n\nTo display the imagery, go to the right options and select the 3 lines symbol, then go to base map and select “imagery”.\n\nAlso, there is a street view symbol on the left panel right to the Abutters symbol (The three houses) is very useful and comes in handy to verify it. \n\nYou can use the followig pages to find listings",
+      "Important Info": "When you select the parcel in the GIS there is a link called “CAI Property Card” It will provide all the property details clearer.\nTo display the imagery, go to the right options and select the 3 lines symbol, then go to base map and select “imagery”.\nAlso, there is a street view symbol on the left panel right to the Abutters symbol (The three houses) is very useful and comes in handy to verify it. \nYou can use the followig pages to find listings",
       "Media": [
         {
           "type": "N/A",
@@ -6735,7 +6735,7 @@
           "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EROj8QINGqdOkX97TvJFYjUBGJzOMGOUIoCOiPA1Mep2BA?e=Ns337T"
         }
       ],
-      "Important Info": "The project is within 3 Counties, check carefully.\n\n\nIf you are taking APNs from the Dorchester County PRs, please remove the last three zeros.\n\n\nIf Cyborg’s address is listed as “Charleston” but the PR confirms that is “North Charleston”, please do the address override with the PR information.\n\nWhen a duplex has a unit number in the address: override the address based on the listed unit and also include the unit in the unit box.",
+      "Important Info": "The project is within 3 Counties, check carefully.\n\nIf you are taking APNs from the Dorchester County PRs, please remove the last three zeros.\n\nIf Cyborg’s address is listed as “Charleston” but the PR confirms that is “North Charleston”, please do the address override with the PR information.\nWhen a duplex has a unit number in the address: override the address based on the listed unit and also include the unit in the unit box.",
       "Media": [
         {
           "type": "N/A",
@@ -6933,7 +6933,7 @@
           "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EXXxCOdhiBpIhSQonfAd71UBjCLX7XD1QP_jgaWvWV9djg?e=88sipC"
         }
       ],
-      "Important Info": "Public records work by entering the address, not the APN.\n\nSelect the Miami location in the VPN.\n\nPlease do the AO according to the PRs.",
+      "Important Info": "Public records work by entering the address, not the APN.\nSelect the Miami location in the VPN.\nPlease do the AO according to the PRs.",
       "Media": [
         {
           "type": "N/A",
@@ -7105,7 +7105,7 @@
           "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B6FF48C02-5F59-46F1-936A-628979F93EED%7D&file=071624%20Final%20Data%20File%20-%20WHOLE%20from%20HC%20updated12%20-%20Copy%20-%20IR.xlsx&action=default&mobileredirect=true"
         }
       ],
-      "Important Info": "-To search by APN in the GIS and Public records, you should omit the last 3 digits which are usually zeros. \n\n-To search by address in PR 2, you need to enter the address up to the street name. For example 4663 KIVA DR",
+      "Important Info": "-To search by APN in the GIS and Public records, you should omit the last 3 digits which are usually zeros. \n-To search by address in PR 2, you need to enter the address up to the street name. For example 4663 KIVA DR",
       "Media": [
         {
           "type": "N/A",
@@ -7165,7 +7165,7 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "When a duplex has a unit number in the address: override the address based on the listed unit and also include the unit in the unit box. \n\nCondo Spinnaker Beachhouses Rentals does not need any AO at the moment, some units use “Seabrook Island Rd“ and others “Beach Club Villas“, leave it just as cyborg brings it.",
+      "Important Info": "When a duplex has a unit number in the address: override the address based on the listed unit and also include the unit in the unit box. \nCondo Spinnaker Beachhouses Rentals does not need any AO at the moment, some units use “Seabrook Island Rd“ and others “Beach Club Villas“, leave it just as cyborg brings it.",
       "Media": [
         {
           "type": "N/A",
@@ -7247,7 +7247,7 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "*) Please work with filters: Unresolved + yet_to_review + rental = self_contained + hoe_violation = true.\n\n*) The client is only interested in whole houses and apartments (not interested in rooms or ADUs).\n\n*) To use GIS optimally, activate the following: Land Management - Property and Planning. Select the following options:\n\n*) Land Divisions: Divides the parcels.\n\n*) Parcel Cadastre: Shows the APNs.\n\n*) Valuation Cadastre: Shows the Land Use and Property Address.\n\n*) There are no public records, as privacy laws in the country protect property data.\n\n*) Some addresses don’t have the Zip Code, in these cases, it's mandatory to perform AO.\n\n*) This is an example of an address in Adelaide: Floor 16 1701/10 Balfours Way, Adelaide, SA 5000. The floor is determined by the unit number. In this case, the unit is 1701, which means it is on the 17th floor.",
+      "Important Info": "*) Please work with filters: Unresolved + yet_to_review + rental = self_contained + hoe_violation = true.\n*) The client is only interested in whole houses and apartments (not interested in rooms or ADUs).\n*) To use GIS optimally, activate the following: Land Management - Property and Planning. Select the following options:\n*) Land Divisions: Divides the parcels.\n*) Parcel Cadastre: Shows the APNs.\n*) Valuation Cadastre: Shows the Land Use and Property Address.\n*) There are no public records, as privacy laws in the country protect property data.\n*) Some addresses don’t have the Zip Code, in these cases, it's mandatory to perform AO.\n*) This is an example of an address in Adelaide: Floor 16 1701/10 Balfours Way, Adelaide, SA 5000. The floor is determined by the unit number. In this case, the unit is 1701, which means it is on the 17th floor.",
       "Media": [
         {
           "type": "N/A",
@@ -7299,7 +7299,7 @@
           "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EXf4TrtZ_zZDpbrCq4vz9I0BwxUBtBV6Cil2kJOZMwqx3A?e=tCkdVf"
         }
       ],
-      "Important Info": "Public Records have two addresses. If a cyborg has one of them and it is correct, there is no need to do the AO. \nIf the information from Cyborg is wrong and you need to do the Address Override, please do it with the address that comes with the street name and NOT with the GCR. For example, if PR has the following Addresses: 48 GCR 8500 #F-2 and 48 Jabberwocky #F-2, you must do the AO with the 48 Jabberwocky Unit F-2.\n\n·Some condos have 2 units with the same APN. For those cases, we will use the unit numbers first and then, the building number, following the next format:\n51 River Dr Unit 13-1410, Winter Park, CO 80482. \n\nIn this case, the unit number is 13-14 and the building number is 10. \n\n·In the PR you can search for the name of the building in the subdivision option. \n\n·If you find a listing of the condo Hi Country Haus, it is not necessary to do AO because it is not inside the town.",
+      "Important Info": "Public Records have two addresses. If a cyborg has one of them and it is correct, there is no need to do the AO. \nIf the information from Cyborg is wrong and you need to do the Address Override, please do it with the address that comes with the street name and NOT with the GCR. For example, if PR has the following Addresses: 48 GCR 8500 #F-2 and 48 Jabberwocky #F-2, you must do the AO with the 48 Jabberwocky Unit F-2.\n·Some condos have 2 units with the same APN. For those cases, we will use the unit numbers first and then, the building number, following the next format:\n51 River Dr Unit 13-1410, Winter Park, CO 80482. \nIn this case, the unit number is 13-14 and the building number is 10. \n·In the PR you can search for the name of the building in the subdivision option. \n·If you find a listing of the condo Hi Country Haus, it is not necessary to do AO because it is not inside the town.",
       "Media": [
         {
           "type": "N/A",
@@ -7467,7 +7467,7 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "Check very well the parcels because in GIS they do not appear subdivided, but they are units with their own APN each one.\n\nIn some cases, Cyborg is not bringing us the city and it would be necessary to do AO.\n\nWhen taking the APN from Regrid it would be necessary to add 00000 at the end.\n\nFor listings located at 301 Pinnacle Inn Rd condo, make AO including the unit to look like this: 301 Pinnacle Inn Rd Unit 2314, Beech Mountain, NC 28604\n\nPlease, map the listings belonging to the condo located at 3781 Tynecastle Hwy, Banner Elk, NC 28604, with the APN 18670006245700000 and the address provided by Cyborg (without AO), and classify them as Timeshare in the structure. \n\nThere are several condos that bring the Building and Unit number in the rental platforms or in Zillows, but really the Building they refer to is unique in that address, so it would not be necessary to do AO. To confirm this, we can go by the Public Records and if the address only has the unit and Cyborg the same, leave it unchanged. ",
+      "Important Info": "Check very well the parcels because in GIS they do not appear subdivided, but they are units with their own APN each one.\nIn some cases, Cyborg is not bringing us the city and it would be necessary to do AO.\nWhen taking the APN from Regrid it would be necessary to add 00000 at the end.\nFor listings located at 301 Pinnacle Inn Rd condo, make AO including the unit to look like this: 301 Pinnacle Inn Rd Unit 2314, Beech Mountain, NC 28604\nPlease, map the listings belonging to the condo located at 3781 Tynecastle Hwy, Banner Elk, NC 28604, with the APN 18670006245700000 and the address provided by Cyborg (without AO), and classify them as Timeshare in the structure. \nThere are several condos that bring the Building and Unit number in the rental platforms or in Zillows, but really the Building they refer to is unique in that address, so it would not be necessary to do AO. To confirm this, we can go by the Public Records and if the address only has the unit and Cyborg the same, leave it unchanged. ",
       "Media": [
         {
           "type": "N/A",
@@ -8159,7 +8159,7 @@
           "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/ETndrYfVbE1AiwMwdlRArxUBAqCja1WwfGnKu0-myC3Jrg?e=BGjGPm"
         }
       ],
-      "Important Info": "Regrid has better aerial images than Google Maps or Bing.\n\nFor the APN, you can search the GIS by address, using the parcel number without the three zeros after the decimal point and adding \"110\" to the beginning. For example: Image 1 and 2.\nThe APN in Cyborg is: 110 071012",
+      "Important Info": "Regrid has better aerial images than Google Maps or Bing.\nFor the APN, you can search the GIS by address, using the parcel number without the three zeros after the decimal point and adding \"110\" to the beginning. For example: Image 1 and 2.\nThe APN in Cyborg is: 110 071012",
       "Media": [
         {
           "type": "Example Image 1",
@@ -8609,7 +8609,7 @@
           "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B54D74334-6F99-43B2-B0B9-D53BB0F1C65F%7D&file=OCEAN%20LICENSES%20Copy%20-%20IR2.xlsx&action=default&mobileredirect=true"
         }
       ],
-      "Important Info": "How to Search Public Records:\n\n1.Select the county: Worcester.\n2.Choose the search method: Street Address.\n3.Click Continue.\n4.Enter the following details:\n-Street Number\n-Street Name",
+      "Important Info": "How to Search Public Records:\n1.Select the county: Worcester.\n2.Choose the search method: Street Address.\n3.Click Continue.\n4.Enter the following details:\n-Street Number\n-Street Name",
       "Media": [
         {
           "type": "N/A",
@@ -8825,7 +8825,7 @@
           "url": "https://parcelsearch.permitsonoma.org/PermitSearch"
         }
       ],
-      "Important Info": "The license finder only works with licenses starting with THR.\nAddress Override is NOT required when the city is listed as UNINCORPORATED.\n\n\n\n\n\n\n\n",
+      "Important Info": "The license finder only works with licenses starting with THR.\nAddress Override is NOT required when the city is listed as UNINCORPORATED.\n\n\n\n",
       "Media": [
         {
           "type": "N/A",
@@ -9249,7 +9249,7 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "The PR provides access to property photos, along with details such as the property type. \n\nYou can also perform a search using the following options: \n\n·PIN Search \n\n·Address Search \n\n·Map Reference Number Search\n\nFor the Map Reference Number Search, you’ll need to input the First Alternative Parcel ID found in Regrid under Additional Items.",
+      "Important Info": "The PR provides access to property photos, along with details such as the property type. \nYou can also perform a search using the following options: \n·PIN Search \n·Address Search \n·Map Reference Number Search\nFor the Map Reference Number Search, you’ll need to input the First Alternative Parcel ID found in Regrid under Additional Items.",
       "Media": [
         {
           "type": "N/A",
@@ -9505,7 +9505,7 @@
           "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EbmX47VDRRxJmTLazJidXq0Bd9M1vu98mN_BwVpfX61QmQ?e=eM5sy3"
         }
       ],
-      "Important Info": "When working on U1OM be careful with the following cases: \n\n·If the address cyborg brings up has a unit on it, ex: 3154 Almaneda Ave # A, Holmes Beach, FL 34217, it can: \n1.Be the same unit as the one cyborg pops up, in this case, the address remains the same (Unit A for this example) \n2.Be adifferent unit as the one cyborg pops up, in this case, you have to perform AO and input your unit in the unit box (Unit B for this example, 3154 Almaneda Ave Unit B, Holmes Beach, FL 34217) \n3.Not be sureabout which unit they are renting, in this case, the address remains the same cyborg brings up. \n\n·If within the main address there are more main addresses with their own unit use the unit box and AO to separate them. \nExample:202 Ave F Unit 1, Holmes Beach, FL 34217204 Ave F Unit 1, Holmes Beach, FL 34217",
+      "Important Info": "When working on U1OM be careful with the following cases: \n·If the address cyborg brings up has a unit on it, ex: 3154 Almaneda Ave # A, Holmes Beach, FL 34217, it can: \n1.Be the same unit as the one cyborg pops up, in this case, the address remains the same (Unit A for this example) \n2.Be adifferent unit as the one cyborg pops up, in this case, you have to perform AO and input your unit in the unit box (Unit B for this example, 3154 Almaneda Ave Unit B, Holmes Beach, FL 34217) \n3.Not be sureabout which unit they are renting, in this case, the address remains the same cyborg brings up. \n·If within the main address there are more main addresses with their own unit use the unit box and AO to separate them. \nExample:202 Ave F Unit 1, Holmes Beach, FL 34217204 Ave F Unit 1, Holmes Beach, FL 34217",
       "Media": [
         {
           "type": "N/A",
@@ -9569,7 +9569,7 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "To search in the PR: \n\n1.Enter the address and click on \"Start Your Search.\" \n\n2.Then click on \"Build Your Report.\" \n\n3.Click on \"Info of My Property,\" and then click \"Next.\" \n\n4.You’ll be able to see property information such as the address and APN. PR information is limited. Please use LB or Regrid.",
+      "Important Info": "To search in the PR: \n1.Enter the address and click on \"Start Your Search.\" \n2.Then click on \"Build Your Report.\" \n3.Click on \"Info of My Property,\" and then click \"Next.\" \n4.You’ll be able to see property information such as the address and APN. PR information is limited. Please use LB or Regrid.",
       "Media": [
         {
           "type": "N/A",
@@ -9643,7 +9643,7 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "1.Address Alert: Be cautious with the address 404 N Tarnava St, Port Isabel, TX 78578, as it consists of multiple apartments, each with a unique APN. \n\n2.Properties in Harbor Town, Laguna Vista, TX 78578, andMonte Bonito, N Valenciado not require an Address Override (AO); they are accurate as reflected in the Cyborg data.\n\n3.Cameron County Listings: Several property listings in Cameron County are located in Mexico. As a best practice, these should be marked in Cyborg as\"The listing is outside of the current region\"rather than\"NMF\". This ensures they won’t appear on Rentalscape or remain pending for review in FP, as they are unmappable listings.\n\n4.South Padre Island Condos: For condos inSouth Padre Island, exercise caution since each unit has its own APN. Always utilize theUnit Box, even if Cyborg includes the unit in the address andAddress Overrides for Units: If the Cyborg address does not include the unit, you must perform anAddress Overrideto incorporate the unit and ensure it is also added to theUnit Box.",
+      "Important Info": "1.Address Alert: Be cautious with the address 404 N Tarnava St, Port Isabel, TX 78578, as it consists of multiple apartments, each with a unique APN. \n2.Properties in Harbor Town, Laguna Vista, TX 78578, andMonte Bonito, N Valenciado not require an Address Override (AO); they are accurate as reflected in the Cyborg data.\n3.Cameron County Listings: Several property listings in Cameron County are located in Mexico. As a best practice, these should be marked in Cyborg as\"The listing is outside of the current region\"rather than\"NMF\". This ensures they won’t appear on Rentalscape or remain pending for review in FP, as they are unmappable listings.\n4.South Padre Island Condos: For condos inSouth Padre Island, exercise caution since each unit has its own APN. Always utilize theUnit Box, even if Cyborg includes the unit in the address andAddress Overrides for Units: If the Cyborg address does not include the unit, you must perform anAddress Overrideto incorporate the unit and ensure it is also added to theUnit Box.",
       "Media": [
         {
           "type": "N/A",
@@ -9867,7 +9867,7 @@
           "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7BA04A2030-6F86-47AC-B288-5F3927EBB089%7D&file=Property%20List%20Final%20-%20Rentalscape%2011-12-2024%20Copy%20-%20IR.xlsx&action=default&mobileredirect=true"
         }
       ],
-      "Important Info": "The addresses 100 S North Carolina Ave and 60 N Maine Ave are resorts.\n\nPlease map the address 60 N Maine Ave to the following APN: 0200086000000001.\n\nWhen searching in PR2 by address, make sure to separate the address and city with a comma.",
+      "Important Info": "The addresses 100 S North Carolina Ave and 60 N Maine Ave are resorts.\nPlease map the address 60 N Maine Ave to the following APN: 0200086000000001.\nWhen searching in PR2 by address, make sure to separate the address and city with a comma.",
       "Media": [
         {
           "type": "N/A",
