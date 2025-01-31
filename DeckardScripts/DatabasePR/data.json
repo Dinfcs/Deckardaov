@@ -1033,19 +1033,15 @@
       ]
     },
     {
-      "Project": "CA - City of Grass Valley",
+      "Project": "CA - City Of Grass Valley",
       "Public Records & GIS": [
         {
-          "type": "PR",
+          "type": "PR (Use VPN)",
           "url": "https://reports.nevcounty.net/property/rdPage.aspx?rdReport=parcel.ParcelReport"
         },
         {
-          "type": "GIS",
+          "type": "GIS (Use VPN)",
           "url": "https://gis.nevcounty.net/MyNeighborhood/"
-        },
-        {
-          "type": "Demo of PR y GIS - Nevada County",
-          "url": "https://www.loom.com/share/b9392408426e4d919ef0a198575202e9"
         }
       ],
       "License List": [
@@ -1061,8 +1057,8 @@
       "Important Info": "N/A",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "type": "Video of PR y GIS - Nevada County",
+          "url": "https://www.loom.com/share/b9392408426e4d919ef0a198575202e9"
         }
       ]
     },
@@ -9791,32 +9787,6 @@
         }
       ],
       "Important Info": "N/A",
-      "Media": [
-        {
-          "type": "N/A",
-          "url": "N/A"
-        }
-      ]
-    },
-    {
-      "Project": "AZ - Town Of Carefree",
-      "Public Records & GIS": [
-        {
-          "type": "PR ",
-          "url": "https://www.mcassessor.maricopa.gov/"
-        },
-        {
-          "type": "GIS",
-          "url": "https://maps.mcassessor.maricopa.gov/"
-        }
-      ],
-      "License List": [
-        {
-          "type": "License o N/A",
-          "url": "N/A"
-        }
-      ],
-      "Important Info": "Be careful with unit numbers in Cyborg as they may differ from the ones in the public records.",
       "Media": [
         {
           "type": "N/A",
