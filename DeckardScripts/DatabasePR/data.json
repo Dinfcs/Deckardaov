@@ -1930,17 +1930,17 @@
       "Project": "CA - City of San Rafael",
       "Public Records & GIS": [
         {
-          "type": "PR",
+          "type": "PR Use VPN",
           "url": "https://apps.marincounty.org/TaxRollSearch"
         },
         {
-          "type": "GIS",
+          "type": "GIS Use VPN",
           "url": "https://www.marinmap.org/Html5Viewer/Index.html?viewer=smmdataviewer"
         }
       ],
       "License List": [
         {
-          "type": "License o N/A",
+          "type": "License 1",
           "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/Ea4NF9vJ7SlCuIS9nhjLAuABOwNVzj09OX-EEHgSkKrOeQ?e=MjxH02"
         },
         {
@@ -9403,14 +9403,14 @@
       ]
     },
     {
-      "Project": "FL - Seminole County",
+      "Project": " FL - Seminole County",
       "Public Records & GIS": [
         {
-          "type": "PR",
+          "type": "PR Use VPN",
           "url": "https://www.scpafl.org/"
         },
         {
-          "type": "GIS",
+          "type": "GIS Use VPN",
           "url": "https://seminolegis.maps.arcgis.com/home/webmap/viewer.html?useExisting=1"
         },
         {
@@ -9424,7 +9424,7 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "N/A",
+      "Important Info": "(Propertyscape)",
       "Media": [
         {
           "type": "N/A",
