@@ -5662,11 +5662,11 @@
       "Project": "CO - Clear Creek County",
       "Public Records & GIS": [
         {
-          "type": "PR",
+          "type": "PR (Use VPN)",
           "url": "https://assessor.co.clear-creek.co.us/eagleassessor/taxweb/search.jsp"
         },
         {
-          "type": "GIS",
+          "type": "GIS (Use VPN)",
           "url": "https://gis.clearcreekcounty.us/HTML5Viewer/?viewer=clearmap"
         }
       ],
@@ -5886,11 +5886,11 @@
       "Project": "CO - City of Lakewood",
       "Public Records & GIS": [
         {
-          "type": "PR",
+          "type": "PR (Use VPN)",
           "url": "https://propertysearch.jeffco.us/propertyrecordssearch/ain"
         },
         {
-          "type": "GIS",
+          "type": "GIS (Use VPN)",
           "url": "https://gis.jeffco.us/webmaps/jmap/index.html?"
         },
         {
