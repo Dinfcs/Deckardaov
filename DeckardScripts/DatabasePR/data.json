@@ -8596,11 +8596,11 @@
       "Project": "MD - Town of Ocean city",
       "Public Records & GIS": [
         {
-          "type": "PR",
+          "type": "PR  (Use VPN)",
           "url": "https://sdat.dat.maryland.gov/RealProperty/Pages/default.aspx"
         },
         {
-          "type": "GIS",
+          "type": "GIS  (Use VPN)",
           "url": "https://tocgis.maps.arcgis.com/apps/webappviewer/index.html?id=7d3cb508ee5b4779990f9966d134f1ff"
         }
       ],
