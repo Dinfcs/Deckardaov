@@ -6572,11 +6572,11 @@
       "Project": "IL - Village of Forest View",
       "Public Records & GIS": [
         {
-          "type": "PR",
+          "type": "PR (use VPN)",
           "url": "https://www.cookcountyassessor.com/address-search"
         },
         {
-          "type": "GIS",
+          "type": "GIS (use VPN)",
           "url": "https://maps.cookcountyil.gov/cookviewer/mapViewer.html"
         }
       ],
