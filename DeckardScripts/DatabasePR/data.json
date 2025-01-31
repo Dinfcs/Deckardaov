@@ -112,11 +112,11 @@
       "Project": "AL - City of Prattville",
       "Public Records & GIS": [
         {
-          "type": "PR",
+          "type": "PR (Use VPN)",
           "url": "https://autauga.capturecama.com/CAPortal_MainPage.aspx"
         },
         {
-          "type": "GIS",
+          "type": "GIS (Use VPN)",
           "url": "https://prattvilleal.maps.arcgis.com/apps/View/index.html?appid=f6f2c7984c5f4c1a8bdc530fd8d9740e"
         }
       ],
@@ -164,19 +164,19 @@
       "Project": "AL - City of Vestavia Hills",
       "Public Records & GIS": [
         {
-          "type": "PR Jefferson County",
+          "type": "PR Jefferson County  (Use VPN)",
           "url": "https://eringcapture.jccal.org/caportal/"
         },
         {
-          "type": "GIS - Jefferson County",
+          "type": "GIS - Jefferson County (Use VPN)",
           "url": "https://jeffco-al.maps.arcgis.com/apps/View/index.html?appid=b5118cb926c64ebeac59c8d0b01f6e45"
         },
         {
-          "type": "PR - Shelby County",
+          "type": "PR - Shelby County (Use VPN)",
           "url": "https://ptc.shelbyal.com/propsearch"
         },
         {
-          "type": "GIS - Shelby County",
+          "type": "GIS - Shelby County (Use VPN)",
           "url": "https://maps.shelbyal.com/html5/"
         }
       ],
