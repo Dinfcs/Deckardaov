@@ -2547,14 +2547,14 @@
       ]
     },
     {
-      "Project": "CA - Town of Mammoth Lakes",
+      "Project": "CA - Town Of Mammoth Lakes",
       "Public Records & GIS": [
         {
           "type": "Public Records",
           "url": "https://assr.parcelquest.com/Statewide"
         },
         {
-          "type": "GIS",
+          "type": "GIS  (Use VPN)",
           "url": "https://gis.mono.ca.gov/apps/pv/"
         }
       ],
