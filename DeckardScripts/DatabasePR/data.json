@@ -7584,19 +7584,19 @@
       "Project": "OH - Stark County",
       "Public Records & GIS": [
         {
-          "type": "PR",
+          "type": "PR (use VPN)",
           "url": "https://realestate.starkcountyohio.gov/search/commonsearch.aspx?mode=realprop"
         },
         {
-          "type": "GIS",
+          "type": "GIS (use VPN)",
           "url": "https://starkgisportal.starkcountyohio.gov/portal/apps/webappviewer/index.html?id=5ceccb41077246cc87b5de453fec1491"
         },
         {
-          "type": "GIS 2",
+          "type": "GIS 2 (use VPN)",
           "url": "https://starkcountyohio.maps.arcgis.com/home/webmap/viewer.html?webmap=9782a75486e54f658a2ed5f8899ab84d&extent=-81.608,40.7215,-81.3544,40.8329"
         },
         {
-          "type": "GIS Carroll County",
+          "type": "GIS Carroll County (use VPN)",
           "url": "https://carroll.countygis.org/"
         }
       ],
