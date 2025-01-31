@@ -5121,11 +5121,11 @@
       "Project": "AZ - Coconino County",
       "Public Records & GIS": [
         {
-          "type": "PR",
+          "type": "PR (Use VPN)",
           "url": "https://eagleassessor.coconino.az.gov:444/assessor/taxweb/search.jsp"
         },
         {
-          "type": "GIS",
+          "type": "GIS (Use VPN)",
           "url": "https://experience.arcgis.com/experience/c35f5fe6d6a54b388cd177f66084e39c/"
         }
       ],
