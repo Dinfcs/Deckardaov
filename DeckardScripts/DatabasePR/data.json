@@ -2487,28 +2487,32 @@
       ]
     },
     {
-      "Project": "CA - Tehama County",
+      "Project": "CA - Santa Cruz County",
       "Public Records & GIS": [
         {
-          "type": "PR (PQ)",
-          "url": "https://assr.parcelquest.com/Statewide/Usage"
+          "type": "PR (VPN)",
+          "url": "https://sccounty01.co.santa-cruz.ca.us/ASR/"
         },
         {
-          "type": "GIS",
-          "url": "https://planningsites.org/TehamaMaps/"
+          "type": "GIS (VPN)",
+          "url": "https://gis.santacruzcounty.us/gisweb/"
+        },
+        {
+          "type": "Classification Codes (VPN)",
+          "url": "https://www.santacruzcountyca.gov/Departments/AssessorsOffice/AssessorUseCodesDisclaimer/AssessorUseCodes.aspx"
         }
       ],
       "License List": [
         {
-          "type": "N/A",
+          "type": "License o N/A",
           "url": "N/A"
         }
       ],
-      "Important Info": "N/A",
+      "Important Info": "Use VPN for GIS and PR",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "type": "PR and GIS Demonstration",
+          "url": "https://www.loom.com/share/00171126bc3a45fa9ae856dc0c4b8c49"
         }
       ]
     },
@@ -5688,7 +5692,7 @@
           "url": "https://www.deltacomputersystems.com/al/al43/pappraisala.html"
         },
         {
-          "type": "GIS",
+          "type": "GIS (Use VPN)",
           "url": "https://www.alabamagis.com/Lee/frameset.cfm?cfid=1617882&cftoken=89503038"
         },
         {
