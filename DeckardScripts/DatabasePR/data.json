@@ -4224,18 +4224,18 @@
       ]
     },
     {
-      "Project": "TX - City of Galveston",
+      "Project": "TX - City Of Galveston",
       "Public Records & GIS": [
         {
-          "type": "Public Records",
+          "type": "Public Records (Use VPN)",
           "url": "http://esearch.galvestoncad.org/"
         },
         {
-          "type": "GIS",
+          "type": "GIS (Use VPN)",
           "url": "https://galvcountymaps.maps.arcgis.com/apps/webappviewer/index.html?id=d619c89878cd4c399b376b51996a7541"
         },
         {
-          "type": "PR and GIS demonstration - City of Galveston, TX",
+          "type": "PR and GIS demonstration - City of Galveston, TX (Use VPN)",
           "url": "https://www.loom.com/share/c54ee0c8150d4823a4f587425e5567f5"
         }
       ],
