@@ -8,32 +8,41 @@
 // @grant        none
 // ==/UserScript==
 
+const extractAddress = (text) => {
+    const start = text.indexOf("PROPERTY ADDRESS:\n - ") + "PROPERTY ADDRESS:\n - ".length;
+    const end = text.indexOf("\n\nGUEST CONTACT");
+    if (start !== -1 && end !== -1) {
+        return text.substring(start, end).trim();
+    }
+    return "Address not found";
+};
+
 const createLayer = (propertyAddress) => {
     const overlay = document.createElement('div');
     overlay.style.position = 'fixed';
+    overlay.style.bottom = '20px';
+    overlay.style.right = '20px';
+    overlay.style.background = 'rgba(0, 0, 0, 0.8)';
+    overlay.style.color = 'white';
+    overlay.style.padding = '15px';
+    overlay.style.borderRadius = '10px';
+    overlay.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.3)';
+    overlay.style.fontSize = '16px';
     overlay.style.zIndex = '9999';
-    overlay.style.top = '10px';
-    overlay.style.right = '10px';
-    overlay.style.width = '300px';
-    overlay.style.height = '130px';
-    overlay.style.padding = '1rem';
-    overlay.style.background = 'rgba(255, 255, 255, 0.9)';
-    overlay.style.overflow = 'auto';
+    overlay.style.maxWidth = '300px';
+    overlay.style.cursor = 'pointer';
+    overlay.innerHTML = `<h4>Property Address</h4><p>${propertyAddress}</p>`;
 
-    const closeButton = document.createElement('button');
-    closeButton.style.position = 'absolute';
-    closeButton.style.top = '2px';
-    closeButton.style.right = '2px';
-    closeButton.style.fontSize = '10px';
-    closeButton.innerHTML = 'X';
-    closeButton.addEventListener('click', () => {
-        overlay.remove();
+    overlay.addEventListener('click', () => {
+        navigator.clipboard.writeText(propertyAddress).then(() => {
+            alert('Address copied to clipboard!');
+        }).catch(err => {
+            console.error('Error copying address: ', err);
+        });
     });
 
-    overlay.innerHTML = `<h4>Property Address</h4><p>${propertyAddress}</p>`;
-    overlay.appendChild(closeButton);
     document.body.appendChild(overlay);
-}
+};
 
 (function() {
     'use strict';
