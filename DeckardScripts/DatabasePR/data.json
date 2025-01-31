@@ -1509,19 +1509,15 @@
       ]
     },
     {
-      "Project": "CA - City of Nevada City",
+      "Project": "CA - City Of Nevada City",
       "Public Records & GIS": [
         {
-          "type": "PR",
+          "type": "PR (Use VPN)",
           "url": "https://reports.nevcounty.net/property/rdPage.aspx?rdReport=parcel.ParcelReport"
         },
         {
-          "type": "GIS",
+          "type": "GIS (Use VPN)",
           "url": "https://gis.nevcounty.net/MyNeighborhood/"
-        },
-        {
-          "type": "Video PR y GIS Nevada City",
-          "url": "https://www.loom.com/share/b9392408426e4d919ef0a198575202e9"
         }
       ],
       "License List": [
@@ -1533,8 +1529,8 @@
       "Important Info": "N/A",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "type": "Video PR y GIS Nevada City",
+          "url": "https://www.loom.com/share/b9392408426e4d919ef0a198575202e9"
         }
       ]
     },
