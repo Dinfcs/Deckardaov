@@ -3544,7 +3544,7 @@
           "url": "https://ascendweb.jacksongov.org/default.aspx"
         },
         {
-          "type": "GIS",
+          "type": "GIS (use VPN)",
           "url": "https://jcgis.jacksongov.org/parcelviewer/"
         }
       ],
