@@ -2,7 +2,7 @@
 // @name         Misterb&b Address
 // @version      2025-01-17
 // @description  Get the address from misterb&b rentals
-// @author       Erika
+// @author       Lucho
 // @match        https://www.misterbandb.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=misterbandb.com
 // @grant        none
