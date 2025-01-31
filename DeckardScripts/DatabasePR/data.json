@@ -198,15 +198,11 @@
       "Project": "AL - City of Northport",
       "Public Records & GIS": [
         {
-          "type": "GIS and PR",
+          "type": "GIS and PR (Use VPN)",
           "url": "https://www.alabamagis.com/Tuscaloosa/frameset.cfm"
         },
         {
-          "type": "GIS Demo",
-          "url": "https://www.loom.com/share/580704ff9fe84a628730893446d0f058"
-        },
-        {
-          "type": "GIS Northport",
+          "type": "GIS Northport (Use VPN)",
           "url": "https://northportgis.maps.arcgis.com/apps/webappviewer/index.html?id=c6716b9535db4adb8bfc9afcdd8ef06f"
         }
       ],
@@ -219,8 +215,8 @@
       "Important Info": "If you want more details about the property on the GIS, you can also see the PR’s information. When you search on the GIS with parcels at the beginning it will show you the number “63” Ignore this number and put the APN that Cyborg shows you.",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "type": "Video GIS Demo",
+          "url": "https://www.loom.com/share/580704ff9fe84a628730893446d0f058"
         }
       ]
     },
