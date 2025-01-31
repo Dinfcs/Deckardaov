@@ -5408,7 +5408,7 @@
           "url": "https://revenue.stlouisco.com/IAS/"
         },
         {
-          "type": "GIS",
+          "type": "GIS (use VPN)",
           "url": "https://data-stlcogis.opendata.arcgis.com/apps/e70f8f1814a34cd7bf8f6766bd950c68/explore"
         }
       ],
