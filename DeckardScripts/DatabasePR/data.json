@@ -6894,11 +6894,11 @@
       "Project": "NY - Town of Skaneateles",
       "Public Records & GIS": [
         {
-          "type": "PR",
+          "type": "PR (use VPN)",
           "url": "https://ocfintax.ongov.net/Imate/search.aspx"
         },
         {
-          "type": "GIS",
+          "type": "GIS (use VPN)",
           "url": "https://spatial.vhb.com/onondaga/"
         }
       ],
