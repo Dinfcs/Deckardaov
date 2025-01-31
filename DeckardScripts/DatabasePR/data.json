@@ -2117,36 +2117,6 @@
       ]
     },
     {
-      "Project": "CA - County of San Joaquin",
-      "Public Records & GIS": [
-        {
-          "type": "Public Records",
-          "url": "https://common1.mptsweb.com/mbap/sanjoaquin/asr"
-        },
-        {
-          "type": "GIS",
-          "url": "https://www.sjmap.org/PW_GIS-Parcel_Viewer/"
-        },
-        {
-          "type": "GIS and Public Records demonstration",
-          "url": "https://www.loom.com/share/b9bdf7b84c794f649e60358e26c9e9fb"
-        }
-      ],
-      "License List": [
-        {
-          "type": "N/A",
-          "url": "N/A"
-        }
-      ],
-      "Important Info": "N/A",
-      "Media": [
-        {
-          "type": "N/A",
-          "url": "N/A"
-        }
-      ]
-    },
-    {
       "Project": "CA - Del Norte County",
       "Public Records & GIS": [
         {
@@ -9907,6 +9877,32 @@
         {
           "type": "N/A",
           "url": "N/A"
+        }
+      ]
+    },
+    {
+      "Project": "CA - San Joaquin County",
+      "Public Records & GIS": [
+        {
+          "type": "Public Records",
+          "url": "https://common1.mptsweb.com/mbap/sanjoaquin/asr"
+        },
+        {
+          "type": "GIS",
+          "url": "https://www.sjmap.org/PW_GIS-Parcel_Viewer/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "Video GIS and Public Records demonstration",
+          "url": "https://www.loom.com/share/b9bdf7b84c794f649e60358e26c9e9fb"
         }
       ]
     }
