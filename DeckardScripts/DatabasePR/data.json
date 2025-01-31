@@ -56,19 +56,19 @@
       "Project": "AL - City of Madison",
       "Public Records & GIS": [
         {
-          "type": "PR Limestone County",
+          "type": "PR Limestone County (use VPN)",
           "url": "https://www.limestonerevenue.net/CAPortal_MainPage.aspx"
         },
         {
-          "type": "GIS Limestone County",
+          "type": "GIS Limestone County (use VPN)",
           "url": "https://isv.kcsgis.com/al.limestone_revenue_public/"
         },
         {
-          "type": "PR Madison County",
+          "type": "PR Madison County (use VPN)",
           "url": "https://madisonproperty.countygovservices.com/Property/Property/Search?taxyear=2023"
         },
         {
-          "type": "GIS Madison County",
+          "type": "GIS Madison County (use VPN)",
           "url": "https://madisonal.maps.arcgis.com/apps/webappviewer/index.html?id=5ed0d274940545018c6a0815e5e30327"
         }
       ],
@@ -8332,7 +8332,7 @@
       "Project": "OR - City of Newberg",
       "Public Records & GIS": [
         {
-          "type": "PR",
+          "type": "PR (use VPN)",
           "url": "https://ascendweb.co.yamhill.or.us/AcsendWeb/(S(v1cokcqgitwhwui5dktmh3hv))/default.aspx"
         },
         {
