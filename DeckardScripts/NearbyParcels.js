@@ -17,31 +17,32 @@
         console.log('Creando el botón "Abrir Nparcels"');
 
         // Crea el botón "Abrir Nparcels"
-        const button = document.createElement('button');
-        button.innerHTML = '<b>NearbyParcels</b>'; // Texto en negrita
-        button.style.position = 'fixed';
-        button.style.top = '0px'; // Totalmente pegado a la parte superior
-        button.style.left = '60%';
-        button.style.transform = 'translateX(-50%)';
-        button.style.zIndex = 9999;
-        button.style.padding = '2px';
-        button.style.backgroundColor = '#093140';
-        button.style.color = 'white';
-        button.style.border = 'none';
-        button.style.borderRadius = '5px';
-        button.style.fontSize = '14px';
-        button.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
-        button.style.cursor = 'pointer';
-        button.style.transition = 'opacity 0.3s ease'; // Transición suave para la visibilidad
-        button.style.opacity = '1'; // Totalmente visible al cargar
-        button.style.zIndex = '0'; // Ajusta este valor para que quede detrás de otras ventanas
+        const buttons = document.createElement('buttons');
+        buttons.innerHTML = '<b>NearbyParcels</b>'; // Texto en negrita
+        buttons.style.position = 'fixed';
+        buttons.style.top = '0px'; // Totalmente pegado a la parte superior
+        buttons.style.left = '60%';
+        buttons.style.transform = 'translateX(-50%)';
+        buttons.style.zIndex = 9999;
+        buttons.style.padding = '1px';
+        buttons.style.backgroundColor = '#093140';
+        buttons.style.color = 'white';
+        buttons.style.border = 'none';
+        buttons.style.borderRadius = '5px';
+        buttons.style.fontSize = '14px';
+        buttons.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
+        buttons.style.cursor = 'pointer';
+        buttons.style.transition = 'opacity 0.3s ease'; // Transición suave para la visibilidad
+        buttons.style.opacity = '1'; // Totalmente visible al cargar
+        buttons.style.zIndex = '0'; // Ajusta este valor para que quede detrás de otras ventanas
 
-        document.body.appendChild(button);
-        console.log('Botón "Abrir Nparcels" añadido al DOM:', button);
+
+        document.body.appendChild(buttons);
+        console.log('Botón "NearbyParcels" añadido al DOM:', buttons);
 
         // Agrega el evento de click al botón
-        button.addEventListener('click', () => {
-            console.log('Botón "Abrir Nparcels" clicado');
+        buttons.addEventListener('click', () => {
+            console.log('Botón "NearbyParcels" clicado');
 
             // Selecciona todos los hipervínculos de Google en la página
             const links = document.querySelectorAll('a[href*="https://www.google.com/search?q="]');
@@ -70,10 +71,10 @@
 
             if (currentScrollTop === 0) {
                 // Si el usuario está completamente arriba, muestra el botón
-                button.style.opacity = '1';
+                buttons.style.opacity = '1';
             } else {
                 // Si el usuario se desplaza hacia abajo, oculta el botón
-                button.style.opacity = '0';
+                buttons.style.opacity = '0';
             }
         });
     }
