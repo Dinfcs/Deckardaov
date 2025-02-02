@@ -1,9 +1,9 @@
 // ==UserScript==
-// @name         Viewer.js Image Carousel for Listings
+// @name         Fancybox Image Carousel for Listings
 // @namespace    http://tampermonkey.net/
 // @version      2.7
-// @description  Extract and display images in a carousel using Viewerjs with enhanced zoom functionality, transparent modal background, and thumbnail navigation. Automatically executes Fancybox 2 seconds after clicking on a specific image/icon, and closes any open modals when Fancybox is closed.
-// @author       Lucho
+// @description  Extract and display images in a carousel using Fancybox with enhanced zoom functionality, transparent modal background, and thumbnail navigation. Automatically executes Fancybox 2 seconds after clicking on a specific image/icon, and closes any open modals when Fancybox is closed.
+// @author       ChatGPT
 // @match        https://cyborg.deckard.com/listing/*
 // @grant        GM_addStyle
 // ==/UserScript==
@@ -84,7 +84,15 @@
     // Función para extraer imágenes y abrir Viewer.js
     function extractImages() {
         console.log('Extracting images...');
-        const imageLinks = Array.from(document.querySelectorAll("a[href^='https://deckard-imddb-us-west']")).map(anchor => anchor.href);
+        const storedImageLinks = sessionStorage.getItem('imageLinks');
+        let imageLinks = storedImageLinks ? JSON.parse(storedImageLinks) : [];
+
+        if (imageLinks.length === 0) {
+            imageLinks = Array.from(document.querySelectorAll("a[href^='https://deckard-imddb-us-west']")).map(anchor => anchor.href);
+            if (imageLinks.length > 0) {
+                sessionStorage.setItem('imageLinks', JSON.stringify(imageLinks));
+            }
+        }
 
         if (imageLinks.length === 0) {
             alert("No images found!");
@@ -95,12 +103,24 @@
         const thumbsContainer = document.createElement('div');
         thumbsContainer.id = "thumbsContainer";
 
+        // Crear el observer para lazy loading
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    observer.unobserve(img);
+                }
+            });
+        }, { rootMargin: '0px 0px 50px 0px' });
+
         imageLinks.forEach((thumbUrl, index) => {
             const img = document.createElement('img');
-            img.src = thumbUrl;
+            img.dataset.src = thumbUrl;
             img.alt = "Thumbnail";
             img.addEventListener('click', () => viewer.view(index));
             thumbsContainer.appendChild(img);
+            observer.observe(img);
         });
 
         document.body.appendChild(thumbsContainer);
@@ -148,9 +168,8 @@
                 reset: 1,
                 prev: 1,
                 next: 1,
-
             },
-
+            zoomRatio: 0.5, // Aquí es donde se ajusta el incremento del zoom
             hidden() {
                 thumbsContainer.remove();
                 imageContainer.remove();
