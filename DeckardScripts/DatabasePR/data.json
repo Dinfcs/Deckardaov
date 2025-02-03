@@ -9905,6 +9905,32 @@
           "url": "https://www.loom.com/share/b9bdf7b84c794f649e60358e26c9e9fb"
         }
       ]
+    },
+    {
+      "Project": "UT - Summit County",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://property.summitcounty.org/eaglesoftware/eagleweb/docSearch.jsp"
+        },
+        {
+          "type": "GIS",
+          "url": "https://summitcounty.maps.arcgis.com/apps/webappviewer/index.html?id=85c6c55514ae4d4f9218202e364fec73"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
