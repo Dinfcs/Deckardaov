@@ -9938,11 +9938,11 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "• To search the Public Records, the easiest way is by using the property address.\n\n• To search Public Records with APN follow this format:\n‣ Example: APN Cyborg OAKBM0003B0154L003 → 3-154-3.\n1. Take the first number after the initial zeros: 3\n2. Grab the next three numbers after \"B0.\": 154\n3. Add the last digit (unless it's zero): 3\n4. Include the dashes between the numbers.\n\n• If the last number is zero 0: \n‣ Example: APN Cyborg OAKBM0003B0122L000 → 3-122",
+      "Important Info": "To search Public Records, use the property address or follow this APN format:\n\n‣ Example: APN Cyborg OAKBM0003B0154L003 → 3-154-3.\n\n1. Take the first number after the initial zeros: 3\n2. Grab the next three numbers after \"B0.\": 154\n3. Add the last digit (unless it's zero): 3\n4. Separate each part with a dash (-).\n\n• If the last number is zero 0: \n\n‣ Example: APN Cyborg OAKBM0003B0122L000 → 3-122",
       "Media": [
         {
-          "type": " To select the aerial image in GIS, open the right-side menu, click ",
-          "url": "https://drive.usercontent.google.com/download?id=1E6iZ2UaEeZm1hbx3Wgq7itUBrombMbia&authuser=0"
+          "type": "N/A",
+          "url": "N/A"
         }
       ]
     },
@@ -9973,6 +9973,28 @@
         }
       ],
       "Important Info": "·There are no public records, as privacy laws in the country protect property data. \n·There is a GIS with very good information. \n·The address shown in Cyborg does not have the state abbreviation, so there is no need to override the address. \n·The customer can view their data with the following address format: 7 Gilmore St, Smiths Beach 3922.",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
+    },
+    {
+      "Project": "MA - Town of Tisbury",
+      "Public Records & GIS": [
+        {
+          "type": "PR and GIS",
+          "url": "https://www.axisgis.com/TisburyMA/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License o N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "To search Public Records, use the property address or follow this APN format:\n\n◆ APN TISBM0008QB00000L00008 → 8-Q-8.\n\n1. Take the first number after the initial zeros: 8\n2. Take the letter right before \"B0.\": Q\n3. Add the last digit: 8\n4. Separate each part with a dash (-)",
       "Media": [
         {
           "type": "N/A",
