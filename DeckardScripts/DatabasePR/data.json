@@ -221,40 +221,6 @@
       ]
     },
     {
-      "Project": "AUS - Bass Coast Shire",
-      "Public Records & GIS": [
-        {
-          "type": "GIS",
-          "url": "https://mapshare.vic.gov.au/vicplan/"
-        },
-        {
-          "type": "A website with good satellite images",
-          "url": "https://basscoast.spatial.t1cloud.com/spatial/IntraMaps/ApplicationEngine/frontend/mapbuilder/default.htm?configId=2e5137be-28ba-46ce-8a8f-e19aaad82323&liteConfigId=d945a7d9-6bde-48ae-95aa-a7c9a7fb9e56&title=V2hlcmUlMjBpcyUyMG15JTIwbmVhcmVzdCUzRi4uLg=="
-        },
-        {
-          "type": "Video: Intro of Bass Coast Shire, AUS",
-          "url": "https://youtu.be/v4RfkywHvGk"
-        }
-      ],
-      "License List": [
-        {
-          "type": "License List",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/ESTpTw1yQV9EnffFg498tK8B3VxThcqkXmHiTWYml1epBg?e=JKcNUB"
-        },
-        {
-          "type": "PPD",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7BE5EA5FDA-6ACE-4EDC-8998-203F4FFCA53D%7D&file=BCSC-SSRA.xlsx&action=default&mobileredirect=true"
-        }
-      ],
-      "Important Info": "·There are no public records, as privacy laws in the country protect property data. ·There is a GIS with very good information. ·The address shown in Cyborg does not have the state abbreviation, so there is no need to override the address. The customer can view their data with the following address format: 7 Gilmore St, Smiths Beach 3922.",
-      "Media": [
-        {
-          "type": "N/A",
-          "url": "N/A"
-        }
-      ]
-    },
-    {
       "Project": "AUS - City of Brisbane",
       "Public Records & GIS": [
         {
