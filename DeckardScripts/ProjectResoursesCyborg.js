@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         PREDIT Resumido
 // @namespace    ProjectResources Cyborg
-// @version      2.3
-// @description  Mostrar el nombre del proyecto detectado en la URL y una tabla de datos mejorada en la parte inferior de la página.
+// @version      2.4
+// @description  Mostrar el nombre del proyecto detectado en la URL y una tabla de datos mejorada en la parte inferior de la página con caché para mejorar la rapidez del proceso.
 // @author
 // @match        https://cyborg.deckard.com/listing/*/STR*
 // @grant        none
@@ -12,28 +12,28 @@
     'use strict';
 
     const jsonURL = 'https://script.google.com/macros/s/AKfycbzKRzrnEtgTaGmSDN0daIjtquhBWL5rwn_ZQR8FRYbn5fHtODKSQSTKoi1bXWmrlR0vSg/exec';
+    const cacheKey = 'projectDataCache';
+    const cacheCountKey = 'projectDataCacheCount';
+    const maxCacheLoads = 10; // Número de cargas antes de actualizar el caché
 
-function obtenerNombreProyectoDesdeURL() {
-    const url = window.location.href;
-
-    const patrones = [
-        { regex: /\/listing\/AUS\/([^\/]+)\/([^\/]+)\/(STR[^\/]+)/, formato: (m) => `AUS - ${m[2].replace(/_/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase()) === 'Bass Coast' ? m[2].replace(/_/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase()) : 'City of ' + m[2].replace(/_/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase())}` },
-        { regex: /\/listing\/([A-Za-z]+)\/([^\/]+)\.\.\.(town|township)_of_([^\/]+)\/_/, formato: (m) => `${m[1].toUpperCase()} - ${m[3].charAt(0).toUpperCase() + m[3].slice(1)} Of ${m[4].replace(/_/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase())}` },
-        { regex: /\/listing\/([A-Za-z]+)\/([^\/]+)\/_/, formato: (m) => `${m[1].toUpperCase()} - ${m[2].replace(/_/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase())} County` },
-        { regex: /\/listing\/([A-Za-z]+)\/([^\/]+)\/([^\/]+)\//, formato: (m) => `${m[1].toUpperCase()} - ${m[3].replace(/_/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase())}` }
-    ];
-
-    for (const { regex, formato } of patrones) {
-        const match = url.match(regex);
-        if (match) return formato(match);
+    function obtenerNombreProyectoDesdeURL() {
+        const url = window.location.href;
+        const patrones = [
+            { regex: /\/listing\/AUS\/([^\/]+)\/([^\/]+)\/(STR[^\/]+)/, formato: (m) => `AUS - ${m[2].replace(/_/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase()) === 'Bass Coast' ? m[2].replace(/_/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase()) : 'City of ' + m[2].replace(/_/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase())}` },
+            { regex: /\/listing\/([A-Za-z]+)\/([^\/]+)\.\.\.(town|township)_of_([^\/]+)\/_/, formato: (m) => `${m[1].toUpperCase()} - ${m[3].charAt(0).toUpperCase() + m[3].slice(1)} Of ${m[4].replace(/_/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase())}` },
+            { regex: /\/listing\/([A-Za-z]+)\/([^\/]+)\/_/, formato: (m) => `${m[1].toUpperCase()} - ${m[2].replace(/_/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase())} County` },
+            { regex: /\/listing\/([A-Za-z]+)\/([^\/]+)\/([^\/]+)\//, formato: (m) => `${m[1].toUpperCase()} - ${m[3].replace(/_/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase())}` }
+        ];
+        for (const { regex, formato } of patrones) {
+            const match = url.match(regex);
+            if (match) return formato(match);
+        }
+        return null;
     }
-
-    return null;
-}
 
     const nombreProyecto = obtenerNombreProyectoDesdeURL();
     if (!nombreProyecto) {
-        console.error('No se pudo detectar el nombre del proyecto desde la URL.');
+        console.error('Project name could not be detected from the URL.');
         return;
     }
 
@@ -46,14 +46,14 @@ function obtenerNombreProyectoDesdeURL() {
     contenedor.style.fontFamily = 'Arial, sans-serif';
     document.body.appendChild(contenedor);
 
-    const barraTitulo = document.createElement('div');
-    barraTitulo.style.backgroundColor = '#093140';
-    barraTitulo.style.color = '#fff';
-    barraTitulo.style.padding = '1px';
-    barraTitulo.style.fontSize = '16px';
-    barraTitulo.style.fontWeight = 'bold';
-    barraTitulo.textContent = `Project Detected: ${nombreProyecto}`;
-    contenedor.appendChild(barraTitulo);
+    // const barraTitulo = document.createElement('div');
+    // barraTitulo.style.backgroundColor = '#093140';
+    // barraTitulo.style.color = '#fff';
+    // barraTitulo.style.padding = '1px';
+    // barraTitulo.style.fontSize = '16px';
+    // barraTitulo.style.fontWeight = 'bold';
+    // barraTitulo.textContent = `Project Detected: ${nombreProyecto}`;
+    // contenedor.appendChild(barraTitulo);
 
     const contenedorDatos = document.createElement('div');
     contenedorDatos.style.padding = '0px';
@@ -62,10 +62,22 @@ function obtenerNombreProyectoDesdeURL() {
 
     async function cargarDatos() {
         try {
-            const response = await fetch(jsonURL, { cache: 'no-store' });
-            if (!response.ok) throw new Error(`Error al leer la base de datos: ${response.statusText}`);
+            let data;
+            let cacheCount = parseInt(localStorage.getItem(cacheCountKey)) || 0;
 
-            const data = await response.json();
+            if (cacheCount < maxCacheLoads && localStorage.getItem(cacheKey)) {
+                data = JSON.parse(localStorage.getItem(cacheKey));
+                cacheCount += 1;
+                localStorage.setItem(cacheCountKey, cacheCount);
+            } else {
+                const response = await fetch(jsonURL, { cache: 'no-store' });
+                if (!response.ok) throw new Error(`Error reading database: ${response.statusText}`);
+
+                data = await response.json();
+                localStorage.setItem(cacheKey, JSON.stringify(data));
+                localStorage.setItem(cacheCountKey, '1');
+            }
+
             const proyectoFiltrado = data.tabla.find(proyecto =>
                 proyecto.Project.toLowerCase() === nombreProyecto.toLowerCase()
             );
@@ -89,7 +101,7 @@ function obtenerNombreProyectoDesdeURL() {
                 const th = document.createElement('th');
                 th.textContent = header;
                 th.style.width = headerWidths[index];
-                th.style.backgroundColor = '#F8F8F8';
+                th.style.backgroundColor = '#D3D3D3';
                 th.style.color = '#333';
                 th.style.padding = '12px';
                 th.style.textAlign = 'left';
@@ -131,7 +143,7 @@ function obtenerNombreProyectoDesdeURL() {
 
             contenedorDatos.appendChild(table);
         } catch (error) {
-            console.error('Error al cargar los datos:', error);
+            console.error('Error loading data:', error);
         }
     }
 
