@@ -9957,6 +9957,28 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "MA - Town of Oak Bluffs",
+      "Public Records & GIS": [
+        {
+          "type": "PR and GIS",
+          "url": "https://www.axisgis.com/Oak_BluffsMA"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License o N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "• To search the Public Records, the easiest way is by using the property address.\n• To search Public Records with APN follow this format:\n‣ Example: APN Cyborg OAKBM0003B0154L003 → 3-154-3.\n1. Take the first number after the initial zeros: 3\n2. Grab the next three numbers after \"B0.\": 154\n3. Add the last digit (unless it's zero): 3\n4. Include the dashes between the numbers.\n\n• If the last number is zero 0: \n‣ Example: APN Cyborg OAKBM0003B0122L000 → 3-122\n\n",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
