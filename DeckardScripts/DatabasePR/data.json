@@ -9994,7 +9994,7 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "To search Public Records, use the property address or follow this APN format:\n\n◆ Example: APN from Cyborg TISBM0008QB00000L00008 → 8-Q-8.\n\n1. Take the first number after the initial zeros: 8\n2. Take the letter right before \"B0.\": Q\n3. Add the last digit: 8\n4. Separate each part with a dash (-).",
+      "Important Info": "To search Public Records, use the property address or follow this APN format:\n\n◆ Example: APN from Cyborg TISBM0008QB00000L00008 → 8-Q-8.\n\n1. Take the first number after the initial zeros: 8\n2. Take the letter right before \"B0.\": Q\n3. Add the last digit: 8\n4. Separate each part with a dash (-).\n\nNote: To select the aerial image in GIS, open the right-side menu, click \"Basemap,\" and then choose \"Imagery.\"",
       "Media": [
         {
           "type": "N/A",
