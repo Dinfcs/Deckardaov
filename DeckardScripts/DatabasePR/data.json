@@ -4748,7 +4748,7 @@
           "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B16C59D68-7340-4B26-A94C-E8476712EB84%7D&file=2024%20STR%20Contact%20List%20(6)%20Chelan%20Copy%20-%20IR.xlsx&action=default&mobileredirect=true"
         }
       ],
-      "Important Info": "Address Override will be performed on the property when any of these cases:\nThe house Number, Street name, and ZIP Code are incorrect with respect to the PR. If we see that the only inconsistency concerning the PR information is the City Name (and the ZIP code is correct), it is not necessary to perform AO.\n- Property that is U1OM and has a Unit number. Please use a unit box and also, use Address Override with Unit number in this.\nExamples: \nAddress Override: 105 Chelan View Dr, Manson, WA 98831 is a parcel with mixed-use (Residential and Resort). Structure: U1OM. If we know the unit number: use the unit box for the unit number and this AO: 105 Chelan View Dr Unit #, Manson, WA 98831\nMap information of this parcel: Sales - Wapato Point Lake Chelan Resort \nPlease note that the following properties are timeshares, if you're going to map them, take the APN associated with the majority of the listing:\nWorldMark Lake Chelan Shores. Address: 100 Lake Chelan Shores Dr, Chelan, WA 98816, United States -\nPeterson's Waterfront Resort. Address: 103 N Park St, Chelan, WA 98816, United States -\nGrandview On the Lake. Address: 322 W Woodin Ave, Chelan, WA 98816, United States -\nWorldMark Chelan Lake House. Address: 402 W Manson Hwy, Chelan, WA 98816, United States\nWorldMark Leavenworth. Address: 100 Enchantment Park Way, Leavenworth, WA 98826, United States",
+      "Important Info": "Please whenever you match a property within 105 Chelan View Dr, Manson, WA 98831, check the box \"The listing is outside of the current region\"\n\nAddress Override will be performed on the property when any of these cases:\nThe house Number, Street name, and ZIP Code are incorrect with respect to the PR. If we see that the only inconsistency concerning the PR information is the City Name (and the ZIP code is correct), it is not necessary to perform AO.\n- Property that is U1OM and has a Unit number. Please use a unit box and also, use Address Override with Unit number in this.\nExamples: \nAddress Override: 105 Chelan View Dr, Manson, WA 98831 is a parcel with mixed-use (Residential and Resort). Structure: U1OM. If we know the unit number: use the unit box for the unit number and this AO: 105 Chelan View Dr Unit #, Manson, WA 98831\nMap information of this parcel: Sales - Wapato Point Lake Chelan Resort \n\n\nPlease note that the following properties are timeshares, if you're going to map them, take the APN associated with the majority of the listing:\nWorldMark Lake Chelan Shores. Address: 100 Lake Chelan Shores Dr, Chelan, WA 98816, United States -\nPeterson's Waterfront Resort. Address: 103 N Park St, Chelan, WA 98816, United States -\nGrandview On the Lake. Address: 322 W Woodin Ave, Chelan, WA 98816, United States -\nWorldMark Chelan Lake House. Address: 402 W Manson Hwy, Chelan, WA 98816, United States\nWorldMark Leavenworth. Address: 100 Enchantment Park Way, Leavenworth, WA 98826, United States",
       "Media": [
         {
           "type": "N/A",
@@ -9916,6 +9916,32 @@
         {
           "type": "GIS",
           "url": "https://summitcounty.maps.arcgis.com/apps/webappviewer/index.html?id=85c6c55514ae4d4f9218202e364fec73"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
+    },
+    {
+      "Project": "FL - Town of Melbourne Beach",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://www.bcpao.us/PropertySearch/#/nav/Search"
+        },
+        {
+          "type": "GIS",
+          "url": "https://www.bcpao.us/map/"
         }
       ],
       "License List": [
