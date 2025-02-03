@@ -44,14 +44,7 @@
     contenedor.style.fontFamily = 'Arial, sans-serif';
     document.body.appendChild(contenedor);
 
-    // const barraTitulo = document.createElement('div');
-    // barraTitulo.style.backgroundColor = '#093140';
-    // barraTitulo.style.color = '#fff';
-    // barraTitulo.style.padding = '1px';
-    // barraTitulo.style.fontSize = '16px';
-    // barraTitulo.style.fontWeight = 'bold';
-    // barraTitulo.textContent = `Project Detected: ${nombreProyecto}`;
-    // contenedor.appendChild(barraTitulo);
+
 
     const contenedorDatos = document.createElement('div');
     contenedorDatos.style.padding = '0px';
@@ -85,7 +78,14 @@
         );
 
         if (!proyectoFiltrado) {
-            contenedorDatos.textContent = 'No data found for ${nombreProyecto}';
+    const barraTitulo = document.createElement('div');
+    barraTitulo.style.backgroundColor = '#caccca';
+    barraTitulo.style.color = '#000';
+    barraTitulo.style.padding = '1px';
+    barraTitulo.style.fontSize = '16px';
+    barraTitulo.style.fontWeight = 'bold';
+    barraTitulo.textContent = `No data found for: ${nombreProyecto}`;
+    contenedor.appendChild(barraTitulo);
             return;
         }
 
