@@ -9938,7 +9938,7 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "To search Public Records, use the property address or follow this APN format:\n\n‣ Example: APN from Cyborg OAKBM0003B0154L003 → 3-154-3.\n\n1. Take the first number after the initial zeros: 3\n2. Grab the next three numbers after \"B0.\": 154\n3. Add the last digit (unless it's zero): 3\n4. Separate each part with a dash (-).\n\n• If the last number is zero 0: \n\n‣ Example: APN Cyborg OAKBM0003B0122L000 → 3-122\n\nNote: To select the aerial image in GIS, open the right-side menu, click \"Basemap,\" and then choose \"Imagery.\"",
+      "Important Info": "To search Public Records, use the property address or follow this APN format:\n\n◆ Example: APN from Cyborg OAKBM0003B0154L003 → 3-154-3.\n\n1. Take the first number after the initial zeros: 3\n2. Grab the next three numbers after \"B0.\": 154\n3. Add the last digit (unless it's zero): 3\n4. Separate each part with a dash (-).\n\n• If the last number is zero 0: \n\n◆ Example: APN Cyborg OAKBM0003B0122L000 → 3-122\n\nNote: To select the aerial image in GIS, open the right-side menu, click \"Basemap,\" and then choose \"Imagery.\"",
       "Media": [
         {
           "type": "N/A",
