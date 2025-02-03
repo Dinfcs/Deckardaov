@@ -85,7 +85,7 @@
         );
 
         if (!proyectoFiltrado) {
-            contenedorDatos.textContent = 'No data found for the detected project.';
+            contenedorDatos.textContent = 'No data found for ${nombreProyecto}';
             return;
         }
 
