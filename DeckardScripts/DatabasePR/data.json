@@ -9938,10 +9938,10 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "• To search the Public Records, the easiest way is by using the property address.\n\n• To search Public Records with APN follow this format:\n‣ Example: APN Cyborg OAKBM0003B0154L003 → 3-154-3.\n1. Take the first number after the initial zeros: 3\n2. Grab the next three numbers after \"B0.\": 154\n3. Add the last digit (unless it's zero): 3\n4. Include the dashes between the numbers.\n\n• If the last number is zero 0: \n‣ Example: APN Cyborg OAKBM0003B0122L000 → 3-122\n\nTo activate ",
+      "Important Info": "• To search the Public Records, the easiest way is by using the property address.\n\n• To search Public Records with APN follow this format:\n‣ Example: APN Cyborg OAKBM0003B0154L003 → 3-154-3.\n1. Take the first number after the initial zeros: 3\n2. Grab the next three numbers after \"B0.\": 154\n3. Add the last digit (unless it's zero): 3\n4. Include the dashes between the numbers.\n\n• If the last number is zero 0: \n‣ Example: APN Cyborg OAKBM0003B0122L000 → 3-122",
       "Media": [
         {
-          "type": " To select the aerial image in GIS, open the right-side menu, click \"Basemap,\" and then choose \"Imagery.\"",
+          "type": " To select the aerial image in GIS, open the right-side menu, click ",
           "url": "https://drive.usercontent.google.com/download?id=1E6iZ2UaEeZm1hbx3Wgq7itUBrombMbia&authuser=0"
         }
       ]
@@ -9972,7 +9972,7 @@
           "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7BE5EA5FDA-6ACE-4EDC-8998-203F4FFCA53D%7D&file=BCSC-SSRA.xlsx&action=default&mobileredirect=true"
         }
       ],
-      "Important Info": "·There are no public records, as privacy laws in the country protect property data. ·There is a GIS with very good information. ·The address shown in Cyborg does not have the state abbreviation, so there is no need to override the address. The customer can view their data with the following address format: 7 Gilmore St, Smiths Beach 3922.",
+      "Important Info": "·There are no public records, as privacy laws in the country protect property data. \n·There is a GIS with very good information. \n·The address shown in Cyborg does not have the state abbreviation, so there is no need to override the address. \n·The customer can view their data with the following address format: 7 Gilmore St, Smiths Beach 3922.",
       "Media": [
         {
           "type": "N/A",
