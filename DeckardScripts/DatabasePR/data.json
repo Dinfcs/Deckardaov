@@ -9069,11 +9069,11 @@
       "Public Records & GIS": [
         {
           "type": "PR",
-          "url": "https://mn-washington.manatron.com/Tabs/TaxSearch.aspx"
+          "url": "https://auditorwashingtoncountyohio.gov/Search"
         },
         {
           "type": "GIS",
-          "url": "https://wcmn.maps.arcgis.com/apps/webappviewer/index.html?id=5c2fe2b598e744afbc07cc0550162984"
+          "url": "https://auditorwashingtoncountyohio.gov/Map"
         }
       ],
       "License List": [
@@ -9082,7 +9082,7 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "N/A",
+      "Important Info": "The GIS has NearMaps quality satellite images.",
       "Media": [
         {
           "type": "N/A",
