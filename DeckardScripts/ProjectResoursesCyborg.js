@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         PREDIT Resumido
+// @name         PREDIT
 // @namespace    ProjectResources Cyborg
-// @version      2.4
-// @description  Mostrar el nombre del proyecto detectado en la URL y una tabla de datos mejorada en la parte inferior de la página con caché y comparación de datos para mejorar la rapidez del proceso, incluyendo separadores verticales.
+// @version      2.9
+// @description  Se optimiza lectura de base de datos se guarda en cache y solo se suplanta si hay diferencia con la de la base de datos, se borra barra de nombre cuando se consiguen datos y aparece cuando no se consiguen datos
 // @author
 // @match        https://cyborg.deckard.com/listing/*/STR*
 // @grant        none
