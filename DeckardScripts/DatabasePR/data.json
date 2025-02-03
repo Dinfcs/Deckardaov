@@ -5098,7 +5098,7 @@
           "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B66C542D1-1644-454E-BD70-0C5176A25AB4%7D&file=RentalScape_10-14-24_2300.csv&action=default&mobileredirect=true"
         }
       ],
-      "Important Info": "· To search in the PR with the CYBORG APN, you need to delete the first 2 digits, which are usually 88. \n  Example: APN: 881219209024 : APN: 1219209024 .\n· The PR in some APNs has two records, please prioritize the record with only one street number. ",
+      "Important Info": "*) To search in the PR with the CYBORG APN, you need to delete the first 2 digits, which are usually 88. \n   Example: APN: 881219209024 : APN: 1219209024 .\n*) The PR in some APNs has two records, please prioritize the record with only one street number. ",
       "Media": [
         {
           "type": "N/A",
