@@ -2,7 +2,7 @@
 // @name         PREDIT Resumido
 // @namespace    ProjectResources Cyborg
 // @version      2.4
-// @description  Mostrar el nombre del proyecto detectado en la URL y una tabla de datos mejorada en la parte inferior de la página con caché y comparación de datos para mejorar la rapidez del proceso.
+// @description  Mostrar el nombre del proyecto detectado en la URL y una tabla de datos mejorada en la parte inferior de la página con caché y comparación de datos para mejorar la rapidez del proceso, incluyendo separadores verticales.
 // @author
 // @match        https://cyborg.deckard.com/listing/*/STR*
 // @grant        none
@@ -94,7 +94,7 @@
         table.style.borderCollapse = 'collapse';
         table.style.marginTop = '0px';
         table.style.fontFamily = 'Arial, sans-serif';
-        table.style.fontSize = '13px'; // Ajuste de fuente
+        table.style.fontSize = '14px'; // Ajuste de fuente
         table.style.color = '#333';
 
         const headers = ['Project', 'Public Records & GIS', 'License List', 'Important Info', 'Media'];
@@ -108,10 +108,11 @@
             th.style.width = headerWidths[index];
             th.style.backgroundColor = '#D3D3D3';
             th.style.color = '#333';
-            th.style.padding = '13px';
+            th.style.padding = '12px';
             th.style.textAlign = 'left';
             th.style.borderBottom = '2px solid #DDD';
-            th.style.fontSize = '13px';
+            th.style.borderRight = '1px solid #DDD'; // Agrega separadores verticales
+            th.style.fontSize = '14px';
             th.style.fontWeight = 'bold';
             headerRow.appendChild(th);
         });
@@ -122,9 +123,10 @@
             const cell = row.insertCell();
             cell.style.padding = '12px';
             cell.style.borderBottom = '1px solid #EEE';
+            cell.style.borderRight = '1px solid #EEE'; // Agrega separadores verticales
             cell.style.verticalAlign = 'top';
             cell.style.color = '#555';
-            cell.style.fontSize = '13px';
+            cell.style.fontSize = '14px';
 
             if (Array.isArray(proyectoFiltrado[header])) {
                 proyectoFiltrado[header].forEach(link => {
@@ -150,7 +152,7 @@
             }
         });
 
-        contenedorDatos.innerHTML = ''; // Clear previous table
+        contenedorDatos.innerHTML = ''; // Limpiar tabla anterior
         contenedorDatos.appendChild(table);
     }
 
