@@ -90,16 +90,15 @@
             if (h5Element && rentalscapeImg && googleMapLink && !insertedIcons) {
                 const googleLink = googleMapLink.parentElement;
                 const iconContainer = document.createElement('span');
-                iconContainer.style.display = 'inline-flex';
-                iconContainer.style.gap = '5px';
+                iconContainer.style.gap = '10px';
 
                 googleLink.insertAdjacentElement('afterend', iconContainer);
 
                 // Crear botón de Bing Maps
                 const bingButton = document.createElement('img');
                 bingButton.src = 'https://www.bing.com/sa/simg/favicon-2x.ico'; // Ícono de Bing
-                bingButton.style.width = '25px';
-                bingButton.style.height = '25px';
+                bingButton.style.width = '30px';
+                bingButton.style.height = '30px';
                 bingButton.style.cursor = 'pointer';
                 bingButton.title = 'Buscar en Bing Maps';
                 bingButton.onclick = openBingMaps;
@@ -108,8 +107,8 @@
                 // Crear botón de DuckDuckGo Maps
                 const duckButton = document.createElement('img');
                 duckButton.src = 'https://duckduckgo.com/favicon.ico'; // Ícono de DuckDuckGo
-                duckButton.style.width = '25px';
-                duckButton.style.height = '25px';
+                duckButton.style.width = '30px';
+                duckButton.style.height = '30px';
                 duckButton.style.cursor = 'pointer';
                 duckButton.title = 'Buscar en DuckDuckGo Maps';
                 duckButton.onclick = openDuckMaps;
