@@ -35,7 +35,7 @@
         buttons.style.top = '0px'; // Totalmente pegado a la parte superior
         buttons.style.left = '60%';
         buttons.style.transform = 'translateX(-50%)';
-        buttons.style.zIndex = 9999;
+        buttons.style.zIndex = 0;
         buttons.style.padding = '1px';
         buttons.style.backgroundColor = '#093140';
         buttons.style.color = 'white';
