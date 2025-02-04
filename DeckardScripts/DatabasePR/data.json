@@ -4434,7 +4434,7 @@
           "url": "https://padreu.com/condominiums/"
         }
       ],
-      "Important Info": "When working with the unit number \"condos,\" which are the main structure and have their own APN, even if the address includes the unit in Cyborg, please use the unit box and re-enter it there. Example:103 E Marlin St Unit 123, South Padre Island, TX 78597Unit number in unit box. (123.)Please ensure that you review the AO and also include the unit number in the unit box in this type of listing. If you don't, RS will not display the correct unit.See the pictures below.The account manager sends the ticket to the data manager for upload to AWS S3.",
+      "Important Info": "When working with the unit number \"condos,\" which are the main structure and have their own APN, even if the address includes the unit in Cyborg, please use the unit box and re-enter it there. Example:103 E Marlin St Unit 123, South Padre Island, TX 78597 Unit number in unit box. (123.)\nPlease make sure that you review the AO and also include the unit number in the unit box in this type of listing. If you don't, RS will not display the correct unit.\nExample: AO:103 E Marlin St Unit 123, South Padre Island, TX 78597\nUnit number in unit box [123]",
       "Media": [
         {
           "type": "N/A",
