@@ -51,11 +51,8 @@
         {
             urlPattern: /^https:\/\/www\.bing\.com\/maps.*$/,
             scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/Buscador.js'
-        },
-        {
-            urlPattern: /^https:\/\/duckduckgo\.com\/.*$/,
-            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/Buscador.js'
         }
+
     ];
 
     for (const {urlPattern, scriptUrl} of scripts) {
