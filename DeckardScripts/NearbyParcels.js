@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         NearbyParcels
 // @namespace    http://tampermonkey.net/
-// @version      2.0
+// @version      2.1
 // @description  Añade un botón fijo para abrir direcciones en Google Maps que solo aparece cuando el scroll está arriba
 // @author       Luis Escalante
 // @match        https://cyborg.deckard.com/listing/*
@@ -13,11 +13,23 @@
 
     console.log('NearbyParcels script ejecutándose');
 
+    function waitForButton() {
+        const observer = new MutationObserver((mutations, obs) => {
+            const button = document.querySelector('#btn_open_vetting_dlg');
+            if (button) {
+                obs.disconnect(); // Deja de observar cambios en el DOM
+                createButton(); // Llama a la función principal
+            }
+        });
+
+        observer.observe(document.body, { childList: true, subtree: true });
+    }
+
     function createButton() {
         console.log('Creando el botón "Abrir Nparcels"');
 
         // Crea el botón "Abrir Nparcels"
-        const buttons = document.createElement('buttons');
+        const buttons = document.createElement('button');
         buttons.innerHTML = '<b>NearbyParcels</b>'; // Texto en negrita
         buttons.style.position = 'fixed';
         buttons.style.top = '0px'; // Totalmente pegado a la parte superior
@@ -34,8 +46,6 @@
         buttons.style.cursor = 'pointer';
         buttons.style.transition = 'opacity 0.3s ease'; // Transición suave para la visibilidad
         buttons.style.opacity = '1'; // Totalmente visible al cargar
-        buttons.style.zIndex = '0'; // Ajusta este valor para que quede detrás de otras ventanas
-
 
         document.body.appendChild(buttons);
         console.log('Botón "NearbyParcels" añadido al DOM:', buttons);
@@ -79,8 +89,5 @@
         });
     }
 
-    // Ejecuta la creación del botón 2 segundos después de cargar la página
-    window.addEventListener('load', () => {
-        setTimeout(createButton, 4000);
-    });
+    waitForButton();
 })();
