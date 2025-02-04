@@ -8990,8 +8990,8 @@
       "Project": "OR - City of Cannon Beach",
       "Public Records & GIS": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "type": "GIS & PR",
+          "url": "https://gis.cartomation.com/cannonbeach/planning/#on=sketch/default;bare/bare;roads/roads;parcels/parcels;OSIP_2022/OSIP_2022&loc=0.2986;-13799252.40;5762709.50"
         },
         {
           "type": "STR Permits Lists",
@@ -9004,11 +9004,11 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "N/A",
+      "Important Info": "For search by APN, use TAXLOT NUMBER\nFor futher info click on \"assesor link\".\n",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "type": "Image",
+          "url": "https://drive.usercontent.google.com/download?id=1aGvssIV8HjQvxLn93TPAfA3tiRJy7ivf&authuser=0"
         }
       ]
     },
