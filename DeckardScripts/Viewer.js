@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         Fancybox Image Carousel for Listings
+// @name         Viewerjs Image Carousel for Listings
 // @namespace    http://tampermonkey.net/
-// @version      2.7
-// @description  Extract and display images in a carousel using Fancybox with enhanced zoom functionality, transparent modal background, and thumbnail navigation. Automatically executes Fancybox 2 seconds after clicking on a specific image/icon, and closes any open modals when Fancybox is closed.
+// @version      3.0
+// @description  Image carousel with keyboard navigation and adaptive thumbnail layout using Viewer.js.
 // @author       ChatGPT
 // @match        https://cyborg.deckard.com/listing/*
 // @grant        GM_addStyle
@@ -11,7 +11,6 @@
 (function() {
     'use strict';
 
-    // Función para agregar un script o estilo al documento
     const addResource = (type, src) => {
         const element = type === 'script' ? document.createElement('script') : document.createElement('link');
         if (type === 'script') {
@@ -26,11 +25,9 @@
         document.head.appendChild(element);
     };
 
-    // Agregar estilos y scripts de Viewer.js
     addResource('style', 'https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.10.4/viewer.min.css');
     addResource('script', 'https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.10.4/viewer.min.js');
 
-    // Ajustar el tamaño del ícono de la imagen con id="btn_show_all_images"
     GM_addStyle(`
         #btn_show_all_images {
             height: 25px !important;
@@ -42,21 +39,18 @@
             top: 0;
             z-index: 9999;
             height: 100%;
-            width: 150px;
             background: rgba(0, 0, 0, 0.5);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            padding-top: 20px;
+            display: grid;
+            gap: 15px; /* Más espacio entre miniaturas */
+            padding: 10px;
             border-left: 2px solid #fff;
             box-shadow: -2px 0 10px rgba(0, 0, 0, 0.5);
             overflow-y: auto;
+            width: 350px; /* Aumentar el ancho del frame */
         }
         #thumbsContainer img {
-            width: 100px;
+            width: 100%;
             height: auto;
-            margin-bottom: 10px;
             cursor: pointer;
             transition: transform 0.3s ease, opacity 0.3s ease;
         }
@@ -64,25 +58,18 @@
             opacity: 0.7;
             transform: scale(1.1);
         }
-        #escapeNotice {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 10000;
-            background: rgba(0, 0, 0, 0.8);
-            color: #fff;
-            padding: 15px 25px;
-            border-radius: 8px;
-            font-size: 16px;
-            display: none;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
+        .viewer-canvas {
+            background: rgba(0, 0, 0, 0.8); /* Fondo más oscuro detrás de las imágenes */
+        }
+        .current-thumbnail {
+            border: 2px solid yellow; /* Resaltar la miniatura actual */
         }
     `);
 
-    // Función para extraer imágenes y abrir Viewer.js
-    function extractImages() {
+    let viewer;
+    let currentThumbnail;
+
+    function extractImages(retryCount = 0) {
         console.log('Extracting images...');
         const storedImageLinks = sessionStorage.getItem('imageLinks');
         let imageLinks = storedImageLinks ? JSON.parse(storedImageLinks) : [];
@@ -94,56 +81,36 @@
             }
         }
 
-        if (imageLinks.length === 0) {
-            alert("No images found!");
+        if (imageLinks.length === 0 && retryCount < 5) { // Retry up to 5 times
+            console.log(`Retrying... Attempt ${retryCount + 1}`);
+            setTimeout(() => extractImages(retryCount + 1), 1000); // Wait 1 second before retrying
             return;
         }
 
-        // Crear contenedor de miniaturas
+        if (imageLinks.length === 0) {
+            alert("¡No se encontraron imágenes!");
+            return;
+        }
+
         const thumbsContainer = document.createElement('div');
         thumbsContainer.id = "thumbsContainer";
-
-        // Crear el observer para lazy loading
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.dataset.src;
-                    observer.unobserve(img);
-                }
-            });
-        }, { rootMargin: '0px 0px 50px 0px' });
+        thumbsContainer.style.gridTemplateColumns = imageLinks.length < 13 ? "1fr" : "repeat(2, 1fr)"; // Dos columnas si hay 6 o más
 
         imageLinks.forEach((thumbUrl, index) => {
             const img = document.createElement('img');
-            img.dataset.src = thumbUrl;
+            img.src = thumbUrl;
             img.alt = "Thumbnail";
             img.addEventListener('click', () => viewer.view(index));
             thumbsContainer.appendChild(img);
-            observer.observe(img);
+
+            if (index === 0) {
+                currentThumbnail = img;
+                img.classList.add('current-thumbnail');
+            }
         });
 
         document.body.appendChild(thumbsContainer);
 
-        // Crear contenedor de notificación de escape
-        const escapeNotice = document.createElement('div');
-        escapeNotice.id = "escapeNotice";
-        escapeNotice.innerText = "Press the Escape key to close";
-        document.body.appendChild(escapeNotice);
-
-        // Mostrar la notificación de escape con animación
-        setTimeout(() => {
-            escapeNotice.style.display = 'block';
-            setTimeout(() => escapeNotice.style.opacity = 1, 100);
-        }, 200);
-
-        // Cerrar la notificación después de 3 segundos
-        setTimeout(() => {
-            escapeNotice.style.opacity = 0;
-            setTimeout(() => escapeNotice.style.display = 'none', 500);
-        }, 3000);
-
-        // Crear contenedor de imágenes para Viewer.js
         const imageContainer = document.createElement('div');
         imageContainer.id = "imageViewerContainer";
         imageContainer.style.display = "none";
@@ -156,8 +123,7 @@
 
         document.body.appendChild(imageContainer);
 
-        // Inicializamos Viewer.js
-        const viewer = new Viewer(imageContainer, {
+        viewer = new Viewer(imageContainer, {
             inline: false,
             button: true,
             navbar: false,
@@ -169,7 +135,17 @@
                 prev: 1,
                 next: 1,
             },
-            zoomRatio: 0.5, // Aquí es donde se ajusta el incremento del zoom
+            transition: false,
+            viewed() {
+                if (currentThumbnail) {
+                    currentThumbnail.classList.remove('current-thumbnail');
+                }
+                currentThumbnail = thumbsContainer.querySelectorAll('img')[viewer.index];
+                if (currentThumbnail) {
+                    currentThumbnail.classList.add('current-thumbnail');
+                    currentThumbnail.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            },
             hidden() {
                 thumbsContainer.remove();
                 imageContainer.remove();
@@ -178,40 +154,58 @@
         });
 
         viewer.show();
+
+        document.addEventListener('keydown', handleKeyNavigation);
     }
 
-    // Función para verificar la existencia del ícono y añadir el evento de clic
+    function handleKeyNavigation(e) {
+        if (!viewer) return;
+
+        switch (e.key.toLowerCase()) {
+            case 'd':
+                viewer.next();
+                break;
+            case 'a':
+                viewer.prev();
+                break;
+            case 'w':
+                viewer.zoom(0.1);
+                break;
+            case 's':
+                viewer.zoom(-0.1);
+                break;
+            case 'r':
+                viewer.reset();
+                break;
+        }
+    }
+
     function setupClickEvent() {
         const iconElement = document.getElementById("btn_show_all_images");
         if (iconElement) {
             console.log('Icon found, adding click event...');
-            iconElement.addEventListener("click", () => setTimeout(extractImages, 500));
+            iconElement.addEventListener("click", () => extractImages());
         } else {
             console.log('Icon not found, retrying...');
-            setTimeout(setupClickEvent, 500);
+            setTimeout(setupClickEvent, 800);
         }
     }
 
-    // Función para cerrar las ventanas flotantes
     function closeFloatingWindows() {
         const closeButton = document.querySelector("button.btn-close[aria-label='Close']");
         closeButton?.click();
+        document.removeEventListener('keydown', handleKeyNavigation);
     }
 
-    // Función para cerrar todo cuando se presiona la tecla Escape
     function closeOnEscape(e) {
         if (e.key === 'Escape') {
             document.getElementById('thumbsContainer')?.remove();
             document.getElementById('imageViewerContainer')?.remove();
-            document.getElementById('escapeNotice')?.remove();
             closeFloatingWindows();
         }
     }
 
-    // Iniciar la configuración del evento de clic
     setupClickEvent();
-
-    // Escuchar la tecla Escape para cerrar la interfaz
     window.addEventListener('keydown', closeOnEscape);
 
 })();
