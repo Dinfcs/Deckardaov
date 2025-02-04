@@ -8796,12 +8796,16 @@
       "Project": "CA - Humboldt County",
       "Public Records & GIS": [
         {
-          "type": "GIS",
+          "type": "GIS 1",
           "url": "https://www.arcgis.com/home/webmap/viewer.html?webmap=512a661aa0644309b0c4aaf1169f771a&extent=-123.9763,40.6974,-123.8758,40.7395"
         },
         {
           "type": "PR (You can use PQ)",
           "url": "https://pqweb.parcelquest.com/#login"
+        },
+        {
+          "type": "GIS 2",
+          "url": "https://cty-gis-web.co.humboldt.ca.us/HCEGIS3.0/"
         }
       ],
       "License List": [
