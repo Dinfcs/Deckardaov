@@ -42,7 +42,25 @@
         },
         {
             urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/CA\/sonoma\/.*\/STR.*$/,
-            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/PrSonoma.js'
+            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/Buscador.js'
+                
+        }
+        ,  
+        {
+            urlPattern: /^https:\/\/www\.google\.com\/maps\/place\/.*$/,
+            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/Buscador.js'
+                
+        }
+        ,
+        {
+            urlPattern: /^https:\/\/www\.bing\.com\/maps\?q=.*$/,
+            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/Buscador.js'
+                
+        }
+        ,
+        {
+            urlPattern: /^https:\/\/duckduckgo\.com\/\?va=i&t=hv&q=.*$/,
+            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/Buscador.js'
                 
         }
 
