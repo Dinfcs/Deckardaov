@@ -2422,36 +2422,6 @@
       "Project": "CA - Santa Cruz County",
       "Public Records & GIS": [
         {
-          "type": "PR ",
-          "url": "https://sccounty01.co.santa-cruz.ca.us/ASR/"
-        },
-        {
-          "type": "GIS ",
-          "url": "https://gis.santacruzcounty.us/gisweb/"
-        },
-        {
-          "type": "Classification Codes (VPN)",
-          "url": "https://www.santacruzcountyca.gov/Departments/AssessorsOffice/AssessorUseCodesDisclaimer/AssessorUseCodes.aspx"
-        }
-      ],
-      "License List": [
-        {
-          "type": "License o N/A",
-          "url": "N/A"
-        }
-      ],
-      "Important Info": "Use VPN for GIS and PR",
-      "Media": [
-        {
-          "type": "PR and GIS Demonstration",
-          "url": "https://www.loom.com/share/00171126bc3a45fa9ae856dc0c4b8c49"
-        }
-      ]
-    },
-    {
-      "Project": "CA - Santa Cruz County",
-      "Public Records & GIS": [
-        {
           "type": "PR (VPN)",
           "url": "https://sccounty01.co.santa-cruz.ca.us/ASR/"
         },
@@ -8698,8 +8668,8 @@
       ],
       "License List": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "type": "License List",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/ETBu2CntIr1NiAecJycdMXUBm1KnndrE7k11oQoPFC6xsw?e=m6XV0x"
         }
       ],
       "Important Info": "Click on “CAI Property Card” for further details.\nThe validation of the APN on the property card is determined by the combination of these two numbers: \n·Jurisdiction: 153 \n·Proval PIN: 000119  \n·Additionally, you can search by the owner's last name for the best results.",
