@@ -55,7 +55,7 @@
         },
         {
             urlPattern: /^https:\/\/cyborg\.deckard\.com\//,
-            scriptUrl: 'https://raw.githubusercontent.com/dinfcs/Deckardaov/main/DeckardScripts/StylesCyborg.js'
+            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/StylesCyborg.js'
         }
 
         
