@@ -9967,6 +9967,28 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "TX - City of Grand Prairie",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://www.dallasact.com/act_webdev/dallas/searchbyproperty.jsp"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
