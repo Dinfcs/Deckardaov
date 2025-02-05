@@ -49,10 +49,13 @@
             urlPattern: /^https:\/\/www\.google\.com\/maps\/place\/.*$/,
             scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/Buscador.js'
         },
-
         {
             urlPattern: /^https:\/\/www\.bing\.com\/maps.*$/,
             scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/Buscador.js'
+        },
+        {
+            urlPattern: /^https:\/\/cyborg\.deckard\.com\//,
+            scriptUrl: 'https://raw.githubusercontent.com/dinfcs/Deckardaov/main/DeckardScripts/StylesCyborg.js'
         }
 
         
