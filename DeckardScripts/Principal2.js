@@ -31,16 +31,8 @@
             scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/ProjectResoursesCyborg.js'
         },
         {
-            urlPattern: /^https:\/\/evolve\.com\/vacation-rentals\//,
-            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/EvolveAddress.js'
-        },
-        {
-            urlPattern: /^https:\/\/www\.michaelsvacationrentals\.com\//,
-            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/MichaelVacationRentalsAddress.js'
-        },
-        {
-            urlPattern: /^https:\/\/sedona\.org\//,
-            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/sedona.org.js'
+            urlPattern: /^https?:\/\/.*/,
+            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/UniversalAE.js'
         },
         {
             urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/CA\/sonoma\/.*\/STR.*$/,
