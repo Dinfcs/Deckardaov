@@ -7,6 +7,7 @@
 // @author       Tu Nombre
 // @match        *://*/*
 // @grant        none
+// @run-at       document-start
 // ==/UserScript==
 
 (async function() {
