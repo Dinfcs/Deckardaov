@@ -8,65 +8,51 @@
 // @grant        GM_addStyle
 // @run-at       document-start
 // ==/UserScript==
-
-// Definir GM_addStyle si no está disponible
-if (typeof GM_addStyle === 'undefined') {
-    GM_addStyle = (css) => {
-        const style = document.createElement('style');
-        style.textContent = css;
-        document.head.appendChild(style);
-    };
-}
-
 GM_addStyle(`
-    /* Encabezados */
-    .cyborg-str-tool h1, .cyborg-str-tool h2, .cyborg-str-tool h3, .cyborg-str-tool h4, .cyborg-str-tool h5, .cyborg-str-tool h6 {
-        font-weight: bold !important;
-        color: #edede8 !important; /* Verde oliva oscuro */
+    /* Estilo general */
+    .cyborg-str-tool body {
+        background-color: #f7f7f5 !important;
+        color: #2d2d2d !important;
+        font-family: 'Arial', sans-serif !important;
         font-size: 15px !important;
     }
 
-    /* Resto de los botones */
+    /* Reducir tamaño del selector de página */
+    .cyborg-str-tool input.current-page {
+        width: 35px !important;  /* Reducido */
+        font-size: 12px !important;
+        text-align: center !important;
+        padding: 2px !important;
+        min-width: unset !important; /* Anula el min-width original */
+    }
+
+    /* Encabezados */
+    .cyborg-str-tool h1, .cyborg-str-tool h2, .cyborg-str-tool h3, .cyborg-str-tool h4, .cyborg-str-tool h5, .cyborg-str-tool h6 {
+        font-weight: bold !important;
+        color: #CAD92B !important; /* Verde oliva oscuro */
+        font-size: 16px !important;
+    }
+
+    /* Botones */
     .cyborg-str-tool button:not(.fancybox-button):not([data-test-id="float-window-minimize-or-restore-btn"]):not([data-test-id="float-window-close-btn"]),
     .cyborg-str-tool .btn:not(.fancybox-button):not([data-test-id="float-window-minimize-or-restore-btn"]):not([data-test-id="float-window-close-btn"]) {
-        background-color: #1b95bf !important; /* azul suave */
+        background-color: #23A9D8 !important; /* azul suave */
         color: white !important;
-        border-radius: 0px !important;
+        border-radius: 6px !important;
         padding: 5px 8px !important;
-        font-size: 14px !important;
+        font-size: 12px !important;
         border: none !important;
         transition: 0.3s ease-in-out !important;
     }
 
-    /* Estilo específico para el botón de Lina */
-    #btn_map_to_selected_probable_parcel {
-        margin-left: 8px !important; /* ajustar valor */
-        margin-right: 8px !important; /* ajustar valor */
-    }
-
-    /* Estilo específico para el botón de Show data lead per region */
-    #btn_show_data_lead_per_region {
-        margin-left: 8px !important; /* ajustar valor */
-    }
-
-    /* Estilo específico para el input */
-    .form-check-input[id="checkbox_only_show_parcels_with_associated_license"] {
-        margin-left: -2px !important; /* ajustar valor */
-    }
-
-    /* Estilo específico para el label */
-    .form-check-label.form-label[for="checkbox_only_show_parcels_with_associated_license"] {
-        margin-left: 18px !important; /* ajustar valor */
-    }
-
-    /* Estilo específico para el input de búsqueda */
-    .dash-input#input_street_number_hint {
-        margin-left: 15px !important; /* ajustar valor */
+    .cyborg-str-tool button:hover:not(.fancybox-button):not([data-test-id="float-window-minimize-or-restore-btn"]):not([data-test-id="float-window-close-btn"]),
+    .cyborg-str-tool .btn:hover:not(.fancybox-button):not([data-test-id="float-window-minimize-or-restore-btn"]):not([data-test-id="float-window-close-btn"]) {
+        background-color: #23A9D8 !important;
     }
 
     /* Botones específicos */
     .cyborg-str-tool .btn-success {
-        background-color: #edede8 !important; /* Verde para Same */
+        background-color: #CAD92B !important; /* Verde para Same */
     }
 
     .cyborg-str-tool .btn-primary {
@@ -106,14 +92,13 @@ GM_addStyle(`
 
     .cyborg-str-tool table th:not(.bg-secondary), .cyborg-str-tool table td:not(.bg-secondary) {
         border: 1px solid #ddd !important;
-        padding: 3px !important;
+        padding: 4px !important;
         text-align: left !important;
-        color: black !important; /* Cambia el color de las letras a negro */
     }
 
     .cyborg-str-tool table th:not(.bg-secondary) {
-        background-color: #edede8 !important; /* Verde oliva */
-        color: black !important; /* Cambia el color de las letras a negro */
+        background-color: #CAD92B !important; /* Verde oliva */
+        color: white !important;
         font-size: 12px !important;
     }
 
@@ -132,11 +117,25 @@ GM_addStyle(`
         background-color: #fff !important;
     }
 
+    /* Flechas de ordenación en azul */
+    .cyborg-str-tool th.sortable::after {
+        content: '\\25B2'; /* Flecha hacia arriba */
+        color: #23A9D8; /* Azul */
+        display: inline-block;
+        margin-left: 5px;
+    }
+
+    .cyborg-str-tool th.sortable.desc::after {
+        content: '\\25BC'; /* Flecha hacia abajo */
+        color: #23A9D8; /* Azul */
+    }
+
     /* Reducir tamaño del selector de página */
     .cyborg-str-tool .pagination input {
         width: 50px !important;
-        font-size: 11px !important;
+        font-size: 12px !important;
         text-align: center !important;
+        padding: 3px !important;
     }
 
     /* Espaciado general */
@@ -144,9 +143,17 @@ GM_addStyle(`
         padding: 10px !important;
     }
 
-    .cyborg-str-tool table th[data-dash-column="city_p"] {
-        min-width: 180px !important; /* ajustar valor */
-        max-width: 300px !important; /* ajustar valor */
+    /* Estilo para la ventana flotante
+    #window_vetting_dlg {
+        left: 153px !important;
+        top: 11px !important;
+        width: 1470px !important;
+        height: 687px !important;
+    } */
+
+    /* Excluir FancyBox y otros elementos */
+    .cyborg-str-tool *:not(.fancybox-button):not(.fancybox-toolbar):not(svg):not(.table-hover):not(.mxB2n6eUnlkVqa81npUQ):not([data-test-id="float-window-minimize-or-restore-btn"]):not([data-test-id="float-window-close-btn"]) {
+        /* Estilos excluidos */
     }
 `);
 
