@@ -6,7 +6,6 @@
 // @author       Tu Nombre
 // @match        *://*/*
 // @grant        GM_addStyle
-// @grant        none
 // ==/UserScript==
 
 (async function() {
@@ -44,7 +43,6 @@
         {
             urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/CA\/sonoma\/.*\/STR.*$/,
             scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/PrSonoma.js'
-                
         },
         {
             urlPattern: /^https:\/\/www\.google\.com\/maps\/place\/.*$/,
@@ -58,8 +56,6 @@
             urlPattern: /^https:\/\/cyborg\.deckard\.com\//,
             scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/StylesCyborg.js'
         }
-
-        
     ];
 
     for (const {urlPattern, scriptUrl} of scripts) {
