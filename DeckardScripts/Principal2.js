@@ -1,3 +1,4 @@
+
 // ==UserScript==
 // @name         Script Principal
 // @namespace    http://tampermonkey.net/
@@ -12,7 +13,7 @@
     'use strict';
 
     const scripts = [
-        {
+            {
             urlPattern: /^https:\/\/cyborg\.deckard\.com\//,
             scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgButtons.js'
         },
@@ -57,6 +58,8 @@
             urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/.*\/STR.*$/,
             scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/Viewer.js'
         }
+
+        
     ];
 
     for (const {urlPattern, scriptUrl} of scripts) {
@@ -67,15 +70,6 @@
                 script.src = scriptUrl;
                 script.onload = () => {
                     console.log(`Script loaded and executed: ${scriptUrl}`);
-                    // Espera un poco para asegurarte de que el script se ha cargado completamente
-                    setTimeout(() => {
-                        if (typeof extractImages === 'function') {
-                            console.log('Calling extractImages function...');
-                            extractImages();
-                        } else {
-                            console.error('extractImages function not found!');
-                        }
-                    }, 500); // Espera 1 segundo
                 };
                 script.onerror = () => {
                     console.error(`Error loading script ${scriptUrl}`);
