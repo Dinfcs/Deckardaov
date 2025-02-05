@@ -33,13 +33,13 @@
         button.innerHTML = 'Nearby Parcels'; // Texto en negrita
         button.style.marginLeft = '5px'; // Margen para separarlo de otros botones
         button.style.width = '115px'; // Ancho del botón
-        button.style.height = '28.2px'; // Alto del botón
-        button.style.top = '0px';
+        button.style.height = '28.4px'; // Alto del botón
         button.style.backgroundColor = '#2C3E50';
         button.style.color = 'white';
         button.style.fontSize = '14px';
+        button.style.position = 'relative'; // Posición absoluta dentro del contenedor padre
         button.style.fontFamily = ' Arial, sans-serif'
-        button.style.top = '0px'; // Pegado a la parte superior
+        button.style.top = '-1px'; // Pegado a la parte superior
         button.style.zIndex = '0'; // Asegura que esté por encima de otros elementos
 
         // Añade el botón al div con la clase 'card-footer'
