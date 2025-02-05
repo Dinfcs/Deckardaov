@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         V234
-// @version      3.0
+// @version      3.1
 // @description  Image carousel with keyboard navigation and adaptive thumbnail layout using Viewer.js.
 // @author       ChatGPT
 // @match        https://cyborg.deckard.com/listing/*
