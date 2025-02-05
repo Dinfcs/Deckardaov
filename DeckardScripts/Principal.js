@@ -52,13 +52,7 @@
         {
             urlPattern: /^https:\/\/www\.bing\.com\/maps.*$/,
             scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/Buscador.js'
-        },
-        {
-            urlPattern: /^https:\/\/cyborg\.deckard\.com\//,
-            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/StylesCyborg.js'
-        }
-
-        
+        }        
     ];
 
     for (const {urlPattern, scriptUrl} of scripts) {
