@@ -6,7 +6,7 @@
 // @author       [Tu Nombre]
 // @match        https://cyborg.deckard.com/*
 // @grant        GM_addStyle
-// @run-at       document-start
+// @run-at       document-end
 // ==/UserScript==
 GM_addStyle(`
     /* Estilo general */
