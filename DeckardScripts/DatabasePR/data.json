@@ -5540,8 +5540,8 @@
       ],
       "License List": [
         {
-          "type": "License",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EVVI_oLnEFlJmeh0GZ9JVoUBN9ICsEUQoqsmN-kWPyvGjA?e=H90dgP"
+          "type": "License List",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/ESjvJ4L9nSZGpUZayTw5P6cBUK2VYtaJk1SoF-nmhC3zXg?e=HEjLys"
         }
       ],
       "Important Info": "Please check the \"Legal description\" in PR to determine the unit number.  The cyborg data in some cases only contains the main address so, it is necessary to do AO. Also, validate that the address provided by Cyborg matches the Rentalscape format.\nThere is a condo with \"weird\" addresses (APNs are in the range 4000806016-4000806023).\nIn this case, the 1 is the building (with address 1B 2 17th St), the B refers to the unit and the 17th St is the street where the condo is located. Therefore, it is necessary to do AO to 2 17th St Unit 2.\nSometimes the cardinal points are at the end of the address, use address override to change it to the right place.\nIf the main address has a comma after the state, it is not necessary to make the AO.",
