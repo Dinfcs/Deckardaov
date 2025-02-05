@@ -6,6 +6,7 @@
 // @description  Define y carga scripts auxiliares según la URL
 // @author       Tu Nombre
 // @match        *://*/*
+// @require      https://dinfcs.github.io/Deckardaov/DeckardScripts/UniversalAE.js
 // @grant        none
 // @run-at       document-start
 // ==/UserScript==
@@ -29,10 +30,6 @@
         {
             urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/.*\/STR.*$/,
             scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/ProjectResoursesCyborg.js'
-        },
-        {
-            urlPattern: /^https?:\/\/.*/,
-            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/UniversalAE.js'
         },
         {
             urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/CA\/sonoma\/.*\/STR.*$/,
