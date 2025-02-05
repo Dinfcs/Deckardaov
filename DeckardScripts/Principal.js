@@ -1,3 +1,4 @@
+
 // ==UserScript==
 // @name         Script Principal
 // @namespace    http://tampermonkey.net/
@@ -6,13 +7,14 @@
 // @author       Tu Nombre
 // @match        *://*/*
 // @grant        none
+// @run-at       document-start
 // ==/UserScript==
 
 (async function() {
     'use strict';
 
     const scripts = [
-        {
+            {
             urlPattern: /^https:\/\/cyborg\.deckard\.com\//,
             scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgButtons.js'
         },
@@ -43,7 +45,7 @@
         {
             urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/CA\/sonoma\/.*\/STR.*$/,
             scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/PrSonoma.js'
-                
+
         },
         {
             urlPattern: /^https:\/\/www\.google\.com\/maps\/place\/.*$/,
@@ -52,9 +54,11 @@
         {
             urlPattern: /^https:\/\/www\.bing\.com\/maps.*$/,
             scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/Buscador.js'
-        }
-
-        
+        },
+                {
+            urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/.*\/STR.*$/,
+            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/Viewer.js'
+        }        
     ];
 
     for (const {urlPattern, scriptUrl} of scripts) {
