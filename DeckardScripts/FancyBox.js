@@ -1,9 +1,9 @@
 // ==UserScript==
-// @name         Fancybox Image Carousel for Listings
+// @name         FancyboxListing
 // @namespace    http://tampermonkey.net/
-// @version      2.7
-// @description  Extract and display images in a carousel using Fancybox with enhanced zoom functionality, transparent modal background, and thumbnail navigation. Automatically executes Fancybox 2 seconds after clicking on a specific image/icon, and closes any open modals when Fancybox is closed.
-// @author       Lucho
+// @version      2.8
+// @description  Extract and display images in a carousel using Fancybox with enhanced zoom functionality, transparent modal background, thumbnail navigation, and a floating camera icon. Automatically executes Fancybox 2 seconds after clicking on the camera icon and closes any open modals when Fancybox is closed.
+// @author       ChatGPT
 // @match        https://cyborg.deckard.com/listing/*
 // @grant        GM_addStyle
 // ==/UserScript==
@@ -34,13 +34,44 @@
     addScript('https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js');
     addScript('https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.thumbs.min.js');
 
-    // Ajustar el tamaño de la imagen con id="btn_show_all_images"
+    // Agregar estilos para la camarita flotante
     GM_addStyle(`
-        #btn_show_all_images {
-            height: 25px !important;
-            width: 25px !important;
+        #floatingCamera {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #floatingCamera img {
+            width: 70%;
+            height: 70%;
         }
     `);
+
+    // Crear camarita flotante
+    let floatingCamera = document.createElement('button');
+    floatingCamera.id = "floatingCamera";
+    floatingCamera.innerHTML = '<img src="/assets/image/up-right-from-square-solid.svg" alt="Camera">';
+    document.body.appendChild(floatingCamera);
+
+    // Función para ejecutar el mismo comportamiento que el botón original
+    function triggerOriginalButton() {
+        const originalButton = document.getElementById("btn_show_all_images");
+        if (originalButton) {
+            originalButton.click();
+        }
+    }
 
     // Función para extraer imágenes y abrir Fancybox
     function extractImages() {
@@ -86,25 +117,13 @@
         }
     }
 
-    // Función para verificar la existencia del elemento e iniciar el evento de clic
-    function setupClickEvent() {
-        const iconElement = document.getElementById("btn_show_all_images");
-        if (iconElement) {
-            console.log('Icon found, adding click event...');
-            iconElement.addEventListener("click", () => {
-                console.log('Icon clicked, waiting 2 seconds...');
-                setTimeout(() => {
-                    extractImages();
-                }, 500); // Esperar 2 segundos
-            });
-        } else {
-            console.log('Icon not found, retrying...');
-            // Si el elemento no está disponible, esperar y volver a intentar
-            setTimeout(setupClickEvent, 500);
-        }
-    }
-
-    // Iniciar la configuración del evento de clic
-    setupClickEvent();
+    // Evento para esperar 2 segundos y abrir Fancybox al hacer clic en la camarita flotante
+    floatingCamera.addEventListener("click", () => {
+        console.log('Camera clicked, waiting 2 seconds...');
+        triggerOriginalButton();
+        setTimeout(() => {
+            extractImages();
+        }, 2000); // Esperar 2 segundos
+    });
 
 })();
