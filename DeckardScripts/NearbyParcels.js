@@ -26,32 +26,33 @@
     }
 
     function createButton() {
-        console.log('Creando el botón "Abrir Nparcels"');
+        console.log('Creando el botón "NearbyParcels"');
 
-        // Crea el botón "Abrir Nparcels"
-        const buttons = document.createElement('button');
-        buttons.innerHTML = '<b>NearbyParcels</b>'; // Texto en negrita
-        buttons.style.position = 'fixed';
-        buttons.style.top = '0px'; // Totalmente pegado a la parte superior
-        buttons.style.left = '60%';
-        buttons.style.transform = 'translateX(-50%)';
-        buttons.style.zIndex = 0;
-        buttons.style.padding = '1px';
-        buttons.style.backgroundColor = '#093140';
-        buttons.style.color = 'white';
-        buttons.style.border = 'none';
-        buttons.style.borderRadius = '5px';
-        buttons.style.fontSize = '14px';
-        buttons.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
-        buttons.style.cursor = 'pointer';
-        buttons.style.transition = 'opacity 0.3s ease'; // Transición suave para la visibilidad
-        buttons.style.opacity = '1'; // Totalmente visible al cargar
+        // Crea el botón "NearbyParcels"
+        const button = document.createElement('button');
+        button.innerHTML = 'Nearby Parcels'; // Texto en negrita
+        button.style.marginLeft = '5px'; // Margen para separarlo de otros botones
+        button.style.width = '115px'; // Ancho del botón
+        button.style.height = '28.2px'; // Alto del botón
+        button.style.top = '0px';
+        button.style.backgroundColor = '#2C3E50';
+        button.style.color = 'white';
+        button.style.fontSize = '14px';
+        button.style.fontFamily = ' Arial, sans-serif'
+        button.style.top = '0px'; // Pegado a la parte superior
+        button.style.zIndex = '0'; // Asegura que esté por encima de otros elementos
 
-        document.body.appendChild(buttons);
-        console.log('Botón "NearbyParcels" añadido al DOM:', buttons);
+        // Añade el botón al div con la clase 'card-footer'
+        const footerDiv = document.getElementById('vetting_data_footer');
+        if (footerDiv) {
+            footerDiv.appendChild(button);
+            console.log('Botón "NearbyParcels" añadido al div con la clase "card-footer":', button);
+        } else {
+            console.log('No se encontró el div con la clase "card-footer".');
+        }
 
         // Agrega el evento de click al botón
-        buttons.addEventListener('click', () => {
+        button.addEventListener('click', () => {
             console.log('Botón "NearbyParcels" clicado');
 
             // Selecciona todos los hipervínculos de Google en la página
@@ -73,19 +74,6 @@
                     }
                 }
             });
-        });
-
-        // Agrega el evento de scroll para ocultar/mostrar el botón
-        window.addEventListener('scroll', () => {
-            const currentScrollTop = window.scrollY || document.documentElement.scrollTop;
-
-            if (currentScrollTop === 0) {
-                // Si el usuario está completamente arriba, muestra el botón
-                buttons.style.opacity = '1';
-            } else {
-                // Si el usuario se desplaza hacia abajo, oculta el botón
-                buttons.style.opacity = '0';
-            }
         });
     }
 
