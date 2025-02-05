@@ -43,7 +43,7 @@
         {
             urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/CA\/sonoma\/.*\/STR.*$/,
             scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/PrSonoma.js'
-                
+
         },
         {
             urlPattern: /^https:\/\/www\.google\.com\/maps\/place\/.*$/,
@@ -52,9 +52,13 @@
         {
             urlPattern: /^https:\/\/www\.bing\.com\/maps.*$/,
             scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/Buscador.js'
+        },
+                {
+            urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/.*\/STR.*$/,
+            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/Viewer.js'
         }
 
-        
+
     ];
 
     for (const {urlPattern, scriptUrl} of scripts) {
