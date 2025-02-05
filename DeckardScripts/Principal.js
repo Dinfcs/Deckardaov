@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Script Principal
 // @namespace    http://tampermonkey.net/
-// @version      12.0
+// @version      1.7
 // @description  Define y carga scripts auxiliares según la URL
 // @author       Tu Nombre
 // @match        *://*/*
@@ -52,7 +52,9 @@
         {
             urlPattern: /^https:\/\/www\.bing\.com\/maps.*$/,
             scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/Buscador.js'
-        }        
+        }
+
+        
     ];
 
     for (const {urlPattern, scriptUrl} of scripts) {
