@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         estilos sin gm
+// @name         Stilos para Cyborg
 // @namespace    http://tampermonkey.net/
 // @version      1.3
 // @description  Ajusta los estilos con colores más suaves, tamaños optimizados y filtros persistentes en tablas
