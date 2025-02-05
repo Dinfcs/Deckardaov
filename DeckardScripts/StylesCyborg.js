@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Mejora de estilos - Cyborg STR Tool (Optimizado)
 // @namespace    http://tampermonkey.net/
-// @version      2.9
+// @version      1.2
 // @description  Ajusta los estilos con colores más suaves, tamaños optimizados y filtros persistentes en tablas
 // @author       [Tu Nombre]
 // @match        https://cyborg.deckard.com/*
@@ -9,11 +9,20 @@
 // @run-at       document-start
 // ==/UserScript==
 
+// Definir GM_addStyle si no está disponible
+if (typeof GM_addStyle === 'undefined') {
+    GM_addStyle = (css) => {
+        const style = document.createElement('style');
+        style.textContent = css;
+        document.head.appendChild(style);
+    };
+}
+
 GM_addStyle(`
     /* Encabezados */
     .cyborg-str-tool h1, .cyborg-str-tool h2, .cyborg-str-tool h3, .cyborg-str-tool h4, .cyborg-str-tool h5, .cyborg-str-tool h6 {
         font-weight: bold !important;
-        color: #C9D82B !important; /* Verde oliva oscuro */
+        color: #edede8 !important; /* Verde oliva oscuro */
         font-size: 15px !important;
     }
 
