@@ -98,6 +98,10 @@
                 outline: none !important;
                 background-color: #fff !important;
             }
+            .cyborg-str-tool table th[data-dash-column="city_p"] {
+            min-width: 180px !important; /* ajustar valor */
+            max-width: 300px !important; /* ajustar valor */
+    }
         `);
 
         document.body.classList.add('cyborg-str-tool');
