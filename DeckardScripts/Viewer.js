@@ -1,34 +1,36 @@
 // ==UserScript==
-// @name         Viewerjs Image Carousel for Listings
-// @namespace    http://tampermonkey.net/
+// @name         V234
 // @version      3.0
 // @description  Image carousel with keyboard navigation and adaptive thumbnail layout using Viewer.js.
 // @author       ChatGPT
 // @match        https://cyborg.deckard.com/listing/*
-// @grant        GM_addStyle
 // ==/UserScript==
 
 (function() {
     'use strict';
 
     const addResource = (type, src) => {
-        const element = type === 'script' ? document.createElement('script') : document.createElement('link');
+        const element = document.createElement(type === 'script' ? 'script' : 'link');
         if (type === 'script') {
             element.src = src;
             element.type = 'text/javascript';
-            element.async = false;
         } else {
             element.href = src;
             element.rel = 'stylesheet';
-            element.type = 'text/css';
         }
         document.head.appendChild(element);
     };
 
-    addResource('style', 'https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.10.4/viewer.min.css');
+    addResource('link', 'https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.10.4/viewer.min.css');
     addResource('script', 'https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.10.4/viewer.min.js');
 
-    GM_addStyle(`
+    const addStyle = (css) => {
+        const style = document.createElement('style');
+        style.textContent = css;
+        document.head.appendChild(style);
+    };
+
+    addStyle(`
         #btn_show_all_images {
             height: 25px !important;
             width: 25px !important;
@@ -41,12 +43,12 @@
             height: 100%;
             background: rgba(0, 0, 0, 0.5);
             display: grid;
-            gap: 15px; /* Más espacio entre miniaturas */
+            gap: 15px;
             padding: 10px;
             border-left: 2px solid #fff;
             box-shadow: -2px 0 10px rgba(0, 0, 0, 0.5);
             overflow-y: auto;
-            width: 350px; /* Aumentar el ancho del frame */
+            width: 350px;
         }
         #thumbsContainer img {
             width: 100%;
@@ -59,10 +61,10 @@
             transform: scale(1.1);
         }
         .viewer-canvas {
-            background: rgba(0, 0, 0, 0.8); /* Fondo más oscuro detrás de las imágenes */
+            background: rgba(0, 0, 0, 0.8);
         }
         .current-thumbnail {
-            border: 2px solid yellow; /* Resaltar la miniatura actual */
+            border: 2px solid yellow;
         }
     `);
 
@@ -81,9 +83,9 @@
             }
         }
 
-        if (imageLinks.length === 0 && retryCount < 5) { // Retry up to 5 times
+        if (imageLinks.length === 0 && retryCount < 5) {
             console.log(`Retrying... Attempt ${retryCount + 1}`);
-            setTimeout(() => extractImages(retryCount + 1), 1000); // Wait 1 second before retrying
+            setTimeout(() => extractImages(retryCount + 1), 1000);
             return;
         }
 
@@ -94,7 +96,7 @@
 
         const thumbsContainer = document.createElement('div');
         thumbsContainer.id = "thumbsContainer";
-        thumbsContainer.style.gridTemplateColumns = imageLinks.length < 13 ? "1fr" : "repeat(2, 1fr)"; // Dos columnas si hay 6 o más
+        thumbsContainer.style.gridTemplateColumns = imageLinks.length < 13 ? "1fr" : "repeat(2, 1fr)";
 
         imageLinks.forEach((thumbUrl, index) => {
             const img = document.createElement('img');
@@ -154,7 +156,6 @@
         });
 
         viewer.show();
-
         document.addEventListener('keydown', handleKeyNavigation);
     }
 
