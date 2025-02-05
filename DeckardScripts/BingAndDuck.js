@@ -97,6 +97,7 @@
                 // Crear botón de Bing Maps
                 const bingButton = document.createElement('img');
                 bingButton.src = 'https://www.bing.com/sa/simg/favicon-2x.ico'; // Ícono de Bing
+                bingButton.style.marginLeft = '5px'; // Margen para separarlo de otros botones
                 bingButton.style.width = '30px';
                 bingButton.style.height = '30px';
                 bingButton.style.cursor = 'pointer';
@@ -107,6 +108,7 @@
                 // Crear botón de DuckDuckGo Maps
                 const duckButton = document.createElement('img');
                 duckButton.src = 'https://duckduckgo.com/favicon.ico'; // Ícono de DuckDuckGo
+                duckButton.style.marginLeft = '5px'; // Margen para separarlo de otros botones
                 duckButton.style.width = '30px';
                 duckButton.style.height = '30px';
                 duckButton.style.cursor = 'pointer';
