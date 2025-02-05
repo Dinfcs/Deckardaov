@@ -9874,7 +9874,7 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "To search Public Records, use the property address or follow this APN format:\n\n◆ Example: APN from Cyborg OAKBM0003B0154L003 → 3-154-3.\n\n1. Take the first number after the initial zeros: 3\n2. Grab the next three numbers after \"B0.\": 154\n3. Add the last digit (unless it's zero): 3\n4. Separate each part with a dash (-).\n\n• If the last number is zero 0: \n\n◆ Example: APN Cyborg OAKBM0003B0122L000 → 3-122\n\nNote: To select the aerial image in GIS, open the right-side menu, click \"Basemap,\" and then choose \"Imagery.\"",
+      "Important Info": "To search Public Records, use the property address or follow this APN format:\n\n◆ Example: APN from Cyborg OAKBM0003B0154L003 → 3-154-3.\n\n1. Take the first number after the initial zeros: 3\n2. Grab the next three numbers after \"B0.\": 154\n3. Add the last digit (unless it's zero): 3\n4. Separate each part with a dash (-).\n\n• If the last number is zero 0: \n\n◆ Example: APN Cyborg OAKBM0003B0122L000 → 3-122\n\nNote: To select the aerial image in GIS, open the right-side menu, click \"Basemap,\" and then choose \"Imagery.\"\n\nFor the condo located at Island Inn, here’s a quick guide:\n\n1. Unit and Block:\n✦ The unit number in the listing (e.g., 50G) indicates the block. The letter G corresponds to Block G on the map.\n\n2. Addresses:\n✦ Each block has a different address. For example, Block G includes units 28 to 51 and is located at 21 Island Inn Rd.\n\n✦ Exact Location:\nWithin the block, start counting from the first unit. In Block G, unit 28 is A, and unit 50 is W.\n\nUse the map to find the block, address, and unit easily. 😊",
       "Media": [
         {
           "type": "N/A",
