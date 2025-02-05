@@ -180,6 +180,6 @@ window.addEventListener('DOMContentLoaded', () => {
                     input.value = filtros[input.name];
                 }
             });
-        }, 500);
+        }, 1000);
     }, 0); // Ejecutar después de otros scripts
 });
