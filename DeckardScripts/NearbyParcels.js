@@ -33,7 +33,7 @@
         button.innerHTML = 'Nearby Parcels'; // Texto en negrita
         button.style.marginLeft = '5px'; // Margen para separarlo de otros botones
         button.style.width = '115px'; // Ancho del botón
-        button.style.height = '28.4px'; // Alto del botón
+        button.style.height = '30.4px'; // Alto del botón
         button.style.backgroundColor = '#2C3E50';
         button.style.color = 'white';
         button.style.fontSize = '14px';
