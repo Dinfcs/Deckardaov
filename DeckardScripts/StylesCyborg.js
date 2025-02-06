@@ -110,8 +110,6 @@
     }
 
     .cyborg-str-tool table th:not(#window_vetting_dlg *):not(#vetting_data_footer *):not(.bg-secondary):not(.pop_up_header_container *), .cyborg-str-tool table td:not(#window_vetting_dlg *):not(#vetting_data_footer *):not(.bg-secondary):not(.pop_up_header_container *) {
-        border: 1px solid #ddd !important;
-        padding: 3px !important;
         text-align: left !important;
         color: black !important; /* Cambia el color de las letras a negro */
     }
