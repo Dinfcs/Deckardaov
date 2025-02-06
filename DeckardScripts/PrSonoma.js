@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         PR Sonoma
 // @namespace    http://tampermonkey.net/
-// @version      0.9
+// @version      2
 // @description  Mostrar botón flotante para buscar APN en PR al detectar un cambio en el portapapeles
 // @author       Tu nombre
 // @match        https://cyborg.deckard.com/listing/CA/sonoma/_/STR*
