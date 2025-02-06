@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         estilos sin gm
 // @namespace    http://tampermonkey.net/
-// @version      1.3
+// @version      1.9
 // @description  Ajusta los estilos con colores más suaves, tamaños optimizados y filtros persistentes en tablas
 // @author       [Tu Nombre]
 // @match        https://cyborg.deckard.com/*
@@ -127,24 +127,6 @@
         padding: 5px !important;
         font-size: 12px !important;
         width: 100% !important;
-    }
-
-    .cyborg-str-tool input:focus:not(#window_vetting_dlg *):not(#vetting_data_footer *):not(.pop_up_header_container *), .cyborg-str-tool select:focus:not(#window_vetting_dlg *):not(#vetting_data_footer *):not(.pop_up_header_container *), .cyborg-str-tool textarea:focus:not(#window_vetting_dlg *):not(#vetting_data_footer *):not(.pop_up_header_container *) {
-        border-color: #4a6984 !important; /* Azul suave */
-        outline: none !important;
-        background-color: #fff !important;
-    }
-
-    /* Reducir tamaño del selector de página */
-    .cyborg-str-tool .pagination input:not(#window_vetting_dlg *):not(#vetting_data_footer *):not(.pop_up_header_container *) {
-        width: 50px !important;
-        font-size: 11px !important;
-        text-align: center !important;
-    }
-
-    /* Espaciado general */
-    .cyborg-str-tool .container:not(#window_vetting_dlg *):not(#vetting_data_footer *):not(.pop_up_header_container *), .cyborg-str-tool .content:not(#window_vetting_dlg *):not(#vetting_data_footer *):not(.pop_up_header_container *) {
-        padding: 10px !important;
     }
 
     .cyborg-str-tool table th[data-dash-column="city_p"]:not(#window_vetting_dlg *):not(#vetting_data_footer *):not(.pop_up_header_container *) {
