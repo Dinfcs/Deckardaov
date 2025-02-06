@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Fancybox Image Carousel for Listings
 // @namespace    http://tampermonkey.net/
-// @version      2.7
+// @version      2.9
 // @description  Extract and display images in a carousel using Fancybox with enhanced zoom functionality, transparent modal background, and thumbnail navigation. Automatically executes Fancybox 2 seconds after clicking on a specific image/icon, and closes any open modals when Fancybox is closed. Added keyboard navigation with 'a', 'd', 'w', and 's' keys.
 // @author       ChatGPT
 // @match        https://cyborg.deckard.com/listing/*
