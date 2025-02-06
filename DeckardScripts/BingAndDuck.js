@@ -101,7 +101,6 @@
                 bingButton.style.width = '30px';
                 bingButton.style.height = '30px';
                 bingButton.style.cursor = 'pointer';
-                bingButton.title = 'Buscar en Bing Maps';
                 bingButton.onclick = openBingMaps;
                 iconContainer.appendChild(bingButton);
 
@@ -112,7 +111,6 @@
                 duckButton.style.width = '30px';
                 duckButton.style.height = '30px';
                 duckButton.style.cursor = 'pointer';
-                duckButton.title = 'Buscar en DuckDuckGo Maps';
                 duckButton.onclick = openDuckMaps;
                 iconContainer.appendChild(duckButton);
 
