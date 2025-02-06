@@ -1,225 +1,160 @@
 // ==UserScript==
-// @name         Fancybox Image Carousel for Listings
+// @name         estilos sin gm
 // @namespace    http://tampermonkey.net/
-// @version      2.7
-// @description  Extract and display images in a carousel using Fancybox with enhanced zoom functionality, transparent modal background, and thumbnail navigation. Automatically executes Fancybox 2 seconds after clicking on a specific image/icon, and closes any open modals when Fancybox is closed. Added keyboard navigation with 'a', 'd', 'w', and 's' keys.
-// @author       ChatGPT
-// @match        https://cyborg.deckard.com/listing/*
+// @version      1.4
+// @description  Ajusta los estilos con colores más suaves, tamaños optimizados y filtros persistentes en tablas
+// @author       [Tu Nombre]
+// @match        https://cyborg.deckard.com/*
+// @grant        none
 // ==/UserScript==
 
 (function() {
     'use strict';
 
-    // Función para agregar un script o estilo al documento
-    const addResource = (type, src) => {
-        const element = type === 'script' ? document.createElement('script') : document.createElement('link');
-        if (type === 'script') {
-            element.src = src;
-            element.type = 'text/javascript';
-            element.async = false;
-        } else {
-            element.href = src;
-            element.rel = 'stylesheet';
-            element.type = 'text/css';
-        }
-        document.head.appendChild(element);
-    };
-
-    // Función para agregar estilos al documento
     const addStyle = (css) => {
+        // Verifica si los estilos ya fueron añadidos
+        if (document.querySelector('#custom-cyborg-styles')) return;
+
         const style = document.createElement('style');
+        style.id = 'custom-cyborg-styles';
         style.textContent = css;
         document.head.appendChild(style);
     };
 
-    // Agregar estilos y scripts de Viewer.js
-    addResource('style', 'https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.10.4/viewer.min.css');
-    addResource('script', 'https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.10.4/viewer.min.js');
-
-    // Ajustar el tamaño del ícono de la imagen con id="btn_show_all_images"
-    addStyle(`
-        #btn_show_all_images {
-            height: 25px !important;
-            width: 25px !important;
-        }
-        #thumbsContainer {
-            position: fixed;
-            right: 0;
-            top: 0;
-            z-index: 9999;
-            height: 100%;
-            width: 150px;
-            background: rgba(0, 0, 0, 0.5);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            padding-top: 20px;
-            border-left: 2px solid #fff;
-            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.5);
-            overflow-y: auto;
-        }
-        #thumbsContainer img {
-            width: 100px;
-            height: auto;
-            margin-bottom: 10px;
-            cursor: pointer;
-            transition: transform 0.3s ease, opacity 0.3s ease;
-        }
-        #thumbsContainer img:hover {
-            opacity: 0.7;
-            transform: scale(1.1);
-        }
-        #escapeNotice {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 10000;
-            background: rgba(0, 0, 0, 0.8);
-            color: #fff;
-            padding: 15px 25px;
-            border-radius: 8px;
-            font-size: 16px;
-            display: none;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-        }
-    `);
-
-    let viewer;
-
-    // Función para extraer imágenes y abrir Viewer.js
-    function extractImages() {
-        console.log('Extracting images...');
-        const imageLinks = Array.from(document.querySelectorAll("a[href^='https://deckard-imddb-us-west']")).map(anchor => anchor.href);
-
-        if (imageLinks.length === 0) {
-            alert("No images found!");
+    const applyStyles = () => {
+        if (!document.head) {
+            setTimeout(applyStyles, 50);
             return;
         }
 
-        // Crear contenedor de miniaturas
-        const thumbsContainer = document.createElement('div');
-        thumbsContainer.id = "thumbsContainer";
-
-        imageLinks.forEach((thumbUrl, index) => {
-            const img = document.createElement('img');
-            img.src = thumbUrl;
-            img.alt = "Thumbnail";
-            img.addEventListener('click', () => viewer.view(index));
-            thumbsContainer.appendChild(img);
-        });
-
-        document.body.appendChild(thumbsContainer);
-
-        // Crear contenedor de notificación de escape
-        const escapeNotice = document.createElement('div');
-        escapeNotice.id = "escapeNotice";
-        escapeNotice.innerText = "Press the Escape key to close";
-        document.body.appendChild(escapeNotice);
-
-        // Mostrar la notificación de escape con animación
-        setTimeout(() => {
-            escapeNotice.style.display = 'block';
-            setTimeout(() => escapeNotice.style.opacity = 1, 100);
-        }, 200);
-
-        // Cerrar la notificación después de 3 segundos
-        setTimeout(() => {
-            escapeNotice.style.opacity = 0;
-            setTimeout(() => escapeNotice.style.display = 'none', 500);
-        }, 3000);
-
-        // Crear contenedor de imágenes para Viewer.js
-        const imageContainer = document.createElement('div');
-        imageContainer.id = "imageViewerContainer";
-        imageContainer.style.display = "none";
-
-        imageLinks.forEach(imgUrl => {
-            const img = document.createElement('img');
-            img.src = imgUrl;
-            imageContainer.appendChild(img);
-        });
-
-        document.body.appendChild(imageContainer);
-
-        // Inicializamos Viewer.js
-        viewer = new Viewer(imageContainer, {
-            inline: false,
-            button: true,
-            navbar: false,
-            title: false,
-            toolbar: {
-                zoomIn: 1,
-                zoomOut: 1,
-                oneToOne: 1,
-                reset: 1,
-                prev: 1,
-                next: 1,
-                rotateLeft: 1,
-                rotateRight: 1,
-                flipHorizontal: 1,
-                flipVertical: 1,
-            },
-            viewed() {
-                viewer.zoomTo(1);
-            },
-            hidden() {
-                thumbsContainer.remove();
-                imageContainer.remove();
-                closeFloatingWindows();
-            }
-        });
-
-        viewer.show();
-        document.addEventListener('keydown', handleKeyNavigation);
+        addStyle(`
+    /* Encabezados */
+    .cyborg-str-tool h1, .cyborg-str-tool h2, .cyborg-str-tool h3, .cyborg-str-tool h4, .cyborg-str-tool h5, .cyborg-str-tool h6:not(.pop_up_header_container *) {
+        font-weight: bold !important;
+        color: #C9D82B !important; /* Verde oliva oscuro */
+        font-size: 15px !important;
     }
 
-    // Función para manejar la navegación con el teclado
-    function handleKeyNavigation(e) {
-        if (!viewer) return;
-        switch (e.key.toLowerCase()) {
-            case 'd': viewer.next(); break;
-            case 'a': viewer.prev(); break;
-            case 'w': viewer.zoom(0.1); break;
-            case 's': viewer.zoom(-0.1); break;
-            case 'r': viewer.reset(); break;
-        }
+    /* Resto de los botones */
+    .cyborg-str-tool button:not(.fancybox-button):not([data-test-id="float-window-minimize-or-restore-btn"]):not([data-test-id="float-window-close-btn"]):not(.pop_up_header_container *),
+    .cyborg-str-tool .btn:not(.fancybox-button):not([data-test-id="float-window-minimize-or-restore-btn"]):not([data-test-id="float-window-close-btn"]):not(.pop_up_header_container *) {
+        background-color: #1b95bf !important; /* azul suave */
+        color: white !important;
+        border-radius: 0px !important;
+        padding: 5px 8px !important;
+        font-size: 14px !important;
+        border: none !important;
+        transition: 0.3s ease-in-out !important;
     }
 
-    // Función para verificar la existencia del ícono y añadir el evento de clic
-    function setupClickEvent() {
-        const iconElement = document.getElementById("btn_show_all_images");
-        if (iconElement) {
-            console.log('Icon found, adding click event...');
-            iconElement.addEventListener("click", () => setTimeout(extractImages, 500));
-        } else {
-            console.log('Icon not found, retrying...');
-            setTimeout(setupClickEvent, 500);
-        }
+    /* Estilo específico para el botón de Lina */
+    #btn_map_to_selected_probable_parcel {
+        margin-left: 8px !important; /* ajustar valor */
+        margin-right: 8px !important; /* ajustar valor */
     }
 
-    // Función para cerrar las ventanas flotantes
-    function closeFloatingWindows() {
-        const closeButton = document.querySelector("button.btn-close[aria-label='Close']");
-        closeButton?.click();
+    /* Estilo específico para el botón de Show data lead per region */
+    #btn_show_data_lead_per_region {
+        margin-left: 8px !important; /* ajustar valor */
     }
 
-    // Función para cerrar todo cuando se presiona la tecla Escape
-    function closeOnEscape(e) {
-        if (e.key === 'Escape') {
-            document.getElementById('thumbsContainer')?.remove();
-            document.getElementById('imageViewerContainer')?.remove();
-            document.getElementById('escapeNotice')?.remove();
-            closeFloatingWindows();
-        }
+    /* Estilo específico para el input */
+    .form-check-input[id="checkbox_only_show_parcels_with_associated_license"] {
+        margin-left: -2px !important; /* ajustar valor */
     }
 
-    // Iniciar la configuración del evento de clic
-    setupClickEvent();
+    /* Estilo específico para el label */
+    .form-check-label.form-label[for="checkbox_only_show_parcels_with_associated_license"] {
+        margin-left: 18px !important; /* ajustar valor */
+    }
 
-    // Escuchar la tecla Escape para cerrar la interfaz
-    window.addEventListener('keydown', closeOnEscape);
+    /* Estilo específico para el input de búsqueda */
+    .dash-input#input_street_number_hint {
+        margin-left: 15px !important; /* ajustar valor */
+    }
 
+    /* Enlaces */
+    .cyborg-str-tool a:not(.pop_up_header_container *) {
+        color: #919292 !important; /* Gris para enlaces sin abrir */
+        text-decoration: none !important;
+        font-weight: normal !important;
+    }
+
+    .cyborg-str-tool a:visited:not(.pop_up_header_container *) {
+        color: #23A9D8 !important; /* Azul para enlaces visitados */
+    }
+
+    .cyborg-str-tool a:hover:not(.pop_up_header_container *) {
+        color: #23A9D8 !important;
+        text-decoration: underline !important;
+    }
+
+    /* Tablas */
+    .cyborg-str-tool table:not(.table-hover):not(.pop_up_header_container *) {
+        border-collapse: collapse !important;
+        width: 100% !important;
+        font-size: 12px !important;
+    }
+
+    .cyborg-str-tool table th:not(.bg-secondary):not(.pop_up_header_container *), .cyborg-str-tool table td:not(.bg-secondary):not(.pop_up_header_container *) {
+        border: 1px solid #ddd !important;
+        padding: 3px !important;
+        text-align: left !important;
+        color: black !important; /* Cambia el color de las letras a negro */
+    }
+
+    .cyborg-str-tool table th:not(.bg-secondary):not(.pop_up_header_container *) {
+        background-color: #edede8 !important; /* Verde oliva */
+        color: black !important; /* Cambia el color de las letras a negro */
+        font-size: 12px !important;
+    }
+
+    /* Estilo de los campos de filtro */
+    .cyborg-str-tool table input[type="text"]:not(.pop_up_header_container *) {
+        background-color: #eeeeee !important; /* Gris claro para campos de filtro */
+        border: 1px solid #ccc !important; /* Borde gris */
+        padding: 5px !important;
+        font-size: 12px !important;
+        width: 100% !important;
+    }
+
+    .cyborg-str-tool input:focus:not(.pop_up_header_container *), .cyborg-str-tool select:focus:not(.pop_up_header_container *), .cyborg-str-tool textarea:focus:not(.pop_up_header_container *) {
+        border-color: #4a6984 !important; /* Azul suave */
+        outline: none !important;
+        background-color: #fff !important;
+    }
+
+    /* Reducir tamaño del selector de página */
+    .cyborg-str-tool .pagination input:not(.pop_up_header_container *) {
+        width: 50px !important;
+        font-size: 11px !important;
+        text-align: center !important;
+    }
+
+    /* Espaciado general */
+    .cyborg-str-tool .container:not(.pop_up_header_container *), .cyborg-str-tool .content:not(.pop_up_header_container *) {
+        padding: 10px !important;
+    }
+
+    .cyborg-str-tool table th[data-dash-column="city_p"]:not(.pop_up_header_container *) {
+        min-width: 180px !important; /* ajustar valor */
+        max-width: 300px !important; /* ajustar valor */
+    }
+
+    /* No aplicar negrita al texto dentro de listing_quick_view_apn_or_address_info */
+    .cyborg-str-tool .listing_quick_view_apn_or_address_info {
+        font-weight: normal !important;
+    }
+        `);
+
+        document.body.classList.add('cyborg-str-tool');
+    };
+
+    // Esperamos hasta que el DOM esté listo
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', applyStyles);
+        window.addEventListener('load', applyStyles); // Respaldo en caso de que el DOM tarde más en cargar
+    } else {
+        applyStyles();
+    }
 })();
