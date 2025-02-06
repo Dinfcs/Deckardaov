@@ -1,4 +1,13 @@
 // ==UserScript==
+// @name         Fancybox 23
+// @namespace    http://tampermonkey.net/
+// @version      2.9
+// @description  Extract and display images in a carousel using Fancybox with enhanced zoom functionality, transparent modal background, and thumbnail navigation. Automatically executes Fancybox 2 seconds after clicking on a specific image/icon, and closes any open modals when Fancybox is closed. Added keyboard navigation with 'a', 'd', 'w', and 's' keys.
+// @author       ChatGPT
+// @match        https://cyborg.deckard.com/listing/*
+// ==/UserScript==
+
+// ==UserScript==
 // @name         Fancybox Image Carousel for Listings
 // @namespace    http://tampermonkey.net/
 // @version      2.9
@@ -153,38 +162,53 @@
             toolbar: {
                 zoomIn: 1,
                 zoomOut: 1,
-                oneToOne: 1,
                 reset: 1,
                 prev: 1,
                 next: 1,
-                rotateLeft: 1,
-                rotateRight: 1,
-                flipHorizontal: 1,
-                flipVertical: 1,
             },
+            transition: false,
             viewed() {
-                viewer.zoomTo(1);
+                if (currentThumbnail) {
+                    currentThumbnail.classList.remove('current-thumbnail');
+                }
+                currentThumbnail = thumbsContainer.querySelectorAll('img')[viewer.index];
+                if (currentThumbnail) {
+                    currentThumbnail.classList.add('current-thumbnail');
+                    currentThumbnail.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
             },
             hidden() {
                 thumbsContainer.remove();
                 imageContainer.remove();
                 closeFloatingWindows();
+                 document.removeEventListener('keydown', handleKeyNavigation); // Eliminar evento al cerrar
             }
         });
 
         viewer.show();
-        document.addEventListener('keydown', handleKeyNavigation);
+
+         document.addEventListener('keydown', handleKeyNavigation);
     }
 
-    // Función para manejar la navegación con el teclado
     function handleKeyNavigation(e) {
         if (!viewer) return;
+
         switch (e.key.toLowerCase()) {
-            case 'd': viewer.next(); break;
-            case 'a': viewer.prev(); break;
-            case 'w': viewer.zoom(0.1); break;
-            case 's': viewer.zoom(-0.1); break;
-            case 'r': viewer.reset(); break;
+            case 'd':
+                viewer.next();
+                break;
+            case 'a':
+                viewer.prev();
+                break;
+            case 'w':
+                viewer.zoom(0.1);
+                break;
+            case 's':
+                viewer.zoom(-0.1);
+                break;
+            case 'r':
+                viewer.reset();
+                break;
         }
     }
 
