@@ -2,7 +2,7 @@
 // @name         Fancybox Image Carousel for Listings
 // @namespace    http://tampermonkey.net/
 // @version      2.7
-// @description  Extract and display images in a carousel using Fancybox with enhanced zoom functionality, transparent modal background, and thumbnail navigation. Automatically executes Fancybox 2 seconds after clicking on a specific image/icon, and closes any open modals when Fancybox is closed.
+// @description  Extract and display images in a carousel using Fancybox with enhanced zoom functionality, transparent modal background, and thumbnail navigation. Automatically executes Fancybox 2 seconds after clicking on a specific image/icon, and closes any open modals when Fancybox is closed. Added keyboard navigation with 'a', 'd', 'w', and 's' keys.
 // @author       ChatGPT
 // @match        https://cyborg.deckard.com/listing/*
 // ==/UserScript==
@@ -87,6 +87,8 @@
         }
     `);
 
+    let viewer;
+
     // Función para extraer imágenes y abrir Viewer.js
     function extractImages() {
         console.log('Extracting images...');
@@ -143,7 +145,7 @@
         document.body.appendChild(imageContainer);
 
         // Inicializamos Viewer.js
-        const viewer = new Viewer(imageContainer, {
+        viewer = new Viewer(imageContainer, {
             inline: false,
             button: true,
             navbar: false,
@@ -171,6 +173,19 @@
         });
 
         viewer.show();
+        document.addEventListener('keydown', handleKeyNavigation);
+    }
+
+    // Función para manejar la navegación con el teclado
+    function handleKeyNavigation(e) {
+        if (!viewer) return;
+        switch (e.key.toLowerCase()) {
+            case 'd': viewer.next(); break;
+            case 'a': viewer.prev(); break;
+            case 'w': viewer.zoom(0.1); break;
+            case 's': viewer.zoom(-0.1); break;
+            case 'r': viewer.reset(); break;
+        }
     }
 
     // Función para verificar la existencia del ícono y añadir el evento de clic
@@ -178,10 +193,10 @@
         const iconElement = document.getElementById("btn_show_all_images");
         if (iconElement) {
             console.log('Icon found, adding click event...');
-            iconElement.addEventListener("click", () => setTimeout(extractImages, 450));
+            iconElement.addEventListener("click", () => setTimeout(extractImages, 500));
         } else {
             console.log('Icon not found, retrying...');
-            setTimeout(setupClickEvent, 450);
+            setTimeout(setupClickEvent, 500);
         }
     }
 
