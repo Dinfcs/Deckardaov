@@ -1,28 +1,27 @@
 // ==UserScript==
-// @name         V234
-// @version      3.1
-// @description  Image carousel with keyboard navigation and adaptive thumbnail layout using Viewer.js.
-// @author       ChatGPT
-// @match        https://cyborg.deckard.com/listing/*
+// @name Viewerjs Image Carousel for Listings
+// @namespace http://tampermonkey.net/
+// @version 3.0
+// @description Image carousel with keyboard navigation and adaptive thumbnail layout using Viewer.js.
+// @author ChatGPT
+// @match https://cyborg.deckard.com/listing/*
 // ==/UserScript==
-
 (function() {
     'use strict';
 
     const addResource = (type, src) => {
-        const element = document.createElement(type === 'script' ? 'script' : 'link');
+        const element = type === 'script' ? document.createElement('script') : document.createElement('link');
         if (type === 'script') {
             element.src = src;
             element.type = 'text/javascript';
+            element.async = false;
         } else {
             element.href = src;
             element.rel = 'stylesheet';
+            element.type = 'text/css';
         }
         document.head.appendChild(element);
     };
-
-    addResource('link', 'https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.10.4/viewer.min.css');
-    addResource('script', 'https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.10.4/viewer.min.js');
 
     const addStyle = (css) => {
         const style = document.createElement('style');
@@ -30,10 +29,13 @@
         document.head.appendChild(style);
     };
 
+    addResource('style', 'https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.10.4/viewer.min.css');
+    addResource('script', 'https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.10.4/viewer.min.js');
+
     addStyle(`
         #btn_show_all_images {
-            height: 25px !important;
-            width: 25px !important;
+            height: 35px !important;
+            width: 35px !important;
         }
         #thumbsContainer {
             position: fixed;
@@ -43,12 +45,12 @@
             height: 100%;
             background: rgba(0, 0, 0, 0.5);
             display: grid;
-            gap: 15px;
-            padding: 10px;
+            gap: 20px;
+            padding: 15px;
             border-left: 2px solid #fff;
             box-shadow: -2px 0 10px rgba(0, 0, 0, 0.5);
             overflow-y: auto;
-            width: 350px;
+            width: 400px;
         }
         #thumbsContainer img {
             width: 100%;
@@ -69,9 +71,8 @@
     `);
 
     let viewer;
-    let currentThumbnail;
 
-    function extractImages(retryCount = 0) {
+    function extractImages() {
         console.log('Extracting images...');
         const storedImageLinks = sessionStorage.getItem('imageLinks');
         let imageLinks = storedImageLinks ? JSON.parse(storedImageLinks) : [];
@@ -83,20 +84,15 @@
             }
         }
 
-        if (imageLinks.length === 0 && retryCount < 5) {
-            console.log(`Retrying... Attempt ${retryCount + 1}`);
-            setTimeout(() => extractImages(retryCount + 1), 1000);
-            return;
-        }
-
         if (imageLinks.length === 0) {
-            alert("¡No se encontraron imágenes!");
+            alert("No images found!");
             return;
         }
 
         const thumbsContainer = document.createElement('div');
         thumbsContainer.id = "thumbsContainer";
-        thumbsContainer.style.gridTemplateColumns = imageLinks.length < 13 ? "1fr" : "repeat(2, 1fr)";
+        thumbsContainer.style.width = imageLinks.length < 13 ? "200px" : "400px"; // Una columna si hay menos de 13 imágenes
+        thumbsContainer.style.gridTemplateColumns = imageLinks.length < 13 ? "1fr" : "repeat(2, 1fr)"; // Dos columnas si hay 13 o más
 
         imageLinks.forEach((thumbUrl, index) => {
             const img = document.createElement('img');
@@ -104,11 +100,6 @@
             img.alt = "Thumbnail";
             img.addEventListener('click', () => viewer.view(index));
             thumbsContainer.appendChild(img);
-
-            if (index === 0) {
-                currentThumbnail = img;
-                img.classList.add('current-thumbnail');
-            }
         });
 
         document.body.appendChild(thumbsContainer);
@@ -138,16 +129,6 @@
                 next: 1,
             },
             transition: false,
-            viewed() {
-                if (currentThumbnail) {
-                    currentThumbnail.classList.remove('current-thumbnail');
-                }
-                currentThumbnail = thumbsContainer.querySelectorAll('img')[viewer.index];
-                if (currentThumbnail) {
-                    currentThumbnail.classList.add('current-thumbnail');
-                    currentThumbnail.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
-            },
             hidden() {
                 thumbsContainer.remove();
                 imageContainer.remove();
@@ -161,23 +142,12 @@
 
     function handleKeyNavigation(e) {
         if (!viewer) return;
-
         switch (e.key.toLowerCase()) {
-            case 'd':
-                viewer.next();
-                break;
-            case 'a':
-                viewer.prev();
-                break;
-            case 'w':
-                viewer.zoom(0.1);
-                break;
-            case 's':
-                viewer.zoom(-0.1);
-                break;
-            case 'r':
-                viewer.reset();
-                break;
+            case 'd': viewer.next(); break;
+            case 'a': viewer.prev(); break;
+            case 'w': viewer.zoom(0.1); break;
+            case 's': viewer.zoom(-0.1); break;
+            case 'r': viewer.reset(); break;
         }
     }
 
@@ -185,7 +155,7 @@
         const iconElement = document.getElementById("btn_show_all_images");
         if (iconElement) {
             console.log('Icon found, adding click event...');
-            iconElement.addEventListener("click", () => extractImages());
+            iconElement.addEventListener("click", () => setTimeout(extractImages, 800));
         } else {
             console.log('Icon not found, retrying...');
             setTimeout(setupClickEvent, 800);
@@ -208,5 +178,4 @@
 
     setupClickEvent();
     window.addEventListener('keydown', closeOnEscape);
-
 })();
