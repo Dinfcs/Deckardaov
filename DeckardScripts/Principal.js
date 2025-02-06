@@ -48,7 +48,7 @@
 
         },
         {
-            urlPattern: /^https:\/\/www\.google\.com\/maps\/place\/.*$/,
+            urlPattern: /^https:\/\/www\.google\.com\/maps\/.*$/,
             scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/Buscador.js'
         },
         {
