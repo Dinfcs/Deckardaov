@@ -1,14 +1,16 @@
 // ==UserScript==
-// @name Viewerjs Image Carousel for Listings
-// @namespace http://tampermonkey.net/
-// @version 3.0
-// @description Image carousel with keyboard navigation and adaptive thumbnail layout using Viewer.js.
-// @author ChatGPT
-// @match https://cyborg.deckard.com/listing/*
+// @name         Fancybox Image Carousel for Listings
+// @namespace    http://tampermonkey.net/
+// @version      2.7
+// @description  Extract and display images in a carousel using Fancybox with enhanced zoom functionality, transparent modal background, and thumbnail navigation. Automatically executes Fancybox 2 seconds after clicking on a specific image/icon, and closes any open modals when Fancybox is closed. Added keyboard navigation with 'a', 'd', 'w', and 's' keys.
+// @author       ChatGPT
+// @match        https://cyborg.deckard.com/listing/*
 // ==/UserScript==
+
 (function() {
     'use strict';
 
+    // Función para agregar un script o estilo al documento
     const addResource = (type, src) => {
         const element = type === 'script' ? document.createElement('script') : document.createElement('link');
         if (type === 'script') {
@@ -23,19 +25,22 @@
         document.head.appendChild(element);
     };
 
+    // Función para agregar estilos al documento
     const addStyle = (css) => {
         const style = document.createElement('style');
         style.textContent = css;
         document.head.appendChild(style);
     };
 
+    // Agregar estilos y scripts de Viewer.js
     addResource('style', 'https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.10.4/viewer.min.css');
     addResource('script', 'https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.10.4/viewer.min.js');
 
+    // Ajustar el tamaño del ícono de la imagen con id="btn_show_all_images"
     addStyle(`
         #btn_show_all_images {
-            height: 35px !important;
-            width: 35px !important;
+            height: 25px !important;
+            width: 25px !important;
         }
         #thumbsContainer {
             position: fixed;
@@ -43,18 +48,21 @@
             top: 0;
             z-index: 9999;
             height: 100%;
+            width: 150px;
             background: rgba(0, 0, 0, 0.5);
-            display: grid;
-            gap: 20px;
-            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            padding-top: 20px;
             border-left: 2px solid #fff;
             box-shadow: -2px 0 10px rgba(0, 0, 0, 0.5);
             overflow-y: auto;
-            width: 400px;
         }
         #thumbsContainer img {
-            width: 100%;
+            width: 100px;
             height: auto;
+            margin-bottom: 10px;
             cursor: pointer;
             transition: transform 0.3s ease, opacity 0.3s ease;
         }
@@ -62,37 +70,38 @@
             opacity: 0.7;
             transform: scale(1.1);
         }
-        .viewer-canvas {
+        #escapeNotice {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10000;
             background: rgba(0, 0, 0, 0.8);
-        }
-        .current-thumbnail {
-            border: 2px solid yellow;
+            color: #fff;
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-size: 16px;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
         }
     `);
 
     let viewer;
 
+    // Función para extraer imágenes y abrir Viewer.js
     function extractImages() {
         console.log('Extracting images...');
-        const storedImageLinks = sessionStorage.getItem('imageLinks');
-        let imageLinks = storedImageLinks ? JSON.parse(storedImageLinks) : [];
-
-        if (imageLinks.length === 0) {
-            imageLinks = Array.from(document.querySelectorAll("a[href^='https://deckard-imddb-us-west']")).map(anchor => anchor.href);
-            if (imageLinks.length > 0) {
-                sessionStorage.setItem('imageLinks', JSON.stringify(imageLinks));
-            }
-        }
+        const imageLinks = Array.from(document.querySelectorAll("a[href^='https://deckard-imddb-us-west']")).map(anchor => anchor.href);
 
         if (imageLinks.length === 0) {
             alert("No images found!");
             return;
         }
 
+        // Crear contenedor de miniaturas
         const thumbsContainer = document.createElement('div');
         thumbsContainer.id = "thumbsContainer";
-        thumbsContainer.style.width = imageLinks.length < 13 ? "200px" : "400px"; // Una columna si hay menos de 13 imágenes
-        thumbsContainer.style.gridTemplateColumns = imageLinks.length < 13 ? "1fr" : "repeat(2, 1fr)"; // Dos columnas si hay 13 o más
 
         imageLinks.forEach((thumbUrl, index) => {
             const img = document.createElement('img');
@@ -104,6 +113,25 @@
 
         document.body.appendChild(thumbsContainer);
 
+        // Crear contenedor de notificación de escape
+        const escapeNotice = document.createElement('div');
+        escapeNotice.id = "escapeNotice";
+        escapeNotice.innerText = "Press the Escape key to close";
+        document.body.appendChild(escapeNotice);
+
+        // Mostrar la notificación de escape con animación
+        setTimeout(() => {
+            escapeNotice.style.display = 'block';
+            setTimeout(() => escapeNotice.style.opacity = 1, 100);
+        }, 200);
+
+        // Cerrar la notificación después de 3 segundos
+        setTimeout(() => {
+            escapeNotice.style.opacity = 0;
+            setTimeout(() => escapeNotice.style.display = 'none', 500);
+        }, 3000);
+
+        // Crear contenedor de imágenes para Viewer.js
         const imageContainer = document.createElement('div');
         imageContainer.id = "imageViewerContainer";
         imageContainer.style.display = "none";
@@ -116,6 +144,7 @@
 
         document.body.appendChild(imageContainer);
 
+        // Inicializamos Viewer.js
         viewer = new Viewer(imageContainer, {
             inline: false,
             button: true,
@@ -124,11 +153,18 @@
             toolbar: {
                 zoomIn: 1,
                 zoomOut: 1,
+                oneToOne: 1,
                 reset: 1,
                 prev: 1,
                 next: 1,
+                rotateLeft: 1,
+                rotateRight: 1,
+                flipHorizontal: 1,
+                flipVertical: 1,
             },
-            transition: false,
+            viewed() {
+                viewer.zoomTo(1);
+            },
             hidden() {
                 thumbsContainer.remove();
                 imageContainer.remove();
@@ -140,6 +176,7 @@
         document.addEventListener('keydown', handleKeyNavigation);
     }
 
+    // Función para manejar la navegación con el teclado
     function handleKeyNavigation(e) {
         if (!viewer) return;
         switch (e.key.toLowerCase()) {
@@ -151,31 +188,38 @@
         }
     }
 
+    // Función para verificar la existencia del ícono y añadir el evento de clic
     function setupClickEvent() {
         const iconElement = document.getElementById("btn_show_all_images");
         if (iconElement) {
             console.log('Icon found, adding click event...');
-            iconElement.addEventListener("click", () => setTimeout(extractImages, 800));
+            iconElement.addEventListener("click", () => setTimeout(extractImages, 500));
         } else {
             console.log('Icon not found, retrying...');
-            setTimeout(setupClickEvent, 800);
+            setTimeout(setupClickEvent, 500);
         }
     }
 
+    // Función para cerrar las ventanas flotantes
     function closeFloatingWindows() {
         const closeButton = document.querySelector("button.btn-close[aria-label='Close']");
         closeButton?.click();
-        document.removeEventListener('keydown', handleKeyNavigation);
     }
 
+    // Función para cerrar todo cuando se presiona la tecla Escape
     function closeOnEscape(e) {
         if (e.key === 'Escape') {
             document.getElementById('thumbsContainer')?.remove();
             document.getElementById('imageViewerContainer')?.remove();
+            document.getElementById('escapeNotice')?.remove();
             closeFloatingWindows();
         }
     }
 
+    // Iniciar la configuración del evento de clic
     setupClickEvent();
+
+    // Escuchar la tecla Escape para cerrar la interfaz
     window.addEventListener('keydown', closeOnEscape);
+
 })();
