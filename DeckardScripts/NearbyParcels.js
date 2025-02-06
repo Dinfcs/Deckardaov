@@ -34,7 +34,7 @@
         button.style.marginLeft = '5px'; // Margen para separarlo de otros botones
         button.style.width = '115px'; // Ancho del botón
         button.style.height = '30.4px'; // Alto del botón
-        button.style.backgroundColor = '#2C3E50';
+        button.style.backgroundColor = '#045875';
         button.style.color = 'white';
         button.style.fontSize = '14px';
         button.style.position = 'relative'; // Posición absoluta dentro del contenedor padre
