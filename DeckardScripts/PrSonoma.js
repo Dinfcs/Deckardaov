@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         PR Sonoma
 // @namespace    http://tampermonkey.net/
-// @version      3
+// @version      4
 // @description  Mostrar botón flotante para buscar APN en PR al detectar un cambio en el portapapeles
 // @author       Tu nombre
 // @match        https://cyborg.deckard.com/listing/CA/sonoma/_/STR*
@@ -13,10 +13,11 @@
 
     // Crear un elemento de textarea oculto para copiar el contenido del portapapeles
     const textarea = document.createElement('textarea');
-    textarea.style.position = 'fixed';
-    textarea.style.top = '0';
-    textarea.style.left = '0';
-    textarea.style.opacity = '0';
+    textarea.style.position = 'absolute';
+    textarea.style.width = '1px';
+    textarea.style.height = '1px';
+    textarea.style.left = '-9999px';
+    textarea.style.top = '-9999px';
     document.body.appendChild(textarea);
 
     // Función para leer el portapapeles y mostrar el botón si es un APN válido
