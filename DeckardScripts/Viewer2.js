@@ -50,7 +50,7 @@
             border-left: 2px solid #fff;
             box-shadow: -2px 0 10px rgba(0, 0, 0, 0.5);
             overflow-y: auto;
-            width: 200px;
+            width: 250px;
         }
         #thumbsContainer img {
             width: 100%;
