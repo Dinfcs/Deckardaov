@@ -1,3 +1,4 @@
+
 // ==UserScript==
 // @name         Script Principal
 // @namespace    http://tampermonkey.net/
@@ -6,13 +7,14 @@
 // @author       Tu Nombre
 // @match        *://*/*
 // @grant        none
+// @run-at       document-start
 // ==/UserScript==
 
 (async function() {
     'use strict';
 
     const scripts = [
-        {
+            {
             urlPattern: /^https:\/\/cyborg\.deckard\.com\//,
             scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgButtons.js'
         },
@@ -22,8 +24,45 @@
         },
         {
             urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/.*\/STR.*$/,
+            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/BingAndDuck.js'
+        },
+        {
+            urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/.*\/STR.*$/,
             scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/ProjectResoursesCyborg.js'
-        }
+        },
+        {
+            urlPattern: /^https:\/\/evolve\.com\/vacation-rentals\//,
+            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/EvolveAddress.js'
+        },
+        {
+            urlPattern: /^https:\/\/www\.michaelsvacationrentals\.com\//,
+            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/MichaelVacationRentalsAddress.js'
+        },
+        {
+            urlPattern: /^https:\/\/sedona\.org\//,
+            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/sedona.org.js'
+        },
+        {
+            urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/CA\/sonoma\/.*\/STR.*$/,
+            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/PrSonoma.js'
+
+        },
+        {
+            urlPattern: /^https:\/\/www\.google\.com\/maps\/.*$/,
+            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/Buscador.js'
+        },
+        {
+            urlPattern: /^https:\/\/www\.bing\.com\/maps.*$/,
+            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/Buscador.js'
+        },
+        {
+           urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/.*\/STR.*$/,
+           scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/Viewer.js'
+        },
+        {
+            urlPattern: /^https:\/\/cyborg\.deckard\.com\//,
+            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/StylesCyborg.js'
+        }        
     ];
 
     for (const {urlPattern, scriptUrl} of scripts) {
