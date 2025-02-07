@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         PR Sonoma
 // @namespace    http://tampermonkey.net/
-// @version      2
+// @version      3
 // @description  Mostrar botón flotante para buscar APN en PR al detectar un cambio en el portapapeles
 // @author       Tu nombre
 // @match        https://cyborg.deckard.com/listing/CA/sonoma/_/STR*
@@ -11,24 +11,30 @@
 (function() {
     'use strict';
 
-    // Escuchar eventos de teclado
-    document.addEventListener('keydown', (event) => {
-        if (event.ctrlKey && event.key === 'c') {
-            // Obtener el texto del portapapeles
-            navigator.clipboard.readText().then(text => {
-                // Eliminar espacios en blanco antes y después del texto
-                const cleanText = text.trim();
+    // Crear un elemento de textarea oculto para copiar el contenido del portapapeles
+    const textarea = document.createElement('textarea');
+    textarea.style.position = 'fixed';
+    textarea.style.top = '0';
+    textarea.style.left = '0';
+    textarea.style.opacity = '0';
+    document.body.appendChild(textarea);
 
-                // Verificar si el texto es un número de 12 dígitos
-                const apnRegex = /^\d{12}$/;
-                if (apnRegex.test(cleanText)) {
-                    mostrarBoton(cleanText);
-                }
-            }).catch(err => {
-                console.error('Error reading clipboard: ', err);
-            });
+    // Función para leer el portapapeles y mostrar el botón si es un APN válido
+    async function verificarPortapapeles() {
+        try {
+            const text = await navigator.clipboard.readText();
+            const cleanText = text.trim();
+            const apnRegex = /^\d{12}$/;
+            if (apnRegex.test(cleanText)) {
+                mostrarBoton(cleanText);
+            }
+        } catch (err) {
+            console.error('Error reading clipboard: ', err);
         }
-    });
+    }
+
+    // Verificar el portapapeles cada segundo
+    setInterval(verificarPortapapeles, 1000);
 
     // Función para mostrar el botón flotante
     function mostrarBoton(apn) {
