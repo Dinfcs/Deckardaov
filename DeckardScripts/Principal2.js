@@ -46,7 +46,7 @@
         },
                 {
             urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/.*\/STR.*$/,
-            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/Viewer.js'
+            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/Viewer2.js'
         },
         {
             urlPattern: /^https:\/\/cyborg\.deckard\.com\//,
