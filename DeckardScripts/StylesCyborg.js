@@ -29,7 +29,7 @@
 
         addStyle(`
     /* Encabezados */
-    .cyborg-str-tool h1:not(#window_vetting_dlg *):not(#vetting_data_footer *), .cyborg-str-tool h2:not(#window_vetting_dlg *):not(#vetting_data_footer *), .cyborg-str-tool h3:not(#window_vetting_dlg *):not(#vetting_data_footer *), .cyborg-str-tool h4:not(#window_vetting_dlg *):not(#vetting_data_footer *), .cyborg-str-tool h5:not(#window_vetting_dlg *):not(#vetting_data_footer *), .cyborg-str-tool h6:not(#window_vetting_dlg *):not(#vetting_data_footer *):not(.pop_up_header_container *) {
+    .cyborg-str-tool h1:not(#window_vetting_dlg *):not(#vetting_data_footer *), .cyborg-str-tool h2:not(#window_vetting_dlg *):not(#vetting_data_footer *), .cyborg-str-tool h3:not(#window_vetting_dlg *):not(#window_vetting_dlg *), .cyborg-str-tool h4:not(#window_vetting_dlg *):not(#vetting_data_footer *), .cyborg-str-tool h5:not(#window_vetting_dlg *):not(#vetting_data_footer *), .cyborg-str-tool h6:not(#window_vetting_dlg *):not(#vetting_data_footer *):not(.pop_up_header_container *) {
         font-weight: bold !important;
         color: #C9D82B !important; /* Verde oliva oscuro */
         font-size: 15px !important;
@@ -150,4 +150,21 @@
     } else {
         applyStyles();
     }
+
+    // Función para hacer clic en el botón
+    function clickButton() {
+        var button = document.getElementById('btn_submit_vetting_dlg');
+        if (button) {
+            button.click();
+        }
+    }
+
+    // Evento para detectar la combinación de teclas Ctrl+S
+    document.addEventListener('keydown', function(e) {
+        if (e.ctrlKey && e.key === 's') {
+            e.preventDefault();
+            clickButton();
+        }
+    }, false);
+
 })();
