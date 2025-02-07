@@ -1,6 +1,6 @@
 // ==UserScript==
-// @name         Viewer completo con botón adicional
-// @version      3.5
+// @name         Viewer completo 
+// @version      4
 // @description  Image carousel with keyboard navigation and adaptive thumbnail layout using Viewer.js and an additional button to open the carousel.
 // @author       ChatGPT
 // @match        https://cyborg.deckard.com/listing/*
