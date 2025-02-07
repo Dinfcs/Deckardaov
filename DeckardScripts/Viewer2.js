@@ -218,7 +218,7 @@ function setupClickEvent() {
         if (originalButton) {
             const button = document.createElement('img');
             button.id = 'btn_additional';
-            button.src = 'https://dinfcs.github.io/Deckardaov/DeckardScripts/DatabasePR/carousel.svg';
+            button.src = 'https://dinfcs.github.io/Deckardaov/DeckardScripts/DatabasePR/carousel.png';
             button.style.display = 'inline';
             button.style.height = '20px';
             button.style.cursor = 'pointer';
