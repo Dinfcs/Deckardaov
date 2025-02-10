@@ -15,7 +15,7 @@
 
     function waitForButton() {
         const observer = new MutationObserver((mutations, obs) => {
-            const button = document.querySelector('#btn_open_vetting_dlg');
+            const button = document.querySelector('#btn_record_no_matching_parcel_found');
             if (button) {
                 obs.disconnect(); // Deja de observar cambios en el DOM
                 createButton(); // Llama a la función principal
