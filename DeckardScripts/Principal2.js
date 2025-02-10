@@ -52,10 +52,11 @@
             urlPattern: /^https:\/\/cyborg\.deckard\.com\//,
             scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/StylesCyborg.js'
         },
-         {
-            urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/.*\/pending_qa/,
+        {
+            urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/.*\/.*\?.*subset=pending_qa/,
             scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/Autofilterforqa.js'
         }
+
 
 
         
