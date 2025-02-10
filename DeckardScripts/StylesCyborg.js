@@ -51,7 +51,7 @@
     #btn_record_no_matching_parcel_found,
     #btn_record_listing_not_live,
     #btn_open_vetting_dlg,
-    btn_open_vetting_dlg_as_qa_mode {
+    #btn_open_vetting_dlg_as_qa_mode {
         background-color: #1b95bf !important; /* azul suave */
         color: white !important;
         border-radius: 0px !important;
