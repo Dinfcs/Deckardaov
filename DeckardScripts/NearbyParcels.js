@@ -38,7 +38,7 @@
         button.style.color = 'white';
         button.style.fontSize = '14px';
         button.style.position = 'relative'; // Posición absoluta dentro del contenedor padre
-        button.style.fontFamily = ' Arial, sans-serif'
+        button.style.fontFamily = 'Arial, sans-serif';
         button.style.top = '-1px'; // Pegado a la parte superior
         button.style.zIndex = '0'; // Asegura que esté por encima de otros elementos
 
@@ -59,9 +59,14 @@
             const links = document.querySelectorAll('a[href*="https://www.google.com/search?q="]');
             console.log(`Encontrados ${links.length} enlaces`);
 
+            // Utiliza un conjunto para rastrear enlaces únicos
+            const openedLinks = new Set();
+            
             links.forEach((link, index) => {
-                // Abre solo los primeros 10 hipervínculos
-                if (index < 10) {
+                if (index < 10 && !openedLinks.has(link.href)) {
+                    // Marca el enlace como abierto
+                    openedLinks.add(link.href);
+
                     // Extrae la dirección del hipervínculo
                     const url = new URL(link.href);
                     const searchParams = new URLSearchParams(url.search);
