@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         NearbyParcels
 // @namespace    http://tampermonkey.net/
-// @version      2.1
-// @description  Añade un botón fijo para abrir direcciones en Google Maps que solo aparece cuando el scroll está arriba
+// @version      2.5
+// @description  Añade un botón fijo para abrir direcciones en Google Maps basándose en las direcciones visibles en la columna "site address", evitando duplicados
 // @author       Luis Escalante
 // @match        https://cyborg.deckard.com/listing/*
 // @grant        none
@@ -15,7 +15,7 @@
 
     function waitForButton() {
         const observer = new MutationObserver((mutations, obs) => {
-            const button = document.querySelector('#btn_record_no_matching_parcel_found');
+            const button = document.querySelector('#btn_open_vetting_dlg');
             if (button) {
                 obs.disconnect(); // Deja de observar cambios en el DOM
                 createButton(); // Llama a la función principal
@@ -37,7 +37,7 @@
         button.style.backgroundColor = '#045875';
         button.style.color = 'white';
         button.style.fontSize = '14px';
-        button.style.position = 'relative'; // Posición absoluta dentro del contenedor padre
+        button.style.position = 'relative'; // Posición relativa dentro del contenedor padre
         button.style.fontFamily = 'Arial, sans-serif';
         button.style.top = '-1px'; // Pegado a la parte superior
         button.style.zIndex = '0'; // Asegura que esté por encima de otros elementos
@@ -54,32 +54,43 @@
         // Agrega el evento de click al botón
         button.addEventListener('click', () => {
             console.log('Botón "NearbyParcels" clicado');
+            searchVisibleAddresses();
+        });
+    }
 
-            // Selecciona todos los hipervínculos de Google en la página
-            const links = document.querySelectorAll('a[href*="https://www.google.com/search?q="]');
-            console.log(`Encontrados ${links.length} enlaces`);
+    function searchVisibleAddresses() {
+        // Selecciona todos los enlaces en la columna "site address" que cumplen con el patrón dado
+        const addressLinks = document.querySelectorAll('div.unfocused.dash-cell-value.cell-markdown p a[href^="https://www.google.com/search?"]');
+        console.log(`Encontradas ${addressLinks.length} celdas de direcciones`);
 
-            // Utiliza un conjunto para rastrear enlaces únicos
-            const openedLinks = new Set();
-            
-            links.forEach((link, index) => {
-                if (index < 10 && !openedLinks.has(link.href)) {
-                    // Marca el enlace como abierto
-                    openedLinks.add(link.href);
+        const uniqueAddresses = new Set();
 
-                    // Extrae la dirección del hipervínculo
-                    const url = new URL(link.href);
-                    const searchParams = new URLSearchParams(url.search);
-                    const address = searchParams.get('q');
-                    console.log(`Dirección extraída: ${address}`);
+        addressLinks.forEach((link, index) => {
+            if (isElementInViewport(link)) {
+                // Extrae la dirección del hipervínculo
+                const address = link.textContent.trim();
+                console.log(`Dirección visible extraída: ${address}`);
 
+                // Verifica si la dirección ya ha sido procesada
+                if (!uniqueAddresses.has(address)) {
+                    uniqueAddresses.add(address);
                     // Abre la dirección en Google Maps
                     if (address) {
                         window.open(`https://www.google.com/maps/search/${encodeURIComponent(address)}`, '_blank');
                     }
                 }
-            });
+            }
         });
+    }
+
+    function isElementInViewport(el) {
+        const rect = el.getBoundingClientRect();
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
     }
 
     waitForButton();
