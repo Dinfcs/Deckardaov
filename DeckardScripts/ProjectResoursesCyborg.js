@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         PREDIT
+// @name         PREDIT3
 // @namespace    ProjectResources Cyborg
-// @version      3.0
-// @description  Se optimiza lectura de base de datos, se guarda en caché y solo se suplanta si hay diferencia con la de la base de datos. Se borra barra de nombre cuando se consiguen datos y aparece cuando no se consiguen datos. / se ejecuta el script al detectar el boton edit para sincronizar con la pagina
+// @version      3.1
+// @description  Se optimiza lectura de base de datos, se guarda en caché y solo se suplanta si hay diferencia con la de la base de datos. Se borra barra de nombre cuando se consiguen datos y aparece cuando no se consiguen datos. / se ejecuta el script al detectar el boton edit para sincronizar con la pagina / Se agrega función de copiar nombre del proyecto al portapapeles y mostrar notificación.
 // @author
 // @match        https://cyborg.deckard.com/listing/*/STR*
 // @grant        none
@@ -170,14 +170,54 @@
                         cell.textContent = proyectoFiltrado[header] || '';
                     }
                 }
+
+// Añadir evento para copiar al portapapeles
+if (header === 'Project') {
+    cell.style.cursor = 'pointer';
+    cell.addEventListener('click', () => {
+        navigator.clipboard.writeText(cell.textContent)
+            .then(() => {
+                crearNotificacion(`Copied to clipboard: ${cell.textContent}`);
+            })
+            .catch(err => {
+                console.error('Error al copiar al portapapeles:', err);
             });
+    });
+}
+});
 
-            contenedorDatos.innerHTML = '';
-            contenedorDatos.appendChild(table);
-        }
+// Función para crear la notificación
+function crearNotificacion(mensaje) {
+    const notificacion = document.createElement('div');
+    notificacion.textContent = mensaje;
+    notificacion.style.position = 'fixed';
+    notificacion.style.top = '77%';
+    notificacion.style.left = '8%';
+    notificacion.style.transform = 'translate(-50%, -50%)';
+    notificacion.style.backgroundColor = '#333';
+    notificacion.style.color = '#fff';
+    notificacion.style.padding = '16px';
+    notificacion.style.borderRadius = '8px';
+    notificacion.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+    notificacion.style.fontFamily = 'Arial, sans-serif';
+    notificacion.style.zIndex = '1000';
+    document.body.appendChild(notificacion);
 
-        cargarDatos();
-    }
+    setTimeout(() => {
+        notificacion.style.opacity = '0';
+        notificacion.style.transition = 'opacity 0.5s ease';
+        setTimeout(() => notificacion.remove(), 500);
+    }, 2000);
+}
 
-    waitForButton();
+// Resto del script
+contenedorDatos.innerHTML = '';
+contenedorDatos.appendChild(table);
+}
+
+cargarDatos();
+}
+
+waitForButton();
 })();
+
