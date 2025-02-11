@@ -226,6 +226,30 @@ function setupClickEvent() {
         }
     }
 
+    function reloadScriptOnTabClick() {
+    const imagesTab = document.querySelector(".tab span");
+
+    if (imagesTab && imagesTab.textContent.trim() === "Images") {
+        imagesTab.parentElement.addEventListener("click", () => {
+            console.log("Tab 'Images' clickeado, verificando si es necesario recargar...");
+
+            // Verificar si el botón adicional ya existe
+            if (document.getElementById("btn_additional")) {
+                console.log("El botón 'btn_additional' ya existe, no se recarga el script.");
+            } else {
+                console.log("El botón 'btn_additional' no existe, recargando el script...");
+                initialize(); // Solo recargar si el botón no está presente
+            }
+        });
+    } else {
+        console.log("Tab 'Images' no encontrado, reintentando...");
+        setTimeout(reloadScriptOnTabClick, 500); // Reintentar si el tab aún no está cargado
+    }
+}
+
+// Llamar a la función al cargar el script
+reloadScriptOnTabClick();
+
 function preloadImages() {
     console.log("Iniciando precarga de imágenes...");
 
