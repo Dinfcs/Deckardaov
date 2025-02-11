@@ -238,7 +238,7 @@ function setupClickEvent() {
                 console.log("El botón 'btn_additional' ya existe, no se recarga el script.");
             } else {
                 console.log("El botón 'btn_additional' no existe, recargando el script...");
-                initialize(); // Solo recargar si el botón no está presente
+                initialize2(); // Solo recargar si el botón no está presente
             }
         });
     } else {
@@ -329,8 +329,15 @@ function initialize() {
         setTimeout(initialize, 800);
     }
 }
-
-
+    function initialize2() {
+    const originalButtonContainer = document.getElementById('listing_detail_page_image_gallery');
+    if (originalButtonContainer) {
+        createAdditionalButton();
+        setupClickEvent();
+    } else {
+        setTimeout(initialize2, 0);
+    }
+}
 
     initialize();
     window.addEventListener('keydown', closeOnEscape);
