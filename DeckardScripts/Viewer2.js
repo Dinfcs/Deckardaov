@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Viewer completo 
+// @name         Viewer completo
 // @version      4
 // @description  Image carousel with keyboard navigation and adaptive thumbnail layout using Viewer.js and an additional button to open the carousel.
 // @author       ChatGPT
@@ -240,16 +240,19 @@ function preloadImages() {
         console.log("Abriendo modal en segundo plano para extraer enlaces...");
 
         // Crear una etiqueta <style> para ocultar el modal temporalmente
-        const modalStyle = document.createElement('style');
-        modalStyle.id = "hiddenModalStyle";
-        modalStyle.textContent = `
-            .modal, .modal-backdrop {
-                visibility: hidden !important;
-                opacity: 0 !important;
-                display: none !important;
-            }
-        `;
-        document.head.appendChild(modalStyle);
+        let modalStyle = document.getElementById("hiddenModalStyle");
+        if (!modalStyle) {
+            modalStyle = document.createElement('style');
+            modalStyle.id = "hiddenModalStyle";
+            modalStyle.textContent = `
+                .modal, .modal-backdrop {
+                    visibility: hidden !important;
+                    opacity: 0 !important;
+                    display: none !important;
+                }
+            `;
+            document.head.appendChild(modalStyle);
+        }
 
         originalButton.click(); // Abre el modal (estará oculto)
 
@@ -267,19 +270,29 @@ function preloadImages() {
                     img.src = imgUrl;
                 });
 
-                setTimeout(closeFloatingWindows, 500); // Cierra el modal rápidamente
+                setTimeout(closeFloatingWindows, 700); // Cierra el modal rápidamente
 
-                // Restaurar el modal para que sea visible normalmente
+                // Restaurar visibilidad después de cerrar
                 setTimeout(() => {
                     const hiddenStyle = document.getElementById("hiddenModalStyle");
                     if (hiddenStyle) hiddenStyle.remove();
-                }, 1000); // Se elimina la regla CSS después de cerrar el modal
+
+                    // Asegurar que el modal sea visible si no se restauró correctamente
+                    document.querySelectorAll(".modal, .modal-backdrop").forEach(el => {
+                        el.style.visibility = "visible";
+                        el.style.opacity = "1";
+                        el.style.display = "";
+                    });
+
+                    console.log("Modal restaurado correctamente.");
+                }, 1000);
             } else {
                 console.log("No se encontraron imágenes.");
             }
-        }, 1000); // Espera 1 segundo para extraer imágenes antes de cerrar
+        }, 800); // Espera 1 segundo para extraer imágenes antes de cerrar
     }
 }
+
 
 
 function initialize() {
