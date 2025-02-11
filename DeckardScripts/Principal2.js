@@ -55,10 +55,6 @@
         {
             urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/.*\/.*\?.*subset=pending_qa/,
             scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/Autofilterforqa.js'
-        },
-        {
-            urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/.*\/STR.*$/,
-            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/UniversalAEC.js'
         }
         
     ];
