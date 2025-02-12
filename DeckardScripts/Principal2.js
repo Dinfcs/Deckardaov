@@ -36,7 +36,7 @@
             scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/ScriptsFotPrGis/PrSonoma.js'
         },
         {
-            urlPattern: /^https:\/\/evolve\.com\/vacation-rentals\//,
+            urlPattern: /^https?:\/\/.+/,
             scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/ExternalScripts/UniversalAE.js'
         },
         {
