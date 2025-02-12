@@ -1,11 +1,11 @@
 // ==UserScript==
-// @name         Address Finder with Button Placement
+// @name         Address Finder with Standard Tab Opening
 // @namespace    http://tampermonkey.net/
-// @version      1.6
-// @description  Adds hyperlinks to addresses and places the "Directions" button next to "Apply". It auto-collapses after 5 seconds.
-// @author       [Your Name]
+// @version      1.7
+// @description  Adds hyperlinks to addresses and places the "Directions" button next to "Apply". Opens links using window.open().
+// @author       Luis Escalante
 // @match        *://*/*
-// @grant        GM_openInTab
+// @grant        none
 // ==/UserScript==
 
 (function() {
@@ -74,7 +74,7 @@
     function showSecondaryButtons() {
         document.querySelectorAll('.secondary-button').forEach(btn => btn.remove());
 
-        createSecondaryButton('🌍🔍 Maps', () => openInTabs('maps'));
+        createSecondaryButton('🌍 Maps', () => openInTabs('maps'));
         createSecondaryButton('🔍 Google', () => openInTabs('google'));
 
         // Set a timer to collapse buttons after 5 seconds
@@ -107,7 +107,7 @@
         mainButton.parentNode.insertBefore(button, mainButton.nextSibling);
     }
 
-    // Function to open visible addresses in new tabs
+    // Function to open visible addresses in new tabs using window.open()
     function openInTabs(type) {
         let addresses = getVisibleAddresses();
 
@@ -117,12 +117,12 @@
         }
 
         addresses.forEach((address, index) => {
-            let url = type === 'maps'
+            let url = type === 'maps' 
                 ? `https://www.google.com/maps/search/${encodeURIComponent(address)}`
                 : `https://www.google.com/search?q=${encodeURIComponent(address)}`;
-
+            
             setTimeout(() => {
-                GM_openInTab(url, { active: false });
+                window.open(url, '_blank');
             }, index * 200);
         });
     }
@@ -131,7 +131,7 @@
     setTimeout(() => {
         addHyperlinks();
         createMainButton();
-    }, 2000);
+    }, 1000);
 
     // Reapply hyperlinks if the page updates dynamically
     setInterval(addHyperlinks, 3000);
