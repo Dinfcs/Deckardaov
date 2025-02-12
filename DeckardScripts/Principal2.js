@@ -1,13 +1,12 @@
 // ==UserScript==
 // @name         Script Principal
 // @namespace    http://tampermonkey.net/
-// @version      1.7
+// @version      1.8
 // @description  Define y carga scripts auxiliares según la URL
 // @author       Tu Nombre
 // @match        *://*/*
 // @grant        none
 // @run-at       document-start
-// @require      https://dinfcs.github.io/Deckardaov/DeckardScripts/ExternalScripts/UniversalAE.js
 // ==/UserScript==
 
 (async function() {
@@ -56,6 +55,7 @@
         }
     ];
 
+    // Cargar los scripts en orden según la URL
     for (const {urlPattern, scriptUrl} of scripts) {
         if (window.location.href.match(urlPattern)) {
             try {
@@ -76,4 +76,24 @@
             }
         }
     }
+
+    // Cargar y ejecutar el script UniversalAE.js al final
+    const universalScriptUrl = 'https://dinfcs.github.io/Deckardaov/DeckardScripts/ExternalScripts/UniversalAE.js';
+    try {
+        console.log(`Loading script: ${universalScriptUrl}`);
+        const script = document.createElement('script');
+        script.src = universalScriptUrl;
+        script.onload = () => {
+            console.log(`Script loaded and executed: ${universalScriptUrl}`);
+        };
+        script.onerror = () => {
+            console.error(`Error loading script ${universalScriptUrl}`);
+            alert(`Error loading script ${universalScriptUrl}. Check console for details.`);
+        };
+        document.head.appendChild(script);
+    } catch (error) {
+        console.error(`Error loading script ${universalScriptUrl}:`, error);
+        alert(`Error loading script ${universalScriptUrl}. Check console for details.`);
+    }
+
 })();
