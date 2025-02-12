@@ -6,7 +6,6 @@
 // @description  Define y carga scripts auxiliares según la URL
 // @author       Tu Nombre
 // @match        *://*/*
-// @require      https://dinfcs.github.io/Deckardaov/DeckardScripts/ExternalScripts/UniversalAE.js
 // @grant        none
 // @run-at       document-start
 // ==/UserScript==
