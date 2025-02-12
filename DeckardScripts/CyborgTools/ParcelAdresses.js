@@ -54,7 +54,7 @@
         }
 
         let button = document.createElement('button');
-        button.innerText = '📍 Directions';
+        button.innerText = '🗺️Addresses';
         button.id = 'mainButton';
         button.style.marginLeft = '10px';
         button.style.background = '#007bff';
@@ -74,8 +74,8 @@
     function showSecondaryButtons() {
         document.querySelectorAll('.secondary-button').forEach(btn => btn.remove());
 
-        createSecondaryButton('🗺️ Maps', () => openInTabs('maps'));
-        createSecondaryButton('📖 Google', () => openInTabs('google'));
+        createSecondaryButton('🌍🔍 Maps', () => openInTabs('maps'));
+        createSecondaryButton('🔍 Google', () => openInTabs('google'));
 
         // Set a timer to collapse buttons after 5 seconds
         clearTimeout(collapseTimeout);
