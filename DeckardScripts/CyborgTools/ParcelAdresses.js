@@ -3,7 +3,7 @@
 // @namespace    http://tampermonkey.net/
 // @version      1.7
 // @description  Adds hyperlinks to addresses and places the "Directions" button next to "Apply". Opens links using window.open().
-// @author       Luis Escalante
+// @author       [Your Name]
 // @match        *://*/*
 // @grant        none
 // ==/UserScript==
@@ -42,7 +42,7 @@
                 addresses.push(a.innerText.trim());
             }
         });
-        return addresses.reverse(); // Open from last to first
+        return addresses; // No reverse, keeps original order
     }
 
     // Function to create the main button and place it next to "Apply"
@@ -57,10 +57,7 @@
         button.innerText = '🗺️Addresses';
         button.id = 'mainButton';
         button.style.marginLeft = '10px';
-        button.style.background = '#007bff';
-        button.style.color = 'white';
-        button.style.border = 'none';
-        button.style.padding = '8px 12px';
+        button.style.padding = '5px 5px';
         button.style.borderRadius = '5px';
         button.style.cursor = 'pointer';
         button.style.boxShadow = '0px 4px 6px rgba(0,0,0,0.1)';
@@ -93,10 +90,7 @@
         button.innerText = text;
         button.classList.add('secondary-button');
         button.style.marginLeft = '10px';
-        button.style.background = '#28a745';
-        button.style.color = 'white';
-        button.style.border = 'none';
-        button.style.padding = '8px 12px';
+        button.style.padding = '5px 5px';
         button.style.borderRadius = '5px';
         button.style.cursor = 'pointer';
         button.style.boxShadow = '0px 4px 6px rgba(0,0,0,0.1)';
@@ -117,10 +111,10 @@
         }
 
         addresses.forEach((address, index) => {
-            let url = type === 'maps' 
+            let url = type === 'maps'
                 ? `https://www.google.com/maps/search/${encodeURIComponent(address)}`
                 : `https://www.google.com/search?q=${encodeURIComponent(address)}`;
-            
+
             setTimeout(() => {
                 window.open(url, '_blank');
             }, index * 200);
