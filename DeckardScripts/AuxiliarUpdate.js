@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Deckard Scripts
 // @namespace    http://tampermonkey.net/
-// @version      2
+// @version      1.1
 // @description  Several Tools implemented for improvements in the AM process
 // @author       Luis E
 // @match        *://*/*
@@ -13,4 +13,4 @@
 // @icon         https://dinfcs.github.io/Deckardaov/logo.png
 // ==/UserScript==
 
-/* Aquí va el contenido del script actualizado */
+/* code*/
