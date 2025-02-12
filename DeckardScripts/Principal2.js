@@ -1,4 +1,3 @@
-
 // ==UserScript==
 // @name         Script Principal
 // @namespace    http://tampermonkey.net/
@@ -6,7 +5,7 @@
 // @description  Define y carga scripts auxiliares según la URL
 // @author       Tu Nombre
 // @match        *://*/*
-// @grant        none
+// @grant        GM_addScript
 // @run-at       document-start
 // ==/UserScript==
 
@@ -14,7 +13,7 @@
     'use strict';
 
     const scripts = [
-            {
+        {
             urlPattern: /^https:\/\/cyborg\.deckard\.com\//,
             scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/CyborgButtons.js'
         },
@@ -35,10 +34,6 @@
             scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/ScriptsFotPrGis/PrSonoma.js'
         },
         {
-            urlPattern: /^https?:\/\/www\.\w+\.\w+\/?$/,
-            scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/ExternalScripts/UniversalAE.js'
-        },
-        {
             urlPattern: /^https:\/\/www\.google\.com\/maps\/.*$/,
             scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/ExternalScripts/Buscador.js'
         },
@@ -57,9 +52,10 @@
         {
             urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/.*\/.*\?.*subset=pending_qa/,
             scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/Autofilterforqa.js'
-        }        
+        }
     ];
 
+    // Cargar los scripts en orden según la URL
     for (const {urlPattern, scriptUrl} of scripts) {
         if (window.location.href.match(urlPattern)) {
             try {
@@ -80,4 +76,9 @@
             }
         }
     }
+
+    // Cargar y ejecutar el script UniversalAE.js al final
+    const universalScriptUrl = 'https://dinfcs.github.io/Deckardaov/DeckardScripts/ExternalScripts/UniversalAE.js';
+    GM_addScript(universalScriptUrl);
+
 })();
