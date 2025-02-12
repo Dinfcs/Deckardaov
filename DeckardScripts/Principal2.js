@@ -5,8 +5,9 @@
 // @description  Define y carga scripts auxiliares según la URL
 // @author       Tu Nombre
 // @match        *://*/*
-// @require      https://dinfcs.github.io/Deckardaov/DeckardScripts/ExternalScripts/UniversalAE.js
+// @grant        none
 // @run-at       document-start
+// @require      https://dinfcs.github.io/Deckardaov/DeckardScripts/ExternalScripts/UniversalAE.js
 // ==/UserScript==
 
 (async function() {
@@ -55,7 +56,6 @@
         }
     ];
 
-    // Cargar los scripts en orden según la URL
     for (const {urlPattern, scriptUrl} of scripts) {
         if (window.location.href.match(urlPattern)) {
             try {
@@ -76,9 +76,4 @@
             }
         }
     }
-
-    // Cargar y ejecutar el script UniversalAE.js al final
-    const universalScriptUrl = 'https://dinfcs.github.io/Deckardaov/DeckardScripts/ExternalScripts/UniversalAE.js';
-    GM_addScript(universalScriptUrl);
-
 })();
