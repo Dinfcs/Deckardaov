@@ -35,7 +35,7 @@
             scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/ScriptsFotPrGis/PrSonoma.js'
         },
         {
-            urlPattern: /^https?:\/\/.+/,
+            urlPattern: /^https?:\/\/www\.\w+\.\w+\/?$/,
             scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/ExternalScripts/UniversalAE.js'
         },
         {
