@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         Address Finder with Smart Button Placement
+// @name         Address Finder with Button Placement
 // @namespace    http://tampermonkey.net/
-// @version      1.7
-// @description  Adds hyperlinks to addresses and places the Directions button next to Apply when available.
+// @version      1.6
+// @description  Adds hyperlinks to addresses and places the "Directions" button next to "Apply". It auto-collapses after 5 seconds.
 // @author       [Your Name]
 // @match        *://*/*
 // @grant        GM_openInTab
@@ -12,27 +12,22 @@
     'use strict';
 
     let collapseTimeout;
-    let directionsButton;
 
-    // Function to add hyperlinks to addresses
+    // Function to add hyperlinks to addresses in the table
     function addHyperlinks() {
         document.querySelectorAll('td.column-9 div.dash-cell-value').forEach(div => {
             let addressText = div.innerText.trim();
 
+            // Check if it already has a link
             if (addressText && !div.querySelector('a')) {
                 let link = document.createElement('a');
                 link.href = `https://www.google.com/search?q=${encodeURIComponent(addressText)}`;
                 link.target = '_blank';
-                link.style.textDecoration = 'none';
-                link.style.color = '#007bff';
-                link.style.fontWeight = 'bold';
-                link.style.transition = 'color 0.3s';
+                link.style.textDecoration = 'underline';
+                link.style.color = 'blue';
                 link.innerText = addressText;
 
-                link.addEventListener('mouseover', () => link.style.color = '#0056b3');
-                link.addEventListener('mouseout', () => link.style.color = '#007bff');
-
-                div.innerHTML = '';
+                div.innerHTML = ''; // Clear content and add the link
                 div.appendChild(link);
             }
         });
@@ -43,75 +38,73 @@
         let addresses = [];
         document.querySelectorAll('td.column-9 div.dash-cell-value a').forEach(a => {
             let rect = a.getBoundingClientRect();
-            if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+            if (rect.top >= 0 && rect.bottom <= window.innerHeight) { // Only if visible
                 addresses.push(a.innerText.trim());
             }
         });
-        return addresses.reverse();
+        return addresses.reverse(); // Open from last to first
     }
 
-    // Function to create the main button and place it next to #btn_apply_range_filter
+    // Function to create the main button and place it next to "Apply"
     function createMainButton() {
-        if (directionsButton) return;
+        let applyButton = document.querySelector('#btn_apply_range_filter');
+        if (!applyButton) {
+            console.warn('Apply button not found!');
+            return;
+        }
 
-        let applyButton = document.getElementById('btn_apply_range_filter');
-        if (!applyButton) return;
+        let button = document.createElement('button');
+        button.innerText = '📍 Directions';
+        button.id = 'mainButton';
+        button.style.marginLeft = '10px';
+        button.style.background = '#007bff';
+        button.style.color = 'white';
+        button.style.border = 'none';
+        button.style.padding = '8px 12px';
+        button.style.borderRadius = '5px';
+        button.style.cursor = 'pointer';
+        button.style.boxShadow = '0px 4px 6px rgba(0,0,0,0.1)';
+        button.style.zIndex = '9999';
 
-        directionsButton = document.createElement('button');
-        directionsButton.innerText = '🗺️ Addresses';
-        directionsButton.id = 'directionsButton';
-        styleButton(directionsButton, '#007bff');
-        directionsButton.style.marginLeft = '5px';
-        directionsButton.addEventListener('click', showSecondaryButtons);
-
-        applyButton.parentNode.insertBefore(directionsButton, applyButton.nextSibling);
+        button.addEventListener('click', showSecondaryButtons);
+        applyButton.parentNode.insertBefore(button, applyButton.nextSibling);
     }
 
-    // Function to show secondary buttons
+    // Function to show the "Google" and "Maps" buttons
     function showSecondaryButtons() {
         document.querySelectorAll('.secondary-button').forEach(btn => btn.remove());
 
-        createSecondaryButton('🌍 Maps', '#28a745', () => openInTabs('maps'));
-        createSecondaryButton('🔍 Google', '#ffc107', () => openInTabs('google'));
+        createSecondaryButton('🗺️ Maps', () => openInTabs('maps'));
+        createSecondaryButton('📖 Google', () => openInTabs('google'));
 
+        // Set a timer to collapse buttons after 5 seconds
         clearTimeout(collapseTimeout);
         collapseTimeout = setTimeout(hideSecondaryButtons, 5000);
     }
 
-    // Function to hide secondary buttons
+    // Function to hide the secondary buttons
     function hideSecondaryButtons() {
-        document.querySelectorAll('.secondary-button').forEach(btn => btn.classList.add('fade-out'));
-        setTimeout(() => document.querySelectorAll('.secondary-button').forEach(btn => btn.remove()), 500);
+        document.querySelectorAll('.secondary-button').forEach(btn => btn.remove());
     }
 
-    // Function to create styled secondary buttons
-    function createSecondaryButton(text, color, onClick) {
+    // Function to create secondary buttons
+    function createSecondaryButton(text, onClick) {
         let button = document.createElement('button');
         button.innerText = text;
         button.classList.add('secondary-button');
-        styleButton(button, color);
-        button.style.marginTop = '5px';
-        button.addEventListener('click', onClick);
-        button.style.marginLeft = '4px';
-
-        directionsButton.parentNode.insertBefore(button, directionsButton.nextSibling);
-    }
-
-    // Function to style buttons
-    function styleButton(button, backgroundColor) {
-        button.style.background = backgroundColor;
+        button.style.marginLeft = '10px';
+        button.style.background = '#28a745';
         button.style.color = 'white';
         button.style.border = 'none';
-        button.style.padding = '10px 14px';
-        button.style.borderRadius = '8px';
+        button.style.padding = '8px 12px';
+        button.style.borderRadius = '5px';
         button.style.cursor = 'pointer';
-        button.style.boxShadow = '0px 3px 6px rgba(0,0,0,0.2)';
-        button.style.fontSize = '12px';
-        button.style.fontWeight = 'bold';
-        button.style.transition = 'all 0.3s ease-in-out';
+        button.style.boxShadow = '0px 4px 6px rgba(0,0,0,0.1)';
+        button.style.zIndex = '9999';
+        button.addEventListener('click', onClick);
 
-        button.addEventListener('mouseover', () => button.style.transform = 'scale(1.1)');
-        button.addEventListener('mouseout', () => button.style.transform = 'scale(1)');
+        let mainButton = document.querySelector('#mainButton');
+        mainButton.parentNode.insertBefore(button, mainButton.nextSibling);
     }
 
     // Function to open visible addresses in new tabs
@@ -134,17 +127,13 @@
         });
     }
 
-    // Observer to detect when #btn_apply_range_filter appears in the DOM
-    const observer = new MutationObserver(() => {
-        if (document.getElementById('btn_apply_range_filter')) {
-            createMainButton();
-            observer.disconnect();
-        }
-    });
+    // Execute when the page loads
+    setTimeout(() => {
+        addHyperlinks();
+        createMainButton();
+    }, 2000);
 
-    observer.observe(document.body, { childList: true, subtree: true });
-
-    // Reapply hyperlinks dynamically
+    // Reapply hyperlinks if the page updates dynamically
     setInterval(addHyperlinks, 3000);
 
 })();
