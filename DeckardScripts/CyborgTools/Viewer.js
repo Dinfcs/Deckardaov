@@ -250,8 +250,14 @@ function setupClickEvent() {
 // Llamar a la función al cargar el script
 reloadScriptOnTabClick();
 
-function preloadImages() {
-    console.log("Iniciando precarga de imágenes...");
+function preloadImages(attempt = 0) {
+    console.log(`Intento ${attempt + 1}: Iniciando precarga de imágenes...`);
+
+    if (attempt >= 3) {
+        console.log("No se pudo abrir el modal después de varios intentos. Reiniciando el script...");
+        initialize(); // Reiniciar el script en lugar de recargar la página
+        return;
+    }
 
     const storedImageLinks = sessionStorage.getItem('imageLinks');
     if (storedImageLinks) {
@@ -260,62 +266,77 @@ function preloadImages() {
     }
 
     const originalButton = document.getElementById("btn_show_all_images");
-    if (originalButton) {
-        console.log("Abriendo modal en segundo plano para extraer enlaces...");
+    if (!originalButton) {
+        console.log("Botón principal no encontrado, reintentando...");
+        setTimeout(() => preloadImages(attempt + 1), 800);
+        return;
+    }
 
-        // Crear una etiqueta <style> para ocultar el modal temporalmente
-        let modalStyle = document.getElementById("hiddenModalStyle");
-        if (!modalStyle) {
-            modalStyle = document.createElement('style');
-            modalStyle.id = "hiddenModalStyle";
-            modalStyle.textContent = `
-                .modal, .modal-backdrop {
-                    visibility: hidden !important;
-                    opacity: 0 !important;
-                    display: none !important;
-                }
-            `;
-            document.head.appendChild(modalStyle);
+    console.log("Limpiando cualquier modal o overlay previo...");
+    closeFloatingWindows(); // Cierra cualquier modal que haya quedado abierto
+    document.querySelectorAll(".modal-backdrop").forEach(el => el.remove()); // Elimina cualquier overlay
+
+    console.log("Abriendo modal en segundo plano para extraer enlaces...");
+
+    // Ocultar temporalmente el modal
+    let modalStyle = document.getElementById("hiddenModalStyle");
+    if (!modalStyle) {
+        modalStyle = document.createElement('style');
+        modalStyle.id = "hiddenModalStyle";
+        modalStyle.textContent = `
+            .modal, .modal-backdrop {
+                visibility: hidden !important;
+                opacity: 0 !important;
+                display: none !important;
+            }
+        `;
+        document.head.appendChild(modalStyle);
+    }
+
+    originalButton.click(); // Intentar abrir el modal
+
+    setTimeout(() => {
+        const modalVisible = document.querySelector(".modal.show");
+
+        if (!modalVisible) {
+            console.log(`El modal no se abrió en el intento ${attempt + 1}, reintentando...`);
+            preloadImages(attempt + 1);
+            return;
         }
 
-        originalButton.click(); // Abre el modal (estará oculto)
+        console.log("El modal se abrió correctamente, extrayendo imágenes...");
+        const imageLinks = Array.from(document.querySelectorAll("a[href^='https://deckard-imddb-us-west']"))
+            .map(anchor => anchor.href);
 
-        setTimeout(() => {
-            const imageLinks = Array.from(document.querySelectorAll("a[href^='https://deckard-imddb-us-west']"))
-                .map(anchor => anchor.href);
+        if (imageLinks.length > 0) {
+            sessionStorage.setItem('imageLinks', JSON.stringify(imageLinks));
+            console.log(`Se almacenaron ${imageLinks.length} imágenes en caché.`);
 
-            if (imageLinks.length > 0) {
-                sessionStorage.setItem('imageLinks', JSON.stringify(imageLinks));
-                console.log(`Se almacenaron ${imageLinks.length} imágenes en caché.`);
+            imageLinks.forEach(imgUrl => {
+                const img = new Image();
+                img.src = imgUrl;
+            });
 
-                // Pre-descargar imágenes en segundo plano
-                imageLinks.forEach(imgUrl => {
-                    const img = new Image();
-                    img.src = imgUrl;
+            setTimeout(closeFloatingWindows, 700);
+
+            setTimeout(() => {
+                const hiddenStyle = document.getElementById("hiddenModalStyle");
+                if (hiddenStyle) hiddenStyle.remove();
+
+                document.querySelectorAll(".modal, .modal-backdrop").forEach(el => {
+                    el.style.visibility = "visible";
+                    el.style.opacity = "1";
+                    el.style.display = "";
                 });
 
-                setTimeout(closeFloatingWindows, 700); // Cierra el modal rápidamente
-
-                // Restaurar visibilidad después de cerrar
-                setTimeout(() => {
-                    const hiddenStyle = document.getElementById("hiddenModalStyle");
-                    if (hiddenStyle) hiddenStyle.remove();
-
-                    // Asegurar que el modal sea visible si no se restauró correctamente
-                    document.querySelectorAll(".modal, .modal-backdrop").forEach(el => {
-                        el.style.visibility = "visible";
-                        el.style.opacity = "1";
-                        el.style.display = "";
-                    });
-
-                    console.log("Modal restaurado correctamente.");
-                }, 1000);
-            } else {
-                console.log("No se encontraron imágenes.");
-            }
-        }, 800); // Espera 1 segundo para extraer imágenes antes de cerrar
-    }
+                console.log("Modal restaurado correctamente.");
+            }, 1000);
+        } else {
+            console.log("No se encontraron imágenes en el modal.");
+        }
+    }, 1000);
 }
+
 
 
 
@@ -339,38 +360,6 @@ function initialize() {
     }
 }
 
-    function ensureModalVisibility() {
-        console.log("Forzando visibilidad del modal...");
-
-        setTimeout(() => {
-            const modal = document.querySelector(".modal"); // Selecciona el modal principal
-
-            if (modal) {
-                modal.style.visibility = "visible";
-                modal.style.opacity = "1";
-                modal.style.display = "block";
-            }
-
-            // No modificamos el fondo `.modal-backdrop` para que conserve el estilo original
-        }, 500); // Espera 500ms después de abrir para garantizar visibilidad
-    }
-
-    function setupButtonClick() {
-        const originalButton = document.getElementById("btn_show_all_images");
-
-        if (originalButton) {
-            console.log("Configurando clic en btn_show_all_images...");
-            originalButton.addEventListener("click", () => {
-                console.log("Botón btn_show_all_images clickeado, asegurando visibilidad del modal...");
-                setTimeout(ensureModalVisibility, 500); // Asegura que el modal se haga visible
-            });
-        } else {
-            console.log("Botón btn_show_all_images no encontrado, reintentando...");
-            setTimeout(setupButtonClick, 800);
-        }
-    }
-
-setupButtonClick();
 
 
     initialize();
