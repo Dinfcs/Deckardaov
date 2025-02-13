@@ -15,10 +15,6 @@
     const button = document.createElement('button');
     button.textContent = 'Load Pages';
     Object.assign(button.style, {
-        position: 'fixed',
-        bottom: '20%',
-        right: '10px',
-        zIndex: '1000',
         padding: '10px 15px',
         backgroundColor: '#007bff',
         color: '#fff',
@@ -26,9 +22,27 @@
         borderRadius: '5px',
         cursor: 'pointer',
         fontSize: '16px',
-        boxShadow: '2px 2px 10px rgba(0,0,0,0.3)'
+        boxShadow: '2px 2px 10px rgba(0,0,0,0.3)',
+        marginRight: '10px'
     });
-    document.body.appendChild(button);
+
+    // Function to insert the button
+    function insertButton() {
+        const firstPageButton = document.querySelector('.first-page');
+        if (firstPageButton) {
+            firstPageButton.parentNode.insertBefore(button, firstPageButton);
+        }
+    }
+
+    // Use MutationObserver to wait for the first-page button to appear
+    const observer = new MutationObserver(() => {
+        if (document.querySelector('.first-page')) {
+            insertButton();
+            observer.disconnect();
+        }
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
 
     function showTableInModal(tableHTML) {
         const modal = document.createElement('div');
