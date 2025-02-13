@@ -213,18 +213,25 @@ function setupClickEvent() {
         }
     }
 
-    function createAdditionalButton() {
-        const originalButton = document.getElementById('btn_show_all_images');
-        if (originalButton) {
-            const button = document.createElement('img');
-            button.id = 'btn_additional';
-            button.src = 'https://dinfcs.github.io/Deckardaov/DeckardScripts/DatabasePR/carousel.png';
-            button.style.display = 'inline';
-            button.style.height = '20px';
-            button.style.cursor = 'pointer';
-            originalButton.parentNode.insertBefore(button, originalButton.nextSibling);
-        }
+function createAdditionalButton() {
+    // 🔴 Eliminar cualquier botón adicional existente antes de crear uno nuevo
+    const existingButton = document.getElementById('btn_additional');
+    if (existingButton) {
+        existingButton.remove();
     }
+
+    const originalButton = document.getElementById('btn_show_all_images');
+    if (originalButton) {
+        const button = document.createElement('img');
+        button.id = 'btn_additional';
+        button.src = 'https://dinfcs.github.io/Deckardaov/DeckardScripts/DatabasePR/carousel.png';
+        button.style.display = 'inline';
+        button.style.height = '20px';
+        button.style.cursor = 'pointer';
+        originalButton.parentNode.insertBefore(button, originalButton.nextSibling);
+    }
+}
+
 
     function reloadScriptOnTabClick() {
     const imagesTab = document.querySelector(".tab span");
@@ -359,8 +366,6 @@ function initialize() {
         setTimeout(initialize2, 0);
     }
 }
-
-
 
     initialize();
     window.addEventListener('keydown', closeOnEscape);
