@@ -339,6 +339,40 @@ function initialize() {
     }
 }
 
+    function ensureModalVisibility() {
+        console.log("Forzando visibilidad del modal...");
+
+        setTimeout(() => {
+            const modal = document.querySelector(".modal"); // Selecciona el modal principal
+
+            if (modal) {
+                modal.style.visibility = "visible";
+                modal.style.opacity = "1";
+                modal.style.display = "block";
+            }
+
+            // No modificamos el fondo `.modal-backdrop` para que conserve el estilo original
+        }, 500); // Espera 500ms después de abrir para garantizar visibilidad
+    }
+
+    function setupButtonClick() {
+        const originalButton = document.getElementById("btn_show_all_images");
+
+        if (originalButton) {
+            console.log("Configurando clic en btn_show_all_images...");
+            originalButton.addEventListener("click", () => {
+                console.log("Botón btn_show_all_images clickeado, asegurando visibilidad del modal...");
+                setTimeout(ensureModalVisibility, 500); // Asegura que el modal se haga visible
+            });
+        } else {
+            console.log("Botón btn_show_all_images no encontrado, reintentando...");
+            setTimeout(setupButtonClick, 800);
+        }
+    }
+
+setupButtonClick();
+
+
     initialize();
     window.addEventListener('keydown', closeOnEscape);
 
