@@ -2243,7 +2243,7 @@
       "License List": [
         {
           "type": "CERTIFICATE LIST",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7BDC27F1AE-3A93-4190-B1E4-FC7612ACE20C%7D&file=CERTIFICATE%20LIST%201-21-25.xlsx&action=default&mobileredirect=true"
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EbUJTQuP0Q9NhRp1UCtTaeQBXl8410P8oY6Ef-qpr5vy0A?e=oPbm3d"
         }
       ],
       "Important Info": "N/A",
@@ -10001,6 +10001,32 @@
       "License List": [
         {
           "type": "License o N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
+    },
+    {
+      "Project": "WA - okanogan County",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://okanoganwa-taxsifter.publicaccessnow.com/Disclaimer.aspx"
+        },
+        {
+          "type": "GIS",
+          "url": "https://okanoganwa-mapsifter.publicaccessnow.com/defaultHTML5.aspx"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
           "url": "N/A"
         }
       ],
