@@ -644,11 +644,11 @@
       "Project": "CA - City of Capitola",
       "Public Records & GIS": [
         {
-          "type": "PR",
+          "type": "PR (Use VPN)",
           "url": "https://sccounty01.co.santa-cruz.ca.us/ASR/"
         },
         {
-          "type": "GIS",
+          "type": "GIS (Use VPN)",
           "url": "https://gis.santacruzcounty.us/gisweb/"
         }
       ],
@@ -684,7 +684,7 @@
           "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EVFICbV9BglFn89_X_Q4QXAB_Skl23oc9wO91UalCvNBFQ?e=h3UqPU"
         }
       ],
-      "Important Info": "You need to check if the matched property is licensed (License file), if it is, you need to use the information in the \"UNIT FIXED\" column and applied to the unit box in Cyborg.",
+      "Important Info": "You need to check if the matched property is licensed (License file), if it is, you must use the information in the \"UNIT FIXED\" column and applied to the unit box in Cyborg.",
       "Media": [
         {
           "type": "N/A",
