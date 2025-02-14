@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AutoFill SpatialStream & ParcelQuest Login
 // @namespace    http://tampermonkey.net/
-// @version      3.3
+// @version      3.4
 // @description  Autocompletar login en SpatialStream (LB) y ParcelQuest (PQ) y abrir LightBox Vision automáticamente
 // @author       [Tu Nombre]
 // @match        https://login-spatialstream.prod.lightboxre.com/*
@@ -71,14 +71,22 @@
             userField.dispatchEvent(new Event('input', { bubbles: true }));
 
             setTimeout(() => {
+                console.log("%c[Script] Usuario pegado, ingresando contraseña...", "color: green;");
                 passwordField.value = "Deckard2023";
                 passwordField.dispatchEvent(new Event('input', { bubbles: true }));
 
                 setTimeout(() => {
-                    console.log("%c[Script] Haciendo clic en 'Iniciar sesión'...", "color: green;");
-                    loginButton.click();
-                }, 500);
-            }, 500);
+                    console.log("%c[Script] Contraseña pegada, esperando antes de enviar...", "color: green;");
+
+                    setTimeout(() => {
+                        console.log("%c[Script] Haciendo clic en 'Iniciar sesión'...", "color: green;");
+                        loginButton.click();
+                    }, 700);
+
+                }, 700); // Retardo antes de enviar
+
+            }, 700); // Retardo después de ingresar usuario
+
         } else {
             console.error("%c[Script] No se encontraron los campos de login en SpatialStream.", "color: red;");
         }
