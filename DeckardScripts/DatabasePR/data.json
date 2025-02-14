@@ -8448,8 +8448,8 @@
       ],
       "License List": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "type": "License",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EYENMJfsw4tEr7VFPKw-VjABlugS2kupLxtMdYr23Hshag?e=zNNzsp"
         }
       ],
       "Important Info": "Please mark all listings found at these coordinates: 38.01550021066446, -85.28953017008469, with APN 051706 and the resort structure. The APN and structure have been confirmed by the client. Also, please input the unit number in the unit box, regardless of whether it is a resort.",
@@ -9926,7 +9926,7 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "To search Public Records, use the property address or follow this APN format:\n\n◆ Example: APN from Cyborg TISBM0008QB00000L00008 → 8-Q-8.\n\n1. Take the first number after the initial zeros: 8\n2. Take the letter right before \"B0.\": Q\n3. Add the last digit: 8\n4. Separate each part with a dash (-).\n\nNote: To select the aerial image in GIS, open the right-side menu, click \"Basemap,\" and then choose \"Imagery.\"",
+      "Important Info": "To search Public Records, use the property address or follow this APN format:\n\n◆ Example: APN from Cyborg TISBM0008QB00000L00008 → 8-Q-8.\n\n1. Take the first number after the initial zeros: 8\n2. Take the letter right before \"B0.\": Q\n3. Add the last 2 digits but if the penultimate one is 0, only add the last one: 8\n4. Separate each part with a dash (-).\n\nNote: To select the aerial image in GIS, open the right-side menu, click \"Basemap,\" and then choose \"Imagery.\"",
       "Media": [
         {
           "type": "N/A",
