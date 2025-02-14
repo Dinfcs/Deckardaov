@@ -27,12 +27,17 @@
             return;
         }
 
-        addStyle(`
+  addStyle(`
     /* Encabezados */
     .cyborg-str-tool h1:not(#window_vetting_dlg *):not(#vetting_data_footer *), .cyborg-str-tool h2:not(#window_vetting_dlg *):not(#vetting_data_footer *), .cyborg-str-tool h3:not(#window_vetting_dlg *):not(#window_vetting_dlg *), .cyborg-str-tool h4:not(#window_vetting_dlg *):not(#vetting_data_footer *), .cyborg-str-tool h5:not(#vetting_dlg *):not(#vetting_data_footer *), .cyborg-str-tool h6:not(#window_vetting_dlg *):not(#vetting_data_footer *):not(.pop_up_header_container *):not(#iframe-button-container *) {
         font-weight: bold !important;
         color: #C9D82B !important; /* Verde oliva oscuro */
         font-size: 15px !important;
+    }
+
+    /* Título del listado */
+    .page_header_bar h4 span {
+        font-size: 20px !important; /* Ajusta el tamaño según sea necesario */
     }
 
     /* Resto de los botones */
@@ -139,7 +144,8 @@
     .cyborg-str-tool .listing_quick_view_apn_or_address_info:not(#window_vetting_dlg *):not(#vetting_data_footer *):not(#iframe-button-container *) {
         font-weight: normal !important;
     }
-        `);
+`);
+
 
         document.body.classList.add('cyborg-str-tool');
     };
