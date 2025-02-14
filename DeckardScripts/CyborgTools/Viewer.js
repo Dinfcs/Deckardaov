@@ -100,11 +100,58 @@
         thumbsContainer.id = "thumbsContainer";
         thumbsContainer.style.gridTemplateColumns = imageLinks.length < 13 ? "1fr" : "repeat(2, 1fr)";
 
+                    // Crear el contenedor de la notificación
+            const notification = document.createElement('div');
+            notification.id = "floatingNotification";
+            notification.innerHTML = `
+                <p>🔹 Press <b>Escape</b> or click outside to close.</p>
+                <p>🔹 Ctrl + Click on a thumbnail to open in a new tab.</p>
+            `;
+            document.body.appendChild(notification);
+
+            // Desaparecer el cuadro de instrucciones después de 7 segundos
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                setTimeout(() => notification.remove(), 500); // Elimina el elemento después de la animación
+            }, 5000);
+
+            // Agregar estilos para la notificación flotante
+            addStyle(`
+                #floatingNotification {
+                    position: fixed;
+                    left: 20px;
+                    top: 20px;
+                    background: rgba(0, 0, 0, 0.8);
+                    color: white;
+                    padding: 15px 20px;
+                    border-radius: 8px;
+                    font-size: 18px;
+                    z-index: 99999;
+                    max-width: 350px;
+                    transition: opacity 0.2s ease-in-out;
+                }
+                #floatingNotification p {
+                    margin: 5px 0;
+                }
+            `);
+        // fin contenedor de la notificación
+
+
         imageLinks.forEach((thumbUrl, index) => {
             const img = document.createElement('img');
             img.src = thumbUrl;
             img.alt = "Thumbnail";
-            img.addEventListener('click', () => viewer.view(index));
+
+            img.addEventListener('click', (event) => {
+                if (event.ctrlKey || event.metaKey) {
+                    // Si Ctrl (Windows/Linux) o Cmd (Mac) está presionado, abrir en una nueva pestaña
+                    window.open(thumbUrl, '_blank');
+                } else {
+                    // Si no, abrir en el visor normalmente
+                    viewer.view(index);
+                }
+            });
+
             thumbsContainer.appendChild(img);
 
             if (index === 0) {
@@ -112,6 +159,8 @@
                 img.classList.add('current-thumbnail');
             }
         });
+
+
 
         document.body.appendChild(thumbsContainer);
 
