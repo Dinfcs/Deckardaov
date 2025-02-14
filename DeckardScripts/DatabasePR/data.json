@@ -10037,6 +10037,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "CA - Lake County",
+      "Public Records & GIS": [
+        {
+          "type": " GIS",
+          "url": "https://gispublic.co.lake.ca.us/portal/apps/webappviewer/index.html?id=87dfc0c535b2478bb67df69d6d319eca#"
+        },
+        {
+          "type": "Rental Platform",
+          "url": "https://www.homeslakecounty.com/listings/areas/28236,41411/minprice/100000/beds/1/sort/mlsupdatedate+desc/?gclid=CjwKCAiA8Lu9BhA8EiwAag16b8ZuW76NCvBvytGjeos2QHVNFOC9R6_VrmPLZpRodXiLPAaSxhqfdBoCeHIQAvD_BwE"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License o N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "You can search in the GIS by address, APN, and by latitude and longitude.",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
