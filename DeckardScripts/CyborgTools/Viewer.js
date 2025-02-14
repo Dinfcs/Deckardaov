@@ -57,7 +57,7 @@
             width: 250px;
         }
         #thumbsContainer img {
-            width: 100%;
+            width: 250px;
             height: auto;
             cursor: pointer;
             transition: transform 0.3s ease, opacity 0.3s ease;
@@ -120,18 +120,29 @@
             return;
         }
 
+        // Crear el contenedor de miniaturas
         const thumbsContainer = document.createElement('div');
         thumbsContainer.id = "thumbsContainer";
-        thumbsContainer.style.gridTemplateColumns = imageLinks.length < 13 ? "1fr" : "repeat(2, 1fr)";
+
+        // Ajustar el ancho del contenedor según la cantidad de imágenes
+        if (imageLinks.length <= 15) {
+            thumbsContainer.style.width = "180px"; // Ancho para una columna
+        } else {
+            thumbsContainer.style.width = "280px"; // Ancho para dos columnas
+        }
+
+        // Configurar el número de columnas
+        thumbsContainer.style.gridTemplateColumns = imageLinks.length <= 15 ? "1fr" : "repeat(2, 1fr)";
 
         document.body.appendChild(thumbsContainer);
 
+        // Crear y mostrar notificación flotante con instrucciones
         const notification = document.createElement('div');
         notification.id = "floatingNotification";
         notification.innerHTML = `
-            <p>🔹 Press <b>Escape</b> or click outside to close.</p>
-            <p>🔹 Ctrl + Click on a thumbnail to open in a new tab.</p>
-        `;
+        <p>🔹 Press <b>Escape</b> or click outside to close.</p>
+        <p>🔹 Ctrl + Click on a thumbnail to open in a new tab.</p>
+    `;
         document.body.appendChild(notification);
 
         setTimeout(() => {
@@ -139,15 +150,23 @@
             setTimeout(() => notification.remove(), 500);
         }, 5000);
 
+        // Crear las miniaturas de imágenes
         imageLinks.forEach((thumbUrl, index) => {
             const img = document.createElement('img');
             img.src = thumbUrl;
             img.alt = "Thumbnail";
             img.style.cursor = "pointer";
-            img.style.width = imageLinks.length > 15 ? "90px" : "100px";
-            img.style.height = "auto";
             img.style.borderRadius = "5px";
             img.style.transition = "transform 0.2s ease-in-out";
+
+            // Ajustar el tamaño de las miniaturas según la cantidad de imágenes
+            if (imageLinks.length <= 15) {
+                img.style.width = "100%"; // Miniaturas más grandes para una columna
+            } else {
+                img.style.width = "90px"; // Miniaturas más pequeñas para dos columnas
+            }
+
+            img.style.height = "auto";
 
             img.addEventListener('click', (event) => {
                 if (event.ctrlKey || event.metaKey) {
@@ -165,6 +184,7 @@
             }
         });
 
+        // Crear el contenedor para el visor de imágenes
         const imageContainer = document.createElement('div');
         imageContainer.id = "imageViewerContainer";
         imageContainer.style.display = "none";
@@ -177,9 +197,7 @@
 
         document.body.appendChild(imageContainer);
 
-        // Obtener el último índice visto desde sessionStorage
-        const lastViewedIndex = parseInt(sessionStorage.getItem('lastViewedIndex')) || 0;
-
+        // Configurar el visor de imágenes
         viewer = new Viewer(imageContainer, {
             inline: false,
             button: true,
@@ -202,9 +220,6 @@
                     currentThumbnail.classList.add('current-thumbnail');
                     currentThumbnail.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }
-
-                // Guardar el índice de la imagen actual en sessionStorage
-                sessionStorage.setItem('lastViewedIndex', viewer.index);
             },
             hidden() {
                 thumbsContainer.remove();
@@ -213,13 +228,9 @@
             }
         });
 
-        // Mostrar la última imagen vista
         viewer.show();
-        viewer.view(lastViewedIndex);
-
         document.addEventListener('keydown', handleKeyNavigation);
     }
-
     // Función para manejar la navegación por teclado
     function handleKeyNavigation(e) {
         if (!viewer) return;
