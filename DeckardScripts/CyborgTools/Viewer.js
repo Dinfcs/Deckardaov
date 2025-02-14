@@ -9,6 +9,7 @@
 (function() {
     'use strict';
 
+    // Función para agregar recursos (CSS o JS)
     const addResource = (type, src) => {
         const element = document.createElement(type === 'script' ? 'script' : 'link');
         if (type === 'script') {
@@ -21,15 +22,18 @@
         document.head.appendChild(element);
     };
 
+    // Cargar recursos necesarios
     addResource('link', 'https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.10.4/viewer.min.css');
     addResource('script', 'https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.10.4/viewer.min.js');
 
+    // Función para agregar estilos CSS
     const addStyle = (css) => {
         const style = document.createElement('style');
         style.textContent = css;
         document.head.appendChild(style);
     };
 
+    // Estilos CSS
     addStyle(`
         #btn_show_all_images, #btn_additional {
             height: 25px !important;
@@ -68,18 +72,38 @@
         .current-thumbnail {
             border: 2px solid yellow;
         }
+        #floatingNotification {
+            position: fixed;
+            left: 20px;
+            top: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-size: 18px;
+            z-index: 99999;
+            max-width: 350px;
+            transition: opacity 0.2s ease-in-out;
+        }
+        #floatingNotification p {
+            margin: 5px 0;
+        }
     `);
 
     let viewer;
     let currentThumbnail;
 
+    // Función para extraer imágenes
     function extractImages(retryCount = 0) {
         console.log('Extracting images...');
+
         const storedImageLinks = sessionStorage.getItem('imageLinks');
         let imageLinks = storedImageLinks ? JSON.parse(storedImageLinks) : [];
 
         if (imageLinks.length === 0) {
-            imageLinks = Array.from(document.querySelectorAll("a[href^='https://deckard-imddb-us-west']")).map(anchor => anchor.href);
+            imageLinks = Array.from(document.querySelectorAll("a[href^='https://deckard-imddb-us-west']"))
+                .map(anchor => anchor.href);
+
             if (imageLinks.length > 0) {
                 sessionStorage.setItem('imageLinks', JSON.stringify(imageLinks));
             }
@@ -100,54 +124,35 @@
         thumbsContainer.id = "thumbsContainer";
         thumbsContainer.style.gridTemplateColumns = imageLinks.length < 13 ? "1fr" : "repeat(2, 1fr)";
 
-                    // Crear el contenedor de la notificación
-            const notification = document.createElement('div');
-            notification.id = "floatingNotification";
-            notification.innerHTML = `
-                <p>🔹 Press <b>Escape</b> or click outside to close.</p>
-                <p>🔹 Ctrl + Click on a thumbnail to open in a new tab.</p>
-            `;
-            document.body.appendChild(notification);
+        document.body.appendChild(thumbsContainer);
 
-            // Desaparecer el cuadro de instrucciones después de 7 segundos
-            setTimeout(() => {
-                notification.style.opacity = '0';
-                setTimeout(() => notification.remove(), 500); // Elimina el elemento después de la animación
-            }, 5000);
+        const notification = document.createElement('div');
+        notification.id = "floatingNotification";
+        notification.innerHTML = `
+            <p>🔹 Press <b>Escape</b> or click outside to close.</p>
+            <p>🔹 Ctrl + Click on a thumbnail to open in a new tab.</p>
+        `;
+        document.body.appendChild(notification);
 
-            // Agregar estilos para la notificación flotante
-            addStyle(`
-                #floatingNotification {
-                    position: fixed;
-                    left: 20px;
-                    top: 20px;
-                    background: rgba(0, 0, 0, 0.8);
-                    color: white;
-                    padding: 15px 20px;
-                    border-radius: 8px;
-                    font-size: 18px;
-                    z-index: 99999;
-                    max-width: 350px;
-                    transition: opacity 0.2s ease-in-out;
-                }
-                #floatingNotification p {
-                    margin: 5px 0;
-                }
-            `);
-        // fin contenedor de la notificación
-
+        setTimeout(() => {
+            notification.style.opacity = '0';
+            setTimeout(() => notification.remove(), 500);
+        }, 5000);
 
         imageLinks.forEach((thumbUrl, index) => {
             const img = document.createElement('img');
             img.src = thumbUrl;
             img.alt = "Thumbnail";
+            img.style.cursor = "pointer";
+            img.style.width = imageLinks.length > 15 ? "90px" : "100px";
+            img.style.height = "auto";
+            img.style.borderRadius = "5px";
+            img.style.transition = "transform 0.2s ease-in-out";
 
             img.addEventListener('click', (event) => {
                 if (event.ctrlKey || event.metaKey) {
-                    // Si Ctrl (Windows/Linux) o Cmd (Mac) está presionado, abrir en una nueva pestaña
                     window.open(thumbUrl, '_blank');
                 } else {
-                    // Si no, abrir en el visor normalmente
                     viewer.view(index);
                 }
             });
@@ -160,10 +165,6 @@
             }
         });
 
-
-
-        document.body.appendChild(thumbsContainer);
-
         const imageContainer = document.createElement('div');
         imageContainer.id = "imageViewerContainer";
         imageContainer.style.display = "none";
@@ -175,6 +176,9 @@
         });
 
         document.body.appendChild(imageContainer);
+
+        // Obtener el último índice visto desde sessionStorage
+        const lastViewedIndex = parseInt(sessionStorage.getItem('lastViewedIndex')) || 0;
 
         viewer = new Viewer(imageContainer, {
             inline: false,
@@ -198,6 +202,9 @@
                     currentThumbnail.classList.add('current-thumbnail');
                     currentThumbnail.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }
+
+                // Guardar el índice de la imagen actual en sessionStorage
+                sessionStorage.setItem('lastViewedIndex', viewer.index);
             },
             hidden() {
                 thumbsContainer.remove();
@@ -206,10 +213,14 @@
             }
         });
 
+        // Mostrar la última imagen vista
         viewer.show();
+        viewer.view(lastViewedIndex);
+
         document.addEventListener('keydown', handleKeyNavigation);
     }
 
+    // Función para manejar la navegación por teclado
     function handleKeyNavigation(e) {
         if (!viewer) return;
 
@@ -232,191 +243,183 @@
         }
     }
 
-function setupClickEvent() {
-    const additionalButton = document.getElementById("btn_additional");
+    // Función para configurar el evento de clic en el botón adicional
+    function setupClickEvent() {
+        const additionalButton = document.getElementById("btn_additional");
 
-    if (additionalButton) {
-        console.log('Additional button found, adding click event...');
-        additionalButton.addEventListener("click", () => {
-            console.log("Abriendo carrusel con imágenes en caché...");
-            extractImages(); // Ahora solo usa las imágenes almacenadas en sessionStorage
-        });
-    } else {
-        console.log('Additional button not found, retrying...');
-        setTimeout(setupClickEvent, 800);
+        if (additionalButton) {
+            additionalButton.addEventListener("click", () => {
+                extractImages();
+            });
+        } else {
+            setTimeout(setupClickEvent, 800);
+        }
     }
-}
 
-
+    // Función para cerrar ventanas flotantes y eliminar la notificación
     function closeFloatingWindows() {
+        // Cerrar el modal si está abierto
         const closeButton = document.querySelector("button.btn-close[aria-label='Close']");
         closeButton?.click();
+
+        // Eliminar la notificación flotante si existe
+        const notification = document.getElementById('floatingNotification');
+        if (notification) {
+            notification.remove();
+        }
+
+        // Eliminar el listener de teclado
         document.removeEventListener('keydown', handleKeyNavigation);
     }
 
+    // Función para cerrar con la tecla Escape
     function closeOnEscape(e) {
         if (e.key === 'Escape') {
+            // Eliminar el contenedor de miniaturas y el visor de imágenes
             document.getElementById('thumbsContainer')?.remove();
             document.getElementById('imageViewerContainer')?.remove();
+
+            // Cerrar ventanas flotantes y eliminar la notificación
             closeFloatingWindows();
         }
     }
 
-function createAdditionalButton() {
-    // 🔴 Eliminar cualquier botón adicional existente antes de crear uno nuevo
-    const existingButton = document.getElementById('btn_additional');
-    if (existingButton) {
-        existingButton.remove();
+    // Función para crear el botón adicional
+    function createAdditionalButton() {
+        const existingButton = document.getElementById('btn_additional');
+        if (existingButton) {
+            existingButton.remove();
+        }
+
+        const originalButton = document.getElementById('btn_show_all_images');
+        if (originalButton) {
+            const button = document.createElement('img');
+            button.id = 'btn_additional';
+            button.src = 'https://dinfcs.github.io/Deckardaov/DeckardScripts/DatabasePR/carousel.png';
+            button.style.display = 'inline';
+            button.style.height = '20px';
+            button.style.cursor = 'pointer';
+            originalButton.parentNode.insertBefore(button, originalButton.nextSibling);
+        }
     }
 
-    const originalButton = document.getElementById('btn_show_all_images');
-    if (originalButton) {
-        const button = document.createElement('img');
-        button.id = 'btn_additional';
-        button.src = 'https://dinfcs.github.io/Deckardaov/DeckardScripts/DatabasePR/carousel.png';
-        button.style.display = 'inline';
-        button.style.height = '20px';
-        button.style.cursor = 'pointer';
-        originalButton.parentNode.insertBefore(button, originalButton.nextSibling);
-    }
-}
-
-
+    // Función para recargar el script cuando se hace clic en el tab de "Images"
     function reloadScriptOnTabClick() {
-    const imagesTab = document.querySelector(".tab span");
+        const imagesTab = document.querySelector(".tab span");
 
-    if (imagesTab && imagesTab.textContent.trim() === "Images") {
-        imagesTab.parentElement.addEventListener("click", () => {
-            console.log("Tab 'Images' clickeado, verificando si es necesario recargar...");
-
-            // Verificar si el botón adicional ya existe
-            if (document.getElementById("btn_additional")) {
-                console.log("El botón 'btn_additional' ya existe, no se recarga el script.");
-            } else {
-                console.log("El botón 'btn_additional' no existe, recargando el script...");
-                initialize2(); // Solo recargar si el botón no está presente
-            }
-        });
-    } else {
-        console.log("Tab 'Images' no encontrado, reintentando...");
-        setTimeout(reloadScriptOnTabClick, 500); // Reintentar si el tab aún no está cargado
-    }
-}
-
-// Llamar a la función al cargar el script
-reloadScriptOnTabClick();
-
-function preloadImages(attempt = 0) {
-    console.log(`Intento ${attempt + 1}: Iniciando precarga de imágenes...`);
-
-    if (attempt >= 3) {
-        console.log("No se pudo abrir el modal después de varios intentos. Reiniciando el script...");
-        initialize(); // Reiniciar el script en lugar de recargar la página
-        return;
+        if (imagesTab && imagesTab.textContent.trim() === "Images") {
+            imagesTab.parentElement.addEventListener("click", () => {
+                if (!document.getElementById("btn_additional")) {
+                    initialize(false); // No precargar imágenes al recargar
+                }
+            });
+        } else {
+            setTimeout(reloadScriptOnTabClick, 500);
+        }
     }
 
-    const storedImageLinks = sessionStorage.getItem('imageLinks');
-    if (storedImageLinks) {
-        console.log("Las imágenes ya están en caché.");
-        return;
-    }
-
-    const originalButton = document.getElementById("btn_show_all_images");
-    if (!originalButton) {
-        console.log("Botón principal no encontrado, reintentando...");
-        setTimeout(() => preloadImages(attempt + 1), 800);
-        return;
-    }
-
-    console.log("Limpiando cualquier modal o overlay previo...");
-    closeFloatingWindows(); // Cierra cualquier modal que haya quedado abierto
-    document.querySelectorAll(".modal-backdrop").forEach(el => el.remove()); // Elimina cualquier overlay
-
-    console.log("Abriendo modal en segundo plano para extraer enlaces...");
-
-    // Ocultar temporalmente el modal
-    let modalStyle = document.getElementById("hiddenModalStyle");
-    if (!modalStyle) {
-        modalStyle = document.createElement('style');
-        modalStyle.id = "hiddenModalStyle";
-        modalStyle.textContent = `
-            .modal, .modal-backdrop {
-                visibility: hidden !important;
-                opacity: 0 !important;
-                display: none !important;
-            }
-        `;
-        document.head.appendChild(modalStyle);
-    }
-
-    originalButton.click(); // Intentar abrir el modal
-
-    setTimeout(() => {
-        const modalVisible = document.querySelector(".modal.show");
-
-        if (!modalVisible) {
-            console.log(`El modal no se abrió en el intento ${attempt + 1}, reintentando...`);
-            preloadImages(attempt + 1);
+    // Función para precargar imágenes
+    function preloadImages(attempt = 0) {
+        if (attempt >= 3) {
+            initialize(false); // No precargar imágenes si falla
             return;
         }
 
-        console.log("El modal se abrió correctamente, extrayendo imágenes...");
-        const imageLinks = Array.from(document.querySelectorAll("a[href^='https://deckard-imddb-us-west']"))
-            .map(anchor => anchor.href);
+        const storedImageLinks = sessionStorage.getItem('imageLinks');
+        if (storedImageLinks) {
+            return;
+        }
 
-        if (imageLinks.length > 0) {
-            sessionStorage.setItem('imageLinks', JSON.stringify(imageLinks));
-            console.log(`Se almacenaron ${imageLinks.length} imágenes en caché.`);
+        const originalButton = document.getElementById("btn_show_all_images");
+        if (!originalButton) {
+            setTimeout(() => preloadImages(attempt + 1), 800);
+            return;
+        }
 
-            imageLinks.forEach(imgUrl => {
-                const img = new Image();
-                img.src = imgUrl;
-            });
+        closeFloatingWindows();
+        document.querySelectorAll(".modal-backdrop").forEach(el => el.remove());
 
-            setTimeout(closeFloatingWindows, 700);
+        let modalStyle = document.getElementById("hiddenModalStyle");
+        if (!modalStyle) {
+            modalStyle = document.createElement('style');
+            modalStyle.id = "hiddenModalStyle";
+            modalStyle.textContent = `
+                .modal, .modal-backdrop {
+                    visibility: hidden !important;
+                    opacity: 0 !important;
+                    display: none !important;
+                }
+            `;
+            document.head.appendChild(modalStyle);
+        }
 
-            setTimeout(() => {
-                const hiddenStyle = document.getElementById("hiddenModalStyle");
-                if (hiddenStyle) hiddenStyle.remove();
+        originalButton.click();
 
-                document.querySelectorAll(".modal, .modal-backdrop").forEach(el => {
-                    el.style.visibility = "visible";
-                    el.style.opacity = "1";
-                    el.style.display = "";
+        setTimeout(() => {
+            const modalVisible = document.querySelector(".modal.show");
+
+            if (!modalVisible) {
+                preloadImages(attempt + 1);
+                return;
+            }
+
+            const imageLinks = Array.from(document.querySelectorAll("a[href^='https://deckard-imddb-us-west']"))
+                .map(anchor => anchor.href);
+
+            if (imageLinks.length > 0) {
+                sessionStorage.setItem('imageLinks', JSON.stringify(imageLinks));
+
+                imageLinks.forEach(imgUrl => {
+                    const img = new Image();
+                    img.src = imgUrl;
                 });
 
-                console.log("Modal restaurado correctamente.");
-            }, 1000);
-        } else {
-            console.log("No se encontraron imágenes en el modal.");
+                setTimeout(closeFloatingWindows, 700);
+
+                setTimeout(() => {
+                    const hiddenStyle = document.getElementById("hiddenModalStyle");
+                    if (hiddenStyle) hiddenStyle.remove();
+
+                    document.querySelectorAll(".modal, .modal-backdrop").forEach(el => {
+                        el.style.visibility = "visible";
+                        el.style.opacity = "1";
+                        el.style.display = "";
+                    });
+                }, 1000);
+            }
+        }, 1000);
+    }
+
+    // Función principal de inicialización
+function initialize(shouldPreload = true) {
+    const originalButtonContainer = document.getElementById('listing_detail_page_image_gallery');
+    if (originalButtonContainer) {
+        createAdditionalButton();
+        setupClickEvent();
+        if (shouldPreload) {
+            preloadImages();
         }
-    }, 1000);
-}
-
-
-
-
-function initialize() {
-    const originalButtonContainer = document.getElementById('listing_detail_page_image_gallery');
-    if (originalButtonContainer) {
-        createAdditionalButton();
-        setupClickEvent();
-        preloadImages(); // Llama a la precarga de imágenes en segundo plano
     } else {
-        setTimeout(initialize, 800);
-    }
-}
-    function initialize2() {
-    const originalButtonContainer = document.getElementById('listing_detail_page_image_gallery');
-    if (originalButtonContainer) {
-        createAdditionalButton();
-        setupClickEvent();
-    } else {
-        setTimeout(initialize2, 0);
+        // Usar MutationObserver para detectar cuándo el contenedor está disponible
+        const observer = new MutationObserver((mutations, obs) => {
+            const container = document.getElementById('listing_detail_page_image_gallery');
+            if (container) {
+                obs.disconnect(); // Dejar de observar
+                createAdditionalButton();
+                setupClickEvent();
+                if (shouldPreload) {
+                    preloadImages();
+                }
+            }
+        });
+
+        // Observar cambios en el DOM
+        observer.observe(document.body, { childList: true, subtree: true });
     }
 }
 
+    // Inicializar el script
     initialize();
+    reloadScriptOnTabClick();
     window.addEventListener('keydown', closeOnEscape);
-
 })();
