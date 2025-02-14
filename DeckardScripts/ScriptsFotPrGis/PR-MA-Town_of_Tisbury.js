@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Search APN MA - Town of Tisbury
 // @namespace    http://tampermonkey.net/
-// @version      1.8
+// @version      2.0
 // @description  Transform and search APN
 // @author       Your Name
 // @match        *://*/*
@@ -27,9 +27,12 @@
 
     // Función para transformar la APN
     function transformAPN(apn) {
-        const match = apn.match(/^TISBM0*(\d+)([A-Z])B0.*(\d)$/);
+        const match = apn.match(/^TISBM0*(\d+)([A-Z])B0.*(\d\d)$/);
         if (match) {
-            return `${match[1]}-${match[2]}-${match[3]}`;
+            const firstPart = match[1];
+            const letter = match[2];
+            const lastPart = match[3];
+            return `${firstPart}-${letter}-${lastPart}`;
         }
         return null;
     }
