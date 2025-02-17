@@ -1,9 +1,7 @@
 // ==UserScript==
 // @name         Extraer Dirección de Propiedad (con ventana flotante)
-// @namespace    http://tampermonkey.net/
 // @version      1.6
 // @description  Extrae la dirección de la propiedad desde propDetails y la muestra en la página, con opción de copiar al portapapeles
-// @author       Tu Nombre
 // @match        https://www.michaelsvacationrentals.com/*
 // @grant        none
 // ==/UserScript==
