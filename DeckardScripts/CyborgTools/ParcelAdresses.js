@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         Address Finder with Standard Tab Opening
-// @namespace    http://tampermonkey.net/
+// @namespace    
 // @version      1.7
 // @description  Adds hyperlinks to addresses and places the "Directions" button next to "Apply". Opens links using window.open().
-// @author       [Your Name]
+// @author       Luis Escalante
 // @match        *://*/*
 // @grant        none
 // ==/UserScript==
