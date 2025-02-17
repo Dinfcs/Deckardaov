@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         Auto-check and enable input field (based on element)
-// @namespace    http://tampermonkey.net/
+// @namespace    
 // @version      1.6
 // @description  Activa la casilla y habilita el campo especificado después de detectar un elemento en el DOM.
-// @author       Tu Nombre
+// @author       Luis Escalante
 // @match        *://*/*
 // @grant        none
 // ==/UserScript==
