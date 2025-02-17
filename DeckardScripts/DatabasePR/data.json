@@ -9814,6 +9814,10 @@
         {
           "type": "GIS",
           "url": "https://summitcounty.maps.arcgis.com/apps/webappviewer/index.html?id=85c6c55514ae4d4f9218202e364fec73"
+        },
+        {
+          "type": "PR2 per address",
+          "url": "https://treasurer.summitcounty.org/treasurer/treasurerweb/search.jsp"
         }
       ],
       "License List": [
