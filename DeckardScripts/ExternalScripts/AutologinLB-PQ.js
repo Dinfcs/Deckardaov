@@ -81,11 +81,11 @@
                     setTimeout(() => {
                         console.log("%c[Script] Haciendo clic en 'Iniciar sesión'...", "color: green;");
                         loginButton.click();
-                    }, 700);
+                    }, 1000);
 
-                }, 700); // Retardo antes de enviar
+                }, 1000); // Retardo antes de enviar
 
-            }, 700); // Retardo después de ingresar usuario
+            }, 1000); // Retardo después de ingresar usuario
 
         } else {
             console.error("%c[Script] No se encontraron los campos de login en SpatialStream.", "color: red;");
