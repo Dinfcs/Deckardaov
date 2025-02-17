@@ -1,9 +1,8 @@
 // ==UserScript==
 // @name         Script Principal
-// @namespace    http://tampermonkey.net/
 // @version      1.9
 // @description  Define y carga scripts auxiliares según la URL
-// @author       Tu Nombre
+// @author       Luis Escalante
 // @match        *://*/*
 // @grant        none
 // @run-at       document-start
