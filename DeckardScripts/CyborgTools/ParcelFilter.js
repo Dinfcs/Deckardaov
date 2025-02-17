@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Fullscreen Table with Filter and Export
-// @namespace    http://tampermonkey.net/
+// @namespace    
 // @version      1.2
 // @description  Extrae datos de un numero de paginas en parcel y las muestra en una tabla  con opcion a exportar
 // @match        https://cyborg.deckard.com/parcel/*
