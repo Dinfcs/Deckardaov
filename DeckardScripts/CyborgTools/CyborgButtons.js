@@ -3,7 +3,7 @@
 // @namespace    http://tampermonkey.net/
 // @version      2.7
 // @description  Añade botones para abrir iframes en la parte inferior izquierda de la página, con funcionalidad personalizada y botones de cierre para cada iframe en la parte inferior izquierda que desaparecen al cerrarse cualquier iframe.
-// @author       Tú
+// @author       Luis Escalante
 // @match        *://cyborg.deckard.com/*
 // @grant        none
 // ==/UserScript==
