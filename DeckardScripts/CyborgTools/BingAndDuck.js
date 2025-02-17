@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Find with Bing Maps and DuckDuckGo Maps
-// @namespace    http://tampermonkey.net/
+// @namespace    
 // @version      2.4
 // @description  Agrega enlaces a Bing Maps y DuckDuckGo Maps en la página de proyectos
 // @author       Luis Escalante
