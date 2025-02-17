@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         NearbyParcels
-// @namespace    http://tampermonkey.net/
+// @namespace    
 // @version      2.7
 // @description  Añade un botón para abrir direcciones visibles en Google Maps o Google Search
 // @author       Luis Escalante
