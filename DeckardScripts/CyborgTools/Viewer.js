@@ -120,11 +120,22 @@
             return;
         }
 
+     // Crear el contenedor de miniaturas
         const thumbsContainer = document.createElement('div');
         thumbsContainer.id = "thumbsContainer";
-        thumbsContainer.style.gridTemplateColumns = imageLinks.length < 13 ? "1fr" : "repeat(2, 1fr)";
+
+        // Ajustar el ancho del contenedor según la cantidad de imágenes
+        if (imageLinks.length <= 15) {
+            thumbsContainer.style.width = "180px"; // Ancho para una columna
+        } else {
+            thumbsContainer.style.width = "280px"; // Ancho para dos columnas
+        }
+
+        // Configurar el número de columnas
+        thumbsContainer.style.gridTemplateColumns = imageLinks.length <= 15 ? "1fr" : "repeat(2, 1fr)";
 
         document.body.appendChild(thumbsContainer);
+
 
         const notification = document.createElement('div');
         notification.id = "floatingNotification";
@@ -144,7 +155,7 @@
             img.src = thumbUrl;
             img.alt = "Thumbnail";
             img.style.cursor = "pointer";
-            img.style.width = imageLinks.length > 15 ? "90px" : "100px";
+            img.style.width = imageLinks.length > 15 ? "120px" : "130px";
             img.style.height = "auto";
             img.style.borderRadius = "5px";
             img.style.transition = "transform 0.2s ease-in-out";
