@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         estilos sin gm
-// @namespace    http://tampermonkey.net/
+// @namespace    
 // @version      1.9
 // @description  Ajusta los estilos con colores más suaves, tamaños optimizados y filtros persistentes en tablas
-// @author       [Tu Nombre]
+// @author       Luis Escalante
 // @match        https://cyborg.deckard.com/*
 // @grant        none
 // ==/UserScript==
