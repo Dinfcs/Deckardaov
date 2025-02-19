@@ -48,7 +48,7 @@
                 callback(element);
             } else if (Date.now() - startTime > timeout) {
                 clearInterval(interval);
-                console.warn(`%c[Script] No se encontró el elemento: ${selector} tras ${timeout / 1000} segundos.`, "color: orange;");
+                console.warn(`%c[Script] No se encontró el elemento: ${selector} tras ${timeout / 500} segundos.`, "color: orange;");
             }
         }, 100);
     }
@@ -97,8 +97,8 @@
                     setTimeout(() => {
                         console.log("%c[Script] Haciendo clic en 'Iniciar sesión'...", "color: green;");
                         loginButton.click();
-                    }, 1000);
-                }, 1000);
+                    }, 500);
+                }, 500);
             }, 500);
         });
     }
