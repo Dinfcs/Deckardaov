@@ -159,8 +159,8 @@
                     setTimeout(() => {
                         console.log("%c[Script] Haciendo clic en 'Log In' en PQ...", "color: green;");
                         loginButton.click();
-                    }, 1000);
-                }, 1000);
+                    }, 500);
+                }, 500);
             }, 500);
         });
     }
