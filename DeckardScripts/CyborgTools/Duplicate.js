@@ -14,7 +14,7 @@
         // Crear el botón flotante
         let button = document.createElement("button");
         button.innerHTML = "Duplicate";
-        button.style.marginLeft = "5px";
+        button.style.marginLeft = "1px";
 
 
         // Encontrar el botón "Map to selected parcel"
