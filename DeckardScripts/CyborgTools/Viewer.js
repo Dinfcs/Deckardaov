@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Viewer completo
-// @version      4
+// @version      4.1
 // @description  Image carousel with keyboard navigation and adaptive thumbnail layout using Viewer.js and an additional button to open the carousel.
 // @author       Luis Escalante
 // @match        https://cyborg.deckard.com/listing/*
@@ -8,7 +8,7 @@
 
 (function() {
     'use strict';
-
+     let pressflag=0;
     // Función para agregar recursos (CSS o JS)
     const addResource = (type, src) => {
         const element = document.createElement(type === 'script' ? 'script' : 'link');
@@ -142,6 +142,7 @@
         notification.innerHTML = `
             <p>🔹 Press <b>Escape</b> or click outside to close.</p>
             <p>🔹 Ctrl + Click on a thumbnail to open in a new tab.</p>
+            <p>🔹 With Ctrl + Q you can open the carrousel.</p>
         `;
         document.body.appendChild(notification);
 
@@ -229,6 +230,7 @@
         viewer.view(lastViewedIndex);
 
         document.addEventListener('keydown', handleKeyNavigation);
+        pressflag=1;
     }
 
     // Función para manejar la navegación por teclado
@@ -257,7 +259,6 @@
     // Función para configurar el evento de clic en el botón adicional
     function setupClickEvent() {
         const additionalButton = document.getElementById("btn_additional");
-
         if (additionalButton) {
             additionalButton.addEventListener("click", () => {
                 extractImages();
@@ -266,6 +267,21 @@
             setTimeout(setupClickEvent, 800);
         }
     }
+
+    // Agrega el shortcut para abrir el carousel con control Q
+
+       document.addEventListener('keydown', function(e) {
+        if (e.ctrlKey && e.key === 'q'&& pressflag==0) {
+            var btnAdditional = document.getElementById('btn_additional');
+            if (btnAdditional) {
+                btnAdditional.click();
+                pressflag=1;
+            } else {
+                console.log('Button with ID "btn_additional" not found.');
+            }
+        }
+    }, false);
+
 
     // Función para cerrar ventanas flotantes y eliminar la notificación
     function closeFloatingWindows() {
@@ -281,6 +297,7 @@
 
         // Eliminar el listener de teclado
         document.removeEventListener('keydown', handleKeyNavigation);
+        pressflag=0; // restaura la bandera para poder usar control q
     }
 
     // Función para cerrar con la tecla Escape
