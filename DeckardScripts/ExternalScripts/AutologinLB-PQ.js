@@ -1,10 +1,11 @@
 // ==UserScript==
 // @name         AutoFill SpatialStream & ParcelQuest Login
-// @version      3.9
+// @version      4.0
 // @description  Autocompletar login en SpatialStream (LB) y ParcelQuest (PQ) y abrir LightBox Vision automáticamente
 // @author       Lucho
 // @match        https://login-spatialstream.prod.lightboxre.com/*
 // @match        https://pqweb.parcelquest.com/*
+// @grant        clipboardRead
 // @grant        none
 // ==/UserScript==
 
@@ -63,7 +64,6 @@
         console.log("%c[Script] Detectada página de login en SpatialStream...", "color: yellow;");
 
         waitForElement('input[name="ctl00$ctl00$MainContentPlaceHolder$MainContent$LoginUser$UserName"]', (userField) => {
-            // Borrar el campo completamente antes de pegar el nuevo usuario
             userField.value = "";
             userField.dispatchEvent(new Event('input', { bubbles: true }));
             userField.dispatchEvent(new Event('change', { bubbles: true }));
@@ -115,26 +115,6 @@
         });
     }
 
-    function waitForPQElements(callback, timeout = 15000) {
-        const startTime = Date.now();
-        const observer = new MutationObserver(() => {
-            const userField = document.querySelector('#txtName');
-            const passwordField = document.querySelector('#txtPwd');
-            const loginButton = document.querySelector('input[type="button"][data-bind="click: doLogin, enable: canDoLogin"]');
-
-            if (userField && passwordField && loginButton) {
-                console.log("%c[Script] Elementos detectados en PQ, iniciando login...", "color: green;");
-                observer.disconnect();
-                callback(userField, passwordField, loginButton);
-            } else if (Date.now() - startTime > timeout) {
-                observer.disconnect();
-                console.warn("%c[Script] Tiempo de espera agotado. No se encontraron los campos de login en ParcelQuest.", "color: orange;");
-            }
-        });
-
-        observer.observe(document.body, { childList: true, subtree: true });
-    }
-
     async function loginParcelQuest() {
         const clipboardText = await getClipboardText();
         const username = extractUsername("PQ - ", clipboardText);
@@ -143,14 +123,17 @@
             return;
         }
 
-        console.log("%c[Script] Detectada página de login en ParcelQuest, esperando elementos...", "color: yellow;");
+        console.log("%c[Script] Detectada página de login en ParcelQuest...", "color: yellow;");
 
-        waitForPQElements((userField, passwordField, loginButton) => {
+        waitForElement('#txtName', (userField) => {
             userField.value = "";
             userField.dispatchEvent(new Event('input', { bubbles: true }));
             userField.dispatchEvent(new Event('change', { bubbles: true }));
 
+            console.log("%c[Script] Campo de usuario en PQ borrado.", "color: green;");
+
             setTimeout(() => {
+                userField.focus();
                 userField.value = username;
                 userField.dispatchEvent(new Event('input', { bubbles: true }));
                 userField.dispatchEvent(new Event('change', { bubbles: true }));
@@ -158,14 +141,26 @@
                 console.log("%c[Script] Usuario pegado en ParcelQuest.", "color: green;");
 
                 setTimeout(() => {
-                    passwordField.value = "uxvezy";
-                    passwordField.dispatchEvent(new Event('input', { bubbles: true }));
+                    const passwordField = document.querySelector('#txtPwd');
+                    const loginButton = document.querySelector('input[data-bind="click: doLogin, enable: canDoLogin"]');
+
+                    if (!passwordField || !loginButton) {
+                        console.error("%c[Script] No se encontraron los campos de contraseña o botón de login en ParcelQuest.", "color: red;");
+                        return;
+                    }
+
+                    if (passwordField.value.trim() === "") {
+                        console.log("%c[Script] Campo de contraseña vacío. Esperando que el usuario ingrese la clave manualmente.", "color: orange;");
+                        return;
+                    }
+
+                    console.log("%c[Script] Campo de contraseña ya tiene una clave. Esperando 1 segundo para enviar el formulario...", "color: green;");
 
                     setTimeout(() => {
                         console.log("%c[Script] Haciendo clic en 'Log In' en PQ...", "color: green;");
                         loginButton.click();
-                    }, 500);
-                }, 500);
+                    }, 1000);
+                }, 1000);
             }, 500);
         });
     }
