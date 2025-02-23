@@ -1,6 +1,4 @@
 // cargador.js (CORRECTED - on GitHub)
-'use strict';
-
 const scripts = [
     { urlPattern: "https://cyborg.deckard.com/*", scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/CyborgButtons.js' },
     { urlPattern: "https://cyborg.deckard.com/listing/*", scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/NearbyParcels.js' },
@@ -19,5 +17,5 @@ const scripts = [
     { urlPattern: "https://cyborg.deckard.com/listing/MA/dukes...town_of_oak_bluffs/*", scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/ScriptsFotPrGis/PR-MA%20-Town_of_Oak_Bluffs.js' },
     { urlPattern: "https://cyborg.deckard.com/listing/MA/dukes...town_of_tisbury/*", scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/ScriptsFotPrGis/PR-MA-Town_of_Tisbury.js' },
     { urlPattern: "https://login-spatialstream.prod.lightboxre.com/MemberPages*", scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/ExternalScripts/AutologinLB-PQ.js' },
-    { urlPattern: "https://pqweb.parcelquest.com/#login", scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/ExternalScripts/AutologinLB-PQ.js' }, // Add comma here
+    { urlPattern: "https://pqweb.parcelquest.com/#login", scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/ExternalScripts/AutologinLB-PQ.js' },
 ];
