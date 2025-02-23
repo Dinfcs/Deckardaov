@@ -1,6 +1,3 @@
-// cargador.js (Este es el contenido que subirías a GitHub)
-// ¡¡¡IMPORTANTE!!!  Este script *NO* se ejecuta directamente.  Solo se *analiza* su contenido.
-
 const scripts = [
     { urlPattern: '^https:\\/\\/cyborg\\.deckard\\.com\\/', scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/CyborgButtons.js' },
     { urlPattern: '^https:\\/\\/cyborg\\.deckard\\.com\\/listing\\/.*\\/STR.*$', scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/NearbyParcels.js' },
@@ -22,4 +19,4 @@ const scripts = [
     { urlPattern: '^https:\\/\\/pqweb\\.parcelquest\\.com\\/#login$', scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/ExternalScripts/AutologinLB-PQ.js' }
 ];
 
-//MUY IMPORTANTE: Este script ya NO define loadScriptsForUrl.  La lógica está en background.js.
+
