@@ -1,5 +1,3 @@
-// cargador.js (Este es el contenido que subirías a GitHub)
-
 'use strict';
 
 const scripts = [
@@ -22,5 +20,3 @@ const scripts = [
 \{ urlPattern\: /^https\:\\/\\/login\-spatialstream\\\.prod\\\.lightboxre\\\.com\\/MemberPages\(\\/\.\*\)?</span>/i, scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/ExternalScripts/AutologinLB-PQ.js' },
     { urlPattern: /^https:\/\/pqweb\.parcelquest\.com\/#login$/, scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/ExternalScripts/AutologinLB-PQ.js' }
 ];
-
-// Función que se llamará desde background.js.  url es la URL actual, tabId es
