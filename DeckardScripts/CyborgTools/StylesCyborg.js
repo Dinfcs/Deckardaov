@@ -125,7 +125,7 @@
 
             /* Enlaces visitados (usando una regla dinámica) */
             .cyborg-str-tool a:visited:not(${exclusions}) {
-                color: #9FAB22 !important; /* Color después de visitar */
+                color: #334A9C !important; /* Color después de visitar */
             }
 
             /* Hover para todos los enlaces */
