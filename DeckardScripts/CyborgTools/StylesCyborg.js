@@ -117,7 +117,7 @@
 
             /* Enlaces */
             .cyborg-str-tool a:not(${exclusions}) {
-                color: #23A9D8 !important;  /* Azul antes de visitar */
+                color: #96adb5 !important;  /* Azul antes de visitar */
                 text-decoration: none !important;
                 font-weight: normal !important;
                 transition: color 0.2s ease-in-out, text-decoration 0.2s ease-in-out !important; /* Transiciones */
@@ -125,7 +125,7 @@
 
             /* Enlaces visitados (usando una regla dinámica) */
             .cyborg-str-tool a:visited:not(${exclusions}) {
-                color: #334A9C !important; /* Color después de visitar */
+                color: #0d7ba1 !important; /* Color después de visitar */
             }
 
             /* Hover para todos los enlaces */
