@@ -1,11 +1,12 @@
-// ==UserScript==
+//==UserScript==
 // @name       Qa Report
-/// @version     2.5
+// @version     2.6
 // @description Extrae la informacion para hacer qa del listado y la manda a la hoja de datos con appscrit
 // @author      Lucho
 // @match        https://cyborg.deckard.com/listing/*
 // @grant       none
 // ==/UserScript==
+
 
 (function () {
     'use strict';
@@ -98,32 +99,56 @@ function showNotification(message, color = "red") {
     }
 
     function checkQaerAndShowLink() {
-        fetch(QAERS_URL)
-            .then(response => response.json())
-            .then(data => {
+        const CACHE_KEY = 'qaersData';
+        const CACHE_EXPIRATION_TIME = 5 * 60 * 1000; // 5 minutos de cache
+
+        // Verificar si la información está en cache y no ha expirado
+        const cachedData = localStorage.getItem(CACHE_KEY);
+        const cachedTime = localStorage.getItem(CACHE_KEY + '_time');
+
+        if (cachedData && cachedTime && (Date.now() - cachedTime) < CACHE_EXPIRATION_TIME) {
+            // Usar datos de cache si no han expirado
+            console.log("Using cached QAers data");
+            processQaersData(JSON.parse(cachedData));
+        } else {
+            // Si no está en cache o está expirado, realizar la solicitud
+            fetch(QAERS_URL)
+                .then(response => response.json())
+                .then(data => {
                 if (!data.qaers || !Array.isArray(data.qaers)) {
                     throw new Error("Invalid JSON format");
                 }
 
-                let currentQaer = getQaerFromPage();
-                if (data.qaers.includes(currentQaer)) {
-                    let userSection = document.getElementById("user_section");
-                    if (userSection) {
-                        let link = createReportLink();
-                        // Insertar el enlace antes del primer hijo dentro del div#user_section
-                        userSection.insertBefore(link, userSection.firstChild);
-                    } else {
-                        console.warn("User section not found.");
-                    }
-                } else {
-                    console.warn(`QAer "${currentQaer}" not found in the list.`);
-                }
+                // Cachear los datos recibidos
+                localStorage.setItem(CACHE_KEY, JSON.stringify(data));
+                localStorage.setItem(CACHE_KEY + '_time', Date.now().toString());
+
+                // Procesar los datos
+                processQaersData(data);
             })
-            .catch(error => {
+                .catch(error => {
                 console.error("Error fetching QAers:", error);
                 showNotification("Error fetching QAers", "red");
             });
+        }
+
+        function processQaersData(data) {
+            let currentQaer = getQaerFromPage();
+            if (data.qaers.includes(currentQaer)) {
+                let userSection = document.getElementById("user_section");
+                if (userSection) {
+                    let link = createReportLink();
+                    // Insertar el enlace antes del primer hijo dentro del div#user_section
+                    userSection.insertBefore(link, userSection.firstChild);
+                } else {
+                    console.warn("User section not found.");
+                }
+            } else {
+                console.warn(`QAer "${currentQaer}" not found in the list.`);
+            }
+        }
     }
+
 
 function showEditWindow(data, onConfirm) {
     let errors = [
