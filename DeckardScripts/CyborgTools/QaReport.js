@@ -41,25 +41,34 @@
         return document.querySelector('#user_id')?.innerText.trim() || "";
     }
 
-    function createReportButton() {
-        let btn = document.createElement("button");
-        btn.innerText = "Report QA";
-        Object.assign(btn.style, {
-            position: "fixed",
-            bottom: "10px",
-            right: "10px",
-            padding: "10px",
-            backgroundColor: "blue",
-            color: "white",
-            cursor: "pointer",
-            display: "none"
-        });
-        btn.onclick = extractData;
-        document.body.appendChild(btn);
-        return btn;
+    function createReportLink() {
+        let link = document.createElement("a");
+        link.innerText = "Report QA |";
+        link.href = "#";  // El enlace no llevará a ningún lado, solo ejecutará una acción
+        link.style.cssText = `
+            margin-left: 10px;
+            margin-right: 10px;
+            color: blue;
+            cursor: pointer;
+            text-decoration: none;
+        `;
+        link.onclick = extractData;  // Ejecuta la función extractData cuando se hace clic en el enlace
+        return link;
     }
 
-    function checkQaerAndShowButton() {
+    function waitForUserSection() {
+        return new Promise(resolve => {
+            const interval = setInterval(() => {
+                const userSection = document.getElementById("user_section");
+                if (userSection) {
+                    clearInterval(interval);
+                    resolve(userSection);
+                }
+            }, 100);
+        });
+    }
+
+    function checkQaerAndShowLink() {
         fetch(QAERS_URL)
             .then(response => response.json())
             .then(data => {
@@ -69,7 +78,14 @@
 
                 let currentQaer = getQaerFromPage();
                 if (data.qaers.includes(currentQaer)) {
-                    btn.style.display = "block";
+                    let userSection = document.getElementById("user_section");
+                    if (userSection) {
+                        let link = createReportLink();
+                        // Insertar el enlace antes del primer hijo dentro del div#user_section
+                        userSection.insertBefore(link, userSection.firstChild);
+                    } else {
+                        console.warn("User section not found.");
+                    }
                 } else {
                     console.warn(`QAer "${currentQaer}" not found in the list.`);
                 }
@@ -200,6 +216,8 @@
         return match ? match[1] : "";
     }
 
-    let btn = createReportButton();
-    checkQaerAndShowButton();
+    // Esperamos a que el 'user_section' aparezca en el DOM y luego ejecutamos el código
+    waitForUserSection().then(() => {
+        checkQaerAndShowLink();
+    });
 })();
