@@ -1,9 +1,8 @@
 // ==UserScript==
-// @name        Definitive QA
-// @namespace   http://tampermonkey.net/
-// @version     2.5
-// @description Extracts information, allows review and editing before sending to Google Sheets, and displays a notification with strict validations.
-// @author      You
+// @name       Qa Report
+/// @version     2.5
+// @description Extrae la informacion para hacer qa del listado y la manda a la hoja de datos con appscrit
+// @author      Lucho
 // @match       https://cyborg.deckard.com/*
 // @grant       none
 // ==/UserScript==
