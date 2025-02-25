@@ -1,6 +1,6 @@
 //==UserScript==
 // @name       Qa Report
-// @version     2.6
+// @version     2.5
 // @description Extrae la informacion para hacer qa del listado y la manda a la hoja de datos con appscrit
 // @author      Lucho
 // @match        https://cyborg.deckard.com/listing/*
@@ -56,7 +56,7 @@ function showNotification(message, color = "red") {
         setTimeout(() => {
             document.body.removeChild(notification);
         }, 500);// Esperar el tiempo de la transición
-    }, 3000);// Duración de la notificación visible
+    }, 2000);// Duración de la notificación visible
 }
 
 
@@ -237,7 +237,7 @@ function showEditWindow(data, onConfirm) {
     });
 
     document.getElementById("btnAccept").addEventListener("click", () => {
-         showNotification("Sending data, please wait...", "green");
+         showNotification("Recording data, please wait...", "green");
         let editedData = {};
         Object.keys(data).forEach(key => {
             editedData[key] = document.getElementById(`input_${key}`).value.trim();
@@ -297,7 +297,7 @@ function showEditWindow(data, onConfirm) {
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify(finalData)
                     })
-                        .then(() => showNotification("Data sent successfully.", "green"))
+                        .then(() => showNotification("Data registered successfully.", "green"))
                         .catch(error => {
                             console.error("❌ Error sending data:", error);
                             alert("Error sending data. Check the console.");
