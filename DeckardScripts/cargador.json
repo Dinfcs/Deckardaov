@@ -8,7 +8,6 @@
             "urlPattern": "https://cyborg.deckard.com/listing/*",
             "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/NearbyParcels.js"
         },
-        ,
         {
             "urlPattern": "https://cyborg.deckard.com/listing/*",
             "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/Duplicate.js"
