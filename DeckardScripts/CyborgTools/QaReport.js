@@ -3,7 +3,7 @@
 /// @version     2.5
 // @description Extrae la informacion para hacer qa del listado y la manda a la hoja de datos con appscrit
 // @author      Lucho
-// @match       https://cyborg.deckard.com/*
+// @match        https://cyborg.deckard.com/listing/*
 // @grant       none
 // ==/UserScript==
 
