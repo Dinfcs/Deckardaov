@@ -27,10 +27,6 @@
         {
             "urlPattern": "https://cyborg.deckard.com/listing/*",
             "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/Viewer.js"
-        },
-        {
-            "urlPattern": "https://cyborg.deckard.com/*",
-            "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/StylesCyborg.js"
         }
     ]
 }
