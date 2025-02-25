@@ -14,22 +14,40 @@
     const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzsaMYnVMK65UfAKsVg27_fqzzdALlYPwaBQeN-_nFUwSmLHG3GT14Kw5aif1AbC_5BrA/exec";
     const QAERS_URL = APPS_SCRIPT_URL + "?qaers";
 
-    function showNotification(message, color = "red") {
-        let notification = document.createElement("div");
-        notification.innerText = message;
-        Object.assign(notification.style, {
-            position: "fixed",
-            bottom: "20px",
-            right: "20px",
-            backgroundColor: color,
-            color: "white",
-            padding: "10px",
-            borderRadius: "5px",
-            zIndex: "10000"
-        });
-        document.body.appendChild(notification);
-        setTimeout(() => document.body.removeChild(notification), 3000);
-    }
+function showNotification(message, color = "red") {
+    let notification = document.createElement("div");
+    notification.innerText = message;
+    Object.assign(notification.style, {
+        position: "fixed",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+        backgroundColor: color,
+        color: "white",
+        padding: "20px 30px",
+        borderRadius: "12px",
+        zIndex: "10000",
+        fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+        fontSize: "16px",
+        boxShadow: "0 4px 15px rgba(0,0,0,0.3)",
+        textAlign: "center",
+        opacity: "0",
+        transition: "opacity 0.5s ease-in-out",
+    });
+    document.body.appendChild(notification);
+
+    // Fade in the notification
+    setTimeout(() => {
+        notification.style.opacity = "1";
+    }, 10);
+
+    // Fade out and remove notification after 3 seconds
+    setTimeout(() => {
+        notification.style.opacity = "0";
+        setTimeout(() => document.body.removeChild(notification), 500); // Remove after fade-out
+    }, 3000);
+}
+
 
     function convertDate(isoFormat) {
         if (!isoFormat.match(/^\d{4}-\d{2}-\d{2}$/)) return "";
@@ -111,36 +129,38 @@
             top: "50%",
             left: "50%",
             transform: "translate(-50%, -50%)",
-            background: "white",
-            padding: "20px",
-            borderRadius: "10px",
-            boxShadow: "0px 0px 10px rgba(0,0,0,0.3)",
-            width: "400px",
+            background: "#f9f9f9",
+            padding: "30px",
+            borderRadius: "12px",
+            boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
+            width: "450px",
             textAlign: "center",
-            zIndex: "10000"
+            zIndex: "10000",
+            fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+            boxSizing: "border-box"
         });
 
         modal.innerHTML = `
-            <h2>Review and Edit</h2>
+            <h2 style="color: #333; margin-bottom: 20px;">Review and Edit</h2>
             ${Object.entries(data).map(([key, value]) => `
-                <label><strong>${key}:</strong></label>
-                <input id="input_${key}" type="text" value="${value}" style="width: 100%; margin-bottom: 10px;">
+                <label style="display: block; margin-bottom: 8px; color: #555;"><strong>${key}:</strong></label>
+                <input id="input_${key}" type="text" value="${value}" style="width: 100%; padding: 8px; margin-bottom: 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px;">
             `).join("")}
 
-            <label><strong>Error:</strong></label>
-            <select id="errorSelect" style="width: 100%; margin-bottom: 10px;">
+            <label style="display: block; margin-bottom: 8px; color: #555;"><strong>Error:</strong></label>
+            <select id="errorSelect" style="width: 100%; padding: 8px; margin-bottom: 12px; border: 1px solid #ddd; border-radius: 6px;">
                 <option disabled selected>Select an option...</option>
                 ${errors.map(err => `<option value="${err}">${err}</option>`).join("")}
             </select>
 
-            <label><strong>Comments:</strong></label>
-            <textarea id="commentInput" style="width: 100%; height: 50px; margin-bottom: 10px;"></textarea>
+            <label style="display: block; margin-bottom: 8px; color: #555;"><strong>Comments:</strong></label>
+            <textarea id="commentInput" style="width: 100%; padding: 8px; height: 60px; margin-bottom: 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px;"></textarea>
 
-            <label><strong>Possible Affected Listings:</strong></label>
-            <input id="affectedListings" type="number" value="0" min="0" style="width: 100%; margin-bottom: 10px;">
+            <label style="display: block; margin-bottom: 8px; color: #555;"><strong>Possible Affected Listings:</strong></label>
+            <input id="affectedListings" type="number" value="0" min="0" style="width: 100%; padding: 8px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px;">
 
-            <button id="btnAccept" style="margin-right: 10px; padding: 10px;">Accept</button>
-            <button id="btnCancel" style="padding: 10px;">Cancel</button>
+            <button id="btnAccept" style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; margin-right: 10px;">Accept</button>
+            <button id="btnCancel" style="padding: 10px 20px; background-color: #f44336; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 16px;">Cancel</button>
         `;
 
         document.body.appendChild(modal);
@@ -155,6 +175,7 @@
             editedData.comments = document.getElementById("commentInput").value.trim();
             editedData.possible_affected_listings = document.getElementById("affectedListings").value || "0";
 
+            // Validaciones antes de aceptar los cambios
             if (!editedData.listing.startsWith("http")) return showNotification("⚠️ Invalid listing link", "red");
             if (!editedData.project) return showNotification("⚠️ Project cannot be empty", "red");
             if (!editedData.qaer) return showNotification("⚠️ QAer cannot be empty", "red");
