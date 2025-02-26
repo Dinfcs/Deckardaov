@@ -10164,7 +10164,7 @@
       ],
       "License List": [
         {
-          "type": "License",
+          "type": "N/A",
           "url": "N/A"
         }
       ],
@@ -10173,6 +10173,10 @@
         {
           "type": "Image",
           "url": "https://drive.usercontent.google.com/download?id=1J9HYvIuit_-JoHjaAUlHtcEbqVp_luhU&authuser=0"
+        },
+        {
+          "type": "Image 2",
+          "url": "https://drive.usercontent.google.com/download?id=1_oCVYbQ2SpU6CWxswtBRo04Cby7bpR-S&authuser=0"
         }
       ]
     }
