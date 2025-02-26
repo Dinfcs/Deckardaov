@@ -41,7 +41,7 @@
             "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/ExternalScripts/Buscador.js"
         },
         {
-            "urlPattern": "https://www.google.com/maps/*",
+            "urlPattern": "https://www.bing.com/maps/*",
             "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/ExternalScripts/Buscador.js"
         },
         {
