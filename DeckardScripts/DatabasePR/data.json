@@ -224,8 +224,8 @@
       "Project": "AUS - City of Brisbane",
       "Public Records & GIS": [
         {
-          "type": "GIS",
-          "url": "https://qldglobe.information.qld.gov.au/"
+          "url": "https://qldglobe.information.qld.gov.au/",
+          "type": "GIS"
         },
         {
           "type": "You can check the property ID here (only when the property is outside of the city",
@@ -242,15 +242,15 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "Please work with filters: Unresolved + yet_to_review + rental  = self_contained  + hoe_violation = true.\nBing Maps has better aerial images than Google Maps.\nThere are no free public records, as privacy laws in the country protect property data.\nYou can check the owner’s name in Core Logic.\nFV Brisbane by Peppers, 191, Brunswick St: Officially first unit is on floor 1. In practice first residential floor is floor 6. For example, the 5-floor offset between official and day-to-day addresses means the 19th floor in the listing description relates to floor 14 on the official address.\nPlease send to the Data Lead all listings that are located in Tangalooma Island Resort.",
+      "Important Info": "<ul><li class=\"ql-align-justify\">Please work with filters: Unresolved + yet_to_review + rental  = self_contained  + hoe_violation = true.\nBing Maps has better aerial images than Google Maps.</li><li class=\"ql-align-justify\">There are no free public records, as privacy laws in the country protect property data.\nYou can check the owner’s name in Core Logic.</li><li class=\"ql-align-justify\">FV Brisbane by Peppers, 191, Brunswick St: Officially first unit is on floor 1. In practice first residential floor is floor 6. For example, the 5-floor offset between official and day-to-day addresses means the 19th floor in the listing description relates to floor 14 on the official address.</li><li class=\"ql-align-justify\">Please send to the Data Lead all listings that are located in Tangalooma Island Resort.</li></ul>",
       "Media": [
         {
           "type": "Confluece",
           "url": "https://deckardtech.atlassian.net/wiki/spaces/PC/pages/1841758216/Address+Mapping+in+Australia?atlOrigin=eyJpIjoiNmRjNDUyNzA2YTliNDk4MmJmYzAwNmI1MmNjYjNiNWYiLCJwIjoiY29uZmx1ZW5jZS1jaGF0cy1pbnQifQ"
         },
         {
-          "type": "Trainig ",
-          "url": "https://www.loom.com/share/2e7229e222dd420796880fdd6a53ad31"
+          "url": "https://www.loom.com/share/2e7229e222dd420796880fdd6a53ad31",
+          "type": "Trainig "
         }
       ]
     },
@@ -2243,7 +2243,7 @@
       "License List": [
         {
           "type": "CERTIFICATE LIST",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EbUJTQuP0Q9NhRp1UCtTaeQBXl8410P8oY6Ef-qpr5vy0A?e=oPbm3d"
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EZOTv7BEXd1Gp-yWQGD2GWoBoHhQ9N7ljhJ6sluz-YZCUQ?e=UPg0gW"
         }
       ],
       "Important Info": "N/A",
@@ -10099,28 +10099,28 @@
       ]
     },
     {
+      "Project": "FL - Leon County",
       "Public Records & GIS": [
         {
-          "type": "PR (Use VPN)",
-          "url": "https://search.leonpa.gov/Search/Property"
+          "url": "https://search.leonpa.gov/Search/Property",
+          "type": "PR (Use VPN)"
         },
         {
-          "url": "https://tlcgis.leoncountyfl.gov/LandInfoPublic/",
-          "type": "GIS (Use VPN)"
+          "type": "GIS (Use VPN)",
+          "url": "https://tlcgis.leoncountyfl.gov/LandInfoPublic/"
         }
       ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "<p>🔶 To search for an APN in Public Records, add a space before the central letter <strong style=\"color: rgb(230, 0, 0);\">(213450C0060 → 213450 C0060)</strong><span style=\"color: rgb(230, 0, 0);\">.</span>\n🔶 In GIS, search by address as the APN doesn't work well. </p><p>\n<strong>PD:</strong> Use layer #15 for clearer view and is recommended the middle button in the top-right corner to access the pictographic view for better clarity.</p><p><br></p>",
       "Media": [
         {
           "type": "GIS: How to activate Layer #15 and Pictographic View",
           "url": "https://drive.usercontent.google.com/download?id=16nfWWRlKUEiugOWvyulEdOotWzUQB368&authuser=0"
-        }
-      ],
-      "Important Info": "<p>🔶<strong> </strong>To search for an APN in Public Records, add a space before the central letter <strong>(213450C0060 → 213450 C0060).</strong></p><p>\n🔶 In GIS, search by address as the APN doesn't work well. \nPD: Use layer #15 for clearer view and is recommended the middle button in the top-right corner to access the pictographic view for better clarity.</p><p><br></p>",
-      "Project": "FL - leon County",
-      "License List": [
-        {
-          "type": "N/A",
-          "url": "https://www.sdss.com"
         }
       ]
     },
