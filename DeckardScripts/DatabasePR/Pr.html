@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Resources</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <style>
@@ -93,16 +93,40 @@
             font-size: 16px;
             margin-top: 0px;
         }
+        /* Estilo para el botón de actualizar */
+        #updateButton {
+            background-color: #093140;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin-left: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #updateButton:hover {
+            background-color: #0b5a69;
+        }
         /* Estilo para nombres repetidos */
         .duplicate {
             color: red; /* Color rojo para nombres repetidos */
+        }
+        .search-update-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
     
-    <!-- Barra de búsqueda -->
-    <input type="text" id="searchBar" onkeyup="searchProjects()" placeholder="Search for project names...">
+    <div class="search-update-container">
+        <!-- Barra de búsqueda -->
+        <input type="text" id="searchBar" onkeyup="searchProjects()" placeholder="Search for project names...">
+        <!-- Botón de actualización -->
+        <button id="updateButton" onclick="cargarDatos()">Update</button>
+    </div>
 
     <div id="tableContainer"></div>
 
