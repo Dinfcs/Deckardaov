@@ -333,5 +333,36 @@
         document.body.appendChild(container);
     }
 
+    (function () {
+    'use strict';
+
+    // Función para modificar la URL
+    function modifyUrl() {
+        const urlParts = window.location.href.split('/');
+        return `https://cyborg.deckard.com/parcel/${urlParts[4]}/${urlParts[5]}/${urlParts[6]}`;
+    }
+
+    // Crear el iframe y añadirlo a la página
+    function createIframe() {
+        const iframe = document.createElement('iframe');
+        iframe.src = modifyUrl();
+        iframe.style.cssText = `
+            width: 100%;
+            height: 600px;
+            border: none;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        `;
+
+        // Añadir el iframe al final de la tabla
+        const container = document.querySelector('.project-data-table').parentElement;
+        container.appendChild(iframe);
+    }
+
+    // Esperar a que la tabla esté presente y luego crear el iframe
+    waitForElement('.project-data-table', createIframe);
+})();
+
     waitForElement('#btn_open_vetting_dlg', () => fetchData());
 })();
