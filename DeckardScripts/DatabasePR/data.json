@@ -10187,6 +10187,48 @@
           "url": "https://drive.usercontent.google.com/download?id=1_oCVYbQ2SpU6CWxswtBRo04Cby7bpR-S&authuser=0"
         }
       ]
+    },
+    {
+      "Project": "KY - boone campbell kenton County",
+      "Public Records & GIS": [
+        {
+          "type": "PR Boone County ",
+          "url": "https://boonepva.ky.gov/"
+        },
+        {
+          "type": "GIS Boone County",
+          "url": "https://secure.boonecountygis.com/portal/apps/webappviewer/index.html?id=d2eaf4cf27194c20a8fbed4aa892cac5"
+        },
+        {
+          "type": "PR Campbell County",
+          "url": "https://pva.campbellcountykentucky.com/Search/Form/location"
+        },
+        {
+          "type": "GIS Campbell County ",
+          "url": "https://explore.kyfromabove.ky.gov/"
+        },
+        {
+          "type": "GIS2 Campbell County ",
+          "url": "https://explore.kyfromabove.ky.gov/"
+        },
+        {
+          "type": "PR Hamilton County ",
+          "url": "https://wedge1.hcauditor.org/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License o N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "N/A",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
