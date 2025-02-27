@@ -15,6 +15,7 @@
 
     const JSON_URL = 'https://script.google.com/macros/s/AKfycbzKRzrnEtgTaGmSDN0daIjtquhBWL5rwn_ZQR8FRYbn5fHtODKSQSTKoi1bXWmrlR0vSg/exec';
     const CACHE_KEY = 'projectDataCache';
+    const IMAGE_CACHE_KEY = 'imageCache';
     const COLUMN_WIDTHS = ['10%', '10%', '10%', '50%', '20%']; // Ajustado el ancho para Media
     const HEADERS = ['Project', 'Public Records & GIS', 'License List', 'Important Info', 'Media'];
     const PROJECT_NAME_PATTERNS = [
@@ -104,53 +105,55 @@
         }
     }
 
-
-     /**
-     *  Carga una imagen, manejando URLs de Google Drive y errores, y asocia la apertura en ventana emergente.
+    /**
+     * Descarga y almacena una imagen en caché.
      */
-    function loadImage(imageUrl, imgElement, openImageCallback) {
-        imgElement.src = imageUrl;
+    async function cacheImage(url) {
+        try {
+            const response = await fetch(url);
+            if (!response.ok) throw new Error(`Failed to fetch image: ${response.statusText}`);
 
-        imgElement.onload = () => {
-            imgElement.style.cursor = 'pointer';
-            imgElement.addEventListener('click', openImageCallback); // Asocia *directamente* la función que abre la ventana
-        };
-
-        imgElement.onerror = () => {
-            console.warn(`Fallo la carga directa de ${imageUrl}. Intentando con GM_xmlhttpRequest...`);
-            GM_xmlhttpRequest({
-                method: "GET",
-                url: imageUrl,
-                responseType: "blob",
-                onload: function(response) {
-                    if (response.status >= 200 && response.status < 300) {
-                        const blobUrl = URL.createObjectURL(response.response);
-                        imgElement.src = blobUrl;
-                        imgElement.style.cursor = 'pointer';
-                        imgElement.addEventListener('click', openImageCallback); // Asocia *directamente*
-                    } else {
-                        console.error(`Error al cargar imagen: ${response.status} ${response.statusText}`);
-                        imgElement.src = NO_PREVIEW_IMAGE;
-                        imgElement.alt = "No Preview Available";
-                        imgElement.style.cursor = 'default';
-                    }
-                },
-                onerror: function(error) {
-                    console.error("Error en GM_xmlhttpRequest:", error);
-                    imgElement.src = NO_PREVIEW_IMAGE;
-                    imgElement.alt = "No Preview Available";
-                    imgElement.style.cursor = 'default';
-                }
-            });
-        };
+            const blob = await response.blob();
+            const reader = new FileReader();
+            reader.readAsDataURL(blob);
+            reader.onloadend = () => {
+                const base64data = reader.result;
+                const imageCache = JSON.parse(localStorage.getItem(IMAGE_CACHE_KEY) || {};
+                imageCache[url] = base64data;
+                localStorage.setItem(IMAGE_CACHE_KEY, JSON.stringify(imageCache));
+            };
+        } catch (error) {
+            console.error('Error caching image:', error);
+        }
     }
 
+    /**
+     * Carga una imagen desde caché o la descarga si no está en caché.
+     */
+    function loadImage(imageUrl, imgElement, openImageCallback) {
+        const imageCache = JSON.parse(localStorage.getItem(IMAGE_CACHE_KEY)) || {};
 
+        if (imageCache[imageUrl]) {
+            // Si la imagen está en caché, usarla
+            imgElement.src = imageCache[imageUrl];
+            imgElement.style.cursor = 'pointer';
+            imgElement.addEventListener('click', openImageCallback);
+        } else {
+            // Si no está en caché, descargarla y almacenarla
+            imgElement.src = NO_PREVIEW_IMAGE;
+            cacheImage(imageUrl).then(() => {
+                // Una vez descargada, actualizar la imagen
+                imgElement.src = imageCache[imageUrl];
+                imgElement.style.cursor = 'pointer';
+                imgElement.addEventListener('click', openImageCallback);
+            });
+        }
+    }
 
     /**
      * Muestra los datos en la tabla.
      */
-     function displayData(data) {
+    function displayData(data) {
         const projectName = getProjectNameFromUrl();
         if (!projectName) {
             console.error('Project name not found in URL.');
@@ -229,14 +232,13 @@
 
                         const img = document.createElement('img');
                         img.alt = item.type;
-                        img.style.cssText = 'max-width: 100%; max-height: 100px; border-radius: 4px; display: block; margin: 0 auto;'; //cursor se añade en loadImage
+                        img.style.cssText = 'max-width: 100%; max-height: 100px; border-radius: 4px; display: block; margin: 0 auto;';
                         img.loading = "lazy";
 
                         // Función para abrir la imagen en una ventana emergente
                         const openImageInPopup = () => {
                             const popup = window.open(item.url, 'imagePopup', 'width=800,height=600,resizable=yes,scrollbars=yes');
                             if (!popup || popup.closed || typeof popup.closed == 'undefined') {
-                                // Si la ventana emergente fue bloqueada, abrir en una nueva pestaña como respaldo
                                 window.open(item.url, '_blank');
                             }
                         };
@@ -244,21 +246,18 @@
                         // Cargar imagen y asociar la función de apertura
                         loadImage(item.url, img, openImageInPopup);
 
-
                         const a = document.createElement('a');
-                         // Hacer que el enlace sea un contenedor para la imagen
-                        a.href = "javascript:void(0);";  // Importante: Evita el comportamiento predeterminado del enlace
-                        a.style.display = 'block';        // El enlace ocupa todo el contenedor
+                        a.href = "javascript:void(0);";
+                        a.style.display = 'block';
                         a.style.textAlign = 'center';
-                        a.style.textDecoration = 'none'; //Quitar la decoración.
+                        a.style.textDecoration = 'none';
 
-                         // Agregar evento de click al enlace (que ahora envuelve la imagen)
                         a.addEventListener('click', (event) => {
-                            event.preventDefault(); // Prevenir la navegación predeterminada
-                            openImageInPopup();      // Llamar a la función para abrir la ventana emergente
+                            event.preventDefault();
+                            openImageInPopup();
                         });
 
-                        const linkText = document.createElement('span'); // Crear un span para el texto
+                        const linkText = document.createElement('span');
                         linkText.textContent = item.type;
                         linkText.style.display = 'block';
                         linkText.style.fontSize = '12px';
@@ -266,18 +265,14 @@
                         linkText.style.marginTop = '4px';
                         linkText.style.transition = 'color 0.2s ease-in-out';
 
-                         a.addEventListener('mouseover', () => linkText.style.color = '#0056b3');
-                         a.addEventListener('mouseout', () => linkText.style.color = '#007bff');
+                        a.addEventListener('mouseover', () => linkText.style.color = '#0056b3');
+                        a.addEventListener('mouseout', () => linkText.style.color = '#007bff');
 
-
-                        container.appendChild(a); // Añade el enlace (que ahora contiene la imagen)
+                        container.appendChild(a);
                         a.appendChild(img);
                         a.appendChild(linkText);
                         cell.appendChild(container);
                     });
-
-
-
                 } else {
                     // Celdas de Enlaces (Project, Public Records, License List)
                     projectData[header].forEach(link => {
@@ -333,35 +328,7 @@
         document.body.appendChild(container);
     }
 
-    (function () {
-    'use strict';
-
-    // Función para modificar la URL
-    function modifyUrl() {
-        const urlParts = window.location.href.split('/');
-        return `https://cyborg.deckard.com/parcel/${urlParts[4]}/${urlParts[5]}/${urlParts[6]}`;
-    }
-
-    // Crear el iframe y añadirlo a la página
-    function createIframe() {
-        const iframe = document.createElement('iframe');
-        iframe.src = modifyUrl();
-        iframe.style.cssText = `
-            width: 100%;
-            height: 600px;
-            border: none;
-            margin-top: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        `;
-
-        // Añadir el iframe al final de la tabla
-        const container = document.querySelector('.project-data-table').parentElement;
-        container.appendChild(iframe);
-    }
-
-    // Esperar a que la tabla esté presente y luego crear el iframe
-    waitForElement('.project-data-table', createIframe);
+    waitForElement('#btn_open_vetting_dlg', () => fetchData());
 })();
 
     waitForElement('#btn_open_vetting_dlg', () => fetchData());
