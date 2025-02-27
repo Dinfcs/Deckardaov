@@ -8422,6 +8422,10 @@
         {
           "type": "GIS",
           "url": "https://experience.arcgis.com/experience/4955d2ec3e3349f294ecc5569dc8bd1d/#data_s=id%3AdataSource_1-17bc6a86da1-layer-2-65%3A127458568"
+        },
+        {
+          "type": "PR",
+          "url": "https://www2.centrecountypa.gov/centreco/claim/tri.asp"
         }
       ],
       "License List": [
