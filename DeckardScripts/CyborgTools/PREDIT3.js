@@ -1,22 +1,10 @@
-// ==UserScript==
-// @name         PREDIT3
-// @namespace    ProjectResources Cyborg
-// @version      3.11
-// @description  Optimización de lectura, caché, ajuste de columnas, saltos de línea en "Important Info", estilos modernos y previsualización de imágenes de Google Drive (con manejo de errores). Abre imágenes en ventana emergente.
-// @author       [Tu Nombre]
-// @match        https://cyborg.deckard.com/listing/*/STR*
-// @grant        GM_xmlhttpRequest
-// @connect      googleusercontent.com
-// @connect      google.com
-// ==/UserScript==
-
 (function () {
     'use strict';
 
     const JSON_URL = 'https://script.google.com/macros/s/AKfycbzKRzrnEtgTaGmSDN0daIjtquhBWL5rwn_ZQR8FRYbn5fHtODKSQSTKoi1bXWmrlR0vSg/exec';
     const CACHE_KEY = 'projectDataCache';
     const IMAGE_CACHE_KEY = 'imageCache';
-    const COLUMN_WIDTHS = ['10%', '10%', '10%', '50%', '20%']; // Ajustado el ancho para Media
+    const COLUMN_WIDTHS = ['10%', '10%', '10%', '50%', '20%'];
     const HEADERS = ['Project', 'Public Records & GIS', 'License List', 'Important Info', 'Media'];
     const PROJECT_NAME_PATTERNS = [
         { regex: /\/listing\/AUS\/([^\/]+)\/([^\/]+)\/(STR[^\/]+)/, format: m => `AUS - ${m[2].replace(/_/g, ' ') === 'Bass Coast' ? m[2].replace(/_/g, ' ') : 'City of ' + capitalizeWords(m[2].replace(/_/g, ' '))}` },
@@ -24,7 +12,7 @@
         { regex: /\/listing\/([A-Za-z]+)\/([^\/]+)\/_/, format: m => `${m[1].toUpperCase()} - ${capitalizeWords(m[2].replace(/_/g, ' '))} County` },
         { regex: /\/listing\/([A-Za-z]+)\/([^\/]+)\/([^\/]+)\//, format: m => `${m[1].toUpperCase()} - ${capitalizeWords(m[3].replace(/_/g, ' '))}` }
     ];
-    const NO_PREVIEW_IMAGE = "https://via.placeholder.com/150x100?text=No+Preview"; // URL de imagen de "No Preview"
+    const NO_PREVIEW_IMAGE = "https://via.placeholder.com/150x100?text=No+Preview";
 
     /**
      * Espera a que un elemento esté presente en el DOM.
@@ -118,7 +106,7 @@
             reader.readAsDataURL(blob);
             reader.onloadend = () => {
                 const base64data = reader.result;
-                const imageCache = JSON.parse(localStorage.getItem(IMAGE_CACHE_KEY) || {};
+                const imageCache = JSON.parse(localStorage.getItem(IMAGE_CACHE_KEY)) || {};
                 imageCache[url] = base64data;
                 localStorage.setItem(IMAGE_CACHE_KEY, JSON.stringify(imageCache));
             };
@@ -327,9 +315,6 @@
         container.appendChild(table);
         document.body.appendChild(container);
     }
-
-    waitForElement('#btn_open_vetting_dlg', () => fetchData());
-})();
 
     waitForElement('#btn_open_vetting_dlg', () => fetchData());
 })();
