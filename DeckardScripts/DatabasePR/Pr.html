@@ -130,103 +130,96 @@
 
     <div id="tableContainer"></div>
 
-    <script>
-        const jsonURL = 'https://script.google.com/macros/s/AKfycbzKRzrnEtgTaGmSDN0daIjtquhBWL5rwn_ZQR8FRYbn5fHtODKSQSTKoi1bXWmrlR0vSg/exec';
-        let projectData = [];
+<script>
+    const jsonURL = 'https://script.google.com/macros/s/AKfycbzKRzrnEtgTaGmSDN0daIjtquhBWL5rwn_ZQR8FRYbn5fHtODKSQSTKoi1bXWmrlR0vSg/exec';
+    let projectData = [];
 
-        async function cargarDatos() {
-            try {
-                const response = await fetch(jsonURL);
-                if (!response.ok) {
-                    throw new Error(`Error al leer la base de datos: ${response.statusText}`);
+    async function cargarDatos() {
+        try {
+            const response = await fetch(jsonURL);
+            if (!response.ok) {
+                throw new Error(`Error al leer la base de datos: ${response.statusText}`);
+            }
+
+            const data = await response.json();
+            projectData = data.tabla;
+            displayTable(projectData);
+
+        } catch (error) {
+            console.error('Error al cargar los datos:', error);
+        }
+    }
+
+    function displayTable(data) {
+        data.sort((a, b) => a.Project.localeCompare(b.Project));
+
+        const projectCounts = {};
+        data.forEach(project => {
+            projectCounts[project.Project] = (projectCounts[project.Project] || 0) + 1;
+        });
+
+        const tableContainer = document.getElementById('tableContainer');
+        tableContainer.innerHTML = '';
+
+        const table = document.createElement('table');
+
+        const headers = ['Project', 'Public Records & GIS', 'License List', 'Important Info', 'Media'];
+        const thead = document.createElement('thead');
+        const headerRow = document.createElement('tr');
+        headers.forEach(header => {
+            const th = document.createElement('th');
+            th.textContent = header;
+            headerRow.appendChild(th);
+        });
+        thead.appendChild(headerRow);
+        table.appendChild(thead);
+
+        const tbody = document.createElement('tbody');
+        data.forEach(item => {
+            const row = document.createElement('tr');
+            headers.forEach(header => {
+                const td = document.createElement('td');
+
+                if (header === 'Project' && projectCounts[item[header]] > 1) {
+                    td.classList.add('duplicate');
                 }
 
-                const data = await response.json();
-                projectData = data.tabla;
-                displayTable(projectData);
-
-            } catch (error) {
-                console.error('Error al cargar los datos:', error);
-            }
-        }
-
-        function displayTable(data) {
-            // Ordenar los datos por el nombre del proyecto en orden alfabético
-            data.sort((a, b) => a.Project.localeCompare(b.Project));
-
-            // Contar los nombres de proyectos para detectar duplicados
-            const projectCounts = {};
-            data.forEach(project => {
-                projectCounts[project.Project] = (projectCounts[project.Project] || 0) + 1;
+                if (Array.isArray(item[header])) {
+                    item[header].forEach(link => {
+                        const a = document.createElement('a');
+                        a.href = link.url;
+                        a.textContent = link.type;
+                        a.target = '_blank';
+                        td.appendChild(a);
+                        td.appendChild(document.createElement('br'));
+                    });
+                } else if (header === 'Important Info') {
+                    td.innerHTML = item[header]; // Permite interpretar HTML
+                } else {
+                    td.textContent = item[header];
+                }
+                row.appendChild(td);
             });
+            tbody.appendChild(row);
+        });
+        table.appendChild(tbody);
 
-            const tableContainer = document.getElementById('tableContainer');
-            tableContainer.innerHTML = '';
+        tableContainer.appendChild(table);
+    }
 
-            const table = document.createElement('table');
+    function searchProjects() {
+        const input = document.getElementById('searchBar').value.toLowerCase();
+        const filteredData = projectData.filter(project => project.Project.toLowerCase().includes(input));
+        displayTable(filteredData);
+    }
 
-            // Crear encabezado de la tabla
-            const headers = ['Project', 'Public Records & GIS', 'License List', 'Important Info', 'Media'];
-            const thead = document.createElement('thead');
-            const headerRow = document.createElement('tr');
-            headers.forEach(header => {
-                const th = document.createElement('th');
-                th.textContent = header;
-                headerRow.appendChild(th);
-            });
-            thead.appendChild(headerRow);
-            table.appendChild(thead);
+    // Refrescar la página al hacer clic en el botón Update
+    document.getElementById('updateButton').addEventListener('click', () => {
+        location.reload();
+    });
 
-            // Crear cuerpo de la tabla
-            const tbody = document.createElement('tbody');
-            data.forEach(item => {
-                const row = document.createElement('tr');
-                headers.forEach(header => {
-                    const td = document.createElement('td');
+    cargarDatos();
+</script>
 
-                    // Aplicar la clase 'duplicate' si el nombre del proyecto está duplicado
-                    if (header === 'Project' && projectCounts[item[header]] > 1) {
-                        td.classList.add('duplicate');
-                    }
-
-                    if (Array.isArray(item[header])) {
-                        item[header].forEach(link => {
-                            const a = document.createElement('a');
-                            a.href = link.url;
-                            a.textContent = link.type;
-                            a.target = '_blank';
-                            td.appendChild(a);
-                            td.appendChild(document.createElement('br'));
-                        });
-                    } else if (header === 'Important Info') {
-                        const paragraphs = item[header].split('\n');
-                        paragraphs.forEach(paragraph => {
-                            const p = document.createElement('p');
-                            p.textContent = paragraph;
-                            td.appendChild(p);
-                        });
-                    } else {
-                        td.textContent = item[header];
-                    }
-                    row.appendChild(td);
-                });
-                tbody.appendChild(row);
-            });
-            table.appendChild(tbody);
-
-            tableContainer.appendChild(table);
-        }
-
-        function searchProjects() {
-            const input = document.getElementById('searchBar').value.toLowerCase();
-            const filteredData = projectData.filter(project => project.Project.toLowerCase().includes(input));
-            displayTable(filteredData);
-        }
-
-        // Actualizar la tabla automáticamente cada 10 segundos
-        setInterval(cargarDatos, 10000);
-
-        cargarDatos();
-    </script>
 </body>
 </html>
