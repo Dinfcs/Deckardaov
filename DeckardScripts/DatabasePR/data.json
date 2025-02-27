@@ -10151,7 +10151,7 @@
       ]
     },
     {
-      "Project": "CA - City of Fullerton",
+      "Project": "CA - City Of Fullerton",
       "Public Records & GIS": [
         {
           "type": "PR",
@@ -10168,7 +10168,7 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "To get a clearer view, unclick \"Treasurer Tax Collector\" (see the image).",
+      "Important Info": "<p><strong>To get a clearer view, unclick \"Treasurer Tax Collector\"</strong> (<strong style=\"color: rgb(255, 153, 0);\">see the image</strong>).</p>",
       "Media": [
         {
           "type": "Image",
