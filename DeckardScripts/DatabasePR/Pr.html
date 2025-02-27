@@ -57,17 +57,16 @@
         a:hover {
             color: #3742fa;
         }
-        /* Responsive */
-        @media (max-width: 768px) {
-            body {
-                margin: 10px;
-            }
-            table {
-                font-size: 14px;
-            }
-            th, td {
-                padding: 10px;
-            }
+        /* Estilos específicos para Important Info */
+        td.important-info {
+            max-width: 400px;
+            white-space: normal;
+            text-align: justify;
+            line-height: 1.6;
+            padding: 12px;
+        }
+        th.important-header {
+            width: 30%;
         }
         /* Estilos para la barra de búsqueda */
         #searchBar {
@@ -92,14 +91,6 @@
         #updateButton:hover {
             background-color: #0b5a69;
         }
-        /* Estilos específicos para Important Info */
-        td.important-info {
-            max-width: 400px;
-            white-space: normal;
-            text-align: justify;
-            line-height: 1.6;
-            padding: 12px;
-        }
         .search-update-container {
             display: flex;
             align-items: center;
@@ -111,9 +102,7 @@
 <body>
     
     <div class="search-update-container">
-        <!-- Barra de búsqueda -->
         <input type="text" id="searchBar" onkeyup="searchProjects()" placeholder="Search for project names...">
-        <!-- Botón de actualización -->
         <button id="updateButton">Update</button>
     </div>
 
@@ -142,11 +131,6 @@
         function displayTable(data) {
             data.sort((a, b) => a.Project.localeCompare(b.Project));
 
-            const projectCounts = {};
-            data.forEach(project => {
-                projectCounts[project.Project] = (projectCounts[project.Project] || 0) + 1;
-            });
-
             const tableContainer = document.getElementById('tableContainer');
             tableContainer.innerHTML = '';
 
@@ -159,7 +143,7 @@
                 const th = document.createElement('th');
                 th.textContent = header;
                 if (header === 'Important Info') {
-                    th.style.width = '30%'; // Hace que la columna sea más ancha
+                    th.classList.add('important-header'); // Aumenta el ancho de la columna
                 }
                 headerRow.appendChild(th);
             });
