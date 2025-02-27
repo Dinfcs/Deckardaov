@@ -4748,7 +4748,7 @@
       "Project": "MT - City of Bozeman",
       "Public Records & GIS": [
         {
-          "type": "Public Records",
+          "type": "Public Records (Use VPN)",
           "url": "https://itax.gallatin.mt.gov/default.aspx"
         },
         {
@@ -9152,7 +9152,7 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "Please leave all listings at this address as NMF: 2000 S Worldmark Dr, Pinetop-Lakeside. It looks like a resort or timeshare but might have individual units. The account manager has already asked the client, and we are waiting for an answer to determine the property's real structure.",
+      "Important Info": "2000 S Worldmark Dr, Pinetop-Lakeside is a timeshare. Map it with this APN: 41198126 ",
       "Media": [
         {
           "type": "N/A",
