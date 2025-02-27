@@ -3650,6 +3650,10 @@
         {
           "type": "Property Type Codes ",
           "url": "https://centrecountypa.gov/DocumentCenter/View/5031/Property-Type-Codes?bidId="
+        },
+        {
+          "type": "PR",
+          "url": "https://www2.centrecountypa.gov/centreco/claim/tri.asp"
         }
       ],
       "License List": [
