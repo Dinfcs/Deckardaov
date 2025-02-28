@@ -14,15 +14,15 @@
       ],
       "License List": [
         {
-          "type": "License o N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ],
-      "Important Info": "N/A.",
+      "Important Info": "<p>N/A.</p>",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ]
     },
