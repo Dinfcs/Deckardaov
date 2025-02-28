@@ -10071,8 +10071,8 @@
       "Important Info": "1. You can search in the GIS by address, APN, and by latitude and longitude.\n2. You can use PQ.\n3.If you locate the property in the Zillow tool but receive an error stating that the APN is not found or recognized in Cyborg's data while mapping, try removing the last digit and adding three zeros. Ex: APN: 035822190-1= APN: 035822190-000 ",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "type": "Prueba",
+          "url": "https://drive.usercontent.google.com/download?id=145rsofyETU80o-wIMbCNqAzFiBYSruJv&authuser=0"
         }
       ]
     },
