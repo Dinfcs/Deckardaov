@@ -8434,7 +8434,7 @@
           "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EXyoPf5upFNFsAd9OxHyk-EBeCcnMW1Es8yy4aPEJuVVCw?e=hIwTVG"
         }
       ],
-      "Important Info": "N/A",
+      "Important Info": "In the PR, when you are looiking for a property, use this format in the parcel number box: \"00-000-0000\" or \"00-000A-000-0000\"",
       "Media": [
         {
           "type": "N/A",
@@ -9283,7 +9283,7 @@
       ]
     },
     {
-      "Project": " FL - Seminole County",
+      "Project": "FL - Seminole County",
       "Public Records & GIS": [
         {
           "type": "PR Use VPN",
@@ -9304,7 +9304,7 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "(Propertyscape)",
+      "Important Info": "<p><span style=\"color: rgb(230, 0, 0);\">(Propertyscape)</span></p>",
       "Media": [
         {
           "type": "N/A",
@@ -10189,40 +10189,40 @@
       ]
     },
     {
-      "Project": "KY - boone campbell kenton County",
+      "Project": "KY - Boone Campbell Kenton County",
       "Public Records & GIS": [
         {
-          "type": "PR Boone County ",
-          "url": "https://boonepva.ky.gov/"
+          "url": "https://boonepva.ky.gov/",
+          "type": "PR Boone County"
         },
         {
           "type": "GIS Boone County",
           "url": "https://secure.boonecountygis.com/portal/apps/webappviewer/index.html?id=d2eaf4cf27194c20a8fbed4aa892cac5"
         },
         {
-          "type": "PR Campbell County",
-          "url": "https://pva.campbellcountykentucky.com/Search/Form/location"
+          "url": "https://pva.campbellcountykentucky.com/Search/Form/location",
+          "type": "PR Campbell County"
         },
         {
-          "type": "GIS Campbell County ",
-          "url": "https://explore.kyfromabove.ky.gov/"
+          "url": "https://explore.kyfromabove.ky.gov/",
+          "type": "GIS Campbell County"
         },
         {
-          "type": "GIS2 Campbell County ",
-          "url": "https://explore.kyfromabove.ky.gov/"
+          "url": "https://explore.kyfromabove.ky.gov/",
+          "type": "GIS2 Campbell County"
         },
         {
-          "type": "PR Hamilton County ",
-          "url": "https://wedge1.hcauditor.org/"
+          "url": "https://wedge1.hcauditor.org/",
+          "type": "PR Hamilton County"
         }
       ],
       "License List": [
         {
-          "type": "License o N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "License o N/A"
         }
       ],
-      "Important Info": "N/A",
+      "Important Info": "<p>N/A</p>",
       "Media": [
         {
           "type": "N/A",
