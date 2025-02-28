@@ -10229,6 +10229,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "MI - city of new buffalo",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://bsaonline.com/OnlinePayment/OnlinePaymentSearch?PaymentApplicationType=4&uid=975"
+        },
+        {
+          "type": "GIS",
+          "url": "https://beacon.schneidercorp.com/Application.aspx?AppID=346&LayerID=4427&PageTypeID=1&PageID=2614"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "To search for the APN in Public Records, the four digits (1162) must be removed and added after 62 in the Parcel Number search.",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
