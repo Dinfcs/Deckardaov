@@ -6,10 +6,10 @@
     <title>Project Resources</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Inter Tight', serif;
+            font-family: 'Inter Tight', sans-serif;
             margin: 0px;
             background-color: #f4f4f9;
             color: #333;
@@ -17,7 +17,7 @@
         h1 {
             text-align: center;
             color: #555;
-            margin-top: 2px;
+            margin: 5px 0;
         }
         #tableContainer {
             overflow-x: auto;
@@ -29,6 +29,7 @@
         table {
             width: 100%;
             border-collapse: collapse;
+            margin-top: 0px;
         }
         table, th, td {
             border: 1px solid #ddd;
@@ -36,6 +37,7 @@
         th, td {
             padding: 8px;
             text-align: left;
+            max-width: 200px;
             word-wrap: break-word;
             text-overflow: ellipsis;
         }
@@ -59,34 +61,31 @@
         }
         /* Estilos específicos para Important Info */
         td.important-info {
-            max-width: 400px;
             white-space: normal;
             text-align: justify;
             line-height: 1.6;
             padding: 12px;
+            font-size: 14px;
         }
-        th.important-header {
-            width: 30%;
-        }
-        /* Estilos para la barra de búsqueda */
+        /* Estilo para la barra de búsqueda */
         #searchBar {
-            background-color: #f5eeee;
+            background-color: #ffffff;
             width: 60%;
-            padding: 10px;
-            border: 1px solid #c9c3c3;
+            padding: 8px;
+            border: 1px solid #ccc;
             border-radius: 5px;
-            font-size: 16px;
+            font-size: 14px;
         }
-        /* Estilos para el botón actualizar */
+        /* Estilo para el botón actualizar */
         #updateButton {
             background-color: #093140;
             color: white;
-            padding: 10px;
+            padding: 8px 12px;
             border: none;
             border-radius: 5px;
             margin-left: 10px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 14px;
         }
         #updateButton:hover {
             background-color: #0b5a69;
@@ -95,7 +94,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-top: 10px;
+            gap: 10px;
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -142,9 +142,6 @@
             headers.forEach(header => {
                 const th = document.createElement('th');
                 th.textContent = header;
-                if (header === 'Important Info') {
-                    th.classList.add('important-header'); // Aumenta el ancho de la columna
-                }
                 headerRow.appendChild(th);
             });
             thead.appendChild(headerRow);
@@ -159,7 +156,18 @@
                     if (header === 'Important Info') {
                         td.classList.add('important-info');
                         td.innerHTML = item[header]; // Permite interpretar HTML
-                    } else {
+                    } 
+                    else if (['Public Records & GIS', 'License List', 'Media'].includes(header) && Array.isArray(item[header])) {
+                        item[header].forEach(link => {
+                            const a = document.createElement('a');
+                            a.href = link.url;
+                            a.textContent = link.type;
+                            a.target = '_blank';
+                            td.appendChild(a);
+                            td.appendChild(document.createElement('br'));
+                        });
+                    } 
+                    else {
                         td.textContent = item[header];
                     }
 
