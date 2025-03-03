@@ -7449,7 +7449,7 @@
       "License List": [
         {
           "type": "License",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/ESfTTfB4LIdMi6naTY-cvfsBgPA8vGGO1GdgMQSv11_dhQ?e=67PcKL"
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EfqnPmBAWhhDmm9tVIoTDh8BgeA23jPO19QHhKHKvawyUw?e=RITEay"
         }
       ],
       "Important Info": "To search in the Pr by APN delete one of the zeros before the last number of the apn for example. 017902500016 or  017902500008",
@@ -10124,7 +10124,7 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "🔶 To search for an APN in Public Records, add a space before the central letter <strong style=\"color: rgb(230, 0, 0);\">(213450C0060 → 213450 C0060)</strong><span style=\"color: rgb(230, 0, 0);\">.</span>\n🔶 In GIS, search by address as the APN doesn't work well. </p><p>\n<strong>PD:</strong> Use layer #15 for clearer view and is recommended the middle button in the top-right corner to access the pictographic view for better clarity.</p><p><br></p>\n🔶 There are several listings on Locke St in Cyborg with Unit #A.\nThese are U1OM, so if you have a different unit (e.g., C), just locate the property, remove #A, and keep the general address.\nEach house has a different housefront and four units, so ensure you map the right one.",
+      "Important Info": "🔶 To search for an APN in Public Records, add a space before the central letter <strong style=\"color: rgb(230, 0, 0);\">(213450C0060 → 213450 C0060)</strong><span style=\"color: rgb(230, 0, 0);\">.</span>\n🔶 In GIS, search by address as the APN doesn't work well. </p><p>\n<strong>PD:</strong> Use layer #15 for clearer view and is recommended the middle button in the top-right corner to access the pictographic view for better clarity.</p><p><br></p>\n🔶 There are several listings on Locke St in Cyborg with Unit #A.\nThese are U1OM, so if you have a different unit (e.g., C), just locate the property, remove #A, and keep the general address.\nEach house has a different housefront and four units, so ensure you map the right one.\nIf the specific unit is known, the AO should include the unit and implement the Unit Box.",
       "Media": [
         {
           "type": "GIS: How to activate Layer #15 and Pictographic View",
