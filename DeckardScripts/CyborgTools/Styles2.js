@@ -1,9 +1,9 @@
 // ==UserScript==
-// @name         estilos sin gm - Versión Moderna (Tablas Compactas)
+// @name         estilos sin gm
 // @namespace    http://tampermonkey.net/
-// @version      2.1
-// @description  Rediseño moderno con tablas compactas y optimizadas para visualización eficiente
-// @author       Luis Escalante (optimizado)
+// @version      1.13
+// @description  Ajusta los estilos con colores más suaves, tamaños optimizados y filtros persistentes en tablas
+// @author       Luis Escalante
 // @match        https://cyborg.deckard.com/*
 // @grant        none
 // ==/UserScript==
@@ -11,502 +11,194 @@
 (function() {
     'use strict';
 
-    // Lista de selectores excluidos
-    const EXCLUSIONS = `
-        #window_vetting_dlg *,
-        #vetting_data_footer *,
-        .pop_up_header_container *,
-        #iframe-button-container *,
-        [style*="Nearby Parcels"],
-        .fancybox-button,
-        [data-test-id="float-window-minimize-or-restore-btn"],
-        [data-test-id="float-window-close-btn"],
-        .project-data-table,
-        .project-data-table *
-    `;
-
-    // Sistema de colores modernos (optimizado)
-    const THEME = {
-        // Colores principales
-        primary: '#23A9D8',     // Azul moderno para elementos principales
-        secondary: '#23A9D8',   // Verde para elementos secundarios
-        accent: '#f39c12',      // Naranja para acentos y destacados
-
-        // Neutrales
-        dark: '#34495e',       // Gris oscuro para texto principal
-        medium: '#7f8c8d',     // Gris medio para texto secundario
-        light: '#ecf0f1',      // Gris claro para fondos
-
-        // Estados
-        hover: '#2980b9',      // Azul oscuro para hover
-        active: '#277fae',     // Verde oscuro para elementos activos
-
-        // Backgrounds
-        bgLight: '#f8f9fa',    // Fondo claro general
-        bgAlt: '#e9ecef',      // Fondo alternativo
-        bgHeader: '#dfe6e9',   // Fondo de encabezados
-
-        // Elementos de interfaz
-        border: '#ced4da',     // Color de bordes
-        shadow: 'rgba(0, 0, 0, 0.05)' // Sombras (más sutiles)
-    };
-
-    // Propiedades de estilo (optimizadas para compacidad)
-    const STYLE = {
-        // Tipografía
-        fontFamily: 'Roboto,',
-        fontSizeBase: '14px',
-        fontSizeSmall: '12px',
-        fontSizeLarge: '18px',
-        fontSizeHeader: '20px',
-
-        // Espaciado (reducido)
-        spacingXs: '2px',
-        spacingSm: '4px',
-        spacingMd: '8px',
-        spacingLg: '12px',
-
-        // Efectos (más sutiles)
-        borderRadius: '3px',
-        transition: '0.2s ease',
-        boxShadow: '0 1px 3px rgba(0, 0, 0, 0.05)',
-        boxShadowHover: '0 2px 5px rgba(0, 0, 0, 0.1)',
-    };
-
-    /**
-     * Agrega un elemento de estilo al documento
-     * @param {string} css - Contenido CSS a agregar
-     */
     const addStyle = (css) => {
         if (document.querySelector('#custom-cyborg-styles')) return;
-
         const style = document.createElement('style');
         style.id = 'custom-cyborg-styles';
         style.textContent = css;
         document.head.appendChild(style);
     };
 
-    /**
-     * Genera y aplica los estilos CSS modernos con tablas compactas
-     */
-    const applyCompactStyles = () => {
-        const css = `
-            /* Estilos generales */
+    const applyStyles = () => {
+        // Exclusiones:  Excluye la tabla con la clase 'project-data-table' y su contenido.
+        const exclusions = `
+            #window_vetting_dlg *,
+            #vetting_data_footer *,
+            .pop_up_header_container *,
+            #iframe-button-container *,
+            [style*="Nearby Parcels"],
+            .fancybox-button,
+            [data-test-id="float-window-minimize-or-restore-btn"],
+            [data-test-id="float-window-close-btn"],
+            .project-data-table,
+            .project-data-table *
+        `;
+
+        addStyle(`
+            /* Reutilización de selectores */
             .cyborg-str-tool {
-                font-family: ${STYLE.fontFamily};
-                color: ${THEME.dark};
+                /* No es necesario especificar font-family si no se cambia */
             }
 
             /* Encabezados */
-            .cyborg-str-tool h1:not(${EXCLUSIONS}),
-            .cyborg-str-tool h2:not(${EXCLUSIONS}),
-            .cyborg-str-tool h3:not(${EXCLUSIONS}),
-            .cyborg-str-tool h4:not(${EXCLUSIONS}),
-            .cyborg-str-tool h5:not(${EXCLUSIONS}),
-            .cyborg-str-tool h6:not(${EXCLUSIONS}) {
-                font-weight: 600 !important;
-                color: ${THEME.dark} !important;
-                font-size: ${STYLE.fontSizeLarge} !important;
-                margin-bottom: ${STYLE.spacingMd} !important;
-                letter-spacing: -0.01em !important;
+            .cyborg-str-tool h1:not(${exclusions}),
+            .cyborg-str-tool h2:not(${exclusions}),
+            .cyborg-str-tool h3:not(${exclusions}),
+            .cyborg-str-tool h4:not(${exclusions}),
+            .cyborg-str-tool h5:not(${exclusions}),
+            .cyborg-str-tool h6:not(${exclusions}) {
+                font-weight: bold !important;
+                color: #C9D82B !important; /* Verde oliva oscuro */
+                font-size: 15px !important;
             }
 
             /* Título del listado */
             .page_header_bar h4 span {
-                font-size: ${STYLE.fontSizeHeader} !important;
-                font-weight: 600 !important;
-                color: #CAD92B !important;
-                letter-spacing: -0.02em !important;
+                font-size: 20px !important;
             }
 
-            /* Estilos de botones */
-            .cyborg-str-tool button:not(${EXCLUSIONS}):not(#btn_submit_vetting_dlg),
-            .cyborg-str-tool .btn:not(${EXCLUSIONS}):not(#btn_submit_vetting_dlg),
+            /* Botones - Agrupados y optimizados */
+            .cyborg-str-tool button:not(${exclusions}):not(#btn_submit_vetting_dlg),
+            .cyborg-str-tool .btn:not(${exclusions}):not(#btn_submit_vetting_dlg),
             #btn_submit_vetting_dlg,
             #btn_record_no_matching_parcel_found,
             #btn_record_listing_not_live,
             #btn_open_vetting_dlg,
             #btn_open_vetting_dlg_as_qa_mode {
-                background-color: ${THEME.primary} !important;
+                background-color: #1b95bf !important; /* azul suave */
                 color: white !important;
                 border: none !important;
-                border-radius: ${STYLE.borderRadius} !important;
-                padding: ${STYLE.spacingXs} ${STYLE.spacingSm} !important;
-                font-size: ${STYLE.fontSizeBase} !important;
-                font-weight: 500 !important;
-                transition: all ${STYLE.transition} !important;
-                box-shadow: ${STYLE.boxShadow} !important;
-                cursor: pointer !important;
-                align-items: center !important;
-                justify-content: center !important;
-                height: 30px !important; /* Altura fija para más compacidad */
+                padding: 5px 8px !important;
+                font-size: 14px !important;
+                transition: 0.3s ease-in-out !important;
             }
 
-            /* Botones especiales */
-            #btn_submit_vetting_dlg {
-                background-color: ${THEME.secondary} !important;
-                font-weight: 600 !important;
-            }
-
-            /* Botones secundarios */
+            /*Especifícos*/
             #btn_record_no_matching_parcel_found,
-            #btn_record_listing_not_live {
-                background-color: ${THEME.medium} !important;
+            #btn_record_listing_not_live,
+            #btn_open_vetting_dlg,
+            #btn_open_vetting_dlg_as_qa_mode{
+                border-radius: 0px !important;
             }
 
-            /* Interacciones de botones */
-            .cyborg-str-tool button:not(${EXCLUSIONS}):hover,
-            .cyborg-str-tool .btn:not(${EXCLUSIONS}):hover {
-                background-color: ${THEME.hover} !important;
 
+            /*Botones - Excepciones con border radius */
+            .cyborg-str-tool button:not(${exclusions}):not(#btn_submit_vetting_dlg):not(#btn_record_no_matching_parcel_found):not(#btn_record_listing_not_live):not(#btn_open_vetting_dlg):not(#btn_open_vetting_dlg_as_qa_mode),
+            .cyborg-str-tool .btn:not(${exclusions}):not(#btn_submit_vetting_dlg):not(#btn_record_no_matching_parcel_found):not(#btn_record_listing_not_live):not(#btn_open_vetting_dlg):not(#btn_open_vetting_dlg_as_qa_mode),
+            #btn_submit_vetting_dlg{
+                 border-radius: 5px !important;
             }
 
-            #btn_submit_vetting_dlg:hover {
-                background-color: ${THEME.active} !important;
+            /* Estilo específico para el botón de mapeo */
+            #btn_map_to_selected_probable_parcel {
+                margin-left: 8px !important;
+                margin-right: 8px !important;
             }
 
-            #btn_submit_vetting_dlg:hover {
-                background-color: ${THEME.active} !important;
+            /* Estilo específico para el botón de Show data lead per region */
+            #btn_show_data_lead_per_region {
+                margin-left: 8px !important;
+            }
+
+            /* Estilo específico para el input */
+            .form-check-input#checkbox_only_show_parcels_with_associated_license:not(${exclusions}) {
+                margin-left: -2px !important;
+            }
+
+            /* Estilo específico para el label */
+            .form-check-label.form-label[for="checkbox_only_show_parcels_with_associated_license"]:not(${exclusions}) {
+                margin-left: 18px !important;
+            }
+
+            /* Estilo específico para el input de búsqueda */
+            .dash-input#input_street_number_hint:not(${exclusions}) {
+                margin-left: 15px !important;
             }
 
             /* Enlaces */
-            .cyborg-str-tool a:not(${EXCLUSIONS}) {
-                color: ${THEME.primary} !important;
+            .cyborg-str-tool a:not(${exclusions}) {
+                color: #96adb5 !important;  /* Azul antes de visitar */
                 text-decoration: none !important;
-                font-weight: 500 !important;
-                transition: all ${STYLE.transition} !important;
-                border-bottom: 1px solid transparent !important;
+                font-weight: normal !important;
+                transition: color 0.2s ease-in-out, text-decoration 0.2s ease-in-out !important; /* Transiciones */
             }
 
-            .cyborg-str-tool a:visited:not(${EXCLUSIONS}) {
-                color: #7952b3 !important; /* Púrpura más suave para visitados */
+            /* Enlaces visitados (usando una regla dinámica) */
+            .cyborg-str-tool a:visited:not(${exclusions}) {
+                color: #02acf5 !important; /* Color después de visitar */
             }
 
-            .cyborg-str-tool a:hover:not(${EXCLUSIONS}) {
-                color: ${THEME.hover} !important;
-                border-bottom: 1px solid ${THEME.hover} !important;
-                text-decoration: none !important;
+            /* Hover para todos los enlaces */
+            .cyborg-str-tool a:hover:not(${exclusions}) {
+              text-decoration: underline !important;
             }
 
-            /* Tablas compactas */
-            .cyborg-str-tool table:not(${EXCLUSIONS}):not(.table-hover) {
-                border-collapse: collapse !important; /* Collapse en lugar de separate para más compacidad */
+           /* Tablas (excluyendo la tabla con la clase 'project-data-table') */
+            .cyborg-str-tool table:not(${exclusions}):not(.table-hover) {
+                border-collapse: collapse !important;
                 width: 100% !important;
-                font-size: ${STYLE.fontSizeSmall} !important;
-                border: 1px solid ${THEME.border} !important;
-                border-radius: ${STYLE.borderRadius} !important;
-                overflow: hidden !important;
-                box-shadow: none !important; /* Sin sombra para tablas */
-                margin-bottom: ${STYLE.spacingSm} !important; /* Margen inferior reducido */
+                font-size: 12px !important;
             }
 
-            .cyborg-str-tool table th:not(${EXCLUSIONS}):not(.bg-secondary) {
-                background-color: ${THEME.bgHeader} !important;
-                color: ${THEME.dark} !important;
-                font-size: ${STYLE.fontSizeSmall} !important;
-                font-weight: 600 !important;
-                text-transform: uppercase !important;
-                letter-spacing: 0.03em !important;
-                padding: ${STYLE.spacingXs} ${STYLE.spacingSm} !important; /* Padding más pequeño */
-                border-bottom: 1px solid ${THEME.border} !important;
-                position: sticky !important;
-                top: 0 !important;
-                z-index: 10 !important;
-                height: 20px !important; /* Altura fija para encabezados */
-            }
-
-            .cyborg-str-tool table td:not(${EXCLUSIONS}):not(.bg-secondary) {
-                padding: ${STYLE.spacingXs} ${STYLE.spacingSm} !important; /* Padding más pequeño */
-                vertical-align: middle !important;
-                border-bottom: 1px solid ${THEME.border} !important;
-                color: ${THEME.dark} !important;
-                transition: background-color ${STYLE.transition} !important;
-                height: 22px !important; /* Altura fija para celdas */
-                max-height: 22px !important; /* Altura máxima para celdas */
-                white-space: nowrap !important; /* Evita saltos de línea */
-                overflow: hidden !important;
-                text-overflow: ellipsis !important;
+             .cyborg-str-tool table th:not(${exclusions}):not(.bg-secondary),
+            .cyborg-str-tool table td:not(${exclusions}):not(.bg-secondary) {
                 text-align: left !important;
-            }
-            /* Alineación de texto en encabezados de tabla a la izquierda */
-.cyborg-str-tool table th:not(${EXCLUSIONS}):not(.bg-secondary),
-.cyborg-str-tool .dash-table-container table th:not(${EXCLUSIONS}),
-.cyborg-str-tool div.dash-table-container table.dash-spreadsheet th.dash-header:not(${EXCLUSIONS}),
-.cyborg-str-tool .dash-spreadsheet th.dash-header:not(${EXCLUSIONS}) {
-    text-align: left !important;
-
-
-/* Estilo para mostrar los enlaces en columna en vez de fila */
-.cyborg-str-tool table td[data-dash-column="action"] .cell-markdown p {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    text-align: center !important;
-    gap: 4px !important; /* Espacio entre los enlaces */
-}
-
-/* Ocultar el separador | entre enlaces */
-.cyborg-str-tool table td[data-dash-column="action"] .cell-markdown p a:first-child::after {
-    display: none !important;
-}
-
-/* Cambiar color de fondo de columnas específicas y cualquier columna con el fondo amarillo */
-.cyborg-str-tool table td[data-dash-column="people_on_license"]:not(${EXCLUSIONS}),
-.cyborg-str-tool table td[data-dash-column="license"]:not(${EXCLUSIONS}),
-.cyborg-str-tool table td[style*="rgb(255, 236, 179)"]:not(${EXCLUSIONS}),
-.cyborg-str-tool table td[style*="rgb(255,236,179)"]:not(${EXCLUSIONS}),
-.cyborg-str-tool table td[style*="background-color: rgb(255, 236, 179)"]:not(${EXCLUSIONS}),
-.cyborg-str-tool table td[style*="background-color:rgb(255, 236, 179)"]:not(${EXCLUSIONS}),
-.cyborg-str-tool table td[style*="background: rgb(255, 236, 179)"]:not(${EXCLUSIONS}) {
-    background-color: rgb(213, 243, 247) !important;
-}
-
-/* Control de tamaño para campos de entrada específicos */
-#parcel_list_table_range_radius_in_meter {
-    width: 50px !important;
-    max-width: 50px !important;
-    min-width: 50px !important;
-}
-
-
-#parcel_list_table_range_center_lat_lng {
-    width: 120px !important;
-    max-width: 120px !important;
-    min-width: 120px !important;
-}
-
-#input_parcel_filter_street_number_hint {
-    width: 180px !important;
-    max-width: 180px !important;
-    min-width: 180px !important;
-}
-
-/* Estilo general para todos los inputs de clase dash-input */
-.cyborg-str-tool .dash-input {
-    box-sizing: border-box !important;
-    display: inline-block !important;
-    height: 30px !important;
-    padding: 4px 8px !important;
-    font-size: ${STYLE.fontSizeSmall} !important;
-    line-height: 1.2 !important;
-    border: 1px solid ${THEME.border} !important;
-    border-radius: ${STYLE.borderRadius} !important;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
-}
-
-/* Estilo para los contenedores que pueden estar forzando el ancho completo */
-.cyborg-str-tool .input-container,
-.cyborg-str-tool .dash-input-container,
-.cyborg-str-tool [class*="input-container"] {
-    width: auto !important;
-    display: inline-block !important;
-}
-
-            /* Filas alternadas y hover */
-            .cyborg-str-tool table tr:nth-child(even):not(${EXCLUSIONS}) {
-                background-color: ${THEME.bgLight} !important;
+                color: black !important;
             }
 
-            .cyborg-str-tool table tr:nth-child(odd):not(${EXCLUSIONS}) {
-                background-color: white !important;
+           .cyborg-str-tool table th:not(${exclusions}):not(.bg-secondary) {
+                background-color: #edede8 !important; /* Verde oliva */
+                color: black !important;
+                font-size: 12px !important;
             }
 
-            .cyborg-str-tool table tr:hover:not(${EXCLUSIONS}) td {
-                background-color: rgba(52, 152, 219, 0.05) !important;
-            }
-
-            /* Última fila sin borde inferior */
-            .cyborg-str-tool table tr:last-child td:not(${EXCLUSIONS}) {
-                border-bottom: none !important;
-            }
-
-            /* Campos de filtro compactos */
-            .cyborg-str-tool table input[type="text"]:not(${EXCLUSIONS}),
-            .cyborg-str-tool input[type="text"]:not(${EXCLUSIONS}),
-            .cyborg-str-tool input[type="search"]:not(${EXCLUSIONS}) {
-                background-color: white !important;
-                border: 1px solid ${THEME.border} !important;
-                border-radius: ${STYLE.borderRadius} !important;
-                padding: ${STYLE.spacingXs} !important; /* Padding más pequeño */
-                font-size: ${STYLE.fontSizeSmall} !important;
+            /* Estilo de los campos de filtro */
+            .cyborg-str-tool table input[type="text"]:not(${exclusions}) {
+                background-color: #eeeeee !important; /* Gris claro para campos de filtro */
+                border: 1px solid #ccc !important;
+                padding: 5px !important;
+                font-size: 12px !important;
                 width: 100% !important;
-                box-sizing: border-box !important;
-                transition: all ${STYLE.transition} !important;
-                color: ${THEME.dark} !important;
-                height: 20px !important; /* Altura fija para inputs */
             }
 
-            .cyborg-str-tool table input[type="text"]:focus:not(${EXCLUSIONS}),
-            .cyborg-str-tool input[type="text"]:focus:not(${EXCLUSIONS}),
-            .cyborg-str-tool input[type="search"]:focus:not(${EXCLUSIONS}) {
-                border-color: ${THEME.primary} !important;
-                outline: none !important;
-                box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.15) !important;
+            .cyborg-str-tool table th[data-dash-column="city_p"]:not(${exclusions}) {
+                min-width: 180px !important;
+                max-width: 300px !important;
             }
 
-            /* Checkbox compactos */
-            .cyborg-str-tool input[type="checkbox"]:not(${EXCLUSIONS}) {
-                appearance: none !important;
-                -webkit-appearance: none !important;
-                height: 14px !important; /* Más pequeño */
-                width: 14px !important; /* Más pequeño */
-                border: 1px solid ${THEME.border} !important;
-                border-radius: 2px !important;
-                background-color: white !important;
-                cursor: pointer !important;
-                margin: 0 !important;
-                vertical-align: middle !important;
-                position: relative !important;
-                top: -1px !important;
+            /* No aplicar negrita al texto dentro de listing_quick_view_apn_or_address_info */
+            .cyborg-str-tool.listing_quick_view_apn_or_address_info:not(${exclusions}) {
+                font-weight: normal !important;
             }
+        `);
 
-            .cyborg-str-tool input[type="checkbox"]:checked:not(${EXCLUSIONS}) {
-                background-color: ${THEME.primary} !important;
-                border-color: ${THEME.primary} !important;
-                position: relative !important;
-            }
-
-            .cyborg-str-tool input[type="checkbox"]:checked:not(${EXCLUSIONS})::after {
-                content: "" !important;
-                position: absolute !important;
-                left: 4px !important; /* Ajustado para tamaño más pequeño */
-                top: 1px !important; /* Ajustado para tamaño más pequeño */
-                width: 3px !important; /* Ajustado para tamaño más pequeño */
-                height: 7px !important; /* Ajustado para tamaño más pequeño */
-                border: solid white !important;
-                border-width: 0 2px 2px 0 !important;
-                transform: rotate(45deg) !important;
-            }
-
-            /* Labels compactos */
-            .cyborg-str-tool label.form-check-label:not(${EXCLUSIONS}) {
-                margin-left: ${STYLE.spacingSm} !important;
-                font-size: ${STYLE.fontSizeSmall} !important;
-                cursor: pointer !important;
-            }
-
-            /* Ajustes específicos para márgenes */
-            .form-check-input#checkbox_only_show_parcels_with_associated_license:not(${EXCLUSIONS}) {
-                margin-left: 0 !important;
-            }
-
-            .form-check-label.form-label[for="checkbox_only_show_parcels_with_associated_license"]:not(${EXCLUSIONS}) {
-                margin-left: ${STYLE.spacingSm} !important;
-            }
-
-.dash-input#input_street_number_hint:not(${EXCLUSIONS}) {
-    padding: 2px 5px !important; /* Reduce el espacio interno */
-}
-
-
-            /* Contenedores compactos */
-            .cyborg-str-tool .card:not(${EXCLUSIONS}),
-            .cyborg-str-tool .container:not(${EXCLUSIONS}),
-            .cyborg-str-tool .panel:not(${EXCLUSIONS}) {
-                border-radius: ${STYLE.borderRadius} !important;
-                box-shadow: ${STYLE.boxShadow} !important;
-                border: 1px solid ${THEME.border} !important;
-                overflow: hidden !important;
-                margin-bottom: ${STYLE.spacingSm} !important;
-            }
-
-            /* Headers y footers de contenedores */
-            .cyborg-str-tool .card-header:not(${EXCLUSIONS}),
-            .cyborg-str-tool .panel-heading:not(${EXCLUSIONS}) {
-                background-color: ${THEME.bgLight} !important;
-                border-bottom: 1px solid ${THEME.border} !important;
-                padding: ${STYLE.spacingSm} !important;
-                min-height: 20px !important;
-            }
-
-            /* Scrollbars personalizados (Chrome/Safari) */
-            .cyborg-str-tool *::-webkit-scrollbar {
-                width: 6px !important; /* Más delgado */
-                height: 6px !important; /* Más delgado */
-            }
-
-            .cyborg-str-tool *::-webkit-scrollbar-track {
-                background: ${THEME.bgLight} !important;
-            }
-
-            .cyborg-str-tool *::-webkit-scrollbar-thumb {
-                background-color: ${THEME.medium} !important;
-                border-radius: 10px !important;
-                border: 1px solid ${THEME.bgLight} !important;
-            }
-
-            .cyborg-str-tool *::-webkit-scrollbar-thumb:hover {
-                background-color: ${THEME.primary} !important;
-            }
-
-            /* Column width específico */
-            .cyborg-str-tool table th[data-dash-column="city_p"]:not(${EXCLUSIONS}) {
-                min-width: 120px !important; /* Reducido */
-                max-width: 180px !important; /* Reducido */
-            }
-            #input_listing_search_keyword {
-    width: 200px !important;
-    max-width: 200px !important;
-    min-height: 30px !important;
-    font-size: 13px !important;
-    padding: 2px 5px !important;
-    display: inline-block !important;
-}
-
-        `;
-
-        addStyle(css);
         document.body.classList.add('cyborg-str-tool');
     };
 
-    /**
-     * Simula clic en el botón de envío
-     */
-    const submitVettingForm = () => {
-        const button = document.getElementById('btn_submit_vetting_dlg');
-        if (button) button.click();
+    // Optimización: Usar requestAnimationFrame para aplicar los estilos
+    const handleDOMContentLoaded = () => {
+        requestAnimationFrame(applyStyles);
     };
 
-    // Inicialización basada en el estado del documento
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => requestAnimationFrame(applyCompactStyles));
+        document.addEventListener('DOMContentLoaded', handleDOMContentLoaded);
+        // No es necesario el evento load si ya tenemos DOMContentLoaded
     } else {
-        requestAnimationFrame(applyCompactStyles);
+        handleDOMContentLoaded(); // Ya está listo, ejecutar directamente
     }
 
-    // Atajo de teclado: Ctrl+S para enviar formulario
+    const clickButton = () => {
+        const button = document.getElementById('btn_submit_vetting_dlg');
+        if (button) {
+            button.click();
+        }
+    };
+
+    // Optimización: Usar un solo event listener para keydown
     document.addEventListener('keydown', (e) => {
         if (e.ctrlKey && e.key === 's') {
             e.preventDefault();
-            submitVettingForm();
+            clickButton();
         }
     });
-
-    // Observer para aplicar estilos a elementos dinámicos
-    const observeDOM = () => {
-        const targetNode = document.body;
-        const config = { childList: true, subtree: true };
-
-        const callback = (mutationsList) => {
-            for (const mutation of mutationsList) {
-                if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
-                    // Reaplica clases a elementos nuevos si es necesario
-                    requestAnimationFrame(() => {
-                        document.body.classList.add('cyborg-str-tool');
-                    });
-                }
-            }
-        };
-
-        const observer = new MutationObserver(callback);
-        observer.observe(targetNode, config);
-    };
-
-    // Iniciar observer si el DOM ya está cargado
-    if (document.readyState !== 'loading') {
-        observeDOM();
-    } else {
-        document.addEventListener('DOMContentLoaded', observeDOM);
-    }
 })();
