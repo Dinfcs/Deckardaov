@@ -45,9 +45,9 @@
     // Propiedades de estilo
     const STYLE = {
         fontFamily: 'Roboto, sans-serif',
-        fontSizeBase: '14px',
-        fontSizeSmall: '12px',
-        fontSizeLarge: '16px',
+        fontSizeBase: '12px',
+        fontSizeSmall: '10px',
+        fontSizeLarge: '14px',
         fontSizeHeader: '18px',
         spacingXs: '4px',
         spacingSm: '8px',
