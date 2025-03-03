@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Styles2
+// @name         estilos sin gm - Versión Moderna (Tablas Compactas)
 // @namespace    http://tampermonkey.net/
 // @version      2.1
 // @description  Rediseño moderno con tablas compactas y optimizadas para visualización eficiente
@@ -55,10 +55,10 @@
     const STYLE = {
         // Tipografía
         fontFamily: 'Roboto,',
-        fontSizeBase: '13px',
-        fontSizeSmall: '11px',
-        fontSizeLarge: '15px',
-        fontSizeHeader: '18px',
+        fontSizeBase: '14px',
+        fontSizeSmall: '12px',
+        fontSizeLarge: '18px',
+        fontSizeHeader: '20px',
 
         // Espaciado (reducido)
         spacingXs: '2px',
@@ -226,7 +226,82 @@
                 white-space: nowrap !important; /* Evita saltos de línea */
                 overflow: hidden !important;
                 text-overflow: ellipsis !important;
+                text-align: left !important;
             }
+            /* Alineación de texto en encabezados de tabla a la izquierda */
+.cyborg-str-tool table th:not(${EXCLUSIONS}):not(.bg-secondary),
+.cyborg-str-tool .dash-table-container table th:not(${EXCLUSIONS}),
+.cyborg-str-tool div.dash-table-container table.dash-spreadsheet th.dash-header:not(${EXCLUSIONS}),
+.cyborg-str-tool .dash-spreadsheet th.dash-header:not(${EXCLUSIONS}) {
+    text-align: left !important;
+
+
+/* Estilo para mostrar los enlaces en columna en vez de fila */
+.cyborg-str-tool table td[data-dash-column="action"] .cell-markdown p {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    gap: 4px !important; /* Espacio entre los enlaces */
+}
+
+/* Ocultar el separador | entre enlaces */
+.cyborg-str-tool table td[data-dash-column="action"] .cell-markdown p a:first-child::after {
+    display: none !important;
+}
+
+/* Cambiar color de fondo de columnas específicas y cualquier columna con el fondo amarillo */
+.cyborg-str-tool table td[data-dash-column="people_on_license"]:not(${EXCLUSIONS}),
+.cyborg-str-tool table td[data-dash-column="license"]:not(${EXCLUSIONS}),
+.cyborg-str-tool table td[style*="rgb(255, 236, 179)"]:not(${EXCLUSIONS}),
+.cyborg-str-tool table td[style*="rgb(255,236,179)"]:not(${EXCLUSIONS}),
+.cyborg-str-tool table td[style*="background-color: rgb(255, 236, 179)"]:not(${EXCLUSIONS}),
+.cyborg-str-tool table td[style*="background-color:rgb(255, 236, 179)"]:not(${EXCLUSIONS}),
+.cyborg-str-tool table td[style*="background: rgb(255, 236, 179)"]:not(${EXCLUSIONS}) {
+    background-color: rgb(213, 243, 247) !important;
+}
+
+/* Control de tamaño para campos de entrada específicos */
+#parcel_list_table_range_radius_in_meter {
+    width: 50px !important;
+    max-width: 50px !important;
+    min-width: 50px !important;
+}
+
+
+#parcel_list_table_range_center_lat_lng {
+    width: 120px !important;
+    max-width: 120px !important;
+    min-width: 120px !important;
+}
+
+#input_parcel_filter_street_number_hint {
+    width: 180px !important;
+    max-width: 180px !important;
+    min-width: 180px !important;
+}
+
+/* Estilo general para todos los inputs de clase dash-input */
+.cyborg-str-tool .dash-input {
+    box-sizing: border-box !important;
+    display: inline-block !important;
+    height: 30px !important;
+    padding: 4px 8px !important;
+    font-size: ${STYLE.fontSizeSmall} !important;
+    line-height: 1.2 !important;
+    border: 1px solid ${THEME.border} !important;
+    border-radius: ${STYLE.borderRadius} !important;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
+}
+
+/* Estilo para los contenedores que pueden estar forzando el ancho completo */
+.cyborg-str-tool .input-container,
+.cyborg-str-tool .dash-input-container,
+.cyborg-str-tool [class*="input-container"] {
+    width: auto !important;
+    display: inline-block !important;
+}
 
             /* Filas alternadas y hover */
             .cyborg-str-tool table tr:nth-child(even):not(${EXCLUSIONS}) {
