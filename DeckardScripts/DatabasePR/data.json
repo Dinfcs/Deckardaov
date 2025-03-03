@@ -7439,11 +7439,11 @@
       "Public Records & GIS": [
         {
           "type": "PR",
-          "url": "https://douglasnv-search.gsacorp.io/"
+          "url": "https://qpublic.schneidercorp.com/Application.aspx?AppID=988&LayerID=20162&PageTypeID=2&PageID=8760"
         },
         {
           "type": "GIS",
-          "url": "https://gisservices.douglasnv.us/portal/apps/webappviewer/index.html?id=7b7b59383f484fe1a581c93d47e06fef"
+          "url": "https://qpublic.schneidercorp.com/Application.aspx?AppID=988&LayerID=20162&PageTypeID=1&PageID=8759"
         }
       ],
       "License List": [
@@ -7452,7 +7452,7 @@
           "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/ESfTTfB4LIdMi6naTY-cvfsBgPA8vGGO1GdgMQSv11_dhQ?e=67PcKL"
         }
       ],
-      "Important Info": "N/A",
+      "Important Info": "To search in the Pr by APN delete one of the zeros before the last number of the apn for example. 017902500016 or  017902500008",
       "Media": [
         {
           "type": "N/A",
