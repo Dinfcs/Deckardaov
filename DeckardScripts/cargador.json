@@ -10,6 +10,10 @@
         },
         {
             "urlPattern": "https://cyborg.deckard.com/listing/*",
+            "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/Validator.js"
+        },
+        {
+            "urlPattern": "https://cyborg.deckard.com/listing/*",
             "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/QaReport.js"
         },
         {
