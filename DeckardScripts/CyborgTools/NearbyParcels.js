@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         NearbyParcels
 // @namespace    
-// @version      2.7
-// @description  Añade un botón para abrir direcciones visibles en Google Maps o Google Search
+// @version      2.8
+// @description  Añade un botón para abrir direcciones visibles en Google Maps o Google Search con apertura escalonada
 // @author       Luis Escalante
 // @match        https://cyborg.deckard.com/listing/*
 // @grant        none
@@ -19,7 +19,7 @@
         const observer = new MutationObserver((mutations, obs) => {
             const button = document.querySelector('#btn_open_vetting_dlg');
             if (button) {
-                obs.disconnect(); // Deja de observar cambios en el DOM
+                obs.disconnect();
                 createButton();
             }
         });
@@ -30,7 +30,6 @@
     function createButton() {
         console.log('Creando el botón "Nearby Parcels"');
 
-        // Crea el botón principal
         const button = document.createElement('button');
         button.innerHTML = 'Nearby Parcels';
         button.id = 'nearbyParcelsButton';
@@ -45,7 +44,6 @@
         button.style.top = '-1px';
         button.style.zIndex = '0';
 
-        // Añadir botón al footer
         const footerDiv = document.getElementById('vetting_data_footer');
         if (footerDiv) {
             footerDiv.appendChild(button);
@@ -54,7 +52,6 @@
             console.log('No se encontró el div con la clase "card-footer".');
         }
 
-        // Evento de clic para mostrar opciones
         button.addEventListener('click', showSecondaryButtons);
     }
 
@@ -93,26 +90,29 @@
             if (isElementInViewport(link)) {
                 const address = link.textContent.trim();
                 console.log(`Dirección visible: ${address}`);
-
-                if (!uniqueAddresses.has(address)) {
-                    uniqueAddresses.add(address);
-
-                    let url = type === 'maps'
-                        ? `https://www.google.com/maps/search/${encodeURIComponent(address)}`
-                        : `https://www.google.com/search?q=${encodeURIComponent(address)}`;
-
-                    window.open(url, '_blank');
-                }
+                uniqueAddresses.add(address);
             }
         });
+
+        const addressesArray = [...uniqueAddresses].slice(0, 10); // Máximo 10 direcciones
+        const delay = Math.max(300, Math.min(1000, 10000 / addressesArray.length)); // Ajusta entre 300ms y 1s
+
+        addressesArray.forEach((address, index) => {
+            setTimeout(() => {
+                let url = type === 'maps'
+                    ? `https://www.google.com/maps/search/${encodeURIComponent(address)}`
+                    : `https://www.google.com/search?q=${encodeURIComponent(address)}`;
+
+                window.open(url, '_blank');
+            }, index * delay);
+        });
+
+        console.log(`Abriendo ${addressesArray.length} direcciones con un intervalo de ${delay} ms.`);
     }
 
     function isElementInViewport(el) {
         const rect = el.getBoundingClientRect();
-        return (
-            rect.top >= 0 &&
-            rect.bottom <= window.innerHeight
-        );
+        return rect.top >= 0 && rect.bottom <= window.innerHeight;
     }
 
     waitForButton();
