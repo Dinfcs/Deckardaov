@@ -17,7 +17,6 @@
         #vetting_data_footer *,
         .pop_up_header_container *,
         #iframe-button-container *,
-        [style*="Nearby Parcels"],
         .fancybox-button,
         [data-test-id="float-window-minimize-or-restore-btn"],
         [data-test-id="float-window-close-btn"],
@@ -45,15 +44,13 @@
     // Propiedades de estilo
     const STYLE = {
         fontFamily: 'Roboto, sans-serif',
-        fontSizeBase: '12px',
-        fontSizeSmall: '12px',
-        fontSizeLarge: '12px',
-        fontSizeHeader: '20px',
+        fontSizeBase: '14px',  // letra de botones
+        fontSizeSmall: '13px', // titulos de las tablas
         spacingXs: '3px',
-        spacingSm: '5px',
-        spacingMd: '8px',
-        spacingLg: '8px',
-        borderRadius: '10px',
+        spacingSm: '3px',
+        spacingMd: '10px',
+        spacingLg: '18px',
+        borderRadius: '8px',
         transition: '0.2s ease',
         boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
         boxShadowHover: '0 4px 8px rgba(0, 0, 0, 0.15)'
@@ -81,8 +78,7 @@
                1. RESET BÁSICO
                ================= */
             .cyborg-str-tool *:not(${EXCLUSIONS}) {
-                margin: 0;
-                padding: 0;
+
                 box-sizing: border-box;
                 font-family: ${STYLE.fontFamily};
             }
@@ -96,17 +92,12 @@
             .cyborg-str-tool h4:not(${EXCLUSIONS}),
             .cyborg-str-tool h5:not(${EXCLUSIONS}),
             .cyborg-str-tool h6:not(${EXCLUSIONS}) {
-                color: ${THEME.dark} !important;
+                color: #CAD92B !important;
                 font-weight: 600 !important;
                 margin-bottom: ${STYLE.spacingSm} !important;
             }
 
-            .cyborg-str-tool h1:not(${EXCLUSIONS}) { font-size: 24px !important; }
-            .cyborg-str-tool h2:not(${EXCLUSIONS}) { font-size: 22px !important; }
-            .cyborg-str-tool h3:not(${EXCLUSIONS}) { font-size: 20px !important; }
-            .cyborg-str-tool h4:not(${EXCLUSIONS}) { font-size: 18px !important; }
-            .cyborg-str-tool h5:not(${EXCLUSIONS}) { font-size: 16px !important; }
-            .cyborg-str-tool h6:not(${EXCLUSIONS}) { font-size: 14px !important; }
+
 
             /* =================
                3. BOTONES MODERNOS
@@ -226,27 +217,7 @@
                 outline: none !important;
             }
 
-            /* =================
-               7. SCROLLBARS
-               ================= */
-            .cyborg-str-tool *::-webkit-scrollbar {
-                width: 6px !important;
-                height: 6px !important;
-            }
 
-            .cyborg-str-tool *::-webkit-scrollbar-track {
-                background: ${THEME.bgLight} !important;
-            }
-
-            .cyborg-str-tool *::-webkit-scrollbar-thumb {
-                background-color: ${THEME.medium} !important;
-                border-radius: 10px !important;
-                border: 1px solid ${THEME.bgLight} !important;
-            }
-
-            .cyborg-str-tool *::-webkit-scrollbar-thumb:hover {
-                background-color: ${THEME.primary} !important;
-            }
         `;
 
         addStyle(css);
