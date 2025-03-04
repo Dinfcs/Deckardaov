@@ -1,3 +1,15 @@
+// ==UserScript==
+// @name         Buscador de Coordenadas
+// @namespace    http://tampermonkey.net/
+// @version      1.7
+// @description  Detecta coordenadas en el portapapeles y las busca en otros servicios de mapas.
+// @match        https://www.bing.com/maps*
+// @match        https://www.google.com/maps*
+// @match        https://duckduckgo.com/*
+// @grant        GM_getClipboard
+// @grant        GM_addStylea
+// ==/UserScript==
+
 (function () {
     'use strict';
 
@@ -20,10 +32,7 @@
 
     // Crea un contenedor flotante
     function crearContenedorBotones() {
-        if (document.getElementById('buscador-coordenadas-container')) return;
-
         const contenedor = document.createElement('div');
-        contenedor.id = 'buscador-coordenadas-container';
         contenedor.style.position = 'fixed';
         contenedor.style.top = '50%';
         contenedor.style.right = '20px';
@@ -58,17 +67,16 @@
     async function inicializarBotones() {
         const mapaActual = window.location.host;
         const contenedor = crearContenedorBotones();
-        if (!contenedor) return;
 
         // Mapeo de botones según el servicio actual
         const botones = {
             'bing.com': [
                 { icono: '🌐', url: (lat, lng) => `https://www.google.com/maps/search/?api=1&query=${lat},${lng}` },
-                { icono: '🦆', url: (lat, lng) => `https://duckduckgo.com/?q=${lat},${lng}+Show+on+Map&ia=web&iaxm=maps` }
+                { icono: '🦆', url: (lat, lng) => `https://duckduckgo.com/?va=i&t=hv&q=${lat},${lng}+Show+on+Map&ia=web&iaxm=maps&bbox=` }
             ],
             'google.com': [
                 { icono: '📍', url: (lat, lng) => `https://www.bing.com/maps?q=${lat},${lng}&cp=${lat}~${lng}&lvl=16.0&style=h` },
-                { icono: '🦆', url: (lat, lng) => `https://duckduckgo.com/?q=${lat},${lng}+Show+on+Map&ia=web&iaxm=maps` }
+                { icono: '🦆', url: (lat, lng) => `https://duckduckgo.com/?va=i&t=hv&q=${lat},${lng}+Show+on+Map&ia=web&iaxm=maps&bbox=` }
             ],
             'duckduckgo.com': [
                 { icono: '🌐', url: (lat, lng) => `https://www.google.com/maps/search/?api=1&query=${lat},${lng}` },
