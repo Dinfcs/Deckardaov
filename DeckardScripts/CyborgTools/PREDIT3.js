@@ -3,7 +3,7 @@
 
     const JSON_URL = 'https://script.google.com/macros/s/AKfycbzKRzrnEtgTaGmSDN0daIjtquhBWL5rwn_ZQR8FRYbn5fHtODKSQSTKoi1bXWmrlR0vSg/exec';
     const CACHE_KEY = 'projectDataCache';
-    const COLUMN_WIDTHS = ['10%', '10%', '10%', '50%', '20%']; // Ajustado el ancho para Media
+    const COLUMN_WIDTHS = ['10%', '10%', '10%', '50%', '20%'];
     const HEADERS = ['Project', 'Public Records & GIS', 'License List', 'Important Info', 'Media'];
     const PROJECT_NAME_PATTERNS = [
         { regex: /\/listing\/AUS\/([^\/]+)\/([^\/]+)\/(STR[^\/]+)/, format: m => `AUS - ${m[2].replace(/_/g, ' ') === 'Bass Coast' ? m[2].replace(/_/g, ' ') : 'City of ' + capitalizeWords(m[2].replace(/_/g, ' '))}` },
@@ -11,11 +11,8 @@
         { regex: /\/listing\/([A-Za-z]+)\/([^\/]+)\/_/, format: m => `${m[1].toUpperCase()} - ${capitalizeWords(m[2].replace(/_/g, ' '))} County` },
         { regex: /\/listing\/([A-Za-z]+)\/([^\/]+)\/([^\/]+)\//, format: m => `${m[1].toUpperCase()} - ${capitalizeWords(m[3].replace(/_/g, ' '))}` }
     ];
-    const NO_PREVIEW_IMAGE = "https://via.placeholder.com/150x100?text=No+Preview"; // URL de imagen de "No Preview"
+    const NO_PREVIEW_IMAGE = "https://via.placeholder.com/150x100?text=No+Preview";
 
-    /**
-     * Espera a que un elemento esté presente en el DOM.
-     */
     function waitForElement(selector, callback) {
         const observer = new MutationObserver((mutations, obs) => {
             const element = document.querySelector(selector);
@@ -27,9 +24,6 @@
         observer.observe(document.body, { childList: true, subtree: true });
     }
 
-    /**
-     * Extrae el nombre del proyecto de la URL.
-     */
     function getProjectNameFromUrl() {
         const url = window.location.href;
         for (const { regex, format } of PROJECT_NAME_PATTERNS) {
@@ -39,16 +33,10 @@
         return null;
     }
 
-    /**
-     * Capitaliza la primera letra de cada palabra.
-     */
     function capitalizeWords(str) {
         return str.replace(/\b\w/g, char => char.toUpperCase());
     }
 
-    /**
-     * Crea una notificación.
-     */
     function createNotification(message) {
         const notification = document.createElement('div');
         notification.textContent = message;
@@ -60,9 +48,6 @@
         }, 2000);
     }
 
-    /**
-     * Obtiene los datos del proyecto (caché o API).
-     */
     async function fetchData() {
         try {
             const cachedData = localStorage.getItem(CACHE_KEY);
@@ -83,25 +68,18 @@
         }
     }
 
-    /**
-     * Aplica estilos CSS a un elemento.
-     */
     function applyStyles(element, styles) {
         for (const property in styles) {
             element.style[property] = styles[property];
         }
     }
 
-
-     /**
-     *  Carga una imagen, manejando URLs de Google Drive y errores, y asocia la apertura en ventana emergente.
-     */
     function loadImage(imageUrl, imgElement, openImageCallback) {
         imgElement.src = imageUrl;
 
         imgElement.onload = () => {
             imgElement.style.cursor = 'pointer';
-            imgElement.addEventListener('click', openImageCallback); // Asocia *directamente* la función que abre la ventana
+            imgElement.addEventListener('click', openImageCallback);
         };
 
         imgElement.onerror = () => {
@@ -115,7 +93,7 @@
                         const blobUrl = URL.createObjectURL(response.response);
                         imgElement.src = blobUrl;
                         imgElement.style.cursor = 'pointer';
-                        imgElement.addEventListener('click', openImageCallback); // Asocia *directamente*
+                        imgElement.addEventListener('click', openImageCallback);
                     } else {
                         console.error(`Error al cargar imagen: ${response.status} ${response.statusText}`);
                         imgElement.src = NO_PREVIEW_IMAGE;
@@ -133,12 +111,7 @@
         };
     }
 
-
-
-    /**
-     * Muestra los datos en la tabla.
-     */
-     function displayData(data) {
+    function displayData(data) {
         const projectName = getProjectNameFromUrl();
         if (!projectName) {
             console.error('Project name not found in URL.');
@@ -175,24 +148,17 @@
 
         const thead = table.createTHead();
         const headerRow = thead.insertRow();
-
         HEADERS.forEach((header, index) => {
-            const th = document.createElement('th');
-            th.textContent = header;
-
-            const thStyles = {
+            const cell = headerRow.insertCell();
+            const cellStyles = {
                 border: '1px solid #ddd',
                 padding: '10px 12px',
                 width: COLUMN_WIDTHS[index],
-                textAlign: 'left',
-                backgroundColor: '#f8f9fa',
-                fontSize: '16px',
-                color: '#343a40',
-                fontWeight: '600',
-                borderBottom: '2px solid #dee2e6',
+                fontSize: '14px',
+                color: '#495057',
             };
-            applyStyles(th, thStyles);
-            headerRow.appendChild(th);
+            applyStyles(cell, cellStyles);
+            cell.textContent = header;
         });
 
         const tbody = table.createTBody();
@@ -217,36 +183,30 @@
 
                         const img = document.createElement('img');
                         img.alt = item.type;
-                        img.style.cssText = 'max-width: 100%; max-height: 100px; border-radius: 4px; display: block; margin: 0 auto;'; //cursor se añade en loadImage
+                        img.style.cssText = 'max-width: 100%; max-height: 100px; border-radius: 4px; display: block; margin: 0 auto;';
                         img.loading = "lazy";
 
-                        // Función para abrir la imagen en una ventana emergente
                         const openImageInPopup = () => {
                             const popup = window.open(item.url, 'imagePopup', 'width=800,height=600,resizable=yes,scrollbars=yes');
                             if (!popup || popup.closed || typeof popup.closed == 'undefined') {
-                                // Si la ventana emergente fue bloqueada, abrir en una nueva pestaña como respaldo
                                 window.open(item.url, '_blank');
                             }
                         };
 
-                        // Cargar imagen y asociar la función de apertura
                         loadImage(item.url, img, openImageInPopup);
 
-
                         const a = document.createElement('a');
-                         // Hacer que el enlace sea un contenedor para la imagen
-                        a.href = "javascript:void(0);";  // Importante: Evita el comportamiento predeterminado del enlace
-                        a.style.display = 'block';        // El enlace ocupa todo el contenedor
+                        a.href = "javascript:void(0);";
+                        a.style.display = 'block';
                         a.style.textAlign = 'center';
-                        a.style.textDecoration = 'none'; //Quitar la decoración.
+                        a.style.textDecoration = 'none';
 
-                         // Agregar evento de click al enlace (que ahora envuelve la imagen)
                         a.addEventListener('click', (event) => {
-                            event.preventDefault(); // Prevenir la navegación predeterminada
-                            openImageInPopup();      // Llamar a la función para abrir la ventana emergente
+                            event.preventDefault();
+                            openImageInPopup();
                         });
 
-                        const linkText = document.createElement('span'); // Crear un span para el texto
+                        const linkText = document.createElement('span');
                         linkText.textContent = item.type;
                         linkText.style.display = 'block';
                         linkText.style.fontSize = '12px';
@@ -254,20 +214,15 @@
                         linkText.style.marginTop = '4px';
                         linkText.style.transition = 'color 0.2s ease-in-out';
 
-                         a.addEventListener('mouseover', () => linkText.style.color = '#0056b3');
-                         a.addEventListener('mouseout', () => linkText.style.color = '#007bff');
+                        a.addEventListener('mouseover', () => linkText.style.color = '#0056b3');
+                        a.addEventListener('mouseout', () => linkText.style.color = '#007bff');
 
-
-                        container.appendChild(a); // Añade el enlace (que ahora contiene la imagen)
+                        container.appendChild(a);
                         a.appendChild(img);
                         a.appendChild(linkText);
                         cell.appendChild(container);
                     });
-
-
-
                 } else {
-                    // Celdas de Enlaces (Project, Public Records, License List)
                     projectData[header].forEach(link => {
                         const a = document.createElement('a');
                         a.href = link.url;
@@ -321,16 +276,11 @@
         document.body.appendChild(container);
     }
 
-    (function () {
-    'use strict';
-
-    // Función para modificar la URL
     function modifyUrl() {
         const urlParts = window.location.href.split('/');
         return `https://cyborg.deckard.com/parcel/${urlParts[4]}/${urlParts[5]}/${urlParts[6]}`;
     }
 
-    // Crear el iframe y añadirlo a la página
     function createIframe() {
         const iframe = document.createElement('iframe');
         iframe.src = modifyUrl();
@@ -343,14 +293,10 @@
             border-radius: 8px;
         `;
 
-        // Añadir el iframe al final de la tabla
         const container = document.querySelector('.project-data-table').parentElement;
         container.appendChild(iframe);
     }
 
-    // Esperar a que la tabla esté presente y luego crear el iframe
     waitForElement('.project-data-table', createIframe);
-})();
-
     waitForElement('#btn_open_vetting_dlg', () => fetchData());
 })();
