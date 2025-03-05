@@ -10,27 +10,15 @@
 (function () {
     'use strict';
 
-    // Lee la variable de entorno
-    const APPS_SCRIPT_URL_RQAR = process.env.APPS_SCRIPT_URL_RQAR;
-
-    // Valida que el secreto esté definido
-    if (!APPS_SCRIPT_URL_RQAR) {
-        console.error('Error: La variable APPS_SCRIPT_URL_RQAR no está definida.');
-        return;
-    }
-
-    const QAERS_URL = APPS_SCRIPT_URL_RQAR + "?qaers";
-    const CACHE_KEY = 'qaersData';
+    const Codeverg = "https://script.google.com/macros/s/AKfycbzsaMYnVMK65UfAKsVg27_fqzzdALlYPwaBQeN-_nFUwSmLHG3GT14Kw5aif1AbC_5BrA/exec";
+    const QAERS_Codeverg = Codeverg + "?qaers";
+    const CACHE_DATA = 'qaersData';
     const CACHE_EXPIRATION_TIME = 5 * 60 * 1000; // 5 minutos de cache
-
     const PROJECT_NAME_PATTERNS = [
-        { regex: /\/listing\/AUS\/([^\/]+)\/([^\/]+)\/(STR[^\/]+)/, format: m => `AUS - ${m[2].replace(/_/g, ' ') === 'Bass Coast' ? m[2].replace(/_/g, ' ') : 'City of ' + capitalizeWords(m[2].replace(/_/g, ' '))}` },
-        { regex: /\/listing\/([A-Za-z]+)\/([^\/]+)\.\.\.(town|township)_of_([^\/]+)\/_/, format: m => `${m[1].toUpperCase()} - ${m[3].charAt(0).toUpperCase() + m[3].slice(1)} Of ${capitalizeWords(m[4].replace(/_/g, ' '))}` },
-        { regex: /\/listing\/([A-Za-z]+)\/([^\/]+)\/_/, format: m => `${m[1].toUpperCase()} - ${capitalizeWords(m[2].replace(/_/g, ' '))} County` },
-        { regex: /\/listing\/([A-Za-z]+)\/([^\/]+)\/([^\/]+)\//, format: m => `${m[1].toUpperCase()} - ${capitalizeWords(m[3].replace(/_/g, ' '))}` }
-    ];
-
-    console.log('QAERS_URL:', QAERS_URL);
+    { regex: /\/listing\/AUS\/([^\/]+)\/([^\/]+)\/(STR[^\/]+)/, format: m => `AUS - ${m[2].replace(/_/g, ' ') === 'Bass Coast' ? m[2].replace(/_/g, ' ') : 'City of ' + capitalizeWords(m[2].replace(/_/g, ' '))}` },
+    { regex: /\/listing\/([A-Za-z]+)\/([^\/]+)\.\.\.(town|township)_of_([^\/]+)\/_/, format: m => `${m[1].toUpperCase()} - ${m[3].charAt(0).toUpperCase() + m[3].slice(1)} Of ${capitalizeWords(m[4].replace(/_/g, ' '))}` },
+    { regex: /\/listing\/([A-Za-z]+)\/([^\/]+)\/_/, format: m => `${m[1].toUpperCase()} - ${capitalizeWords(m[2].replace(/_/g, ' '))} County` },
+    { regex: /\/listing\/([A-Za-z]+)\/([^\/]+)\/([^\/]+)\//, format: m => `${m[1].toUpperCase()} - ${capitalizeWords(m[3].replace(/_/g, ' '))}` }];
 
     function getProjectNameFromUrl() {
         const url = window.location.href;
@@ -119,19 +107,19 @@
 
     // Función para verificar el QAer y mostrar el enlace
     async function checkQaerAndShowLink() {
-        const cachedData = localStorage.getItem(CACHE_KEY);
-        const cachedTime = localStorage.getItem(CACHE_KEY + '_time');
+        const cachedData = localStorage.getItem(CACHE_DATA);
+        const cachedTime = localStorage.getItem(CACHE_DATA + '_time');
 
         if (cachedData && cachedTime && (Date.now() - cachedTime) < CACHE_EXPIRATION_TIME) {
             processQaersData(JSON.parse(cachedData));
         } else {
             try {
-                const response = await fetch(QAERS_URL);
+                const response = await fetch(QAERS_Codeverg);
                 const data = await response.json();
                 if (!data.qaers || !Array.isArray(data.qaers)) throw new Error("Invalid JSON format");
 
-                localStorage.setItem(CACHE_KEY, JSON.stringify(data));
-                localStorage.setItem(CACHE_KEY + '_time', Date.now().toString());
+                localStorage.setItem(CACHE_DATA, JSON.stringify(data));
+                localStorage.setItem(CACHE_DATA + '_time', Date.now().toString());
                 processQaersData(data);
             } catch (error) {
                 console.error("Error fetching QAers:", error);
@@ -397,7 +385,7 @@
                 };
 
                 showEditWindow(data, (finalData) => {
-                    fetch(APPS_SCRIPT_URL_RQAR, {
+                    fetch(Codeverg, {
                         method: "POST",
                         mode: "no-cors",
                         headers: { "Content-Type": "application/json" },
