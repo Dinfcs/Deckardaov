@@ -1,204 +1,349 @@
 // ==UserScript==
-// @name         estilos sin gm
+// @name         Estilos Modernos y Compactos
 // @namespace    http://tampermonkey.net/
-// @version      1.13
-// @description  Ajusta los estilos con colores más suaves, tamaños optimizados y filtros persistentes en tablas
+// @version      2.2
+// @description  Estilos modernos y compactos para una mejor experiencia de usuario.
 // @author       Luis Escalante
 // @match        https://cyborg.deckard.com/*
 // @grant        none
 // ==/UserScript==
 
-(function() {
+(function () {
     'use strict';
 
+    // Lista de selectores excluidos
+    const EXCLUSIONS = `
+        #window_vetting_dlg *,
+        #vetting_data_footer *,
+        .pop_up_header_container *,
+        #iframe-button-container *,
+        .fancybox-button,
+        [data-test-id="float-window-minimize-or-restore-btn"],
+        [data-test-id="float-window-close-btn"],
+        .project-data-table,
+        .project-data-table,
+        #btnCancel,
+        #btnAccept
+    `;
+
+    // Sistema de colores modernos
+    const THEME = {
+        primary: '#4A90E2',       // Azul moderno
+        secondary: '#4A90E2',     // Violeta moderno
+        accent: '#00C853',        // Verde brillante
+        dark: '#2C3E50',          // Gris oscuro
+        medium: '#546E7A',        // Gris medio
+        light: '#ECEFF1',         // Gris claro
+        hover: '#3F51B5',         // Azul oscuro (hover)
+        active: '#303F9F',        // Azul más oscuro (active)
+        bgLight: '#FAFAFA',       // Fondo claro
+        bgAlt: '#F5F5F5',         // Fondo alternativo
+        bgHeader: '#E3F2FD',      // Fondo de encabezados
+        border: '#CFD8DC',        // Color de bordes
+        shadow: 'rgba(0, 0, 0, 0.1)' // Sombras sutiles
+    };
+
+    // Propiedades de estilo
+    const STYLE = {
+        fontFamily: 'Roboto, sans-serif',
+        fontSizeBase: '14px',  // letra de botones
+        fontSizeSmall: '12px', // titulos de las tablas
+        fontSizeLarge: '19px',
+        fontSizeBuckets:'17px',
+        spacingXs: '2px',
+        spacingSm: '2px',
+        spacingMd: '5px',
+        spacingLg: '10px',
+        borderRadius: '8px',
+        transition: '0.2s ease',
+        boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+        boxShadowHover: '0 4px 8px rgba(0, 0, 0, 0.15)'
+    };
+
+    /**
+     * Agrega un elemento de estilo al documento
+     * @param {string} css - Contenido CSS a agregar
+     */
     const addStyle = (css) => {
         if (document.querySelector('#custom-cyborg-styles')) return;
+
         const style = document.createElement('style');
         style.id = 'custom-cyborg-styles';
         style.textContent = css;
         document.head.appendChild(style);
     };
 
-    const applyStyles = () => {
-        // Exclusiones:  Excluye la tabla con la clase 'project-data-table' y su contenido.
-        const exclusions = `
-            #window_vetting_dlg *,
-            #vetting_data_footer *,
-            .pop_up_header_container *,
-            #iframe-button-container *,
-            [style*="Nearby Parcels"],
-            .fancybox-button,
-            [data-test-id="float-window-minimize-or-restore-btn"],
-            [data-test-id="float-window-close-btn"],
-            .project-data-table,
-            .project-data-table *
-        `;
+    /**
+     * Genera y aplica los estilos CSS modernos
+     */
+    const applyModernStyles = () => {
+        const css = `
 
-        addStyle(`
-            /* Reutilización de selectores */
-            .cyborg-str-tool {
-                /* No es necesario especificar font-family si no se cambia */
+
+            /* =================
+               2. ENCABEZADOS
+               ================= */
+            .cyborg-str-tool h1:not(${EXCLUSIONS}),
+            .cyborg-str-tool h2:not(${EXCLUSIONS}),
+            .cyborg-str-tool h3:not(${EXCLUSIONS}),
+            .cyborg-str-tool h4:not(${EXCLUSIONS}),
+            .cyborg-str-tool h5:not(${EXCLUSIONS}),
+            .cyborg-str-tool h6:not(${EXCLUSIONS}) {
+                color: #CAD92B !important;
+                font-weight: 600 !important;
+                font-size: ${STYLE.fontSizeLarge} !important;
+                margin-bottom: ${STYLE.spacingSm} !important;
             }
 
-            /* Encabezados */
-            .cyborg-str-tool h1:not(${exclusions}),
-            .cyborg-str-tool h2:not(${exclusions}),
-            .cyborg-str-tool h3:not(${exclusions}),
-            .cyborg-str-tool h4:not(${exclusions}),
-            .cyborg-str-tool h5:not(${exclusions}),
-            .cyborg-str-tool h6:not(${exclusions}) {
-                font-weight: bold !important;
-                color: #C9D82B !important; /* Verde oliva oscuro */
-                font-size: 15px !important;
-            }
 
-            /* Título del listado */
-            .page_header_bar h4 span {
-                font-size: 20px !important;
-            }
 
-            /* Botones - Agrupados y optimizados */
-            .cyborg-str-tool button:not(${exclusions}):not(#btn_submit_vetting_dlg),
-            .cyborg-str-tool .btn:not(${exclusions}):not(#btn_submit_vetting_dlg),
+            /* =================
+               3. BOTONES MODERNOS (Estilos del segundo script)
+               ================= */
+            .cyborg-str-tool button:not(${EXCLUSIONS}):not(#btn_submit_vetting_dlg),
+            .cyborg-str-tool .btn:not(${EXCLUSIONS}):not(#btn_submit_vetting_dlg),
             #btn_submit_vetting_dlg,
             #btn_record_no_matching_parcel_found,
             #btn_record_listing_not_live,
             #btn_open_vetting_dlg,
+            #nearbyParcelsButton,
             #btn_open_vetting_dlg_as_qa_mode {
-                background-color: #1b95bf !important; /* azul suave */
+                background-color: ${THEME.primary} !important;
                 color: white !important;
                 border: none !important;
-                padding: 5px 8px !important;
-                font-size: 14px !important;
-                transition: 0.3s ease-in-out !important;
+                border-radius: ${STYLE.borderRadius} !important;
+                padding: ${STYLE.spacingXs} ${STYLE.spacingSm} !important;
+                font-size: ${STYLE.fontSizeBase} !important;
+                font-weight: 550 !important;
+                transition: all ${STYLE.transition} !important;
+                box-shadow: ${STYLE.boxShadow} !important;
+                cursor: pointer !important;
+                align-items: center !important;
+                justify-content: center !important;
+                height: 30px !important; /* Altura fija para más compacidad */
+
             }
 
-            /*Especifícos*/
+            /* Botones secundarios */
             #btn_record_no_matching_parcel_found,
-            #btn_record_listing_not_live,
-            #btn_open_vetting_dlg,
-            #btn_open_vetting_dlg_as_qa_mode{
-                border-radius: 0px !important;
+            #btn_record_listing_not_live,#secondary-button {
+                background-color: ${THEME.medium} !important;
             }
 
-
-            /*Botones - Excepciones con border radius */
-            .cyborg-str-tool button:not(${exclusions}):not(#btn_submit_vetting_dlg):not(#btn_record_no_matching_parcel_found):not(#btn_record_listing_not_live):not(#btn_open_vetting_dlg):not(#btn_open_vetting_dlg_as_qa_mode),
-            .cyborg-str-tool .btn:not(${exclusions}):not(#btn_submit_vetting_dlg):not(#btn_record_no_matching_parcel_found):not(#btn_record_listing_not_live):not(#btn_open_vetting_dlg):not(#btn_open_vetting_dlg_as_qa_mode),
-            #btn_submit_vetting_dlg{
-                 border-radius: 5px !important;
+            /* Interacciones de botones */
+            .cyborg-str-tool button:not(${EXCLUSIONS}):hover,
+            .cyborg-str-tool .btn:not(${EXCLUSIONS}):hover {
+                background-color: ${THEME.hover} !important;
             }
 
-            /* Estilo específico para el botón de mapeo */
-            #btn_map_to_selected_probable_parcel {
-                margin-left: 8px !important;
-                margin-right: 8px !important;
+            #btn_submit_vetting_dlg:hover {
+                background-color: ${THEME.active} !important;
             }
 
-            /* Estilo específico para el botón de Show data lead per region */
-            #btn_show_data_lead_per_region {
-                margin-left: 8px !important;
-            }
-
-            /* Estilo específico para el input */
-            .form-check-input#checkbox_only_show_parcels_with_associated_license:not(${exclusions}) {
-                margin-left: -2px !important;
-            }
-
-            /* Estilo específico para el label */
-            .form-check-label.form-label[for="checkbox_only_show_parcels_with_associated_license"]:not(${exclusions}) {
-                margin-left: 18px !important;
-            }
-
-            /* Estilo específico para el input de búsqueda */
-            .dash-input#input_street_number_hint:not(${exclusions}) {
-                margin-left: 15px !important;
-            }
-
-            /* Enlaces */
-            .cyborg-str-tool a:not(${exclusions}) {
-                color: #96adb5 !important;  /* Azul antes de visitar */
+            /* =================
+               4. ENLACES (Estilos del segundo script)
+               ================= */
+            .cyborg-str-tool a:not(${EXCLUSIONS}) {
+                color: #96adb5 !important;
                 text-decoration: none !important;
-                font-weight: normal !important;
-                transition: color 0.2s ease-in-out, text-decoration 0.2s ease-in-out !important; /* Transiciones */
+                font-weight: 500 !important;
+                transition: all ${STYLE.transition} !important;
+                border-bottom: 1px solid transparent !important;
             }
 
-            /* Enlaces visitados (usando una regla dinámica) */
-            .cyborg-str-tool a:visited:not(${exclusions}) {
-                color: #02acf5 !important; /* Color después de visitar */
+            .cyborg-str-tool a:visited:not(${EXCLUSIONS}) {
+                color: #02acf5 !important; /* Púrpura más suave para visitados */
             }
 
-            /* Hover para todos los enlaces */
-            .cyborg-str-tool a:hover:not(${exclusions}) {
-              text-decoration: underline !important;
+            .cyborg-str-tool a:hover:not(${EXCLUSIONS}) {
+                color: ${THEME.hover} !important;
+                border-bottom: 1px solid ${THEME.hover} !important;
+                text-decoration: none !important;
             }
 
-           /* Tablas (excluyendo la tabla con la clase 'project-data-table') */
-            .cyborg-str-tool table:not(${exclusions}):not(.table-hover) {
+            /* =================
+               4. TABLAS MODERNAS
+               ================= */
+            .cyborg-str-tool table:not(${EXCLUSIONS}) {
+                width: 100% !important;
                 border-collapse: collapse !important;
-                width: 100% !important;
-                font-size: 12px !important;
+                font-size: ${STYLE.fontSizeSmall} !important;
+                border-radius: ${STYLE.borderRadius} !important;
+                overflow: hidden !important;
+                box-shadow: ${STYLE.boxShadow} !important;
             }
 
-             .cyborg-str-tool table th:not(${exclusions}):not(.bg-secondary),
-            .cyborg-str-tool table td:not(${exclusions}):not(.bg-secondary) {
+            .cyborg-str-tool table th:not(${EXCLUSIONS}),
+            .cyborg-str-tool table td:not(${EXCLUSIONS}) {
+                padding: ${STYLE.spacingSm} !important;
+                border-bottom: 1px solid ${THEME.border} !important;
                 text-align: left !important;
-                color: black !important;
             }
 
-           .cyborg-str-tool table th:not(${exclusions}):not(.bg-secondary) {
-                background-color: #edede8 !important; /* Verde oliva */
-                color: black !important;
-                font-size: 12px !important;
+            .cyborg-str-tool table th:not(${EXCLUSIONS}) {
+                background-color: ${THEME.bgHeader} !important;
+                color: ${THEME.dark} !important;
+                font-weight: 600 !important;
+                text-transform: uppercase !important;
             }
 
-            /* Estilo de los campos de filtro */
-            .cyborg-str-tool table input[type="text"]:not(${exclusions}) {
-                background-color: #eeeeee !important; /* Gris claro para campos de filtro */
-                border: 1px solid #ccc !important;
-                padding: 5px !important;
-                font-size: 12px !important;
-                width: 100% !important;
+            .cyborg-str-tool table tr:nth-child(even):not(${EXCLUSIONS}) {
+                background-color: ${THEME.bgLight} !important;
             }
 
-            .cyborg-str-tool table th[data-dash-column="city_p"]:not(${exclusions}) {
+            .cyborg-str-tool table tr:hover:not(${EXCLUSIONS}) {
+                background-color: ${THEME.light} !important;
+            }
+
+            /* =================
+   9. TABLA DASH-SPREADSHEET-INNER
+   ================= */
+.dash-spreadsheet-inner .cell-table {
+    font-size: 12px !important; /* Tamaño de fuente más pequeño */
+}
+
+.dash-spreadsheet-inner .cell-table th,
+.dash-spreadsheet-inner .cell-table td {
+    padding: 4px 8px !important; /* Espaciado más compacto */
+    line-height: 1.2 !important; /* Altura de línea reducida */
+}
+
+.dash-spreadsheet-inner .cell-table th {
+    background-color: ${THEME.bgHeader} !important;
+    color: ${THEME.dark} !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important; /* Opcional: mantener mayúsculas */
+}
+
+.dash-spreadsheet-inner .cell-table tr:nth-child(even) {
+    background-color: ${THEME.bgLight} !important;
+}
+
+.dash-spreadsheet-inner .cell-table tr:hover {
+    background-color: ${THEME.light} !important;
+}
+
+            /* =================
+               6. INPUTS Y FORMULARIOS
+               ================= */
+.cyborg-str-tool input:not(${EXCLUSIONS}, #checkbox_only_show_parcels_with_associated_license, #checkbox_advanced_filter_mode, #checkbox_batch_edit_mode, #checkbox_listing_search_keyword_is_regex),
+.cyborg-str-tool select:not(${EXCLUSIONS}, #checkbox_only_show_parcels_with_associated_license, #checkbox_advanced_filter_mode, #checkbox_batch_edit_mode, #checkbox_listing_search_keyword_is_regex),
+.cyborg-str-tool textarea:not(${EXCLUSIONS}, #checkbox_only_show_parcels_with_associated_license, #checkbox_advanced_filter_mode, #checkbox_batch_edit_mode, #checkbox_listing_search_keyword_is_regex) {
+    background-color: white !important;
+    border: 1px solid ${THEME.border} !important;
+    border-radius: ${STYLE.borderRadius} !important;
+    padding: ${STYLE.spacingXs} ${STYLE.spacingSm} !important;
+    font-size: ${STYLE.fontSizeBase} !important;
+    transition: border-color ${STYLE.transition}, box-shadow ${STYLE.transition} !important;
+}
+
+
+            .cyborg-str-tool input:focus:not(${EXCLUSIONS}),
+            .cyborg-str-tool select:focus:not(${EXCLUSIONS}),
+            .cyborg-str-tool textarea:focus:not(${EXCLUSIONS}) {
+                border-color: ${THEME.primary} !important;
+                box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2) !important;
+                outline: none !important;
+            }
+
+            .cyborg-str-tool table th[data-dash-column="city_p"]:not(${EXCLUSIONS}) {
                 min-width: 180px !important;
                 max-width: 300px !important;
             }
 
-            /* No aplicar negrita al texto dentro de listing_quick_view_apn_or_address_info */
-            .cyborg-str-tool.listing_quick_view_apn_or_address_info:not(${exclusions}) {
-                font-weight: normal !important;
-            }
-        `);
 
+
+            /* Estilos para los tabs */
+.tab-container .tab {
+    display: inline-block;
+    background-color: ${THEME.bgLight} !important; /* Fondo claro */
+    border: 1px solid ${THEME.border} !important; /* Borde sutil */
+    border-bottom: none !important;
+    transition: all ${STYLE.transition} !important; /* Transición suave */
+    text-align: center !important;
+    box-sizing: border-box !important;
+    font-size: ${STYLE.fontSizeBuckets} !important; /* Tamaño de fuente base */
+    font-weight: 530 !important; /* Fuente semibold */
+    color: ${THEME.medium} !important; /* Color de texto secundario */
+    border-radius: ${STYLE.borderRadius} ${STYLE.borderRadius} 0 0 !important; /* Bordes redondeados solo arriba */
+    cursor: pointer !important; /* Cursor de puntero */
+    margin-right: ${STYLE.spacingXs} !important; /* Espaciado entre tabs */
+}
+
+/* Estilos para el tab seleccionado */
+.tab-container .tab--selected {
+    background-color: white !important; /* Fondo blanco */
+    color: ${THEME.primary} !important; /* Color primario */
+    border-color: ${THEME.primary} !important; /* Borde primario */
+    font-weight:500 !important; /* Fuente más gruesa */
+    box-shadow: 0 -2px 0 ${THEME.primary} inset !important; /* Línea inferior de acento */
+}
+
+/* Efecto hover para los tabs */
+.tab-container .tab:hover {
+    background-color: ${THEME.light} !important; /* Fondo más claro al pasar el mouse */
+    color: ${THEME.dark} !important; /* Color de texto más oscuro */
+}
+
+/* Efecto hover para el tab seleccionado */
+.tab-container .tab--selected:hover {
+    background-color: white !important; /* Mantener fondo blanco */
+    color: ${THEME.hover} !important; /* Color primario más oscuro */
+    border-color: ${THEME.hover} !important; /* Borde primario más oscuro */
+}
+
+        `;
+
+        addStyle(css);
         document.body.classList.add('cyborg-str-tool');
     };
 
-    // Optimización: Usar requestAnimationFrame para aplicar los estilos
-    const handleDOMContentLoaded = () => {
-        requestAnimationFrame(applyStyles);
+    /**
+     * Simula clic en el botón de envío
+     */
+    const submitVettingForm = () => {
+        const button = document.getElementById('btn_submit_vetting_dlg');
+        if (button) button.click();
     };
 
+    // Inicialización basada en el estado del documento
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', handleDOMContentLoaded);
-        // No es necesario el evento load si ya tenemos DOMContentLoaded
+        document.addEventListener('DOMContentLoaded', () => requestAnimationFrame(applyModernStyles));
     } else {
-        handleDOMContentLoaded(); // Ya está listo, ejecutar directamente
+        requestAnimationFrame(applyModernStyles);
     }
 
-    const clickButton = () => {
-        const button = document.getElementById('btn_submit_vetting_dlg');
-        if (button) {
-            button.click();
-        }
-    };
-
-    // Optimización: Usar un solo event listener para keydown
+    // Atajo de teclado: Ctrl+S para enviar formulario
     document.addEventListener('keydown', (e) => {
         if (e.ctrlKey && e.key === 's') {
             e.preventDefault();
-            clickButton();
+            submitVettingForm();
         }
     });
+
+    // Observer para aplicar estilos a elementos dinámicos
+    const observeDOM = () => {
+        const targetNode = document.body;
+        const config = { childList: true, subtree: true };
+
+        const callback = (mutationsList) => {
+            for (const mutation of mutationsList) {
+                if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+                    requestAnimationFrame(() => {
+                        document.body.classList.add('cyborg-str-tool');
+                    });
+                }
+            }
+        };
+
+        const observer = new MutationObserver(callback);
+        observer.observe(targetNode, config);
+    };
+
+    // Iniciar observer si el DOM ya está cargado
+    if (document.readyState !== 'loading') {
+        observeDOM();
+    } else {
+        document.addEventListener('DOMContentLoaded', observeDOM);
+    }
 })();
