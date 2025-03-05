@@ -3753,7 +3753,7 @@
       "License List": [
         {
           "type": "License list",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EacQ2izMTF1LgiaTIQbLIlMB9Jvb_F5zKRjprEj6hk0mqw?e=t2GboJ"
+          "url": "https://netorgft4047789.sharepoint.com/sites/ElectricSheep/Shared%20Documents/Forms/AllItems.aspx?ga=1&isAscending=false&id=%2Fsites%2FElectricSheep%2FShared%20Documents%2FSC%2FCharleston%2FCity%20of%20Charleston%2FIncoming&viewid=fd942f4a%2D85fa%2D42f6%2D8ee2%2D36ef2c23ea2e"
         },
         {
           "type": "License list web",
@@ -8692,8 +8692,8 @@
           "url": "https://common1.mptsweb.com/mbap/SONOMA/asr"
         },
         {
-          "type": "PR2 and License Search",
-          "url": "https://parcelsearch.permitsonoma.org/PermitSearch"
+          "url": "https://parcelsearch.permitsonoma.org/PermitSearch",
+          "type": "PR2 and License Search"
         },
         {
           "type": "GIS",
@@ -8706,11 +8706,11 @@
           "url": "https://parcelsearch.permitsonoma.org/PermitSearch"
         }
       ],
-      "Important Info": "The license finder only works with licenses starting with THR.\nAddress Override is NOT required when the city is listed as UNINCORPORATED.\n\n\n\n",
+      "Important Info": "<p>The license finder only works with licenses starting with THR.\nAddress Override is NOT required when the city is listed as UNINCORPORATED\n\n\n</p>",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ]
     },
