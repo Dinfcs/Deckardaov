@@ -151,7 +151,7 @@
                4. ENLACES (Estilos del segundo script)
                ================= */
             .cyborg-str-tool a:not(${EXCLUSIONS}) {
-                color: ${THEME.primary} !important;
+                color: #96adb5 !important;
                 text-decoration: none !important;
                 font-weight: 500 !important;
                 transition: all ${STYLE.transition} !important;
@@ -159,7 +159,7 @@
             }
 
             .cyborg-str-tool a:visited:not(${EXCLUSIONS}) {
-                color: #479e60 !important; /* Púrpura más suave para visitados */
+                color: #02acf5 !important; /* Púrpura más suave para visitados */
             }
 
             .cyborg-str-tool a:hover:not(${EXCLUSIONS}) {
