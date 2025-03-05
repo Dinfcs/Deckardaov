@@ -226,7 +226,7 @@
         });
 
         modalContent.innerHTML = `
-            <h2 style="color: #333; margin-bottom: 20px; text-align: center;">Review and Edit</h2>
+            <h2 style="color: #333; margin-bottom: 20px; text-align: center;">Random QA Report</h2>
             <div style="display: flex; flex-wrap: wrap; gap: 20px;">
                 <div style="flex: 1; min-width: 300px;">
                     ${Object.entries(data).map(([key, value]) => `
@@ -394,7 +394,7 @@
                     qaer: getQaerNameShort(),
                     qaed: extractQaEd(),
                     listing: window.location.href,
-                    urlcodeverg: urlcodeverg
+                    urlcodeverg: urlcodeverg 
                 };
 
                 showEditWindow(data, (finalData) => {
