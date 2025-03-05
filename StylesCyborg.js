@@ -1,8 +1,70 @@
-(function() {
+// ==UserScript==
+// @name         Estilos Modernos y Compactos
+// @namespace    http://tampermonkey.net/
+// @version      2.2
+// @description  Estilos modernos y compactos para una mejor experiencia de usuario.
+// @author       Luis Escalante
+// @match        https://cyborg.deckard.com/*
+// @grant        none
+// ==/UserScript==
+
+(function () {
     'use strict';
 
+    // Lista de selectores excluidos
+    const EXCLUSIONS = `
+        #window_vetting_dlg *,
+        #vetting_data_footer *,
+        .pop_up_header_container *,
+        #iframe-button-container *,
+        .fancybox-button,
+        [data-test-id="float-window-minimize-or-restore-btn"],
+        [data-test-id="float-window-close-btn"],
+        .project-data-table,
+        .project-data-table,
+        #btnCancel,
+        #btnAccept
+    `;
+
+    // Sistema de colores modernos
+    const THEME = {
+        primary: '#4A90E2',       // Azul moderno
+        secondary: '#4A90E2',     // Violeta moderno
+        accent: '#00C853',        // Verde brillante
+        dark: '#2C3E50',          // Gris oscuro
+        medium: '#546E7A',        // Gris medio
+        light: '#ECEFF1',         // Gris claro
+        hover: '#3F51B5',         // Azul oscuro (hover)
+        active: '#303F9F',        // Azul más oscuro (active)
+        bgLight: '#FAFAFA',       // Fondo claro
+        bgAlt: '#F5F5F5',         // Fondo alternativo
+        bgHeader: '#E3F2FD',      // Fondo de encabezados
+        border: '#CFD8DC',        // Color de bordes
+        shadow: 'rgba(0, 0, 0, 0.1)' // Sombras sutiles
+    };
+
+    // Propiedades de estilo
+    const STYLE = {
+        fontFamily: 'Roboto, sans-serif',
+        fontSizeBase: '14px',  // letra de botones
+        fontSizeSmall: '12px', // titulos de las tablas
+        fontSizeLarge: '19px',
+        fontSizeBuckets:'17px',
+        spacingXs: '2px',
+        spacingSm: '2px',
+        spacingMd: '5px',
+        spacingLg: '10px',
+        borderRadius: '8px',
+        transition: '0.2s ease',
+        boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+        boxShadowHover: '0 4px 8px rgba(0, 0, 0, 0.15)'
+    };
+
+    /**
+     * Agrega un elemento de estilo al documento
+     * @param {string} css - Contenido CSS a agregar
+     */
     const addStyle = (css) => {
-        // Verifica si los estilos ya fueron añadidos
         if (document.querySelector('#custom-cyborg-styles')) return;
 
         const style = document.createElement('style');
@@ -11,157 +73,253 @@
         document.head.appendChild(style);
     };
 
-    const applyStyles = () => {
-        if (!document.head) {
-            setTimeout(applyStyles, 50);
-            return;
-        }
+    /**
+     * Genera y aplica los estilos CSS modernos
+     */
+    const applyModernStyles = () => {
+        const css = `
+            /* =================
+               1. RESET BÁSICO
+               ================= */
+            .cyborg-str-tool *:not(${EXCLUSIONS}) {
 
-  addStyle(`
-    /* Encabezados */
-    .cyborg-str-tool h1:not(#window_vetting_dlg *):not(#vetting_data_footer *), .cyborg-str-tool h2:not(#window_vetting_dlg *):not(#vetting_data_footer *), .cyborg-str-tool h3:not(#window_vetting_dlg *):not(#window_vetting_dlg *), .cyborg-str-tool h4:not(#window_vetting_dlg *):not(#vetting_data_footer *), .cyborg-str-tool h5:not(#vetting_dlg *):not(#vetting_data_footer *), .cyborg-str-tool h6:not(#window_vetting_dlg *):not(#vetting_data_footer *):not(.pop_up_header_container *):not(#iframe-button-container *) {
-        font-weight: bold !important;
-        color: #C9D82B !important; /* Verde oliva oscuro */
-        font-size: 15px !important;
-    }
+                box-sizing: border-box;
+                font-family: ${STYLE.fontFamily};
+            }
 
-    /* Título del listado */
-    .page_header_bar h4 span {
-        font-size: 20px !important; /* Ajusta el tamaño según sea necesario */
-    }
-
-    /* Resto de los botones */
-    .cyborg-str-tool button:not(#window_vetting_dlg *):not(#vetting_data_footer *):not(#btn_submit_vetting_dlg):not([style*="Nearby Parcels"]):not(.fancybox-button):not([data-test-id="float-window-minimize-or-restore-btn"]):not([data-test-id="float-window-close-btn"]):not(.pop_up_header_container *):not(#iframe-button-container button),
-    .cyborg-str-tool .btn:not(#window_vetting_dlg *):not(#vetting_data_footer *):not(#btn_submit_vetting_dlg):not([style*="Nearby Parcels"]):not(.fancybox-button):not([data-test-id="float-window-minimize-or-restore-btn"]):not([data-test-id="float-window-close-btn"]):not(.pop_up_header_container *):not(#iframe-button-container button),
-    #btn_submit_vetting_dlg {
-        background-color: #1b95bf !important; /* azul suave */
-        color: white !important;
-        border-radius: 5px !important;
-        padding: 5px 8px !important;
-        font-size: 14px !important;
-        border: none !important;
-        transition: 0.3s ease-in-out !important;
-    }
-        /* Botones específicos */
-    #btn_record_no_matching_parcel_found,
-    #btn_record_listing_not_live,
-    #btn_open_vetting_dlg,
-    #btn_open_vetting_dlg_as_qa_mode {
-        background-color: #1b95bf !important; /* azul suave */
-        color: white !important;
-        border-radius: 0px !important;
-        padding: 5px 8px !important;
-        font-size: 14px !important;
-        border: none !important;
-        transition: 0.3s ease-in-out !important;
-    }
-
-    /* Estilo específico para el botón de mapeo */
-    #btn_map_to_selected_probable_parcel {
-        margin-left: 8px !important; /* ajustar valor */
-        margin-right: 8px !important; /* ajustar valor */
-    }
-
-    /* Estilo específico para el botón de Show data lead per region */
-    #btn_show_data_lead_per_region {
-        margin-left: 8px !important; /* ajustar valor */
-    }
-
-    /* Estilo específico para el input */
-    .form-check-input[id="checkbox_only_show_parcels_with_associated_license"]:not(#window_vetting_dlg *):not(#vetting_data_footer *):not([style*="Nearby Parcels"]) {
-        margin-left: -2px !important; /* ajustar valor */
-    }
-
-    /* Estilo específico para el label */
-    .form-check-label.form-label[for="checkbox_only_show_parcels_with_associated_license"]:not(#window_vetting_dlg *):not(#vetting_data_footer *):not([style*="Nearby Parcels"]) {
-        margin-left: 18px !important; /* ajustar valor */
-    }
-
-    /* Estilo específico para el input de búsqueda */
-    .dash-input#input_street_number_hint:not(#window_vetting_dlg *):not(#vetting_data_footer *):not([style*="Nearby Parcels"]) {
-        margin-left: 15px !important; /* ajustar valor */
-    }
-
-    /* Enlaces */
-    .cyborg-str-tool a:not(#window_vetting_dlg *):not(#vetting_data_footer *):not(.pop_up_header_container *):not(#iframe-button-container *) {
-        color: #919292 !important; /* Gris para enlaces sin abrir */
-        text-decoration: none !important;
-        font-weight: normal !important;
-    }
-
-    .cyborg-str-tool a:visited:not(#window_vetting_dlg *):not(#vetting_data_footer *):not(.pop_up_header_container *):not(#iframe-button-container *) {
-        color: #23A9D8 !important; /* Azul para enlaces visitados */
-    }
-
-    .cyborg-str-tool a:hover:not(#window_vetting_dlg *):not(#vetting_data_footer *):not(.pop_up_header_container *):not(#iframe-button-container *) {
-        color: #23A9D8 !important;
-        text-decoration: underline !important;
-    }
-
-    /* Tablas */
-    .cyborg-str-tool table:not(#window_vetting_dlg *):not(#vetting_data_footer *):not(.table-hover):not(.pop_up_header_container *):not(#iframe-button-container *) {
-        border-collapse: collapse !important;
-        width: 100% !important;
-        font-size: 12px !important;
-    }
-
-    .cyborg-str-tool table th:not(#window_vetting_dlg *):not(#vetting_data_footer *):not(.bg-secondary):not(.pop_up_header_container *):not(#iframe-button-container *), .cyborg-str-tool table td:not(#window_vetting_dlg *):not(#vetting_data_footer *):not(.bg-secondary):not(.pop_up_header_container *):not(#iframe-button-container *) {
-        text-align: left !important;
-        color: black !important; /* Cambia el color de las letras a negro */
-    }
-
-    .cyborg-str-tool table th:not(#window_vetting_dlg *):not(#vetting_data_footer *):not(.bg-secondary):not(.pop_up_header_container *):not(#iframe-button-container *) {
-        background-color: #edede8 !important; /* Verde oliva */
-        color: black !important; /* Cambia el color de las letras a negro */
-        font-size: 12px !important;
-    }
-
-    /* Estilo de los campos de filtro */
-    .cyborg-str-tool table input[type="text"]:not(#window_vetting_dlg *):not(#vetting_data_footer *):not(.pop_up_header_container *):not(#iframe-button-container *) {
-        background-color: #eeeeee !important; /* Gris claro para campos de filtro */
-        border: 1px solid #ccc !important; /* Borde gris */
-        padding: 5px !important;
-        font-size: 12px !important;
-        width: 100% !important;
-    }
-
-    .cyborg-str-tool table th[data-dash-column="city_p"]:not(#window_vetting_dlg *):not(#vetting_data_footer *):not(.pop_up_header_container *):not(#iframe-button-container *) {
-        min-width: 180px !important; /* ajustar valor */
-        max-width: 300px !important; /* ajustar valor */
-    }
-
-    /* No aplicar negrita al texto dentro de listing_quick_view_apn_or_address_info */
-    .cyborg-str-tool .listing_quick_view_apn_or_address_info:not(#window_vetting_dlg *):not(#vetting_data_footer *):not(#iframe-button-container *) {
-        font-weight: normal !important;
-    }
-`);
+            /* =================
+               2. ENCABEZADOS
+               ================= */
+            .cyborg-str-tool h1:not(${EXCLUSIONS}),
+            .cyborg-str-tool h2:not(${EXCLUSIONS}),
+            .cyborg-str-tool h3:not(${EXCLUSIONS}),
+            .cyborg-str-tool h4:not(${EXCLUSIONS}),
+            .cyborg-str-tool h5:not(${EXCLUSIONS}),
+            .cyborg-str-tool h6:not(${EXCLUSIONS}) {
+                color: #CAD92B !important;
+                font-weight: 600 !important;
+                font-size: ${STYLE.fontSizeLarge} !important;
+                margin-bottom: ${STYLE.spacingSm} !important;
+            }
 
 
+
+            /* =================
+               3. BOTONES MODERNOS (Estilos del segundo script)
+               ================= */
+            .cyborg-str-tool button:not(${EXCLUSIONS}):not(#btn_submit_vetting_dlg),
+            .cyborg-str-tool .btn:not(${EXCLUSIONS}):not(#btn_submit_vetting_dlg),
+            #btn_submit_vetting_dlg,
+            #btn_record_no_matching_parcel_found,
+            #btn_record_listing_not_live,
+            #btn_open_vetting_dlg,
+            #nearbyParcelsButton,
+            #btn_open_vetting_dlg_as_qa_mode {
+                background-color: ${THEME.primary} !important;
+                color: white !important;
+                border: none !important;
+                border-radius: ${STYLE.borderRadius} !important;
+                padding: ${STYLE.spacingXs} ${STYLE.spacingSm} !important;
+                font-size: ${STYLE.fontSizeBase} !important;
+                font-weight: 550 !important;
+                transition: all ${STYLE.transition} !important;
+                box-shadow: ${STYLE.boxShadow} !important;
+                cursor: pointer !important;
+                align-items: center !important;
+                justify-content: center !important;
+                height: 30px !important; /* Altura fija para más compacidad */
+
+            }
+
+            /* Botones secundarios */
+            #btn_record_no_matching_parcel_found,
+            #btn_record_listing_not_live,#secondary-button {
+                background-color: ${THEME.medium} !important;
+            }
+
+            /* Interacciones de botones */
+            .cyborg-str-tool button:not(${EXCLUSIONS}):hover,
+            .cyborg-str-tool .btn:not(${EXCLUSIONS}):hover {
+                background-color: ${THEME.hover} !important;
+            }
+
+            #btn_submit_vetting_dlg:hover {
+                background-color: ${THEME.active} !important;
+            }
+
+            /* =================
+               4. ENLACES (Estilos del segundo script)
+               ================= */
+            .cyborg-str-tool a:not(${EXCLUSIONS}) {
+                color: #96adb5 !important;
+                text-decoration: none !important;
+                font-weight: 500 !important;
+                transition: all ${STYLE.transition} !important;
+                border-bottom: 1px solid transparent !important;
+            }
+
+            .cyborg-str-tool a:visited:not(${EXCLUSIONS}) {
+                color: #02acf5 !important; /* Púrpura más suave para visitados */
+            }
+
+            .cyborg-str-tool a:hover:not(${EXCLUSIONS}) {
+                color: ${THEME.hover} !important;
+                border-bottom: 1px solid ${THEME.hover} !important;
+                text-decoration: none !important;
+            }
+
+            /* =================
+               4. TABLAS MODERNAS
+               ================= */
+            .cyborg-str-tool table:not(${EXCLUSIONS}) {
+                width: 100% !important;
+                border-collapse: collapse !important;
+                font-size: ${STYLE.fontSizeSmall} !important;
+                border-radius: ${STYLE.borderRadius} !important;
+                overflow: hidden !important;
+                box-shadow: ${STYLE.boxShadow} !important;
+            }
+
+            .cyborg-str-tool table th:not(${EXCLUSIONS}),
+            .cyborg-str-tool table td:not(${EXCLUSIONS}) {
+                padding: ${STYLE.spacingSm} !important;
+                border-bottom: 1px solid ${THEME.border} !important;
+                text-align: left !important;
+            }
+
+            .cyborg-str-tool table th:not(${EXCLUSIONS}) {
+                background-color: ${THEME.bgHeader} !important;
+                color: ${THEME.dark} !important;
+                font-weight: 600 !important;
+                text-transform: uppercase !important;
+            }
+
+            .cyborg-str-tool table tr:nth-child(even):not(${EXCLUSIONS}) {
+                background-color: ${THEME.bgLight} !important;
+            }
+
+            .cyborg-str-tool table tr:hover:not(${EXCLUSIONS}) {
+                background-color: ${THEME.light} !important;
+            }
+
+            /* =================
+               6. INPUTS Y FORMULARIOS
+               ================= */
+            .cyborg-str-tool input:not(${EXCLUSIONS}),
+            .cyborg-str-tool select:not(${EXCLUSIONS}),
+            .cyborg-str-tool textarea:not(${EXCLUSIONS}) {
+             
+                border: 1px solid ${THEME.border} !important;
+                border-radius: ${STYLE.borderRadius} !important;
+                padding: ${STYLE.spacingXs} ${STYLE.spacingSm} !important;
+                font-size: ${STYLE.fontSizeBase} !important;
+                transition: border-color ${STYLE.transition}, box-shadow ${STYLE.transition} !important;
+            }
+
+            .cyborg-str-tool input:focus:not(${EXCLUSIONS}),
+            .cyborg-str-tool select:focus:not(${EXCLUSIONS}),
+            .cyborg-str-tool textarea:focus:not(${EXCLUSIONS}) {
+                border-color: ${THEME.primary} !important;
+                box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2) !important;
+                outline: none !important;
+            }
+
+            .cyborg-str-tool table th[data-dash-column="city_p"]:not(${EXCLUSIONS}) {
+                min-width: 180px !important;
+                max-width: 300px !important;
+            }
+
+            /* Estilos para los tabs */
+.tab-container .tab {
+    display: inline-block;
+    background-color: ${THEME.bgLight} !important; /* Fondo claro */
+    border: 1px solid ${THEME.border} !important; /* Borde sutil */
+    border-bottom: none !important;
+    transition: all ${STYLE.transition} !important; /* Transición suave */
+    text-align: center !important;
+    box-sizing: border-box !important;
+    font-size: ${STYLE.fontSizeBuckets} !important; /* Tamaño de fuente base */
+    font-weight: 530 !important; /* Fuente semibold */
+    color: ${THEME.medium} !important; /* Color de texto secundario */
+    border-radius: ${STYLE.borderRadius} ${STYLE.borderRadius} 0 0 !important; /* Bordes redondeados solo arriba */
+    cursor: pointer !important; /* Cursor de puntero */
+    margin-right: ${STYLE.spacingXs} !important; /* Espaciado entre tabs */
+}
+
+/* Estilos para el tab seleccionado */
+.tab-container .tab--selected {
+    background-color: white !important; /* Fondo blanco */
+    color: ${THEME.primary} !important; /* Color primario */
+    border-color: ${THEME.primary} !important; /* Borde primario */
+    font-weight:500 !important; /* Fuente más gruesa */
+    box-shadow: 0 -2px 0 ${THEME.primary} inset !important; /* Línea inferior de acento */
+}
+
+/* Efecto hover para los tabs */
+.tab-container .tab:hover {
+    background-color: ${THEME.light} !important; /* Fondo más claro al pasar el mouse */
+    color: ${THEME.dark} !important; /* Color de texto más oscuro */
+}
+
+/* Efecto hover para el tab seleccionado */
+.tab-container .tab--selected:hover {
+    background-color: white !important; /* Mantener fondo blanco */
+    color: ${THEME.hover} !important; /* Color primario más oscuro */
+    border-color: ${THEME.hover} !important; /* Borde primario más oscuro */
+}
+
+        `;
+
+        addStyle(css);
         document.body.classList.add('cyborg-str-tool');
     };
 
-    // Esperamos hasta que el DOM esté listo
+    /**
+     * Simula clic en el botón de envío
+     */
+    const submitVettingForm = () => {
+        const button = document.getElementById('btn_submit_vetting_dlg');
+        if (button) button.click();
+    };
+
+    // Inicialización basada en el estado del documento
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', applyStyles);
-        window.addEventListener('load', applyStyles); // Respaldo en caso de que el DOM tarde más en cargar
+        document.addEventListener('DOMContentLoaded', () => requestAnimationFrame(applyModernStyles));
     } else {
-        applyStyles();
+        requestAnimationFrame(applyModernStyles);
     }
 
-    // Función para hacer clic en el botón
-    function clickButton() {
-        var button = document.getElementById('btn_submit_vetting_dlg');
-        if (button) {
-            button.click();
-        }
-    }
-
-    // Evento para detectar la combinación de teclas Ctrl+S
-    document.addEventListener('keydown', function(e) {
+    // Atajo de teclado: Ctrl+S para enviar formulario
+    document.addEventListener('keydown', (e) => {
         if (e.ctrlKey && e.key === 's') {
             e.preventDefault();
-            clickButton();
+            submitVettingForm();
         }
-    }, false);
+    });
 
+    // Observer para aplicar estilos a elementos dinámicos
+    const observeDOM = () => {
+        const targetNode = document.body;
+        const config = { childList: true, subtree: true };
+
+        const callback = (mutationsList) => {
+            for (const mutation of mutationsList) {
+                if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+                    requestAnimationFrame(() => {
+                        document.body.classList.add('cyborg-str-tool');
+                    });
+                }
+            }
+        };
+
+        const observer = new MutationObserver(callback);
+        observer.observe(targetNode, config);
+    };
+
+    // Iniciar observer si el DOM ya está cargado
+    if (document.readyState !== 'loading') {
+        observeDOM();
+    } else {
+        document.addEventListener('DOMContentLoaded', observeDOM);
+    }
 })();
