@@ -5620,16 +5620,16 @@
       "Project": "AL - City of Auburn",
       "Public Records & GIS": [
         {
-          "type": "PR",
-          "url": "https://www.deltacomputersystems.com/al/al43/pappraisala.html"
+          "url": "https://www.deltacomputersystems.com/al/al43/pappraisala.html",
+          "type": "PR"
         },
         {
           "type": "GIS (Use VPN)",
           "url": "https://www.alabamagis.com/Lee/frameset.cfm?cfid=1617882&cftoken=89503038"
         },
         {
-          "type": "GIS2",
-          "url": "https://webgis.auburnalabama.org/coamap/"
+          "url": "https://webgis.auburnalabama.org/coamap/",
+          "type": "GIS2"
         }
       ],
       "License List": [
@@ -5638,11 +5638,11 @@
           "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B2FC4F1A5-5621-43D8-AE53-7B86B9A1706C%7D&file=COA_Rental_Permit_Licenses%20(6).xlsx&action=default&mobileredirect=true"
         }
       ],
-      "Important Info": "N/A",
+      "Important Info": "<p>N/A</p>",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ]
     },
@@ -7959,7 +7959,7 @@
       "License List": [
         {
           "type": "License list",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EcrjsKigfD5BncjRn7dH4P0BtCEeHHbwyJitCyILKOnzUw?e=zgmRdg"
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EU-SZ0_WjqhAq8gxbKjXMp4BMt-lSCcuqMWHzkukKZG5Sw?e=T6WrTS"
         }
       ],
       "Important Info": "Use GIS 2 to find the short APN that we have in our data in Cyborg. The APN is called a Schedule Number. You can find the image in the Media Section.",
