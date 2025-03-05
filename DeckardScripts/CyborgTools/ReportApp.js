@@ -9,7 +9,7 @@
 
 (function () {
     'use strict';
-
+    const urlcodeverg = window.location.href;
     const Codeverg = "https://script.google.com/macros/s/AKfycbzsaMYnVMK65UfAKsVg27_fqzzdALlYPwaBQeN-_nFUwSmLHG3GT14Kw5aif1AbC_5BrA/exec";
     const QAERS_Codeverg = Codeverg + "?qaers";
     const CACHE_DATA = 'qaersData';
