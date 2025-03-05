@@ -46,10 +46,10 @@
     // Propiedades de estilo
     const STYLE = {
         fontFamily: 'Roboto, sans-serif',
-        fontSizeBase: '14px',  // letra de botones
-        fontSizeSmall: '12px', // titulos de las tablas
-        fontSizeLarge: '19px',
-        fontSizeBuckets:'17px',
+        fontSizeBase: '12px',  // letra de botones
+        fontSizeSmall: '11px', // titulos de las tablas
+        fontSizeLarge: '18px',
+        fontSizeBuckets:'15px',
         spacingXs: '2px',
         spacingSm: '2px',
         spacingMd: '5px',
