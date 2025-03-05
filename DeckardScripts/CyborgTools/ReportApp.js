@@ -10,15 +10,27 @@
 (function () {
     'use strict';
 
-    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzsaMYnVMK65UfAKsVg27_fqzzdALlYPwaBQeN-_nFUwSmLHG3GT14Kw5aif1AbC_5BrA/exec";
-    const QAERS_URL = APPS_SCRIPT_URL + "?qaers";
+    // Lee la variable de entorno
+    const APPS_SCRIPT_URL_RQAR = process.env.APPS_SCRIPT_URL_RQAR;
+
+    // Valida que el secreto esté definido
+    if (!APPS_SCRIPT_URL_RQAR) {
+        console.error('Error: La variable APPS_SCRIPT_URL_RQAR no está definida.');
+        return;
+    }
+
+    const QAERS_URL = APPS_SCRIPT_URL_RQAR + "?qaers";
     const CACHE_KEY = 'qaersData';
     const CACHE_EXPIRATION_TIME = 5 * 60 * 1000; // 5 minutos de cache
+
     const PROJECT_NAME_PATTERNS = [
-    { regex: /\/listing\/AUS\/([^\/]+)\/([^\/]+)\/(STR[^\/]+)/, format: m => `AUS - ${m[2].replace(/_/g, ' ') === 'Bass Coast' ? m[2].replace(/_/g, ' ') : 'City of ' + capitalizeWords(m[2].replace(/_/g, ' '))}` },
-    { regex: /\/listing\/([A-Za-z]+)\/([^\/]+)\.\.\.(town|township)_of_([^\/]+)\/_/, format: m => `${m[1].toUpperCase()} - ${m[3].charAt(0).toUpperCase() + m[3].slice(1)} Of ${capitalizeWords(m[4].replace(/_/g, ' '))}` },
-    { regex: /\/listing\/([A-Za-z]+)\/([^\/]+)\/_/, format: m => `${m[1].toUpperCase()} - ${capitalizeWords(m[2].replace(/_/g, ' '))} County` },
-    { regex: /\/listing\/([A-Za-z]+)\/([^\/]+)\/([^\/]+)\//, format: m => `${m[1].toUpperCase()} - ${capitalizeWords(m[3].replace(/_/g, ' '))}` }];
+        { regex: /\/listing\/AUS\/([^\/]+)\/([^\/]+)\/(STR[^\/]+)/, format: m => `AUS - ${m[2].replace(/_/g, ' ') === 'Bass Coast' ? m[2].replace(/_/g, ' ') : 'City of ' + capitalizeWords(m[2].replace(/_/g, ' '))}` },
+        { regex: /\/listing\/([A-Za-z]+)\/([^\/]+)\.\.\.(town|township)_of_([^\/]+)\/_/, format: m => `${m[1].toUpperCase()} - ${m[3].charAt(0).toUpperCase() + m[3].slice(1)} Of ${capitalizeWords(m[4].replace(/_/g, ' '))}` },
+        { regex: /\/listing\/([A-Za-z]+)\/([^\/]+)\/_/, format: m => `${m[1].toUpperCase()} - ${capitalizeWords(m[2].replace(/_/g, ' '))} County` },
+        { regex: /\/listing\/([A-Za-z]+)\/([^\/]+)\/([^\/]+)\//, format: m => `${m[1].toUpperCase()} - ${capitalizeWords(m[3].replace(/_/g, ' '))}` }
+    ];
+
+    console.log('QAERS_URL:', QAERS_URL);
 
     function getProjectNameFromUrl() {
         const url = window.location.href;
@@ -385,7 +397,7 @@
                 };
 
                 showEditWindow(data, (finalData) => {
-                    fetch(APPS_SCRIPT_URL, {
+                    fetch(APPS_SCRIPT_URL_RQAR, {
                         method: "POST",
                         mode: "no-cors",
                         headers: { "Content-Type": "application/json" },
