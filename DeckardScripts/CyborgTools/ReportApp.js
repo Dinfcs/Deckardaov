@@ -76,6 +76,21 @@
         return document.querySelector('#user_id')?.innerText.trim() || "";
     }
 
+    // Función para obtener el primer nombre y primer apellido del QAer
+    function getQaerNameShort() {
+        const userIdElement = document.querySelector('#user_id');
+        if (!userIdElement) return "Desconocido";
+
+        const fullName = userIdElement.innerText.trim();
+        const nameParts = fullName.split(" ");
+
+        if (nameParts.length >= 3) {
+            return `${nameParts[0]} ${nameParts[2]}`; // Primer nombre + segundo nombre
+        } else {
+            return fullName; // Si el formato no es el esperado, regresa el texto completo
+        }
+    }
+
     // Función para crear el enlace de reporte
     function createReportLink() {
         const link = document.createElement("a");
@@ -379,10 +394,10 @@
                     date: new Date().toLocaleDateString("en-GB"),
                     date_of_mapping: convertDate(rawDate),
                     project: getProjectNameFromUrl(), // Usar la nueva función para obtener el proyecto
-                    qaer: getQaerFromPage(),
+                    qaer: getQaerNameShort(),
                     qaed: extractQaEd(),
                     listing: window.location.href,
-                    urlcodeverg: urlcodeverg 
+                    urlcodeverg: urlcodeverg
                 };
 
                 showEditWindow(data, (finalData) => {
