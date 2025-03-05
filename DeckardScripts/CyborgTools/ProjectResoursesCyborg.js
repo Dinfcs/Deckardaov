@@ -93,31 +93,10 @@
         };
 
         imgElement.onerror = () => {
-            console.warn(`Fallo la carga directa de ${imageUrl}. Intentando con GM_xmlhttpRequest...`);
-            GM_xmlhttpRequest({
-                method: "GET",
-                url: imageUrl,
-                responseType: "blob",
-                onload: function(response) {
-                    if (response.status >= 200 && response.status < 300) {
-                        const blobUrl = URL.createObjectURL(response.response);
-                        imgElement.src = blobUrl;
-                        imgElement.style.cursor = 'pointer';
-                        imgElement.addEventListener('click', openImageCallback);
-                    } else {
-                        console.error(`Error al cargar imagen: ${response.status} ${response.statusText}`);
-                        imgElement.src = NO_PREVIEW_IMAGE;
-                        imgElement.alt = "No Preview Available";
-                        imgElement.style.cursor = 'default';
-                    }
-                },
-                onerror: function(error) {
-                    console.error("Error en GM_xmlhttpRequest:", error);
-                    imgElement.src = NO_PREVIEW_IMAGE;
-                    imgElement.alt = "No Preview Available";
-                    imgElement.style.cursor = 'default';
-                }
-            });
+            console.warn(`Failed to load image: ${imageUrl}. Showing default image.`);
+            imgElement.src = NO_PREVIEW_IMAGE;
+            imgElement.alt = "No Preview Available";
+            imgElement.style.cursor = 'default';
         };
     }
 
@@ -310,4 +289,3 @@
     waitForElement('.project-data-table', createIframe);
     waitForElement('#btn_open_vetting_dlg', () => fetchData());
 })();
-
