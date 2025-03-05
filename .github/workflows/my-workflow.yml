@@ -1,0 +1,25 @@
+name: Run Report App
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+
+    - name: Run ReportApp.js with secret
+      env:
+        APPS_SCRIPT_URL_RQAR: ${{ secrets.APPS_SCRIPT_URL_RQAR }}
+      run: |
+        node DeckardScripts/CyborgTools/ReportApp.js
