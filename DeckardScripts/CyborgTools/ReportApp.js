@@ -9,10 +9,10 @@
 
 (function () {
     'use strict';
-    const urlcodeverg = window.location.href;
-    const Codeverg = "https://script.google.com/macros/s/AKfycbzsaMYnVMK65UfAKsVg27_fqzzdALlYPwaBQeN-_nFUwSmLHG3GT14Kw5aif1AbC_5BrA/exec";
-    const QAERS_Codeverg = Codeverg + "?qaers";
-    const CACHE_DATA = 'qaersData';
+
+    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzsaMYnVMK65UfAKsVg27_fqzzdALlYPwaBQeN-_nFUwSmLHG3GT14Kw5aif1AbC_5BrA/exec";
+    const QAERS_URL = APPS_SCRIPT_URL + "?qaers";
+    const CACHE_KEY = 'qaersData';
     const CACHE_EXPIRATION_TIME = 5 * 60 * 1000; // 5 minutos de cache
     const PROJECT_NAME_PATTERNS = [
     { regex: /\/listing\/AUS\/([^\/]+)\/([^\/]+)\/(STR[^\/]+)/, format: m => `AUS - ${m[2].replace(/_/g, ' ') === 'Bass Coast' ? m[2].replace(/_/g, ' ') : 'City of ' + capitalizeWords(m[2].replace(/_/g, ' '))}` },
@@ -107,19 +107,19 @@
 
     // Función para verificar el QAer y mostrar el enlace
     async function checkQaerAndShowLink() {
-        const cachedData = localStorage.getItem(CACHE_DATA);
-        const cachedTime = localStorage.getItem(CACHE_DATA + '_time');
+        const cachedData = localStorage.getItem(CACHE_KEY);
+        const cachedTime = localStorage.getItem(CACHE_KEY + '_time');
 
         if (cachedData && cachedTime && (Date.now() - cachedTime) < CACHE_EXPIRATION_TIME) {
             processQaersData(JSON.parse(cachedData));
         } else {
             try {
-                const response = await fetch(QAERS_Codeverg);
+                const response = await fetch(QAERS_URL);
                 const data = await response.json();
                 if (!data.qaers || !Array.isArray(data.qaers)) throw new Error("Invalid JSON format");
 
-                localStorage.setItem(CACHE_DATA, JSON.stringify(data));
-                localStorage.setItem(CACHE_DATA + '_time', Date.now().toString());
+                localStorage.setItem(CACHE_KEY, JSON.stringify(data));
+                localStorage.setItem(CACHE_KEY + '_time', Date.now().toString());
                 processQaersData(data);
             } catch (error) {
                 console.error("Error fetching QAers:", error);
@@ -381,12 +381,11 @@
                     project: getProjectNameFromUrl(), // Usar la nueva función para obtener el proyecto
                     qaer: getQaerFromPage(),
                     qaed: extractQaEd(),
-                    listing: window.location.href,
-                    urlcodeverg: urlcodeverg 
+                    listing: window.location.href
                 };
 
                 showEditWindow(data, (finalData) => {
-                    fetch(Codeverg, {
+                    fetch(APPS_SCRIPT_URL, {
                         method: "POST",
                         mode: "no-cors",
                         headers: { "Content-Type": "application/json" },
