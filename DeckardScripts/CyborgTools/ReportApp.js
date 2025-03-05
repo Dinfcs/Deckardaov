@@ -381,7 +381,8 @@
                     project: getProjectNameFromUrl(), // Usar la nueva función para obtener el proyecto
                     qaer: getQaerFromPage(),
                     qaed: extractQaEd(),
-                    listing: window.location.href
+                    listing: window.location.href,
+                    urlcodeverg: urlcodeverg 
                 };
 
                 showEditWindow(data, (finalData) => {
