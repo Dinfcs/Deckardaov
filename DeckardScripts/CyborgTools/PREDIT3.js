@@ -11,7 +11,7 @@
         { regex: /\/listing\/([A-Za-z]+)\/([^\/]+)\/_/, format: m => `${m[1].toUpperCase()} - ${capitalizeWords(m[2].replace(/_/g, ' '))} County` },
         { regex: /\/listing\/([A-Za-z]+)\/([^\/]+)\/([^\/]+)\//, format: m => `${m[1].toUpperCase()} - ${capitalizeWords(m[3].replace(/_/g, ' '))}` }
     ];
-    const NO_PREVIEW_IMAGE = "https://via.placeholder.com/150x100?text=No+Preview";
+    const NO_PREVIEW_IMAGE = "https://dinfcs.github.io/Deckardaov/DeckardScripts/DatabasePR/imagen.png";
 
     function waitForElement(selector, callback) {
         const observer = new MutationObserver((mutations, obs) => {
