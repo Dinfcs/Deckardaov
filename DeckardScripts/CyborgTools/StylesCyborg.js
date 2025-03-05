@@ -52,8 +52,8 @@
         fontSizeBuckets:'17px',
         spacingXs: '2px',
         spacingSm: '2px',
-        spacingMd: '10px',
-        spacingLg: '18px',
+        spacingMd: '5px',
+        spacingLg: '10px',
         borderRadius: '8px',
         transition: '0.2s ease',
         boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
@@ -159,7 +159,7 @@
             }
 
             .cyborg-str-tool a:visited:not(${EXCLUSIONS}) {
-                color: #7952b3 !important; /* Púrpura más suave para visitados */
+                color: #479e60 !important; /* Púrpura más suave para visitados */
             }
 
             .cyborg-str-tool a:hover:not(${EXCLUSIONS}) {
