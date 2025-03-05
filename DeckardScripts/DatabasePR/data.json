@@ -8,14 +8,14 @@
           "url": "https://morgan.capturecama.com/CA_ParcelSearch.aspx#down"
         },
         {
-          "type": "GIS (Use VPN)",
-          "url": "https://isv.kcsgis.com/al.morgan_revenue/"
+          "url": "https://isv.kcsgis.com/al.morgan_revenue/",
+          "type": "GIS (Use VPN)"
         }
       ],
       "License List": [
         {
-          "url": "N/A",
-          "type": "N/A"
+          "type": "N/A",
+          "url": "N/A"
         }
       ],
       "Important Info": "<p>N/A.</p>",
