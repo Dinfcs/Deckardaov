@@ -36,7 +36,7 @@
    function showNotification(message, color = "red") {
     const notification = Object.assign(document.createElement("div"), {
         innerHTML: `<span style="font-size: 24px; margin-right: 10px;">
-                        ${color === "red" ? ":warning:" : ":heavy_check_mark:"}
+                        ${color === "red" ? "⚠️" : "✔️"}
                     </span>${message}`,
         style: `
             position: fixed;
@@ -150,12 +150,12 @@
             "Bad APN": `¡Hola ${qaed}! Hoy estoy realizando Random QA y encontré <${link}|esta propiedad tuya> en ${project}. El APN registrado tiene un formato erróneo por lo que generó una Bad APN. Trata de verificar siempre en los PR para evitar este tipo de errores. ¡Muchas gracias! Att: ${qaer}`,
             "Missing MUS": `Hola ${qaed}, hoy estoy realizando Random QA y encontré <${link}|esta propiedad tuya> en ${project}. Noté que falta información en el campo MUS. Aun cuando en important info estaba la instrucción, sé que son detalles que a veces se nos pasan y que estarás más pendiente de esto. ¡Gracias! Att: ${qaer}`,
             "Missing Address Override": `Saludos ${qaed}, espero que todo esté bien. Revisando Random QA, encontré <${link}|esta propiedad tuya> en ${project}. Noté que faltó hacerle Address Override. Asegúrate de agregarlo cuando sea necesario. ¡Muchas gracias! Att: ${qaer}`,
-            "Missing Address Override in an NMF Listing (If required)": `¡Saludos ${qaed}!, ¡espero que todo esté yendo bien! :hugging_face: Hoy estoy realizando Random QA y me encontré con <${link}|esta propiedad tuya> en ${project}. Está muy bien identificada, sin embargo, olvidaste agregar el Address Override. Ten presente que si la propiedad es un condominio y se consigue fácilmente pero no consigues la unidad, debes dejar el NMF con el Unit # unk. ¡Muchas gracias! Att: ${qaer}`,
+            "Missing Address Override in an NMF Listing (If required)": `¡Saludos ${qaed}!, ¡espero que todo esté yendo bien! 🤗 Hoy estoy realizando Random QA y me encontré con <${link}|esta propiedad tuya> en ${project}. Está muy bien identificada, sin embargo, olvidaste agregar el Address Override. Ten presente que si la propiedad es un condominio y se consigue fácilmente pero no consigues la unidad, debes dejar el NMF con el Unit # unk. ¡Muchas gracias! Att: ${qaer}`,
             "Wrong Address Override": `¡Hola ${qaed}! Espero que estés teniendo un buen día. Hoy estoy realizando Random QA y encontré <${link}|esta propiedad tuya> en ${project}. La identificación fue precisa y la evidencia espectacular. Sin embargo, al revisarla, noté que el Address Override no es correcto. Por favor, en este caso sería: ${dynamicFields.correctAddress || "(aquí va el address correcto)"}. ¡Muchas Gracias! Att: ${qaer}`,
-            "Do Not Clear Previous Address Override In An NMF Listing": `¡Saludos ${qaed}!, ¡espero que todo esté yendo bien! :hugging_face: Hoy estoy realizando Random QA y me encontré con <${link}|esta propiedad tuya> en ${project}. Noté que no eliminaste el Address Override anterior en un listing de NMF. Asegúrate de revisarlo y corregirlo. ¡Muchas gracias! Att: ${qaer}`,
+            "Do Not Clear Previous Address Override In An NMF Listing": `¡Saludos ${qaed}!, ¡espero que todo esté yendo bien! 🤗 Hoy estoy realizando Random QA y me encontré con <${link}|esta propiedad tuya> en ${project}. Noté que no eliminaste el Address Override anterior en un listing de NMF. Asegúrate de revisarlo y corregirlo. ¡Muchas gracias! Att: ${qaer}`,
             "QA Is Not Correct High": `Hola ${qaed}, hoy estoy realizando Random QA y encontré <${link}|esta propiedad> en ${project} la cual marcaste con QAok. Noté que el QAok no es correcto. Mis motivos son: ${dynamicFields.reasons || "(aquí van los motivos)"}. ¡Gracias! Att: ${qaer}`,
             "QA Is Not Correct Low": `Hola ${qaed}, hoy estoy realizando Random QA y encontré <${link}|esta propiedad tuya> en ${project} la cual marcaste con QAok. Noté que la QA no es correcta. Mis motivos son: ${dynamicFields.reasons || "(aquí van los motivos)"}. ¡Gracias! Att: ${qaer}`,
-            "Unit Box (If visible)": `¡Saludos ${qaed}!, ¡espero que todo esté yendo bien! :hugging_face: Hoy estoy realizando Random QA y me encontré con <${link}|esta propiedad tuya> en ${project}. Noté que omitiste llenar el campo 'Unit Box'. En este caso era: ${dynamicFields.unitBox || "(aquí va el unit box)"}. Recuerda que este campo es importante para separar las Property Cards en RS. Este puede estar en las imágenes o en la descripción del listing. Tenlo presente para una próxima vez. ¡Muchas gracias! Att: ${qaer}`,
+            "Unit Box (If visible)": `¡Saludos ${qaed}!, ¡espero que todo esté yendo bien! 🤗 Hoy estoy realizando Random QA y me encontré con <${link}|esta propiedad tuya> en ${project}. Noté que omitiste llenar el campo 'Unit Box'. En este caso era: ${dynamicFields.unitBox || "(aquí va el unit box)"}. Recuerda que este campo es importante para separar las Property Cards en RS. Este puede estar en las imágenes o en la descripción del listing. Tenlo presente para una próxima vez. ¡Muchas gracias! Att: ${qaer}`,
             "Wrong/ Not Required Unit Box": `¡Hola ${qaed}! Espero que estés teniendo un buen día. Hoy estoy realizando Random QA y encontré <${link}|esta propiedad tuya> en ${project}. Hiciste un buen trabajo identificando la propiedad, sin embargo, noté que dejaste ${dynamicFields.unitBox || "(aquí va el unit box)"} en el Unit Box cuando no era necesario. ¡Muchas Gracias! Att: ${qaer}`,
             "Property Manager Info (If required)": `¡Hola ${qaed}! Hoy estoy realizando Random QA y encontré <${link}|esta propiedad tuya> en ${project}. Noté que falta la información del Property Manager. Por favor, asegúrate de agregarla si es requerida. ¡Gracias! Att: ${qaer}`,
             "Rental Override": `Hola ${qaed}, espero que estés bien. Hoy estoy realizando Random QA y encontré <${link}|esta propiedad tuya> en ${project}. ////////////////////////////////. ¡Gracias! Att: ${qaer}`,
@@ -393,13 +393,13 @@
                     })
                         .then(() => showNotification("Data registered successfully.", "green"))
                         .catch(error => {
-                        console.error(":x: Error sending data:", error);
+                        console.error("❌ Error sending data:", error);
                         alert("Error sending data. Check the console.");
                     });
                 });
             }, 1000);
         } else {
-            showNotification(":warning: 'Secondary information' not found.");
+            showNotification("⚠️ 'Secondary information' not found.");
         }
     }
 
