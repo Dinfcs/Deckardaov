@@ -249,9 +249,11 @@
                     </div>
                     <div id="dynamicFieldsContainer" style="display: flex; flex-direction: column; gap: 10px;"></div>
                     <div style="display: flex; justify-content: space-around; gap: 10px; margin-top: 20px;">
-                        <button id="btnAccept" style="flex: 1; padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; transition: background-color 0.3s ease;">Accept</button>
-                        <button id="btnCancel" style="flex: 1; padding: 10px 20px; background-color: #f44336; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; transition: background-color 0.3s ease;">Cancel</button>
+                        <button id="btnAccept" style="flex: 1; padding: 12px 24px; background-color: #CAD92B; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 18px; ">Accept</button>
+                        <button id="btnCancel" style="flex: 1; padding: 12px 24px; background-color: #23A9D8; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 18px; ">Cancel</button>
+                          <a href="https://docs.google.com/spreadsheets/d/14N1pWw7fVIDgTko2A7faqbmkPVXM8LnHaeR0bd_TGxw/edit?gid=0#gid=0" target="_blank" style="flex: 1; padding: 12px 24px; background-color:rgb(90, 93, 94); color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 18px; text-decoration: none; display: flex; justify-content: center; align-items: center;">Database</a>
                     </div>
+
                 </div>
                 <div style="flex: 1; min-width: 300px;">
                     <div style="display: flex; flex-direction: column; align-items: flex-start; width: 100%;">
@@ -343,11 +345,6 @@
             modalContent.style.opacity = 1;
             modalContent.style.transform = "scale(1)";
         }, 10);
-
-        btnAccept.addEventListener("mouseover", () => btnAccept.style.backgroundColor = "#45a049");
-        btnAccept.addEventListener("mouseout", () => btnAccept.style.backgroundColor = "#4CAF50");
-        btnCancel.addEventListener("mouseover", () => btnCancel.style.backgroundColor = "#da190b");
-        btnCancel.addEventListener("mouseout", () => btnCancel.style.backgroundColor = "#f44336");
 
         btnAccept.addEventListener("click", () => {
             const editedData = {};
