@@ -46,6 +46,7 @@
         fontFamily: 'Roboto, sans-serif',
         fontSizeBase: '14px',  // letra de botones
         fontSizeSmall: '13px', // titulos de las tablas
+        fontSizeLarge: '19px',
         spacingXs: '3px',
         spacingSm: '3px',
         spacingMd: '10px',
@@ -94,6 +95,7 @@
             .cyborg-str-tool h6:not(${EXCLUSIONS}) {
                 color: #CAD92B !important;
                 font-weight: 600 !important;
+                font-size: ${STYLE.fontSizeLarge} !important;
                 margin-bottom: ${STYLE.spacingSm} !important;
             }
 
