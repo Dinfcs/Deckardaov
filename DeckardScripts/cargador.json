@@ -30,7 +30,7 @@
         },
         {
             "urlPattern": "https://cyborg.deckard.com/listing/*",
-            "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/PREDIT3.js"
+            "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/ProjectResoursesCyborg.js"
         },
         {
             "urlPattern": "https://cyborg.deckard.com/listing/*",
