@@ -50,11 +50,11 @@
         },
         {
             "urlPattern": "https://www.google.com/maps/*",
-            "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/ExternalScripts/Buscador.js"
+            "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/ExternalScripts/Buscador2.js"
         },
         {
             "urlPattern": "https://www.bing.com/maps/*",
-            "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/ExternalScripts/Buscador.js"
+            "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/ExternalScripts/Buscador2.js"
         },
         {
             "urlPattern": "https://cyborg.deckard.com/listing/*/*pending_qa",
@@ -87,14 +87,6 @@
         {
             "urlPattern": "*://*/*",
             "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/ExternalScripts/UniversalAE.js"
-        },
-        {
-            "urlPattern": "*://www.google.com/maps/*",
-            "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/ExternalScripts/Buscador2.js"
-        },
-        {
-            "urlPattern": "*://www.bing.com/maps/*",
-            "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/ExternalScripts/Buscador2.js"
         }
         
     ]
