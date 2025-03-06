@@ -20,14 +20,14 @@
         .fancybox-button,
         [data-test-id="float-window-minimize-or-restore-btn"],
         [data-test-id="float-window-close-btn"],
-        .project-data-table,
-        .project-data-table *
+        #btnCancel,
+        #btnAccept
     `;
 
     // Sistema de colores modernos
     const THEME = {
         primary: '#4A90E2',       // Azul moderno
-        secondary: '#7C4DFF',     // Violeta moderno
+        secondary: '#4A90E2',     // Violeta moderno
         accent: '#00C853',        // Verde brillante
         dark: '#2C3E50',          // Gris oscuro
         medium: '#546E7A',        // Gris medio
@@ -44,13 +44,14 @@
     // Propiedades de estilo
     const STYLE = {
         fontFamily: 'Roboto, sans-serif',
-        fontSizeBase: '14px',  // letra de botones
-        fontSizeSmall: '13px', // titulos de las tablas
-        fontSizeLarge: '19px',
-        spacingXs: '3px',
-        spacingSm: '3px',
-        spacingMd: '10px',
-        spacingLg: '18px',
+        fontSizeBase: '12px',  // letra de botones
+        fontSizeSmall: '11px', // titulos de las tablas
+        fontSizeLarge: '18px',
+        fontSizeBuckets: '15px',
+        spacingXs: '1px',
+        spacingSm: '1px',
+        spacingMd: '5px',
+        spacingLg: '10px',
         borderRadius: '8px',
         transition: '0.2s ease',
         boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
@@ -76,15 +77,6 @@
     const applyModernStyles = () => {
         const css = `
             /* =================
-               1. RESET BÁSICO
-               ================= */
-            .cyborg-str-tool *:not(${EXCLUSIONS}) {
-
-                box-sizing: border-box;
-                font-family: ${STYLE.fontFamily};
-            }
-
-            /* =================
                2. ENCABEZADOS
                ================= */
             .cyborg-str-tool h1:not(${EXCLUSIONS}),
@@ -99,58 +91,71 @@
                 margin-bottom: ${STYLE.spacingSm} !important;
             }
 
-
-
             /* =================
                3. BOTONES MODERNOS
                ================= */
-            .cyborg-str-tool button:not(${EXCLUSIONS}),
-            .cyborg-str-tool .btn:not(${EXCLUSIONS}),
+            .cyborg-str-tool button:not(${EXCLUSIONS}):not(#btn_submit_vetting_dlg),
+            .cyborg-str-tool .btn:not(${EXCLUSIONS}):not(#btn_submit_vetting_dlg),
             #btn_submit_vetting_dlg,
             #btn_record_no_matching_parcel_found,
             #btn_record_listing_not_live,
             #btn_open_vetting_dlg,
+            #nearbyParcelsButton,
             #btn_open_vetting_dlg_as_qa_mode {
                 background-color: ${THEME.primary} !important;
                 color: white !important;
                 border: none !important;
-                padding: ${STYLE.spacingSm} ${STYLE.spacingMd} !important;
-                font-size: ${STYLE.fontSizeBase} !important;
                 border-radius: ${STYLE.borderRadius} !important;
-                box-shadow: ${STYLE.boxShadow} !important;
+                padding: 4px 8px !important;
+                font-size: ${STYLE.fontSizeBase} !important;
+                font-weight: 550 !important;
                 transition: all ${STYLE.transition} !important;
+                box-shadow: ${STYLE.boxShadow} !important;
                 cursor: pointer !important;
-
                 align-items: center !important;
                 justify-content: center !important;
-                gap: ${STYLE.spacingXs} !important;
+                height: 30px !important; /* Altura fija para más compacidad */
             }
 
-            .cyborg-str-tool button:hover:not(${EXCLUSIONS}),
-            .cyborg-str-tool .btn:hover:not(${EXCLUSIONS}),
-            #btn_submit_vetting_dlg:hover,
-            #btn_record_no_matching_parcel_found:hover,
-            #btn_record_listing_not_live:hover,
-            #btn_open_vetting_dlg:hover,
-            #btn_open_vetting_dlg_as_qa_mode:hover {
+            /* Botones secundarios */
+            #btn_record_no_matching_parcel_found,
+            #btn_record_listing_not_live, #secondary-button {
+                background-color: ${THEME.medium} !important;
+            }
+
+            /* Interacciones de botones */
+            .cyborg-str-tool button:not(${EXCLUSIONS}):hover,
+            .cyborg-str-tool .btn:not(${EXCLUSIONS}):hover {
                 background-color: ${THEME.hover} !important;
-                box-shadow: ${STYLE.boxShadowHover} !important;
-                transform: translateY(-1px) !important;
             }
 
-            .cyborg-str-tool button:active:not(${EXCLUSIONS}),
-            .cyborg-str-tool .btn:active:not(${EXCLUSIONS}),
-            #btn_submit_vetting_dlg:active,
-            #btn_record_no_matching_parcel_found:active,
-            #btn_record_listing_not_live:active,
-            #btn_open_vetting_dlg:active,
-            #btn_open_vetting_dlg_as_qa_mode:active {
-                transform: translateY(0) !important;
-                box-shadow: ${STYLE.boxShadow} !important;
+            #btn_submit_vetting_dlg:hover {
+                background-color: ${THEME.active} !important;
             }
 
             /* =================
-               4. TABLAS MODERNAS
+               4. ENLACES
+               ================= */
+            .cyborg-str-tool a:not(${EXCLUSIONS}) {
+                color: #96adb5 !important;
+                text-decoration: none !important;
+                font-weight: 500 !important;
+                transition: all ${STYLE.transition} !important;
+                border-bottom: 1px solid transparent !important;
+            }
+
+            .cyborg-str-tool a:visited:not(${EXCLUSIONS}) {
+                color: #02acf5 !important; /* Púrpura más suave para visitados */
+            }
+
+            .cyborg-str-tool a:hover:not(${EXCLUSIONS}) {
+                color: ${THEME.hover} !important;
+                border-bottom: 1px solid ${THEME.hover} !important;
+                text-decoration: none !important;
+            }
+
+            /* =================
+               5. TABLAS MODERNAS
                ================= */
             .cyborg-str-tool table:not(${EXCLUSIONS}) {
                 width: 100% !important;
@@ -184,25 +189,11 @@
             }
 
             /* =================
-               5. ENLACES
-               ================= */
-            .cyborg-str-tool a:not(${EXCLUSIONS}) {
-                color: ${THEME.primary} !important;
-                text-decoration: none !important;
-                transition: color ${STYLE.transition} !important;
-            }
-
-            .cyborg-str-tool a:hover:not(${EXCLUSIONS}) {
-                color: ${THEME.hover} !important;
-                text-decoration: underline !important;
-            }
-
-            /* =================
                6. INPUTS Y FORMULARIOS
                ================= */
-            .cyborg-str-tool input:not(${EXCLUSIONS}),
-            .cyborg-str-tool select:not(${EXCLUSIONS}),
-            .cyborg-str-tool textarea:not(${EXCLUSIONS}) {
+            .cyborg-str-tool input:not(${EXCLUSIONS}, #checkbox_only_show_parcels_with_associated_license, #checkbox_advanced_filter_mode, #checkbox_batch_edit_mode, #checkbox_listing_search_keyword_is_regex),
+            .cyborg-str-tool select:not(${EXCLUSIONS}, #checkbox_only_show_parcels_with_associated_license, #checkbox_advanced_filter_mode, #checkbox_batch_edit_mode, #checkbox_listing_search_keyword_is_regex),
+            .cyborg-str-tool textarea:not(${EXCLUSIONS}, #checkbox_only_show_parcels_with_associated_license, #checkbox_advanced_filter_mode, #checkbox_batch_edit_mode, #checkbox_listing_search_keyword_is_regex) {
                 background-color: white !important;
                 border: 1px solid ${THEME.border} !important;
                 border-radius: ${STYLE.borderRadius} !important;
@@ -219,7 +210,99 @@
                 outline: none !important;
             }
 
+            /* =================
+               7. CONTENEDOR FLOTANTE BOTONES DUPLICADOS
+               ================= */
+            .pop_up_header_container {
+                position: fixed; /* Fija el contenedor en la pantalla */
+                top: 10px; /* Distancia desde la parte superior */
+                left: 50%; /* Centrado horizontal */
+                transform: translateX(-50%); /* Ajuste para centrar correctamente */
+                z-index: 9999; /* Asegura que esté por encima de otros elementos */
+                background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco con 80% de opacidad */
+                padding: 8px; /* Espaciado interno */
+                border-radius: 12px; /* Bordes redondeados */
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Sombra para dar profundidad */
+                display: flex; /* Usa flexbox para alinear los botones */
+                gap: 10px; /* Espacio entre botones (reducido para ahorrar espacio) */
+                justify-content: center; /* Centra los botones horizontalmente */
+                flex-wrap: nowrap; /* Evita que los botones se envuelvan en múltiples líneas */
+                max-width: 70%; /* Ancho máximo del contenedor (ajusta según sea necesario) */
+                width: auto; /* Ancho automático basado en el contenido */
+                backdrop-filter: blur(10px); /* Efecto de desenfoque para mejorar la legibilidad */
+            }
 
+            /* =================
+               8. ESTILOS COMUNES PARA TODOS LOS BOTONES
+               ================= */
+            .pop_up_header_container .btn,
+            button[id*="btn_listing_pair_next"],
+            button[id*="btn_listing_pair_prev"] {
+                min-width: 90px !important; /* Ancho mínimo para todos los botones */
+                padding: 5px 10px !important; /* Espaciado interno */
+                font-size: 14px !important; /* Tamaño de fuente */
+                font-weight: 500 !important; /* Grosor de la fuente */
+                border-radius: 6px !important; /* Bordes redondeados */
+                border: none !important; /* Sin bordes */
+                cursor: pointer !important; /* Cursor de puntero */
+                transition: all 0.3s ease !important; /* Transición suave */
+                display: inline-flex !important; /* Usar flexbox para centrar contenido */
+                align-items: center !important; /* Centrar verticalmente */
+                justify-content: center !important; /* Centrar horizontalmente */
+                text-align: center !important; /* Alineación de texto */
+            }
+
+            /* =================
+               9. COLORES DE FONDO PERSONALIZADOS PARA LOS BOTONES
+               ================= */
+            .pop_up_header_container .btn-success { /* Same */
+                background-color: #4CAF50 !important;
+                color: white !important;
+            }
+
+            .pop_up_header_container .btn-primary { /* In same MUS */
+                background-color: #2196F3 !important;
+                color: white !important;
+            }
+
+            .pop_up_header_container .btn-warning { /* Different */
+                background-color: #FF9800 !important;
+                color: white !important;
+            }
+
+            .pop_up_header_container .btn-info { /* Not sure */
+                background-color: #00BCD4 !important;
+                color: white !important;
+            }
+
+            button[id*="btn_listing_pair_next"] { /* Next pair */
+                background-color: #FF5722 !important;
+                color: white !important;
+            }
+
+            button[id*="btn_listing_pair_prev"] { /* Prev pair */
+                background-color: #B0BEC5 !important;
+                color: white !important;
+            }
+
+            /* =================
+               10. EFECTO HOVER PARA TODOS LOS BOTONES
+               ================= */
+            .pop_up_header_container .btn:hover,
+            button[id*="btn_listing_pair_next"]:hover,
+            button[id*="btn_listing_pair_prev"]:hover {
+                opacity: 0.9 !important;
+                transform: translateY(-2px) !important;
+            }
+
+            /* =================
+               11. ESTILO PARA EL BOTÓN "PREV PAIR" CUANDO ESTÁ DESHABILITADO
+               ================= */
+            button[id*="btn_listing_pair_prev"][disabled] {
+                background-color: #B0BEC5 !important;
+                color: #fff !important;
+                cursor: not-allowed !important;
+            }
         `;
 
         addStyle(css);
@@ -227,27 +310,44 @@
     };
 
     /**
-     * Simula clic en el botón de envío
+     * Agrega eventos a los botones para hacer clic automático en "Next Pair" después de 2 segundos
      */
-    const submitVettingForm = () => {
-        const button = document.getElementById('btn_submit_vetting_dlg');
-        if (button) button.click();
+    const addAutoNextPairClick = () => {
+        // Selecciona los botones "Same", "In same MUS", "Different", y "Not sure"
+        const buttons = [
+            document.querySelector('.btn-success'), // Same
+            document.querySelector('.btn-primary'), // In same MUS
+            document.querySelector('.btn-warning'), // Different
+            document.querySelector('.btn-info')     // Not sure
+        ];
+
+        // Selecciona el botón "Next Pair"
+        const nextPairButton = document.querySelector('button[id*="btn_listing_pair_next"]');
+
+        if (nextPairButton) {
+            buttons.forEach(button => {
+                if (button) {
+                    button.addEventListener('click', () => {
+                        // Programa el clic en "Next Pair" después de 2 segundos
+                        setTimeout(() => {
+                            nextPairButton.click();
+                        }, 500); // 500 milisegundos = 0.5 segundos
+                    });
+                }
+            });
+        }
     };
 
     // Inicialización basada en el estado del documento
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => requestAnimationFrame(applyModernStyles));
+        document.addEventListener('DOMContentLoaded', () => {
+            requestAnimationFrame(applyModernStyles);
+            addAutoNextPairClick(); // Agrega los eventos después de que el DOM esté listo
+        });
     } else {
         requestAnimationFrame(applyModernStyles);
+        addAutoNextPairClick(); // Agrega los eventos si el DOM ya está listo
     }
-
-    // Atajo de teclado: Ctrl+S para enviar formulario
-    document.addEventListener('keydown', (e) => {
-        if (e.ctrlKey && e.key === 's') {
-            e.preventDefault();
-            submitVettingForm();
-        }
-    });
 
     // Observer para aplicar estilos a elementos dinámicos
     const observeDOM = () => {
@@ -259,6 +359,7 @@
                 if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
                     requestAnimationFrame(() => {
                         document.body.classList.add('cyborg-str-tool');
+                        addAutoNextPairClick(); // Vuelve a agregar eventos si se añaden nuevos botones dinámicamente
                     });
                 }
             }
