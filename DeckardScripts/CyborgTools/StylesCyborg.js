@@ -16,7 +16,6 @@
         #window_vetting_dlg *,
         #vetting_data_footer *,
         .pop_up_header_container *,
-        #iframe-button-container *,
         .fancybox-button,
         [data-test-id="float-window-minimize-or-restore-btn"],
         [data-test-id="float-window-close-btn"],
@@ -47,9 +46,9 @@
         fontSizeBase: '12px',  // letra de botones
         fontSizeSmall: '11px', // titulos de las tablas
         fontSizeLarge: '18px',
-        fontSizeBuckets:'15px',
-        spacingXs: '2px',
-        spacingSm: '2px',
+        fontSizeBuckets: '15px',
+        spacingXs: '1px',
+        spacingSm: '1px',
         spacingMd: '5px',
         spacingLg: '10px',
         borderRadius: '8px',
@@ -76,8 +75,6 @@
      */
     const applyModernStyles = () => {
         const css = `
-
-
             /* =================
                2. ENCABEZADOS
                ================= */
@@ -93,10 +90,8 @@
                 margin-bottom: ${STYLE.spacingSm} !important;
             }
 
-
-
             /* =================
-               3. BOTONES MODERNOS (Estilos del segundo script)
+               3. BOTONES MODERNOS
                ================= */
             .cyborg-str-tool button:not(${EXCLUSIONS}):not(#btn_submit_vetting_dlg),
             .cyborg-str-tool .btn:not(${EXCLUSIONS}):not(#btn_submit_vetting_dlg),
@@ -110,7 +105,7 @@
                 color: white !important;
                 border: none !important;
                 border-radius: ${STYLE.borderRadius} !important;
-                padding: ${STYLE.spacingXs} ${STYLE.spacingSm} !important;
+                padding: 4px 8px !important;
                 font-size: ${STYLE.fontSizeBase} !important;
                 font-weight: 550 !important;
                 transition: all ${STYLE.transition} !important;
@@ -119,12 +114,11 @@
                 align-items: center !important;
                 justify-content: center !important;
                 height: 30px !important; /* Altura fija para más compacidad */
-
             }
 
             /* Botones secundarios */
             #btn_record_no_matching_parcel_found,
-            #btn_record_listing_not_live,#secondary-button {
+            #btn_record_listing_not_live, #secondary-button {
                 background-color: ${THEME.medium} !important;
             }
 
@@ -139,7 +133,7 @@
             }
 
             /* =================
-               4. ENLACES (Estilos del segundo script)
+               4. ENLACES
                ================= */
             .cyborg-str-tool a:not(${EXCLUSIONS}) {
                 color: #96adb5 !important;
@@ -160,8 +154,14 @@
             }
 
             /* =================
-               4. TABLAS MODERNAS
+               5. TABLAS MODERNAS
                ================= */
+
+               .cyborg-str-tool table th[data-dash-column="city_p"]:not(${EXCLUSIONS}) {
+                min-width: 180px !important;
+                max-width: 300px !important;
+            }
+
             .cyborg-str-tool table:not(${EXCLUSIONS}) {
                 width: 100% !important;
                 border-collapse: collapse !important;
@@ -194,47 +194,18 @@
             }
 
             /* =================
-   9. TABLA DASH-SPREADSHEET-INNER
-   ================= */
-.dash-spreadsheet-inner .cell-table {
-    font-size: 12px !important; /* Tamaño de fuente más pequeño */
-}
-
-.dash-spreadsheet-inner .cell-table th,
-.dash-spreadsheet-inner .cell-table td {
-    padding: 4px 8px !important; /* Espaciado más compacto */
-    line-height: 1.2 !important; /* Altura de línea reducida */
-}
-
-.dash-spreadsheet-inner .cell-table th {
-    background-color: ${THEME.bgHeader} !important;
-    color: ${THEME.dark} !important;
-    font-weight: 600 !important;
-    text-transform: uppercase !important; /* Opcional: mantener mayúsculas */
-}
-
-.dash-spreadsheet-inner .cell-table tr:nth-child(even) {
-    background-color: ${THEME.bgLight} !important;
-}
-
-.dash-spreadsheet-inner .cell-table tr:hover {
-    background-color: ${THEME.light} !important;
-}
-
-            /* =================
                6. INPUTS Y FORMULARIOS
                ================= */
-.cyborg-str-tool input:not(${EXCLUSIONS}, #checkbox_only_show_parcels_with_associated_license, #checkbox_advanced_filter_mode, #checkbox_batch_edit_mode, #checkbox_listing_search_keyword_is_regex),
-.cyborg-str-tool select:not(${EXCLUSIONS}, #checkbox_only_show_parcels_with_associated_license, #checkbox_advanced_filter_mode, #checkbox_batch_edit_mode, #checkbox_listing_search_keyword_is_regex),
-.cyborg-str-tool textarea:not(${EXCLUSIONS}, #checkbox_only_show_parcels_with_associated_license, #checkbox_advanced_filter_mode, #checkbox_batch_edit_mode, #checkbox_listing_search_keyword_is_regex) {
-    background-color: white !important;
-    border: 1px solid ${THEME.border} !important;
-    border-radius: ${STYLE.borderRadius} !important;
-    padding: ${STYLE.spacingXs} ${STYLE.spacingSm} !important;
-    font-size: ${STYLE.fontSizeBase} !important;
-    transition: border-color ${STYLE.transition}, box-shadow ${STYLE.transition} !important;
-}
-
+            .cyborg-str-tool input:not(${EXCLUSIONS}, #checkbox_only_show_parcels_with_associated_license, #checkbox_advanced_filter_mode, #checkbox_batch_edit_mode, #checkbox_listing_search_keyword_is_regex),
+            .cyborg-str-tool select:not(${EXCLUSIONS}, #checkbox_only_show_parcels_with_associated_license, #checkbox_advanced_filter_mode, #checkbox_batch_edit_mode, #checkbox_listing_search_keyword_is_regex),
+            .cyborg-str-tool textarea:not(${EXCLUSIONS}, #checkbox_only_show_parcels_with_associated_license, #checkbox_advanced_filter_mode, #checkbox_batch_edit_mode, #checkbox_listing_search_keyword_is_regex) {
+                background-color: white !important;
+                border: 1px solid ${THEME.border} !important;
+                border-radius: ${STYLE.borderRadius} !important;
+                padding: ${STYLE.spacingXs} ${STYLE.spacingSm} !important;
+                font-size: ${STYLE.fontSizeBase} !important;
+                transition: border-color ${STYLE.transition}, box-shadow ${STYLE.transition} !important;
+            }
 
             .cyborg-str-tool input:focus:not(${EXCLUSIONS}),
             .cyborg-str-tool select:focus:not(${EXCLUSIONS}),
@@ -244,14 +215,9 @@
                 outline: none !important;
             }
 
-            .cyborg-str-tool table th[data-dash-column="city_p"]:not(${EXCLUSIONS}) {
-                min-width: 180px !important;
-                max-width: 300px !important;
-            }
 
 
-
-            /* Estilos para los tabs */
+                        /* Estilos para los tabs */
 .tab-container .tab {
     display: inline-block;
     background-color: ${THEME.bgLight} !important; /* Fondo claro */
@@ -297,27 +263,44 @@
     };
 
     /**
-     * Simula clic en el botón de envío
+     * Agrega eventos a los botones para hacer clic automático en "Next Pair" después de 2 segundos
      */
-    const submitVettingForm = () => {
-        const button = document.getElementById('btn_submit_vetting_dlg');
-        if (button) button.click();
+    const addAutoNextPairClick = () => {
+        // Selecciona los botones "Same", "In same MUS", "Different", y "Not sure"
+        const buttons = [
+           // document.querySelector('.btn-success'), // Same
+           // document.querySelector('.btn-primary'), // In same MUS
+           // document.querySelector('.btn-warning'), // Different
+           // document.querySelector('.btn-info')// Not sure
+        ];
+
+        // Selecciona el botón "Next Pair"
+        const nextPairButton = document.querySelector('button[id*="btn_listing_pair_next"]');
+
+        if (nextPairButton) {
+            buttons.forEach(button => {
+                if (button) {
+                    button.addEventListener('click', () => {
+                        // Programa el clic en "Next Pair" después de 2 segundos
+                        setTimeout(() => {
+                            nextPairButton.click();
+                        }, 500); // 500 milisegundos = 0.5 segundos
+                    });
+                }
+            });
+        }
     };
 
     // Inicialización basada en el estado del documento
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => requestAnimationFrame(applyModernStyles));
+        document.addEventListener('DOMContentLoaded', () => {
+            requestAnimationFrame(applyModernStyles);
+            addAutoNextPairClick(); // Agrega los eventos después de que el DOM esté listo
+        });
     } else {
         requestAnimationFrame(applyModernStyles);
+        addAutoNextPairClick(); // Agrega los eventos si el DOM ya está listo
     }
-
-    // Atajo de teclado: Ctrl+S para enviar formulario
-    document.addEventListener('keydown', (e) => {
-        if (e.ctrlKey && e.key === 's') {
-            e.preventDefault();
-            submitVettingForm();
-        }
-    });
 
     // Observer para aplicar estilos a elementos dinámicos
     const observeDOM = () => {
@@ -329,6 +312,7 @@
                 if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
                     requestAnimationFrame(() => {
                         document.body.classList.add('cyborg-str-tool');
+                        addAutoNextPairClick(); // Vuelve a agregar eventos si se añaden nuevos botones dinámicamente
                     });
                 }
             }
