@@ -42,7 +42,7 @@
         },
         {
             "urlPattern": "https://cyborg.deckard.com/*",
-            "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/StylesCyborg.js"
+            "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/Styles2.js"
         },
         {
             "urlPattern": "https://cyborg.deckard.com/listing/CA/sonoma/*",
