@@ -156,6 +156,12 @@
             /* =================
                5. TABLAS MODERNAS
                ================= */
+
+               .cyborg-str-tool table th[data-dash-column="city_p"]:not(${EXCLUSIONS}) {
+                min-width: 180px !important;
+                max-width: 300px !important;
+            }
+
             .cyborg-str-tool table:not(${EXCLUSIONS}) {
                 width: 100% !important;
                 border-collapse: collapse !important;
