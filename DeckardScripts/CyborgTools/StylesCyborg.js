@@ -20,8 +20,6 @@
         .fancybox-button,
         [data-test-id="float-window-minimize-or-restore-btn"],
         [data-test-id="float-window-close-btn"],
-        .project-data-table,
-        .project-data-table,
         #btnCancel,
         #btnAccept
     `;
