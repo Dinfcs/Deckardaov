@@ -16,7 +16,6 @@
         #window_vetting_dlg *,
         #vetting_data_footer *,
         .pop_up_header_container *,
-        #iframe-button-container *,
         .fancybox-button,
         [data-test-id="float-window-minimize-or-restore-btn"],
         [data-test-id="float-window-close-btn"],
