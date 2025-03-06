@@ -91,7 +91,7 @@
         {
             "urlPattern": "*://www.google.com/maps/*",
             "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/ExternalScripts/Buscador2.js"
-        }},
+        },
         {
             "urlPattern": "*://www.bing.com/maps/*",
             "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/ExternalScripts/Buscador2.js"
