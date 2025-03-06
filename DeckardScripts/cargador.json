@@ -5,7 +5,7 @@
             "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/CyborgButtons.js"
         },
         {
-            "urlPattern": "https://cyborg.deckard.com/listing/*",
+            "urlPattern": "https://cyborg.deckard.com/listing/*STR*",
             "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/NearbyParcels.js"
         },
         {
@@ -13,31 +13,31 @@
             "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/Qaproductivity.js"
         },
         {
-            "urlPattern": "https://cyborg.deckard.com/listing/*STR*",
+            "urlPattern": "https://cyborg.deckard.com/listing/*/STR*",
             "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/Validator.js"
         },
         {
-            "urlPattern": "https://cyborg.deckard.com/listing/*",
+            "urlPattern": "https://cyborg.deckard.com/listing/*/STR*",
             "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/ReportApp.js"
         },
         {
-            "urlPattern": "https://cyborg.deckard.com/listing/*",
+            "urlPattern": "https://cyborg.deckard.com/listing/*/STR*",
             "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/Duplicate.js"
         },
         {
-            "urlPattern": "https://cyborg.deckard.com/listing/*",
+            "urlPattern": "https://cyborg.deckard.com/listing/*/STR*",
             "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/BingAndDuck.js"
         },
         {
-            "urlPattern": "https://cyborg.deckard.com/listing/*",
+            "urlPattern": "https://cyborg.deckard.com/listing/*/STR*",
             "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/CopyHost.js"
         },
         {
-            "urlPattern": "https://cyborg.deckard.com/listing/*",
+            "urlPattern": "https://cyborg.deckard.com/listing/*/STR*",
             "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/ProjectResoursesCyborg.js"
         },
         {
-            "urlPattern": "https://cyborg.deckard.com/listing/*",
+            "urlPattern": "https://cyborg.deckard.com/listing/*/STR*",
             "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/Viewer.js"
         },
         {
@@ -57,7 +57,7 @@
             "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/ExternalScripts/Buscador.js"
         },
         {
-            "urlPattern": "https://cyborg.deckard.com/listing/*/pending_qa",
+            "urlPattern": "https://cyborg.deckard.com/listing/*/*pending_qa",
             "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/Autofilterforqa.js"
         },
         {
