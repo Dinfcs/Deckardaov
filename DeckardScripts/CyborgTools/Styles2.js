@@ -303,6 +303,46 @@
                 color: #fff !important;
                 cursor: not-allowed !important;
             }
+
+                        /* Estilos para los tabs */
+.tab-container .tab {
+    display: inline-block;
+    background-color: ${THEME.bgLight} !important; /* Fondo claro */
+    border: 1px solid ${THEME.border} !important; /* Borde sutil */
+    border-bottom: none !important;
+    transition: all ${STYLE.transition} !important; /* Transición suave */
+    text-align: center !important;
+    box-sizing: border-box !important;
+    font-size: ${STYLE.fontSizeBuckets} !important; /* Tamaño de fuente base */
+    font-weight: 530 !important; /* Fuente semibold */
+    color: ${THEME.medium} !important; /* Color de texto secundario */
+    border-radius: ${STYLE.borderRadius} ${STYLE.borderRadius} 0 0 !important; /* Bordes redondeados solo arriba */
+    cursor: pointer !important; /* Cursor de puntero */
+    margin-right: ${STYLE.spacingXs} !important; /* Espaciado entre tabs */
+}
+
+/* Estilos para el tab seleccionado */
+.tab-container .tab--selected {
+    background-color: white !important; /* Fondo blanco */
+    color: ${THEME.primary} !important; /* Color primario */
+    border-color: ${THEME.primary} !important; /* Borde primario */
+    font-weight:500 !important; /* Fuente más gruesa */
+    box-shadow: 0 -2px 0 ${THEME.primary} inset !important; /* Línea inferior de acento */
+}
+
+/* Efecto hover para los tabs */
+.tab-container .tab:hover {
+    background-color: ${THEME.light} !important; /* Fondo más claro al pasar el mouse */
+    color: ${THEME.dark} !important; /* Color de texto más oscuro */
+}
+
+/* Efecto hover para el tab seleccionado */
+.tab-container .tab--selected:hover {
+    background-color: white !important; /* Mantener fondo blanco */
+    color: ${THEME.hover} !important; /* Color primario más oscuro */
+    border-color: ${THEME.hover} !important; /* Borde primario más oscuro */
+}
+
         `;
 
         addStyle(css);
