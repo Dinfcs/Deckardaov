@@ -9,7 +9,11 @@
             "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/NearbyParcels.js"
         },
         {
-            "urlPattern": "https://cyborg.deckard.com/listing/*",
+            "urlPattern": "https://cyborg.deckard.com/listing/*?tab=picked_for_qa&subset=pending_qa",
+            "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/Qaproductivity.js"
+        },
+        {
+            "urlPattern": "https://cyborg.deckard.com/listing/*STR*",
             "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/Validator.js"
         },
         {
