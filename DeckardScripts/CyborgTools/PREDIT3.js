@@ -84,7 +84,26 @@
         }
     }
 
-    function loadImage(imageUrl, imgElement, openImageCallback) {
+function loadImage(imageUrl, imgElement, openImageCallback) {
+    // Verificar si el enlace es de Google Drive
+    if (imageUrl.includes('drive.google.com')) {
+        fetchGoogleDriveImage(imageUrl)
+            .then(base64Image => {
+                if (base64Image) {
+                    imgElement.src = base64Image; // Asignar la imagen en base64
+                    imgElement.style.cursor = 'pointer';
+                    imgElement.addEventListener('click', openImageCallback);
+                } else {
+                    console.warn(`No se pudo obtener la imagen de Google Drive: ${imageUrl}. Mostrando imagen por defecto.`);
+                    showDefaultImage(imgElement);
+                }
+            })
+            .catch(error => {
+                console.error('Error al obtener la imagen de Google Drive:', error);
+                showDefaultImage(imgElement);
+            });
+    } else {
+        // Si no es Google Drive, cargar la imagen normalmente
         imgElement.src = imageUrl;
 
         imgElement.onload = () => {
@@ -93,12 +112,39 @@
         };
 
         imgElement.onerror = () => {
-            console.warn(`Failed to load image: ${imageUrl}. Showing default image.`);
-            imgElement.src = NO_PREVIEW_IMAGE;
-            imgElement.alt = "No Preview Available";
-            imgElement.style.cursor = 'default';
+            console.warn(`No se pudo cargar la imagen: ${imageUrl}. Mostrando imagen por defecto.`);
+            showDefaultImage(imgElement);
         };
     }
+}
+
+async function fetchGoogleDriveImage(imageUrl) {
+    const scriptUrl = 'https://script.google.com/macros/s/AKfycbyB3xq3Lz8OZtRMg0qxtXBD8cvjqlDx97eXWiqPu5zgJ1cxWJ04GsajAZ8ctK-zHLxHLQ/exec';
+    const fullUrl = `${scriptUrl}?url=${encodeURIComponent(imageUrl)}`;
+
+    try {
+        const response = await fetch(fullUrl);
+        if (!response.ok) {
+            throw new Error(`Error en la solicitud: ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        if (data && data.success && data.base64) {
+            return data.base64; // Usar directamente el base64 devuelto
+        } else {
+            throw new Error('La respuesta no contiene una imagen válida.');
+        }
+    } catch (error) {
+        console.error('Error al obtener la imagen de Google Drive:', error);
+        return null;
+    }
+}
+
+function showDefaultImage(imgElement) {
+    imgElement.src = NO_PREVIEW_IMAGE;
+    imgElement.alt = "No Preview Available";
+    imgElement.style.cursor = 'default';
+}
 
     function displayData(data) {
         const projectName = getProjectNameFromUrl();
