@@ -238,7 +238,7 @@
             }
 
             /* =================
-               8. ESTILOS COMUNES PARA TODOS LOS BOTONES
+               8. ESTILOS COMUNES PARA TODOS LOS BOTONES DUPLICADO
                ================= */
             .pop_up_header_container .btn,
             button[id*="btn_listing_pair_next"],
@@ -281,7 +281,7 @@
             }
 
             button[id*="btn_listing_pair_next"] { /* Next pair */
-                background-color: #FF5722 !important;
+                background-color: #B0BEC5 !important;
                 color: white !important;
             }
 
