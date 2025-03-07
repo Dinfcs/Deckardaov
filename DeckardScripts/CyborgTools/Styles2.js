@@ -156,8 +156,7 @@
             /* =================
                5. TABLAS MODERNAS
                ================= */
-
-               .cyborg-str-tool table th[data-dash-column="city_p"]:not(${EXCLUSIONS}) {
+            .cyborg-str-tool table th[data-dash-column="city_p"]:not(${EXCLUSIONS}) {
                 min-width: 180px !important;
                 max-width: 300px !important;
             }
@@ -220,7 +219,7 @@
                ================= */
             .pop_up_header_container {
                 position: fixed; /* Fija el contenedor en la pantalla */
-                top: 10px; /* Distancia desde la parte superior */
+                top: 5px; /* Distancia desde la parte superior */
                 left: 50%; /* Centrado horizontal */
                 transform: translateX(-50%); /* Ajuste para centrar correctamente */
                 z-index: 9999; /* Asegura que esté por encima de otros elementos */
@@ -238,7 +237,7 @@
             }
 
             /* =================
-               8. ESTILOS COMUNES PARA TODOS LOS BOTONES DUPLICADO
+               8. ESTILOS COMUNES PARA TODOS LOS BOTONES
                ================= */
             .pop_up_header_container .btn,
             button[id*="btn_listing_pair_next"],
@@ -281,7 +280,7 @@
             }
 
             button[id*="btn_listing_pair_next"] { /* Next pair */
-                background-color: #B0BEC5 !important;
+                background-color: #FF5722 !important;
                 color: white !important;
             }
 
@@ -309,45 +308,46 @@
                 cursor: not-allowed !important;
             }
 
-                        /* Estilos para los tabs */
-.tab-container .tab {
-    display: inline-block;
-    background-color: ${THEME.bgLight} !important; /* Fondo claro */
-    border: 1px solid ${THEME.border} !important; /* Borde sutil */
-    border-bottom: none !important;
-    transition: all ${STYLE.transition} !important; /* Transición suave */
-    text-align: center !important;
-    box-sizing: border-box !important;
-    font-size: ${STYLE.fontSizeBuckets} !important; /* Tamaño de fuente base */
-    font-weight: 530 !important; /* Fuente semibold */
-    color: ${THEME.medium} !important; /* Color de texto secundario */
-    border-radius: ${STYLE.borderRadius} ${STYLE.borderRadius} 0 0 !important; /* Bordes redondeados solo arriba */
-    cursor: pointer !important; /* Cursor de puntero */
-    margin-right: ${STYLE.spacingXs} !important; /* Espaciado entre tabs */
-}
+            /* =================
+               12. ESTILOS PARA LOS TABS
+               ================= */
+            .tab-container .tab {
+                display: inline-block;
+                background-color: ${THEME.bgLight} !important; /* Fondo claro */
+                border: 1px solid ${THEME.border} !important; /* Borde sutil */
+                border-bottom: none !important;
+                transition: all ${STYLE.transition} !important; /* Transición suave */
+                text-align: center !important;
+                box-sizing: border-box !important;
+                font-size: ${STYLE.fontSizeBuckets} !important; /* Tamaño de fuente base */
+                font-weight: 530 !important; /* Fuente semibold */
+                color: ${THEME.medium} !important; /* Color de texto secundario */
+                border-radius: ${STYLE.borderRadius} ${STYLE.borderRadius} 0 0 !important; /* Bordes redondeados solo arriba */
+                cursor: pointer !important; /* Cursor de puntero */
+                margin-right: ${STYLE.spacingXs} !important; /* Espaciado entre tabs */
+            }
 
-/* Estilos para el tab seleccionado */
-.tab-container .tab--selected {
-    background-color: white !important; /* Fondo blanco */
-    color: ${THEME.primary} !important; /* Color primario */
-    border-color: ${THEME.primary} !important; /* Borde primario */
-    font-weight:500 !important; /* Fuente más gruesa */
-    box-shadow: 0 -2px 0 ${THEME.primary} inset !important; /* Línea inferior de acento */
-}
+            /* Estilos para el tab seleccionado */
+            .tab-container .tab--selected {
+                background-color: white !important; /* Fondo blanco */
+                color: ${THEME.primary} !important; /* Color primario */
+                border-color: ${THEME.primary} !important; /* Borde primario */
+                font-weight: 500 !important; /* Fuente más gruesa */
+                box-shadow: 0 -2px 0 ${THEME.primary} inset !important; /* Línea inferior de acento */
+            }
 
-/* Efecto hover para los tabs */
-.tab-container .tab:hover {
-    background-color: ${THEME.light} !important; /* Fondo más claro al pasar el mouse */
-    color: ${THEME.dark} !important; /* Color de texto más oscuro */
-}
+            /* Efecto hover para los tabs */
+            .tab-container .tab:hover {
+                background-color: ${THEME.light} !important; /* Fondo más claro al pasar el mouse */
+                color: ${THEME.dark} !important; /* Color de texto más oscuro */
+            }
 
-/* Efecto hover para el tab seleccionado */
-.tab-container .tab--selected:hover {
-    background-color: white !important; /* Mantener fondo blanco */
-    color: ${THEME.hover} !important; /* Color primario más oscuro */
-    border-color: ${THEME.hover} !important; /* Borde primario más oscuro */
-}
-
+            /* Efecto hover para el tab seleccionado */
+            .tab-container .tab--selected:hover {
+                background-color: white !important; /* Mantener fondo blanco */
+                color: ${THEME.hover} !important; /* Color primario más oscuro */
+                border-color: ${THEME.hover} !important; /* Borde primario más oscuro */
+            }
         `;
 
         addStyle(css);
@@ -355,7 +355,8 @@
     };
 
     /**
-     * Agrega eventos a los botones para hacer clic automático en "Next Pair" después de 2 segundos
+     * Agrega eventos a los botones para hacer clic automático en "Next Pair" después de 0.5 segundos
+     * y mover el scroll de la página a la parte superior.
      */
     const addAutoNextPairClick = () => {
         // Selecciona los botones "Same", "In same MUS", "Different", y "Not sure"
@@ -373,13 +374,24 @@
             buttons.forEach(button => {
                 if (button) {
                     button.addEventListener('click', () => {
-                        // Programa el clic en "Next Pair" después de 2 segundos
+                        // Programa el clic en "Next Pair" después de 0.5 segundos
                         setTimeout(() => {
-                            nextPairButton.click();
+                            nextPairButton.click(); // Hacer clic en "Next Pair"
+                            window.scrollTo({ top: 0, behavior: 'smooth' }); // Mover el scroll a la parte superior
                         }, 500); // 500 milisegundos = 0.5 segundos
                     });
                 }
             });
+        }
+    };
+
+    /**
+     * Función para hacer clic en el botón "Save" si existe
+     */
+    const clickSaveButton = () => {
+        const saveButton = document.getElementById('btn_submit_vetting_dlg'); // Selecciona el botón Save
+        if (saveButton) {
+            saveButton.click(); // Hace clic en el botón Save si existe
         }
     };
 
@@ -413,6 +425,14 @@
         const observer = new MutationObserver(callback);
         observer.observe(targetNode, config);
     };
+
+    // Atajo de teclado: Ctrl + S para hacer clic en el botón Save
+    document.addEventListener('keydown', (e) => {
+        if (e.ctrlKey && e.key === 's') { // Verifica si se presionó Ctrl + S
+            e.preventDefault(); // Evita el comportamiento predeterminado (guardar la página)
+            clickSaveButton(); // Llama a la función para hacer clic en el botón Save
+        }
+    });
 
     // Iniciar observer si el DOM ya está cargado
     if (document.readyState !== 'loading') {
