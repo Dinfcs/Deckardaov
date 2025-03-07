@@ -10110,8 +10110,8 @@
       "Project": "FL - Leon County",
       "Public Records & GIS": [
         {
-          "url": "https://search.leonpa.gov/Search/Property",
-          "type": "PR (Use VPN)"
+          "type": "PR (Use VPN)",
+          "url": "https://search.leonpa.gov/Search/Property"
         },
         {
           "type": "GIS (Use VPN)",
@@ -10127,12 +10127,8 @@
       "Important Info": "<p>🔶 To search for an APN in Public Records, add a space before the central letter </p><p><strong style=\"color: rgb(230, 0, 0);\">(213450C0060 → 213450 C0060)</strong></p><p><span style=\"color: rgb(230, 0, 0);\">.</span></p><p>\n🔶 In GIS, search by address as the APN doesn't work well. </p><p><br></p><p>\n<strong>PD:</strong> Use layer #15 for clearer view and is recommended the middle button in the top-right corner to access the pictographic view for better clarity.</p><p><br></p><p>\n🔶 There are several listings on Locke St in Cyborg with Unit #A.\nThese are U1OM, so if you have a different unit (e.g., C), just locate the property, remove #A, and keep the general address.\nEach house has a different housefront and four units, so ensure you map the right one.\nIf the specific unit is known, the AO should include the unit and implement the Unit Box.</p>",
       "Media": [
         {
-          "url": "https://drive.google.com/file/d/1jV9NPipjPevBFHAuGXv8emm90RaVnP-o/view?usp=sharing",
-          "type": "GIS: How to activate Layer #15 and Pictographic View"
-        },
-        {
-          "type": "N/A",
-          "url": "https://drive.google.com/file/d/1jV9NPipjPevBFHAuGXv8emm90RaVnP-o/view"
+          "type": "GIS: How to activate Layer #15 and Pictographic View",
+          "url": "https://drive.google.com/file/d/1jV9NPipjPevBFHAuGXv8emm90RaVnP-o/view?usp=sharing"
         }
       ]
     },
