@@ -1,3 +1,13 @@
+// ==UserScript==
+// @name         PREDIT3
+// @namespace    ProjectResources Cyborg
+// @version      3.1
+// @description  Se optimiza lectura de base de datos, se guarda en caché y solo se suplanta si hay diferencia con la de la base de datos. Se borra barra de nombre cuando se consiguen datos y aparece cuando no se consiguen datos. / se ejecuta el script al detectar el boton edit para sincronizar con la pagina / Se agrega función de copiar nombre del proyecto al portapapeles y mostrar notificación.
+// @author
+// @match        https://cyborg.deckard.com/listing/*/STR*
+// @grant        none
+// ==/UserScript==
+
 (function () {
     'use strict';
 
@@ -83,31 +93,10 @@
         };
 
         imgElement.onerror = () => {
-            console.warn(`Fallo la carga directa de ${imageUrl}. Intentando con GM_xmlhttpRequest...`);
-            GM_xmlhttpRequest({
-                method: "GET",
-                url: imageUrl,
-                responseType: "blob",
-                onload: function(response) {
-                    if (response.status >= 200 && response.status < 300) {
-                        const blobUrl = URL.createObjectURL(response.response);
-                        imgElement.src = blobUrl;
-                        imgElement.style.cursor = 'pointer';
-                        imgElement.addEventListener('click', openImageCallback);
-                    } else {
-                        console.error(`Error al cargar imagen: ${response.status} ${response.statusText}`);
-                        imgElement.src = NO_PREVIEW_IMAGE;
-                        imgElement.alt = "No Preview Available";
-                        imgElement.style.cursor = 'default';
-                    }
-                },
-                onerror: function(error) {
-                    console.error("Error en GM_xmlhttpRequest:", error);
-                    imgElement.src = NO_PREVIEW_IMAGE;
-                    imgElement.alt = "No Preview Available";
-                    imgElement.style.cursor = 'default';
-                }
-            });
+            console.warn(`Failed to load image: ${imageUrl}. Showing default image.`);
+            imgElement.src = NO_PREVIEW_IMAGE;
+            imgElement.alt = "No Preview Available";
+            imgElement.style.cursor = 'default';
         };
     }
 
@@ -152,10 +141,12 @@
             const cell = headerRow.insertCell();
             const cellStyles = {
                 border: '1px solid #ddd',
-                padding: '10px 12px',
+                padding: '16px 12px', // Aumentar el padding para más espacio
                 width: COLUMN_WIDTHS[index],
-                fontSize: '14px',
+                fontSize: '16px', // Aumentar el tamaño de la fuente
+                fontWeight: 'bold', // Aplicar negrita
                 color: '#495057',
+                backgroundColor: '#f8f9fa', // Fondo gris claro para los encabezados
             };
             applyStyles(cell, cellStyles);
             cell.textContent = header;
@@ -274,29 +265,129 @@
         container.style.backgroundColor = '#fff';
         container.appendChild(table);
         document.body.appendChild(container);
+
+        // Crear el iframe con pestañas
+        createIframeWithTabs(container);
     }
 
+    // Crear iframe con pestañas estilo "tabs"
+    function createIframeWithTabs(container) {
+        const iframeContainer = document.createElement('div');
+        iframeContainer.style.marginTop = '20px';
+
+        // Crear pestañas
+        const tabContainer = document.createElement('div');
+        tabContainer.style.display = 'flex';
+        tabContainer.style.marginBottom = '10px';
+
+        const currentParcelTab = document.createElement('div');
+        currentParcelTab.className = 'tab tab--selected';
+        currentParcelTab.innerHTML = '<span>Current Parcel</span>';
+        currentParcelTab.style.cursor = 'pointer';
+
+        const widerSearchTab = document.createElement('div');
+        widerSearchTab.className = 'tab';
+        widerSearchTab.innerHTML = '<span>Parcel in Wider Search Range</span>';
+        widerSearchTab.style.cursor = 'pointer';
+
+        // Estilos para las pestañas
+        const tabStyles = `
+            .tab {
+                display: inline-block;
+                background-color: #f9f9f9;
+                border: 1px solid #d6d6d6;
+                border-bottom: none;
+                padding: 20px 25px;
+                transition: background-color, color 200ms;
+                width: 100%;
+                text-align: center;
+                box-sizing: border-box;
+            }
+            .tab:last-of-type {
+                border-right: 1px solid #d6d6d6;
+                border-bottom: 1px solid #d6d6d6;
+            }
+            .tab:hover {
+                cursor: pointer;
+            }
+            .tab--selected {
+                border-top: 2px solid #1975FA;
+                color: black;
+                background-color: white;
+            }
+            .tab--selected:hover {
+                background-color: white;
+            }
+            .tab--disabled {
+                color: #d6d6d6;
+            }
+
+            @media screen and (min-width: 800px) {
+                .tab {
+                    border: 1px solid #d6d6d6;
+                    border-right: none;
+                    width: calc(100% / 2);
+                }
+                .tab--selected,
+                .tab:last-of-type.tab--selected {
+                    border-bottom: none;
+                    border-top: 2px solid #1975FA;
+                }
+            }
+        `;
+
+        const styleElement = document.createElement('style');
+        styleElement.textContent = tabStyles;
+        document.head.appendChild(styleElement);
+
+        tabContainer.appendChild(currentParcelTab);
+        tabContainer.appendChild(widerSearchTab);
+
+        // Crear iframe
+        const iframe = document.createElement('iframe');
+        iframe.style.width = '100%';
+        iframe.style.height = '600px';
+        iframe.style.border = 'none';
+        iframe.style.borderRadius = '8px';
+        iframe.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
+
+        // Obtener el enlace del "Parcel in wider search range"
+        const widerSearchLink = document.querySelector('a[href*="near_location"]');
+        const widerSearchUrl = widerSearchLink ? widerSearchLink.href : '';
+
+        // Manejar el cambio de pestañas
+        currentParcelTab.addEventListener('click', () => {
+            iframe.src = modifyUrl();
+            currentParcelTab.classList.add('tab--selected');
+            widerSearchTab.classList.remove('tab--selected');
+        });
+
+        widerSearchTab.addEventListener('click', () => {
+            if (widerSearchUrl) {
+                iframe.src = widerSearchUrl;
+                widerSearchTab.classList.add('tab--selected');
+                currentParcelTab.classList.remove('tab--selected');
+            } else {
+                alert('No wider search range parcel link found.');
+            }
+        });
+
+        // Establecer la pestaña inicial
+        iframe.src = modifyUrl();
+
+        iframeContainer.appendChild(tabContainer);
+        iframeContainer.appendChild(iframe);
+        container.appendChild(iframeContainer);
+    }
+
+    // Modificar URL para el iframe
     function modifyUrl() {
         const urlParts = window.location.href.split('/');
         return `https://cyborg.deckard.com/parcel/${urlParts[4]}/${urlParts[5]}/${urlParts[6]}`;
     }
 
-    function createIframe() {
-        const iframe = document.createElement('iframe');
-        iframe.src = modifyUrl();
-        iframe.style.cssText = `
-            width: 100%;
-            height: 600px;
-            border: none;
-            margin-top: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        `;
-
-        const container = document.querySelector('.project-data-table').parentElement;
-        container.appendChild(iframe);
-    }
-
-    waitForElement('.project-data-table', createIframe);
-    waitForElement('#btn_open_vetting_dlg', () => fetchData());
+    // Iniciar la carga de datos cuando la página esté lista
+    waitForElement('#btn_open_vetting_dlg', () => {
+        fetchData();
+    });
 })();
