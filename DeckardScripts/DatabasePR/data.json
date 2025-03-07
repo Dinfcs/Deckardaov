@@ -10255,6 +10255,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "FL - Town Of Lauderdale By The Sea",
+      "Public Records & GIS": [
+        {
+          "url": "https://web.bcpa.net/bcpaclient/#/Record-Search",
+          "type": "PR"
+        },
+        {
+          "url": "https://gis.fortlauderdale.gov/propertyreporter/?extent=-8916228%2C3025910%2C-8915846%2C3026062%2C102100",
+          "type": "GIS"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "<p>Please note that if you want to confirm the APN in the GIS, you must search for the FOLIO name.</p>",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
