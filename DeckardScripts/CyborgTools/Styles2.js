@@ -280,7 +280,7 @@
             }
 
             button[id*="btn_listing_pair_next"] { /* Next pair */
-                background-color: #FF5722 !important;
+                background-color: #B0BEC5 !important;
                 color: white !important;
             }
 
