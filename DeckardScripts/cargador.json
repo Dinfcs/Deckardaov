@@ -45,10 +45,6 @@
             "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/Viewer.js"
         },
         {
-            "urlPattern": "https://cyborg.deckard.com/*",
-            "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/Styles2.js"
-        },
-        {
             "urlPattern": "https://cyborg.deckard.com/listing/CA/sonoma/*",
             "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/ScriptsFotPrGis/PrSonoma.js"
         },
@@ -91,7 +87,10 @@
         {
             "urlPattern": "*://*/*",
             "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/ExternalScripts/UniversalAE.js"
-        }
-        
+        },
+        {
+            "urlPattern": "https://cyborg.deckard.com/*",
+            "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/Styles2.js"
+        }        
     ]
 }
