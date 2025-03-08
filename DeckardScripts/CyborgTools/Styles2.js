@@ -20,7 +20,8 @@
         [data-test-id="float-window-minimize-or-restore-btn"],
         [data-test-id="float-window-close-btn"],
         #btnCancel,
-        #btnAccept
+        #btnAccept,
+        #project-data-table
     `;
 
     // Sistema de colores modernos
