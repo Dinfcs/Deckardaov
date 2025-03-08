@@ -21,7 +21,7 @@
         [data-test-id="float-window-close-btn"],
         #btnCancel,
         #btnAccept,
-        #project-data-table
+        #projectResources-table
     `;
 
     // Sistema de colores modernos
