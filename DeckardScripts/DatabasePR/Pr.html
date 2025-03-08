@@ -97,10 +97,41 @@
             gap: 10px;
             margin-bottom: 10px;
         }
+        /* Estilos para el modal */
+        #imageModal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        #modalImage {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+        }
+        #closeModal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+        img {
+            max-width: 100px;
+            max-height: 100px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
     </style>
 </head>
 <body>
-    
     <div class="search-update-container">
         <input type="text" id="searchBar" onkeyup="searchProjects()" placeholder="Search for project names...">
         <button id="updateButton">Update</button>
@@ -108,10 +139,18 @@
 
     <div id="tableContainer"></div>
 
+    <!-- Modal para mostrar imágenes -->
+    <div id="imageModal">
+        <span id="closeModal">&times;</span>
+        <img id="modalImage" src="" alt="Modal Image">
+    </div>
+
     <script>
         const jsonURL = 'https://script.google.com/macros/s/AKfycbzKRzrnEtgTaGmSDN0daIjtquhBWL5rwn_ZQR8FRYbn5fHtODKSQSTKoi1bXWmrlR0vSg/exec';
+        const NO_PREVIEW_IMAGE = "https://dinfcs.github.io/Deckardaov/DeckardScripts/DatabasePR/imagen.png";
         let projectData = [];
 
+        // Función para cargar datos desde la URL
         async function cargarDatos() {
             try {
                 const response = await fetch(jsonURL);
@@ -128,6 +167,7 @@
             }
         }
 
+        // Función para mostrar la tabla
         function displayTable(data) {
             data.sort((a, b) => a.Project.localeCompare(b.Project));
 
@@ -157,7 +197,7 @@
                         td.classList.add('important-info');
                         td.innerHTML = item[header]; // Permite interpretar HTML
                     } 
-                    else if (['Public Records & GIS', 'License List', 'Media'].includes(header) && Array.isArray(item[header])) {
+                    else if (['Public Records & GIS', 'License List'].includes(header) && Array.isArray(item[header])) {
                         item[header].forEach(link => {
                             const a = document.createElement('a');
                             a.href = link.url;
@@ -165,6 +205,49 @@
                             a.target = '_blank';
                             td.appendChild(a);
                             td.appendChild(document.createElement('br'));
+                        });
+                    } 
+                    else if (header === 'Media' && Array.isArray(item[header])) {
+                        item[header].forEach(media => {
+                            if (media.url === 'N/A') {
+                                // No mostrar nada si el enlace es "N/A"
+                                return;
+                            }
+
+                            const imgContainer = document.createElement('div');
+                            imgContainer.style.marginBottom = '8px';
+
+                            if (media.url.includes('drive.google.com')) {
+                                // Si es Google Drive, cargar la imagen en base64
+                                fetchGoogleDriveImage(media.url)
+                                    .then(base64Image => {
+                                        if (base64Image) {
+                                            const img = document.createElement('img');
+                                            img.src = base64Image;
+                                            img.alt = media.type;
+                                            img.addEventListener('click', () => openModalWithImage(base64Image));
+                                            imgContainer.appendChild(img);
+                                        }
+                                    })
+                                    .catch(() => {
+                                        const img = document.createElement('img');
+                                        img.src = NO_PREVIEW_IMAGE;
+                                        img.alt = media.type;
+                                        imgContainer.appendChild(img);
+                                    });
+                            } else {
+                                // Si no es Google Drive, mostrar la imagen por defecto con hipervínculo
+                                const a = document.createElement('a');
+                                a.href = media.url;
+                                a.target = '_blank';
+                                const img = document.createElement('img');
+                                img.src = NO_PREVIEW_IMAGE;
+                                img.alt = media.type;
+                                a.appendChild(img);
+                                imgContainer.appendChild(a);
+                            }
+
+                            td.appendChild(imgContainer);
                         });
                     } 
                     else {
@@ -179,6 +262,39 @@
             tableContainer.appendChild(table);
         }
 
+        // Función para obtener imágenes de Google Drive
+        async function fetchGoogleDriveImage(imageUrl) {
+            const scriptUrl = 'https://script.google.com/macros/s/AKfycbyB3xq3Lz8OZtRMg0qxtXBD8cvjqlDx97eXWiqPu5zgJ1cxWJ04GsajAZ8ctK-zHLxHLQ/exec';
+            const fullUrl = `${scriptUrl}?url=${encodeURIComponent(imageUrl)}`;
+
+            try {
+                const response = await fetch(fullUrl);
+                if (!response.ok) throw new Error(`Error en la solicitud: ${response.statusText}`);
+
+                const data = await response.json();
+                if (data && data.success && data.base64) return data.base64;
+                throw new Error('La respuesta no contiene una imagen válida.');
+            } catch (error) {
+                console.error('Error al obtener la imagen de Google Drive:', error);
+                return null;
+            }
+        }
+
+        // Función para abrir el modal con la imagen
+        function openModalWithImage(imageUrl) {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            modalImage.src = imageUrl;
+            modal.style.display = 'flex';
+        }
+
+        // Función para cerrar el modal
+        document.getElementById('closeModal').addEventListener('click', () => {
+            const modal = document.getElementById('imageModal');
+            modal.style.display = 'none';
+        });
+
+        // Función para buscar proyectos
         function searchProjects() {
             const input = document.getElementById('searchBar').value.toLowerCase();
             const filteredData = projectData.filter(project => project.Project.toLowerCase().includes(input));
@@ -190,6 +306,7 @@
             location.reload();
         });
 
+        // Cargar datos al iniciar
         cargarDatos();
     </script>
 </body>
