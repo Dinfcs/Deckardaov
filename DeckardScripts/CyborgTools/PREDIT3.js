@@ -84,7 +84,18 @@
         }
     }
 
+const IMAGE_CACHE_KEY = 'imageCache'; // Clave para almacenar la caché de imágenes
+
 function loadImage(imageUrl, imgElement, openImageCallback) {
+    // Verificar si la imagen está en la caché
+    const cachedImage = getCachedImage(imageUrl);
+    if (cachedImage) {
+        imgElement.src = cachedImage; // Usar la imagen desde la caché
+        imgElement.style.cursor = 'pointer';
+        imgElement.addEventListener('click', openImageCallback);
+        return; // Salir de la función, ya que la imagen está en caché
+    }
+
     // Verificar si el enlace es de Google Drive
     if (imageUrl.includes('drive.google.com')) {
         fetchGoogleDriveImage(imageUrl)
@@ -93,6 +104,9 @@ function loadImage(imageUrl, imgElement, openImageCallback) {
                     imgElement.src = base64Image; // Asignar la imagen en base64
                     imgElement.style.cursor = 'pointer';
                     imgElement.addEventListener('click', openImageCallback);
+
+                    // Guardar la imagen en la caché
+                    cacheImage(imageUrl, base64Image);
                 } else {
                     console.warn(`No se pudo obtener la imagen de Google Drive: ${imageUrl}. Mostrando imagen por defecto.`);
                     showDefaultImage(imgElement);
@@ -109,6 +123,11 @@ function loadImage(imageUrl, imgElement, openImageCallback) {
         imgElement.onload = () => {
             imgElement.style.cursor = 'pointer';
             imgElement.addEventListener('click', openImageCallback);
+
+            // Guardar la imagen en la caché (si es una URL válida)
+            if (imageUrl.startsWith('http')) {
+                cacheImage(imageUrl, imageUrl);
+            }
         };
 
         imgElement.onerror = () => {
@@ -144,6 +163,38 @@ function showDefaultImage(imgElement) {
     imgElement.src = NO_PREVIEW_IMAGE;
     imgElement.alt = "No Preview Available";
     imgElement.style.cursor = 'default';
+}
+
+// Funciones para manejar la caché
+function getCachedImage(imageUrl) {
+    const cache = JSON.parse(localStorage.getItem(IMAGE_CACHE_KEY)) || {};
+    return cache[imageUrl]; // Devuelve la imagen en caché o undefined si no existe
+}
+
+function cacheImage(imageUrl, base64Image) {
+    const cache = JSON.parse(localStorage.getItem(IMAGE_CACHE_KEY)) || {};
+    cache[imageUrl] = base64Image; // Almacenar la imagen en la caché
+    localStorage.setItem(IMAGE_CACHE_KEY, JSON.stringify(cache));
+}
+
+// Limpiar la caché si es necesario (por ejemplo, si se vuelve demasiado grande)
+function clearImageCache() {
+    localStorage.removeItem(IMAGE_CACHE_KEY);
+}
+    function cleanUpImageCache(maxSize = 5 * 1024 * 1024) { // 5 MB
+    const cache = JSON.parse(localStorage.getItem(IMAGE_CACHE_KEY)) || {};
+    let cacheSize = JSON.stringify(cache).length;
+
+    if (cacheSize > maxSize) {
+        // Eliminar las imágenes más antiguas
+        const sortedKeys = Object.keys(cache).sort((a, b) => cache[a].timestamp - cache[b].timestamp);
+        for (const key of sortedKeys) {
+            delete cache[key];
+            cacheSize = JSON.stringify(cache).length;
+            if (cacheSize <= maxSize) break;
+        }
+        localStorage.setItem(IMAGE_CACHE_KEY, JSON.stringify(cache));
+    }
 }
 
     function displayData(data) {
