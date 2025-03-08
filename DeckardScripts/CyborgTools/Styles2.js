@@ -12,18 +12,21 @@
     'use strict';
 
     // Lista de selectores excluidos
-const EXCLUSIONS = `
-    #window_vetting_dlg *,
-    #vetting_data_footer *,
-    .pop_up_header_container *,
-    .fancybox-button,
-    [data-test-id="float-window-minimize-or-restore-btn"],
-    [data-test-id="float-window-close-btn"],
-    #btnCancel,
-    #btnAccept,
-    .pr-table, /* Excluir la tabla con la clase pr-table */
-    #projectResources-table /* Excluir la tabla con el ID projectResources-table */
-`;
+    const EXCLUSIONS = `
+        #window_vetting_dlg *,
+        #vetting_data_footer *,
+        .pop_up_header_container *,
+        .fancybox-button,
+        [data-test-id="float-window-minimize-or-restore-btn"],
+        [data-test-id="float-window-close-btn"],
+        #btnCancel,
+        #btnAccept,
+        .pr-table,
+        .pr-table th,
+        .pr-table thead,
+        .pr-table tr,
+        .pr-table td
+    `;
 
     // Sistema de colores modernos
     const THEME = {
