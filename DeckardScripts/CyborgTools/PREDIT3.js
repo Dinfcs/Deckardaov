@@ -107,8 +107,8 @@
 
             .pr-media-grid {
                 display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
-                gap: 12px;
+                grid-template-columns: repeat(auto-fit, minmax(90px, 200px));
+                gap: 15px;
             }
 
             .pr-media-item {
@@ -119,7 +119,7 @@
             }
 
             .pr-image-container {
-                width: 100%;
+                width: auto;
                 aspect-ratio: 1;
                 overflow: hidden;
                 border-radius: 6px;
@@ -141,8 +141,7 @@
                 font-size: 12px;
                 color: #4b5563;
                 text-align: center;
-                max-width: 100%;
-                white-space: nowrap;
+                max-width: 100%;           
                 overflow: hidden;
                 text-overflow: ellipsis;
             }
@@ -257,8 +256,8 @@
                     font-size: 13px;
                 }
 
-                .pr-media-grid {
-                    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+        .pr-media-grid {
+                    grid-template-columns: repeat(auto-fit, minmax(70px, 10));
                 }
             }
         `;
