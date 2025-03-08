@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         PREDIT3 Optimized
 // @namespace    ProjectResources Cyborg
-// @version      3.5
-// @description
+// @version      3.7
+// @description  Visualización mejorada de recursos de proyectos
 // @author
 // @match        https://cyborg.deckard.com/listing/*/STR*
 // @grant        none
@@ -13,10 +13,257 @@
 
     const JSON_URL = 'https://script.google.com/macros/s/AKfycbzKRzrnEtgTaGmSDN0daIjtquhBWL5rwn_ZQR8FRYbn5fHtODKSQSTKoi1bXWmrlR0vSg/exec';
     const CACHE_KEY = 'projectDataCache', IMAGE_CACHE_KEY = 'imageCache';
-    const COLUMN_WIDTHS = ['10%', '10%', '10%', '50%', '20%'];
     const HEADERS = ['Project', 'Public Records & GIS', 'License List', 'Important Info', 'Media'];
     const NO_PREVIEW_IMAGE = "https://dinfcs.github.io/Deckardaov/DeckardScripts/DatabasePR/imagen.png";
     const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyB3xq3Lz8OZtRMg0qxtXBD8cvjqlDx97eXWiqPu5zgJ1cxWJ04GsajAZ8ctK-zHLxHLQ/exec';
+
+    // Agregar fuentes y estilos globales
+    function addGlobalStyles() {
+        const styleEl = document.createElement('style');
+        styleEl.textContent = `
+            @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+            .pr-container * {
+                box-sizing: border-box;
+                font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            }
+
+            .pr-table {
+                width: 100%;
+                border-collapse: separate;
+                border-spacing: 0;
+                border-radius: 6px;
+                overflow: hidden;
+                background: white;
+                margin-bottom: 24px;
+                border: 1px solid #eaeaea;
+            }
+
+            .pr-table thead {
+                background: #f9fafb;
+            }
+
+            .pr-table th {
+                color: #111827;
+                font-weight: 600;
+                font-size: 14px;
+                padding: 12px 18px;
+                text-align: left;
+                border-bottom: 1px solid #eaeaea;
+                position: relative;
+            }
+
+            .pr-table td {
+                padding: 16px 18px;
+                border-bottom: 1px solid #eaeaea;
+                color: #374151;
+                font-size: 14px;
+                line-height: 1.5;
+                vertical-align: top;
+            }
+
+            .pr-table tr:last-child td {
+                border-bottom: none;
+            }
+
+            .pr-table th:not(:last-child):after {
+                content: '';
+                position: absolute;
+                right: 0;
+                top: 25%;
+                height: 50%;
+                width: 1px;
+                background: #eaeaea;
+            }
+
+            .pr-table td:not(:last-child) {
+                border-right: 1px solid #eaeaea;
+            }
+
+            .pr-link-list {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .pr-link {
+                display: block;
+                color: #2563eb;
+                font-weight: 500;
+                text-decoration: none;
+                transition: all 0.15s ease;
+                padding: 6px 10px;
+                border-radius: 4px;
+                background: #f0f5ff;
+            }
+
+            .pr-link:hover {
+                background: #e0eaff;
+                transform: translateY(-1px);
+            }
+
+            .pr-media-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+                gap: 12px;
+            }
+
+            .pr-media-item {
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
+                align-items: center;
+            }
+
+            .pr-image-container {
+                width: 100%;
+                aspect-ratio: 1;
+                overflow: hidden;
+                border-radius: 6px;
+                background: #f9fafb;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 1px solid #eaeaea;
+                cursor: pointer;
+                transition: transform 0.2s ease, box-shadow 0.2s ease;
+            }
+
+            .pr-image-container:hover {
+                transform: scale(1.03);
+                box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            }
+
+            .pr-media-label {
+                font-size: 12px;
+                color: #4b5563;
+                text-align: center;
+                max-width: 100%;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .pr-image {
+                max-width: 85%;
+                max-height: 85%;
+                object-fit: contain;
+            }
+
+            .pr-iframe-container {
+                border: 1px solid #eaeaea;
+                border-radius: 6px;
+                overflow: hidden;
+                margin: 24px 0;
+            }
+
+            .pr-iframe-header {
+                padding: 12px 18px;
+                background: #f9fafb;
+                border-bottom: 1px solid #eaeaea;
+                font-weight: 600;
+                font-size: 14px;
+                color: #111827;
+                display: flex;
+                align-items: center;
+            }
+
+            .pr-iframe {
+                width: 100%;
+                height: 580px;
+                border: none;
+                display: block;
+            }
+
+            .pr-modal {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.75);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 10000;
+                opacity: 0;
+                transition: opacity 0.2s ease;
+            }
+
+            .pr-modal-content {
+                max-width: 90%;
+                max-height: 90%;
+                position: relative;
+                opacity: 0;
+                transform: scale(0.95);
+                transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
+            }
+
+            .pr-modal-image {
+                max-width: 100%;
+                max-height: 90vh;
+                display: block;
+                border-radius: 4px;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            }
+
+            .pr-modal-close {
+                position: absolute;
+                top: -40px;
+                right: 0;
+                width: 34px;
+                height: 34px;
+                border-radius: 50%;
+                background: rgba(255,255,255,0.9);
+                color: #111827;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                font-size: 20px;
+                font-weight: 600;
+                transition: background 0.2s ease;
+            }
+
+            .pr-modal-close:hover {
+                background: white;
+            }
+
+            .pr-error-message {
+                margin: 24px;
+                padding: 12px 16px;
+                background-color: #fee2e2;
+                color: #dc2626;
+                border-radius: 6px;
+                font-size: 14px;
+                font-weight: 500;
+                display: flex;
+                align-items: center;
+                border-left: 4px solid #dc2626;
+            }
+
+            @media (max-width: 768px) {
+                .pr-table {
+                    display: block;
+                    overflow-x: auto;
+                }
+
+                .pr-table th,
+                .pr-table td {
+                    padding: 12px 14px;
+                    font-size: 13px;
+                }
+
+                .pr-media-grid {
+                    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+                }
+            }
+        `;
+        document.head.appendChild(styleEl);
+    }
 
     function waitForElement(selector, callback) {
         new MutationObserver((_, obs) => {
@@ -46,10 +293,14 @@
 
     async function fetchData() {
         try {
+            addGlobalStyles();
+
             let cachedData = localStorage.getItem(CACHE_KEY);
             if (cachedData) displayData(JSON.parse(cachedData));
+
             const response = await fetch(JSON_URL, { cache: 'no-store' });
             if (!response.ok) throw new Error(response.statusText);
+
             const newData = await response.json();
             if (JSON.stringify(newData) !== cachedData) {
                 localStorage.setItem(CACHE_KEY, JSON.stringify(newData));
@@ -72,27 +323,49 @@
     }
 
     function showError(message) {
-        let errorBar = document.createElement('div');
-        errorBar.style.cssText = 'background-color: #caccca; color: #000; padding: 1px; font-size: 18px; font-weight: bold;';
-        errorBar.textContent = message;
-        document.body.appendChild(errorBar);
+        const errorMsg = document.createElement('div');
+        errorMsg.className = 'pr-error-message';
+        errorMsg.textContent = message;
+        document.body.appendChild(errorMsg);
     }
 
     function createTable(data) {
-        let table = document.createElement('table'), tbody = table.createTBody();
-        table.style.cssText = 'width: 100%; border-collapse: collapse; font-size: 14px; border: 1px solid #ddd;';
+        // Contenedor principal
+        const mainContainer = document.createElement('div');
+        mainContainer.className = 'pr-container';
+        mainContainer.style.margin = '0px';
 
-        let thead = table.createTHead(), headerRow = thead.insertRow();
-        HEADERS.forEach((header, i) => {
-            let cell = headerRow.insertCell();
-            cell.style.cssText = `border: 1px solid #ddd; padding: 16px 12px; width: ${COLUMN_WIDTHS[i]}; font-size: 16px; font-weight: bold; background-color: #f8f9fa;`;
-            cell.textContent = header;
+        // Título de la tabla
+        const tableTitle = document.createElement('div');
+        tableTitle.style.cssText = `
+        font-size: 18px;
+        font-weight: 600;
+        color: #111827;
+        margin-bottom: 16px;
+    `;
+
+        // Crear tabla
+        const table = document.createElement('table');
+        table.className = 'pr-table';
+        table.id = 'projectResources-table';
+
+        // Crear encabezado
+        const thead = table.createTHead();
+        const headerRow = thead.insertRow();
+
+        HEADERS.forEach(header => {
+            const th = document.createElement('th');
+            th.textContent = header;
+            th.style.textAlign = 'center'; // Centrando el texto del encabezado
+            headerRow.appendChild(th);
         });
 
-        let row = tbody.insertRow();
-        HEADERS.forEach((header, i) => {
-            let cell = row.insertCell();
-            cell.style.cssText = `border: 1px solid #ddd; padding: 10px 12px; width: ${COLUMN_WIDTHS[i]}; vertical-align: top;`;
+        // Crear cuerpo de la tabla
+        const tbody = table.createTBody();
+        const row = tbody.insertRow();
+
+        HEADERS.forEach(header => {
+            const cell = row.insertCell();
 
             if (header === 'Public Records & GIS' || header === 'License List') {
                 appendLinks(cell, data[header]);
@@ -102,55 +375,77 @@
                 appendMedia(cell, data[header]);
             } else {
                 cell.textContent = data[header] || '';
+                cell.style.fontWeight = '600';
             }
         });
 
-        document.body.appendChild(table);
+        // Agregar todo al contenedor principal
+        mainContainer.appendChild(tableTitle);
+        mainContainer.appendChild(table);
+        document.body.appendChild(mainContainer);
     }
 
-    // ✅ Función para agregar los enlaces correctamente en Public Records & GIS y License List
+
     function appendLinks(cell, items) {
         if (!items || items.length === 0) {
-            cell.textContent = "No data available";
+            cell.innerHTML = `<span style="color: #9ca3af; font-style: italic;">No data available</span>`;
             return;
         }
 
-        items.forEach(({ type, url }) => {
-            let linkContainer = document.createElement('div');
-            linkContainer.style.marginBottom = '5px';
+        const linkList = document.createElement('ul');
+        linkList.className = 'pr-link-list';
 
-            let link = document.createElement('a');
+        items.forEach(({ type, url }) => {
+            const listItem = document.createElement('li');
+
+            const link = document.createElement('a');
             link.href = url;
             link.target = '_blank';
+            link.className = 'pr-link';
             link.textContent = type;
-            link.style.cssText = 'color: #007bff; text-decoration: none; font-weight: bold;';
 
             if (url === 'N/A') {
                 link.textContent = 'N/A';
-                link.style.color = '#888';
+                link.style.color = '#9ca3af';
+                link.style.fontStyle = 'italic';
                 link.href = '#';
                 link.onclick = (e) => e.preventDefault();
+                link.style.background = '#f3f4f6';
             }
 
-            linkContainer.appendChild(link);
-            cell.appendChild(linkContainer);
+            listItem.appendChild(link);
+            linkList.appendChild(listItem);
         });
+
+        cell.appendChild(linkList);
     }
 
     function appendMedia(cell, media) {
+        if (!media || !media.length) {
+            cell.innerHTML = `<span style="color: #9ca3af; font-style: italic;">No media available</span>`;
+            return;
+        }
+
+        const mediaGrid = document.createElement('div');
+        mediaGrid.className = 'pr-media-grid';
+
         media.forEach(({ url, type }) => {
             if (url === 'N/A') return;
-            let container = document.createElement('div');
-            container.style.marginBottom = '10px';
 
-            let img = document.createElement('img');
-            img.style.cssText = 'max-width: 100px; max-height: 100px; cursor: pointer; border-radius: 4px; display: block; margin: 0 auto;';
+            const mediaItem = document.createElement('div');
+            mediaItem.className = 'pr-media-item';
+
+            const imgContainer = document.createElement('div');
+            imgContainer.className = 'pr-image-container';
+
+            const img = document.createElement('img');
+            img.className = 'pr-image';
             img.src = NO_PREVIEW_IMAGE;
-            img.onclick = () => openImageModal(img.src); // Abre modal en lugar de enlace
+            img.alt = type;
 
-            let text = document.createElement('div');
-            text.textContent = type;
-            text.style.cssText = 'text-align: center; font-size: 12px; color: #007bff; margin-top: 4px;';
+            const label = document.createElement('div');
+            label.className = 'pr-media-label';
+            label.textContent = type;
 
             if (url.includes('drive.google.com')) {
                 let cachedImage = getCachedImage(url);
@@ -164,40 +459,62 @@
                         }
                     });
                 }
+                imgContainer.onclick = () => openImageModal(img.src);
             } else {
-                img.onclick = () => window.open(url, '_blank'); // Para enlaces no Drive, abre en una nueva pestaña
+                imgContainer.onclick = () => window.open(url, '_blank');
             }
 
-            container.append(img, text);
-            cell.appendChild(container);
+            imgContainer.appendChild(img);
+            mediaItem.appendChild(imgContainer);
+            mediaItem.appendChild(label);
+            mediaGrid.appendChild(mediaItem);
         });
+
+        cell.appendChild(mediaGrid);
     }
 
-    // Función para abrir el modal con la imagen en base64
     function openImageModal(imgSrc) {
-        let modal = document.createElement('div');
-        modal.style.cssText = `
-        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-        background: rgba(0, 0, 0, 0.8); display: flex; align-items: center; justify-content: center;
-        z-index: 1000;
-    `;
+        const modal = document.createElement('div');
+        modal.className = 'pr-modal';
 
-        let img = document.createElement('img');
+        const modalContent = document.createElement('div');
+        modalContent.className = 'pr-modal-content';
+
+        const img = document.createElement('img');
+        img.className = 'pr-modal-image';
         img.src = imgSrc;
-        img.style.cssText = 'max-width: 90%; max-height: 90%; border-radius: 8px;';
 
-        let closeBtn = document.createElement('span');
-        closeBtn.innerHTML = '&times;';
-        closeBtn.style.cssText = `
-        position: absolute; top: 20px; right: 30px; font-size: 30px; color: white;
-        cursor: pointer; font-weight: bold;
-    `;
-        closeBtn.onclick = () => document.body.removeChild(modal);
+        const closeBtn = document.createElement('div');
+        closeBtn.className = 'pr-modal-close';
+        closeBtn.innerHTML = '×';
+        closeBtn.onclick = () => {
+            modal.style.opacity = '0';
+            modalContent.style.opacity = '0';
+            modalContent.style.transform = 'scale(0.95)';
+            setTimeout(() => document.body.removeChild(modal), 300);
+        };
 
-        modal.append(img, closeBtn);
+        modal.onclick = (e) => {
+            if (e.target === modal) {
+                modal.style.opacity = '0';
+                modalContent.style.opacity = '0';
+                modalContent.style.transform = 'scale(0.95)';
+                setTimeout(() => document.body.removeChild(modal), 300);
+            }
+        };
+
+        modalContent.appendChild(img);
+        modalContent.appendChild(closeBtn);
+        modal.appendChild(modalContent);
         document.body.appendChild(modal);
-    }
 
+        // Activar animación después de agregar al DOM
+        setTimeout(() => {
+            modal.style.opacity = '1';
+            modalContent.style.opacity = '1';
+            modalContent.style.transform = 'scale(1)';
+        }, 10);
+    }
 
     async function fetchGoogleDriveImage(imageUrl) {
         try {
@@ -219,37 +536,35 @@
         cache[imageUrl] = base64;
         localStorage.setItem(IMAGE_CACHE_KEY, JSON.stringify(cache));
     }
-function createIframeWithTabs() {
-    // Verifica si el iframe ya existe para evitar duplicados
-    if (document.querySelector('#parcel-iframe')) return;
 
-    // Busca el enlace "All parcels in the region"
-    const parcelLink = document.querySelector('a[href*="/parcel/"]');
-    if (!parcelLink) return; // Si no se encuentra el enlace, no hacer nada
+    function createIframeWithTabs() {
+        if (document.querySelector('#parcel-iframe')) return;
 
-    // Obtiene la URL completa
-    const parcelUrl = 'https://cyborg.deckard.com' + parcelLink.getAttribute('href');
+        const parcelLink = document.querySelector('a[href*="/parcel/"]');
+        if (!parcelLink) return;
 
-    // Crea el iframe
-    const iframe = document.createElement('iframe');
-    iframe.src = parcelUrl;
-    iframe.id = 'parcel-iframe'; // Asigna un ID único al iframe
-    iframe.style.cssText = `
-        width: 100%;
-        height: 600px;
-        border: 1px solid #ddd;
-        margin-top: 20px;
-        display: block; /* Asegura que ocupe el ancho completo */
-    `;
+        const parcelUrl = 'https://cyborg.deckard.com' + parcelLink.getAttribute('href');
 
-    // Inserta el iframe al final del body
-    document.body.appendChild(iframe);
-    console.log('Iframe insertado correctamente al final de la página.');
-}
+        const container = document.createElement('div');
+        container.className = 'pr-container';
+        container.style.margin = '0px';
 
-// Espera a que la página esté completamente cargada y luego inserta el iframe
-window.addEventListener('load', createIframeWithTabs);
+        const iframeContainer = document.createElement('div');
+        iframeContainer.className = 'pr-iframe-container';
+
+        const header = document.createElement('div');
+
+
+        const iframe = document.createElement('iframe');
+        iframe.className = 'pr-iframe';
+        iframe.id = 'parcel-iframe';
+        iframe.src = parcelUrl;
+
+        iframeContainer.appendChild(header);
+        iframeContainer.appendChild(iframe);
+        container.appendChild(iframeContainer);
+        document.body.appendChild(container);
+    }
 
     waitForElement('#btn_open_vetting_dlg', fetchData);
-
 })();
