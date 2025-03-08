@@ -10110,25 +10110,25 @@
       "Project": "FL - Leon County",
       "Public Records & GIS": [
         {
-          "url": "https://search.leonpa.gov/Search/Property",
-          "type": "PR (Use VPN)"
+          "type": "PR (Use VPN)",
+          "url": "https://search.leonpa.gov/Search/Property"
         },
         {
-          "type": "GIS (Use VPN)",
-          "url": "https://tlcgis.leoncountyfl.gov/LandInfoPublic/"
+          "url": "https://tlcgis.leoncountyfl.gov/LandInfoPublic/",
+          "type": "GIS (Use VPN)"
         }
       ],
       "License List": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "https://drive.google.com/file/d/18Tl4UpvFIVdSoqWwbcaHoFp9Sbh_3g10/view?usp=sharing",
+          "type": "N/A"
         }
       ],
-      "Important Info": "<p>🔶 To search for an APN in Public Records, add a space before the central letter </p><p><strong style=\"color: rgb(102, 163, 224);\">(213450C0060 → 213450 C0060)</strong></p><p><strong style=\"color: rgb(230, 0, 0);\"><span class=\"ql-cursor\">﻿﻿﻿﻿</span></strong></p><p>🔶 In GIS, search by address as the APN doesn't work well. </p><p><br></p><p><strong>PD:</strong> Use layer #15 for clearer view and is recommended the middle button in the top-right corner to access the pictographic view for better clarity.</p><p>\n🔶 There are several listings on Locke St in Cyborg with Unit #A.\nThese are U1OM, so if you have a different unit (e.g., C), just locate the property, remove #A, and keep the general address.\nEach house has a different housefront and four units, so ensure you map the right one.\nIf the specific unit is known, the AO should include the unit and implement the Unit Box.</p>",
+      "Important Info": "<p>🔶 To search for an APN in Public Records, add a space before the central letter </p><p><strong style=\"color: rgb(102, 163, 224);\">(213450C0060 → 213450 C0060)</strong></p><p><strong style=\"color: rgb(230, 0, 0);\"><span class=\"ql-cursor\">﻿﻿﻿﻿﻿</span></strong></p><p>🔶 In GIS, search by address as the APN doesn't work well. </p><p><br></p><p><strong>PD:</strong> Use layer #15 for clearer view and is recommended the middle button in the top-right corner to access the pictographic view for better clarity.</p><p>\n🔶 There are several listings on Locke St in Cyborg with Unit #A.\nThese are U1OM, so if you have a different unit (e.g., C), just locate the property, remove #A, and keep the general address.\nEach house has a different housefront and four units, so ensure you map the right one.\nIf the specific unit is known, the AO should include the unit and implement the Unit Box.</p>",
       "Media": [
         {
-          "type": "GIS: How to activate Layer #15 and Pictographic View",
-          "url": "https://drive.google.com/uc?export=view&id=1WYRXVG2ZJlPrZ8XI9KmKXQ5lFcifhgwr"
+          "url": "https://drive.google.com/uc?export=view&id=1WYRXVG2ZJlPrZ8XI9KmKXQ5lFcifhgwr",
+          "type": "GIS: How to activate Layer #15 and Pictographic View"
         }
       ]
     },
@@ -10279,28 +10279,6 @@
         {
           "type": "N/A",
           "url": "N/A"
-        }
-      ]
-    },
-    {
-      "Project": "sdw",
-      "Public Records & GIS": [
-        {
-          "url": "N/A",
-          "type": "N/A"
-        }
-      ],
-      "License List": [
-        {
-          "url": "https://drive.google.com/file/d/1HAOQ5NIkx2K_VxRP-szhQK0-gNYt7am3/view?usp=sharing",
-          "type": "as"
-        }
-      ],
-      "Important Info": "<p><br></p>",
-      "Media": [
-        {
-          "type": "N/A",
-          "url": "https://drive.google.com/uc?export=view&id=1-4lmh6QD8YJpGops2PVqVljjPdmCWuHd"
         }
       ]
     }
