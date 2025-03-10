@@ -29,9 +29,7 @@
         { urlPattern: /^https:\/\/cyborg\.deckard\.com\/parcel\/.+$/, scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/ParcelAdresses.js' },
         { urlPattern: /^https:\/\/cyborg\.deckard\.com\/parcel\/.+$/, scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/ParcelFilter.js' },
         { urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/MA\/dukes...town_of_oak_bluffs\/.*\/STR.*$/, scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/ScriptsFotPrGis/PR-MA%20-Town_of_Oak_Bluffs.js' },
-        { urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/MA\/dukes...town_of_tisbury\/.*\/STR.*$/, scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/ScriptsFotPrGis/PR-MA-Town_of_Tisbury.js' },
-        { urlPattern: /^https:\/\/login-spatialstream\.prod\.lightboxre\.com\/MemberPages(\/.*)?$/i,scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/ExternalScripts/AutologinLB-PQ.js'},
-        { urlPattern: /^https:\/\/pqweb\.parcelquest\.com\/#login$/,scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/ExternalScripts/AutologinLB-PQ.js' }    
+        { urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/MA\/dukes...town_of_tisbury\/.*\/STR.*$/, scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/ScriptsFotPrGis/PR-MA-Town_of_Tisbury.js' }   
         
     ];
 
