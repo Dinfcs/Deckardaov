@@ -1,11 +1,10 @@
 // ==UserScript==
 // @name         Modificar columna 0 y abrir en iframe con notificación
 // @namespace    https://cyborg.deckard.com/
-// @version      1.4
+// @version      1.5
 // @description  Convierte valores en la columna 0 en enlaces que copian el valor con notificación y abren la nueva URL en un iframe, pegando el valor en el filtro automáticamente.
 // @author       TuNombre
 // @match        https://cyborg.deckard.com/parcel/*
-// @grant        GM_setClipboard
 // ==/UserScript==
 
 (function() {
@@ -26,14 +25,17 @@
                 enlace.style.cursor = 'pointer';
 
                 // Evento al hacer clic
-                enlace.addEventListener('click', (e) => {
+                enlace.addEventListener('click', async (e) => {
                     e.preventDefault();
 
-                    // Copiar al portapapeles
-                    GM_setClipboard(valor);
-
-                    // Mostrar notificación simple
-                    mostrarNotificacion(`Copiado: ${valor}`);
+                    // Copiar al portapapeles usando navigator.clipboard
+                    try {
+                        await navigator.clipboard.writeText(valor);
+                        mostrarNotificacion(`Copiado: ${valor}`);
+                    } catch (err) {
+                        console.error('Error al copiar:', err);
+                        mostrarNotificacion('Error al copiar');
+                    }
 
                     // Construir la nueva URL
                     let nuevaURL = window.location.href.replace('/parcel/', '/listing/') + `?tab=all&subset=mapped`;
