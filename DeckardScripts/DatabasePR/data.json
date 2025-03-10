@@ -2793,7 +2793,7 @@
       "Public Records & GIS": [
         {
           "type": "PR",
-          "url": "https://maps.nassauflpa.com/NassauSearch/IS_SearchResults2015/ShowIS_NewSearchResults2015Table.aspx"
+          "url": "https://search.ncpafl.com/"
         },
         {
           "type": "GIS",
@@ -2802,11 +2802,11 @@
       ],
       "License List": [
         {
-          "type": "License list",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7BB66C0911-1F9F-4657-B225-93BB99391FCE%7D&file=Deckard%20Resort%20Rental%20Report%20SL.xlsx&action=default&mobileredirect=true"
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7BB66C0911-1F9F-4657-B225-93BB99391FCE%7D&file=Deckard%20Resort%20Rental%20Report%20SL.xlsx&action=default&mobileredirect=true",
+          "type": "License list"
         }
       ],
-      "Important Info": "N/A",
+      "Important Info": "<p>N/A</p>",
       "Media": [
         {
           "type": "N/A",
