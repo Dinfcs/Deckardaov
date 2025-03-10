@@ -360,30 +360,30 @@
     };
 
     /**
-     * Agrega eventos a los botones para hacer clic automático en "Next Pair" después de 0.5 segundos
+     * Agrega eventos a los botones para hacer clic automático en "Next Pair" después de un tiempo específico
      * y mover el scroll de la página a la parte superior.
      */
     const addAutoNextPairClick = () => {
         // Selecciona los botones "Same", "In same MUS", "Different", y "Not sure"
         const buttons = [
-            document.querySelector('.btn-success'), // Same
-            document.querySelector('.btn-primary'), // In same MUS
-            document.querySelector('.btn-warning'), // Different
-            document.querySelector('.btn-info')     // Not sure
+            { button: document.querySelector('.btn-success'), delay: 2000 }, // Same: 2 segundos
+            { button: document.querySelector('.btn-primary'), delay: 500 },  // In same MUS: 0.5 segundos
+            { button: document.querySelector('.btn-warning'), delay: 500 },  // Different: 0.5 segundos
+            { button: document.querySelector('.btn-info'), delay: 500 }      // Not sure: 0.5 segundos
         ];
 
         // Selecciona el botón "Next Pair"
         const nextPairButton = document.querySelector('button[id*="btn_listing_pair_next"]');
 
         if (nextPairButton) {
-            buttons.forEach(button => {
+            buttons.forEach(({ button, delay }) => {
                 if (button) {
                     button.addEventListener('click', () => {
-                        // Programa el clic en "Next Pair" después de 0.5 segundos
+                        // Programa el clic en "Next Pair" después del tiempo especificado
                         setTimeout(() => {
                             nextPairButton.click(); // Hacer clic en "Next Pair"
                             window.scrollTo({ top: 0, behavior: 'smooth' }); // Mover el scroll a la parte superior
-                        }, 500); // 500 milisegundos = 0.5 segundos
+                        }, delay); // Tiempo de espera en milisegundos
                     });
                 }
             });
