@@ -7352,16 +7352,16 @@
           "url": "http://webtax.averycountync.gov/itsnet/RealEstate.aspx"
         },
         {
-          "type": "GIS",
-          "url": "https://agdonline.maps.arcgis.com/apps/webappviewer/index.html?id=7c399996997242bdbf2a0bf5c18e3a2a"
+          "url": "https://agdonline.maps.arcgis.com/apps/webappviewer/index.html?id=7c399996997242bdbf2a0bf5c18e3a2a",
+          "type": "GIS"
         },
         {
           "type": "GIS Burke County",
           "url": "https://gis.burkenc.org/"
         },
         {
-          "type": "GIS Watauga County ",
-          "url": "https://www.arcgis.com/apps/View/index.html?appid=3cfacb022e9c4ae1af2b20ea19612dea"
+          "url": "https://www.arcgis.com/apps/View/index.html?appid=3cfacb022e9c4ae1af2b20ea19612dea",
+          "type": "GIS Watauga County"
         }
       ],
       "License List": [
@@ -7370,7 +7370,7 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "Check very well the parcels because in GIS they do not appear subdivided, but they are units with their own APN each one.\nIn some cases, Cyborg is not bringing us the city and it would be necessary to do AO.\nWhen taking the APN from Regrid it would be necessary to add 00000 at the end.\nFor listings located at 301 Pinnacle Inn Rd condo, make AO including the unit to look like this: 301 Pinnacle Inn Rd Unit 2314, Beech Mountain, NC 28604\nPlease, map the listings belonging to the condo located at 3781 Tynecastle Hwy, Banner Elk, NC 28604, with the APN 18670006245700000 and the address provided by Cyborg (without AO), and classify them as Timeshare in the structure. \nThere are several condos that bring the Building and Unit number in the rental platforms or in Zillows, but really the Building they refer to is unique in that address, so it would not be necessary to do AO. To confirm this, we can go by the Public Records and if the address only has the unit and Cyborg the same, leave it unchanged. ",
+      "Important Info": "<p><strong>1.Parcel Verification</strong>:</p><ul><li class=\"ql-indent-1\">Thoroughly check the parcels since in GIS they are not shown as subdivided. However, each is a unit with its own APN.</li></ul><p><strong>2.Cyborg and AO Adjustments</strong>:</p><ul><li class=\"ql-indent-1\">In some cases, Cyborg does not provide the city, so it may be necessary to perform AO (Address Override).</li></ul><p><strong>3.APN Format from Regrid</strong>:</p><ul><li class=\"ql-indent-1\">When retrieving the APN from Regrid, append <code>00000</code> to the end of the number.</li></ul><p><strong>4.Specific Address Handling</strong>:</p><ul><li class=\"ql-indent-1\">For listings at <strong>301 Pinnacle Inn Rd condo</strong>, perform AO by including the unit in the format: <em>301 Pinnacle Inn Rd Unit 2314, Beech Mountain, NC 28604</em>.</li></ul><p><strong>5.Mapping Timeshare Listings</strong>:</p><ul><li class=\"ql-indent-1\">Map listings for the condo at <strong>3781 Tynecastle Hwy, Banner Elk, NC 28604</strong> (APN: <code>18670006245700000</code>), using the address provided by Cyborg. No AO is required here. Classify these listings as <strong>Timeshare</strong> in the structure.</li></ul><p><strong>6.Building and Unit Numbers</strong>:</p><ul><li>For condos where rental platforms or Zillows provide a Building and Unit number:</li><li class=\"ql-indent-2\">If the Building is unique to that address, AO is unnecessary.</li><li class=\"ql-indent-1\">To confirm, consult Public Records. If the address includes only the unit and Cyborg matches it, leave the address unchanged.</li></ul><p><br></p>",
       "Media": [
         {
           "type": "N/A",
