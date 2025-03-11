@@ -5762,12 +5762,8 @@
           "url": "https://common3.mptsweb.com/MBC/eldorado/tax/search#"
         },
         {
-          "type": "GIS",
-          "url": "https://rpgis.isd.lacounty.gov/Html5Viewer/index.html?viewer=GISNET_Public.GIS-NET_Public"
-        },
-        {
-          "type": "GIS2 (Use VPN)",
-          "url": "https://see-eldorado.edcgov.us/ugotnet/"
+          "url": "https://see-eldorado.edcgov.us/ugotnet/",
+          "type": "GIS (Use VPN)"
         }
       ],
       "License List": [
@@ -5776,7 +5772,7 @@
           "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B61C95CA5-ED6C-4722-920D-A96499D38258%7D&file=EDC%20Sandbox%20TOT%20052020241-%20Copy%20EM.xls&action=default&mobileredirect=true&wdsle=0"
         }
       ],
-      "Important Info": "For GIS 2 please remove the last 3 digits of the APN",
+      "Important Info": "<p>For GIS 2 please remove the last 3 digits of the APN</p>",
       "Media": [
         {
           "type": "N/A",
