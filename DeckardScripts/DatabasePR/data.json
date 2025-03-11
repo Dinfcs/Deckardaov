@@ -10285,6 +10285,28 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "FL - St Johns County",
+      "Public Records & GIS": [
+        {
+          "type": "GIS",
+          "url": "https://www.gis.sjcfl.us/Html5Viewer/index.html?viewer=iMap"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "<p><br></p>",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
