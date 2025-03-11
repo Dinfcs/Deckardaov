@@ -4134,16 +4134,16 @@
       "Project": "TX - City Of Galveston",
       "Public Records & GIS": [
         {
-          "type": "Public Records (Use VPN)",
-          "url": "http://esearch.galvestoncad.org/"
+          "url": "http://esearch.galvestoncad.org/",
+          "type": "Public Records (Use VPN)"
         },
         {
           "url": "https://galvcountymaps.maps.arcgis.com/apps/webappviewer/index.html?id=d619c89878cd4c399b376b51996a7541",
           "type": "GIS (Use VPN)"
         },
         {
-          "url": "https://www.loom.com/share/c54ee0c8150d4823a4f587425e5567f5",
-          "type": "PR and GIS demonstration - City of Galveston, TX (Use VPN)"
+          "type": "PR and GIS demonstration - City of Galveston, TX (Use VPN)",
+          "url": "https://www.loom.com/share/c54ee0c8150d4823a4f587425e5567f5"
         }
       ],
       "License List": [
@@ -4152,15 +4152,15 @@
           "type": "Deckard Valid Registration 03.31.2023 (1).xlsx"
         },
         {
-          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/Eej2Z33oDThBgal6OUaI560BEi1YGbJNLVTM70XWxiXkLA?e=1gfX3l",
-          "type": "License List"
+          "type": "License List",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/Eej2Z33oDThBgal6OUaI560BEi1YGbJNLVTM70XWxiXkLA?e=1gfX3l"
         }
       ],
-      "Important Info": "<h3>Guidelines for Using the Unit Box</h3><ol><li><strong>Addresses with Unit Numbers in \"Condos\":</strong></li></ol><ul><li class=\"ql-indent-1\">Even if Cyborg already includes the unit in the address, ensure that you also enter it in the <strong>Unit Box</strong>.</li><li class=\"ql-indent-1\">\"Condos\" are the main structures with their own APN.</li><li><strong>Example:</strong></li><li class=\"ql-indent-1\">Cyborg Address: <code>123 Main St C-304, Galveston, TX 77550</code></li><li class=\"ql-indent-1\">Corrected Address (AO): <code>123 Main St Unit C-304, Galveston, TX 77550</code></li><li class=\"ql-indent-1\"><strong>Unit Box:</strong> <code>C-304</code></li></ul><ol><li><strong>Mapping Accessory Dwelling Units (ADUs):</strong></li></ol><ul><li class=\"ql-indent-1\">When mapping a unit with an attached unit number, make sure to use the <strong>Unit Box</strong> to enter it.</li></ul><ol><li><strong>Address Corrections with Public Records:</strong></li></ol><ul><li class=\"ql-indent-1\">Some addresses have a different structure compared to Public Records.</li><li class=\"ql-indent-1\">Use <strong>Address Override</strong> to correct them as needed.</li><li><strong>Example:</strong></li><li class=\"ql-indent-1\">Cyborg Address: <code>1821 1/2 Avenue O, Galveston, TX 77550</code></li><li class=\"ql-indent-1\">Public Record Address: <code>1821 Avenue O 1/2, Galveston, TX 77550</code></li></ul><p><br></p>",
+      "Important Info": "<p><strong>1.Addresses with Unit Numbers in \"Condos\":</strong></p><ul><li class=\"ql-indent-1\">Even if Cyborg already includes the unit in the address, ensure that you also enter it in the <strong>Unit Box</strong>.</li><li class=\"ql-indent-1\">\"Condos\" are the main structures with their own APN.</li><li><strong>Example:</strong></li><li class=\"ql-indent-1\">Cyborg Address: <code>123 Main St C-304, Galveston, TX 77550</code></li><li class=\"ql-indent-1\">Corrected Address (AO): <code>123 Main St Unit C-304, Galveston, TX 77550</code></li><li class=\"ql-indent-1\"><strong>Unit Box:</strong> <code>C-304</code></li></ul><p><strong>2.Mapping Accessory Dwelling Units (ADUs):</strong></p><ul><li class=\"ql-indent-1\">When mapping a unit with an attached unit number, make sure to use the <strong>Unit Box</strong> to enter it.</li></ul><p><strong>3.Address Corrections with Public Records:</strong></p><ul><li class=\"ql-indent-1\">Some addresses have a different structure compared to Public Records.</li><li class=\"ql-indent-1\">Use <strong>Address Override</strong> to correct them as needed.</li><li><strong>Example:</strong></li><li class=\"ql-indent-1\">Cyborg Address: <code>1821 1/2 Avenue O, Galveston, TX 77550</code></li><li class=\"ql-indent-1\">Public Record Address: <code>1821 Avenue O 1/2, Galveston, TX 77550</code></li></ul><p><br></p>",
       "Media": [
         {
-          "url": "N/A",
-          "type": "N/A"
+          "type": "N/A",
+          "url": "N/A"
         }
       ]
     },
