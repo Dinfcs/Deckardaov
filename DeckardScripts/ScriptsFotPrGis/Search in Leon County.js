@@ -1,12 +1,10 @@
 // ==UserScript==
 // @name         Search in Leon County
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.2
 // @description  Busca valores en Leon County o utiliza el portapapeles si no hay valor disponible
 // @author       Luis Escalante
 // @match        https://cyborg.deckard.com/listing/FL/leon/_/STR*
-// @grant        none
-// @grant        navigator.clipboard.readText
 // ==/UserScript==
 
 (function() {
@@ -27,28 +25,30 @@
     button.style.zIndex = "9999";
 
     // Agregar funcionalidad al botón
-    button.addEventListener("click", async () => {
+    button.addEventListener("click", () => {
         let value = null;
 
         // Intentar encontrar el valor en la página
-        const tdElement = document.querySelector('td.value[data-field-name="apn"][data-modified="true"] p a');
+        const tdElement = document.querySelector('td.value[data-field-name="apn"] p');
         if (tdElement) {
-            const valueMatch = tdElement.innerText.match(/^\d+/); // Captura solo los dígitos
+            const valueMatch = tdElement.innerText.match(/^\w+/); // Captura el valor alfanumérico al inicio
             if (valueMatch) {
-                value = valueMatch[0];
+                value = valueMatch[0]; // Primer grupo coincidente
             }
         }
 
-        // Si no se encontró el valor, usar el portapapeles
+        // Si no se encontró el valor, leer manualmente el portapapeles
         if (!value) {
-            try {
-                value = await navigator.clipboard.readText(); // Leer el texto del portapapeles
-                if (!/^\d+$/.test(value)) { // Validar que el texto del portapapeles sea un número
-                    alert("El contenido del portapapeles no es un número válido.");
-                    return;
-                }
-            } catch (err) {
-                alert("No se pudo acceder al portapapeles: " + err);
+            const input = document.createElement("textarea");
+            document.body.appendChild(input);
+            input.focus();
+            document.execCommand("paste"); // Pegar desde el portapapeles
+            value = input.value.trim(); // Obtener el texto pegado
+            document.body.removeChild(input); // Limpiar el textarea
+
+            // Validar el valor obtenido
+            if (!/^\w+$/.test(value)) { // Validar que sea un formato alfanumérico
+                alert("El contenido del portapapeles no tiene un formato válido.");
                 return;
             }
         }
