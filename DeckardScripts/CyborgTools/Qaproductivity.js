@@ -15,7 +15,13 @@
         { regex: /\/listing\/AUS\/([^\/]+)\/([^\/]+)\/(STR[^\/]+)/, format: m => `AUS - ${m[2].replace(/_/g, ' ') === 'Bass Coast' ? m[2].replace(/_/g, ' ') : 'City of ' + capitalizeWords(m[2].replace(/_/g, ' '))}` },
         { regex: /\/listing\/([A-Za-z]+)\/([^\/]+)\.\.\.(town|township)_of_([^\/]+)\/_/, format: m => `${m[1].toUpperCase()} - ${m[3].charAt(0).toUpperCase() + m[3].slice(1)} Of ${capitalizeWords(m[4].replace(/_/g, ' '))}` },
         { regex: /\/listing\/([A-Za-z]+)\/([^\/]+)\/_/, format: m => `${m[1].toUpperCase()} - ${capitalizeWords(m[2].replace(/_/g, ' '))} County` },
-        { regex: /\/listing\/([A-Za-z]+)\/([^\/]+)\/([^\/]+)\//, format: m => `${m[1].toUpperCase()} - ${capitalizeWords(m[3].replace(/_/g, ' '))}` }
+        {
+            regex: /\/listing\/([A-Za-z]+)\/([^\/]+)\/([^\/]+)(?:\/|\?|$)/,
+            format: m => {
+                const cleaned = m[3].split('?')[0]; // Elimina cualquier cosa después de "?"
+                return `${m[1].toUpperCase()} - ${capitalizeWords(cleaned.replace(/_/g, ' '))}`;
+            }
+        }
     ];
 
     function capitalizeWords(str) {
@@ -30,6 +36,7 @@
         }
         return "Desconocido";
     }
+
 
     function insertQaLink() {
         const userSection = document.getElementById("user_section");
