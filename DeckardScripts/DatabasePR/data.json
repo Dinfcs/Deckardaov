@@ -4134,12 +4134,12 @@
       "Project": "TX - City Of Galveston",
       "Public Records & GIS": [
         {
-          "url": "http://esearch.galvestoncad.org/",
-          "type": "Public Records (Use VPN)"
+          "type": "Public Records (Use VPN)",
+          "url": "http://esearch.galvestoncad.org/"
         },
         {
-          "url": "https://galvcountymaps.maps.arcgis.com/apps/webappviewer/index.html?id=d619c89878cd4c399b376b51996a7541",
-          "type": "GIS (Use VPN)"
+          "type": "GIS (Use VPN)",
+          "url": "https://galvcountymaps.maps.arcgis.com/apps/webappviewer/index.html?id=d619c89878cd4c399b376b51996a7541"
         },
         {
           "type": "PR and GIS demonstration - City of Galveston, TX (Use VPN)",
@@ -4156,11 +4156,11 @@
           "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/Eej2Z33oDThBgal6OUaI560BEi1YGbJNLVTM70XWxiXkLA?e=1gfX3l"
         }
       ],
-      "Important Info": "<p><strong>1.Addresses with Unit Numbers in \"Condos\":</strong></p><ul><li class=\"ql-indent-1\">Even if Cyborg already includes the unit in the address, ensure that you also enter it in the <strong>Unit Box</strong>.</li><li class=\"ql-indent-1\">\"Condos\" are the main structures with their own APN.</li><li><strong>Example:</strong></li><li class=\"ql-indent-1\">Cyborg Address: <code>123 Main St C-304, Galveston, TX 77550</code></li><li class=\"ql-indent-1\">Corrected Address (AO): <code>123 Main St Unit C-304, Galveston, TX 77550</code></li><li class=\"ql-indent-1\"><strong>Unit Box:</strong> <code>C-304</code></li></ul><p><strong>2.Mapping Accessory Dwelling Units (ADUs):</strong></p><ul><li class=\"ql-indent-1\">When mapping a unit with an attached unit number, make sure to use the <strong>Unit Box</strong> to enter it.</li></ul><p><strong>3.Address Corrections with Public Records:</strong></p><ul><li class=\"ql-indent-1\">Some addresses have a different structure compared to Public Records.</li><li class=\"ql-indent-1\">Use <strong>Address Override</strong> to correct them as needed.</li><li><strong>Example:</strong></li><li class=\"ql-indent-1\">Cyborg Address: <code>1821 1/2 Avenue O, Galveston, TX 77550</code></li><li class=\"ql-indent-1\">Public Record Address: <code>1821 Avenue O 1/2, Galveston, TX 77550</code></li></ul><p><br></p>",
+      "Important Info": "<p><strong>Using the Unit Box</strong>: When dealing with condo addresses, if the unit number is included in Cyborg, make sure to re-enter it in the unit box, regardless of it already being part of the address.</p><p><strong>Main Structure with Unit Numbers</strong>: For condos (the main structure with their own APN), even if the address in Cyborg includes the unit, you must use the unit box to input the unit number.</p><p><strong>Example</strong>:</p><p><br></p><ul><li><strong>Cyborg Address</strong>: 123 Main St C-304, Galveston, TX 77550.</li><li><strong>Address Override (AO)</strong>: 123 Main St Unit C-304, Galveston, TX 77550.</li><li><strong>Unit Box</strong>: C-304.</li></ul><p><strong>Mapping ADUs</strong>: Use the unit box for Accessory Dwelling Units (ADUs) as well, if they have a unit number attached.</p><p><strong>Address Structure Differences</strong>: If the address in Cyborg differs from the Public Records, use Address Override to correct it.</p><p><strong>Example of Address Structure Correction</strong>:</p><p><br></p><ul><li><strong>Cyborg Address</strong>: 1821 1/2 Avenue O, Galveston, TX 77550.</li><li><strong>Public Records Address</strong>: 1821 Avenue O 1/2, Galveston, TX 77550.</li></ul><p><br></p>",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ]
     },
