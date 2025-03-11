@@ -10290,8 +10290,12 @@
       "Project": "FL - St Johns County",
       "Public Records & GIS": [
         {
-          "type": "GIS",
-          "url": "https://www.gis.sjcfl.us/Html5Viewer/index.html?viewer=iMap"
+          "type": "PR",
+          "url": "https://qpublic.schneidercorp.com/Application.aspx?App=StJohnsCountyFL&Layer=Parcels&PageType=Search"
+        },
+        {
+          "url": "https://www.gis.sjcfl.us/Html5Viewer/index.html?viewer=iMap",
+          "type": "GIS"
         }
       ],
       "License List": [
