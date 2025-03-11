@@ -103,6 +103,10 @@
         {
             "urlPattern": "https://cyborg.deckard.com/listing/FL/st_johns/*",
             "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/ScriptsFotPrGis/PR%20FL%20-%20St%20Johns%20County.js"
-        }   
+        },
+                {
+            "urlPattern": "https://cyborg.deckard.com/listing/FL/leon/*",
+            "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/ScriptsFotPrGis/Search%20in%20Leon%20County.js"
+        } 
     ]
 }
