@@ -10290,18 +10290,18 @@
       "Project": "FL - St Johns County",
       "Public Records & GIS": [
         {
-          "type": "PR",
-          "url": "https://qpublic.schneidercorp.com/Application.aspx?App=StJohnsCountyFL&Layer=Parcels&PageType=Search"
+          "url": "https://qpublic.schneidercorp.com/Application.aspx?App=StJohnsCountyFL&Layer=Parcels&PageType=Search",
+          "type": "PR"
         },
         {
-          "url": "https://www.gis.sjcfl.us/Html5Viewer/index.html?viewer=iMap",
-          "type": "GIS"
+          "type": "GIS",
+          "url": "https://www.gis.sjcfl.us/Html5Viewer/index.html?viewer=iMap"
         }
       ],
       "License List": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EVZj08874W1Dpy7QadHw6G0BvKkZU9SlLJbXIb0jiMxsQw?e=LORag9",
+          "type": "License List"
         }
       ],
       "Important Info": "<p><br></p>",
