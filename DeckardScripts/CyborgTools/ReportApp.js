@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name      Ramdon Qa Report App
+// @name      Ramdon Qa Report App 2.5
 // @version     2.5
 // @description
 // @author      Lucho
@@ -182,202 +182,206 @@
         return feedbackTemplates[error] || "Error. Please write the feedback manually and report the error to Luis Escalante";
     }
 
-    // Función para mostrar la ventana de edición
-    function showEditWindow(data, onConfirm) {
-        const errors = [
-            "Wrong APN", "Bad APN", "Wrong Address Override", "Missing Address Override",
-            "Missing Address Override in an NMF Listing (If required)", "Do Not Clear Previous Address Override In An NMF Listing",
-            "Missing MUS", "Property Manager Info (If required)", "QA Is Not Correct High", "QA Is Not Correct Low",
-            "Wrong/ Not Required Unit Box", "Unit Box (If visible)", "Evidences", "Verification Data",
-            "Rental Override", "Structure"
-        ];
+function showEditWindow(data, onConfirm) {
+    const errors = [
+        "Wrong APN", "Bad APN", "Wrong Address Override", "Missing Address Override",
+        "Missing Address Override in an NMF Listing (If required)", "Do Not Clear Previous Address Override In An NMF Listing",
+        "Missing MUS", "Property Manager Info (If required)", "QA Is Not Correct High", "QA Is Not Correct Low",
+        "Wrong/ Not Required Unit Box", "Unit Box (If visible)", "Evidences", "Verification Data",
+        "Rental Override", "Structure"
+    ];
 
-        const modal = document.createElement("div");
-        Object.assign(modal.style, {
-            position: "fixed",
-            top: "0",
-            left: "0",
-            width: "100vw",
-            height: "100vh",
-            background: "rgba(0, 0, 0, 0.5)",
-            zIndex: "10000",
-            fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            overflow: "auto",
-        });
+    const modal = document.createElement("div");
+    Object.assign(modal.style, {
+        position: "fixed",
+        top: "0",
+        left: "0",
+        width: "100vw",
+        height: "100vh",
+        background: "rgba(0, 0, 0, 0.5)",
+        zIndex: "10000",
+        fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        overflow: "auto",
+    });
 
-        const modalContent = document.createElement("div");
-        Object.assign(modalContent.style, {
-            background: "#f9f9f9",
-            padding: "30px",
-            borderRadius: "12px",
-            boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
-            width: "90%",
-            maxWidth: "1200px",
-            display: "flex",
-            flexDirection: "column",
-            gap: "20px",
-            opacity: 0,
-            transform: "scale(0.8)",
-            transition: "all 0.3s ease",
-            boxSizing: "border-box",
-        });
+    const modalContent = document.createElement("div");
+    Object.assign(modalContent.style, {
+        background: "#f9f9f9",
+        padding: "30px",
+        borderRadius: "12px",
+        boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
+        width: "90%",
+        maxWidth: "1200px",
+        display: "flex",
+        flexDirection: "column",
+        gap: "20px",
+        opacity: 0,
+        transform: "scale(0.8)",
+        transition: "all 0.3s ease",
+        boxSizing: "border-box",
+    });
 
-        modalContent.innerHTML = `
-            <h2 style="color: #333; margin-bottom: 20px; text-align: center;">Random QA Report</h2>
-            <div style="display: flex; flex-wrap: wrap; gap: 20px;">
-                <div style="flex: 1; min-width: 300px;">
-                    ${Object.entries(data).map(([key, value]) => `
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                            <label style="color: #555; width: 40%;"><strong>${key}:</strong></label>
-                            <input id="input_${key}" type="text" value="${value}" style="width: 55%; padding: 8px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; transition: border 0.3s ease;">
-                        </div>
-                    `).join("")}
+    // Filtrar los campos que no queremos mostrar en la interfaz
+    const fieldsToShow = Object.keys(data).filter(key => key !== "urlcodeverg");
 
+    modalContent.innerHTML = `
+        <h2 style="color: #333; margin-bottom: 20px; text-align: center;">Random QA Report</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+            <div style="flex: 1; min-width: 300px;">
+                ${fieldsToShow.map(key => `
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                        <label style="color: #555; width: 40%;"><strong>Error:</strong></label>
-                        <select id="errorSelect" style="width: 55%; padding: 8px; border: 1px solid #ddd; border-radius: 6px; transition: border 0.3s ease;">
-                            <option disabled selected>Select an option...</option>
-                            ${errors.map(err => `<option value="${err}">${err}</option>`).join("")}
-                        </select>
+                        <label style="color: #555; width: 40%;"><strong>${key}:</strong></label>
+                        <input id="input_${key}" type="text" value="${data[key]}" style="width: 55%; padding: 8px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; transition: border 0.3s ease;">
                     </div>
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                        <label style="color: #555; width: 40%;"><strong>Possible Affected Listings:</strong></label>
-                        <input id="affectedListings" type="number" value="0" min="0" style="width: 55%; padding: 8px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; transition: border 0.3s ease;">
-                    </div>
-                    <div id="dynamicFieldsContainer" style="display: flex; flex-direction: column; gap: 10px;"></div>
-                    <div style="display: flex; justify-content: space-around; gap: 10px; margin-top: 20px;">
-                        <button id="btnAccept" style="flex: 1; padding: 12px 24px; background-color: #CAD92B; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 18px; ">Accept</button>
-                        <button id="btnCancel" style="flex: 1; padding: 12px 24px; background-color: #23A9D8; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 18px; ">Cancel</button>
-                          <a href="https://docs.google.com/spreadsheets/d/14N1pWw7fVIDgTko2A7faqbmkPVXM8LnHaeR0bd_TGxw/edit?gid=0#gid=0" target="_blank" style="flex: 1; padding: 12px 24px; background-color:rgb(90, 93, 94); color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 18px; text-decoration: none; display: flex; justify-content: center; align-items: center;">Database</a>
-                    </div>
+                `).join("")}
 
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                    <label style="color: #555; width: 40%;"><strong>Error:</strong></label>
+                    <select id="errorSelect" style="width: 55%; padding: 8px; border: 1px solid #ddd; border-radius: 6px; transition: border 0.3s ease;">
+                        <option disabled selected>Select an option...</option>
+                        ${errors.map(err => `<option value="${err}">${err}</option>`).join("")}
+                    </select>
                 </div>
-                <div style="flex: 1; min-width: 300px;">
-                    <div style="display: flex; flex-direction: column; align-items: flex-start; width: 100%;">
-                        <label style="color: #555; width: 100%;"><strong>FeedBack:</strong></label>
-                        <textarea id="commentInput" style="width: calc(100% - 16px); padding: 8px; height: 120px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; transition: border 0.3s ease; margin-bottom: 10px;"></textarea>
-                        <label style="color: #555; width: 100%;"><strong>Preview:</strong></label>
-                        <div id="commentPreview" style="width: calc(100% - 16px); padding: 8px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; background-color: #fff; min-height: 60px; word-wrap: break-word;"></div>
-                    </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                    <label style="color: #555; width: 40%;"><strong>Possible Affected Listings:</strong></label>
+                    <input id="affectedListings" type="number" value="0" min="0" style="width: 55%; padding: 8px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; transition: border 0.3s ease;">
+                </div>
+                <div id="dynamicFieldsContainer" style="display: flex; flex-direction: column; gap: 10px;"></div>
+                <div style="display: flex; justify-content: space-around; gap: 10px; margin-top: 20px;">
+                    <button id="btnAccept" style="flex: 1; padding: 12px 24px; background-color: #CAD92B; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 18px; ">Accept</button>
+                    <button id="btnCancel" style="flex: 1; padding: 12px 24px; background-color: #23A9D8; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 18px; ">Cancel</button>
+                    <a href="https://docs.google.com/spreadsheets/d/14N1pWw7fVIDgTko2A7faqbmkPVXM8LnHaeR0bd_TGxw/edit?gid=0#gid=0" target="_blank" style="flex: 1; padding: 12px 24px; background-color:rgb(90, 93, 94); color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 18px; text-decoration: none; display: flex; justify-content: center; align-items: center;">Database</a>
                 </div>
             </div>
-        `;
+            <div style="flex: 1; min-width: 300px;">
+                <div style="display: flex; flex-direction: column; align-items: flex-start; width: 100%;">
+                    <label style="color: #555; width: 100%;"><strong>FeedBack:</strong></label>
+                    <textarea id="commentInput" style="width: calc(100% - 16px); padding: 8px; height: 120px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; transition: border 0.3s ease; margin-bottom: 10px;"></textarea>
+                    <label style="color: #555; width: 100%;"><strong>Preview:</strong></label>
+                    <div id="commentPreview" style="width: calc(100% - 16px); padding: 8px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; background-color: #fff; min-height: 60px; word-wrap: break-word;"></div>
+                </div>
+            </div>
+        </div>
+    `;
 
-        modal.appendChild(modalContent);
-        document.body.appendChild(modal);
+    modal.appendChild(modalContent);
+    document.body.appendChild(modal);
 
-        const errorSelect = document.getElementById("errorSelect");
-        const commentInput = document.getElementById("commentInput");
-        const commentPreview = document.getElementById("commentPreview");
-        const btnAccept = document.getElementById("btnAccept");
-        const btnCancel = document.getElementById("btnCancel");
-        const dynamicFieldsContainer = document.getElementById("dynamicFieldsContainer");
+    const errorSelect = document.getElementById("errorSelect");
+    const commentInput = document.getElementById("commentInput");
+    const commentPreview = document.getElementById("commentPreview");
+    const btnAccept = document.getElementById("btnAccept");
+    const btnCancel = document.getElementById("btnCancel");
+    const dynamicFieldsContainer = document.getElementById("dynamicFieldsContainer");
 
-        function updatePreview() {
-            let text = commentInput.value;
-            text = text.replace(/<(.*)\|(.*)>/g, '<a href="$1" target="_blank">$2</a>');
-            commentPreview.innerHTML = text;
-        }
-
-        function updateDynamicFields(error) {
-            dynamicFieldsContainer.innerHTML = ""; // Limpiar campos dinámicos anteriores
-
-            const fields = {
-                "Structure": [{ label: "Estructura correcta:", id: "structure" }],
-                "Wrong APN": [{ label: "Motivos del error APN:", id: "reasons" }],
-                "Wrong Address Override": [{ label: "Dirección correcta:", id: "correctAddress" }],
-                "Unit Box (If visible)": [{ label: "Unit Box correcto:", id: "unitBox" }],
-                "QA Is Not Correct High": [{ label: "Motivos de QA incorrecto:", id: "reasons" }],
-                "QA Is Not Correct Low": [{ label: "Motivos de QA incorrecto:", id: "reasons" }],
-                "Wrong/ Not Required Unit Box": [{ label: "Unit Box incorrecto:", id: "unitBox" }]
-            };
-
-            if (fields[error]) {
-                fields[error].forEach(field => {
-                    const div = document.createElement("div");
-                    div.style.display = "flex";
-                    div.style.justifyContent = "space-between";
-                    div.style.alignItems = "center";
-                    div.style.marginBottom = "10px";
-
-                    div.innerHTML = `
-                        <label style="color: #555; width: 40%;"><strong>${field.label}</strong></label>
-                        <input id="${field.id}" type="text" style="width: 55%; padding: 8px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; transition: border 0.3s ease;">
-                    `;
-
-                    dynamicFieldsContainer.appendChild(div);
-                });
-            }
-        }
-
-        function updateFeedback() {
-            const selectedError = errorSelect.value;
-            const dynamicFields = {};
-
-            if (selectedError === "Structure") {
-                dynamicFields.structure = document.getElementById("structure")?.value || "";
-            } else if (selectedError === "Wrong APN" || selectedError === "QA Is Not Correct High" || selectedError === "QA Is Not Correct Low") {
-                dynamicFields.reasons = document.getElementById("reasons")?.value || "";
-            } else if (selectedError === "Wrong Address Override") {
-                dynamicFields.correctAddress = document.getElementById("correctAddress")?.value || "";
-            } else if (selectedError === "Unit Box (If visible)" || selectedError === "Wrong/ Not Required Unit Box") {
-                dynamicFields.unitBox = document.getElementById("unitBox")?.value || "";
-            }
-
-            const feedback = generateFeedback(selectedError, data.qaed, data.project, data.listing, data.qaer, dynamicFields);
-            commentInput.value = feedback;
-            updatePreview();
-        }
-
-        commentInput.addEventListener("input", updatePreview);
-
-        errorSelect.addEventListener("change", function () {
-            updateDynamicFields(this.value);
-            updateFeedback();
-        });
-
-        dynamicFieldsContainer.addEventListener("input", updateFeedback);
-
-        setTimeout(() => {
-            modalContent.style.opacity = 1;
-            modalContent.style.transform = "scale(1)";
-        }, 10);
-
-        btnAccept.addEventListener("click", () => {
-            const editedData = {};
-            Object.keys(data).forEach(key => {
-                editedData[key] = document.getElementById(`input_${key}`).value.trim();
-            });
-
-            editedData.error = errorSelect.value;
-            editedData.comments = document.getElementById("commentPreview").innerText;
-            editedData.possible_affected_listings = document.getElementById("affectedListings").value || "0";
-
-            if (!editedData.listing.startsWith("http")) { showNotification("Invalid listing link", "red"); return; }
-            if (!editedData.project) { showNotification("Project cannot be empty", "red"); return; }
-            if (!editedData.qaer) { showNotification("QAer cannot be empty", "red"); return; }
-            if (!editedData.qaed) { showNotification("QAed cannot be empty", "red"); return; }
-            if (editedData.error === "Select an option...") { showNotification("You must select an error", "red"); return; }
-
-            showNotification("Recording data, please wait...", "green");
-
-            modalContent.style.opacity = 0;
-            modalContent.style.transform = "scale(0.8)";
-            setTimeout(() => {
-                document.body.removeChild(modal);
-                onConfirm(editedData);
-            }, 300);
-        });
-
-        btnCancel.addEventListener("click", () => {
-            modalContent.style.opacity = 0;
-            modalContent.style.transform = "scale(0.8)";
-            setTimeout(() => document.body.removeChild(modal), 300);
-        });
+    function updatePreview() {
+        let text = commentInput.value;
+        text = text.replace(/<(.*)\|(.*)>/g, '<a href="$1" target="_blank">$2</a>');
+        commentPreview.innerHTML = text;
     }
+
+    function updateDynamicFields(error) {
+        dynamicFieldsContainer.innerHTML = ""; // Limpiar campos dinámicos anteriores
+
+        const fields = {
+            "Structure": [{ label: "Estructura correcta:", id: "structure" }],
+            "Wrong APN": [{ label: "Motivos del error APN:", id: "reasons" }],
+            "Wrong Address Override": [{ label: "Dirección correcta:", id: "correctAddress" }],
+            "Unit Box (If visible)": [{ label: "Unit Box correcto:", id: "unitBox" }],
+            "QA Is Not Correct High": [{ label: "Motivos de QA incorrecto:", id: "reasons" }],
+            "QA Is Not Correct Low": [{ label: "Motivos de QA incorrecto:", id: "reasons" }],
+            "Wrong/ Not Required Unit Box": [{ label: "Unit Box incorrecto:", id: "unitBox" }]
+        };
+
+        if (fields[error]) {
+            fields[error].forEach(field => {
+                const div = document.createElement("div");
+                div.style.display = "flex";
+                div.style.justifyContent = "space-between";
+                div.style.alignItems = "center";
+                div.style.marginBottom = "10px";
+
+                div.innerHTML = `
+                    <label style="color: #555; width: 40%;"><strong>${field.label}</strong></label>
+                    <input id="${field.id}" type="text" style="width: 55%; padding: 8px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; transition: border 0.3s ease;">
+                `;
+
+                dynamicFieldsContainer.appendChild(div);
+            });
+        }
+    }
+
+    function updateFeedback() {
+        const selectedError = errorSelect.value;
+        const dynamicFields = {};
+
+        if (selectedError === "Structure") {
+            dynamicFields.structure = document.getElementById("structure")?.value || "";
+        } else if (selectedError === "Wrong APN" || selectedError === "QA Is Not Correct High" || selectedError === "QA Is Not Correct Low") {
+            dynamicFields.reasons = document.getElementById("reasons")?.value || "";
+        } else if (selectedError === "Wrong Address Override") {
+            dynamicFields.correctAddress = document.getElementById("correctAddress")?.value || "";
+        } else if (selectedError === "Unit Box (If visible)" || selectedError === "Wrong/ Not Required Unit Box") {
+            dynamicFields.unitBox = document.getElementById("unitBox")?.value || "";
+        }
+
+        const feedback = generateFeedback(selectedError, data.qaed, data.project, data.listing, data.qaer, dynamicFields);
+        commentInput.value = feedback;
+        updatePreview();
+    }
+
+    commentInput.addEventListener("input", updatePreview);
+
+    errorSelect.addEventListener("change", function () {
+        updateDynamicFields(this.value);
+        updateFeedback();
+    });
+
+    dynamicFieldsContainer.addEventListener("input", updateFeedback);
+
+    setTimeout(() => {
+        modalContent.style.opacity = 1;
+        modalContent.style.transform = "scale(1)";
+    }, 10);
+
+    btnAccept.addEventListener("click", () => {
+        const editedData = {};
+        fieldsToShow.forEach(key => {
+            editedData[key] = document.getElementById(`input_${key}`).value.trim();
+        });
+
+        // Añadir `urlcodeverg` al objeto `editedData` aunque no se muestre en la interfaz
+        editedData.urlcodeverg = data.urlcodeverg;
+
+        editedData.error = errorSelect.value;
+        editedData.comments = document.getElementById("commentPreview").innerText;
+        editedData.possible_affected_listings = document.getElementById("affectedListings").value || "0";
+
+        if (!editedData.listing.startsWith("http")) { showNotification("Invalid listing link", "red"); return; }
+        if (!editedData.project) { showNotification("Project cannot be empty", "red"); return; }
+        if (!editedData.qaer) { showNotification("QAer cannot be empty", "red"); return; }
+        if (!editedData.qaed) { showNotification("QAed cannot be empty", "red"); return; }
+        if (editedData.error === "Select an option...") { showNotification("You must select an error", "red"); return; }
+
+        showNotification("Recording data, please wait...", "green");
+
+        modalContent.style.opacity = 0;
+        modalContent.style.transform = "scale(0.8)";
+        setTimeout(() => {
+            document.body.removeChild(modal);
+            onConfirm(editedData);
+        }, 300);
+    });
+
+    btnCancel.addEventListener("click", () => {
+        modalContent.style.opacity = 0;
+        modalContent.style.transform = "scale(0.8)";
+        setTimeout(() => document.body.removeChild(modal), 300);
+    });
+}
 
     // Función para extraer datos
     function extractData() {
@@ -394,7 +398,7 @@
                     qaer: getQaerNameShort(),
                     qaed: extractQaEd(),
                     listing: window.location.href,
-                    urlcodeverg: urlcodeverg 
+                    urlcodeverg: urlcodeverg
                 };
 
                 showEditWindow(data, (finalData) => {
