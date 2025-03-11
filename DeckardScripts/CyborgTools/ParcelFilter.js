@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Fullscreen Table with Filter and Export
-// @namespace    
+// @namespace
 // @version      1.2
 // @description  Extrae datos de un numero de paginas en parcel y las muestra en una tabla  con opcion a exportar
 // @match        https://cyborg.deckard.com/parcel/*
@@ -11,7 +11,6 @@
 (function() {
     'use strict';
 
-    // Create the floating button
     const button = document.createElement('button');
     button.textContent = 'Load Pages';
     Object.assign(button.style, {
@@ -26,7 +25,6 @@
         marginRight: '10px'
     });
 
-    // Function to insert the button
     function insertButton() {
         const firstPageButton = document.querySelector('.first-page');
         if (firstPageButton) {
@@ -34,7 +32,6 @@
         }
     }
 
-    // Use MutationObserver to wait for the first-page button to appear
     const observer = new MutationObserver(() => {
         if (document.querySelector('.first-page')) {
             insertButton();
@@ -44,7 +41,7 @@
 
     observer.observe(document.body, { childList: true, subtree: true });
 
-    function showTableInModal(tableHTML) {
+    function showTableInModal(tableHTML, tableData) {
         const modal = document.createElement('div');
         Object.assign(modal.style, {
             position: 'fixed',
@@ -92,7 +89,7 @@
             <div style="display: flex; align-items: center; margin-bottom: 10px;">
                 <label for="filter" style="margin-right: 10px;">Filter: </label>
                 <input type="text" id="filter" placeholder="Enter a value..." style="padding:5px; border:1px solid #ccc; border-radius:4px; margin-right: 10px;">
-                <button id="export-btn" style="background:#28a745; color:#fff; padding:8px 12px; border:none; border-radius:4px; cursor:pointer; font-size:12px;">Export to Excel</button>
+                <button id="export-json-btn" style="background:#28a745; color:#fff; padding:8px 12px; border:none; border-radius:4px; cursor:pointer; font-size:12px;">Export to JSON</button>
             </div>
             ${tableHTML}
         `;
@@ -111,52 +108,79 @@
             });
         });
 
-        modalContent.querySelector('#export-btn').addEventListener('click', () => {
-            const table = modalContent.querySelector('table');
-            const wb = XLSX.utils.table_to_book(table, { sheet: "Sheet1" });
-            XLSX.writeFile(wb, "table_data.xlsx");
+        modalContent.querySelector('#export-json-btn').addEventListener('click', () => {
+            const jsonString = JSON.stringify(tableData, null, 2);
+            const blob = new Blob([jsonString], { type: 'application/json' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'table_data.json';
+            link.click();
         });
     }
 
     button.addEventListener('click', async () => {
         const numPages = prompt('Enter the number of pages to load:');
         if (!numPages || isNaN(numPages)) return;
+
         const originalTable = document.querySelector('table');
         if (!originalTable) return;
 
-        const newTable = document.createElement('table');
-        newTable.style.width = '100%';
-        newTable.style.borderCollapse = 'collapse';
-        newTable.innerHTML = '<thead><tr>' + [
+        const tableHeaders = [
             "parcel_apn", "license", "license_status", "people_on_license",
             "parcel_state", "parcel_county", "parcel_use_type", "parcel_owner_name_1",
             "parcel_owner_name_2", "parcel_site_address", "parcel_site_address_unit_number",
             "parcel_bedrooms", "owner_address", "claiming_hoe", "parcel_latitude", "parcel_longitude"
-        ].map(name => `<th style='border:1px solid #ccc; padding:5px; background:#007bff; color:#fff;'>${name}</th>`).join('') + '</tr></thead><tbody></tbody>';
+        ];
 
-        const copyRow = row => {
-            const newRow = document.createElement('tr');
+        const tableData = [];
+
+        originalTable.querySelectorAll('tr').forEach(row => {
+            const rowData = {};
             row.querySelectorAll('td').forEach((cell, index) => {
-                if (index < 16) {
-                    const newCell = document.createElement('td');
-                    newCell.textContent = cell.textContent.trim();
-                    newCell.style.border = '1px solid #ccc';
-                    newCell.style.padding = '5px';
-                    newRow.appendChild(newCell);
+                if (index < tableHeaders.length) {
+                    rowData[tableHeaders[index]] = cell.textContent.trim();
                 }
             });
-            return newRow;
-        };
+            if (Object.keys(rowData).length > 0) {
+                tableData.push(rowData);
+            }
+        });
 
-        originalTable.querySelectorAll('tr').forEach(row => newTable.querySelector('tbody').appendChild(copyRow(row)));
         for (let i = 1; i < numPages; i++) {
             const nextButton = document.querySelector('.next-page');
             if (!nextButton) break;
             nextButton.click();
             await new Promise(resolve => setTimeout(resolve, 10));
-            document.querySelectorAll('table tr').forEach(row => newTable.querySelector('tbody').appendChild(copyRow(row)));
+            document.querySelectorAll('table tr').forEach(row => {
+                const rowData = {};
+                row.querySelectorAll('td').forEach((cell, index) => {
+                    if (index < tableHeaders.length) {
+                        rowData[tableHeaders[index]] = cell.textContent.trim();
+                    }
+                });
+                if (Object.keys(rowData).length > 0) {
+                    tableData.push(rowData);
+                }
+            });
         }
 
-        showTableInModal(newTable.outerHTML);
+        const tableHTML = `
+            <table style="width:100%; border-collapse:collapse;">
+                <thead>
+                    <tr>
+                        ${tableHeaders.map(name => `<th style='border:1px solid #ccc; padding:5px; background:#007bff; color:#fff;'>${name}</th>`).join('')}
+                    </tr>
+                </thead>
+                <tbody>
+                    ${tableData.map(row => `
+                        <tr>
+                            ${tableHeaders.map(header => `<td style='border:1px solid #ccc; padding:5px;'>${row[header] || ''}</td>`).join('')}
+                        </tr>
+                    `).join('')}
+                </tbody>
+            </table>
+        `;
+
+        showTableInModal(tableHTML, tableData);
     });
 })();
