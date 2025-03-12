@@ -5,7 +5,9 @@
 // @description  Un script para mejorar la experiencia en Google Maps y Bing Maps
 // @author       Luis Escalante
 // @match        *://www.google.com/maps/*
+// @match        https://www.bing.com/maps?*
 // ==/UserScript==
+
 
 (function () {
     async function getClipboardCoordinates() {
@@ -23,11 +25,21 @@
 
     function getCurrentLocation() {
         const urlParams = new URLSearchParams(window.location.search);
-        const centerParam = urlParams.get("center");
-        if (centerParam) {
-            return centerParam.replace(/\s+/g, ""); // Elimina espacios
+        let coordinates = null;
+
+        if (window.location.hostname === "www.google.com") {
+            const centerParam = urlParams.get("center");
+            if (centerParam) {
+                coordinates = centerParam.replace(/\s+/g, ""); // Elimina espacios
+            }
+        } else if (window.location.hostname === "www.bing.com") {
+            const cpParam = urlParams.get("cp");
+            if (cpParam) {
+                coordinates = cpParam.replace(/\s+/g, ""); // Elimina espacios
+            }
         }
-        return null;
+
+        return coordinates;
     }
 
     async function openBingMaps() {
@@ -35,6 +47,15 @@
         if (coordinates) {
             coordinates = coordinates.replace(",", "~"); // Formato correcto para Bing Maps
             window.open(`https://www.bing.com/maps?cp=${coordinates}&lvl=19.8&style=g`, "_blank");
+        } else {
+            alert("No se encontraron coordenadas válidas.");
+        }
+    }
+
+    async function openGoogleMaps() {
+        let coordinates = await getClipboardCoordinates() || getCurrentLocation();
+        if (coordinates) {
+            window.open(`https://www.google.com/maps?q=${coordinates}`, "_blank");
         } else {
             alert("No se encontraron coordenadas válidas.");
         }
@@ -75,7 +96,14 @@
     }
 
     function injectButtons() {
-        const bingButton = createButton("bing-maps-button", "🌐", "Abrir en Bing Maps", openBingMaps);
+        const bingButton = createButton("bing-maps-button", "🌐", "Abrir en Bing Maps o Google Maps", () => {
+            if (window.location.hostname === "www.google.com") {
+                openBingMaps();
+            } else if (window.location.hostname === "www.bing.com") {
+                openGoogleMaps();
+            }
+        });
+
         const duckButton = createButton("duckduckgo-maps-button", "🦆", "Abrir en DuckDuckGo Maps", openDuckDuckGoMaps);
 
         bingButton.style.top = "50%";
