@@ -3,7 +3,7 @@
 // @namespace    https://cyborg.deckard.com/
 // @version      1.5
 // @description  Convierte valores en la columna 0 en enlaces que copian el valor con notificación y abren la nueva URL en un iframe, pegando el valor en el filtro automáticamente.
-// @author       TuNombre
+// @author       Luis
 // @match        https://cyborg.deckard.com/parcel/*
 // ==/UserScript==
 
@@ -42,11 +42,16 @@
                         mostrarNotificacion('Error al copiar');
                     }
 
-                    // Construir la nueva URL
-                    let nuevaURL = window.location.href.replace('/parcel/', '/listing/') + `?tab=all&subset=mapped`;
-
-                    // Crear o actualizar el iframe
-                    insertarIframe(nuevaURL, valor);
+                    // Comprobar si el iframe ya existe
+                    let existingIframe = document.getElementById('custom-iframe');
+                    if (!existingIframe) {
+                        // Si no existe el iframe, crear uno nuevo
+                        let nuevaURL = window.location.href.replace('/parcel/', '/listing/') + `?tab=all&subset=mapped`;
+                        insertarIframe(nuevaURL, valor);
+                    } else {
+                        // Si el iframe ya existe, solo pegar el valor en el filtro
+                        pegarEnFiltroEnIframe(existingIframe, valor);
+                    }
                 });
 
                 // Reemplazar contenido de la celda
@@ -58,44 +63,35 @@
     }
 
     function insertarIframe(url, valorApn) {
-        let existingIframe = document.getElementById('custom-iframe');
+        // Crear un contenedor para el iframe que se incrustará en la parte inferior de la página
+        let container = document.createElement('div');
+        container.id = 'iframe-container';
+        container.style.position = 'relative'; // Se posiciona dentro del flujo normal de la página
+        container.style.width = '100%';  // Ocupa todo el ancho de la página
+        container.style.height = '50vh'; // Ajustar la altura según sea necesario
+        container.style.background = 'none'; // Sin fondo
+        container.style.borderTop = 'none';   // Sin borde
 
-        if (!existingIframe) {
-            // Crear un contenedor para el iframe que se incrustará en la parte inferior de la página
-            let container = document.createElement('div');
-            container.id = 'iframe-container';
-            container.style.position = 'relative'; // Se posiciona dentro del flujo normal de la página
-            container.style.width = '100%';  // Ocupa todo el ancho de la página
-            container.style.height = '50vh'; // Ajustar la altura según sea necesario
-            container.style.background = 'none'; // Sin fondo
-            container.style.borderTop = 'none';   // Sin borde
+        // Asegurarse de que el contenedor esté al final de la página
+        container.style.marginTop = '20px';  // Espacio antes del iframe (puedes ajustar esto)
+        container.style.zIndex = '10';   // Asegura que el iframe se muestre sobre otros contenidos si es necesario
 
-            // Asegurarse de que el contenedor esté al final de la página
-            container.style.marginTop = '20px';  // Espacio antes del iframe (puedes ajustar esto)
-            container.style.zIndex = '10';   // Asegura que el iframe se muestre sobre otros contenidos si es necesario
+        // Crear el iframe
+        let iframe = document.createElement('iframe');
+        iframe.id = 'custom-iframe';
+        iframe.src = url;
+        iframe.style.width = '100%';
+        iframe.style.height = '1250px';
+        iframe.style.border = 'none';
+        iframe.scrolling = 'no';  // Desactiva el scroll interno
+        iframe.style.overflow = 'hidden'; // Asegura que no haya desplazamiento interno
 
-            // Crear el iframe
-            let iframe = document.createElement('iframe');
-            iframe.id = 'custom-iframe';
-            iframe.src = url;
-            iframe.style.width = '100%';
-            iframe.style.height = '1250px';
-            iframe.style.border = 'none';
-            iframe.scrolling = 'no';  // Desactiva el scroll interno
-            iframe.style.overflow = 'hidden'; // Asegura que no haya desplazamiento interno
+        // Agregar el iframe al contenedor
+        container.appendChild(iframe);
+        document.body.appendChild(container);
 
-            // Agregar el iframe al contenedor
-            container.appendChild(iframe);
-            document.body.appendChild(container);
-
-            // Esperar que el iframe cargue y luego pegar el valor en el filtro
-            iframe.onload = () => pegarEnFiltroEnIframe(iframe, valorApn);
-
-        } else {
-            // Si el iframe ya existe, solo actualizamos la URL
-            existingIframe.src = url;
-            existingIframe.onload = () => pegarEnFiltroEnIframe(existingIframe, valorApn);
-        }
+        // Esperar que el iframe cargue y luego pegar el valor en el filtro
+        iframe.onload = () => pegarEnFiltroEnIframe(iframe, valorApn);
     }
 
     function pegarEnFiltroEnIframe(iframe, valorApn) {
