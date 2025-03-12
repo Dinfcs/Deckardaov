@@ -8134,21 +8134,21 @@
           "url": "https://location.sa.gov.au/viewer/"
         },
         {
-          "type": "https://opendata.unley.sa.gov.au/datasets/b5a44c60ca5a43578eeb306bf60c8436_0/explore",
-          "url": "https://opendata.unley.sa.gov.au/datasets/b5a44c60ca5a43578eeb306bf60c8436_0/explore"
+          "url": "https://opendata.unley.sa.gov.au/datasets/b5a44c60ca5a43578eeb306bf60c8436_0/explore",
+          "type": "PR"
         }
       ],
       "License List": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ],
-      "Important Info": "Please work with filters:Unresolved+yet_to_review+rental= self_contained. ·To use GIS optimally, activate the following:Land Management - Property and Planning.Select the following options: 1.Land Divisions:Divides the parcels. 2.Parcel Cadastre:Shows the APNs. 3.Valuation Cadastre:Shows the Land Use and Property Address. ·There are no public records, as privacy laws in the country protect property data.",
+      "Important Info": "<p>Please work with filters:Unresolved+yet_to_review+rental= self_contained. ·To use GIS optimally, activate the following:Land Management - Property and Planning.Select the following options: 1.Land Divisions:Divides the parcels. 2.Parcel Cadastre:Shows the APNs. 3.Valuation Cadastre:Shows the Land Use and Property Address. ·There are no public records, as privacy laws in the country protect property data.</p>",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ]
     },
