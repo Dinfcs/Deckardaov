@@ -330,7 +330,7 @@
             notification.textContent = 'Copied to clipboard: ' + text;
             notification.style.position = 'fixed';
             notification.style.bottom = '50px';
-            notification.style.right = '90%';
+            notification.style.right = '83%';
             notification.style.backgroundColor = '#162829';
             notification.style.color = 'white';
             notification.style.padding = '5px 10px';
