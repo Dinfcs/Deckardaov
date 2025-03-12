@@ -321,68 +321,116 @@
         createIframeWithTabs();
     }
 
+    // Función para copiar texto al portapapeles y mostrar una notificación
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text)
+            .then(() => {
+            // Mostrar una notificación de éxito
+            const notification = document.createElement('div');
+            notification.textContent = 'Copied to clipboard: ' + text;
+            notification.style.position = 'fixed';
+            notification.style.bottom = '50px';
+            notification.style.right = '90%';
+            notification.style.backgroundColor = '#162829';
+            notification.style.color = 'white';
+            notification.style.padding = '5px 10px';
+            notification.style.borderRadius = '4px';
+            notification.style.zIndex = '10000';
+            document.body.appendChild(notification);
+
+            // Eliminar la notificación después de 2 segundos
+            setTimeout(() => {
+                document.body.removeChild(notification);
+            }, 2000);
+        })
+            .catch((err) => {
+            console.error('Failed to copy text:', err);
+        });
+    }
+
+    // Función para mostrar un mensaje de error con opción de copiar el nombre del proyecto
     function showError(message) {
         const errorMsg = document.createElement('div');
         errorMsg.className = 'pr-error-message';
         errorMsg.textContent = message;
+
+        // Hacer que el mensaje sea clickable
+        errorMsg.style.cursor = 'pointer';
+        errorMsg.style.userSelect = 'none'; // Evitar que el texto se seleccione al hacer clic
+        errorMsg.addEventListener('click', () => {
+            // Extraer el nombre del proyecto del mensaje
+            const projectName = message.replace('No data found for: ', '').trim();
+            copyToClipboard(projectName); // Copiar al portapapeles
+        });
+
         document.body.appendChild(errorMsg);
     }
+function createTable(data) {
+    // Contenedor principal
+    const mainContainer = document.createElement('div');
+    mainContainer.className = 'pr-container';
+    mainContainer.style.margin = '0px';
 
-    function createTable(data) {
-        // Contenedor principal
-        const mainContainer = document.createElement('div');
-        mainContainer.className = 'pr-container';
-        mainContainer.style.margin = '0px';
-
-        // Título de la tabla
-        const tableTitle = document.createElement('div');
-        tableTitle.style.cssText = `
+    // Título de la tabla
+    const tableTitle = document.createElement('div');
+    tableTitle.style.cssText = `
         font-size: 18px;
         font-weight: 600;
         color: #111827;
         margin-bottom: 5px;
     `;
 
-        // Crear tabla
-        const table = document.createElement('table');
-        table.className = 'pr-table';
-        table.id = 'projectResources-table';
+    // Crear tabla
+    const table = document.createElement('table');
+    table.className = 'pr-table';
+    table.id = 'projectResources-table';
 
-        // Crear encabezado
-        const thead = table.createTHead();
-        const headerRow = thead.insertRow();
+    // Crear encabezado
+    const thead = table.createTHead();
+    const headerRow = thead.insertRow();
 
-        HEADERS.forEach(header => {
-            const th = document.createElement('th');
-            th.textContent = header;
-            th.style.textAlign = 'center'; // Centrando el texto del encabezado
-            headerRow.appendChild(th);
-        });
+    HEADERS.forEach(header => {
+        const th = document.createElement('th');
+        th.textContent = header;
+        th.style.textAlign = 'center'; // Centrar el texto del encabezado
+        headerRow.appendChild(th);
+    });
 
-        // Crear cuerpo de la tabla
-        const tbody = table.createTBody();
-        const row = tbody.insertRow();
+    // Crear cuerpo de la tabla
+    const tbody = table.createTBody();
+    const row = tbody.insertRow();
 
-        HEADERS.forEach(header => {
-            const cell = row.insertCell();
+    HEADERS.forEach(header => {
+        const cell = row.insertCell();
 
-            if (header === 'Public Records & GIS' || header === 'License List') {
-                appendLinks(cell, data[header]);
-            } else if (header === 'Important Info') {
-                cell.innerHTML = data[header]?.replace(/\n/g, '<br>') || '';
-            } else if (header === 'Media') {
-                appendMedia(cell, data[header]);
+        if (header === 'Public Records & GIS' || header === 'License List') {
+            appendLinks(cell, data[header]);
+        } else if (header === 'Important Info') {
+            cell.innerHTML = data[header]?.replace(/\n/g, '<br>') || '';
+        } else if (header === 'Media') {
+            appendMedia(cell, data[header]);
+        } else {
+            // Si es la columna "Project", hacerla clickable
+            if (header === 'Project') {
+                cell.textContent = data[header] || '';
+                cell.style.fontWeight = '600';
+                cell.style.cursor = 'pointer'; // Hacer que la celda sea clickable
+                cell.style.userSelect = 'none'; // Evitar que el texto se seleccione al hacer clic
+                cell.addEventListener('click', () => {
+                    copyToClipboard(data[header]); // Copiar el contenido de la celda al portapapeles
+                });
             } else {
                 cell.textContent = data[header] || '';
                 cell.style.fontWeight = '600';
             }
-        });
+        }
+    });
 
-        // Agregar todo al contenedor principal
-        mainContainer.appendChild(tableTitle);
-        mainContainer.appendChild(table);
-        document.body.appendChild(mainContainer);
-    }
+    // Agregar todo al contenedor principal
+    mainContainer.appendChild(tableTitle);
+    mainContainer.appendChild(table);
+    document.body.appendChild(mainContainer);
+}
 
 
     function appendLinks(cell, items) {
