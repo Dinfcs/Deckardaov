@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         Estilos Modernos y Compactos
+// @name         Estilos Modernos y Compactos (Optimizado)
 // @namespace    http://tampermonkey.net/
-// @version      2.2
-// @description  Estilos modernos y compactos para una mejor experiencia de usuario.
+// @version      2.3
+// @description  Estilos modernos y compactos optimizados para una mejor experiencia de usuario y carga más rápida.
 // @author       Luis Escalante
 // @match        https://cyborg.deckard.com/*
 // @grant        none
@@ -11,7 +11,7 @@
 (function () {
     'use strict';
 
-    // Lista de selectores excluidos
+    // Constantes y configuración (definidas fuera de funciones para solo inicializarlas una vez)
     const EXCLUSIONS = `
         #window_vetting_dlg *,
         #vetting_data_footer *,
@@ -28,28 +28,26 @@
         .pr-table td
     `;
 
-    // Sistema de colores modernos
     const THEME = {
-        primary: '#4A90E2',       // Azul moderno
-        secondary: '#4A90E2',     // Violeta moderno
-        accent: '#00C853',        // Verde brillante
-        dark: '#2C3E50',          // Gris oscuro
-        medium: '#546E7A',        // Gris medio
-        light: '#ECEFF1',         // Gris claro
-        hover: '#3F51B5',         // Azul oscuro (hover)
-        active: '#303F9F',        // Azul más oscuro (active)
-        bgLight: '#FAFAFA',       // Fondo claro
-        bgAlt: '#F5F5F5',         // Fondo alternativo
-        bgHeader: '#E3F2FD',      // Fondo de encabezados
-        border: '#CFD8DC',        // Color de bordes
-        shadow: 'rgba(0, 0, 0, 0.1)' // Sombras sutiles
+        primary: '#4A90E2',       
+        secondary: '#4A90E2',     
+        accent: '#00C853',        
+        dark: '#2C3E50',          
+        medium: '#546E7A',        
+        light: '#ECEFF1',         
+        hover: '#3F51B5',         
+        active: '#303F9F',        
+        bgLight: '#FAFAFA',       
+        bgAlt: '#F5F5F5',         
+        bgHeader: '#E3F2FD',      
+        border: '#CFD8DC',        
+        shadow: 'rgba(0, 0, 0, 0.1)'
     };
 
-    // Propiedades de estilo
     const STYLE = {
         fontFamily: 'Roboto, sans-serif',
-        fontSizeBase: '12px',  // letra de botones
-        fontSizeSmall: '11px', // titulos de las tablas
+        fontSizeBase: '12px',
+        fontSizeSmall: '11px',
         fontSizeLarge: '18px',
         fontSizeBuckets: '15px',
         spacingXs: '1px',
@@ -62,24 +60,32 @@
         boxShadowHover: '0 4px 8px rgba(0, 0, 0, 0.15)'
     };
 
+    // Almacenamiento para comprobar si los estilos ya están aplicados
+    let stylesApplied = false;
+    let observerActive = false;
+    let buttonEventsBound = false;
+    let styleElement = null;
+
     /**
-     * Agrega un elemento de estilo al documento
+     * Agrega un elemento de estilo al documento una sola vez
      * @param {string} css - Contenido CSS a agregar
      */
     const addStyle = (css) => {
-        if (document.querySelector('#custom-cyborg-styles')) return;
+        if (stylesApplied || document.querySelector('#custom-cyborg-styles')) return;
 
-        const style = document.createElement('style');
-        style.id = 'custom-cyborg-styles';
-        style.textContent = css;
-        document.head.appendChild(style);
+        styleElement = document.createElement('style');
+        styleElement.id = 'custom-cyborg-styles';
+        styleElement.textContent = css;
+        document.head.appendChild(styleElement);
+        stylesApplied = true;
     };
 
     /**
-     * Genera y aplica los estilos CSS modernos
+     * Genera los estilos CSS modernos (función optimizada para generar CSS una sola vez)
      */
-    const applyModernStyles = () => {
-        const css = `
+    const generateStyles = () => {
+        // Uso de template string literal en una sola declaración para mejorar rendimiento
+        return `
             /* =================
                2. ENCABEZADOS
                ================= */
@@ -118,7 +124,7 @@
                 cursor: pointer !important;
                 align-items: center !important;
                 justify-content: center !important;
-                height: 30px !important; /* Altura fija para más compacidad */
+                height: 30px !important;
             }
 
             /* Botones secundarios */
@@ -149,7 +155,7 @@
             }
 
             .cyborg-str-tool a:visited:not(${EXCLUSIONS}) {
-                color: #02acf5 !important; /* Púrpura más suave para visitados */
+                color: #02acf5 !important;
             }
 
             .cyborg-str-tool a:hover:not(${EXCLUSIONS}) {
@@ -223,22 +229,22 @@
                7. CONTENEDOR FLOTANTE BOTONES DUPLICADOS
                ================= */
             .pop_up_header_container {
-                position: fixed; /* Fija el contenedor en la pantalla */
-                top: 5px; /* Distancia desde la parte superior */
-                left: 50%; /* Centrado horizontal */
-                transform: translateX(-50%); /* Ajuste para centrar correctamente */
-                z-index: 9999; /* Asegura que esté por encima de otros elementos */
-                background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco con 80% de opacidad */
-                padding: 8px; /* Espaciado interno */
-                border-radius: 12px; /* Bordes redondeados */
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Sombra para dar profundidad */
-                display: flex; /* Usa flexbox para alinear los botones */
-                gap: 10px; /* Espacio entre botones (reducido para ahorrar espacio) */
-                justify-content: center; /* Centra los botones horizontalmente */
-                flex-wrap: nowrap; /* Evita que los botones se envuelvan en múltiples líneas */
-                max-width: 70%; /* Ancho máximo del contenedor (ajusta según sea necesario) */
-                width: auto; /* Ancho automático basado en el contenido */
-                backdrop-filter: blur(10px); /* Efecto de desenfoque para mejorar la legibilidad */
+                position: fixed;
+                top: 5px;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 9999;
+                background-color: rgba(255, 255, 255, 0.8);
+                padding: 8px;
+                border-radius: 12px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                display: flex;
+                gap: 10px;
+                justify-content: center;
+                flex-wrap: nowrap;
+                max-width: 70%;
+                width: auto;
+                backdrop-filter: blur(10px);
             }
 
             /* =================
@@ -247,49 +253,49 @@
             .pop_up_header_container .btn,
             button[id*="btn_listing_pair_next"],
             button[id*="btn_listing_pair_prev"] {
-                min-width: 90px !important; /* Ancho mínimo para todos los botones */
-                padding: 5px 10px !important; /* Espaciado interno */
-                font-size: 14px !important; /* Tamaño de fuente */
-                font-weight: 500 !important; /* Grosor de la fuente */
-                border-radius: 6px !important; /* Bordes redondeados */
-                border: none !important; /* Sin bordes */
-                cursor: pointer !important; /* Cursor de puntero */
-                transition: all 0.3s ease !important; /* Transición suave */
-                display: inline-flex !important; /* Usar flexbox para centrar contenido */
-                align-items: center !important; /* Centrar verticalmente */
-                justify-content: center !important; /* Centrar horizontalmente */
-                text-align: center !important; /* Alineación de texto */
+                min-width: 90px !important;
+                padding: 5px 10px !important;
+                font-size: 14px !important;
+                font-weight: 500 !important;
+                border-radius: 6px !important;
+                border: none !important;
+                cursor: pointer !important;
+                transition: all 0.3s ease !important;
+                display: inline-flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                text-align: center !important;
             }
 
             /* =================
                9. COLORES DE FONDO PERSONALIZADOS PARA LOS BOTONES
                ================= */
-            .pop_up_header_container .btn-success { /* Same */
+            .pop_up_header_container .btn-success {
                 background-color: #4CAF50 !important;
                 color: white !important;
             }
 
-            .pop_up_header_container .btn-primary { /* In same MUS */
+            .pop_up_header_container .btn-primary {
                 background-color: #2196F3 !important;
                 color: white !important;
             }
 
-            .pop_up_header_container .btn-warning { /* Different */
+            .pop_up_header_container .btn-warning {
                 background-color: #FF9800 !important;
                 color: white !important;
             }
 
-            .pop_up_header_container .btn-info { /* Not sure */
+            .pop_up_header_container .btn-info {
                 background-color: #00BCD4 !important;
                 color: white !important;
             }
 
-            button[id*="btn_listing_pair_next"] { /* Next pair */
+            button[id*="btn_listing_pair_next"] {
                 background-color: #B0BEC5 !important;
                 color: white !important;
             }
 
-            button[id*="btn_listing_pair_prev"] { /* Prev pair */
+            button[id*="btn_listing_pair_prev"] {
                 background-color: #B0BEC5 !important;
                 color: white !important;
             }
@@ -318,75 +324,96 @@
                ================= */
             .tab-container .tab {
                 display: inline-block;
-                background-color: ${THEME.bgLight} !important; /* Fondo claro */
-                border: 1px solid ${THEME.border} !important; /* Borde sutil */
+                background-color: ${THEME.bgLight} !important;
+                border: 1px solid ${THEME.border} !important;
                 border-bottom: none !important;
-                transition: all ${STYLE.transition} !important; /* Transición suave */
+                transition: all ${STYLE.transition} !important;
                 text-align: center !important;
                 box-sizing: border-box !important;
-                font-size: ${STYLE.fontSizeBuckets} !important; /* Tamaño de fuente base */
-                font-weight: 530 !important; /* Fuente semibold */
-                color: ${THEME.medium} !important; /* Color de texto secundario */
-                border-radius: ${STYLE.borderRadius} ${STYLE.borderRadius} 0 0 !important; /* Bordes redondeados solo arriba */
-                cursor: pointer !important; /* Cursor de puntero */
-                margin-right: ${STYLE.spacingXs} !important; /* Espaciado entre tabs */
+                font-size: ${STYLE.fontSizeBuckets} !important;
+                font-weight: 530 !important;
+                color: ${THEME.medium} !important;
+                border-radius: ${STYLE.borderRadius} ${STYLE.borderRadius} 0 0 !important;
+                cursor: pointer !important;
+                margin-right: ${STYLE.spacingXs} !important;
             }
 
             /* Estilos para el tab seleccionado */
             .tab-container .tab--selected {
-                background-color: white !important; /* Fondo blanco */
-                color: ${THEME.primary} !important; /* Color primario */
-                border-color: ${THEME.primary} !important; /* Borde primario */
-                font-weight: 500 !important; /* Fuente más gruesa */
-                box-shadow: 0 -2px 0 ${THEME.primary} inset !important; /* Línea inferior de acento */
+                background-color: white !important;
+                color: ${THEME.primary} !important;
+                border-color: ${THEME.primary} !important;
+                font-weight: 500 !important;
+                box-shadow: 0 -2px 0 ${THEME.primary} inset !important;
             }
 
             /* Efecto hover para los tabs */
             .tab-container .tab:hover {
-                background-color: ${THEME.light} !important; /* Fondo más claro al pasar el mouse */
-                color: ${THEME.dark} !important; /* Color de texto más oscuro */
+                background-color: ${THEME.light} !important;
+                color: ${THEME.dark} !important;
             }
 
             /* Efecto hover para el tab seleccionado */
             .tab-container .tab--selected:hover {
-                background-color: white !important; /* Mantener fondo blanco */
-                color: ${THEME.hover} !important; /* Color primario más oscuro */
-                border-color: ${THEME.hover} !important; /* Borde primario más oscuro */
+                background-color: white !important;
+                color: ${THEME.hover} !important;
+                border-color: ${THEME.hover} !important;
             }
         `;
-
-        addStyle(css);
-        document.body.classList.add('cyborg-str-tool');
     };
 
     /**
-     * Agrega eventos a los botones para hacer clic automático en "Next Pair" después de un tiempo específico
-     * y mover el scroll de la página a la parte superior.
+     * Aplica los estilos al document una sola vez
      */
-    const addAutoNextPairClick = () => {
-        // Selecciona los botones "Same", "In same MUS", "Different", y "Not sure"
-        const buttons = [
-            { button: document.querySelector('.btn-success'), delay: 2000 }, // Same: 2 segundos
-            { button: document.querySelector('.btn-primary'), delay: 500 },  // In same MUS: 0.5 segundos
-            { button: document.querySelector('.btn-warning'), delay: 500 },  // Different: 0.5 segundos
-            { button: document.querySelector('.btn-info'), delay: 500 }      // Not sure: 0.5 segundos
-        ];
+    const applyModernStyles = () => {
+        if (!stylesApplied) {
+            document.body.classList.add('cyborg-str-tool');
+            addStyle(generateStyles());
+        }
+    };
 
-        // Selecciona el botón "Next Pair"
+    /**
+     * Configura eventos a botones una sola vez
+     * Implementa detección de eventos con delegación para mejorar el rendimiento
+     */
+    const setupButtonEvents = () => {
+        if (buttonEventsBound) return;
+
+        // Usar delegación de eventos para mejorar rendimiento
+        document.body.addEventListener('click', (e) => {
+            const target = e.target;
+            
+            // Comprobar si el clic fue en uno de los botones de acción
+            if (target.matches('.btn-success')) { // Same: 2 segundos
+                handleButtonClick(2000);
+            } else if (target.matches('.btn-primary, .btn-warning, .btn-info')) { // 0.5 segundos para el resto
+                handleButtonClick(500);
+            }
+        });
+
+        // Atajo de teclado Ctrl+S
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key === 's') {
+                e.preventDefault();
+                clickSaveButton();
+            }
+        });
+
+        buttonEventsBound = true;
+    };
+
+    /**
+     * Maneja el clic en un botón y programa el clic en "Next Pair" después del tiempo especificado
+     * @param {number} delay - Tiempo de espera en milisegundos
+     */
+    const handleButtonClick = (delay) => {
         const nextPairButton = document.querySelector('button[id*="btn_listing_pair_next"]');
-
         if (nextPairButton) {
-            buttons.forEach(({ button, delay }) => {
-                if (button) {
-                    button.addEventListener('click', () => {
-                        // Programa el clic en "Next Pair" después del tiempo especificado
-                        setTimeout(() => {
-                            nextPairButton.click(); // Hacer clic en "Next Pair"
-                            window.scrollTo({ top: 0, behavior: 'smooth' }); // Mover el scroll a la parte superior
-                        }, delay); // Tiempo de espera en milisegundos
-                    });
-                }
-            });
+            // Usar setTimeout con una función explícita para evitar fugas de memoria
+            setTimeout(() => {
+                nextPairButton.click();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, delay);
         }
     };
 
@@ -394,55 +421,77 @@
      * Función para hacer clic en el botón "Save" si existe
      */
     const clickSaveButton = () => {
-        const saveButton = document.getElementById('btn_submit_vetting_dlg'); // Selecciona el botón Save
+        const saveButton = document.getElementById('btn_submit_vetting_dlg');
         if (saveButton) {
-            saveButton.click(); // Hace clic en el botón Save si existe
+            saveButton.click();
         }
     };
 
-    // Inicialización basada en el estado del documento
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => {
-            requestAnimationFrame(applyModernStyles);
-            addAutoNextPairClick(); // Agrega los eventos después de que el DOM esté listo
-        });
-    } else {
-        requestAnimationFrame(applyModernStyles);
-        addAutoNextPairClick(); // Agrega los eventos si el DOM ya está listo
-    }
+    /**
+     * Observador para aplicar estilos a elementos dinámicos (optimizado)
+     */
+    const setupDOMObserver = () => {
+        if (observerActive) return;
 
-    // Observer para aplicar estilos a elementos dinámicos
-    const observeDOM = () => {
         const targetNode = document.body;
-        const config = { childList: true, subtree: true };
+        const config = { 
+            childList: true, 
+            subtree: true,
+            attributes: false,
+            characterData: false
+        };
+
+        // Usar debounce para reducir la frecuencia de actualizaciones
+        let debounceTimer;
+        const debounceDelay = 100; // ms
 
         const callback = (mutationsList) => {
+            let shouldUpdateDOM = false;
+            
+            // Verificar si realmente necesitamos actualizar el DOM
             for (const mutation of mutationsList) {
                 if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
-                    requestAnimationFrame(() => {
-                        document.body.classList.add('cyborg-str-tool');
-                        addAutoNextPairClick(); // Vuelve a agregar eventos si se añaden nuevos botones dinámicamente
-                    });
+                    // Sólo actualizar si se añadieron nodos relevantes
+                    for (const node of mutation.addedNodes) {
+                        if (node.nodeType === 1) { // Elemento
+                            shouldUpdateDOM = true;
+                            break;
+                        }
+                    }
+                    if (shouldUpdateDOM) break;
                 }
+            }
+            
+            if (shouldUpdateDOM) {
+                // Aplicar debounce para evitar múltiples actualizaciones en corto tiempo
+                clearTimeout(debounceTimer);
+                debounceTimer = setTimeout(() => {
+                    document.body.classList.add('cyborg-str-tool');
+                    if (!buttonEventsBound) {
+                        setupButtonEvents();
+                    }
+                }, debounceDelay);
             }
         };
 
         const observer = new MutationObserver(callback);
         observer.observe(targetNode, config);
+        observerActive = true;
     };
 
-    // Atajo de teclado: Ctrl + S para hacer clic en el botón Save
-    document.addEventListener('keydown', (e) => {
-        if (e.ctrlKey && e.key === 's') { // Verifica si se presionó Ctrl + S
-            e.preventDefault(); // Evita el comportamiento predeterminado (guardar la página)
-            clickSaveButton(); // Llama a la función para hacer clic en el botón Save
-        }
-    });
+    /**
+     * Función de inicialización principal
+     */
+    const init = () => {
+        applyModernStyles();
+        setupButtonEvents();
+        setupDOMObserver();
+    };
 
-    // Iniciar observer si el DOM ya está cargado
-    if (document.readyState !== 'loading') {
-        observeDOM();
+    // Iniciar la aplicación cuando el DOM esté listo
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
     } else {
-        document.addEventListener('DOMContentLoaded', observeDOM);
+        init();
     }
 })();
