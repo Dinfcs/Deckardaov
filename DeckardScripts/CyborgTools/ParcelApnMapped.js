@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Modificar columna 0 y abrir en iframe con notificación
+// @name         ParcelApnMapped
 // @namespace    https://cyborg.deckard.com/
 // @version      1.5
 // @description  Convierte valores en la columna 0 en enlaces que copian el valor con notificación y abren la nueva URL en un iframe, pegando el valor en el filtro automáticamente.
@@ -9,6 +9,11 @@
 
 (function() {
     'use strict';
+
+    // Comprobar si el script está ejecutándose dentro de un iframe
+    if (window !== window.top) {
+        return; // Si estamos dentro de un iframe, no ejecutar el script
+    }
 
     function modificarCeldas() {
         document.querySelectorAll('td[data-dash-column="parcel_apn"]').forEach(td => {
@@ -31,7 +36,7 @@
                     // Copiar al portapapeles usando navigator.clipboard
                     try {
                         await navigator.clipboard.writeText(valor);
-                        mostrarNotificacion(`Copiado: ${valor}`);
+                        mostrarNotificacion(`copying: ${valor}`);
                     } catch (err) {
                         console.error('Error al copiar:', err);
                         mostrarNotificacion('Error al copiar');
@@ -56,37 +61,30 @@
         let existingIframe = document.getElementById('custom-iframe');
 
         if (!existingIframe) {
-            // Crear un contenedor para el iframe si no existe
+            // Crear un contenedor para el iframe que se incrustará en la parte inferior de la página
             let container = document.createElement('div');
             container.id = 'iframe-container';
-            container.style.position = 'fixed';
-            container.style.bottom = '0';
-            container.style.left = '0';
-            container.style.width = '100%';
-            container.style.height = '50vh';
-            container.style.borderTop = '2px solid black';
-            container.style.background = 'white';
-            container.style.zIndex = '1000';
+            container.style.position = 'relative'; // Se posiciona dentro del flujo normal de la página
+            container.style.width = '100%';  // Ocupa todo el ancho de la página
+            container.style.height = '50vh'; // Ajustar la altura según sea necesario
+            container.style.background = 'none'; // Sin fondo
+            container.style.borderTop = 'none';   // Sin borde
 
-            // Crear botón para cerrar el iframe
-            let closeButton = document.createElement('button');
-            closeButton.textContent = 'Cerrar';
-            closeButton.style.position = 'absolute';
-            closeButton.style.right = '10px';
-            closeButton.style.top = '5px';
-            closeButton.style.zIndex = '1001';
-            closeButton.addEventListener('click', () => container.remove());
+            // Asegurarse de que el contenedor esté al final de la página
+            container.style.marginTop = '20px';  // Espacio antes del iframe (puedes ajustar esto)
+            container.style.zIndex = '10';   // Asegura que el iframe se muestre sobre otros contenidos si es necesario
 
             // Crear el iframe
             let iframe = document.createElement('iframe');
             iframe.id = 'custom-iframe';
             iframe.src = url;
             iframe.style.width = '100%';
-            iframe.style.height = '100%';
+            iframe.style.height = '1250px';
             iframe.style.border = 'none';
+            iframe.scrolling = 'no';  // Desactiva el scroll interno
+            iframe.style.overflow = 'hidden'; // Asegura que no haya desplazamiento interno
 
-            // Agregar elementos al contenedor
-            container.appendChild(closeButton);
+            // Agregar el iframe al contenedor
             container.appendChild(iframe);
             document.body.appendChild(container);
 
