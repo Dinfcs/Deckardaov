@@ -5620,8 +5620,8 @@
       "Project": "AL - City of Auburn",
       "Public Records & GIS": [
         {
-          "type": "PR",
-          "url": "https://www.deltacomputersystems.com/al/al43/pappraisala.html"
+          "url": "https://www.deltacomputersystems.com/al/al43/pappraisala.html",
+          "type": "PR"
         },
         {
           "type": "GIS (Use VPN)",
@@ -5630,23 +5630,19 @@
         {
           "url": "https://webgis.auburnalabama.org/coamap/",
           "type": "GIS2"
-        },
-        {
-          "url": "N/A",
-          "type": "N/A"
         }
       ],
       "License List": [
         {
-          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B2FC4F1A5-5621-43D8-AE53-7B86B9A1706C%7D&file=COA_Rental_Permit_Licenses%20(6).xlsx&action=default&mobileredirect=true",
-          "type": "License"
+          "type": "License",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B2FC4F1A5-5621-43D8-AE53-7B86B9A1706C%7D&file=COA_Rental_Permit_Licenses%20(6).xlsx&action=default&mobileredirect=true"
         }
       ],
       "Important Info": "<p>N/A</p>",
       "Media": [
         {
-          "url": "N/A",
-          "type": "N/A"
+          "type": "N/A",
+          "url": "N/A"
         }
       ]
     },
