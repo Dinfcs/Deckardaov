@@ -614,7 +614,7 @@ function createTable(data) {
             background-color: #f9f9f9;
             border: 1px solid #d6d6d6;
             border-bottom: none;
-            padding: 10px 15px;
+            padding: 5px 10px;
             transition: background-color, color 200ms;
             width: 50%;
             text-align: center;
