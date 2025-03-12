@@ -149,34 +149,77 @@
         const jsonURL = 'https://script.google.com/macros/s/AKfycbzKRzrnEtgTaGmSDN0daIjtquhBWL5rwn_ZQR8FRYbn5fHtODKSQSTKoi1bXWmrlR0vSg/exec';
         const NO_PREVIEW_IMAGE = "https://dinfcs.github.io/Deckardaov/DeckardScripts/DatabasePR/imagen.png";
         let projectData = [];
-
-        // Función para cargar datos desde la URL
-        async function cargarDatos() {
+    
+        // Función para obtener datos desde el servidor
+        async function fetchServerData() {
             try {
-                const response = await fetch(jsonURL);
-                if (!response.ok) {
-                    throw new Error(`Error al leer la base de datos: ${response.statusText}`);
-                }
-
-                const data = await response.json();
-                projectData = data.tabla;
-                displayTable(projectData);
-
+                const response = await fetch(jsonURL, { cache: "no-store" });
+                if (!response.ok) throw new Error(`Error al leer la base de datos: ${response.statusText}`);
+    
+                return await response.json();
             } catch (error) {
                 console.error('Error al cargar los datos:', error);
+                return null;
             }
         }
-
+    
+        // Función para verificar si los datos han cambiado
+        function hasDataChanged(newData) {
+            const cachedData = localStorage.getItem('projectData');
+            if (!cachedData) return true; // No hay datos en caché, es necesario actualizar
+    
+            try {
+                const parsedCachedData = JSON.parse(cachedData);
+                return JSON.stringify(parsedCachedData) !== JSON.stringify(newData);
+            } catch (error) {
+                console.error('Error comparando datos:', error);
+                return true; // Si hay un error en los datos en caché, se actualiza
+            }
+        }
+    
+        // Función para cargar los datos
+        async function loadData() {
+            const cachedData = localStorage.getItem('projectData');
+    
+            if (cachedData) {
+                console.log("Cargando datos desde caché...");
+                projectData = JSON.parse(cachedData);
+                displayTable(projectData);
+            } else {
+                console.log("No hay datos en caché. Cargando desde el servidor...");
+                const serverData = await fetchServerData();
+                if (serverData) {
+                    projectData = serverData.tabla;
+                    localStorage.setItem('projectData', JSON.stringify(serverData.tabla));
+                    displayTable(projectData);
+                }
+            }
+        }
+    
+        // Función para actualizar los datos solo si han cambiado
+        async function updateData() {
+            console.log("Verificando actualizaciones...");
+            const serverData = await fetchServerData();
+            if (serverData && hasDataChanged(serverData.tabla)) {
+                console.log("Los datos han cambiado. Actualizando...");
+                projectData = serverData.tabla;
+                localStorage.setItem('projectData', JSON.stringify(serverData.tabla));
+                displayTable(projectData);
+            } else {
+                console.log("Los datos no han cambiado. Usando caché.");
+            }
+        }
+    
         // Función para mostrar la tabla
         function displayTable(data) {
             data.sort((a, b) => a.Project.localeCompare(b.Project));
-
+    
             const tableContainer = document.getElementById('tableContainer');
             tableContainer.innerHTML = '';
-
+    
             const table = document.createElement('table');
             const headers = ['Project', 'Public Records & GIS', 'License List', 'Important Info', 'Media'];
-
+    
             const thead = document.createElement('thead');
             const headerRow = document.createElement('tr');
             headers.forEach(header => {
@@ -186,13 +229,13 @@
             });
             thead.appendChild(headerRow);
             table.appendChild(thead);
-
+    
             const tbody = document.createElement('tbody');
             data.forEach(item => {
                 const row = document.createElement('tr');
                 headers.forEach(header => {
                     const td = document.createElement('td');
-
+    
                     if (header === 'Important Info') {
                         td.classList.add('important-info');
                         td.innerHTML = item[header]; // Permite interpretar HTML
@@ -209,16 +252,12 @@
                     } 
                     else if (header === 'Media' && Array.isArray(item[header])) {
                         item[header].forEach(media => {
-                            if (media.url === 'N/A') {
-                                // No mostrar nada si el enlace es "N/A"
-                                return;
-                            }
-
+                            if (media.url === 'N/A') return;
+    
                             const imgContainer = document.createElement('div');
                             imgContainer.style.marginBottom = '8px';
-
+    
                             if (media.url.includes('drive.google.com')) {
-                                // Si es Google Drive, cargar la imagen en base64
                                 fetchGoogleDriveImage(media.url)
                                     .then(base64Image => {
                                         if (base64Image) {
@@ -236,7 +275,6 @@
                                         imgContainer.appendChild(img);
                                     });
                             } else {
-                                // Si no es Google Drive, mostrar la imagen por defecto con hipervínculo
                                 const a = document.createElement('a');
                                 a.href = media.url;
                                 a.target = '_blank';
@@ -246,14 +284,14 @@
                                 a.appendChild(img);
                                 imgContainer.appendChild(a);
                             }
-
+    
                             td.appendChild(imgContainer);
                         });
                     } 
                     else {
                         td.textContent = item[header];
                     }
-
+    
                     row.appendChild(td);
                 });
                 tbody.appendChild(row);
@@ -261,16 +299,16 @@
             table.appendChild(tbody);
             tableContainer.appendChild(table);
         }
-
+    
         // Función para obtener imágenes de Google Drive
         async function fetchGoogleDriveImage(imageUrl) {
             const scriptUrl = 'https://script.google.com/macros/s/AKfycbyB3xq3Lz8OZtRMg0qxtXBD8cvjqlDx97eXWiqPu5zgJ1cxWJ04GsajAZ8ctK-zHLxHLQ/exec';
             const fullUrl = `${scriptUrl}?url=${encodeURIComponent(imageUrl)}`;
-
+    
             try {
                 const response = await fetch(fullUrl);
                 if (!response.ok) throw new Error(`Error en la solicitud: ${response.statusText}`);
-
+    
                 const data = await response.json();
                 if (data && data.success && data.base64) return data.base64;
                 throw new Error('La respuesta no contiene una imagen válida.');
@@ -279,7 +317,7 @@
                 return null;
             }
         }
-
+    
         // Función para abrir el modal con la imagen
         function openModalWithImage(imageUrl) {
             const modal = document.getElementById('imageModal');
@@ -287,27 +325,25 @@
             modalImage.src = imageUrl;
             modal.style.display = 'flex';
         }
-
+    
         // Función para cerrar el modal
         document.getElementById('closeModal').addEventListener('click', () => {
-            const modal = document.getElementById('imageModal');
-            modal.style.display = 'none';
+            document.getElementById('imageModal').style.display = 'none';
         });
-
+    
         // Función para buscar proyectos
         function searchProjects() {
             const input = document.getElementById('searchBar').value.toLowerCase();
             const filteredData = projectData.filter(project => project.Project.toLowerCase().includes(input));
             displayTable(filteredData);
         }
-
-        // Recargar la página cuando se haga clic en el botón "Update"
-        document.getElementById('updateButton').addEventListener('click', () => {
-            location.reload();
-        });
-
-        // Cargar datos al iniciar
-        cargarDatos();
+    
+        // Actualizar los datos al hacer clic en "Update"
+        document.getElementById('updateButton').addEventListener('click', updateData);
+    
+        // Cargar los datos al iniciar
+        loadData();
     </script>
+    
 </body>
 </html>
