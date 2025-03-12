@@ -10270,7 +10270,7 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "<p>Please note that if you want to confirm the APN in the GIS, you must search for the FOLIO name.</p>",
+      "Important Info": "<p>Please note that if you want to confirm the APN in the GIS, you must search for the FOLIO name.</p><p><br></p><p>it's quite normal to see addresses like <strong>4445 POINCIANA STREET # 1-2, LAUDERDALE BY THE SEA, 33308</strong>. This is completely normal, and there's no need to \"override,\" meaning you don’t have to convert that property to <strong>4445 POINCIANA ST, LAUDERDALE BY THE SEA, 33308</strong>. The same applies to U1OM: if you see the previous address, there’s no need to \"override\"; just enter the unit number in the corresponding box, and that's it.</p>",
       "Media": [
         {
           "type": "N/A",
