@@ -13,10 +13,6 @@
             "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/NearbyParcels.js"
         }, 
         {
-            "urlPattern": "https://cyborg.deckard.com/listing/*STR*",
-            "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/ApnMappepListing.js"
-        },
-        {
             "urlPattern": "https://cyborg.deckard.com/listing/*?tab=picked_for_qa&subset=pending_qa",
             "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/Qaproductivity.js"
         },
@@ -98,7 +94,7 @@
         },
         {
             "urlPattern": "https://cyborg.deckard.com/parcel/*",
-            "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/ParcekAPn.js"
+            "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/ParcelApnMapped.js"
         },
         {
             "urlPattern": "https://cyborg.deckard.com/listing/FL/st_johns/*",
