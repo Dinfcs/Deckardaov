@@ -42,7 +42,7 @@
         },
         {
             "urlPattern": "https://cyborg.deckard.com/listing/*/STR*",
-            "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/PREDIT3.js"
+            "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/ProjectResoursesCyborg.js"
         },
         {
             "urlPattern": "https://cyborg.deckard.com/listing/*/STR*",
@@ -94,7 +94,7 @@
         },
         {
             "urlPattern": "https://cyborg.deckard.com/*",
-            "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/Styles2.js"
+            "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/StylesCyborg.js"
         },
         {
             "urlPattern": "https://cyborg.deckard.com/parcel/*",
