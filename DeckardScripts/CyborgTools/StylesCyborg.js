@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Estilos Cyborg
+// @name         1234
 // @namespace    http://tampermonkey.net/
 // @version      4
 // @description  Estilos modernos y compactos con aplicación inmediata para mejorar la experiencia de usuario.
@@ -130,10 +130,6 @@
                ================= */
             .cyborg-str-tool a:not(${EXCLUSIONS}) {
                 color: #89929c !important;
-                text-decoration: none !important;
-                font-weight: 500 !important;
-                transition: all ${STYLE.transition} !important;
-                border-bottom: 1px solid transparent !important;
             }
 
             .cyborg-str-tool a:visited:not(${EXCLUSIONS}) {
@@ -142,8 +138,6 @@
 
             .cyborg-str-tool a:hover:not(${EXCLUSIONS}) {
                 color: ${THEME.hover} !important;
-                border-bottom: 1px solid ${THEME.hover} !important;
-                text-decoration: none !important;
             }
 
             /* =================
