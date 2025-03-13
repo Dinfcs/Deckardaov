@@ -2341,28 +2341,28 @@
       "Public Records & GIS": [
         {
           "type": "PQ",
-          "url": "https://pqweb.parcelquest.com/#login"
+          "url": "https://script.google.com/a/macros/deckard.com/s/AKfycbziAFj6j4YU0oDpCIVc0EQfcYjx5RG-RtXZPLbA43eAaA91SpQ2ZDf7rJFVESnBCVk9/exec"
         },
         {
           "type": "San Mateo GIS",
           "url": "https://gis.smcgov.org/Html5Viewer/?viewer=raster"
         },
         {
-          "type": "GIS demonstration - County of San Mateo",
-          "url": "https://www.loom.com/share/1c218efcf74b4b4fbf8d03c5bb0ff35e"
+          "url": "https://www.loom.com/share/1c218efcf74b4b4fbf8d03c5bb0ff35e",
+          "type": "GIS demonstration - County of San Mateo"
         }
       ],
       "License List": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ],
-      "Important Info": "N/A",
+      "Important Info": "<p>N/A</p>",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ]
     },
