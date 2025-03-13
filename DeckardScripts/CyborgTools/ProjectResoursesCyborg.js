@@ -393,8 +393,15 @@ function createTable(data) {
         const th = document.createElement('th');
         th.textContent = header;
         th.style.textAlign = 'center'; // Centrar el texto del encabezado
+        th.style.backgroundColor = '#d1d1d1'; // Fondo azul claro con transparencia
+        th.style.color = '#87919c'; // Texto azul oscuro
+        th.style.border = '1px solid #a3a2a2'; // Borde azul suave
+        th.style.padding = '12px 18px'; // Padding para mejor apariencia
+        th.style.fontWeight = '600'; // Texto en negrita
+
         headerRow.appendChild(th);
     });
+
 
     // Crear cuerpo de la tabla
     const tbody = table.createTBody();
@@ -431,7 +438,6 @@ function createTable(data) {
     mainContainer.appendChild(table);
     document.body.appendChild(mainContainer);
 }
-
 
     function appendLinks(cell, items) {
         if (!items || items.length === 0) {
@@ -584,53 +590,55 @@ function createTable(data) {
         localStorage.setItem(IMAGE_CACHE_KEY, JSON.stringify(cache));
     }
 
-    function createIframeWithTabs() {
-        if (document.querySelector('#parcel-iframe')) return;
+  function createIframeWithTabs() {
+    if (document.querySelector('#parcel-iframe')) return;
 
-        const parcelLink = document.querySelector('a[href*="/parcel/"]');
-        if (!parcelLink) return;
+    const parcelLink = document.querySelector('a[href*="/parcel/"]');
+    if (!parcelLink) return;
 
-        const parcelUrl = 'https://cyborg.deckard.com' + parcelLink.getAttribute('href');
+    const parcelUrl = 'https://cyborg.deckard.com' + parcelLink.getAttribute('href');
 
-        // Obtener la URL base para el segundo iframe
-        const currentUrl = window.location.href;
-        const baseUrl = currentUrl.split('/STR')[0]; // Eliminar todo después de /STR
-        const mappedUrl = `${baseUrl}?tab=all&subset=mapped`; // Construir la nueva URL
+    // Obtener la URL base para el segundo iframe
+    const currentUrl = window.location.href;
+    const baseUrl = currentUrl.split('/STR')[0]; // Eliminar todo después de /STR
+    const mappedUrl = `${baseUrl}?tab=all&subset=mapped`; // Construir la nueva URL
 
-        // Contenedor principal
-        const container = document.createElement('div');
-        container.className = 'pr-container';
-        container.style.margin = '0px';
+    // Contenedor principal
+    const container = document.createElement('div');
+    container.className = 'pr-container';
+    container.style.margin = '0px';
 
-        // Crear pestañas
-        const tabContainer = document.createElement('div');
-        tabContainer.style.display = 'flex';
-        tabContainer.style.width = '100%';
+    // Crear pestañas
+    const tabContainer = document.createElement('div');
+    tabContainer.style.display = 'flex';
+    tabContainer.style.width = '100%';
 
-        // Estilos para las pestañas
-        const tabStyles = `
+    // Estilos para las pestañas (colores suaves azulados)
+    const tabStyles = `
         .pr-tab {
             display: inline-block;
-            background-color: #f9f9f9;
-            border: 1px solid #d6d6d6;
-            border-bottom: none;
-            padding: 5px 10px;
-            transition: background-color, color 200ms;
+            background-color: #D1D1D1;
+            border: 1px solid #a3a2a2;
+            padding: 4px 8px; /* Aumentar el padding para mejor apariencia */
+            transition: background-color 0.3s ease, color 0.3s ease;
             width: 50%;
             text-align: center;
-            box-sizing: border-box;
             cursor: pointer;
+            color: #87919c;
+            font-weight: 500; /* Texto un poco más grueso */
+
         }
         .pr-tab:hover {
-            background-color: #e9e9e9;
+            background-color: #bbdefb; /* Fondo azul más oscuro al pasar el mouse */
         }
         .pr-tab--selected {
-            border-top: 2px solid #1975FA;
-            color: black;
-            background-color: white;
+            background-color: #ffffff; /* Fondo blanco para la pestaña seleccionada */
+            border-top: 2px solid #1976d2; /* Borde superior azul */
+            color: #0d47a1; /* Texto azul más oscuro */
+            border-bottom: 1px solid #ffffff; /* Ocultar el borde inferior */
         }
         .pr-tab--selected:hover {
-            background-color: white;
+            background-color: #ffffff; /* Mantener el fondo blanco al pasar el mouse */
         }
         @media screen and (min-width: 800px) {
             .pr-tab {
@@ -642,70 +650,77 @@ function createTable(data) {
         }
     `;
 
-        // Agregar estilos al documento
-        const styleElement = document.createElement('style');
-        styleElement.textContent = tabStyles;
-        document.head.appendChild(styleElement);
+    // Agregar estilos al documento
+    const styleElement = document.createElement('style');
+    styleElement.textContent = tabStyles;
+    document.head.appendChild(styleElement);
 
-        // Pestaña All Parcels
-        const allParcelsTab = document.createElement('div');
-        allParcelsTab.className = 'pr-tab pr-tab--selected';
-        allParcelsTab.innerHTML = '<span>All Parcels</span>';
+    // Pestaña All Parcels
+    const allParcelsTab = document.createElement('div');
+    allParcelsTab.className = 'pr-tab'; // Sin la clase pr-tab--selected inicialmente
+    allParcelsTab.innerHTML = '<span>All Parcels</span>';
 
-        // Pestaña All Listings Mapped
-        const allListingsMappedTab = document.createElement('div');
-        allListingsMappedTab.className = 'pr-tab';
-        allListingsMappedTab.innerHTML = '<span>All Listings Mapped</span>';
+    // Pestaña All Listings Mapped
+    const allListingsMappedTab = document.createElement('div');
+    allListingsMappedTab.className = 'pr-tab'; // Sin la clase pr-tab--selected inicialmente
+    allListingsMappedTab.innerHTML = '<span>All Listings Mapped</span>';
 
-        // Crear contenedor de iframes
-        const iframeContainer = document.createElement('div');
-        iframeContainer.className = 'pr-iframe-container';
+    // Crear contenedor de iframes
+    const iframeContainer = document.createElement('div');
+    iframeContainer.className = 'pr-iframe-container';
 
-        // Iframe para All Parcels
-        const allParcelsIframe = document.createElement('iframe');
-        allParcelsIframe.className = 'pr-iframe';
-        allParcelsIframe.id = 'parcel-iframe';
-        allParcelsIframe.src = parcelUrl;
+    // Iframe para All Parcels
+    const allParcelsIframe = document.createElement('iframe');
+    allParcelsIframe.className = 'pr-iframe';
+    allParcelsIframe.id = 'parcel-iframe';
+    allParcelsIframe.src = parcelUrl;
+    allParcelsIframe.style.display = 'none'; // Ocultar inicialmente
 
-        // Iframe para All Listings Mapped
-        const allListingsMappedIframe = document.createElement('iframe');
-        allListingsMappedIframe.className = 'pr-iframe';
-        allListingsMappedIframe.id = 'mapped-iframe';
-        allListingsMappedIframe.src = mappedUrl;
-        allListingsMappedIframe.style.display = 'none'; // Ocultar inicialmente
-        allListingsMappedIframe.style.height = '2040px'; // Ajusta este valor según tus necesidades
+    // Iframe para All Listings Mapped
+    const allListingsMappedIframe = document.createElement('iframe');
+    allListingsMappedIframe.className = 'pr-iframe';
+    allListingsMappedIframe.id = 'mapped-iframe';
+    allListingsMappedIframe.src = mappedUrl;
+    allListingsMappedIframe.style.display = 'none'; // Ocultar inicialmente
+    allListingsMappedIframe.style.height = '2040px'; // Ajusta este valor según tus necesidades
 
-        // Función para cambiar entre pestañas
-        const switchTab = (tab) => {
-            if (tab === 'allParcels') {
-                allParcelsIframe.style.display = 'block';
-                allListingsMappedIframe.style.display = 'none';
-                allParcelsTab.classList.add('pr-tab--selected');
-                allListingsMappedTab.classList.remove('pr-tab--selected');
-            } else {
-                allParcelsIframe.style.display = 'none';
-                allListingsMappedIframe.style.display = 'block';
-                allListingsMappedTab.classList.add('pr-tab--selected');
-                allParcelsTab.classList.remove('pr-tab--selected');
-            }
-        };
+    // Función para cambiar entre pestañas
+    const switchTab = (tab) => {
+        if (tab === 'allParcels') {
+            allParcelsIframe.style.display = 'block'; // Mostrar All Parcels
+            allListingsMappedIframe.style.display = 'none'; // Ocultar All Listings Mapped
+            allParcelsTab.classList.add('pr-tab--selected');
+            allListingsMappedTab.classList.remove('pr-tab--selected');
+        } else if (tab === 'allListingsMapped') {
+            allParcelsIframe.style.display = 'none'; // Ocultar All Parcels
+            allListingsMappedIframe.style.display = 'block'; // Mostrar All Listings Mapped
+            allListingsMappedTab.classList.add('pr-tab--selected');
+            allParcelsTab.classList.remove('pr-tab--selected');
+        } else {
+            // Si no se selecciona ninguna pestaña, ocultar ambos iframes
+            allParcelsIframe.style.display = 'none';
+            allListingsMappedIframe.style.display = 'none';
+            allParcelsTab.classList.remove('pr-tab--selected');
+            allListingsMappedTab.classList.remove('pr-tab--selected');
+        }
+    };
 
-        // Event listeners para las pestañas
-        allParcelsTab.addEventListener('click', () => switchTab('allParcels'));
-        allListingsMappedTab.addEventListener('click', () => switchTab('allListingsMapped'));
+    // Event listeners para las pestañas
+    allParcelsTab.addEventListener('click', () => switchTab('allParcels'));
+    allListingsMappedTab.addEventListener('click', () => switchTab('allListingsMapped'));
 
-        // Activar la pestaña inicial
-        switchTab('allParcels');
+    // Inicialmente, no mostrar ningún iframe ni preseleccionar ninguna pestaña
+    switchTab(null); // Ocultar ambos iframes y deseleccionar pestañas
 
-        // Agregar elementos al DOM
-        tabContainer.appendChild(allParcelsTab);
-        tabContainer.appendChild(allListingsMappedTab);
-        iframeContainer.appendChild(allParcelsIframe);
-        iframeContainer.appendChild(allListingsMappedIframe);
-        container.appendChild(tabContainer);
-        container.appendChild(iframeContainer);
-        document.body.appendChild(container);
-    }
+    // Agregar elementos al DOM
+    tabContainer.appendChild(allParcelsTab);
+    tabContainer.appendChild(allListingsMappedTab);
+    iframeContainer.appendChild(allParcelsIframe);
+    iframeContainer.appendChild(allListingsMappedIframe);
+    container.appendChild(tabContainer);
+    container.appendChild(iframeContainer);
+    document.body.appendChild(container);
+}
 
     waitForElement('#btn_open_vetting_dlg', fetchData);
 })();
