@@ -7266,8 +7266,8 @@
       "Project": "MT - City of Billings",
       "Public Records & GIS": [
         {
-          "type": "PR (Use VPN in Miami)",
-          "url": "https://www.yellowstonecountymt.gov/treasurer/PropertySearch/index.asp?SearchBy=GeoCode"
+          "url": "https://www.yellowstonecountymt.gov/treasurer/PropertySearch/index.asp?SearchBy=GeoCode",
+          "type": "PR (Use VPN in Miami)"
         },
         {
           "type": "GIS",
@@ -7276,11 +7276,11 @@
       ],
       "License List": [
         {
-          "type": "License List",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B2BC0B7FF-8557-4CA4-B6E1-0F96D5B5EDED%7D&file=Copy%20of%20LicenseUploadTemplate%20SL.xlsx&action=default&mobileredirect=true"
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EZUS6-JGtshDm7tBE3Ou8JMB2swlPb2u8pXmQIYmjEacDw?e=VmYEdG",
+          "type": "License List"
         }
       ],
-      "Important Info": "When an address includes multiple housefront numbers (e.g.,447-49-51-53 Judith Ln, Billings, MT 59105): \n· If the specific unit is known: Perform an Address Override and update the address with the correct unit number.",
+      "Important Info": "<p>When an address includes multiple housefront numbers (e.g.,447-49-51-53 Judith Ln, Billings, MT 59105): \n· If the specific unit is known: Perform an Address Override and update the address with the correct unit number.</p>",
       "Media": [
         {
           "type": "N/A",
