@@ -29,20 +29,20 @@
         .pr-table td
     `;
 
-    // Sistema de colores modernos
+    // Sistema de colores Deckard
     const THEME = {
-        primary: '#4A90E2',       // Azul moderno
-        secondary: '#4A90E2',     // Violeta moderno
-        accent: '#00C853',        // Verde brillante
-        dark: '#2C3E50',          // Gris oscuro
-        medium: '#546E7A',        // Gris medio
-        light: '#ECEFF1',         // Gris claro
-        hover: '#3F51B5',         // Azul oscuro (hover)
-        active: '#303F9F',        // Azul más oscuro (active)
-        bgLight: '#FAFAFA',       // Fondo claro
-        bgAlt: '#F5F5F5',         // Fondo alternativo
-        bgHeader: '#E3F2FD',      // Fondo de encabezados
-        border: '#CFD8DC',        // Color de bordes
+        primary: '#00AEEF',       // Azul del logo Deckard
+        secondary: '#D1E231',     // Verde lima del logo Deckard
+        accent: '#D1E231',        // Verde lima como acento
+        dark: '#000000',          // Negro según la paleta
+        medium: '#4D4D4D',        // Gris oscuro según la paleta
+        light: '#F2F2F2',         // Gris claro según la paleta
+        hover: '#0098D1',         // Azul oscuro (hover) - variación del azul principal
+        active: '#0087BE',        // Azul más oscuro (active) - variación más oscura del azul
+        bgLight: '#FFFFFF',       // Fondo claro - blanco
+        bgAlt: '#F2F2F2',         // Fondo alternativo - gris claro de la paleta
+        bgHeader: '#E6F7FD',      // Fondo de encabezados - azul muy claro
+        border: '#DEDEDE',        // Color de bordes - gris neutro
         shadow: 'rgba(0, 0, 0, 0.1)' // Sombras sutiles
     };
 
@@ -75,7 +75,7 @@
             .cyborg-str-tool h4:not(${EXCLUSIONS}),
             .cyborg-str-tool h5:not(${EXCLUSIONS}),
             .cyborg-str-tool h6:not(${EXCLUSIONS}) {
-                color: #CAD92B !important;
+                color: ${THEME.primary} !important;
                 font-weight: 600 !important;
                 font-size: ${STYLE.fontSizeLarge} !important;
                 margin-bottom: ${STYLE.spacingSm} !important;
@@ -92,8 +92,8 @@
             #btn_open_vetting_dlg,
             #nearbyParcelsButton,
             #btn_open_vetting_dlg_as_qa_mode {
-                background-color: ${THEME.primary} !important;
-                color: white !important;
+                background-color: ${THEME.secondary} !important;
+                color: ${THEME.dark} !important;
                 border: none !important;
                 border-radius: ${STYLE.borderRadius} !important;
                 padding: 4px 8px !important;
@@ -111,12 +111,14 @@
             #btn_record_no_matching_parcel_found,
             #btn_record_listing_not_live, #secondary-button {
                 background-color: ${THEME.medium} !important;
+                color: white !important;
             }
 
             /* Interacciones de botones */
             .cyborg-str-tool button:not(${EXCLUSIONS}):hover,
             .cyborg-str-tool .btn:not(${EXCLUSIONS}):hover {
-                background-color: ${THEME.hover} !important;
+                background-color: ${THEME.primary} !important;
+                color: white !important;
             }
 
             #btn_submit_vetting_dlg:hover {
@@ -127,7 +129,7 @@
                4. ENLACES
                ================= */
             .cyborg-str-tool a:not(${EXCLUSIONS}) {
-                color: #96adb5 !important;
+                color: #89929c !important;
                 text-decoration: none !important;
                 font-weight: 500 !important;
                 transition: all ${STYLE.transition} !important;
@@ -135,7 +137,7 @@
             }
 
             .cyborg-str-tool a:visited:not(${EXCLUSIONS}) {
-                color: #02acf5 !important; /* Púrpura más suave para visitados */
+                color: ${THEME.primary} !important; /
             }
 
             .cyborg-str-tool a:hover:not(${EXCLUSIONS}) {
@@ -202,7 +204,7 @@
             .cyborg-str-tool select:focus:not(${EXCLUSIONS}),
             .cyborg-str-tool textarea:focus:not(${EXCLUSIONS}) {
                 border-color: ${THEME.primary} !important;
-                box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2) !important;
+                box-shadow: 0 0 0 2px rgba(0, 174, 239, 0.2) !important;
                 outline: none !important;
             }
 
@@ -291,33 +293,35 @@
                9. COLORES DE FONDO PERSONALIZADOS PARA LOS BOTONES
                ================= */
             .pop_up_header_container .btn-success { /* Same */
-                background-color: #4CAF50 !important;
-                color: white !important;
+                background-color: ${THEME.secondary} !important; /* Verde lima */
+                color: ${THEME.dark} !important; /* Texto negro */
             }
 
             .pop_up_header_container .btn-primary { /* In same MUS */
-                background-color: #2196F3 !important;
+                background-color: ${THEME.primary} !important; /* Azul */
                 color: white !important;
             }
 
             .pop_up_header_container .btn-warning { /* Different */
-                background-color: #FF9800 !important;
+                background-color: #FF9800 !important; /* Mantener naranja para "Different" */
                 color: white !important;
             }
 
             .pop_up_header_container .btn-info { /* Not sure */
-                background-color: #00BCD4 !important;
+                background-color: ${THEME.medium} !important; /* Gris oscuro */
                 color: white !important;
             }
 
             button[id*="btn_listing_pair_next"] { /* Next pair */
-                background-color: #B0BEC5 !important;
-                color: white !important;
+                background-color: ${THEME.light} !important; /* Gris claro */
+                color: ${THEME.dark} !important; /* Texto negro */
+                border: 1px solid ${THEME.border} !important;
             }
 
             button[id*="btn_listing_pair_prev"] { /* Prev pair */
-                background-color: #B0BEC5 !important;
-                color: white !important;
+                background-color: ${THEME.light} !important; /* Gris claro */
+                color: ${THEME.dark} !important; /* Texto negro */
+                border: 1px solid ${THEME.border} !important;
             }
 
         `;
