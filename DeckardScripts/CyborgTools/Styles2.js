@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         Estilos Modernos y Compactos (Carga Rápida)
+// @name         Estilos Cyborg
 // @namespace    http://tampermonkey.net/
-// @version      2.4
+// @version      4
 // @description  Estilos modernos y compactos con aplicación inmediata para mejorar la experiencia de usuario.
 // @author       Luis Escalante
 // @match        https://cyborg.deckard.com/*
@@ -29,20 +29,20 @@
         .pr-table td
     `;
 
-    // Sistema de colores modernos
+    // Sistema de colores Deckard
     const THEME = {
-        primary: '#4A90E2',       // Azul moderno
-        secondary: '#4A90E2',     // Violeta moderno
-        accent: '#00C853',        // Verde brillante
-        dark: '#2C3E50',          // Gris oscuro
-        medium: '#546E7A',        // Gris medio
-        light: '#ECEFF1',         // Gris claro
-        hover: '#3F51B5',         // Azul oscuro (hover)
-        active: '#303F9F',        // Azul más oscuro (active)
-        bgLight: '#FAFAFA',       // Fondo claro
-        bgAlt: '#F5F5F5',         // Fondo alternativo
-        bgHeader: '#E3F2FD',      // Fondo de encabezados
-        border: '#CFD8DC',        // Color de bordes
+        primary: '#00AEEF',       // Azul del logo Deckard
+        secondary: '#D1E231',     // Verde lima del logo Deckard
+        accent: '#D1E231',        // Verde lima como acento
+        dark: '#000000',          // Negro según la paleta
+        medium: '#4D4D4D',        // Gris oscuro según la paleta
+        light: '#F2F2F2',         // Gris claro según la paleta
+        hover: '#0098D1',         // Azul oscuro (hover) - variación del azul principal
+        active: '#0087BE',        // Azul más oscuro (active) - variación más oscura del azul
+        bgLight: '#FFFFFF',       // Fondo claro - blanco
+        bgAlt: '#F2F2F2',         // Fondo alternativo - gris claro de la paleta
+        bgHeader: '#E6F7FD',      // Fondo de encabezados - azul muy claro
+        border: '#DEDEDE',        // Color de bordes - gris neutro
         shadow: 'rgba(0, 0, 0, 0.1)' // Sombras sutiles
     };
 
@@ -75,7 +75,7 @@
             .cyborg-str-tool h4:not(${EXCLUSIONS}),
             .cyborg-str-tool h5:not(${EXCLUSIONS}),
             .cyborg-str-tool h6:not(${EXCLUSIONS}) {
-                color: #CAD92B !important;
+                color: ${THEME.primary} !important;
                 font-weight: 600 !important;
                 font-size: ${STYLE.fontSizeLarge} !important;
                 margin-bottom: ${STYLE.spacingSm} !important;
@@ -92,8 +92,8 @@
             #btn_open_vetting_dlg,
             #nearbyParcelsButton,
             #btn_open_vetting_dlg_as_qa_mode {
-                background-color: ${THEME.primary} !important;
-                color: white !important;
+                background-color: ${THEME.secondary} !important;
+                color: ${THEME.dark} !important;
                 border: none !important;
                 border-radius: ${STYLE.borderRadius} !important;
                 padding: 4px 8px !important;
@@ -111,12 +111,14 @@
             #btn_record_no_matching_parcel_found,
             #btn_record_listing_not_live, #secondary-button {
                 background-color: ${THEME.medium} !important;
+                color: white !important;
             }
 
             /* Interacciones de botones */
             .cyborg-str-tool button:not(${EXCLUSIONS}):hover,
             .cyborg-str-tool .btn:not(${EXCLUSIONS}):hover {
-                background-color: ${THEME.hover} !important;
+                background-color: ${THEME.primary} !important;
+                color: white !important;
             }
 
             #btn_submit_vetting_dlg:hover {
@@ -127,7 +129,7 @@
                4. ENLACES
                ================= */
             .cyborg-str-tool a:not(${EXCLUSIONS}) {
-                color: #96adb5 !important;
+                color: ${THEME.primary} !important;
                 text-decoration: none !important;
                 font-weight: 500 !important;
                 transition: all ${STYLE.transition} !important;
@@ -135,7 +137,7 @@
             }
 
             .cyborg-str-tool a:visited:not(${EXCLUSIONS}) {
-                color: #02acf5 !important; /* Púrpura más suave para visitados */
+                color: ${THEME.medium} !important; /* Gris oscuro para visitados */
             }
 
             .cyborg-str-tool a:hover:not(${EXCLUSIONS}) {
@@ -147,7 +149,8 @@
             /* =================
                5. TABLAS MODERNAS
                ================= */
-            .cyborg-str-tool table th[data-dash-column="city_p"]:not(${EXCLUSIONS}) {
+
+               .cyborg-str-tool table th[data-dash-column="city_p"]:not(${EXCLUSIONS}) {
                 min-width: 180px !important;
                 max-width: 300px !important;
             }
@@ -201,8 +204,47 @@
             .cyborg-str-tool select:focus:not(${EXCLUSIONS}),
             .cyborg-str-tool textarea:focus:not(${EXCLUSIONS}) {
                 border-color: ${THEME.primary} !important;
-                box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2) !important;
+                box-shadow: 0 0 0 2px rgba(0, 174, 239, 0.2) !important;
                 outline: none !important;
+            }
+
+                                /* Estilos para los tabs */
+            .tab-container .tab {
+            display: inline-block;
+            background-color: ${THEME.bgLight} !important; /* Fondo claro */
+            border: 1px solid ${THEME.border} !important; /* Borde sutil */
+            border-bottom: none !important;
+            transition: all ${STYLE.transition} !important; /* Transición suave */
+            text-align: center !important;
+            box-sizing: border-box !important;
+            font-size: ${STYLE.fontSizeBuckets} !important; /* Tamaño de fuente base */
+            font-weight: 530 !important; /* Fuente semibold */
+            color: ${THEME.medium} !important; /* Color de texto secundario */
+            border-radius: ${STYLE.borderRadius} ${STYLE.borderRadius} 0 0 !important; /* Bordes redondeados solo arriba */
+            cursor: pointer !important; /* Cursor de puntero */
+            margin-right: ${STYLE.spacingXs} !important; /* Espaciado entre tabs */
+            }
+
+            /* Estilos para el tab seleccionado */
+            .tab-container .tab--selected {
+                background-color: white !important; /* Fondo blanco */
+                color: ${THEME.primary} !important; /* Color primario */
+                border-color: ${THEME.primary} !important; /* Borde primario */
+                font-weight:500 !important; /* Fuente más gruesa */
+                box-shadow: 0 -2px 0 ${THEME.primary} inset !important; /* Línea inferior de acento */
+            }
+
+            /* Efecto hover para los tabs */
+            .tab-container .tab:hover {
+                background-color: ${THEME.light} !important; /* Fondo más claro al pasar el mouse */
+                color: ${THEME.dark} !important; /* Color de texto más oscuro */
+            }
+
+            /* Efecto hover para el tab seleccionado */
+            .tab-container .tab--selected:hover {
+                background-color: white !important; /* Mantener fondo blanco */
+                color: ${THEME.hover} !important; /* Color primario más oscuro */
+                border-color: ${THEME.hover} !important; /* Borde primario más oscuro */
             }
 
             /* =================
@@ -218,16 +260,16 @@
                 padding: 8px; /* Espaciado interno */
                 border-radius: 12px; /* Bordes redondeados */
                 box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Sombra para dar profundidad */
-                display: flex; /* Usa flexbox para alinear los botones */
+
                 gap: 10px; /* Espacio entre botones (reducido para ahorrar espacio) */
-                justify-content: center; /* Centra los botones horizontalmente */
+
                 flex-wrap: nowrap; /* Evita que los botones se envuelvan en múltiples líneas */
                 max-width: 70%; /* Ancho máximo del contenedor (ajusta según sea necesario) */
                 width: auto; /* Ancho automático basado en el contenido */
                 backdrop-filter: blur(10px); /* Efecto de desenfoque para mejorar la legibilidad */
             }
 
-            /* =================
+                        /* =================
                8. ESTILOS COMUNES PARA TODOS LOS BOTONES
                ================= */
             .pop_up_header_container .btn,
@@ -251,100 +293,43 @@
                9. COLORES DE FONDO PERSONALIZADOS PARA LOS BOTONES
                ================= */
             .pop_up_header_container .btn-success { /* Same */
-                background-color: #4CAF50 !important;
-                color: white !important;
+                background-color: ${THEME.secondary} !important; /* Verde lima */
+                color: ${THEME.dark} !important; /* Texto negro */
             }
 
             .pop_up_header_container .btn-primary { /* In same MUS */
-                background-color: #2196F3 !important;
+                background-color: ${THEME.primary} !important; /* Azul */
                 color: white !important;
             }
 
             .pop_up_header_container .btn-warning { /* Different */
-                background-color: #FF9800 !important;
+                background-color: #FF9800 !important; /* Mantener naranja para "Different" */
                 color: white !important;
             }
 
             .pop_up_header_container .btn-info { /* Not sure */
-                background-color: #00BCD4 !important;
+                background-color: ${THEME.medium} !important; /* Gris oscuro */
                 color: white !important;
             }
 
             button[id*="btn_listing_pair_next"] { /* Next pair */
-                background-color: #B0BEC5 !important;
-                color: white !important;
+                background-color: ${THEME.light} !important; /* Gris claro */
+                color: ${THEME.dark} !important; /* Texto negro */
+                border: 1px solid ${THEME.border} !important;
             }
 
             button[id*="btn_listing_pair_prev"] { /* Prev pair */
-                background-color: #B0BEC5 !important;
-                color: white !important;
+                background-color: ${THEME.light} !important; /* Gris claro */
+                color: ${THEME.dark} !important; /* Texto negro */
+                border: 1px solid ${THEME.border} !important;
             }
 
-            /* =================
-               10. EFECTO HOVER PARA TODOS LOS BOTONES
-               ================= */
-            .pop_up_header_container .btn:hover,
-            button[id*="btn_listing_pair_next"]:hover,
-            button[id*="btn_listing_pair_prev"]:hover {
-                opacity: 0.9 !important;
-                transform: translateY(-2px) !important;
-            }
-
-            /* =================
-               11. ESTILO PARA EL BOTÓN "PREV PAIR" CUANDO ESTÁ DESHABILITADO
-               ================= */
-            button[id*="btn_listing_pair_prev"][disabled] {
-                background-color: #B0BEC5 !important;
-                color: #fff !important;
-                cursor: not-allowed !important;
-            }
-
-            /* =================
-               12. ESTILOS PARA LOS TABS
-               ================= */
-            .tab-container .tab {
-                display: inline-block;
-                background-color: ${THEME.bgLight} !important; /* Fondo claro */
-                border: 1px solid ${THEME.border} !important; /* Borde sutil */
-                border-bottom: none !important;
-                transition: all ${STYLE.transition} !important; /* Transición suave */
-                text-align: center !important;
-                box-sizing: border-box !important;
-                font-size: ${STYLE.fontSizeBuckets} !important; /* Tamaño de fuente base */
-                font-weight: 530 !important; /* Fuente semibold */
-                color: ${THEME.medium} !important; /* Color de texto secundario */
-                border-radius: ${STYLE.borderRadius} ${STYLE.borderRadius} 0 0 !important; /* Bordes redondeados solo arriba */
-                cursor: pointer !important; /* Cursor de puntero */
-                margin-right: ${STYLE.spacingXs} !important; /* Espaciado entre tabs */
-            }
-
-            /* Estilos para el tab seleccionado */
-            .tab-container .tab--selected {
-                background-color: white !important; /* Fondo blanco */
-                color: ${THEME.primary} !important; /* Color primario */
-                border-color: ${THEME.primary} !important; /* Borde primario */
-                font-weight: 500 !important; /* Fuente más gruesa */
-                box-shadow: 0 -2px 0 ${THEME.primary} inset !important; /* Línea inferior de acento */
-            }
-
-            /* Efecto hover para los tabs */
-            .tab-container .tab:hover {
-                background-color: ${THEME.light} !important; /* Fondo más claro al pasar el mouse */
-                color: ${THEME.dark} !important; /* Color de texto más oscuro */
-            }
-
-            /* Efecto hover para el tab seleccionado */
-            .tab-container .tab--selected:hover {
-                background-color: white !important; /* Mantener fondo blanco */
-                color: ${THEME.hover} !important; /* Color primario más oscuro */
-                border-color: ${THEME.hover} !important; /* Borde primario más oscuro */
-            }
         `;
-        
+
         const style = document.createElement('style');
         style.id = 'custom-cyborg-styles';
         style.textContent = css;
-        
+
         // Insertar estilos lo antes posible
         if (document.head) {
             document.head.appendChild(style);
@@ -357,14 +342,14 @@
                 }
             }, 10); // Comprobar cada 10ms
         }
-        
+
         // Agregar clase al body tan pronto como esté disponible
         const applyBodyClass = () => {
             if (document.body) {
                 document.body.classList.add('cyborg-str-tool');
             }
         };
-        
+
         applyBodyClass();
         // Asegurarse de que la clase se aplique cuando el body esté disponible
         document.addEventListener('DOMContentLoaded', applyBodyClass);
@@ -375,19 +360,19 @@
         // Usar delegación de eventos para manejar botones creados dinámicamente
         document.addEventListener('click', (e) => {
             const target = e.target;
-            
+
             // Comprobar botón "Same"
             if (target.classList.contains('btn-success')) {
                 scheduleNextPairClick(2000); // 2 segundos
-            } 
+            }
             // Comprobar botones "In same MUS", "Different", "Not sure"
-            else if (target.classList.contains('btn-primary') || 
-                    target.classList.contains('btn-warning') || 
+            else if (target.classList.contains('btn-primary') ||
+                    target.classList.contains('btn-warning') ||
                     target.classList.contains('btn-info')) {
                 scheduleNextPairClick(500); // 0.5 segundos
             }
         });
-        
+
         // Atajo de teclado Ctrl+S para hacer clic en el botón Save
         document.addEventListener('keydown', (e) => {
             if (e.ctrlKey && e.key === 's') {
@@ -417,17 +402,17 @@
         const observer = new MutationObserver(() => {
             document.body.classList.add('cyborg-str-tool');
         });
-        
-        observer.observe(document.body, { 
-            childList: true, 
-            subtree: true 
+
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
         });
     }
 
     // INICIALIZACIÓN INMEDIATA
     // 1. Inyectar estilos lo antes posible
     injectStyles();
-    
+
     // 2. Configurar eventos cuando el DOM esté listo
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', () => {
@@ -438,7 +423,7 @@
         setupButtonEvents();
         setupObserver();
     }
-    
+
     // 3. Asegurarse de que los estilos sean aplicados incluso si se carga tarde
     window.addEventListener('load', () => {
         document.body.classList.add('cyborg-str-tool');
