@@ -10325,6 +10325,32 @@
           "type": "N/A"
         }
       ]
+    },
+    {
+      "Project": "WA - City Of Kirkland",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://blue.kingcounty.com/Assessor/eRealProperty/default.aspx"
+        },
+        {
+          "type": "GIS",
+          "url": "https://gismaps.kingcounty.gov/iMap/"
+        }
+      ],
+      "License List": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ],
+      "Important Info": "<p><br></p>",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
