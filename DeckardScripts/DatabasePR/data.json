@@ -5654,21 +5654,21 @@
           "url": "https://maps.ventura.org/countyview/"
         },
         {
-          "type": "PR ",
+          "type": "PR",
           "url": "https://assessor.countyofventura.org/assessor-data/property-search/"
         }
       ],
       "License List": [
         {
           "type": "License List",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EWBEmSxUce9Dqq0tKJWnIqMBpDRY9dol_qtjXpPE4rc-bQ?e=AmH4Z7"
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EUxyjDEEOWNNiPkjZAlExfsBYcMYoBi-7G8VkazZMxvGvg?e=pjPtXp"
         }
       ],
-      "Important Info": "You can use PQ as a Public Provider.\nTo APN searching in GIS, use the following format, i.e. APN provided by cyborg: 0803401400 the last zero, translate it as the fourth digit, like this: 080034014-0 The last digit is the suffix in GIS, delete it to search: 080034014 \nIn some cases, city information for an address may differ across various resources. To resolve these discrepancies, follow these options: \n-Verify city limits: Use a map service like Google Maps to confirm the address falls within the designated city boundaries.\n-Cross-reference ZIP code: Check the ZIP code with the USPS database to see if it aligns with the listed city.\n-Compare mailing address: If available, compare the mailing address provided by PQ with the rental property address. In some instances, the mailing address might accurately reflect the city.",
+      "Important Info": "<p>You can use PQ as a Public Provider.\nTo APN searching in GIS, use the following format, i.e. APN provided by cyborg: 0803401400 the last zero, translate it as the fourth digit, like this: 080034014-0 The last digit is the suffix in GIS, delete it to search: 080034014 \nIn some cases, city information for an address may differ across various resources. To resolve these discrepancies, follow these options: \n-Verify city limits: Use a map service like Google Maps to confirm the address falls within the designated city boundaries.\n-Cross-reference ZIP code: Check the ZIP code with the USPS database to see if it aligns with the listed city.\n-Compare mailing address: If available, compare the mailing address provided by PQ with the rental property address. In some instances, the mailing address might accurately reflect the city.</p>",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ]
     },
