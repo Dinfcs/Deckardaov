@@ -394,8 +394,8 @@
             const th = document.createElement('th');
             th.textContent = header;
             th.style.textAlign = 'center'; // Centrar el texto del encabezado
-            th.style.backgroundColor = '#00AEEF'; /* Azul para el fondo del encabezado */
-            th.style.color = 'white'; /* Texto blanco para el encabezado */
+            th.style.backgroundColor = '#E6F7FD'; /* Azul para el fondo del encabezado */
+            th.style.color = 'black'; /* Texto blanco para el encabezado */
             th.style.border = '1px solid #F2F2F2'; /* Gris claro para el borde */
             th.style.padding = '12px 18px'; /* Padding para mejor apariencia */
             th.style.fontWeight = '600'; /* Texto en negrita */
