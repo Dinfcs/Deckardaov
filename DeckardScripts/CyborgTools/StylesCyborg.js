@@ -132,10 +132,9 @@
                 color: #89929c !important;
             }
 
-            .cyborg-str-tool a:visited:not(${EXCLUSIONS}) {
-                color: ${THEME.primary} !important; /
+            .cyborg-str-tool a.visited:not(${EXCLUSIONS}) {
+                color: ${THEME.primary} !important;
             }
-
             .cyborg-str-tool a:hover:not(${EXCLUSIONS}) {
                 color: ${THEME.hover} !important;
             }
@@ -378,6 +377,12 @@
             }
         });
     }
+
+    document.addEventListener('click', (e) => {
+    if (e.target.tagName === 'A') {
+        e.target.classList.add('visited');
+    }
+});
 
     // Programar clic en "Next Pair"
     function scheduleNextPairClick(delay) {
