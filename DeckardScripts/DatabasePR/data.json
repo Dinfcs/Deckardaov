@@ -10260,8 +10260,8 @@
       "Project": "FL - Town Of Lauderdale By The Sea",
       "Public Records & GIS": [
         {
-          "url": "https://web.bcpa.net/bcpaclient/#/Record-Search",
-          "type": "PR"
+          "type": "PR",
+          "url": "https://web.bcpa.net/bcpaclient/#/Record-Search"
         },
         {
           "url": "https://gis.fortlauderdale.gov/propertyreporter/?extent=-8916228%2C3025910%2C-8915846%2C3026062%2C102100",
@@ -10274,11 +10274,11 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "<p>Please note that if you want to confirm the APN in the GIS, you must search for the FOLIO name.</p><p><br></p><p>it's quite normal to see addresses like <strong>4445 POINCIANA STREET # 1-2, LAUDERDALE BY THE SEA, 33308</strong>. This is completely normal, and there's no need to \"override,\" meaning you don’t have to convert that property to <strong>4445 POINCIANA ST, LAUDERDALE BY THE SEA, 33308</strong>. The same applies to U1OM: if you see the previous address, there’s no need to \"override\"; just enter the unit number in the corresponding box, and that's it.</p>",
+      "Important Info": "<h3>Important Notes</h3><ul><li><strong>Confirming the APN in GIS:</strong></li><li class=\"ql-indent-1\"><strong>Search for</strong>: FOLIO name</li><li><strong>Address Formatting Guidelines:</strong></li><li class=\"ql-indent-1\"><strong>Example Address</strong>: 4445 POINCIANA STREET # 1-2, LAUDERDALE BY THE SEA, 33308</li><li><strong>No Conversion Needed</strong>:</li><li class=\"ql-indent-1\">There's no need to change the address to: 4445 POINCIANA ST, LAUDERDALE BY THE SEA, 33308</li><li class=\"ql-indent-1\">Simply enter the unit number in the corresponding box if the address format includes a unit number (e.g., # 1-2 or U1OM)</li></ul><p><br></p>",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ]
     },
