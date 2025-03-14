@@ -674,17 +674,17 @@
           "url": "https://assr.parcelquest.com/Statewide"
         },
         {
-          "type": "GIS",
-          "url": "https://sdgis.sandag.org/"
+          "url": "https://sdgis.sandag.org/",
+          "type": "GIS"
         }
       ],
       "License List": [
         {
-          "type": "License",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EVFICbV9BglFn89_X_Q4QXAB_Skl23oc9wO91UalCvNBFQ?e=h3UqPU"
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/ERe148rGdUNAneQbHxMiBIQBjhQ5eAT8rpqOC7cYiGlPfg?e=nSAbqH",
+          "type": "License"
         }
       ],
-      "Important Info": "You need to check if the matched property is licensed (License file), if it is, you must use the information in the \"UNIT FIXED\" column and applied to the unit box in Cyborg.",
+      "Important Info": "<p>You need to check if the matched property is licensed (License file), if it is, you must use the information in the \"UNIT FIXED\" column and applied to the unit box in Cyborg.</p>",
       "Media": [
         {
           "type": "N/A",
