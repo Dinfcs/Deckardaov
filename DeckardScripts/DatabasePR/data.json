@@ -10381,6 +10381,32 @@
           "type": "N/A"
         }
       ]
+    },
+    {
+      "Project": "WA - City Of Seattle",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://blue.kingcounty.com/Assessor/eRealProperty/default.aspx"
+        },
+        {
+          "url": "https://gismaps.kingcounty.gov/iMap/",
+          "type": "GIS"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "<p><br></p>",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
