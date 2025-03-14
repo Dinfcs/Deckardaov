@@ -10411,6 +10411,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "MN - Cass County",
+      "Public Records & GIS": [
+        {
+          "url": "https://cassweb3.co.cass.mn.us/link/Reports/taxsearch/search.aspx",
+          "type": "PR"
+        },
+        {
+          "url": "https://cassweb3.co.cass.mn.us/link/jsfe/index.aspx?defaultRole=Public",
+          "type": "GIS"
+        }
+      ],
+      "License List": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ],
+      "Important Info": "<ul><li>To search in the GIS, you need to click on the \"Search\" option. There, you will be able to search by Parcel Number and Primary Address.</li></ul>",
+      "Media": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ]
     }
   ]
 }
