@@ -414,7 +414,14 @@ function createTable(data) {
         if (header === 'Public Records & GIS' || header === 'License List') {
             appendLinks(cell, data[header]);
         } else if (header === 'Important Info') {
+            // Interpretar HTML y mantener formato
             cell.innerHTML = data[header]?.replace(/\n/g, '<br>') || '';
+            cell.style.whiteSpace = 'pre-wrap'; // Mantiene espacios y saltos de línea
+            cell.style.padding = '10px'; // Añade un padding interno
+            cell.style.textAlign = 'left'; // Alinea el texto a la izquierda
+            cell.style.lineHeight = '1.6'; // Mejora el espaciado entre líneas
+            cell.style.fontFamily = 'Arial, sans-serif'; // Fuente legible
+            cell.style.fontSize = '14px'; // Tamaño de fuente
         } else if (header === 'Media') {
             appendMedia(cell, data[header]);
         } else {
