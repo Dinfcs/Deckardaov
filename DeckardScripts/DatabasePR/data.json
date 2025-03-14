@@ -10274,7 +10274,7 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "<ul><li><strong>Confirming the APN in GIS:</strong></li><li class=\"ql-indent-1\"><strong>Search for</strong>: FOLIO name</li><li><strong>Address Formatting Guidelines:</strong></li><li class=\"ql-indent-1\"><strong>Example Address</strong>: 4445 POINCIANA STREET # 1-2, LAUDERDALE BY THE SEA, 33308</li><li><strong>No Conversion Needed</strong>:</li><li class=\"ql-indent-1\">There's no need to change the address to: 4445 POINCIANA ST, LAUDERDALE BY THE SEA, 33308</li><li class=\"ql-indent-1\">Simply enter the unit number in the corresponding box if the address format includes a unit number (e.g., # 1-2 or U1OM)</li></ul><p><br></p>",
+      "Important Info": "<p><strong>1. Confirming the APN in GIS:</strong></p><ul><li>Search for: FOLIO name</li></ul><p><br></p><p><strong>2. Address Formatting Guidelines:</strong></p><ul><li>&nbsp;&nbsp;Example Address: 4445 POINCIANA STREET # 1-2, LAUDERDALE BY THE SEA, 33308</li></ul><p>&nbsp;&nbsp;<strong>- No Conversion Needed:</strong></p><ul><li>No need to change the address to: 4445 POINCIANA ST, LAUDERDALE BY THE SEA, 33308</li><li>Simply enter the unit number in the corresponding box if the address format includes a unit number (e.g., # 1-2 or U1OM)</li></ul><p><br></p>",
       "Media": [
         {
           "url": "N/A",
