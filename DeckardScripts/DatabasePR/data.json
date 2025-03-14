@@ -10392,12 +10392,16 @@
         {
           "url": "https://gismaps.kingcounty.gov/iMap/",
           "type": "GIS"
+        },
+        {
+          "url": "https://gismaps.kingcounty.gov/parcelviewer2//?pin=1991200250",
+          "type": "GIS 2"
         }
       ],
       "License List": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ],
       "Important Info": "<p><br></p>",
