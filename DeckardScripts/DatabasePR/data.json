@@ -10459,6 +10459,28 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "MA - Town Of Dennis",
+      "Public Records & GIS": [
+        {
+          "type": "GIS",
+          "url": "https://www.mapsonline.net/dennisma/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "<p><br></p>",
+      "Media": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ]
     }
   ]
 }
