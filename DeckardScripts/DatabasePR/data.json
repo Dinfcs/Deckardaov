@@ -10470,15 +10470,15 @@
       ],
       "License List": [
         {
-          "type": "N/A",
-          "url": "N/A"
-        }
-      ],
-      "Important Info": "<p><br></p>",
-      "Media": [
-        {
           "url": "N/A",
           "type": "N/A"
+        }
+      ],
+      "Important Info": "<p>The aerial view is better on Bing Maps and DuckDuckGo.</p><p>To search for the property in the GIS, only use the name of the street. For example: 63 Trotting Park Rd, West Dennis, MA 02670.</p><p>Type only 'Trotting Park' or 'Trotting' in the GIS.</p>",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
         }
       ]
     }
