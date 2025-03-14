@@ -8806,19 +8806,23 @@
         {
           "type": "GIS 2",
           "url": "https://cty-gis-web.co.humboldt.ca.us/HCEGIS3.0/"
+        },
+        {
+          "type": "PR 2",
+          "url": "https://humboldtgov.org/231/Online-Search"
         }
       ],
       "License List": [
         {
-          "type": "License",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EbT0-i_ut-BAnAb_noKxXQoBcmusDGuQUOkKYIhzeI1w-Q?e=UqSqKG"
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EbT0-i_ut-BAnAb_noKxXQoBcmusDGuQUOkKYIhzeI1w-Q?e=UqSqKG",
+          "type": "License"
         }
       ],
-      "Important Info": "☑️If you find an assigned license in the listing, use the Unit Box if applicable.",
+      "Important Info": "<p>☑️If you find an assigned license in the listing, use the Unit Box if applicable.</p>",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ]
     },
