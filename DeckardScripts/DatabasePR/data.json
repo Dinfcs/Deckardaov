@@ -10270,15 +10270,15 @@
       ],
       "License List": [
         {
-          "url": "N/A",
-          "type": "N/A"
-        }
-      ],
-      "Important Info": "<p><strong>1. Confirming the APN in GIS:</strong></p><ul><li>Search for: FOLIO name</li></ul><p><strong>2. Address Formatting Guidelines:</strong></p><ul><li>&nbsp;&nbsp;Example Address: 4445 POINCIANA STREET # 1-2, LAUDERDALE BY THE SEA, 33308</li></ul><p>&nbsp;&nbsp;<strong>- No Conversion Needed:</strong></p><ul><li>No need to change the address to: 4445 POINCIANA ST, LAUDERDALE BY THE SEA, 33308</li><li>Simply enter the unit number in the corresponding box if the address format includes a unit number (e.g., # 1-2 or U1OM)</li></ul><p><br></p>",
-      "Media": [
-        {
           "type": "N/A",
           "url": "N/A"
+        }
+      ],
+      "Important Info": "<p><strong>1. Confirming the APN in GIS:</strong></p><ul><li>Search for: FOLIO name</li></ul><p><strong>2. Address Formatting Guidelines:</strong></p><ul><li>&nbsp;&nbsp;Example Address: 4445 POINCIANA STREET # 1-2, LAUDERDALE BY THE SEA, 33308</li></ul><p><strong>3.No Conversion Needed:</strong></p><ul><li>No need to change the address to: 4445 POINCIANA ST, LAUDERDALE BY THE SEA, 33308</li><li>Simply enter the unit number in the corresponding box if the address format includes a unit number (e.g., # 1-2 or U1OM)</li></ul><p><br></p>",
+      "Media": [
+        {
+          "url": "N/A",
+          "type": "N/A"
         }
       ]
     },
