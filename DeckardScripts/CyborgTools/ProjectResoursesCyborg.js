@@ -366,6 +366,14 @@
         document.body.appendChild(errorMsg);
     }
 function createTable(data) {
+    // Verificar si la tabla ya existe
+    let existingTable = document.getElementById('projectResources-table');
+    if (existingTable) {
+        // Si la tabla ya existe, actualiza su contenido
+        updateTable(existingTable, data);
+        return;
+    }
+
     // Contenedor principal
     const mainContainer = document.createElement('div');
     mainContainer.className = 'pr-container';
@@ -430,6 +438,41 @@ function createTable(data) {
     mainContainer.appendChild(tableTitle);
     mainContainer.appendChild(table);
     document.body.appendChild(mainContainer);
+}
+
+function updateTable(table, data) {
+    // Limpiar el contenido de la tabla
+    const tbody = table.tBodies[0];
+    tbody.innerHTML = '';
+
+    // Crear una nueva fila con los datos actualizados
+    const row = tbody.insertRow();
+
+    HEADERS.forEach(header => {
+        const cell = row.insertCell();
+
+        if (header === 'Public Records & GIS' || header === 'License List') {
+            appendLinks(cell, data[header]);
+        } else if (header === 'Important Info') {
+            cell.innerHTML = data[header]?.replace(/\n/g, '<br>') || '';
+        } else if (header === 'Media') {
+            appendMedia(cell, data[header]);
+        } else {
+            // Si es la columna "Project", hacerla clickable
+            if (header === 'Project') {
+                cell.textContent = data[header] || '';
+                cell.style.fontWeight = '600';
+                cell.style.cursor = 'pointer'; // Hacer que la celda sea clickable
+                cell.style.userSelect = 'none'; // Evitar que el texto se seleccione al hacer clic
+                cell.addEventListener('click', () => {
+                    copyToClipboard(data[header]); // Copiar el contenido de la celda al portapapeles
+                });
+            } else {
+                cell.textContent = data[header] || '';
+                cell.style.fontWeight = '600';
+            }
+        }
+    });
 }
 
 
