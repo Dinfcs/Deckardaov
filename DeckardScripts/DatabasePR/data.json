@@ -8994,8 +8994,8 @@
       "Project": "OR - City of Cannon Beach",
       "Public Records & GIS": [
         {
-          "type": "GIS & PR",
-          "url": "https://gis.cartomation.com/cannonbeach/planning/#on=sketch/default;bare/bare;roads/roads;parcels/parcels;OSIP_2022/OSIP_2022&loc=0.2986;-13799252.40;5762709.50"
+          "url": "https://gis.cartomation.com/cannonbeach/planning/#on=sketch/default;bare/bare;roads/roads;parcels/parcels;OSIP_2022/OSIP_2022&loc=0.2986;-13799252.40;5762709.50",
+          "type": "GIS & PR"
         },
         {
           "type": "STR Permits Lists",
@@ -9004,15 +9004,15 @@
       ],
       "License List": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "type": "License",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EbYOKgYRVgVIs0N1C5DZRTYBSwYqcHpbQgwyVy4Y6uIxkw?e=07lEUL"
         }
       ],
-      "Important Info": "For search by APN, use TAXLOT NUMBER\nFor futher info click on \"assesor link\".\n",
+      "Important Info": "<p>For search by APN, use TAXLOT NUMBER\nFor futher info click on \"assesor link\".\n</p>",
       "Media": [
         {
-          "type": "Image",
-          "url": "https://drive.usercontent.google.com/download?id=1aGvssIV8HjQvxLn93TPAfA3tiRJy7ivf&authuser=0"
+          "url": "https://drive.usercontent.google.com/download?id=1aGvssIV8HjQvxLn93TPAfA3tiRJy7ivf&authuser=0",
+          "type": "Image"
         }
       ]
     },
