@@ -10481,6 +10481,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "HI - Hawaii County",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://qpublic.schneidercorp.com/Application.aspx?AppID=1048&LayerID=23618&PageTypeID=2&PageID=9876"
+        },
+        {
+          "type": "GIS",
+          "url": "https://gis.hawaiicounty.gov/arcgisportal/apps/webappviewer/index.html?id=6d4a0ca08b9744c9a34e0a6ff65b882e"
+        }
+      ],
+      "License List": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ],
+      "Important Info": "<p>The Parcel Number follows this structure:</p><p><br></p><p><em>I-Z-S-PPP-ppp-CCCC</em></p><p><br></p><p>Where:</p><p><br></p><p>I → Island Number (removed in the search).</p><p>Z → Zone Number.</p><p>S → Section Number.</p><p>PPP → Plat Number (three digits).</p><p>ppp → Parcel Number (three digits).</p><p>CCCC → CPR or Condominium Number (if none, four zeros are added).</p><p><br></p><p>Steps to adjust it:</p><p><br></p><p>Example with APN from Cyborg: <strong><em>312031007</em></strong></p><p><br></p><ul><li>Remove the Island Number (I) → If the first number represents the Island Number, you must remove it.</li><li>Ensure the Plat Number (PPP) and Parcel Number (ppp) have three digits each → If they have fewer, add leading zeros.</li><li>If there is no CPR or Condominium Number (CCCC), add four zeros at the end.</li></ul><p><br></p><p>Analyzing the number 312031007:</p><p><br></p><p>3 → Island Number (removed).</p><p>12 → Zone-Section.</p><p>031 → Plat Number (already has three digits, correct).</p><p>007 → Parcel Number (already has three digits, correct).</p><p><br></p><p>No CPR/Condominium Number, so four zeros are added at the end.</p><p><br></p><p><strong>The corrected number would be:</strong></p><p><strong>120310070000</strong></p>",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
