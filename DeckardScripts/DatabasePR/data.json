@@ -138,8 +138,8 @@
       "Project": "AL - City of Tuscumbia",
       "Public Records & GIS": [
         {
-          "type": "PR",
-          "url": "https://www.deltacomputersystems.com/al/al20/plinkquerya.html"
+          "url": "https://www.deltacomputersystems.com/al/al20/plinkquerya.html",
+          "type": "PR"
         },
         {
           "type": "GIS",
@@ -148,15 +148,15 @@
       ],
       "License List": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ],
-      "Important Info": "N/A",
+      "Important Info": "<p>N/A</p>",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ]
     },
