@@ -8766,25 +8766,25 @@
       "Project": "PA - Township of Middle Smithfield",
       "Public Records & GIS": [
         {
-          "type": "PR",
-          "url": "http://agencies.monroecountypa.gov/monroepa_prod/Search/Disclaimer.aspx?FromUrl=../search/commonsearch.aspx?mode=address"
+          "url": "http://agencies.monroecountypa.gov/monroepa_prod/Search/Disclaimer.aspx?FromUrl=../search/commonsearch.aspx?mode=address",
+          "type": "PR"
         },
         {
-          "type": "GIS",
-          "url": "https://mi1644.zoninghub.com/zoningmap.aspx?nav=search"
+          "url": "https://mi1644.zoninghub.com/zoningmap.aspx?nav=search",
+          "type": "GIS"
         },
         {
-          "type": "GIS 2",
-          "url": "https://www.monroegis.org/myiDVViewer/map/13c626a56e926e3e/Public"
+          "url": "https://www.monroegis.org/myiDVViewer/map/13c626a56e926e3e/Public",
+          "type": "GIS 2"
         }
       ],
       "License List": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EZNdbY8ub-RGum5Kr_DsaOAB33mCkslx9ICTCmcXdXkLsA?e=KlfLWU",
+          "type": "License list"
         }
       ],
-      "Important Info": "To search by APN you must search with this format, i.e. 00.0X.0.00-0X",
+      "Important Info": "<p>To search by APN you must search with this format, i.e. 00.0X.0.00-0X</p>",
       "Media": [
         {
           "type": "N/A",
