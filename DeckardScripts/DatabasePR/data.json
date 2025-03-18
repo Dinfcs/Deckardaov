@@ -10364,12 +10364,12 @@
       "Project": "CA - City of Garden Grove",
       "Public Records & GIS": [
         {
-          "url": "https://taxbill.octreasurer.gov/",
-          "type": "PR"
+          "type": "PR (Use VPN)",
+          "url": "https://taxbill.octreasurer.gov/"
         },
         {
-          "url": "https://www.arcgis.com/home/webmap/viewer.html?webmap=765630ac3daf403c867461d5e904f907&mapOnly=true&find=198-151-06",
-          "type": "GIS"
+          "type": "GIS",
+          "url": "https://www.arcgis.com/home/webmap/viewer.html?webmap=765630ac3daf403c867461d5e904f907&mapOnly=true&find=198-151-06"
         }
       ],
       "License List": [
@@ -10381,8 +10381,8 @@
       "Important Info": "<ul><li>When you search in the PRs, an image of the property appears. If you click on it, it will redirect you to the GIS.</li></ul>",
       "Media": [
         {
-          "url": "N/A",
-          "type": "N/A"
+          "type": "N/A",
+          "url": "N/A"
         }
       ]
     },
