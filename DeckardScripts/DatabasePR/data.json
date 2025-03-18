@@ -8808,21 +8808,21 @@
           "type": "GIS 2"
         },
         {
-          "type": "PR 2",
-          "url": "https://common1.mptsweb.com/mbap/humboldt/asr"
+          "url": "https://common1.mptsweb.com/mbap/humboldt/asr",
+          "type": "PR 2"
         }
       ],
       "License List": [
         {
-          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EbT0-i_ut-BAnAb_noKxXQoBcmusDGuQUOkKYIhzeI1w-Q?e=UqSqKG",
-          "type": "License"
+          "type": "License",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/Ecu8ghpkV7JEiy6fE0wmXMoBy3VIk8jUrrWdsZTdDbJhMw?e=U7bgbI"
         }
       ],
       "Important Info": "<p>☑️If you find an assigned license in the listing, use the Unit Box if applicable.</p>",
       "Media": [
         {
-          "url": "N/A",
-          "type": "N/A"
+          "type": "N/A",
+          "url": "N/A"
         }
       ]
     },
