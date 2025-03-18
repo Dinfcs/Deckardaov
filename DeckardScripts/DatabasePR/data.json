@@ -10615,6 +10615,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "NV - Nye County",
+      "Public Records & GIS": [
+        {
+          "type": "PR (VPN)",
+          "url": "https://nyenv-assessor.devnetwedge.com/"
+        },
+        {
+          "url": "https://portico.mygisonline.com/html5/?viewer=nyenv",
+          "type": "GIS"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "<p><br></p>",
+      "Media": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ]
     }
   ]
 }
