@@ -10314,19 +10314,23 @@
         {
           "type": "PR / GIS",
           "url": "https://ims.capemaycountynj.gov/myiDVViewer/map/424e493aaa1267c9/Cape-May-Co-Parcel-Viewer/"
+        },
+        {
+          "url": "https://casetext.com/regulation/new-jersey-administrative-code/title-18-treasury-taxation/chapter-12-local-property-tax-general/subchapter-2-preparation-of-local-property-tax-list-and-duplicate/section-1812-22-property-classifications-with-definitions",
+          "type": "Code Clasification"
         }
       ],
       "License List": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ],
       "Important Info": "<p>Use the address to look for information in Public Records. </p>",
       "Media": [
         {
-          "url": "N/A",
-          "type": "N/A"
+          "type": "N/A",
+          "url": "N/A"
         }
       ]
     },
