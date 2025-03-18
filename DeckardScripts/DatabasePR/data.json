@@ -10563,6 +10563,32 @@
           "type": "N/A"
         }
       ]
+    },
+    {
+      "Project": "MT - City Of Kalispell",
+      "Public Records & GIS": [
+        {
+          "url": "https://taxes.flathead.mt.gov/",
+          "type": "PR (Use VPN)"
+        },
+        {
+          "type": "GIS (Use VPN)",
+          "url": "https://maps.flathead.mt.gov/portal/apps/webappviewer/index.html?id=a0f8edf25599410a8e8ddc993fecbb0e"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "<p><br></p>",
+      "Media": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ]
     }
   ]
 }
