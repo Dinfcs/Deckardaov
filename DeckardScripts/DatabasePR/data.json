@@ -10650,21 +10650,21 @@
           "type": "GIS"
         },
         {
-          "type": "PR",
-          "url": "https://www.ncpub.org/_Web/search/commonsearch.aspx?mode=address"
+          "url": "https://gis.vgsi.com/northamptonva/Search.aspx",
+          "type": "PR"
         }
       ],
       "License List": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ],
       "Important Info": "<p><br></p>",
       "Media": [
         {
-          "url": "N/A",
-          "type": "N/A"
+          "type": "N/A",
+          "url": "N/A"
         }
       ]
     }
