@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Universal Address Extractor
-// @version      1.1
-// @description  Extracts property addresses from multiple vacation rental sites
+// @version      1.2
+// @description  Extracts property addresses from multiple vacation rental sites, except for certain domains
 // @author       Lucho
 // @match        *://*/*
 // @grant        none
@@ -9,6 +9,45 @@
 
 (function() {
     'use strict';
+
+    // Lista de dominios donde NO debe ejecutarse el script
+    const blockedDomains = [
+        "cyborg.deckard.com",
+        "www.google.com",
+        "www.bing.com",
+        "duckduckgo.com",
+        "netorgft4047789.sharepoint.com",
+        "docs.google.com",
+        "assr.parcelquest.com",
+        "login-spatialstream.prod.lightboxre.com",
+        "script.google.com",
+        "deckardtech.atlassian.net",
+        "milladeoro.tinkko.com",
+        "www.zillow.com",
+        "www.redfin.com",
+        "www.realtor.com",
+        "www.realestate.com.au",
+        "auth.corelogic.asia",
+        "github.com",
+        "app.regrid.com",
+        "apps.nearmap.com",
+        "www.psar.org",
+        "lookerstudio.google.com",
+        "platzi.com",
+        "www.bancolombia.com",
+        "openai.com",
+        "www.deepseek.com",
+        "gemini.google.com"
+    ];
+
+    // Obtener dominio actual
+    const currentDomain = window.location.hostname;
+
+    // Si el dominio está en la lista, detener la ejecución del script
+    if (blockedDomains.includes(currentDomain)) {
+        console.log(`🚫 Universal Address Extractor bloqueado en ${currentDomain}`);
+        return;
+    }
 
     console.log("✅ Universal Address Extractor Loaded, searching for address...");
 
