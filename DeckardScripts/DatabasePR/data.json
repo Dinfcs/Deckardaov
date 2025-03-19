@@ -10650,8 +10650,8 @@
           "type": "PR"
         },
         {
-          "type": "GIS",
-          "url": "https://charlescityvagis.maps.arcgis.com/apps/webappviewer/index.html?id=2b70fc5f91794787b0d934ce43724a36"
+          "url": "https://charlescityvagis.maps.arcgis.com/apps/webappviewer/index.html?id=2b70fc5f91794787b0d934ce43724a36",
+          "type": "GIS"
         },
         {
           "type": "GIS (VA County)",
@@ -10660,11 +10660,11 @@
       ],
       "License List": [
         {
-          "url": "N/A",
-          "type": "N/A"
+          "type": "N/A",
+          "url": "N/A"
         }
       ],
-      "Important Info": "<p><br></p>",
+      "Important Info": "<p>GIS from Virginia County only allows to see the parcel division</p>",
       "Media": [
         {
           "url": "N/A",
