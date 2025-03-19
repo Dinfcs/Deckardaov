@@ -10646,12 +10646,16 @@
       "Project": "VA - Town Of Cape Charles",
       "Public Records & GIS": [
         {
-          "url": "https://charlescityvagis.maps.arcgis.com/apps/webappviewer/index.html?id=2b70fc5f91794787b0d934ce43724a36",
-          "type": "GIS"
-        },
-        {
           "url": "https://gis.vgsi.com/northamptonva/Search.aspx",
           "type": "PR"
+        },
+        {
+          "type": "GIS",
+          "url": "https://charlescityvagis.maps.arcgis.com/apps/webappviewer/index.html?id=2b70fc5f91794787b0d934ce43724a36"
+        },
+        {
+          "type": "GIS (VA County)",
+          "url": "https://hub.arcgis.com/datasets/VDOT::virginia-parcels-map-service/explore?location=37.256171%2C-76.005069%2C20.46"
         }
       ],
       "License List": [
@@ -10663,8 +10667,8 @@
       "Important Info": "<p><br></p>",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ]
     }
