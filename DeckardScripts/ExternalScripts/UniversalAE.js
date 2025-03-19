@@ -37,7 +37,8 @@
         "www.bancolombia.com",
         "openai.com",
         "www.deepseek.com",
-        "gemini.google.com"
+        "gemini.google.com",
+        "rentalscape.deckard.technology"
     ];
 
     // Obtener dominio actual
