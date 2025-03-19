@@ -10641,6 +10641,28 @@
           "type": "N/A"
         }
       ]
+    },
+    {
+      "Project": "VA - Town Of Cape Charles",
+      "Public Records & GIS": [
+        {
+          "type": "GIS",
+          "url": "https://charlescityvagis.maps.arcgis.com/apps/webappviewer/index.html?id=2b70fc5f91794787b0d934ce43724a36"
+        }
+      ],
+      "License List": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ],
+      "Important Info": "<p><br></p>",
+      "Media": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ]
     }
   ]
 }
