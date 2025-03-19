@@ -10524,21 +10524,21 @@
           "url": "https://esearch.burnet-cad.org/?_gl=1*104g0hp*_ga*NTgwNDk0NTQwLjE3NDIyNDg2MTI.*_ga_JVBGSY81K8*MTc0MjI0ODYxMi4xLjAuMTc0MjI0ODYxNi4wLjAuMA..&_ga=2.105321222.427274352.1742248613-580494540.1742248612"
         },
         {
-          "type": "GIS",
-          "url": "https://gis.bisclient.com/burnetcad/"
+          "url": "https://gis.bisclient.com/burnetcad/",
+          "type": "GIS"
         }
       ],
       "License List": [
         {
-          "url": "N/A",
-          "type": "N/A"
+          "type": "N/A",
+          "url": "N/A"
         }
       ],
-      "Important Info": "<p><br></p>",
+      "Important Info": "<p>The parcel data in Cyborg is the Property ID in the Public Records.</p>",
       "Media": [
         {
-          "url": "N/A",
-          "type": "N/A"
+          "type": "N/A",
+          "url": "N/A"
         }
       ]
     },
