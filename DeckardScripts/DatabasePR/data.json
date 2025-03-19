@@ -10646,14 +10646,18 @@
       "Project": "VA - Town Of Cape Charles",
       "Public Records & GIS": [
         {
-          "type": "GIS",
-          "url": "https://charlescityvagis.maps.arcgis.com/apps/webappviewer/index.html?id=2b70fc5f91794787b0d934ce43724a36"
+          "url": "https://charlescityvagis.maps.arcgis.com/apps/webappviewer/index.html?id=2b70fc5f91794787b0d934ce43724a36",
+          "type": "GIS"
+        },
+        {
+          "type": "PR",
+          "url": "https://www.ncpub.org/_Web/search/commonsearch.aspx?mode=address"
         }
       ],
       "License List": [
         {
-          "url": "N/A",
-          "type": "N/A"
+          "type": "N/A",
+          "url": "N/A"
         }
       ],
       "Important Info": "<p><br></p>",
