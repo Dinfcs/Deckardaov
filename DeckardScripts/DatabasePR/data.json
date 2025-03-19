@@ -10650,12 +10650,16 @@
           "type": "PR"
         },
         {
-          "url": "https://charlescityvagis.maps.arcgis.com/apps/webappviewer/index.html?id=2b70fc5f91794787b0d934ce43724a36",
-          "type": "GIS"
+          "url": "https://northampton.civ.quest/",
+          "type": "GIS (Northampton County)"
         },
         {
           "type": "GIS (VA County)",
           "url": "https://hub.arcgis.com/datasets/VDOT::virginia-parcels-map-service/explore?location=37.256171%2C-76.005069%2C20.46"
+        },
+        {
+          "url": "https://charlescityvagis.maps.arcgis.com/apps/webappviewer/index.html?id=2b70fc5f91794787b0d934ce43724a36",
+          "type": "GIS 3"
         }
       ],
       "License List": [
@@ -10667,8 +10671,8 @@
       "Important Info": "<p>GIS from Virginia County only allows to see the parcel division</p>",
       "Media": [
         {
-          "url": "N/A",
-          "type": "N/A"
+          "type": "N/A",
+          "url": "N/A"
         }
       ]
     }
