@@ -10675,6 +10675,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "CO - Routt County",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://property.spatialest.com/co/routt#/"
+        },
+        {
+          "type": "GIS",
+          "url": "https://experience.arcgis.com/experience/75874c18140c4adb8aeed296906e6fca/"
+        }
+      ],
+      "License List": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ],
+      "Important Info": "<p><br></p>",
+      "Media": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ]
     }
   ]
 }
