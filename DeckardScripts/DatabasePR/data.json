@@ -1832,8 +1832,8 @@
       "Project": "CA - City of San Buenaventura",
       "Public Records & GIS": [
         {
-          "type": "PR (Use VPN)",
-          "url": "https://assessor.countyofventura.org/assessor-data/property-search/"
+          "url": "https://assessor.countyofventura.org/assessor-data/property-search/",
+          "type": "PR (Use VPN)"
         },
         {
           "type": "GIS (Use VPN)",
@@ -1842,19 +1842,19 @@
       ],
       "License List": [
         {
-          "type": "Updated License List",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EZbE_EiMpGVMn-IoPi_pYp8BfeIjFNTHVosmlqjRnxbMfg?e=YmBrUD"
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EUsS-ptJkWhNlmBwFK0tI0UBDukIxCo5fVWK4GzcI08RIw?e=tuaSB3",
+          "type": "Updated License List"
         },
         {
           "type": "Permit List Spreadsheet",
           "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EZT66p-tSkBKnQKiJS0c_b8BR30L0CsBl8TJ_UTwlXaiuQ?e=aX4RuI"
         }
       ],
-      "Important Info": "N/A",
+      "Important Info": "<p>N/A</p>",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ]
     },
