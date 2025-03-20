@@ -10428,8 +10428,12 @@
           "url": "https://cassweb3.co.cass.mn.us/link/Reports/taxsearch/search.aspx"
         },
         {
-          "type": "GIS(Use VPN)",
-          "url": "https://cassweb3.co.cass.mn.us/link/jsfe/index.aspx?defaultRole=Public"
+          "url": "https://cassweb3.co.cass.mn.us/link/jsfe/index.aspx?defaultRole=Public",
+          "type": "GIS(Use VPN)"
+        },
+        {
+          "type": "GIS (Crow Wing County)",
+          "url": "https://experience.arcgis.com/experience/3bb15d1aa96d46de81d352bc330dcd95/page/Home"
         }
       ],
       "License List": [
@@ -10438,15 +10442,15 @@
           "type": "N/A"
         }
       ],
-      "Important Info": "<ul><li>To search in the GIS, you need to click on the \"Search\" option. There, you will be able to search by Parcel Number and Primary Address.</li></ul>",
+      "Important Info": "<ul><li>To search in the GIS, you need to click on the \"Search\" option. There, you will be able to search by Parcel Number and Primary Address.</li><li>There are several properties outside of Cass County, some of them are in Crow Wing County.</li></ul>",
       "Media": [
         {
           "url": "https://drive.google.com/uc?export=view&id=1oPwzGvakaTq2v23bG8rzVCyVMeDJkwPZ",
           "type": "GisSearch"
         },
         {
-          "type": "GisSearch",
-          "url": "https://drive.google.com/uc?export=view&id=1Lk26vSwoIhD7ndr_WJ82xeZoJFB5yvuz"
+          "url": "https://drive.google.com/uc?export=view&id=1Lk26vSwoIhD7ndr_WJ82xeZoJFB5yvuz",
+          "type": "GisSearch"
         }
       ]
     },
