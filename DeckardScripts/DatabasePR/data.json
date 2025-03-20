@@ -6418,12 +6418,12 @@
       "Project": "CA - City Of Redding",
       "Public Records & GIS": [
         {
-          "type": "PR",
-          "url": "https://common1.mptsweb.com/mbap/shasta/asr"
+          "url": "https://common1.mptsweb.com/mbap/shasta/asr",
+          "type": "PR"
         },
         {
-          "type": "GIS",
-          "url": "https://gispub.cityofredding.org/reddingmap/"
+          "url": "https://gispub.cityofredding.org/reddingmap/",
+          "type": "GIS"
         },
         {
           "type": "How to find an address using the GIS",
@@ -6433,14 +6433,14 @@
       "License List": [
         {
           "type": "License list",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EcWKtvE-4pBNpnk2fk6HNTAB1HtrTOAULZb73JaTcwgl2w?e=i1zAiH"
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EXyLI17Y65ZGiawl5RFC1iQBA6bqKzDDo-Ja5vy4hf-0DQ?e=8SPuQv"
         }
       ],
-      "Important Info": "N/A",
+      "Important Info": "<p>N/A</p>",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ]
     },
