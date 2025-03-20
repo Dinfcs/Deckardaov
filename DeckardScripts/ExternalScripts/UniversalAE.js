@@ -190,13 +190,34 @@
         return false;
     }
 
+            function extractFromUnitData() {
+        let unitElement = document.querySelector('.abe-column.abe-unit-info[id="unit-data"]');
+        if (unitElement) {
+            let address1 = unitElement.getAttribute('data-unit-address1') || "";
+            let address2 = unitElement.getAttribute('data-unit-address2') || "";
+            let city = unitElement.getAttribute('data-unit-city') || "";
+            let state = unitElement.getAttribute('data-unit-state') || "";
+            let zip = unitElement.getAttribute('data-unit-zip') || "";
+
+            let fullAddress = `${address1} ${address2}, ${city}, ${state} ${zip}`.trim().replace(/\s+/g, ' ');
+            if (fullAddress.length > 5) {
+                console.log("📍 Address found (Unit Data):", fullAddress);
+                showFloatingWindow(fullAddress);
+                return true;
+            }
+        }
+        return false;
+    }
+
     function findAddress() {
         return extractFromMisterbandb() ||
                extractFromMichaels() ||
                extractFromEvolve() ||
                extractFromSedona() ||
+               extractFromUnitData() ||
                extractFromRawHTML();
     }
+
 
     let attempts = 0;
     let interval = setInterval(() => {
