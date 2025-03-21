@@ -10584,8 +10584,8 @@
           "type": "PR (Use VPN)"
         },
         {
-          "type": "GIS (Use VPN)",
-          "url": "https://maps.flathead.mt.gov/portal/apps/webappviewer/index.html?id=a0f8edf25599410a8e8ddc993fecbb0e"
+          "url": "https://maps.flathead.mt.gov/portal/apps/webappviewer/index.html?id=a0f8edf25599410a8e8ddc993fecbb0e",
+          "type": "GIS (Use VPN)"
         }
       ],
       "License List": [
@@ -10594,11 +10594,11 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "<p><br></p>",
+      "Important Info": "<ul><li>The APN in GIS/PR is the \"Geocode\"</li></ul><p><br></p><ul><li>for search in the PR with the APN the format is:  XX-XXXX-XX-X-XX-XX-XXXX   </li></ul><p>                             for example: 07396606208235346 &gt; <span style=\"color: rgb(68, 68, 68);\">07-3966-06-2-08-23-5346</span></p><p><br></p><ul><li>for sear in the GIS use the \"property address\" </li></ul><p><br></p>",
       "Media": [
         {
-          "url": "N/A",
-          "type": "N/A"
+          "type": "N/A",
+          "url": "https://drive.google.com/uc?export=view&id=1jveHd7PL-16KVi0KgcgHli8FLtw7hr57"
         }
       ]
     },
