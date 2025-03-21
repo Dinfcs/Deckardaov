@@ -10714,16 +10714,16 @@
       "Project": "NM - City Of Roswell",
       "Public Records & GIS": [
         {
-          "type": "GIS - City of Roswell",
-          "url": "https://roswell-nm.maps.arcgis.com/apps/webappviewer/index.html?id=3d5d59dbb07344e392c9e12d342e3010"
+          "url": "https://roswell-nm.maps.arcgis.com/apps/webappviewer/index.html?id=3d5d59dbb07344e392c9e12d342e3010",
+          "type": "GIS - City of Roswell"
         },
         {
-          "url": "https://experience.arcgis.com/experience/d9432c6684454c1690d47533ac60f503/",
-          "type": "GIS - Chaves County"
+          "type": "GIS - Chaves County",
+          "url": "https://experience.arcgis.com/experience/d9432c6684454c1690d47533ac60f503/"
         },
         {
-          "url": "https://chavescountynm-assessor.tylerhost.net/assessor/taxweb/search.jsp",
-          "type": "PR - Chaves County"
+          "type": "PR - Chaves County",
+          "url": "https://chavescountynm-assessor.tylerhost.net/assessor/taxweb/search.jsp"
         }
       ],
       "License List": [
@@ -10735,8 +10735,8 @@
       "Important Info": "<ul><li>The GIS allows searching by point coordinates</li><li>The APN is the UPC number at the GIS</li><li>to search in the PR with APN use the \"parcel number\" box</li></ul>",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "type": "GIS layers",
+          "url": "https://drive.google.com/uc?export=view&id=1Ne9OFWnCYf9LtX5iNQzoo0aptwjGqgle"
         }
       ]
     }
