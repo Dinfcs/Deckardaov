@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Viewer con Caché Temporal
+// @name         Viewer4
 // @version      7
 // @description  Carrusel con miniaturas en Cyborg usando Viewer.js y caché temporal
 // @match        https://cyborg.deckard.com/listing/*
@@ -114,96 +114,111 @@
         showCarousel(imageLinks);
     }
 
-    function showCarousel(imageLinks) {
-        if (viewerOpened) return;
+function showCarousel(imageLinks) {
+    if (viewerOpened) return;
 
-        console.log('Mostrando carrusel...');
-        viewerOpened = true;
+    console.log('Mostrando carrusel...');
+    viewerOpened = true;
 
-        const thumbsContainer = document.createElement('div');
-        thumbsContainer.id = "thumbsContainer";
-        thumbsContainer.style.gridTemplateColumns = imageLinks.length < 10 ? "1fr" : "repeat(2, 1fr)";
+    const thumbsContainer = document.createElement('div');
+    thumbsContainer.id = "thumbsContainer";
+    thumbsContainer.style.gridTemplateColumns = imageLinks.length < 10 ? "1fr" : "repeat(2, 1fr)";
 
-        imageLinks.forEach((thumbUrl, index) => {
-            const img = document.createElement('img');
-            img.src = thumbUrl;
-            img.alt = "Miniatura";
+    imageLinks.forEach((thumbUrl, index) => {
+        const img = document.createElement('img');
+        img.src = thumbUrl;
+        img.alt = "Miniatura";
 
-            img.addEventListener('click', (event) => {
-                if (event.ctrlKey) {
-                    window.open(thumbUrl, '_blank');
-                } else {
-                    viewer.view(index);
-                }
-            });
-
-            thumbsContainer.appendChild(img);
-
-            if (index === 0) {
-                currentThumbnail = img;
-                img.classList.add('current-thumbnail');
+        img.addEventListener('click', (event) => {
+            if (event.ctrlKey) {
+                window.open(thumbUrl, '_blank');
+            } else {
+                viewer.view(index);
             }
         });
 
-        document.body.appendChild(thumbsContainer);
+        thumbsContainer.appendChild(img);
 
-        const imageContainer = document.createElement('div');
-        imageContainer.id = "imageViewerContainer";
-        imageContainer.style.display = "none";
+        if (index === 0) {
+            currentThumbnail = img;
+            img.classList.add('current-thumbnail');
+        }
+    });
 
-        imageLinks.forEach(imgUrl => {
-            const img = document.createElement('img');
-            img.src = imgUrl;
-            imageContainer.appendChild(img);
-        });
+    document.body.appendChild(thumbsContainer);
 
-        document.body.appendChild(imageContainer);
+    const imageContainer = document.createElement('div');
+    imageContainer.id = "imageViewerContainer";
+    imageContainer.style.display = "none";
 
-        viewer = new Viewer(imageContainer, {
-            inline: false,
-            button: true,
-            navbar: false,
-            title: false,
-            toolbar: {
-                zoomIn: 1,
-                zoomOut: 1,
-                reset: 1,
-                prev: 1,
-                next: 1,
-            },
-            transition: false,
-            viewed() {
-                if (currentThumbnail) {
-                    currentThumbnail.classList.remove('current-thumbnail');
-                }
-                currentThumbnail = thumbsContainer.querySelectorAll('img')[viewer.index];
-                if (currentThumbnail) {
-                    currentThumbnail.classList.add('current-thumbnail');
-                    currentThumbnail.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
-            },
-hidden() {
-    // Simular clic en el botón de cierre del modal
-    const modalCloseBtn = document.querySelector(".btn-close[aria-label='Close']");
-    if (modalCloseBtn) {
-        modalCloseBtn.click();
-        console.log("Botón de cierre del modal original clickeado.");
-    } else {
-        console.warn("No se encontró el botón de cierre del modal.");
+    imageLinks.forEach(imgUrl => {
+        const img = document.createElement('img');
+        img.src = imgUrl;
+        imageContainer.appendChild(img);
+    });
+
+    document.body.appendChild(imageContainer);
+
+    viewer = new Viewer(imageContainer, {
+        inline: false,
+        button: true,
+        navbar: false,
+        title: false,
+        toolbar: {
+            zoomIn: 1,
+            zoomOut: 1,
+            reset: 1,
+            prev: 1,
+            next: 1,
+        },
+        transition: false,
+        viewed() {
+            if (currentThumbnail) {
+                currentThumbnail.classList.remove('current-thumbnail');
+            }
+            currentThumbnail = thumbsContainer.querySelectorAll('img')[viewer.index];
+            if (currentThumbnail) {
+                currentThumbnail.classList.add('current-thumbnail');
+                currentThumbnail.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        },
+        hidden() {
+            // Guardar la última miniatura vista en caché
+            sessionStorage.setItem("lastViewedIndex", viewer.index);
+            console.log("Última miniatura guardada en caché:", viewer.index);
+
+            // Simular clic en el botón de cierre del modal original
+            const modalCloseBtn = document.querySelector(".btn-close[aria-label='Close']");
+            if (modalCloseBtn) {
+                modalCloseBtn.click();
+                console.log("Botón de cierre del modal original clickeado.");
+            } else {
+                console.warn("No se encontró el botón de cierre del modal.");
+            }
+
+            // Eliminar el carrusel y restablecer el estado
+            document.getElementById("thumbsContainer")?.remove();
+            document.getElementById("imageViewerContainer")?.remove();
+            viewerOpened = false;
+            document.removeEventListener('keydown', handleKeyNavigation);
+        }
+    });
+
+    viewer.show();
+
+    // Restaurar la última miniatura vista si existe en la caché
+    const lastIndex = sessionStorage.getItem("lastViewedIndex");
+    if (lastIndex !== null) {
+        const index = parseInt(lastIndex, 10);
+        if (index >= 0 && index < imageLinks.length) {
+            console.log("Restaurando miniatura:", index);
+            viewer.view(index);
+        }
     }
 
-    // Eliminar el carrusel y restablecer el estado
-    document.getElementById("thumbsContainer")?.remove();
-    document.getElementById("imageViewerContainer")?.remove();
-    viewerOpened = false;
-    document.removeEventListener('keydown', handleKeyNavigation);
+    document.addEventListener('keydown', handleKeyNavigation);
 }
 
-        });
-
-        viewer.show();
-        document.addEventListener('keydown', handleKeyNavigation);
-    }
 
     function handleKeyNavigation(e) {
         if (!viewerOpened) return;
