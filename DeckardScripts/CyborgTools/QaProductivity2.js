@@ -126,7 +126,7 @@
                             if (reportQaButton) {
                                 setTimeout(() => {
                                     reportQaButton.click();
-                                }, 1500); // Espera 1.5 segundos antes de hacer clic
+                                }, 500); // Espera 0.5 segundos antes de hacer clic
                             } else {
                                 console.log("⚠️ No se encontró el botón Report QA");
                             }
