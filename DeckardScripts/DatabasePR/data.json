@@ -10765,6 +10765,36 @@
           "type": "N/A"
         }
       ]
+    },
+    {
+      "Project": "AK - Kodiak Island County",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "http://propaccess.kodiakak.us/clientdb/?cid=0"
+        },
+        {
+          "type": "GIS 1",
+          "url": "https://experience.arcgis.com/experience/775cc79c49ec4d36a1c6f18ea4c55246/"
+        },
+        {
+          "type": "GIS 2",
+          "url": "https://experience.arcgis.com/experience/8b8a3fb7026347d48b81f25c43905a78#data_s=id%3A20864e66f80e415780651887b7f346bc-189983bd6d2-layer-2%3A4374"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "<p>GIS 1 search need to be done with the Address or Property ID not the Geographical ID</p>",
+      "Media": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ]
     }
   ]
 }
