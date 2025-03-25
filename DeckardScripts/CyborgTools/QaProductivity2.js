@@ -121,11 +121,12 @@
                     validateAndExtractAgain(() => {
                         console.log("📤 Enviando datos:", { qaer, projectName, comments, dataUrl });
 
-                        if (cleanText(comments) !== "qaed ok") {
+                            if (cleanText(comments) !== "qaed ok") {
                             const reportQaButton = [...document.querySelectorAll('a')].find(a => cleanText(a.textContent).startsWith("report qa |"));
                             if (reportQaButton) {
-                                console.log("🔵 Clic en Report QA antes de enviar los datos");
-                                reportQaButton.click();
+                                setTimeout(() => {
+                                    reportQaButton.click();
+                                }, 1500); // Espera 1.5 segundos antes de hacer clic
                             } else {
                                 console.log("⚠️ No se encontró el botón Report QA");
                             }
