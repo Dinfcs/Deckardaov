@@ -10795,6 +10795,36 @@
           "type": "N/A"
         }
       ]
+    },
+    {
+      "Project": "MN - St Louis County",
+      "Public Records & GIS": [
+        {
+          "url": "https://apps.stlouiscountymn.gov/assessor/propertydetails/",
+          "type": "PR"
+        },
+        {
+          "url": "https://gis.stlouiscountymn.gov/LandExplorer/",
+          "type": "GIS"
+        },
+        {
+          "url": "https://reports.stlouiscountymn.gov/ssrswrapper/ShowSSRSReport.aspx?reportPath=/Assessor/PropertyDetails/ClassCodeLegend&pdf=true",
+          "type": "Class Codes PR Guide"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "<p>To search in the GIS by APN it is necessary to add the dashes so that the APN is recognized. Ex: 010-4380-02380</p>",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
