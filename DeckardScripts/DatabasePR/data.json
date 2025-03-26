@@ -680,15 +680,15 @@
       ],
       "License List": [
         {
-          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/ERe148rGdUNAneQbHxMiBIQBjhQ5eAT8rpqOC7cYiGlPfg?e=nSAbqH",
-          "type": "License"
+          "type": "License",
+          "url": "https://netorgft4047789.sharepoint.com/sites/ElectricSheep/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FElectricSheep%2FShared%20Documents%2FCA%2FSan%20Diego%2FCarlsbad%2FIncoming&viewid=fd942f4a%2D85fa%2D42f6%2D8ee2%2D36ef2c23ea2e&ga=1"
         }
       ],
       "Important Info": "<p>You need to check if the matched property is licensed (License file), if it is, you must use the information in the \"UNIT FIXED\" column and applied to the unit box in Cyborg.</p>",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ]
     },
