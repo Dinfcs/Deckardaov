@@ -5210,8 +5210,8 @@
       "Project": "TX - City of Carrollton",
       "Public Records & GIS": [
         {
-          "type": "PR",
-          "url": "https://esearch.dentoncad.com/"
+          "url": "https://esearch.dentoncad.com/",
+          "type": "PR"
         },
         {
           "type": "GIS",
@@ -5222,21 +5222,25 @@
           "url": "https://www.dallasact.com/act_webdev/dallas/index.jsp"
         },
         {
-          "type": "GIS Dallas",
-          "url": "https://dallascountyal.maps.arcgis.com/apps/webappviewer/index.html?id=747eebce86fe460a88a0dbb29f828560"
+          "url": "https://dallascountyal.maps.arcgis.com/apps/webappviewer/index.html?id=747eebce86fe460a88a0dbb29f828560",
+          "type": "GIS Dallas"
+        },
+        {
+          "url": "https://www.dentoncad.com/property-search",
+          "type": "PR denton"
         }
       ],
       "License List": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ],
-      "Important Info": "The city of Carrollton is between two counties.",
+      "Important Info": "<p>The city of Carrollton is between two counties.</p>",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ]
     },
