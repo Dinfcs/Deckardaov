@@ -10829,6 +10829,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "OH - Trumbull County",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://beacon.schneidercorp.com/Application.aspx?AppID=1121&LayerID=28255&PageTypeID=2&PageID=11609"
+        },
+        {
+          "url": "https://beacon.schneidercorp.com/Application.aspx?AppID=1121&LayerID=28255&PageTypeID=1&PageID=11608",
+          "type": "GIS"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "<p><br></p>",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
