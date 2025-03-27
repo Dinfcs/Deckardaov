@@ -4,56 +4,181 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generador de Configuración Rentalscape</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        label { font-weight: bold; display: block; margin-top: 10px; }
-        input, select { width: 100%; padding: 8px; margin-top: 5px; }
-        button { margin-top: 15px; padding: 10px; background: #007BFF; color: white; border: none; cursor: pointer; }
-        button:hover { background: #0056b3; }
-        pre { background: #f4f4f4; padding: 15px; border-radius: 5px; overflow: auto; }
+        body {
+            background-color: #f4f6f9;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            min-height: 100vh;
+            padding: 2rem;
+            gap: 2rem;
+        }
+        .form-container {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            width: 40%;
+            overflow-y: auto;
+        }
+        .output-container {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            width: 60%;
+            overflow-y: auto;
+        }
+        .input-group {
+            margin-bottom: 1rem;
+        }
+        .input-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #374151;
+        }
+        .input-field {
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.375rem;
+            background-color: #f9fafb;
+            transition: all 0.3s ease;
+        }
+        .input-field:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .checkbox-group input {
+            margin-right: 0.5rem;
+        }
+        .generate-btn {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 0.375rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .generate-btn:hover {
+            background-color: #2563eb;
+        }
+        .output-pre {
+            background-color: #f3f4f6;
+            border-radius: 0.375rem;
+            padding: 1rem;
+            max-height: 600px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+        }
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .form-container, .output-container {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
+    <div class="container">
+        <div class="form-container">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">Generador de Configuración Rentalscape</h2>
 
-    <h2>Generador de Configuración Rentalscape</h2>
+            <div class="input-group">
+                <label for="logoUrl" class="input-label">Enlace del Logo</label>
+                <input type="text" id="logoUrl" class="input-field" 
+                    placeholder="Ejemplo: https://mi-servidor.com/logo.png">
+            </div>
+            
+            <div class="input-group">
+                <label for="placeKey" class="input-label">Place Key</label>
+                <input type="text" id="placeKey" class="input-field" 
+                    placeholder="Ejemplo: fl-okaloosa-city_of_destin" 
+                    oninput="autoFillFields()">
+            </div>
 
-    <label for="placeKey">Place Key (Ejemplo: fl-okaloosa-city_of_destin o ks-anderson)</label>
-    <input type="text" id="placeKey" placeholder="Ejemplo: fl-okaloosa-city_of_destin" oninput="autoFillFields()">
+            <div class="input-group">
+                <label for="state" class="input-label">Estado</label>
+                <input type="text" id="state" class="input-field" 
+                    placeholder="Ejemplo: FL" readonly>
+            </div>
 
-    <label for="state">Estado</label>
-    <input type="text" id="state" placeholder="Ejemplo: FL" readonly>
+            <div class="input-group">
+                <label for="county" class="input-label">Condado</label>
+                <input type="text" id="county" class="input-field" 
+                    placeholder="Ejemplo: Okaloosa" readonly>
+            </div>
 
-    <label for="county">Condado</label>
-    <input type="text" id="county" placeholder="Ejemplo: Okaloosa" readonly>
+            <div class="input-group">
+                <label for="city" class="input-label">Ciudad</label>
+                <input type="text" id="city" class="input-field" 
+                    placeholder="Ejemplo: Destin" readonly>
+            </div>
 
-    <label for="city">Ciudad</label>
-    <input type="text" id="city" placeholder="Ejemplo: Destin" readonly>
+            <div class="input-group">
+                <label for="placens" class="input-label">PlaceNS (8 dígitos)</label>
+                <input type="text" id="placens" class="input-field" 
+                    placeholder="Ejemplo: 02411805">
+            </div>
 
-    <label for="placens">PlaceNS (8 dígitos)</label>
-    <input type="text" id="placens" placeholder="Ejemplo: 02411805">
+            <div class="input-group">
+                <label for="email" class="input-label">Email de Soporte</label>
+                <input type="text" id="email" class="input-field" 
+                    value="rentalscape@deckard.com">
+            </div>
 
-    <label for="email">Email de Soporte</label>
-    <input type="text" id="email" value="rentalscape@deckard.com">
+            <div class="input-group">
+                <label for="days" class="input-label">Días de alquiler</label>
+                <input type="number" id="days" class="input-field" 
+                    value="30" min="1">
+            </div>
 
-    <label for="days">Días de alquiler</label>
-    <input type="number" id="days" value="30" min="1">
+            <div class="checkbox-group">
+                <input type="checkbox" id="enableNotes" checked>
+                <label for="enableNotes">Habilitar Notas</label>
+            </div>
 
-    <label>Habilitar Notas:</label>
-    <input type="checkbox" id="enableNotes" checked>
+            <div class="checkbox-group">
+                <input type="checkbox" id="showSuggestions" checked>
+                <label for="showSuggestions">Habilitar sugerencias (solo demos)</label>
+            </div>
 
-    <label>Habilitar sugerencias (solo demos):</label>
-    <input type="checkbox" id="showSuggestions" checked>
+            <div class="checkbox-group">
+                <input type="checkbox" id="pdf" checked>
+                <label for="pdf">Habilitar PDF scraping</label>
+            </div>
 
-    <label>Habilitar PDF scraping:</label>
-    <input type="checkbox" id="pdf" checked>
+            <div class="checkbox-group">
+                <input type="checkbox" id="warmCache" checked>
+                <label for="warmCache">Habilitar Cache Warming (Cyborg)</label>
+            </div>
 
-    <label>Habilitar Cache Warming (Cyborg):</label>
-    <input type="checkbox" id="warmCache" checked>
+            <button onclick="generateConfig()" class="generate-btn mt-4">
+                Generar Configuración
+            </button>
+        </div>
 
-    <button onclick="generateConfig()">Generar Configuración</button>
-
-    <h3>JSON Generado:</h3>
-    <pre id="output"></pre>
+        <div class="output-container">
+            <h3 class="text-xl font-bold mb-4 text-gray-800">YAML Generado:</h3>
+            <pre id="output" class="output-pre"></pre>
+        </div>
+    </div>
 
     <script>
         function autoFillFields() {
@@ -76,6 +201,7 @@
         }
 
         function generateConfig() {
+            const placeKey = document.getElementById("placeKey").value.trim().toLowerCase();
             const state = document.getElementById("state").value.trim();
             const county = document.getElementById("county").value.trim().toLowerCase().replace(/ /g, "_");
             const city = document.getElementById("city").value.trim().toLowerCase().replace(/ /g, "_");
@@ -94,47 +220,47 @@
             }
 
             let placeName = city ? `City of ${city.replace(/_/g, " ")}, ${state}` : `${county.replace(/_/g, " ")} County, ${state}`;
-            let placeKey = city ? `${state.toLowerCase()}-${county}-city_of_${city}` : `${state.toLowerCase()}-${county}`;
-            let logoUrl = `https://rentalscape-assets-prod-usw2.s3.us-west-2.amazonaws.com/customer_logos/${placeKey}.png`;
+            let inputLogoUrl = document.getElementById("logoUrl").value.trim();
+            let logoUrl = inputLogoUrl ? inputLogoUrl : `https://rentalscape-assets-prod-usw2.s3.us-west-2.amazonaws.com/customer_logos/${placeKey}.png`;
 
-            const config = {
-                "logo": logoUrl,
-                "modules": {
-                    "notes": {
-                        "mode": enableNotes ? "enabled" : "disabled",
-                        "read": ["admin", placeKey],
-                        "rw": [placeKey]
-                    },
-                    "rentalscape": {
-                        "propertyDetails": {
-                            "tabs": {
-                                "activity": { "enabled": true },
-                                "history": { "enabled": true },
-                                "license": { "enabled": false }
-                            }
-                        },
-                        "emailCcDeckard": `Rentalscape Support <${email}>`,
-                        "production": { "warm": warmCache },
-                        "rentalPeriod": { "days": days },
-                        "rentalTypes": {
-                            "current": `Current STR (${nights} nights or less)`,
-                            "hotel": "Hotel/Timeshare",
-                            "ltr": "Long Term Rental",
-                            "other": "Other Rental",
-                            "previous": "Previously an STR",
-                            "unavailable": "Unavailable"
-                        },
-                        "showSuggestions": showSuggestions
-                    }
-                },
-                "name": placeName,
-                "placens": placens,
-                "pdf": pdf
-            };
+            // Construir el YAML manualmente
+            let yamlOutput = `logo: ${logoUrl}\n`;
+            yamlOutput += `modules:\n`;
+            yamlOutput += `  notes:\n`;
+            yamlOutput += `    mode: ${enableNotes ? "enabled" : "disabled"}\n`;
+            yamlOutput += `    read:\n`;
+            yamlOutput += `    - admin\n`;
+            yamlOutput += `    - ${placeKey}\n`;
+            yamlOutput += `    rw:\n`;
+            yamlOutput += `    - ${placeKey}\n`;
+            yamlOutput += `  rentalscape:\n`;
+            yamlOutput += `    propertyDetails:\n`;
+            yamlOutput += `      tabs:\n`;
+            yamlOutput += `        activity:\n`;
+            yamlOutput += `          enabled: true\n`;
+            yamlOutput += `        history:\n`;
+            yamlOutput += `          enabled: true\n`;
+            yamlOutput += `        license:\n`;
+            yamlOutput += `          enabled: false\n`;
+            yamlOutput += `    emailCcDeckard: Rentalscape Support <${email}>\n`;
+            yamlOutput += `    production:\n`;
+            yamlOutput += `      warm: ${warmCache ? "true" : "false"}\n`;
+            yamlOutput += `    rentalPeriod:\n`;
+            yamlOutput += `      days: ${days}\n`;
+            yamlOutput += `    rentalTypes:\n`;
+            yamlOutput += `      current: Current STR (${nights} nights or less)\n`;
+            yamlOutput += `      hotel: Hotel/Timeshare\n`;
+            yamlOutput += `      ltr: Long Term Rental\n`;
+            yamlOutput += `      other: Other Rental\n`;
+            yamlOutput += `      previous: Previously an STR\n`;
+            yamlOutput += `      unavailable: Unavailable\n`;
+            yamlOutput += `    showSuggestions: ${showSuggestions ? "true" : "false"}\n`;
+            yamlOutput += `name: ${placeName}\n`;
+            yamlOutput += `placens: ${placens}\n`;
+            yamlOutput += `pdf: ${pdf ? "true" : "false"}\n`;
 
-            document.getElementById("output").textContent = JSON.stringify(config, null, 2);
+            document.getElementById("output").textContent = yamlOutput;
         }
     </script>
-
 </body>
 </html>
