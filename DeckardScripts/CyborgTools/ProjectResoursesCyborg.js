@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         PREDIT3 Optimized
+// @name         PREDIT4
 // @namespace    ProjectResources Cyborg
 // @version      3.7
 // @description  Visualización mejorada de recursos de proyectos
@@ -244,6 +244,46 @@
                 border-left: 4px solid #dc2626;
             }
 
+            .pr-tab {
+                display: inline-block;
+                background-color: #f9f9f9;
+                border: 1px solid #d6d6d6;
+                border-bottom: none;
+                padding: 10px 15px;
+                transition: background-color, color 200ms;
+                width: 50%;
+                text-align: center;
+                box-sizing: border-box;
+                cursor: pointer;
+            }
+            .pr-tab:hover {
+                background-color: #e9e9e9;
+            }
+            .pr-tab--selected {
+                border-top: 2px solid #1975FA;
+                color: black;
+                background-color: white;
+            }
+            .pr-tab--selected:hover {
+                background-color: white;
+            }
+            .pr-iframe-link {
+                display: block;
+                padding: 10px;
+                background: #f0f5ff;
+                color: #2563eb;
+                text-decoration: none;
+                font-weight: 500;
+                border-radius: 4px;
+                margin: 10px;
+                text-align: center;
+                transition: all 0.15s ease;
+            }
+            .pr-iframe-link:hover {
+                background: #e0eaff;
+                transform: translateY(-1px);
+            }
+
             @media (max-width: 768px) {
                 .pr-table {
                     display: block;
@@ -256,8 +296,15 @@
                     font-size: 13px;
                 }
 
-        .pr-media-grid {
+                .pr-media-grid {
                     grid-template-columns: repeat(auto-fit, minmax(70px, 10));
+                }
+
+                .pr-tab {
+                    border-right: none;
+                }
+                .pr-tab--selected {
+                    border-bottom: none;
                 }
             }
         `;
@@ -325,27 +372,27 @@
     function copyToClipboard(text) {
         navigator.clipboard.writeText(text)
             .then(() => {
-            // Mostrar una notificación de éxito
-            const notification = document.createElement('div');
-            notification.textContent = 'Copied to clipboard: ' + text;
-            notification.style.position = 'fixed';
-            notification.style.bottom = '50px';
-            notification.style.right = '83%';
-            notification.style.backgroundColor = '#162829';
-            notification.style.color = 'white';
-            notification.style.padding = '5px 10px';
-            notification.style.borderRadius = '4px';
-            notification.style.zIndex = '10000';
-            document.body.appendChild(notification);
+                // Mostrar una notificación de éxito
+                const notification = document.createElement('div');
+                notification.textContent = 'Copied to clipboard: ' + text;
+                notification.style.position = 'fixed';
+                notification.style.bottom = '50px';
+                notification.style.right = '83%';
+                notification.style.backgroundColor = '#162829';
+                notification.style.color = 'white';
+                notification.style.padding = '5px 10px';
+                notification.style.borderRadius = '4px';
+                notification.style.zIndex = '10000';
+                document.body.appendChild(notification);
 
-            // Eliminar la notificación después de 2 segundos
-            setTimeout(() => {
-                document.body.removeChild(notification);
-            }, 2000);
-        })
+                // Eliminar la notificación después de 2 segundos
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 2000);
+            })
             .catch((err) => {
-            console.error('Failed to copy text:', err);
-        });
+                console.error('Failed to copy text:', err);
+            });
     }
 
     // Función para mostrar un mensaje de error con opción de copiar el nombre del proyecto
@@ -365,123 +412,123 @@
 
         document.body.appendChild(errorMsg);
     }
-function createTable(data) {
-    // Verificar si la tabla ya existe
-    let existingTable = document.getElementById('projectResources-table');
-    if (existingTable) {
-        // Si la tabla ya existe, actualiza su contenido
-        updateTable(existingTable, data);
-        return;
+
+    function createTable(data) {
+        // Verificar si la tabla ya existe
+        let existingTable = document.getElementById('projectResources-table');
+        if (existingTable) {
+            // Si la tabla ya existe, actualiza su contenido
+            updateTable(existingTable, data);
+            return;
+        }
+
+        // Contenedor principal
+        const mainContainer = document.createElement('div');
+        mainContainer.className = 'pr-container';
+        mainContainer.style.margin = '0px';
+
+        // Título de la tabla
+        const tableTitle = document.createElement('div');
+        tableTitle.style.cssText = `
+            font-size: 18px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 5px;
+        `;
+
+        // Crear tabla
+        const table = document.createElement('table');
+        table.className = 'pr-table';
+        table.id = 'projectResources-table';
+
+        // Crear encabezado
+        const thead = table.createTHead();
+        const headerRow = thead.insertRow();
+
+        HEADERS.forEach(header => {
+            const th = document.createElement('th');
+            th.textContent = header;
+            th.style.textAlign = 'center'; // Centrar el texto del encabezado
+            headerRow.appendChild(th);
+        });
+
+        // Crear cuerpo de la tabla
+        const tbody = table.createTBody();
+        const row = tbody.insertRow();
+
+        HEADERS.forEach(header => {
+            const cell = row.insertCell();
+
+            if (header === 'Public Records & GIS' || header === 'License List') {
+                appendLinks(cell, data[header]);
+            } else if (header === 'Important Info') {
+                // Interpretar HTML y mantener formato
+                cell.innerHTML = data[header]?.replace(/\n/g, '<br>') || '';
+                cell.style.whiteSpace = 'pre-wrap'; // Mantiene espacios y saltos de línea
+                cell.style.padding = '10px'; // Añade un padding interno
+                cell.style.textAlign = 'left'; // Alinea el texto a la izquierda
+                cell.style.lineHeight = '1.6'; // Mejora el espaciado entre líneas
+                cell.style.fontFamily = 'Arial, sans-serif'; // Fuente legible
+                cell.style.fontSize = '14px'; // Tamaño de fuente
+            } else if (header === 'Media') {
+                appendMedia(cell, data[header]);
+            } else {
+                // Si es la columna "Project", hacerla clickable
+                if (header === 'Project') {
+                    cell.textContent = data[header] || '';
+                    cell.style.fontWeight = '600';
+                    cell.style.cursor = 'pointer'; // Hacer que la celda sea clickable
+                    cell.style.userSelect = 'none'; // Evitar que el texto se seleccione al hacer clic
+                    cell.addEventListener('click', () => {
+                        copyToClipboard(data[header]); // Copiar el contenido de la celda al portapapeles
+                    });
+                } else {
+                    cell.textContent = data[header] || '';
+                    cell.style.fontWeight = '600';
+                }
+            }
+        });
+
+        // Agregar todo al contenedor principal
+        mainContainer.appendChild(tableTitle);
+        mainContainer.appendChild(table);
+        document.body.appendChild(mainContainer);
     }
 
-    // Contenedor principal
-    const mainContainer = document.createElement('div');
-    mainContainer.className = 'pr-container';
-    mainContainer.style.margin = '0px';
+    function updateTable(table, data) {
+        // Limpiar el contenido de la tabla
+        const tbody = table.tBodies[0];
+        tbody.innerHTML = '';
 
-    // Título de la tabla
-    const tableTitle = document.createElement('div');
-    tableTitle.style.cssText = `
-        font-size: 18px;
-        font-weight: 600;
-        color: #111827;
-        margin-bottom: 5px;
-    `;
+        // Crear una nueva fila con los datos actualizados
+        const row = tbody.insertRow();
 
-    // Crear tabla
-    const table = document.createElement('table');
-    table.className = 'pr-table';
-    table.id = 'projectResources-table';
+        HEADERS.forEach(header => {
+            const cell = row.insertCell();
 
-    // Crear encabezado
-    const thead = table.createTHead();
-    const headerRow = thead.insertRow();
-
-    HEADERS.forEach(header => {
-        const th = document.createElement('th');
-        th.textContent = header;
-        th.style.textAlign = 'center'; // Centrar el texto del encabezado
-        headerRow.appendChild(th);
-    });
-
-    // Crear cuerpo de la tabla
-    const tbody = table.createTBody();
-    const row = tbody.insertRow();
-
-    HEADERS.forEach(header => {
-        const cell = row.insertCell();
-
-        if (header === 'Public Records & GIS' || header === 'License List') {
-            appendLinks(cell, data[header]);
-        } else if (header === 'Important Info') {
-            // Interpretar HTML y mantener formato
-            cell.innerHTML = data[header]?.replace(/\n/g, '<br>') || '';
-            cell.style.whiteSpace = 'pre-wrap'; // Mantiene espacios y saltos de línea
-            cell.style.padding = '10px'; // Añade un padding interno
-            cell.style.textAlign = 'left'; // Alinea el texto a la izquierda
-            cell.style.lineHeight = '1.6'; // Mejora el espaciado entre líneas
-            cell.style.fontFamily = 'Arial, sans-serif'; // Fuente legible
-            cell.style.fontSize = '14px'; // Tamaño de fuente
-        } else if (header === 'Media') {
-            appendMedia(cell, data[header]);
-        } else {
-            // Si es la columna "Project", hacerla clickable
-            if (header === 'Project') {
-                cell.textContent = data[header] || '';
-                cell.style.fontWeight = '600';
-                cell.style.cursor = 'pointer'; // Hacer que la celda sea clickable
-                cell.style.userSelect = 'none'; // Evitar que el texto se seleccione al hacer clic
-                cell.addEventListener('click', () => {
-                    copyToClipboard(data[header]); // Copiar el contenido de la celda al portapapeles
-                });
+            if (header === 'Public Records & GIS' || header === 'License List') {
+                appendLinks(cell, data[header]);
+            } else if (header === 'Important Info') {
+                cell.innerHTML = data[header]?.replace(/\n/g, '<br>') || '';
+            } else if (header === 'Media') {
+                appendMedia(cell, data[header]);
             } else {
-                cell.textContent = data[header] || '';
-                cell.style.fontWeight = '600';
+                // Si es la columna "Project", hacerla clickable
+                if (header === 'Project') {
+                    cell.textContent = data[header] || '';
+                    cell.style.fontWeight = '600';
+                    cell.style.cursor = 'pointer'; // Hacer que la celda sea clickable
+                    cell.style.userSelect = 'none'; // Evitar que el texto se seleccione al hacer clic
+                    cell.addEventListener('click', () => {
+                        copyToClipboard(data[header]); // Copiar el contenido de la celda al portapapeles
+                    });
+                } else {
+                    cell.textContent = data[header] || '';
+                    cell.style.fontWeight = '600';
+                }
             }
-        }
-    });
-
-    // Agregar todo al contenedor principal
-    mainContainer.appendChild(tableTitle);
-    mainContainer.appendChild(table);
-    document.body.appendChild(mainContainer);
-}
-
-function updateTable(table, data) {
-    // Limpiar el contenido de la tabla
-    const tbody = table.tBodies[0];
-    tbody.innerHTML = '';
-
-    // Crear una nueva fila con los datos actualizados
-    const row = tbody.insertRow();
-
-    HEADERS.forEach(header => {
-        const cell = row.insertCell();
-
-        if (header === 'Public Records & GIS' || header === 'License List') {
-            appendLinks(cell, data[header]);
-        } else if (header === 'Important Info') {
-            cell.innerHTML = data[header]?.replace(/\n/g, '<br>') || '';
-        } else if (header === 'Media') {
-            appendMedia(cell, data[header]);
-        } else {
-            // Si es la columna "Project", hacerla clickable
-            if (header === 'Project') {
-                cell.textContent = data[header] || '';
-                cell.style.fontWeight = '600';
-                cell.style.cursor = 'pointer'; // Hacer que la celda sea clickable
-                cell.style.userSelect = 'none'; // Evitar que el texto se seleccione al hacer clic
-                cell.addEventListener('click', () => {
-                    copyToClipboard(data[header]); // Copiar el contenido de la celda al portapapeles
-                });
-            } else {
-                cell.textContent = data[header] || '';
-                cell.style.fontWeight = '600';
-            }
-        }
-    });
-}
-
+        });
+    }
 
     function appendLinks(cell, items) {
         if (!items || items.length === 0) {
@@ -634,128 +681,94 @@ function updateTable(table, data) {
         localStorage.setItem(IMAGE_CACHE_KEY, JSON.stringify(cache));
     }
 
-    function createIframeWithTabs() {
-        if (document.querySelector('#parcel-iframe')) return;
+function createIframeWithTabs() {
+    if (document.querySelector('#parcel-iframe')) return;
 
-        const parcelLink = document.querySelector('a[href*="/parcel/"]');
-        if (!parcelLink) return;
+    // Buscar primero el enlace "All parcels in the region"
+    const allParcelsLink = document.querySelector('a[href*="/parcel/"][href$="/_"]');
+    // Si no existe, buscar el enlace alternativo
+    const parcelLink = allParcelsLink || document.querySelector('a[href*="/parcel/"]');
 
-        const parcelUrl = 'https://cyborg.deckard.com' + parcelLink.getAttribute('href');
+    if (!parcelLink) return;
 
-        // Obtener la URL base para el segundo iframe
-        const currentUrl = window.location.href;
-        const baseUrl = currentUrl.split('/STR')[0]; // Eliminar todo después de /STR
-        const mappedUrl = `${baseUrl}?tab=all&subset=mapped`; // Construir la nueva URL
+    // Obtener la URL base sin parámetros
+    let parcelUrl = 'https://cyborg.deckard.com' + parcelLink.getAttribute('href');
+    // Eliminar todo después del ? (incluyendo el ?)
+    parcelUrl = parcelUrl.split('?')[0];
 
-        // Contenedor principal
-        const container = document.createElement('div');
-        container.className = 'pr-container';
-        container.style.margin = '0px';
+    // Obtener la URL base para el segundo iframe
+    const currentUrl = window.location.href;
+    const baseUrl = currentUrl.split('/STR')[0];
+    const mappedUrl = `${baseUrl}?tab=all&subset=mapped`;
 
-        // Crear pestañas
-        const tabContainer = document.createElement('div');
-        tabContainer.style.display = 'flex';
-        tabContainer.style.width = '100%';
+    // Contenedor principal
+    const container = document.createElement('div');
+    container.className = 'pr-container';
+    container.style.margin = '0px';
 
-        // Estilos para las pestañas
-        const tabStyles = `
-        .pr-tab {
-            display: inline-block;
-            background-color: #f9f9f9;
-            border: 1px solid #d6d6d6;
-            border-bottom: none;
-            padding: 10px 15px;
-            transition: background-color, color 200ms;
-            width: 50%;
-            text-align: center;
-            box-sizing: border-box;
-            cursor: pointer;
+    // Crear pestañas
+    const tabContainer = document.createElement('div');
+    tabContainer.style.display = 'flex';
+    tabContainer.style.width = '100%';
+
+    // Pestaña All Parcels
+    const allParcelsTab = document.createElement('div');
+    allParcelsTab.className = 'pr-tab pr-tab--selected';
+    allParcelsTab.innerHTML = '<span>All Parcels</span>';
+
+    // Pestaña All Listings Mapped
+    const allListingsMappedTab = document.createElement('div');
+    allListingsMappedTab.className = 'pr-tab';
+    allListingsMappedTab.innerHTML = '<span>All Listings Mapped</span>';
+
+    // Crear contenedor de iframes
+    const iframeContainer = document.createElement('div');
+    iframeContainer.className = 'pr-iframe-container';
+
+    // Iframe para All Parcels
+    const allParcelsIframe = document.createElement('iframe');
+    allParcelsIframe.className = 'pr-iframe';
+    allParcelsIframe.id = 'parcel-iframe';
+    allParcelsIframe.src = parcelUrl;
+
+    // Iframe para All Listings Mapped
+    const allListingsMappedIframe = document.createElement('iframe');
+    allListingsMappedIframe.className = 'pr-iframe';
+    allListingsMappedIframe.id = 'mapped-iframe';
+    allListingsMappedIframe.src = mappedUrl;
+    allListingsMappedIframe.style.display = 'none';
+    allListingsMappedIframe.style.height = '2040px';
+
+    // Función para cambiar entre pestañas
+    const switchTab = (tab) => {
+        if (tab === 'allParcels') {
+            allParcelsIframe.style.display = 'block';
+            allListingsMappedIframe.style.display = 'none';
+            allParcelsTab.classList.add('pr-tab--selected');
+            allListingsMappedTab.classList.remove('pr-tab--selected');
+        } else {
+            allParcelsIframe.style.display = 'none';
+            allListingsMappedIframe.style.display = 'block';
+            allListingsMappedTab.classList.add('pr-tab--selected');
+            allParcelsTab.classList.remove('pr-tab--selected');
         }
-        .pr-tab:hover {
-            background-color: #e9e9e9;
-        }
-        .pr-tab--selected {
-            border-top: 2px solid #1975FA;
-            color: black;
-            background-color: white;
-        }
-        .pr-tab--selected:hover {
-            background-color: white;
-        }
-        @media screen and (min-width: 800px) {
-            .pr-tab {
-                border-right: none;
-            }
-            .pr-tab--selected {
-                border-bottom: none;
-            }
-        }
-    `;
+    };
 
-        // Agregar estilos al documento
-        const styleElement = document.createElement('style');
-        styleElement.textContent = tabStyles;
-        document.head.appendChild(styleElement);
+    // Event listeners para las pestañas
+    allParcelsTab.addEventListener('click', () => switchTab('allParcels'));
+    allListingsMappedTab.addEventListener('click', () => switchTab('allListingsMapped'));
 
-        // Pestaña All Parcels
-        const allParcelsTab = document.createElement('div');
-        allParcelsTab.className = 'pr-tab pr-tab--selected';
-        allParcelsTab.innerHTML = '<span>All Parcels</span>';
+    // Activar la pestaña inicial
+    switchTab('allParcels');
 
-        // Pestaña All Listings Mapped
-        const allListingsMappedTab = document.createElement('div');
-        allListingsMappedTab.className = 'pr-tab';
-        allListingsMappedTab.innerHTML = '<span>All Listings Mapped</span>';
-
-        // Crear contenedor de iframes
-        const iframeContainer = document.createElement('div');
-        iframeContainer.className = 'pr-iframe-container';
-
-        // Iframe para All Parcels
-        const allParcelsIframe = document.createElement('iframe');
-        allParcelsIframe.className = 'pr-iframe';
-        allParcelsIframe.id = 'parcel-iframe';
-        allParcelsIframe.src = parcelUrl;
-
-        // Iframe para All Listings Mapped
-        const allListingsMappedIframe = document.createElement('iframe');
-        allListingsMappedIframe.className = 'pr-iframe';
-        allListingsMappedIframe.id = 'mapped-iframe';
-        allListingsMappedIframe.src = mappedUrl;
-        allListingsMappedIframe.style.display = 'none'; // Ocultar inicialmente
-        allListingsMappedIframe.style.height = '2040px'; // Ajusta este valor según tus necesidades
-
-        // Función para cambiar entre pestañas
-        const switchTab = (tab) => {
-            if (tab === 'allParcels') {
-                allParcelsIframe.style.display = 'block';
-                allListingsMappedIframe.style.display = 'none';
-                allParcelsTab.classList.add('pr-tab--selected');
-                allListingsMappedTab.classList.remove('pr-tab--selected');
-            } else {
-                allParcelsIframe.style.display = 'none';
-                allListingsMappedIframe.style.display = 'block';
-                allListingsMappedTab.classList.add('pr-tab--selected');
-                allParcelsTab.classList.remove('pr-tab--selected');
-            }
-        };
-
-        // Event listeners para las pestañas
-        allParcelsTab.addEventListener('click', () => switchTab('allParcels'));
-        allListingsMappedTab.addEventListener('click', () => switchTab('allListingsMapped'));
-
-        // Activar la pestaña inicial
-        switchTab('allParcels');
-
-        // Agregar elementos al DOM
-        tabContainer.appendChild(allParcelsTab);
-        tabContainer.appendChild(allListingsMappedTab);
-        iframeContainer.appendChild(allParcelsIframe);
-        iframeContainer.appendChild(allListingsMappedIframe);
-        container.appendChild(tabContainer);
-        container.appendChild(iframeContainer);
-        document.body.appendChild(container);
-    }
-
+    // Agregar elementos al DOM
+    tabContainer.appendChild(allParcelsTab);
+    tabContainer.appendChild(allListingsMappedTab);
+    iframeContainer.appendChild(allParcelsIframe);
+    iframeContainer.appendChild(allListingsMappedIframe);
+    container.appendChild(tabContainer);
+    container.appendChild(iframeContainer);
+    document.body.appendChild(container);
+}
     waitForElement('#btn_open_vetting_dlg', fetchData);
 })();
