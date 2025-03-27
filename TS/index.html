@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Configuración Rentalscape</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        label { font-weight: bold; display: block; margin-top: 10px; }
+        input, select { width: 100%; padding: 8px; margin-top: 5px; }
+        button { margin-top: 15px; padding: 10px; background: #007BFF; color: white; border: none; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        pre { background: #f4f4f4; padding: 15px; border-radius: 5px; overflow: auto; }
+    </style>
+</head>
+<body>
+
+    <h2>Generador de Configuración Rentalscape</h2>
+
+    <label for="placeKey">Place Key (Ejemplo: fl-okaloosa-city_of_destin o ks-anderson)</label>
+    <input type="text" id="placeKey" placeholder="Ejemplo: fl-okaloosa-city_of_destin" oninput="autoFillFields()">
+
+    <label for="state">Estado</label>
+    <input type="text" id="state" placeholder="Ejemplo: FL" readonly>
+
+    <label for="county">Condado</label>
+    <input type="text" id="county" placeholder="Ejemplo: Okaloosa" readonly>
+
+    <label for="city">Ciudad</label>
+    <input type="text" id="city" placeholder="Ejemplo: Destin" readonly>
+
+    <label for="placens">PlaceNS (8 dígitos)</label>
+    <input type="text" id="placens" placeholder="Ejemplo: 02411805">
+
+    <label for="email">Email de Soporte</label>
+    <input type="text" id="email" value="rentalscape@deckard.com">
+
+    <label for="days">Días de alquiler</label>
+    <input type="number" id="days" value="30" min="1">
+
+    <label>Habilitar Notas:</label>
+    <input type="checkbox" id="enableNotes" checked>
+
+    <label>Habilitar sugerencias (solo demos):</label>
+    <input type="checkbox" id="showSuggestions" checked>
+
+    <label>Habilitar PDF scraping:</label>
+    <input type="checkbox" id="pdf" checked>
+
+    <label>Habilitar Cache Warming (Cyborg):</label>
+    <input type="checkbox" id="warmCache" checked>
+
+    <button onclick="generateConfig()">Generar Configuración</button>
+
+    <h3>JSON Generado:</h3>
+    <pre id="output"></pre>
+
+    <script>
+        function autoFillFields() {
+            const placeKey = document.getElementById("placeKey").value.trim().toLowerCase();
+            const parts = placeKey.split("-");
+
+            if (parts.length === 2) {
+                document.getElementById("state").value = parts[0].toUpperCase();
+                document.getElementById("county").value = capitalize(parts[1].replace(/_/g, " "));
+                document.getElementById("city").value = ""; // Sin ciudad
+            } else if (parts.length >= 3) {
+                document.getElementById("state").value = parts[0].toUpperCase();
+                document.getElementById("county").value = capitalize(parts[1].replace(/_/g, " "));
+                document.getElementById("city").value = capitalize(parts.slice(2).join("-").replace(/_/g, " ").replace("city of ", ""));
+            }
+        }
+
+        function capitalize(str) {
+            return str.replace(/\b\w/g, char => char.toUpperCase());
+        }
+
+        function generateConfig() {
+            const state = document.getElementById("state").value.trim();
+            const county = document.getElementById("county").value.trim().toLowerCase().replace(/ /g, "_");
+            const city = document.getElementById("city").value.trim().toLowerCase().replace(/ /g, "_");
+            const placens = document.getElementById("placens").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const days = parseInt(document.getElementById("days").value, 10);
+            const nights = days - 1;
+            const enableNotes = document.getElementById("enableNotes").checked;
+            const showSuggestions = document.getElementById("showSuggestions").checked;
+            const pdf = document.getElementById("pdf").checked;
+            const warmCache = document.getElementById("warmCache").checked;
+
+            if (!state || !county) {
+                alert("Por favor, ingresa un Place Key válido.");
+                return;
+            }
+
+            let placeName = city ? `City of ${city.replace(/_/g, " ")}, ${state}` : `${county.replace(/_/g, " ")} County, ${state}`;
+            let placeKey = city ? `${state.toLowerCase()}-${county}-city_of_${city}` : `${state.toLowerCase()}-${county}`;
+            let logoUrl = `https://rentalscape-assets-prod-usw2.s3.us-west-2.amazonaws.com/customer_logos/${placeKey}.png`;
+
+            const config = {
+                "logo": logoUrl,
+                "modules": {
+                    "notes": {
+                        "mode": enableNotes ? "enabled" : "disabled",
+                        "read": ["admin", placeKey],
+                        "rw": [placeKey]
+                    },
+                    "rentalscape": {
+                        "propertyDetails": {
+                            "tabs": {
+                                "activity": { "enabled": true },
+                                "history": { "enabled": true },
+                                "license": { "enabled": false }
+                            }
+                        },
+                        "emailCcDeckard": `Rentalscape Support <${email}>`,
+                        "production": { "warm": warmCache },
+                        "rentalPeriod": { "days": days },
+                        "rentalTypes": {
+                            "current": `Current STR (${nights} nights or less)`,
+                            "hotel": "Hotel/Timeshare",
+                            "ltr": "Long Term Rental",
+                            "other": "Other Rental",
+                            "previous": "Previously an STR",
+                            "unavailable": "Unavailable"
+                        },
+                        "showSuggestions": showSuggestions
+                    }
+                },
+                "name": placeName,
+                "placens": placens,
+                "pdf": pdf
+            };
+
+            document.getElementById("output").textContent = JSON.stringify(config, null, 2);
+        }
+    </script>
+
+</body>
+</html>
