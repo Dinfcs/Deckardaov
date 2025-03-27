@@ -34,6 +34,7 @@
             padding: 10px;
             border: 1px solid #ddd;
             text-align: left;
+            cursor: pointer;
         }
         th {
             background-color: #007bff;
@@ -68,6 +69,19 @@
         .btn-clear {
             background-color: red;
         }
+        /* Notificación */
+        #notificacion {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
     </style>
 </head>
 <body>
@@ -84,6 +98,8 @@
     <div id="tabla-container"></div>
     <div id="paginacion"></div>
 
+    <div id="notificacion">Copiado</div>
+
     <script>
         let datosCompletos = [];
         let datosFiltrados = [];
@@ -93,7 +109,7 @@
 
         document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("loader").style.display = "block";
-            fetch("https://dinfcs.github.io/Deckardaov/TS/datos_exportados.json")
+            fetch("https://dinfcs.github.io/Deckardaov/DeckardScripts/DatabasePR/datos_exportados.json")
                 .then(response => response.json())
                 .then(datos => {
                     document.getElementById("loader").style.display = "none";
@@ -129,7 +145,7 @@
             datosPaginados.forEach(fila => {
                 tabla += "<tr>";
                 encabezados.forEach(col => {
-                    tabla += `<td>${fila[col]}</td>`;
+                    tabla += `<td onclick="copiarTexto('${fila[col]}')">${fila[col]}</td>`;
                 });
                 tabla += "</tr>";
             });
@@ -186,6 +202,20 @@
                 return 0;
             });
             actualizarTabla();
+        }
+
+        function copiarTexto(texto) {
+            navigator.clipboard.writeText(texto).then(() => {
+                let notificacion = document.getElementById("notificacion");
+                notificacion.innerText = `"${texto}" copiado`;
+                notificacion.style.display = "block";
+                notificacion.style.opacity = "1";
+
+                setTimeout(() => {
+                    notificacion.style.opacity = "0";
+                    setTimeout(() => notificacion.style.display = "none", 300);
+                }, 1500);
+            });
         }
     </script>
 </body>
