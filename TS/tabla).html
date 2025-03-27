@@ -93,7 +93,7 @@
 
         document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("loader").style.display = "block";
-            fetch("https://dinfcs.github.io/Deckardaov/DeckardScripts/DatabasePR/datos_exportados.json")
+            fetch("https://dinfcs.github.io/Deckardaov/TS/datos_exportados.json")
                 .then(response => response.json())
                 .then(datos => {
                     document.getElementById("loader").style.display = "none";
