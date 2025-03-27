@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla desde JSON</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        h2 {
+            color: #333;
+        }
+        input {
+            padding: 8px;
+            width: 40%;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        #loader {
+            display: none;
+            text-align: center;
+            margin: 20px;
+        }
+        #loader img {
+            width: 50px;
+        }
+        .btn {
+            padding: 8px 12px;
+            font-size: 14px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            margin: 5px;
+            background-color: #007bff;
+            color: white;
+        }
+        .btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        .btn-clear {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <h2>Tabla desde JSON</h2>
+    <input type="text" id="buscar1" placeholder="Buscar 1" onkeyup="filtrarTabla()">
+    <input type="text" id="buscar2" placeholder="Buscar 2" onkeyup="filtrarTabla()">
+    <button class="btn btn-clear" onclick="limpiarFiltros()">Limpiar filtros</button>
+    
+    <div id="loader">
+        <img src="https://i.gifer.com/ZZ5H.gif" alt="Cargando...">
+        <p>Cargando datos...</p>
+    </div>
+    
+    <div id="tabla-container"></div>
+    <div id="paginacion"></div>
+
+    <script>
+        let datosCompletos = [];
+        let datosFiltrados = [];
+        let filasPorPagina = 10;
+        let paginaActual = 1;
+        let encabezados = [];
+
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("loader").style.display = "block";
+            fetch("https://dinfcs.github.io/Deckardaov/DeckardScripts/DatabasePR/datos_exportados.json")
+                .then(response => response.json())
+                .then(datos => {
+                    document.getElementById("loader").style.display = "none";
+                    procesarDatos(datos);
+                })
+                .catch(error => console.error("Error al cargar JSON:", error));
+        });
+
+        function procesarDatos(datos) {
+            encabezados = datos[0]; // La primera fila es la cabecera
+            datosCompletos = datos.slice(1).map(fila => {
+                let obj = {};
+                encabezados.forEach((col, index) => {
+                    obj[col] = fila[index] || ""; // Asigna valores a cada campo
+                });
+                return obj;
+            });
+            datosFiltrados = [...datosCompletos]; // Iniciar datos filtrados con todos los datos
+            actualizarTabla();
+        }
+
+        function actualizarTabla() {
+            let inicio = (paginaActual - 1) * filasPorPagina;
+            let fin = inicio + filasPorPagina;
+            let datosPaginados = datosFiltrados.slice(inicio, fin);
+
+            let tabla = "<table><tr>";
+            encabezados.forEach(header => {
+                tabla += `<th onclick="ordenarPor('${header}')">${header}</th>`;
+            });
+            tabla += "</tr>";
+
+            datosPaginados.forEach(fila => {
+                tabla += "<tr>";
+                encabezados.forEach(col => {
+                    tabla += `<td>${fila[col]}</td>`;
+                });
+                tabla += "</tr>";
+            });
+
+            tabla += "</table>";
+            document.getElementById("tabla-container").innerHTML = tabla;
+
+            actualizarPaginacion();
+        }
+
+        function actualizarPaginacion() {
+            let totalPaginas = Math.ceil(datosFiltrados.length / filasPorPagina);
+            let botonesHTML = `
+                <button class="btn" onclick="cambiarPagina(-1)" ${paginaActual === 1 ? "disabled" : ""}>⬅️ Anterior</button> 
+                Página ${paginaActual} de ${totalPaginas} 
+                <button class="btn" onclick="cambiarPagina(1)" ${paginaActual >= totalPaginas ? "disabled" : ""}>Siguiente ➡️</button>`;
+
+            document.getElementById("paginacion").innerHTML = totalPaginas > 1 ? botonesHTML : "";
+        }
+
+        function cambiarPagina(direccion) {
+            let totalPaginas = Math.ceil(datosFiltrados.length / filasPorPagina);
+            paginaActual += direccion;
+            if (paginaActual < 1) paginaActual = 1;
+            if (paginaActual > totalPaginas) paginaActual = totalPaginas;
+            actualizarTabla();
+        }
+
+        function filtrarTabla() {
+            let input1 = document.getElementById("buscar1").value.toLowerCase();
+            let input2 = document.getElementById("buscar2").value.toLowerCase();
+
+            datosFiltrados = datosCompletos.filter(fila =>
+                Object.values(fila).some(celda => celda.toString().toLowerCase().includes(input1)) &&
+                Object.values(fila).some(celda => celda.toString().toLowerCase().includes(input2))
+            );
+
+            paginaActual = 1; // Al filtrar, volver a la primera página
+            actualizarTabla();
+        }
+
+        function limpiarFiltros() {
+            document.getElementById("buscar1").value = "";
+            document.getElementById("buscar2").value = "";
+            datosFiltrados = [...datosCompletos]; // Restaurar datos originales
+            paginaActual = 1;
+            actualizarTabla();
+        }
+
+        function ordenarPor(columna) {
+            datosFiltrados.sort((a, b) => {
+                if (a[columna] < b[columna]) return -1;
+                if (a[columna] > b[columna]) return 1;
+                return 0;
+            });
+            actualizarTabla();
+        }
+    </script>
+</body>
+</html>
