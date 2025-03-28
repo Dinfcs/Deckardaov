@@ -10881,6 +10881,32 @@
           "type": "N/A"
         }
       ]
+    },
+    {
+      "Project": "UT - City Of Cottonwood Heights",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://apps.saltlakecounty.gov/assessor/new/query.cfm"
+        },
+        {
+          "url": "https://apps.saltlakecounty.gov/assessor/new/ParcelViewer/index.html?query=Parcel_Viewer_external_3634_5,parcel_id,",
+          "type": "GIS"
+        }
+      ],
+      "License List": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ],
+      "Important Info": "<p><br></p>",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
