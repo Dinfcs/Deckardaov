@@ -8424,17 +8424,17 @@
           "url": "https://experience.arcgis.com/experience/4955d2ec3e3349f294ecc5569dc8bd1d/#data_s=id%3AdataSource_1-17bc6a86da1-layer-2-65%3A127458568"
         },
         {
-          "type": "PR",
-          "url": "https://www2.centrecountypa.gov/centreco/claim/tri.asp"
+          "url": "https://www2.centrecountypa.gov/centreco/claim/tri.asp",
+          "type": "PR"
         }
       ],
       "License List": [
         {
-          "type": "License o N/A",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EXyoPf5upFNFsAd9OxHyk-EBeCcnMW1Es8yy4aPEJuVVCw?e=hIwTVG"
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/Ed3YtIZHA7xAh4duOEfeROoB3XDqdw4Uz_SDgsCuBSvUFQ?e=AquGhN",
+          "type": "License List"
         }
       ],
-      "Important Info": "In the PR, when you are looiking for a property, use this format in the parcel number box: \"00-000-0000\" or \"00-000A-000-0000\"",
+      "Important Info": "<p>In the PR, when you are looiking for a property, use this format in the parcel number box: \"00-000-0000\" or \"00-000A-000-0000\"</p>",
       "Media": [
         {
           "type": "N/A",
