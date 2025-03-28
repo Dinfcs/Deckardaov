@@ -428,7 +428,6 @@ function showEditWindow(data, onConfirm) {
         );
     
         if (match && match[1]) {
-            // Limpieza adicional por si acaso
             return match[1]
                 .replace(/\d+\s*(?:years?|months?|days?|hours?|minutes?|seconds?)/gi, '')
                 .replace(/\s+/g, ' ')
@@ -442,4 +441,4 @@ function showEditWindow(data, onConfirm) {
     waitForUserSection().then(() => {
         checkQaerAndShowLink();
     });
-})();
+})(); 
