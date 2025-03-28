@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generador de Configuración Rentalscape</title>
+    <title>Turn on Cyborg Projects</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
         body { 
@@ -253,7 +253,7 @@
             </div>
             <input type="text" id="buscar1" class="search-input" placeholder="Filtro 1" oninput="autoSplitSearch(); filtrarTabla()">
             <input type="text" id="buscar2" class="search-input" placeholder="Filtro 2" oninput="filtrarTabla()">
-            <button class="btn btn-clear" onclick="limpiarFiltros()">Limpiar</button>
+            <button class="btn btn-clear" onclick="limpiarFiltros()">Clean</button>
         </div>
     </div>
 
@@ -262,89 +262,89 @@
         <div class="content-container">
             <div class="form-section">
                 <div class="form-container">
-                    <h2>Generador de Configuración Rentalscape</h2>
+                    <h2>Requirements</h2>
         
                     <div class="input-group">
-                        <label for="logoUrl" class="input-label">Enlace del Logo</label>
+                        <label for="logoUrl" class="input-label">Logo Link</label>
                         <input type="text" id="logoUrl" class="input-field" placeholder="Ejemplo: https://mi-servidor.com/logo.png" required>
-                        <div class="error-message" id="logoUrl-error">Este campo es requerido</div>
+                        <div class="error-message" id="logoUrl-error">This field is required</div>
                     </div>
                     
                     <div class="input-group">
                         <label for="placeKey" class="input-label">Place Key</label>
                         <input type="text" id="placeKey" class="input-field" placeholder="Ejemplo: fl-okaloosa-city_of_destin" oninput="autoFillFields()" required>
-                        <div class="error-message" id="placeKey-error">Este campo es requerido</div>
+                        <div class="error-message" id="placeKey-error">This field is required</div>
                     </div>
         
                     <div class="input-group">
-                        <label for="state" class="input-label">Estado</label>
+                        <label for="state" class="input-label">State</label>
                         <input type="text" id="state" class="input-field" placeholder="Ejemplo: FL" readonly required>
-                        <div class="error-message" id="state-error">Este campo es requerido</div>
+                        <div class="error-message" id="state-error">This field is required</div>
                     </div>
         
                     <div class="input-group">
-                        <label for="county" class="input-label">Condado</label>
+                        <label for="county" class="input-label">County</label>
                         <input type="text" id="county" class="input-field" placeholder="Ejemplo: Okaloosa" readonly required>
-                        <div class="error-message" id="county-error">Este campo es requerido</div>
+                        <div class="error-message" id="county-error">This field is required</div>
                     </div>
         
                     <div class="input-group">
-                        <label for="city" class="input-label">Ciudad</label>
+                        <label for="city" class="input-label">City</label>
                         <input type="text" id="city" class="input-field" placeholder="Ejemplo: Destin" readonly>
                     </div>
         
                     <div class="input-group">
-                        <label for="placens" class="input-label">PlaceNS (8 dígitos)</label>
+                        <label for="placens" class="input-label">Code (8 digits)</label>
                         <input type="text" id="placens" class="input-field" placeholder="Ejemplo: 02411805" required pattern="[0-9]{8}" title="Debe contener exactamente 8 dígitos">
-                        <div class="error-message" id="placens-error">Debe contener exactamente 8 dígitos</div>
+                        <div class="error-message" id="placens-error">Must contain exactly 8 digits</div>
                     </div>
         
                     <div class="input-group">
-                        <label for="days" class="input-label">Días de alquiler</label>
+                        <label for="days" class="input-label">Rental days</label>
                         <input type="number" id="days" class="input-field" value="30" min="1" required>
-                        <div class="error-message" id="days-error">Debe ser un número mayor a 0</div>
+                        <div class="error-message" id="days-error">Must be a number greater than 0</div>
                     </div>
                     
                     <div class="checkbox-group">
                         <input type="checkbox" id="enableNotes" checked>
-                        <label for="enableNotes">Habilitar Notas</label>
+                        <label for="enableNotes">Enable Notes</label>
                     </div>
 
                     <div class="checkbox-group">
                         <input type="checkbox" id="showSuggestions" checked>
-                        <label for="showSuggestions">Habilitar sugerencias (solo demos)</label>
+                        <label for="showSuggestions">Enable suggestions (demos only)</label>
                     </div>
 
                     <div class="checkbox-group">
                         <input type="checkbox" id="pdf" checked>
-                        <label for="pdf">Habilitar PDF scraping</label>
+                        <label for="pdf">Enable PDF scraping</label>
                     </div>
 
                     <div class="checkbox-group">
                         <input type="checkbox" id="warmCache" checked>
-                        <label for="warmCache">Habilitar Cache Warming (Cyborg)</label>
+                        <label for="warmCache">Enable Cache Warm-up (Cyborg)</label>
                     </div>
 
                     <div class="checkbox-group">
                         <input type="checkbox" id="includeCities">
-                        <label for="includeCities">Incluir ciudades</label>
+                        <label for="includeCities">Include cities</label>
                     </div>
                     
                     <div class="checkbox-group">
                         <input type="checkbox" id="enablePropertyDetails">
-                        <label for="enablePropertyDetails">HdL, Rivertree, Azavar</label>
+                        <label for="enablePropertyDetails">Is HdL, Rivertree or Azavar</label>
                     </div>
                     
 
                     <button onclick="generateConfig()" class="generate-btn">
-                        Generar Configuración
+                        Generate Configuration
                     </button>
                 </div>
             </div>
 
             <div class="output-section">
                 <div class="output-container">
-                    <h3>YAML Generado:</h3>
+                    <h3>YAML Generated:</h3>
                     <button id="copyYamlBtn" class="copy-btn" onclick="copiarYAML()">Copiar YAML</button>
                     <pre id="output" class="output-pre"></pre>
                 </div>
@@ -672,9 +672,9 @@
         function actualizarPaginacion() {
             let totalPaginas = Math.ceil(datosFiltrados.length / filasPorPagina);
             let botonesHTML = `
-                <button class="btn" onclick="cambiarPagina(-1)" ${paginaActual === 1 ? "disabled" : ""}>⬅️ Anterior</button> 
+                <button class="btn" onclick="cambiarPagina(-1)" ${paginaActual === 1 ? "disabled" : ""}>⬅️ </button> 
                 Página ${paginaActual} de ${totalPaginas} 
-                <button class="btn" onclick="cambiarPagina(1)" ${paginaActual >= totalPaginas ? "disabled" : ""}>Siguiente ➡️</button>`;
+                <button class="btn" onclick="cambiarPagina(1)" ${paginaActual >= totalPaginas ? "disabled" : ""}> ➡️</button>`;
 
             document.getElementById("paginacion").innerHTML = totalPaginas > 1 ? botonesHTML : "";
         }
