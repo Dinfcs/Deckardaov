@@ -8912,21 +8912,21 @@
       "Project": "WI - City of Lake Geneva",
       "Public Records & GIS": [
         {
-          "type": "PR",
-          "url": "https://ascent.co.walworth.wi.us/LandRecords/PropertyListing/RealEstateTaxParcel#/Search"
+          "url": "https://ascent.co.walworth.wi.us/LandRecords/PropertyListing/RealEstateTaxParcel#/Search",
+          "type": "PR"
         },
         {
-          "type": "GIS",
-          "url": "https://gisinfo.co.walworth.wi.us/oneview/"
+          "url": "https://gisinfo.co.walworth.wi.us/oneview/",
+          "type": "GIS"
         }
       ],
       "License List": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EQvqCPWxpeBJi1dV-UiFEegBVmUxvPg8f2hZadsf6awwNQ?e=qfnQSK",
+          "type": "List"
         }
       ],
-      "Important Info": "Please search with the address or the owner name in PR and GIS, as the APN doesn't work well.",
+      "Important Info": "<p>Please search with the address or the owner name in PR and GIS, as the APN doesn't work well.</p>",
       "Media": [
         {
           "type": "N/A",
