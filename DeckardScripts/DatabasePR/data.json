@@ -10594,15 +10594,15 @@
       ],
       "License List": [
         {
-          "url": "N/A",
-          "type": "N/A"
+          "type": "N/A",
+          "url": "N/A"
         }
       ],
-      "Important Info": "<ul><li><span style=\"color: rgb(255, 153, 0);\">The APN is the \"Geocode\" in the GIS/PR </span></li></ul><ol><li>To search in the PR with the APN the format is:  XX-XXXX-XX-X-XX-XX-XXXX   </li></ol><p>                             for example: if the APN in Cyborg is 07396606208235346  then ----&gt;  <span style=\"color: rgb(68, 68, 68);\">07-3966-06-2-08-23-5346</span></p><p><br></p><p><span style=\"color: rgb(55, 65, 81);\">       2. The GIS allows searching by APN/Address:</span></p><p>                          -  select the house icon --&gt; click on \"Search by Geocode\" (enter the number without dashes)    <span style=\"color: rgb(230, 0, 0);\">* reference image1*</span></p><p>                                                                            or -  \"Search by Property Address\"</p><p><br></p><p>                          -  If you want to show the complete property info in the GIS go to tax information section and click on </p><p>                                      \"View records\"                                                                                                                                <span style=\"color: rgb(0, 138, 0);\">*image 2**</span></p>",
+      "Important Info": "<ul><li><strong style=\"color: rgb(255, 153, 0);\">The APN is the \"Geocode\" in the GIS/PR </strong></li></ul><ol><li>To search in the PR with the APN the format is:  XX-XXXX-XX-X-XX-XX-XXXX   </li></ol><p>                             for example: if the APN in Cyborg is 07396606208235346  then ----&gt;  <span style=\"color: rgb(68, 68, 68);\">07-3966-06-2-08-23-5346</span></p><p><br></p><p><span style=\"color: rgb(55, 65, 81);\">       2. The GIS allows searching by APN/Address:</span></p><p>                          -  select the house icon --&gt; click on \"Search by Geocode\" (enter the number without dashes)    <strong style=\"color: rgb(230, 0, 0);\">* reference image1*</strong></p><p>                                                                            or -  \"Search by Property Address\"</p><p><br></p><p>                          -  If you want to show the complete property info in the GIS go to tax information section and click on </p><p>                                      \"View records\"                                                                                                                    <strong style=\"color: rgb(0, 138, 0);\">*image 2*</strong></p>",
       "Media": [
         {
-          "url": "https://drive.google.com/uc?export=view&id=1j0v-3lABdQO1f8eORXAnQkacw7AjNkcQ",
-          "type": "Image 1"
+          "type": "Image 1",
+          "url": "https://drive.google.com/uc?export=view&id=1j0v-3lABdQO1f8eORXAnQkacw7AjNkcQ"
         },
         {
           "type": "Image 2",
