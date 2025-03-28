@@ -11,11 +11,13 @@
             font-family: Arial, sans-serif;
         }
         .main-container {
-            display: flex;
             max-width: 1400px;
             margin: 0 auto;
-            padding: 1rem;
-            gap: 1rem;
+            padding: 0.5rem;
+        }
+        .content-container {
+            display: flex;
+            gap: 0.5rem;
         }
         .form-section {
             width: 40%;
@@ -27,25 +29,25 @@
             background-color: white;
             border-radius: 0.5rem;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            padding: 1rem;
-            margin-bottom: 1rem;
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
             position: relative;
         }
-        .input-group { margin-bottom: 0.75rem; }
+        .input-group { margin-bottom: 0.5rem; }
         .input-label { 
             display: block; 
-            margin-bottom: 0.25rem; 
+            margin-bottom: 0.2rem; 
             font-weight: 600; 
             color: #374151; 
-            font-size: 0.875rem; 
+            font-size: 0.85rem; 
         }
         .input-field { 
             width: 100%; 
-            padding: 0.5rem; 
+            padding: 0.4rem; 
             border: 1px solid #d1d5db; 
             border-radius: 0.375rem; 
             background-color: #f9fafb; 
-            font-size: 0.875rem; 
+            font-size: 0.85rem; 
         }
         .input-field:focus { 
             outline: none; 
@@ -55,10 +57,10 @@
         .checkbox-group { 
             display: flex; 
             align-items: center; 
-            margin-bottom: 0.5rem; 
-            font-size: 0.875rem; 
+            margin-bottom: 0.4rem; 
+            font-size: 0.85rem; 
         }
-        .checkbox-group input { margin-right: 0.5rem; }
+        .checkbox-group input { margin-right: 0.4rem; }
         .generate-btn { 
             width: 100%; 
             padding: 0.5rem; 
@@ -67,15 +69,15 @@
             border: none; 
             border-radius: 0.375rem; 
             font-weight: 600; 
-            font-size: 0.875rem; 
+            font-size: 0.85rem; 
             cursor: pointer;
             margin-top: 0.5rem;
         }
         .copy-btn {
             position: absolute;
-            top: 1rem;
-            right: 1rem;
-            padding: 0.25rem 0.5rem;
+            top: 0.75rem;
+            right: 0.75rem;
+            padding: 0.2rem 0.4rem;
             background-color: #10b981;
             color: white;
             border: none;
@@ -84,14 +86,14 @@
             cursor: pointer;
         }
         .split-btn {
-            padding: 0.25rem 0.5rem;
+            padding: 0.2rem 0.4rem;
             background-color: #6366f1;
             color: white;
             border: none;
             border-radius: 0.25rem;
             font-size: 0.75rem;
             cursor: pointer;
-            margin-left: 0.5rem;
+            margin-left: 0.4rem;
         }
         .generate-btn:hover { background-color: #2563eb; }
         .copy-btn:hover { background-color: #0d9488; }
@@ -99,45 +101,48 @@
         .output-pre { 
             background-color: #f3f4f6; 
             border-radius: 0.375rem; 
-            padding: 1rem; 
-            max-height: 500px; 
+            padding: 0.75rem; 
+            max-height: 400px; 
             overflow-y: auto; 
             font-family: 'Courier New', monospace; 
             white-space: pre-wrap; 
             font-size: 0.75rem; 
             line-height: 1.2; 
-            margin-top: 1.5rem;
+            margin-top: 0.5rem;
         }
-        h2 { font-size: 1.25rem; font-weight: bold; margin-bottom: 1rem; color: #1f2937; }
-        h3 { font-size: 1rem; font-weight: bold; margin-bottom: 0.75rem; color: #1f2937; }
+        h2 { font-size: 1.15rem; font-weight: bold; margin-bottom: 0.75rem; color: #1f2937; }
+        h3 { font-size: 0.95rem; font-weight: bold; margin-bottom: 0.5rem; color: #1f2937; }
         
-        /* Estilos para la tabla */
-        .table-container {
-            width: 100%;
-            margin-top: 1rem;
-            padding: 1rem;
+        /* Estilos para los filtros */
+        .filters-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0.5rem;
+            padding-bottom: 0;
+        }
+        .search-container {
             background-color: white;
             border-radius: 0.5rem;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .search-container {
+            padding: 0.75rem;
             display: flex;
-            gap: 0.5rem;
+            gap: 0.4rem;
             margin-bottom: 0.5rem;
         }
         .search-input {
             flex: 1;
-            padding: 0.5rem;
+            padding: 0.4rem;
             border: 1px solid #d1d5db;
             border-radius: 0.375rem;
+            font-size: 0.85rem;
         }
         .search-split-container {
             display: flex;
             align-items: center;
         }
         .btn {
-            padding: 0.5rem 1rem;
-            font-size: 0.875rem;
+            padding: 0.4rem 0.8rem;
+            font-size: 0.85rem;
             cursor: pointer;
             border: none;
             border-radius: 0.375rem;
@@ -151,14 +156,23 @@
             background-color: #9ca3af;
             cursor: not-allowed;
         }
+        
+        /* Estilos para la tabla */
+        .table-container {
+            width: 100%;
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-top: 0.5rem;
+            transition: margin-top 0.3s ease;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 0.5rem;
-            font-size: 0.875rem;
+            font-size: 0.85rem;
         }
         th, td {
-            padding: 0.5rem;
+            padding: 0.4rem;
             border: 1px solid #e5e7eb;
             text-align: left;
         }
@@ -177,15 +191,15 @@
         #loader {
             display: none;
             text-align: center;
-            margin: 1rem 0;
+            margin: 0.5rem 0;
         }
         #notificacion {
             position: fixed;
-            bottom: 1rem;
-            right: 1rem;
+            bottom: 0.5rem;
+            right: 0.5rem;
             background-color: #10b981;
             color: white;
-            padding: 0.5rem 1rem;
+            padding: 0.4rem 0.8rem;
             border-radius: 0.375rem;
             display: none;
             z-index: 1000;
@@ -194,125 +208,139 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 0.5rem;
-            margin-top: 0.5rem;
+            gap: 0.4rem;
+            margin-top: 0.4rem;
+            padding: 0.75rem;
+            padding-top: 0;
         }
-        @media (max-width: 768px) {
-            .main-container {
-                flex-direction: column;
-            }
-            .form-section, .output-section {
-                width: 100%;
-            }
-            .search-container {
-                flex-direction: column;
-            }
-            .search-split-container {
-                width: 100%;
-            }
+        .table-data-container {
+            max-height: 400px;
+            overflow-y: auto;
+            padding: 0 0.75rem;
+        }
+        .input-field:invalid {
+            border-color: #ef4444;
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+        }
+        .error-message {
+            color: #ef4444;
+            font-size: 0.75rem;
+            margin-top: 0.2rem;
+            display: none;
         }
     </style>
 </head>
 <body>
-    <div class="main-container">
-        <div class="form-section">
-            <div class="form-container">
-                <h2>Generador de Configuración Rentalscape</h2>
-
-                <div class="input-group">
-                    <label for="logoUrl" class="input-label">Enlace del Logo</label>
-                    <input type="text" id="logoUrl" class="input-field" placeholder="Ejemplo: https://mi-servidor.com/logo.png">
-                </div>
-                
-                <div class="input-group">
-                    <label for="placeKey" class="input-label">Place Key</label>
-                    <input type="text" id="placeKey" class="input-field" placeholder="Ejemplo: fl-okaloosa-city_of_destin" oninput="autoFillFields()">
-                </div>
-
-                <div class="input-group">
-                    <label for="state" class="input-label">Estado</label>
-                    <input type="text" id="state" class="input-field" placeholder="Ejemplo: FL" readonly>
-                </div>
-
-                <div class="input-group">
-                    <label for="county" class="input-label">Condado</label>
-                    <input type="text" id="county" class="input-field" placeholder="Ejemplo: Okaloosa" readonly>
-                </div>
-
-                <div class="input-group">
-                    <label for="city" class="input-label">Ciudad</label>
-                    <input type="text" id="city" class="input-field" placeholder="Ejemplo: Destin" readonly>
-                </div>
-
-                <div class="input-group">
-                    <label for="placens" class="input-label">PlaceNS (8 dígitos)</label>
-                    <input type="text" id="placens" class="input-field" placeholder="Ejemplo: 02411805">
-                </div>
-
-                <div class="input-group">
-                    <label for="days" class="input-label">Días de alquiler</label>
-                    <input type="number" id="days" class="input-field" value="30" min="1">
-                </div>
-
-                <div class="checkbox-group">
-                    <input type="checkbox" id="enableNotes" checked>
-                    <label for="enableNotes">Habilitar Notas</label>
-                </div>
-
-                <div class="checkbox-group">
-                    <input type="checkbox" id="showSuggestions" checked>
-                    <label for="showSuggestions">Habilitar sugerencias (solo demos)</label>
-                </div>
-
-                <div class="checkbox-group">
-                    <input type="checkbox" id="pdf" checked>
-                    <label for="pdf">Habilitar PDF scraping</label>
-                </div>
-
-                <div class="checkbox-group">
-                    <input type="checkbox" id="warmCache" checked>
-                    <label for="warmCache">Habilitar Cache Warming (Cyborg)</label>
-                </div>
-
-                <div class="checkbox-group">
-                    <input type="checkbox" id="includeCities">
-                    <label for="includeCities">Incluir ciudades</label>
-                </div>
-
-                <button onclick="generateConfig()" class="generate-btn">
-                    Generar Configuración
-                </button>
+    <!-- Filtros arriba de todo -->
+    <div class="filters-container">
+        <div class="search-container">
+            <div class="search-split-container">
+                <input type="text" id="buscarSplit" class="search-input" placeholder="Ej: UT - City of Cottonwood Heights" oninput="autoSplitSearch()">
             </div>
-        </div>
-
-        <div class="output-section">
-            <div class="output-container">
-                <h3>YAML Generado:</h3>
-                <button id="copyYamlBtn" class="copy-btn" onclick="copiarYAML()">Copiar YAML</button>
-                <pre id="output" class="output-pre"></pre>
-            </div>
+            <input type="text" id="buscar1" class="search-input" placeholder="Filtro 1" oninput="autoSplitSearch(); filtrarTabla()">
+            <input type="text" id="buscar2" class="search-input" placeholder="Filtro 2" oninput="filtrarTabla()">
+            <button class="btn btn-clear" onclick="limpiarFiltros()">Limpiar</button>
         </div>
     </div>
 
-    <div class="table-container">
-        <h2>Tabla de Referencia</h2>
-        <div class="search-container">
-            <input type="text" id="buscar1" class="search-input" placeholder="Buscar en todas las columnas" onkeyup="filtrarTabla()">
-            <input type="text" id="buscar2" class="search-input" placeholder="Buscar en todas las columnas" onkeyup="filtrarTabla()">
-            <div class="search-split-container">
-                <input type="text" id="buscarSplit" class="search-input" placeholder="Ej: UT - City of Cottonwood Heights">
-                <button class="split-btn" onclick="splitSearch()">Dividir</button>
+    <!-- Contenido principal -->
+    <div class="main-container">
+        <div class="content-container">
+            <div class="form-section">
+                <div class="form-container">
+                    <h2>Generador de Configuración Rentalscape</h2>
+        
+                    <div class="input-group">
+                        <label for="logoUrl" class="input-label">Enlace del Logo</label>
+                        <input type="text" id="logoUrl" class="input-field" placeholder="Ejemplo: https://mi-servidor.com/logo.png" required>
+                        <div class="error-message" id="logoUrl-error">Este campo es requerido</div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="placeKey" class="input-label">Place Key</label>
+                        <input type="text" id="placeKey" class="input-field" placeholder="Ejemplo: fl-okaloosa-city_of_destin" oninput="autoFillFields()" required>
+                        <div class="error-message" id="placeKey-error">Este campo es requerido</div>
+                    </div>
+        
+                    <div class="input-group">
+                        <label for="state" class="input-label">Estado</label>
+                        <input type="text" id="state" class="input-field" placeholder="Ejemplo: FL" readonly required>
+                        <div class="error-message" id="state-error">Este campo es requerido</div>
+                    </div>
+        
+                    <div class="input-group">
+                        <label for="county" class="input-label">Condado</label>
+                        <input type="text" id="county" class="input-field" placeholder="Ejemplo: Okaloosa" readonly required>
+                        <div class="error-message" id="county-error">Este campo es requerido</div>
+                    </div>
+        
+                    <div class="input-group">
+                        <label for="city" class="input-label">Ciudad</label>
+                        <input type="text" id="city" class="input-field" placeholder="Ejemplo: Destin" readonly>
+                    </div>
+        
+                    <div class="input-group">
+                        <label for="placens" class="input-label">PlaceNS (8 dígitos)</label>
+                        <input type="text" id="placens" class="input-field" placeholder="Ejemplo: 02411805" required pattern="[0-9]{8}" title="Debe contener exactamente 8 dígitos">
+                        <div class="error-message" id="placens-error">Debe contener exactamente 8 dígitos</div>
+                    </div>
+        
+                    <div class="input-group">
+                        <label for="days" class="input-label">Días de alquiler</label>
+                        <input type="number" id="days" class="input-field" value="30" min="1" required>
+                        <div class="error-message" id="days-error">Debe ser un número mayor a 0</div>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="enableNotes" checked>
+                        <label for="enableNotes">Habilitar Notas</label>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="showSuggestions" checked>
+                        <label for="showSuggestions">Habilitar sugerencias (solo demos)</label>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="pdf" checked>
+                        <label for="pdf">Habilitar PDF scraping</label>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="warmCache" checked>
+                        <label for="warmCache">Habilitar Cache Warming (Cyborg)</label>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="includeCities">
+                        <label for="includeCities">Incluir ciudades</label>
+                    </div>
+
+                    <button onclick="generateConfig()" class="generate-btn">
+                        Generar Configuración
+                    </button>
+                </div>
             </div>
-            <button class="btn btn-clear" onclick="limpiarFiltros()">Limpiar</button>
+
+            <div class="output-section">
+                <div class="output-container">
+                    <h3>YAML Generado:</h3>
+                    <button id="copyYamlBtn" class="copy-btn" onclick="copiarYAML()">Copiar YAML</button>
+                    <pre id="output" class="output-pre"></pre>
+                </div>
+            </div>
         </div>
-        
-        <div id="loader">
-            <img src="https://i.gifer.com/ZZ5H.gif" alt="Cargando..." width="50">
-            <p>Cargando datos...</p>
+
+        <!-- Tabla de datos -->
+        <div class="table-container" id="tableContainer">
+            <div id="loader">
+                <img src="https://i.gifer.com/ZZ5H.gif" alt="Cargando..." width="50">
+                <p>Cargando datos...</p>
+            </div>
+            
+            <div class="table-data-container" id="tabla-container"></div>
+            <div class="pagination" id="paginacion"></div>
         </div>
-        
-        <div id="tabla-container"></div>
-        <div class="pagination" id="paginacion"></div>
     </div>
 
     <div id="notificacion">Copiado</div>
@@ -373,7 +401,7 @@
 
             let placeName = city ? `City of ${city.replace(/_/g, " ")}, ${state}` : `${county.replace(/_/g, " ")} County, ${state}`;
             let inputLogoUrl = document.getElementById("logoUrl").value.trim();
-            let logoUrl = inputLogoUrl ? inputLogoUrl : `https://rentalscape-assets-prod-usw2.s3.us-west-2.amazonaws.com/customer_logos/${placeKey}.png`;
+            let logoUrl = inputLogoUrl;
 
             // Construir el YAML manualmente
             let yamlOutput = `logo: ${logoUrl}\n`;
@@ -386,15 +414,15 @@
             yamlOutput += `    rw:\n`;
             yamlOutput += `    - ${placeKey}\n`;
             yamlOutput += `  rentalscape:\n`;
+            if (includeCities) {
+                yamlOutput += `    includeCities: true\n`;
+            }
             yamlOutput += `    propertyDetails:\n`;
             yamlOutput += `      tabs:\n`;
             yamlOutput += `        activity:\n`;
             yamlOutput += `          enabled: true\n`;
             yamlOutput += `        history:\n`;
             yamlOutput += `          enabled: true\n`;
-            if (includeCities) {
-                yamlOutput += `        includeCities: true\n`;
-            }
             yamlOutput += `        license:\n`;
             yamlOutput += `          enabled: false\n`;
             yamlOutput += `    emailCcDeckard: Rentalscape Support <rentalscape@deckard.com>\n`;
@@ -479,6 +507,16 @@
             actualizarTabla();
         }
 
+        function autoSplitSearch() {
+            const input = document.getElementById("buscarSplit").value.trim();
+            if (input.includes("-")) {
+                const [parte1, parte2] = input.split("-").map(p => p.trim());
+                document.getElementById("buscar1").value = parte1;
+                document.getElementById("buscar2").value = parte2;
+                filtrarTabla();
+            }
+        }
+
         function actualizarTabla() {
             let inicio = (paginaActual - 1) * filasPorPagina;
             let fin = inicio + filasPorPagina;
@@ -507,6 +545,19 @@
             document.getElementById("tabla-container").innerHTML = tabla;
 
             actualizarPaginacion();
+            ajustarPosicionTabla();
+        }
+
+        function ajustarPosicionTabla() {
+            const tableContainer = document.getElementById("tableContainer");
+            const buscar1 = document.getElementById("buscar1").value;
+            const buscar2 = document.getElementById("buscar2").value;
+            
+            if (buscar1 || buscar2) {
+                tableContainer.style.marginTop = "0";
+            } else {
+                tableContainer.style.marginTop = "0.5rem";
+            }
         }
 
         function seleccionarFila(index) {
