@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -266,36 +267,36 @@
         
                     <div class="input-group">
                         <label for="logoUrl" class="input-label">Logo Link</label>
-                        <input type="text" id="logoUrl" class="input-field" placeholder="Ejemplo: https://mi-servidor.com/logo.png" required>
+                        <input type="text" id="logoUrl" class="input-field" placeholder="Example: https://mi-servidor.com/logo.png" required>
                         <div class="error-message" id="logoUrl-error">This field is required</div>
                     </div>
                     
                     <div class="input-group">
                         <label for="placeKey" class="input-label">Place Key</label>
-                        <input type="text" id="placeKey" class="input-field" placeholder="Ejemplo: fl-okaloosa-city_of_destin" oninput="autoFillFields()" required>
+                        <input type="text" id="placeKey" class="input-field" placeholder="Example: fl-okaloosa-city_of_destin" oninput="autoFillFields()" required>
                         <div class="error-message" id="placeKey-error">This field is required</div>
                     </div>
         
                     <div class="input-group">
                         <label for="state" class="input-label">State</label>
-                        <input type="text" id="state" class="input-field" placeholder="Ejemplo: FL" readonly required>
+                        <input type="text" id="state" class="input-field" placeholder="Example: FL" readonly required>
                         <div class="error-message" id="state-error">This field is required</div>
                     </div>
         
                     <div class="input-group">
                         <label for="county" class="input-label">County</label>
-                        <input type="text" id="county" class="input-field" placeholder="Ejemplo: Okaloosa" readonly required>
+                        <input type="text" id="county" class="input-field" placeholder="Example: Okaloosa" readonly required>
                         <div class="error-message" id="county-error">This field is required</div>
                     </div>
         
                     <div class="input-group">
                         <label for="city" class="input-label">City</label>
-                        <input type="text" id="city" class="input-field" placeholder="Ejemplo: Destin" readonly>
+                        <input type="text" id="city" class="input-field" placeholder="Example: Destin" readonly>
                     </div>
         
                     <div class="input-group">
                         <label for="placens" class="input-label">Code (8 digits)</label>
-                        <input type="text" id="placens" class="input-field" placeholder="Ejemplo: 02411805" required pattern="[0-9]{8}" title="Debe contener exactamente 8 dígitos">
+                        <input type="text" id="placens" class="input-field" placeholder="Example: 02411805" required pattern="[0-9]{8}" title="Debe contener exactamente 8 dígitos">
                         <div class="error-message" id="placens-error">Must contain exactly 8 digits</div>
                     </div>
         
@@ -593,60 +594,74 @@
         }
 
         function seleccionarFila(index) {
-            filaSeleccionada = index;
-            const fila = datosFiltrados[index];
-            
-            if (fila) {
-                // Mapeo de campos de la tabla al formulario
-                if (fila['Place_name']) {
-                    document.getElementById("placeKey").value = fila['Place_name'];
-                    autoFillFields();
-                } else if (fila['place_name']) {
-                    document.getElementById("placeKey").value = fila['place_name'];
-                    autoFillFields();
-                } else if (fila['Place Name']) {
-                    document.getElementById("placeKey").value = fila['Place Name'];
-                    autoFillFields();
-                }
-                
-                // Determinar el tipo de place (city, county o cousub)
-                let placeType = 'placens'; // Valor por defecto
-                if (fila['place'] && fila['place'].toLowerCase() === 'county') {
-                    placeType = 'countyns';
-                } else if (fila['place'] && fila['place'].toLowerCase() === 'cousub') {
-                    placeType = 'cousubns';
-                }
-                
-                // Actualizar el label y el ID del campo según el tipo de place
-                const placeNsLabel = document.querySelector('label[for="placens"]');
-                const placeNsInput = document.getElementById("placens");
-                
-                if (placeType === 'countyns') {
-                    placeNsLabel.textContent = 'CountyNS (8 dígitos)';
-                    placeNsInput.id = 'countyns';
-                    placeNsLabel.htmlFor = 'countyns';
-                } else if (placeType === 'cousubns') {
-                    placeNsLabel.textContent = 'CousubNS (8 dígitos)';
-                    placeNsInput.id = 'cousubns';
-                    placeNsLabel.htmlFor = 'cousubns';
-                } else {
-                    placeNsLabel.textContent = 'PlaceNS (8 dígitos)';
-                    placeNsInput.id = 'placens';
-                    placeNsLabel.htmlFor = 'placens';
-                }
-                
-                // Llenar el valor del campo correspondiente
-                if (fila['code']) {
-                    placeNsInput.value = fila['code'];
-                } else if (fila['Code']) {
-                    placeNsInput.value = fila['Code'];
-                } else if (fila['place_code']) {
-                    placeNsInput.value = fila['place_code'];
-                }
+        filaSeleccionada = index;
+        const fila = datosFiltrados[index];
+        
+        // Limpiar/resetear todos los campos relevantes primero
+        document.getElementById("placeKey").value = "";
+        document.getElementById("state").value = "";
+        document.getElementById("county").value = "";
+        document.getElementById("city").value = "";
+        
+        // Resetear el campo de código a su estado inicial
+        const placeNsLabel = document.querySelector('label[for="placens"], label[for="countyns"], label[for="cousubns"]');
+        const placeNsInput = document.getElementById("placens") || document.getElementById("countyns") || document.getElementById("cousubns");
+        
+        // Volver al estado inicial (placens)
+        placeNsLabel.textContent = 'Code (8 digits)';
+        placeNsLabel.htmlFor = 'placens';
+        placeNsInput.id = 'placens';
+        placeNsInput.value = "";
+        placeNsInput.placeholder = "Example: 02411805";
+        
+        if (fila) {
+            // Mapeo de campos de la tabla al formulario
+            if (fila['Place_name']) {
+                document.getElementById("placeKey").value = fila['Place_name'];
+                autoFillFields();
+            } else if (fila['place_name']) {
+                document.getElementById("placeKey").value = fila['place_name'];
+                autoFillFields();
+            } else if (fila['Place Name']) {
+                document.getElementById("placeKey").value = fila['Place Name'];
+                autoFillFields();
             }
             
-            actualizarTabla();
+            // Determinar el tipo de place (city, county o cousub)
+            let placeType = 'placens'; // Valor por defecto
+            if (fila['place'] && fila['place'].toLowerCase() === 'county') {
+                placeType = 'countyns';
+            } else if (fila['place'] && fila['place'].toLowerCase() === 'cousub') {
+                placeType = 'cousubns';
+            }
+            
+            // Actualizar el label y el ID del campo según el tipo de place
+            if (placeType === 'countyns') {
+                placeNsLabel.textContent = 'CountyNS (8 dígitos)';
+                placeNsInput.id = 'countyns';
+                placeNsLabel.htmlFor = 'countyns';
+            } else if (placeType === 'cousubns') {
+                placeNsLabel.textContent = 'CousubNS (8 dígitos)';
+                placeNsInput.id = 'cousubns';
+                placeNsLabel.htmlFor = 'cousubns';
+            } else {
+                placeNsLabel.textContent = 'PlaceNS (8 dígitos)';
+                placeNsInput.id = 'placens';
+                placeNsLabel.htmlFor = 'placens';
+            }
+            
+            // Llenar el valor del campo correspondiente
+            if (fila['code']) {
+                placeNsInput.value = fila['code'];
+            } else if (fila['Code']) {
+                placeNsInput.value = fila['Code'];
+            } else if (fila['place_code']) {
+                placeNsInput.value = fila['place_code'];
+            }
         }
+        
+        actualizarTabla();
+    }
 
         function splitSearch() {
             const input = document.getElementById("buscarSplit").value.trim();
