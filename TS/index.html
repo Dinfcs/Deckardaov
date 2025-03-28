@@ -6,181 +6,319 @@
     <title>Generador de Configuración Rentalscape</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
-        body {
+        body { 
             background-color: #f4f6f9;
+            font-family: Arial, sans-serif;
         }
-        .container {
-            max-width: 1200px;
+        .main-container {
+            display: flex;
+            max-width: 1400px;
             margin: 0 auto;
-            display: flex;
-            min-height: 100vh;
-            padding: 2rem;
-            gap: 2rem;
+            padding: 1rem;
+            gap: 1rem;
         }
-        .form-container {
-            background-color: white;
-            border-radius: 0.75rem;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            padding: 2rem;
+        .form-section {
             width: 40%;
-            overflow-y: auto;
         }
-        .output-container {
-            background-color: white;
-            border-radius: 0.75rem;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            padding: 2rem;
+        .output-section {
             width: 60%;
-            overflow-y: auto;
         }
-        .input-group {
+        .form-container, .output-container {
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 1rem;
             margin-bottom: 1rem;
+            position: relative;
         }
-        .input-label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: #374151;
+        .input-group { margin-bottom: 0.75rem; }
+        .input-label { 
+            display: block; 
+            margin-bottom: 0.25rem; 
+            font-weight: 600; 
+            color: #374151; 
+            font-size: 0.875rem; 
         }
-        .input-field {
-            width: 100%;
-            padding: 0.5rem 0.75rem;
-            border: 1px solid #d1d5db;
-            border-radius: 0.375rem;
-            background-color: #f9fafb;
-            transition: all 0.3s ease;
+        .input-field { 
+            width: 100%; 
+            padding: 0.5rem; 
+            border: 1px solid #d1d5db; 
+            border-radius: 0.375rem; 
+            background-color: #f9fafb; 
+            font-size: 0.875rem; 
         }
-        .input-field:focus {
-            outline: none;
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        .input-field:focus { 
+            outline: none; 
+            border-color: #3b82f6; 
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2); 
         }
-        .checkbox-group {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
+        .checkbox-group { 
+            display: flex; 
+            align-items: center; 
+            margin-bottom: 0.5rem; 
+            font-size: 0.875rem; 
         }
-        .checkbox-group input {
-            margin-right: 0.5rem;
+        .checkbox-group input { margin-right: 0.5rem; }
+        .generate-btn { 
+            width: 100%; 
+            padding: 0.5rem; 
+            background-color: #3b82f6; 
+            color: white; 
+            border: none; 
+            border-radius: 0.375rem; 
+            font-weight: 600; 
+            font-size: 0.875rem; 
+            cursor: pointer;
+            margin-top: 0.5rem;
         }
-        .generate-btn {
-            width: 100%;
-            padding: 0.75rem;
-            background-color: #3b82f6;
+        .copy-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.25rem 0.5rem;
+            background-color: #10b981;
             color: white;
             border: none;
-            border-radius: 0.375rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
+            border-radius: 0.25rem;
+            font-size: 0.75rem;
+            cursor: pointer;
         }
-        .generate-btn:hover {
-            background-color: #2563eb;
+        .split-btn {
+            padding: 0.25rem 0.5rem;
+            background-color: #6366f1;
+            color: white;
+            border: none;
+            border-radius: 0.25rem;
+            font-size: 0.75rem;
+            cursor: pointer;
+            margin-left: 0.5rem;
         }
-        .output-pre {
-            background-color: #f3f4f6;
-            border-radius: 0.375rem;
+        .generate-btn:hover { background-color: #2563eb; }
+        .copy-btn:hover { background-color: #0d9488; }
+        .split-btn:hover { background-color: #4f46e5; }
+        .output-pre { 
+            background-color: #f3f4f6; 
+            border-radius: 0.375rem; 
+            padding: 1rem; 
+            max-height: 500px; 
+            overflow-y: auto; 
+            font-family: 'Courier New', monospace; 
+            white-space: pre-wrap; 
+            font-size: 0.75rem; 
+            line-height: 1.2; 
+            margin-top: 1.5rem;
+        }
+        h2 { font-size: 1.25rem; font-weight: bold; margin-bottom: 1rem; color: #1f2937; }
+        h3 { font-size: 1rem; font-weight: bold; margin-bottom: 0.75rem; color: #1f2937; }
+        
+        /* Estilos para la tabla */
+        .table-container {
+            width: 100%;
+            margin-top: 1rem;
             padding: 1rem;
-            max-height: 600px;
-            overflow-y: auto;
-            font-family: 'Courier New', monospace;
-            white-space: pre-wrap;
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .search-container {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .search-input {
+            flex: 1;
+            padding: 0.5rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.375rem;
+        }
+        .search-split-container {
+            display: flex;
+            align-items: center;
+        }
+        .btn {
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+            cursor: pointer;
+            border: none;
+            border-radius: 0.375rem;
+            background-color: #3b82f6;
+            color: white;
+        }
+        .btn-clear {
+            background-color: #ef4444;
+        }
+        .btn:disabled {
+            background-color: #9ca3af;
+            cursor: not-allowed;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 0.5rem;
+            font-size: 0.875rem;
+        }
+        th, td {
+            padding: 0.5rem;
+            border: 1px solid #e5e7eb;
+            text-align: left;
+        }
+        th {
+            background-color: #3b82f6;
+            color: white;
+            cursor: pointer;
+        }
+        tr:hover {
+            background-color: #f3f4f6;
+        }
+        .row-selector {
+            width: 30px;
+            text-align: center;
+        }
+        #loader {
+            display: none;
+            text-align: center;
+            margin: 1rem 0;
+        }
+        #notificacion {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            background-color: #10b981;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            display: none;
+            z-index: 1000;
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
         }
         @media (max-width: 768px) {
-            .container {
+            .main-container {
                 flex-direction: column;
             }
-            .form-container, .output-container {
+            .form-section, .output-section {
+                width: 100%;
+            }
+            .search-container {
+                flex-direction: column;
+            }
+            .search-split-container {
                 width: 100%;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="form-container">
-            <h2 class="text-2xl font-bold mb-6 text-gray-800">Generador de Configuración Rentalscape</h2>
+    <div class="main-container">
+        <div class="form-section">
+            <div class="form-container">
+                <h2>Generador de Configuración Rentalscape</h2>
 
-            <div class="input-group">
-                <label for="logoUrl" class="input-label">Enlace del Logo</label>
-                <input type="text" id="logoUrl" class="input-field" 
-                    placeholder="Ejemplo: https://mi-servidor.com/logo.png">
-            </div>
-            
-            <div class="input-group">
-                <label for="placeKey" class="input-label">Place Key</label>
-                <input type="text" id="placeKey" class="input-field" 
-                    placeholder="Ejemplo: fl-okaloosa-city_of_destin" 
-                    oninput="autoFillFields()">
-            </div>
+                <div class="input-group">
+                    <label for="logoUrl" class="input-label">Enlace del Logo</label>
+                    <input type="text" id="logoUrl" class="input-field" placeholder="Ejemplo: https://mi-servidor.com/logo.png">
+                </div>
+                
+                <div class="input-group">
+                    <label for="placeKey" class="input-label">Place Key</label>
+                    <input type="text" id="placeKey" class="input-field" placeholder="Ejemplo: fl-okaloosa-city_of_destin" oninput="autoFillFields()">
+                </div>
 
-            <div class="input-group">
-                <label for="state" class="input-label">Estado</label>
-                <input type="text" id="state" class="input-field" 
-                    placeholder="Ejemplo: FL" readonly>
-            </div>
+                <div class="input-group">
+                    <label for="state" class="input-label">Estado</label>
+                    <input type="text" id="state" class="input-field" placeholder="Ejemplo: FL" readonly>
+                </div>
 
-            <div class="input-group">
-                <label for="county" class="input-label">Condado</label>
-                <input type="text" id="county" class="input-field" 
-                    placeholder="Ejemplo: Okaloosa" readonly>
-            </div>
+                <div class="input-group">
+                    <label for="county" class="input-label">Condado</label>
+                    <input type="text" id="county" class="input-field" placeholder="Ejemplo: Okaloosa" readonly>
+                </div>
 
-            <div class="input-group">
-                <label for="city" class="input-label">Ciudad</label>
-                <input type="text" id="city" class="input-field" 
-                    placeholder="Ejemplo: Destin" readonly>
-            </div>
+                <div class="input-group">
+                    <label for="city" class="input-label">Ciudad</label>
+                    <input type="text" id="city" class="input-field" placeholder="Ejemplo: Destin" readonly>
+                </div>
 
-            <div class="input-group">
-                <label for="placens" class="input-label">PlaceNS (8 dígitos)</label>
-                <input type="text" id="placens" class="input-field" 
-                    placeholder="Ejemplo: 02411805">
-            </div>
+                <div class="input-group">
+                    <label for="placens" class="input-label">PlaceNS (8 dígitos)</label>
+                    <input type="text" id="placens" class="input-field" placeholder="Ejemplo: 02411805">
+                </div>
 
-            <div class="input-group">
-                <label for="email" class="input-label">Email de Soporte</label>
-                <input type="text" id="email" class="input-field" 
-                    value="rentalscape@deckard.com">
-            </div>
+                <div class="input-group">
+                    <label for="days" class="input-label">Días de alquiler</label>
+                    <input type="number" id="days" class="input-field" value="30" min="1">
+                </div>
 
-            <div class="input-group">
-                <label for="days" class="input-label">Días de alquiler</label>
-                <input type="number" id="days" class="input-field" 
-                    value="30" min="1">
-            </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="enableNotes" checked>
+                    <label for="enableNotes">Habilitar Notas</label>
+                </div>
 
-            <div class="checkbox-group">
-                <input type="checkbox" id="enableNotes" checked>
-                <label for="enableNotes">Habilitar Notas</label>
-            </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="showSuggestions" checked>
+                    <label for="showSuggestions">Habilitar sugerencias (solo demos)</label>
+                </div>
 
-            <div class="checkbox-group">
-                <input type="checkbox" id="showSuggestions" checked>
-                <label for="showSuggestions">Habilitar sugerencias (solo demos)</label>
-            </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="pdf" checked>
+                    <label for="pdf">Habilitar PDF scraping</label>
+                </div>
 
-            <div class="checkbox-group">
-                <input type="checkbox" id="pdf" checked>
-                <label for="pdf">Habilitar PDF scraping</label>
-            </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="warmCache" checked>
+                    <label for="warmCache">Habilitar Cache Warming (Cyborg)</label>
+                </div>
 
-            <div class="checkbox-group">
-                <input type="checkbox" id="warmCache" checked>
-                <label for="warmCache">Habilitar Cache Warming (Cyborg)</label>
-            </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="includeCities">
+                    <label for="includeCities">Incluir ciudades</label>
+                </div>
 
-            <button onclick="generateConfig()" class="generate-btn mt-4">
-                Generar Configuración
-            </button>
+                <button onclick="generateConfig()" class="generate-btn">
+                    Generar Configuración
+                </button>
+            </div>
         </div>
 
-        <div class="output-container">
-            <h3 class="text-xl font-bold mb-4 text-gray-800">YAML Generado:</h3>
-            <pre id="output" class="output-pre"></pre>
+        <div class="output-section">
+            <div class="output-container">
+                <h3>YAML Generado:</h3>
+                <button id="copyYamlBtn" class="copy-btn" onclick="copiarYAML()">Copiar YAML</button>
+                <pre id="output" class="output-pre"></pre>
+            </div>
         </div>
     </div>
 
+    <div class="table-container">
+        <h2>Tabla de Referencia</h2>
+        <div class="search-container">
+            <input type="text" id="buscar1" class="search-input" placeholder="Buscar en todas las columnas" onkeyup="filtrarTabla()">
+            <input type="text" id="buscar2" class="search-input" placeholder="Buscar en todas las columnas" onkeyup="filtrarTabla()">
+            <div class="search-split-container">
+                <input type="text" id="buscarSplit" class="search-input" placeholder="Ej: UT - City of Cottonwood Heights">
+                <button class="split-btn" onclick="splitSearch()">Dividir</button>
+            </div>
+            <button class="btn btn-clear" onclick="limpiarFiltros()">Limpiar</button>
+        </div>
+        
+        <div id="loader">
+            <img src="https://i.gifer.com/ZZ5H.gif" alt="Cargando..." width="50">
+            <p>Cargando datos...</p>
+        </div>
+        
+        <div id="tabla-container"></div>
+        <div class="pagination" id="paginacion"></div>
+    </div>
+
+    <div id="notificacion">Copiado</div>
+
     <script>
+        // Funciones para el generador de YAML
         function autoFillFields() {
             const placeKey = document.getElementById("placeKey").value.trim().toLowerCase();
             const parts = placeKey.split("-");
@@ -188,7 +326,7 @@
             if (parts.length === 2) {
                 document.getElementById("state").value = parts[0].toUpperCase();
                 document.getElementById("county").value = capitalize(parts[1].replace(/_/g, " "));
-                document.getElementById("city").value = ""; // Sin ciudad
+                document.getElementById("city").value = "";
             } else if (parts.length >= 3) {
                 document.getElementById("state").value = parts[0].toUpperCase();
                 document.getElementById("county").value = capitalize(parts[1].replace(/_/g, " "));
@@ -205,14 +343,28 @@
             const state = document.getElementById("state").value.trim();
             const county = document.getElementById("county").value.trim().toLowerCase().replace(/ /g, "_");
             const city = document.getElementById("city").value.trim().toLowerCase().replace(/ /g, "_");
-            const placens = document.getElementById("placens").value.trim();
-            const email = document.getElementById("email").value.trim();
+            
+            // Obtener el campo correcto según el tipo (placens, countyns o cousubns)
+            let placeNsValue = '';
+            let placeNsField = 'placens'; // Valor por defecto
+            
+            if (document.getElementById("countyns")) {
+                placeNsValue = document.getElementById("countyns").value.trim();
+                placeNsField = 'countyns';
+            } else if (document.getElementById("cousubns")) {
+                placeNsValue = document.getElementById("cousubns").value.trim();
+                placeNsField = 'cousubns';
+            } else {
+                placeNsValue = document.getElementById("placens").value.trim();
+            }
+            
             const days = parseInt(document.getElementById("days").value, 10);
             const nights = days - 1;
             const enableNotes = document.getElementById("enableNotes").checked;
             const showSuggestions = document.getElementById("showSuggestions").checked;
             const pdf = document.getElementById("pdf").checked;
             const warmCache = document.getElementById("warmCache").checked;
+            const includeCities = document.getElementById("includeCities").checked;
 
             if (!state || !county) {
                 alert("Por favor, ingresa un Place Key válido.");
@@ -240,9 +392,12 @@
             yamlOutput += `          enabled: true\n`;
             yamlOutput += `        history:\n`;
             yamlOutput += `          enabled: true\n`;
+            if (includeCities) {
+                yamlOutput += `        includeCities: true\n`;
+            }
             yamlOutput += `        license:\n`;
             yamlOutput += `          enabled: false\n`;
-            yamlOutput += `    emailCcDeckard: Rentalscape Support <${email}>\n`;
+            yamlOutput += `    emailCcDeckard: Rentalscape Support <rentalscape@deckard.com>\n`;
             yamlOutput += `    production:\n`;
             yamlOutput += `      warm: ${warmCache ? "true" : "false"}\n`;
             yamlOutput += `    rentalPeriod:\n`;
@@ -256,10 +411,246 @@
             yamlOutput += `      unavailable: Unavailable\n`;
             yamlOutput += `    showSuggestions: ${showSuggestions ? "true" : "false"}\n`;
             yamlOutput += `name: ${placeName}\n`;
-            yamlOutput += `placens: ${placens}\n`;
+            
+            // Usar el campo correcto en el YAML generado
+            yamlOutput += `${placeNsField}: ${placeNsValue}\n`;
             yamlOutput += `pdf: ${pdf ? "true" : "false"}\n`;
 
             document.getElementById("output").textContent = yamlOutput;
+        }
+
+        function copiarYAML() {
+            const yamlText = document.getElementById("output").textContent;
+            if (!yamlText) {
+                mostrarNotificacion("No hay YAML para copiar", false);
+                return;
+            }
+            
+            navigator.clipboard.writeText(yamlText).then(() => {
+                mostrarNotificacion("YAML copiado al portapapeles");
+            }).catch(err => {
+                mostrarNotificacion("Error al copiar", false);
+                console.error("Error al copiar: ", err);
+            });
+        }
+
+        function mostrarNotificacion(mensaje, exito = true) {
+            const notificacion = document.getElementById("notificacion");
+            notificacion.textContent = mensaje;
+            notificacion.style.backgroundColor = exito ? "#10b981" : "#ef4444";
+            notificacion.style.display = "block";
+            notificacion.style.opacity = "1";
+
+            setTimeout(() => {
+                notificacion.style.opacity = "0";
+                setTimeout(() => notificacion.style.display = "none", 300);
+            }, 2000);
+        }
+
+        // Funciones para la tabla
+        let datosCompletos = [];
+        let datosFiltrados = [];
+        let filasPorPagina = 10;
+        let paginaActual = 1;
+        let encabezados = [];
+        let filaSeleccionada = null;
+
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("loader").style.display = "block";
+            fetch("https://dinfcs.github.io/Deckardaov/TS/datos_exportados.json")
+                .then(response => response.json())
+                .then(datos => {
+                    document.getElementById("loader").style.display = "none";
+                    procesarDatos(datos);
+                })
+                .catch(error => console.error("Error al cargar JSON:", error));
+        });
+
+        function procesarDatos(datos) {
+            encabezados = datos[0];
+            datosCompletos = datos.slice(1).map(fila => {
+                let obj = {};
+                encabezados.forEach((col, index) => {
+                    obj[col] = fila[index] || "";
+                });
+                return obj;
+            });
+            datosFiltrados = [...datosCompletos];
+            actualizarTabla();
+        }
+
+        function actualizarTabla() {
+            let inicio = (paginaActual - 1) * filasPorPagina;
+            let fin = inicio + filasPorPagina;
+            let datosPaginados = datosFiltrados.slice(inicio, fin);
+
+            let tabla = "<table><tr><th class='row-selector'>Sel</th>";
+            encabezados.forEach(header => {
+                tabla += `<th onclick="ordenarPor('${header}')">${header}</th>`;
+            });
+            tabla += "</tr>";
+
+            datosPaginados.forEach((fila, index) => {
+                const isChecked = filaSeleccionada !== null && datosFiltrados[filaSeleccionada] === fila;
+                tabla += `<tr ${isChecked ? 'style="background-color: #e0f2fe;"' : ''}>`;
+                tabla += `<td class="row-selector"><input type="radio" name="filaSeleccionada" ${isChecked ? 'checked' : ''} 
+                         onclick="seleccionarFila(${inicio + index})"></td>`;
+                
+                encabezados.forEach(col => {
+                    let textoCelda = fila[col] ? fila[col].toString().replace(/'/g, "\\'") : "";
+                    tabla += `<td onclick="copiarTexto('${textoCelda}')">${fila[col]}</td>`;
+                });
+                tabla += "</tr>";
+            });
+
+            tabla += "</table>";
+            document.getElementById("tabla-container").innerHTML = tabla;
+
+            actualizarPaginacion();
+        }
+
+        function seleccionarFila(index) {
+            filaSeleccionada = index;
+            const fila = datosFiltrados[index];
+            
+            if (fila) {
+                // Mapeo de campos de la tabla al formulario
+                if (fila['Place_name']) {
+                    document.getElementById("placeKey").value = fila['Place_name'];
+                    autoFillFields();
+                } else if (fila['place_name']) {
+                    document.getElementById("placeKey").value = fila['place_name'];
+                    autoFillFields();
+                } else if (fila['Place Name']) {
+                    document.getElementById("placeKey").value = fila['Place Name'];
+                    autoFillFields();
+                }
+                
+                // Determinar el tipo de place (city, county o cousub)
+                let placeType = 'placens'; // Valor por defecto
+                if (fila['place'] && fila['place'].toLowerCase() === 'county') {
+                    placeType = 'countyns';
+                } else if (fila['place'] && fila['place'].toLowerCase() === 'cousub') {
+                    placeType = 'cousubns';
+                }
+                
+                // Actualizar el label y el ID del campo según el tipo de place
+                const placeNsLabel = document.querySelector('label[for="placens"]');
+                const placeNsInput = document.getElementById("placens");
+                
+                if (placeType === 'countyns') {
+                    placeNsLabel.textContent = 'CountyNS (8 dígitos)';
+                    placeNsInput.id = 'countyns';
+                    placeNsLabel.htmlFor = 'countyns';
+                } else if (placeType === 'cousubns') {
+                    placeNsLabel.textContent = 'CousubNS (8 dígitos)';
+                    placeNsInput.id = 'cousubns';
+                    placeNsLabel.htmlFor = 'cousubns';
+                } else {
+                    placeNsLabel.textContent = 'PlaceNS (8 dígitos)';
+                    placeNsInput.id = 'placens';
+                    placeNsLabel.htmlFor = 'placens';
+                }
+                
+                // Llenar el valor del campo correspondiente
+                if (fila['code']) {
+                    placeNsInput.value = fila['code'];
+                } else if (fila['Code']) {
+                    placeNsInput.value = fila['Code'];
+                } else if (fila['place_code']) {
+                    placeNsInput.value = fila['place_code'];
+                }
+            }
+            
+            actualizarTabla();
+        }
+
+        function splitSearch() {
+            const input = document.getElementById("buscarSplit").value.trim();
+            if (!input) return;
+            
+            // Dividir por el primer guión encontrado
+            const splitIndex = input.indexOf('-');
+            if (splitIndex === -1) {
+                mostrarNotificacion("Formato incorrecto. Use: 'A - B'", false);
+                return;
+            }
+            
+            const parte1 = input.substring(0, splitIndex).trim();
+            const parte2 = input.substring(splitIndex + 1).trim();
+            
+            document.getElementById("buscar1").value = parte1;
+            document.getElementById("buscar2").value = parte2;
+            document.getElementById("buscarSplit").value = "";
+            
+            filtrarTabla();
+        }
+
+        function actualizarPaginacion() {
+            let totalPaginas = Math.ceil(datosFiltrados.length / filasPorPagina);
+            let botonesHTML = `
+                <button class="btn" onclick="cambiarPagina(-1)" ${paginaActual === 1 ? "disabled" : ""}>⬅️ Anterior</button> 
+                Página ${paginaActual} de ${totalPaginas} 
+                <button class="btn" onclick="cambiarPagina(1)" ${paginaActual >= totalPaginas ? "disabled" : ""}>Siguiente ➡️</button>`;
+
+            document.getElementById("paginacion").innerHTML = totalPaginas > 1 ? botonesHTML : "";
+        }
+
+        function cambiarPagina(direccion) {
+            let totalPaginas = Math.ceil(datosFiltrados.length / filasPorPagina);
+            paginaActual += direccion;
+            if (paginaActual < 1) paginaActual = 1;
+            if (paginaActual > totalPaginas) paginaActual = totalPaginas;
+            actualizarTabla();
+        }
+
+        function filtrarTabla() {
+            let input1 = document.getElementById("buscar1").value.toLowerCase();
+            let input2 = document.getElementById("buscar2").value.toLowerCase();
+
+            datosFiltrados = datosCompletos.filter(fila => {
+                const match1 = input1 === "" || Object.values(fila).some(
+                    celda => celda && celda.toString().toLowerCase().includes(input1)
+                );
+                const match2 = input2 === "" || Object.values(fila).some(
+                    celda => celda && celda.toString().toLowerCase().includes(input2)
+                );
+                return match1 && match2;
+            });
+
+            filaSeleccionada = null;
+            paginaActual = 1;
+            actualizarTabla();
+        }
+
+        function limpiarFiltros() {
+            document.getElementById("buscar1").value = "";
+            document.getElementById("buscar2").value = "";
+            document.getElementById("buscarSplit").value = "";
+            datosFiltrados = [...datosCompletos];
+            filaSeleccionada = null;
+            paginaActual = 1;
+            actualizarTabla();
+        }
+
+        function ordenarPor(columna) {
+            datosFiltrados.sort((a, b) => {
+                let valA = a[columna] || "";
+                let valB = b[columna] || "";
+                if (valA < valB) return -1;
+                if (valA > valB) return 1;
+                return 0;
+            });
+            filaSeleccionada = null;
+            actualizarTabla();
+        }
+
+        function copiarTexto(texto) {
+            if (!texto) return;
+            texto = texto.replace(/\\'/g, "'");
+            navigator.clipboard.writeText(texto).then(() => {
+                mostrarNotificacion("Texto copiado");
+            });
         }
     </script>
 </body>
