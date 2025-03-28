@@ -420,15 +420,22 @@ function showEditWindow(data, onConfirm) {
         }
     }
 
-    // Función para extraer el QAed
     function extractQaEd() {
         const apnField = document.querySelector('[data-field-name="apn"] em');
         if (!apnField) return "";
-
-        const match = apnField.innerText.match(/edited by (.*?) \d+ (days|months|years|hours|minutes|seconds) ago/) ||
-                      apnField.innerText.match(/edited by (.*?) a (day|month|year|hour|minute|second) ago/);
-
-        return match ? match[1] : "";
+        const match = apnField.innerText.match(
+            /edited by (.*?)(?:\s\d+|\s?a)\s(?:years?|months?|days?|hours?|minutes?|seconds?)(?:(?:,|\sand)?\s\d+\s(?:years?|months?|days?|hours?|minutes?|seconds?))*\sago/i
+        );
+    
+        if (match && match[1]) {
+            // Limpieza adicional por si acaso
+            return match[1]
+                .replace(/\d+\s*(?:years?|months?|days?|hours?|minutes?|seconds?)/gi, '')
+                .replace(/\s+/g, ' ')
+                .trim();
+        }
+        
+        return "";
     }
 
     // Esperar a que el 'user_section' aparezca en el DOM y luego ejecutar el código
