@@ -10907,6 +10907,28 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "NY - Albany County",
+      "Public Records & GIS": [
+        {
+          "type": "PR & GIS",
+          "url": "https://experience.arcgis.com/experience/a4d863dc3e634edaa94fcc311d8e6511/page/Page?views=Find-Parcel#data_s=id%3A98006014b77b4e69adefe3a76f71182c-1958a34ac7c-layer-2%3A11880"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "<p><br></p>",
+      "Media": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ]
     }
   ]
 }
