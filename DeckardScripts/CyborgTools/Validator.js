@@ -184,7 +184,7 @@
                     const siguienteElemento = celdaUnitNumber ?
                         celdaUnitNumber.querySelector("p") : null;
 
-                    if (!siguienteElemento || !siguienteElemento.textContent.trim().toUpperCase().startsWith('ADU')) {
+                        if (!siguienteElemento || siguienteElemento.textContent.trim() === '') {
                         estructuraCorrecta = false;
                         if (celdaUnitNumber) celdasConError.push(celdaUnitNumber);
                     }
