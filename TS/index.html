@@ -23,8 +23,22 @@
             width: 40%;
         }
         .output-section {
-            width: 60%;
-        }
+        width: 60%;
+        min-height: 600px; /* Altura mínima */
+        display: flex;
+        flex-direction: column;
+    }
+
+    .output-container {
+        flex-grow: 1; /* Ocupa todo el espacio disponible */
+        display: flex;
+        flex-direction: column;
+    }
+
+    .output-pre {
+        flex-grow: 1; /* Expande para llenar el contenedor */
+        min-height: 600px;
+    }
         .form-container, .output-container {
             background-color: white;
             border-radius: 0.5rem;
@@ -315,6 +329,12 @@
                         <input type="checkbox" id="includeCities">
                         <label for="includeCities">Incluir ciudades</label>
                     </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="enablePropertyDetails">
+                        <label for="enablePropertyDetails">HdL, Rivertree, Azavar</label>
+                    </div>
+                    
 
                     <button onclick="generateConfig()" class="generate-btn">
                         Generar Configuración
@@ -393,6 +413,7 @@
             const pdf = document.getElementById("pdf").checked;
             const warmCache = document.getElementById("warmCache").checked;
             const includeCities = document.getElementById("includeCities").checked;
+            const enablePropertyDetails = document.getElementById("enablePropertyDetails").checked; // Nuevo checkbox
 
             if (!state || !county) {
                 alert("Por favor, ingresa un Place Key válido.");
@@ -409,23 +430,30 @@
             yamlOutput += `  notes:\n`;
             yamlOutput += `    mode: ${enableNotes ? "enabled" : "disabled"}\n`;
             yamlOutput += `    read:\n`;
-            yamlOutput += `    - admin\n`;
-            yamlOutput += `    - ${placeKey}\n`;
+            yamlOutput += `      - admin\n`;
+            yamlOutput += `      - ${placeKey}\n`;
             yamlOutput += `    rw:\n`;
-            yamlOutput += `    - ${placeKey}\n`;
+            yamlOutput += `      - ${placeKey}\n`;
             yamlOutput += `  rentalscape:\n`;
+            
+            // Solo incluir propertyDetails si el checkbox está seleccionado
+            if (enablePropertyDetails) {
+                yamlOutput += `    propertyDetails:\n`;
+                yamlOutput += `      tabs:\n`;
+                yamlOutput += `        activity:\n`;
+                yamlOutput += `          enabled: true\n`;
+                yamlOutput += `        history:\n`;
+                yamlOutput += `          enabled: true\n`;
+                yamlOutput += `        license:\n`;
+                yamlOutput += `          enabled: false\n`;
+            }
+            
             if (includeCities) {
                 yamlOutput += `    includeCities: true\n`;
             }
-            yamlOutput += `    propertyDetails:\n`;
-            yamlOutput += `      tabs:\n`;
-            yamlOutput += `        activity:\n`;
-            yamlOutput += `          enabled: true\n`;
-            yamlOutput += `        history:\n`;
-            yamlOutput += `          enabled: true\n`;
-            yamlOutput += `        license:\n`;
-            yamlOutput += `          enabled: false\n`;
+            yamlOutput += `    licenseEditMode: rs_on_page\n`;
             yamlOutput += `    emailCcDeckard: Rentalscape Support <rentalscape@deckard.com>\n`;
+            yamlOutput += `    propertySummaryMode: IDENTIFIED\n`;
             yamlOutput += `    production:\n`;
             yamlOutput += `      warm: ${warmCache ? "true" : "false"}\n`;
             yamlOutput += `    rentalPeriod:\n`;
@@ -437,15 +465,19 @@
             yamlOutput += `      other: Other Rental\n`;
             yamlOutput += `      previous: Previously an STR\n`;
             yamlOutput += `      unavailable: Unavailable\n`;
-            yamlOutput += `    showSuggestions: ${showSuggestions ? "true" : "false"}\n`;
-            yamlOutput += `name: ${placeName}\n`;
             
-            // Usar el campo correcto en el YAML generado
-            yamlOutput += `${placeNsField}: ${placeNsValue}\n`;
+            // Solo incluir showSuggestions si el checkbox está seleccionado
+            if (showSuggestions) {
+                yamlOutput += `    showSuggestions: true\n`;
+            }
+            
+            yamlOutput += `name: ${placeName}\n`;
             yamlOutput += `pdf: ${pdf ? "true" : "false"}\n`;
+            yamlOutput += `${placeNsField}: '${placeNsValue}'`;
 
             document.getElementById("output").textContent = yamlOutput;
         }
+
 
         function copiarYAML() {
             const yamlText = document.getElementById("output").textContent;
