@@ -10929,6 +10929,36 @@
           "type": "N/A"
         }
       ]
+    },
+    {
+      "Project": "NM - Village Of Ruidoso",
+      "Public Records & GIS": [
+        {
+          "url": "http://liveweb.lincolncountynm.gov/assessor.aspx?source=assessor",
+          "type": "PR"
+        },
+        {
+          "url": "https://portico.mygisonline.com/html5/?viewer=lincolnnm",
+          "type": "GIS"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "<ul><li><strong>GIS</strong> -  <strong>Pictometry</strong> and <strong>Streetiew are able in the GIS !   </strong><span style=\"color: rgb(51, 51, 51);\">☆</span><strong>    </strong><strong style=\"color: rgb(102, 185, 102);\"> </strong><span style=\"color: rgb(102, 185, 102);\">Check the Image 1*</span></li></ul><p>                       You can search by address, APN (UPC at GIS) and owner name</p><p><br></p><ul><li><strong>PR</strong> - To search, select the tab corresponding to the information you are looking for.             - Property code (APN)   <span style=\"color: rgb(51, 51, 51);\">☆</span>  <span style=\"color: rgb(230, 0, 0);\"> image 2*</span></li></ul><p>                                                                                                                                                           - Physical Address</p><p>                                                                                                                </p>",
+      "Media": [
+        {
+          "url": "https://drive.google.com/uc?export=view&id=1RfeQNJzoFpnSzi8oALy4X90TPDN_k4yn",
+          "type": "Image 1"
+        },
+        {
+          "type": "N/A",
+          "url": "https://drive.google.com/uc?export=view&id=1pqSK_h7uDBjbWX618tdqWjthf6-J7CJN"
+        }
+      ]
     }
   ]
 }
