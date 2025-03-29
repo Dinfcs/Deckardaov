@@ -171,7 +171,6 @@ function showNotification(message = "Data Registered", type = "success") {
                             mode: "no-cors"
                         })
                         .then(() => {
-                            console.log("✅ Datos enviados a AppScript");
                             showNotification(); // Mostrar notificación al enviar datos
                         })
                         .catch(error => console.error("❌ Error al enviar datos:", error));
