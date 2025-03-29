@@ -33,28 +33,55 @@
         return text.toLowerCase().trim().replace(/\s+/g, " ");
     }
 
-    function showNotification() {
-        const notification = document.createElement("div");
-        notification.textContent = "Data Registered";
-        notification.style.position = "fixed";
-        notification.style.top = "50%";
-        notification.style.left = "50%";
-        notification.style.transform = "translate(-50%, -50%)";
-        notification.style.background = "#28a745"; // Verde
-        notification.style.color = "#fff"; // Blanco
-        notification.style.padding = "10px 20px";
-        notification.style.borderRadius = "5px";
-        notification.style.fontSize = "16px";
-        notification.style.fontWeight = "bold";
-        notification.style.zIndex = "9999";
-        notification.style.boxShadow = "0 4px 6px rgba(0, 0, 0, 0.1)";
-
-        document.body.appendChild(notification);
-
+function showNotification(message = "Data Registered", type = "success") {
+    // Map notification types to your color palette
+    const colorMap = {
+        "success": "#D1E231", // Verde lima
+        "error": "#6C757D",   // Gris
+        "info": "#007BFF",    // Azul
+        "warning": "#FFD700"  // Amarillo
+    };
+    
+    // Determine text color based on background brightness
+    const textColor = (type === "success" || type === "warning") ? "#000000" : "#FFFFFF";
+    
+    const notification = document.createElement("div");
+    notification.textContent = message;
+    notification.style.position = "fixed";
+    notification.style.top = "50%";
+    notification.style.left = "50%";
+    notification.style.transform = "translate(-50%, -50%)";
+    notification.style.background = colorMap[type] || colorMap.success;
+    notification.style.color = textColor;
+    notification.style.padding = "12px 24px";
+    notification.style.borderRadius = "8px";
+    notification.style.fontSize = "16px";
+    notification.style.fontWeight = "600";
+    notification.style.fontFamily = "'Inter', 'Segoe UI', sans-serif";
+    notification.style.zIndex = "9999";
+    notification.style.boxShadow = "0 6px 16px rgba(0, 0, 0, 0.15)";
+    notification.style.minWidth = "200px";
+    notification.style.textAlign = "center";
+    notification.style.opacity = "0";
+    notification.style.transition = "opacity 0.3s ease-in-out";
+    
+    document.body.appendChild(notification);
+    
+    // Trigger fade-in animation
+    setTimeout(() => {
+        notification.style.opacity = "1";
+    }, 10);
+    
+    // Set timeout for removal with fade-out
+    setTimeout(() => {
+        notification.style.opacity = "0";
         setTimeout(() => {
             notification.remove();
-        }, 3000); // Desaparece en 3 segundos
-    }
+        }, 300);
+    }, 1500);
+    
+    return notification; // Return for potential further manipulation
+}
 
     let projectName = "";
     let qaer = "";
