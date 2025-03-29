@@ -33,36 +33,71 @@
         return str.replace(/\b\w/g, char => char.toUpperCase());
     }
 
-   function showNotification(message, color = "red") {
+function showNotification(message, type = "error") {
+    // Map notification types to your color palette
+    const colorMap = {
+        "error": "#6C757D",    // Gray for errors instead of red
+        "success": "#D1E231",  // Verde lima for success
+        "info": "#007BFF",     // Azul for information
+        "warning": "#FFD700"   // Amarillo for warnings
+    };
+
+    // Determine colors and icons based on type
+    const bgColor = colorMap[type] || "#6C757D";
+    const textColor = (type === "success" || type === "warning") ? "#000000" : "#FFFFFF";
+
+    // Select appropriate icon based on notification type
+    let icon = "ℹ️";
+    if (type === "error") icon = "⚠️";
+    if (type === "success") icon = "✔️";
+    if (type === "warning") icon = "⚠️";
+
     const notification = Object.assign(document.createElement("div"), {
         innerHTML: `<span style="font-size: 24px; margin-right: 10px;">
-                        ${color === "red" ? "⚠️" : "✔️"}
+                        ${icon}
                     </span>${message}`,
         style: `
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%) translateY(50px);
-            background: ${color === "red" ? "#f44336" : "#4CAF50"};
-            color: white;
+            background: ${bgColor};
+            color: ${textColor};
             padding: 16px 24px;
             border-radius: 10px;
             z-index: 10000;
-            font: 16px 'Segoe UI', sans-serif;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            font: 16px 'Inter', 'Segoe UI', sans-serif;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
             text-align: center;
             opacity: 0;
             transition: opacity 0.4s, transform 0.4s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 280px;
+            max-width: 80%;
         `
     });
 
+    // Add to document and animate in
     document.body.appendChild(notification);
-    setTimeout(() => Object.assign(notification.style, { opacity: "1", transform: "translate(-50%, -50%)" }), 10);
+
+    // Trigger animation (separate to ensure the transition works)
     setTimeout(() => {
-        Object.assign(notification.style, { opacity: "0", transform: "translate(-50%, -50%) translateY(50px)" });
+        notification.style.opacity = "1";
+        notification.style.transform = "translate(-50%, -50%)";
+    }, 10);
+
+    // Remove after delay
+    setTimeout(() => {
+        notification.style.opacity = "0";
+        notification.style.transform = "translate(-50%, -50%) translateY(-50px)";
+
+        // Remove from DOM after fade out
         setTimeout(() => notification.remove(), 400);
-    }, 2000);
+    }, 3000);
 }
+
 
     // Función para convertir fechas
     function convertDate(isoFormat) {
