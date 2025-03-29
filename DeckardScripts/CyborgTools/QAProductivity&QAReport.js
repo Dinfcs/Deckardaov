@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         QA Productivity & Random QA Report - Unified
-// @namespace    http://tampermonkey.net/
+// @namespace    
 // @version      3.1
 // @description  Combina funcionalidades de captura de datos QA con sistema unificado de notificaciones
 // @match        https://cyborg.deckard.com/*
@@ -701,7 +701,7 @@ document.body.appendChild(styles);
 
         editedData.urlcodeverg = data.urlcodeverg;
         editedData.error = errorSelect.value;
-        editedData.comments = document.getElementById("commentPreview").innerText;
+        editedData.comments = document.getElementById("commentInput").value;
         editedData.possible_affected_listings = document.getElementById("affectedListings").value || "0";
 
         if (!editedData.listing.startsWith("http")) { showNotification("Invalid listing link", "error"); return; }
