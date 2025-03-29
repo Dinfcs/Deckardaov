@@ -271,46 +271,303 @@
         // Filtrar los campos que no queremos mostrar en la interfaz
         const fieldsToShow = Object.keys(data).filter(key => key !== "urlcodeverg");
 
-        modalContent.innerHTML = `
-            <h2 style="color: #333; margin-bottom: 20px; text-align: center;">Random QA Report</h2>
-            <div style="display: flex; flex-wrap: wrap; gap: 20px;">
-                <div style="flex: 1; min-width: 300px;">
-                    ${fieldsToShow.map(key => `
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                            <label style="color: #555; width: 40%;"><strong>${key}:</strong></label>
-                            <input id="input_${key}" type="text" value="${data[key]}" style="width: 55%; padding: 8px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; transition: border 0.3s ease;">
-                        </div>
-                    `).join("")}
+      modalContent.innerHTML = `
+    <div class="qa-modal">
+        <div class="modal-wrapper">
+            <div class="modal-sidebar">
+                <div class="sidebar-content">
+                    <div class="logo-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                        <h2>QA Report</h2>
+                    </div>
 
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                        <label style="color: #555; width: 40%;"><strong>Error:</strong></label>
-                        <select id="errorSelect" style="width: 55%; padding: 8px; border: 1px solid #ddd; border-radius: 6px; transition: border 0.3s ease;">
-                            <option disabled selected>Select an option...</option>
-                            ${errors.map(err => `<option value="${err}">${err}</option>`).join("")}
-                        </select>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                        <label style="color: #555; width: 40%;"><strong>Possible Affected Listings:</strong></label>
-                        <input id="affectedListings" type="number" value="0" min="0" style="width: 55%; padding: 8px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; transition: border 0.3s ease;">
-                    </div>
-                    <div id="dynamicFieldsContainer" style="display: flex; flex-direction: column; gap: 10px;"></div>
-                    <div style="display: flex; justify-content: space-around; gap: 10px; margin-top: 20px;">
-                        <button id="btnAccept" style="flex: 1; padding: 12px 24px; background-color: #CAD92B; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 18px; ">Accept</button>
-                        <button id="btnCancel" style="flex: 1; padding: 12px 24px; background-color: #23A9D8; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 18px; ">Cancel</button>
-                        <a href="https://docs.google.com/spreadsheets/d/14N1pWw7fVIDgTko2A7faqbmkPVXM8LnHaeR0bd_TGxw/edit?gid=0#gid=0" target="_blank" style="flex: 1; padding: 12px 24px; background-color:rgb(90, 93, 94); color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 18px; text-decoration: none; display: flex; justify-content: center; align-items: center;">Database</a>
-                    </div>
-                </div>
-                <div style="flex: 1; min-width: 300px;">
-                    <div style="display: flex; flex-direction: column; align-items: flex-start; width: 100%;">
-                        <label style="color: #555; width: 100%;"><strong>FeedBack:</strong></label>
-                        <textarea id="commentInput" style="width: calc(100% - 16px); padding: 8px; height: 120px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; transition: border 0.3s ease; margin-bottom: 10px;"></textarea>
-                        <label style="color: #555; width: 100%;"><strong>Preview:</strong></label>
-                        <div id="commentPreview" style="width: calc(100% - 16px); padding: 8px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; background-color: #fff; min-height: 60px; word-wrap: break-word;"></div>
+                    <div class="form-sections">
+                        ${fieldsToShow.map(key => `
+                            <div class="form-group">
+                                <label for="input_${key}">${key.replace(/_/g, ' ')}</label>
+                                <input id="input_${key}" type="text" value="${data[key]}">
+                            </div>
+                        `).join("")}
+
+                        <div class="form-group">
+                            <label for="errorSelect">Error Type</label>
+                            <select id="errorSelect">
+                                <option disabled selected>Select Error...</option>
+                                ${errors.map(err => `<option value="${err}">${err}</option>`).join("")}
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="affectedListings">Affected Listings</label>
+                            <input id="affectedListings" type="number" value="0" min="0">
+                        </div>
+
+                        <div id="dynamicFieldsContainer"></div>
                     </div>
                 </div>
             </div>
-        `;
 
+            <div class="modal-main">
+                <div class="feedback-section">
+                    <div class="feedback-header">
+                        <h3>Feedback Details</h3>
+                    </div>
+
+                    <div class="feedback-content">
+                        <div class="textarea-wrapper">
+                            <label for="commentInput">Message</label>
+                            <textarea id="commentInput" placeholder="Write your feedback here..."></textarea>
+                        </div>
+
+                        <div class="preview-wrapper">
+                            <label>Preview</label>
+                            <div id="commentPreview" class="preview-box"></div>
+                        </div>
+
+                        <div class="action-buttons">
+                            <button id="btnAccept" class="btn btn-primary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                Accept
+                            </button>
+                            <button id="btnCancel" class="btn btn-secondary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                Cancel
+                            </button>
+                            <a href="https://docs.google.com/spreadsheets/d/14N1pWw7fVIDgTko2A7faqbmkPVXM8LnHaeR0bd_TGxw/edit?gid=0#gid=0" target="_blank" class="btn btn-database">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-database"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+                                Database
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+`;
+
+    // Estilos CSS
+    const styles = document.createElement('style');
+    styles.textContent = `
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+    .qa-modal {
+        font-family: 'Inter', sans-serif;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 16px;
+        box-shadow: 0 25px 50px rgba(0,0,0,0.1);
+        overflow: hidden;
+        max-width: 1100px;
+        width: 95%;
+        animation: modalSlideIn 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+        border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    @keyframes modalSlideIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px) scale(0.95);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    .modal-wrapper {
+        display: flex;
+        min-height: 600px;
+    }
+
+    .modal-sidebar {
+        background: linear-gradient(135deg, #D1E231 0%, #D1E231 100%);
+        color: #000000;
+        width: 350px;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .logo-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+
+    .logo-container svg {
+        width: 40px;
+        height: 40px;
+        margin-right: 15px;
+        stroke: #000000;
+    }
+
+    .logo-container h2 {
+        margin: 0;
+        font-size: 1.8rem;
+        font-weight: 600;
+        color: #000000;
+    }
+
+    .form-sections {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-group label {
+        margin-bottom: 8px;
+        color: rgba(0,0,0,0.7);
+        font-weight: 500;
+        font-size: 0.9rem;
+    }
+
+    .form-group input,
+    .form-group select {
+        background: rgba(0,0,0,0.05);
+        border: 1px solid rgba(0,0,0,0.2);
+        color: #000000;
+        padding: 10px;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+        outline: none;
+        background: rgba(0,0,0,0.1);
+        border-color: rgba(0,0,0,0.4);
+    }
+
+    .modal-main {
+        flex-grow: 1;
+        background: #f4f6f9;
+        padding: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .feedback-section {
+        width: 100%;
+        max-width: 500px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+        padding: 30px;
+    }
+
+    .feedback-header {
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    .feedback-header h3 {
+        color: #000000;
+        font-size: 1.4rem;
+        margin: 0;
+    }
+
+    .textarea-wrapper, .preview-wrapper {
+        margin-bottom: 20px;
+    }
+
+    .textarea-wrapper label,
+    .preview-wrapper label {
+        display: block;
+        margin-bottom: 8px;
+        color: #000000;
+        font-weight: 500;
+    }
+
+    .textarea-wrapper textarea {
+        width: 100%;
+        min-height: 150px;
+        resize: vertical;
+        border: 1px solid #6C757D;
+        border-radius: 8px;
+        padding: 12px;
+        font-size: 0.9rem;
+        transition: border-color 0.3s ease;
+    }
+
+    .textarea-wrapper textarea:focus {
+        outline: none;
+        border-color: #007BFF;
+    }
+
+    .preview-box {
+        background: #f9f9f9;
+        border: 1px solid #6C757D;
+        border-radius: 8px;
+        padding: 12px;
+        min-height: 100px;
+        max-height: 200px;
+        overflow-y: auto;
+    }
+
+    .action-buttons {
+        display: flex;
+        gap: 15px;
+    }
+
+    .btn {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        text-decoration: none;
+    }
+
+    .btn svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .btn-primary {
+        background-color: #D1E231;
+        color: #000000;
+    }
+
+    .btn-secondary {
+        background-color: #6C757D;
+        color: white;
+    }
+
+    .btn-database {
+        background-color: #007BFF;
+        color: white;
+    }
+
+    .btn:hover {
+        opacity: 0.9;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    @media (max-width: 900px) {
+        .modal-wrapper {
+            flex-direction: column;
+        }
+
+        .modal-sidebar {
+            width: 100%;
+        }
+    }
+`;
         modal.appendChild(modalContent);
         document.body.appendChild(modal);
 
