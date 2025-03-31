@@ -301,7 +301,7 @@
                     </div>
         
                     <div class="input-group">
-                        <label for="days" class="input-label">Length of STR (Days)</label>
+                        <label for="days" class="input-label">Rental days</label>
                         <input type="number" id="days" class="input-field" value="30" min="1" required>
                         <div class="error-message" id="days-error">Must be a number greater than 0</div>
                     </div>
@@ -313,17 +313,17 @@
 
                     <div class="checkbox-group">
                         <input type="checkbox" id="showSuggestions" checked>
-                        <label for="showSuggestions">Turn off suggestions</label>
+                        <label for="showSuggestions">Enable suggestions (demos only)</label>
                     </div>
 
                     <div class="checkbox-group">
                         <input type="checkbox" id="pdf" checked>
-                        <label for="pdf">Turn on PDF scraping</label>
+                        <label for="pdf">Enable PDF scraping</label>
                     </div>
 
                     <div class="checkbox-group">
                         <input type="checkbox" id="warmCache" checked>
-                        <label for="warmCache">Turn on cache warning (to turn on Cyborg)</label>
+                        <label for="warmCache">Enable Cache Warm-up (Cyborg)</label>
                     </div>
 
                     <div class="checkbox-group">
@@ -421,7 +421,12 @@
                 return;
             }
 
-            let placeName = city ? `City of ${city.replace(/_/g, " ")}, ${state}` : `${county.replace(/_/g, " ")} County, ${state}`;
+            let placeName = '';
+                if (city) {
+                    placeName = `City of ${capitalize(city)}, ${state}`;
+                } else {
+                    placeName = `${capitalize(county)} County, ${state}`;
+                }
             let inputLogoUrl = document.getElementById("logoUrl").value.trim();
             let logoUrl = inputLogoUrl;
 
