@@ -10959,6 +10959,32 @@
           "url": "https://drive.google.com/uc?export=view&id=1pqSK_h7uDBjbWX618tdqWjthf6-J7CJN"
         }
       ]
+    },
+    {
+      "Project": "CA - City Of Eureka",
+      "Public Records & GIS": [
+        {
+          "type": "GIS",
+          "url": "https://arcgis-svr.ci.eureka.ca.gov/portal/apps/webappviewer/index.html?id=49037ddcf4474c6ba4bdb661ee203604&utm_source=chatgpt.com"
+        },
+        {
+          "type": "Humboldt County GIS",
+          "url": "https://cty-gis-web.co.humboldt.ca.us/HCEGIS3.0/"
+        }
+      ],
+      "License List": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ],
+      "Important Info": "<p><br></p>",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
