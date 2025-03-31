@@ -256,6 +256,18 @@
             <input type="text" id="buscar2" class="search-input" placeholder="Filtro 2" oninput="filtrarTabla()">
             <button class="btn btn-clear" onclick="limpiarFiltros()">Clean</button>
         </div>
+        
+        <!-- Tabla de datos -->
+        <div class="table-container" id="tableContainer">
+            <div id="loader">
+                <img src="https://i.gifer.com/ZZ5H.gif" alt="Cargando..." width="50">
+                <p>Cargando datos...</p>
+            </div>
+            
+            <div class="table-data-container" id="tabla-container"></div>
+            <div class="pagination" id="paginacion"></div>
+        </div>
+    </div>
     </div>
 
     <!-- Contenido principal -->
@@ -352,18 +364,6 @@
             </div>
         </div>
 
-        <!-- Tabla de datos -->
-        <div class="table-container" id="tableContainer">
-            <div id="loader">
-                <img src="https://i.gifer.com/ZZ5H.gif" alt="Cargando..." width="50">
-                <p>Cargando datos...</p>
-            </div>
-            
-            <div class="table-data-container" id="tabla-container"></div>
-            <div class="pagination" id="paginacion"></div>
-        </div>
-    </div>
-
     <div id="notificacion">Copiado</div>
 
     <script>
@@ -420,13 +420,31 @@
                 alert("Por favor, ingresa un Place Key válido.");
                 return;
             }
-
             let placeName = '';
-                if (city) {
-                    placeName = `City of ${capitalize(city)}, ${state}`;
-                } else {
-                    placeName = `${capitalize(county)} County, ${state}`;
-                }
+    if (filaSeleccionada !== null) {
+        const fila = datosFiltrados[filaSeleccionada];
+        let nombreDesdeTabla = '';
+        
+        // Buscar el string_name en diferentes formatos de columna
+        if (fila['string_name']) {
+            nombreDesdeTabla = fila['string_name'];
+        } else if (fila['String_name']) {
+            nombreDesdeTabla = fila['String_name'];
+        } else if (fila['string name']) {
+            nombreDesdeTabla = fila['string name'];
+        }
+
+        // Si encontramos un nombre en la tabla, asegurarnos que tiene el state
+        if (nombreDesdeTabla) {
+            // Verificar si ya incluye el state
+            if (nombreDesdeTabla.includes(',')) {
+                placeName = nombreDesdeTabla;
+            } else {
+                // Si no tiene coma, agregar el state
+                placeName = `${nombreDesdeTabla}, ${state}`;
+            }
+        }
+    }
             let inputLogoUrl = document.getElementById("logoUrl").value.trim();
             let logoUrl = inputLogoUrl;
 
