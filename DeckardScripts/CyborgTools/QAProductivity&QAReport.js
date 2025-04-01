@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         QA Productivity & Random QA Report - Unified
-// @namespace    
+// @namespace
 // @version      3.1
 // @description  Combina funcionalidades de captura de datos QA con sistema unificado de notificaciones
 // @match        https://cyborg.deckard.com/*
@@ -842,41 +842,52 @@ document.body.appendChild(styles);
         document.addEventListener("click", function(event) {
             if (event.target.id === "btn_submit_vetting_dlg") {
                 const buttonText = event.target.textContent.trim();
-                const checkbox = document.querySelector("#QaProductivity");
+                const qaProductivityCheckbox = document.querySelector("#QaProductivity");
+                const suggestQaCheckbox = document.querySelector('input[id*="suggest_qa"]');
 
-                if (buttonText === "Submit QA Result" || (buttonText === "Save" && checkbox && checkbox.checked)) {
+                // Verificar si el checkbox suggest_qa está marcado
+                if (suggestQaCheckbox && suggestQaCheckbox.checked) {
+                    console.log("🚫 Acción cancelada: suggest_qa está marcado");
+                    return; // Salir sin ejecutar ninguna acción automática
+                }
+
+                // Solo continuar si suggest_qa NO está marcado
+                if (buttonText === "Submit QA Result" || (buttonText === "Save" && qaProductivityCheckbox && qaProductivityCheckbox.checked)) {
                     validateAndExtractAgain(() => {
                         console.log("📤 Enviando datos:", { qaer, projectName, comments, dataUrl });
 
                         if (cleanText(comments) !== "qaed ok") {
                             const reportQaButton = [...document.querySelectorAll('a')].find(a => cleanText(a.textContent).startsWith("report qa |"));
-                            if (reportQaButton) {
+                            if (reportQaButton && !suggestQaCheckbox.checked) { // Doble verificación por seguridad
                                 setTimeout(() => {
                                     reportQaButton.click();
                                 }, 500);
                             } else {
-                                console.log("⚠️ No se encontró el botón Report QA");
+                                console.log("⚠️ No se ejecutó Report QA (suggest_qa marcado o botón no encontrado)");
                             }
                         }
 
-                        let payload = new FormData();
-                        payload.append("Projectname", projectName || "Unknown Project");
-                        payload.append("QAer", qaer || "Desconocido");
-                        payload.append("Comments", comments || "Sin comentarios");
-                        payload.append("dataUrl", dataUrl || "No disponible");
+                        // Solo enviar datos si suggest_qa NO está marcado
+                        if (!(suggestQaCheckbox && suggestQaCheckbox.checked)) {
+                            let payload = new FormData();
+                            payload.append("Projectname", projectName || "Unknown Project");
+                            payload.append("QAer", qaer || "Desconocido");
+                            payload.append("Comments", comments || "Sin comentarios");
+                            payload.append("dataUrl", dataUrl || "No disponible");
 
-                        fetch(RANDOM_QA_URL + "?qaproductivity", {
-                            method: "POST",
-                            body: payload,
-                            mode: "no-cors"
-                        })
-                        .then(() => {
-                            showNotification("Data registered successfully", "success");
-                        })
-                        .catch(error => {
-                            console.error("Error al enviar datos:", error);
-                            showNotification("Error sending data", "error");
-                        });
+                            fetch(RANDOM_QA_URL + "?qaproductivity", {
+                                method: "POST",
+                                body: payload,
+                                mode: "no-cors"
+                            })
+                                .then(() => {
+                                showNotification("Data registered successfully", "success");
+                            })
+                                .catch(error => {
+                                console.error("Error al enviar datos:", error);
+                                showNotification("Error sending data", "error");
+                            });
+                        }
                     });
                 }
             }
