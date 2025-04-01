@@ -7202,11 +7202,11 @@
       ],
       "License List": [
         {
-          "type": "License List",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EXf4TrtZ_zZDpbrCq4vz9I0BwxUBtBV6Cil2kJOZMwqx3A?e=tCkdVf"
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EXf4TrtZ_zZDpbrCq4vz9I0BwxUBtBV6Cil2kJOZMwqx3A?e=tCkdVf",
+          "type": "License List"
         }
       ],
-      "Important Info": "Public Records have two addresses. If a cyborg has one of them and it is correct, there is no need to do the AO. \nIf the information from Cyborg is wrong and you need to do the Address Override, please do it with the address that comes with the street name and NOT with the GCR. For example, if PR has the following Addresses: 48 GCR 8500 #F-2 and 48 Jabberwocky #F-2, you must do the AO with the 48 Jabberwocky Unit F-2.\n·Some condos have 2 units with the same APN. For those cases, we will use the unit numbers first and then, the building number, following the next format:\n51 River Dr Unit 13-1410, Winter Park, CO 80482. \nIn this case, the unit number is 13-14 and the building number is 10. \n·In the PR you can search for the name of the building in the subdivision option. \n·If you find a listing of the condo Hi Country Haus, it is not necessary to do AO because it is not inside the town.",
+      "Important Info": "<ul><li><strong>Address Override (AO):</strong></li><li class=\"ql-indent-1\">If Public Records (PR) have two addresses and one matches the Cyborg's information, <strong>no AO is needed.</strong></li><li class=\"ql-indent-1\">If the Cyborg's information is incorrect, perform the AO using the address with the <strong>street name</strong>, <strong>not</strong> the GCR.</li><li><strong>Example:</strong></li><li class=\"ql-indent-1\">PR: 48 GCR 8500 #F-2 and 48 Jabberwocky #F-2.</li><li class=\"ql-indent-1\">Use \"48 Jabberwocky Unit F-2\" for the AO.</li><li><strong>Condos with the same APN:</strong></li><li class=\"ql-indent-1\">When two units share the same APN, follow this format: <strong>[Address] Unit [Unit Number]-[Building Number]</strong>.</li><li class=\"ql-indent-1\">Example: \"51 River Dr Unit 13-1410, Winter Park, CO 80482\" → Unit: 13-14, Building: 10.</li><li><strong>Searching PR:</strong></li><li class=\"ql-indent-1\">In PR, look for the building name under the <strong>subdivision option.</strong></li><li><strong>Exception with Hi Country Haus:</strong></li><li class=\"ql-indent-1\">If the listing is for the Hi Country Haus condo, <strong>AO is not necessary</strong> because it is outside the town.</li></ul>",
       "Media": [
         {
           "type": "N/A",
