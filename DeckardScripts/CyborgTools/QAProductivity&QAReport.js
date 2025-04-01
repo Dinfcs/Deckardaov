@@ -202,7 +202,11 @@
     }
 
     // Función para generar feedback (para Random QA)
-    function generateFeedback(error, qaed, project, link, qaer, dynamicFields = {}) {
+    function generateFeedback(error, qaedc, project, link, qaer, dynamicFields = {}) {
+        const getFirstName = (fullName) => {
+        return fullName.split(' ')[0] || fullName; // Toma el primer elemento o el nombre completo si no hay espacios
+    };
+        const qaed = getFirstName(qaedc);
         const feedbackTemplates = {
             "Wrong APN": `Hola ${qaed}, hoy estoy realizando Random QA y encontré <${link}|esta propiedad tuya> en ${project}. Noté que el APN no es correcto. Por favor, mis motivos son: ${dynamicFields.reasons || "(aquí van los motivos)"}. ¡Muchas Gracias! Att: ${qaer}`,
             "Bad APN": `¡Hola ${qaed}! Hoy estoy realizando Random QA y encontré <${link}|esta propiedad tuya> en ${project}. El APN registrado tiene un formato erróneo por lo que generó una Bad APN. Trata de verificar siempre en los PR para evitar este tipo de errores. ¡Muchas gracias! Att: ${qaer}`,
@@ -349,373 +353,373 @@ modalContent.innerHTML = `
     </div>
 `;
 
-// Estilos CSS mejorados con áreas de texto más grandes
-const styles = document.createElement('style');
-styles.textContent = `
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
-.qa-modal {
-    font-family: 'Inter', sans-serif;
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 16px;
-    box-shadow: 0 25px 50px rgba(0,0,0,0.1);
-    overflow: auto;
-    max-width: 95vw;
-    max-height: 95vh;
-    width: 100%;
-    animation: modalSlideIn 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
-    border: 1px solid rgba(0,0,0,0.05);
-    margin: 2.5vh auto;
-}
-
-@keyframes modalSlideIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px) scale(0.95);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-.modal-wrapper {
-    display: flex;
-    flex-direction: row;
-    min-height: auto;
-    height: 100%;
-}
-
-.modal-sidebar {
-    background: linear-gradient(135deg, #D1E231 0%, #D1E231 100%);
-    color: #000000;
-    width: 350px;
-    padding: 25px;
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-}
-
-.logo-container {
-    display: flex;
-    align-items: center;
-    margin-bottom: 25px;
-}
-
-.logo-container svg {
-    width: 32px;
-    height: 32px;
-    margin-right: 12px;
-    stroke: #000000;
-}
-
-.logo-container h2 {
-    margin: 0;
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #000000;
-}
-
-.form-sections {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-}
-
-.form-group label {
-    margin-bottom: 6px;
-    color: rgba(0,0,0,0.7);
-    font-weight: 500;
-    font-size: 0.85rem;
-}
-
-.form-group input,
-.form-group select {
-    background: rgba(0,0,0,0.05);
-    border: 1px solid rgba(0,0,0,0.2);
-    color: #000000;
-    padding: 8px 12px;
-    border-radius: 6px;
-    transition: all 0.3s ease;
-    font-size: 0.9rem;
-}
-
-.form-group input:focus,
-.form-group select:focus {
-    outline: none;
-    background: rgba(0,0,0,0.1);
-    border-color: rgba(0,0,0,0.4);
-    box-shadow: 0 0 0 2px rgba(209, 226, 49, 0.3);
-}
-
-.modal-main {
-    flex: 1;
-    background: #f4f6f9;
-    padding: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow-y: auto;
-}
-
-.feedback-section {
-    width: 100%;
-    max-width: 600px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-    padding: 20px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.feedback-header {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.feedback-header h3 {
-    color: #000000;
-    font-size: 1.3rem;
-    margin: 0;
-}
-
-.feedback-content {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    flex: 1;
-}
-
-.textarea-wrapper {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 0;
-}
-
-.textarea-wrapper label {
-    display: block;
-    margin-bottom: 8px;
-    color: #000000;
-    font-weight: 500;
-    font-size: 0.95rem;
-}
-
-.textarea-wrapper textarea {
-    width: 100%;
-    flex: 1;
-    min-height: 250px;
-    resize: vertical;
-    border: 1px solid #6C757D;
-    border-radius: 8px;
-    padding: 12px;
-    font-size: 0.95rem;
-    transition: all 0.3s ease;
-    line-height: 1.5;
-}
-
-.textarea-wrapper textarea:focus {
-    outline: none;
-    border-color: #007BFF;
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
-}
-
-.preview-wrapper {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 0;
-}
-
-.preview-wrapper label {
-    display: block;
-    margin-bottom: 8px;
-    color: #000000;
-    font-weight: 500;
-    font-size: 0.95rem;
-}
-
-.preview-box {
-    background: #f9f9f9;
-    border: 1px solid #6C757D;
-    border-radius: 8px;
-    padding: 12px;
-    flex: 1;
-    min-height: 250px;
-    max-height: 300px;
-    overflow-y: auto;
-    font-size: 0.95rem;
-    line-height: 1.5;
-    white-space: pre-wrap;
-}
-
-.action-buttons {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin-top: 20px;
-}
-
-.btn {
-    flex: 1 1 120px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 10px 12px;
-    border: none;
-    border-radius: 6px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    font-size: 0.9rem;
-    min-width: 100px;
-}
-
-.btn svg {
-    width: 18px;
-    height: 18px;
-}
-
-.btn-primary {
-    background-color: #D1E231;
-    color: #000000;
-}
-
-.btn-secondary {
-    background-color: #6C757D;
-    color: white;
-}
-
-.btn-database {
-    background-color: #007BFF;
-    color: white;
-}
-
-.btn:hover {
-    opacity: 0.9;
-    transform: translateY(-2px);
-    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-}
-
-/* Responsive adjustments */
-@media (max-width: 1200px) {
-    .modal-wrapper {
-        flex-direction: column;
-        max-height: 85vh;
-    }
-
-    .modal-sidebar {
+    // Estilos CSS mejorados con áreas de texto más grandes
+    const styles = document.createElement('style');
+    styles.textContent = `
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    
+    .qa-modal {
+        font-family: 'Inter', sans-serif;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 16px;
+        box-shadow: 0 25px 50px rgba(0,0,0,0.1);
+        overflow: auto;
+        max-width: 95vw;
+        max-height: 95vh;
         width: 100%;
-        padding: 20px;
+        animation: modalSlideIn 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+        border: 1px solid rgba(0,0,0,0.05);
+        margin: 2.5vh auto;
     }
-
-    .modal-main {
-        padding: 20px;
+    
+    @keyframes modalSlideIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px) scale(0.95);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
     }
-
-    .feedback-section {
-        max-width: 100%;
+    
+    .modal-wrapper {
+        display: flex;
+        flex-direction: row;
+        min-height: auto;
+        height: 100%;
     }
-}
-
-@media (max-width: 768px) {
-    .qa-modal {
-        max-width: 98vw;
-        max-height: 98vh;
-        margin: 1vh auto;
-    }
-
-    .logo-container h2 {
-        font-size: 1.3rem;
-    }
-
-    .form-group input,
-    .form-group select {
-        padding: 7px 10px;
-    }
-
-    .textarea-wrapper textarea,
-    .preview-box {
-        min-height: 200px;
-    }
-
-    .action-buttons {
-        gap: 8px;
-    }
-
-    .btn {
-        flex: 1 1 100px;
-        padding: 8px 10px;
-        font-size: 0.85rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .modal-sidebar,
-    .modal-main {
-        padding: 15px;
-    }
-
-    .logo-container {
+    
+    .modal-sidebar {
+        background: linear-gradient(135deg, #D1E231 0%, #D1E231 100%);
+        color: #000000;
+        width: 350px;
+        padding: 25px;
+        display: flex;
         flex-direction: column;
-        text-align: center;
-        margin-bottom: 15px;
-    }
-
-    .logo-container svg {
-        margin-right: 0;
-        margin-bottom: 8px;
-    }
-
-    .form-sections {
-        gap: 12px;
-    }
-
-    .feedback-header h3 {
-        font-size: 1.2rem;
-    }
-
-    .textarea-wrapper textarea,
-    .preview-box {
-        min-height: 180px;
-        font-size: 0.9rem;
-    }
-
-    .btn {
-        flex: 1 1 80px;
-        font-size: 0.8rem;
-        min-width: auto;
-    }
-}
-
-@media (max-height: 700px) {
-    .qa-modal {
-        max-height: 90vh;
-    }
-
-    .textarea-wrapper textarea,
-    .preview-box {
-        min-height: 150px;
-    }
-
-    .modal-sidebar,
-    .modal-main {
         overflow-y: auto;
     }
-
-    .form-sections {
-        gap: 10px;
+    
+    .logo-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 25px;
     }
-}
-`;
+    
+    .logo-container svg {
+        width: 32px;
+        height: 32px;
+        margin-right: 12px;
+        stroke: #000000;
+    }
+    
+    .logo-container h2 {
+        margin: 0;
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #000000;
+    }
+    
+    .form-sections {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .form-group label {
+        margin-bottom: 6px;
+        color: rgba(0,0,0,0.7);
+        font-weight: 500;
+        font-size: 0.85rem;
+    }
+    
+    .form-group input,
+    .form-group select {
+        background: rgba(0,0,0,0.05);
+        border: 1px solid rgba(0,0,0,0.2);
+        color: #000000;
+        padding: 8px 12px;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+        font-size: 0.9rem;
+    }
+    
+    .form-group input:focus,
+    .form-group select:focus {
+        outline: none;
+        background: rgba(0,0,0,0.1);
+        border-color: rgba(0,0,0,0.4);
+        box-shadow: 0 0 0 2px rgba(209, 226, 49, 0.3);
+    }
+    
+    .modal-main {
+        flex: 1;
+        background: #f4f6f9;
+        padding: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow-y: auto;
+    }
+    
+    .feedback-section {
+        width: 100%;
+        max-width: 600px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+        padding: 20px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .feedback-header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .feedback-header h3 {
+        color: #000000;
+        font-size: 1.3rem;
+        margin: 0;
+    }
+    
+    .feedback-content {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        flex: 1;
+    }
+    
+    .textarea-wrapper {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 0;
+    }
+    
+    .textarea-wrapper label {
+        display: block;
+        margin-bottom: 8px;
+        color: #000000;
+        font-weight: 500;
+        font-size: 0.95rem;
+    }
+    
+    .textarea-wrapper textarea {
+        width: 100%;
+        flex: 1;
+        min-height: 250px;
+        resize: vertical;
+        border: 1px solid #6C757D;
+        border-radius: 8px;
+        padding: 12px;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+        line-height: 1.5;
+    }
+    
+    .textarea-wrapper textarea:focus {
+        outline: none;
+        border-color: #007BFF;
+        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+    }
+    
+    .preview-wrapper {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 0;
+    }
+    
+    .preview-wrapper label {
+        display: block;
+        margin-bottom: 8px;
+        color: #000000;
+        font-weight: 500;
+        font-size: 0.95rem;
+    }
+    
+    .preview-box {
+        background: #f9f9f9;
+        border: 1px solid #6C757D;
+        border-radius: 8px;
+        padding: 12px;
+        flex: 1;
+        min-height: 250px;
+        max-height: 300px;
+        overflow-y: auto;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        white-space: pre-wrap;
+    }
+    
+    .action-buttons {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 20px;
+    }
+    
+    .btn {
+        flex: 1 1 120px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 10px 12px;
+        border: none;
+        border-radius: 6px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        font-size: 0.9rem;
+        min-width: 100px;
+    }
+    
+    .btn svg {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .btn-primary {
+        background-color: #D1E231;
+        color: #000000;
+    }
+    
+    .btn-secondary {
+        background-color: #6C757D;
+        color: white;
+    }
+    
+    .btn-database {
+        background-color: #007BFF;
+        color: white;
+    }
+    
+    .btn:hover {
+        opacity: 0.9;
+        transform: translateY(-2px);
+        box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 1200px) {
+        .modal-wrapper {
+            flex-direction: column;
+            max-height: 85vh;
+        }
+    
+        .modal-sidebar {
+            width: 100%;
+            padding: 20px;
+        }
+    
+        .modal-main {
+            padding: 20px;
+        }
+    
+        .feedback-section {
+            max-width: 100%;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .qa-modal {
+            max-width: 98vw;
+            max-height: 98vh;
+            margin: 1vh auto;
+        }
+    
+        .logo-container h2 {
+            font-size: 1.3rem;
+        }
+    
+        .form-group input,
+        .form-group select {
+            padding: 7px 10px;
+        }
+    
+        .textarea-wrapper textarea,
+        .preview-box {
+            min-height: 200px;
+        }
+    
+        .action-buttons {
+            gap: 8px;
+        }
+    
+        .btn {
+            flex: 1 1 100px;
+            padding: 8px 10px;
+            font-size: 0.85rem;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .modal-sidebar,
+        .modal-main {
+            padding: 15px;
+        }
+    
+        .logo-container {
+            flex-direction: column;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+    
+        .logo-container svg {
+            margin-right: 0;
+            margin-bottom: 8px;
+        }
+    
+        .form-sections {
+            gap: 12px;
+        }
+    
+        .feedback-header h3 {
+            font-size: 1.2rem;
+        }
+    
+        .textarea-wrapper textarea,
+        .preview-box {
+            min-height: 180px;
+            font-size: 0.9rem;
+        }
+    
+        .btn {
+            flex: 1 1 80px;
+            font-size: 0.8rem;
+            min-width: auto;
+        }
+    }
+    
+    @media (max-height: 700px) {
+        .qa-modal {
+            max-height: 90vh;
+        }
+    
+        .textarea-wrapper textarea,
+        .preview-box {
+            min-height: 150px;
+        }
+    
+        .modal-sidebar,
+        .modal-main {
+            overflow-y: auto;
+        }
+    
+        .form-sections {
+            gap: 10px;
+        }
+    }
+    `;
 
 document.body.appendChild(styles);
 
@@ -807,24 +811,28 @@ document.body.appendChild(styles);
     }
 
     // El resto de la función permanece igual
-    function updateFeedback() {
-        const selectedError = errorSelect.value;
-        const dynamicFields = {};
+     function updateFeedback() {
+         const selectedError = errorSelect.value;
+         const dynamicFields = {};
 
-        if (selectedError === "Structure") {
-            dynamicFields.structure = document.getElementById("structure")?.value || "";
-        } else if (selectedError === "Wrong APN" || selectedError === "QA Is Not Correct High" || selectedError === "QA Is Not Correct Low") {
-            dynamicFields.reasons = document.getElementById("reasons")?.value || "";
-        } else if (selectedError === "Wrong Address Override") {
-            dynamicFields.correctAddress = document.getElementById("correctAddress")?.value || "";
-        } else if (selectedError === "Unit Box (If visible)" || selectedError === "Wrong/ Not Required Unit Box") {
-            dynamicFields.unitBox = document.getElementById("unitBox")?.value || "";
-        }
+         // Obtener el valor ACTUAL del campo qaed del formulario
+         const currentQaed = document.getElementById("input_qaed")?.value.trim() || data.qaed;
 
-        const feedback = generateFeedback(selectedError, data.qaed, data.project, data.listing, data.qaer, dynamicFields);
-        commentInput.value = feedback;
-        updatePreview();
-    }
+         if (selectedError === "Structure") {
+             dynamicFields.structure = document.getElementById("structure")?.value || "";
+         } else if (selectedError === "Wrong APN" || selectedError === "QA Is Not Correct High" || selectedError === "QA Is Not Correct Low") {
+             dynamicFields.reasons = document.getElementById("reasons")?.value || "";
+         } else if (selectedError === "Wrong Address Override") {
+             dynamicFields.correctAddress = document.getElementById("correctAddress")?.value || "";
+         } else if (selectedError === "Unit Box (If visible)" || selectedError === "Wrong/ Not Required Unit Box") {
+             dynamicFields.unitBox = document.getElementById("unitBox")?.value || "";
+         }
+
+         // Usar currentQaed en lugar de data.qaed
+         const feedback = generateFeedback(selectedError, currentQaed, data.project, data.listing, data.qaer, dynamicFields);
+         commentInput.value = feedback;
+         updatePreview();
+}
 
     commentInput.addEventListener("input", updatePreview);
 
