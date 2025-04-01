@@ -9954,8 +9954,8 @@
       "Project": "CO - Summit Keystone County",
       "Public Records & GIS": [
         {
-          "type": "GIS",
-          "url": "https://gis.summitcountyco.gov/Map/"
+          "url": "https://gis.summitcountyco.gov/Map/",
+          "type": "GIS"
         },
         {
           "type": "GIS 2",
@@ -9972,11 +9972,11 @@
           "url": "https://cms3.revize.com/revize/summitcoco/Documents/Services/Community%20Development/Short%20Term%20Rentals/Active%20and%20Pending%20STR%20Licenses/Active%20and%20Pending%20STR%20Licenses%2011.25.24.pdf"
         }
       ],
-      "Important Info": "* BE SURE THE COUNTY IS SUMMIT, NOT SUMMIT_KEYSTONE. To know more about a property, use the information button at the top of the page and select the parcel.\n* To look through the street name option, only the name of the street needs to be input. Then select the suffix among the options, and you can find the street number needed. It is advised to use the APN since this step is more complicated. To know more about each property, select it and go to Show Detailed Data.\n* It is advised to leave selected only the Address text, Road text, Parcels, and 2015 Aerial Imagery in the Table of Contents on the left of the page.\n* If a unit brings up a unit in its address, override it with the unit and use the unit box. If you need to perform an address override for any issue different than the city, please check the jurisdiction box and use the city shown there. NO NEED TO PERFORM ADDRESS OVERRIDE IF ONLY THE CITY IS DIFFERENT.\n* If you need to perform an address override in a condo with a building and unit, investigate if the same unit exists in a different building. If not, just include the unit in the override. Example: Address 433 Wild Irishman Rd has buildings 1, 2, and 3, and each one has different units. Building 1 has all the 100s, Building 2 has all the 200s, and Building 3 has all the 300s. In this case, just override with: 433 Wild Irishman Rd Unit 102. If, on the other hand, each building has the same units, include the building and unit in the override, e.g., 433 Wild Irishman Rd Unit 1-102.",
+      "Important Info": "<h3><strong>Property Search Guidelines</strong></h3><h4>🏔️ <strong>Ensure the Correct County</strong></h4><p>✅ <strong>The county must be SUMMIT</strong>, <strong>NOT</strong> Summit_Keystone.</p><p><br></p><h4>🏡 <strong>How to Search for a Property</strong></h4><p>🔹 To learn more about a property, use the <strong>information button</strong> at the top of the page and select the parcel.</p><p>🔹 <strong>Searching by Street Name:</strong></p><ul><li>Enter only the <strong>street name</strong> (without suffixes).</li><li>Then, select the <strong>suffix</strong> from the available options.</li><li>Finally, find the needed street number.</li><li> ⚠️ <strong>Using the APN is recommended</strong>, as this method can be more complex.</li></ul><p>🔹 For more details on each property, select it and click <strong>\"Show Detailed Data\"</strong>.</p><p><br></p><h4>📌 <strong>Recommended Table of Contents Selections</strong></h4><p>✅ <strong>Keep only these options selected:</strong></p><p><br></p><ul><li><strong>Address Text</strong></li><li><strong>Road Text</strong></li><li><strong>Parcels</strong></li><li><strong>2015 Aerial Imagery</strong></li></ul><h4>🏢 <strong>Handling Addresses with Units</strong></h4><p>🔹 If an address includes a <strong>unit</strong>, <strong>override the address</strong> with the unit in the <strong>unit box</strong>.</p><p>🔹 <strong>For other address overrides:</strong></p><p><br></p><ul><li>If the issue <strong>is NOT the city</strong>, check the <strong>jurisdiction box</strong> and use the city shown there.</li><li>⚠️ <strong>There is NO NEED to override the address if only the city is different.</strong></li></ul><h4>🏢 <strong>Address Overrides in Condominiums</strong></h4><p>If a condominium has both a building and a unit, follow these rules:</p><p>✔️ <strong>If units are unique per building:</strong></p><p> Example: <strong>433 Wild Irishman Rd</strong> has three buildings:</p><ul><li><strong>Building 1</strong> → Units <strong>100s</strong></li><li><strong>Building 2</strong> → Units <strong>200s</strong></li><li><strong>Building 3</strong> → Units <strong>300s</strong></li></ul><p>📌 <strong>In this case, override only with the unit:</strong></p><p> ✅ <strong>433 Wild Irishman Rd Unit 102</strong></p><p>✔️ <strong>If each building has the same unit numbers:</strong></p><p> 📌 <strong>Include both the building and unit in the override:</strong></p><p> ✅ <strong>433 Wild Irishman Rd Unit 1-102</strong></p>",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ]
     },
