@@ -740,10 +740,10 @@ document.body.appendChild(styles);
     });
 
     btnCancel.addEventListener("mouseover", () => {
-        btnCancel.style.backgroundColor = "#DBEAFE";
+        btnCancel.style.backgroundColor = "#7f8894";
     });
     btnCancel.addEventListener("mouseout", () => {
-        btnCancel.style.backgroundColor = "#EFF6FF";
+        btnCancel.style.backgroundColor = "#7f8894";
     });
 
     // Mejorar apariencia de inputs al enfocarlos
