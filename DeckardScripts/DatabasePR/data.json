@@ -10985,6 +10985,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "TN - Anderson County",
+      "Public Records & GIS": [
+        {
+          "url": "https://assessment.cot.tn.gov/TPAD",
+          "type": "PR"
+        },
+        {
+          "type": "GIS (VPN)",
+          "url": "https://tnmap.tn.gov/assessment/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "<p>In the PRs the APN is composed by the \"County Number\" + \"Control Map\" + \"Group\" + \"Parcel\" (see image attahced)</p>",
+      "Media": [
+        {
+          "url": "https://drive.google.com/uc?export=view&id=17pRqHrvKDUXye__qmfhmEsPRuECODHgm",
+          "type": "APN"
+        }
+      ]
     }
   ]
 }
