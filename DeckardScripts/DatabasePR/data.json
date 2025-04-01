@@ -7192,8 +7192,8 @@
           "url": "https://assessor.co.grand.co.us/assessor/taxweb/search.jsp"
         },
         {
-          "type": "GIS (Use VPN)",
-          "url": "https://gcgeo.maps.arcgis.com/apps/webappviewer/index.html?id=19227102adf34489bb7311fc1ddb39f0"
+          "url": "https://gcgeo.maps.arcgis.com/apps/webappviewer/index.html?id=19227102adf34489bb7311fc1ddb39f0",
+          "type": "GIS (Use VPN)"
         },
         {
           "type": "GIS 2",
@@ -7206,11 +7206,11 @@
           "type": "License List"
         }
       ],
-      "Important Info": "<ul><li><strong>Address Override (AO):</strong></li><li class=\"ql-indent-1\">If Public Records (PR) have two addresses and one matches the Cyborg's information, <strong>no AO is needed.</strong></li><li class=\"ql-indent-1\">If the Cyborg's information is incorrect, perform the AO using the address with the <strong>street name</strong>, <strong>not</strong> the GCR.</li><li><strong>Example:</strong></li><li class=\"ql-indent-1\">PR: 48 GCR 8500 #F-2 and 48 Jabberwocky #F-2.</li><li class=\"ql-indent-1\">Use \"48 Jabberwocky Unit F-2\" for the AO.</li><li><strong>Condos with the same APN:</strong></li><li class=\"ql-indent-1\">When two units share the same APN, follow this format: <strong>[Address] Unit [Unit Number]-[Building Number]</strong>.</li><li class=\"ql-indent-1\">Example: \"51 River Dr Unit 13-1410, Winter Park, CO 80482\" → Unit: 13-14, Building: 10.</li><li><strong>Searching PR:</strong></li><li class=\"ql-indent-1\">In PR, look for the building name under the <strong>subdivision option.</strong></li><li><strong>Exception with Hi Country Haus:</strong></li><li class=\"ql-indent-1\">If the listing is for the Hi Country Haus condo, <strong>AO is not necessary</strong> because it is outside the town.</li></ul>",
+      "Important Info": "<h3><strong>1. Address Verification in Cyborg</strong></h3><ul><li>If Cyborg has one of the two addresses from Public Records and it is correct, <strong>there is no need</strong> to perform an Address Override (AO).</li><li>If the information in Cyborg is incorrect and an AO is required, use the address that includes the <strong>street name</strong> and <strong>NOT</strong> the GCR.</li></ul><p><strong>Example:</strong></p><p> If PR displays the following addresses:</p><p> ✅ <strong>48 GCR 8500 #F-2</strong></p><p> ✅ <strong>48 Jabberwocky #F-2</strong></p><p>You must perform AO using: <strong>48 Jabberwocky Unit F-2.</strong></p><h3><strong>2. Condos with Two Units Sharing the Same APN</strong></h3><p>For these cases, use the unit number first, followed by the building number, in the following format:</p><p>📌 <strong>[Street Name] Unit [Unit Numbers]-[Building Number], [City], [State] [ZIP Code].</strong></p><p><strong>Example:</strong></p><p> ✅ <strong>51 River Dr Unit 13-1410, Winter Park, CO 80482.</strong></p><ul><li>Here, the <strong>unit number</strong> is <strong>13-14</strong>, and the <strong>building number</strong> is <strong>10.</strong></li></ul><h3><strong>3. Searching for Building Names in PR</strong></h3><ul><li>Use the <strong>subdivision option</strong> in PR to search for the building name.</li></ul><h3><strong>4. Exception: Hi Country Haus Condominiums</strong></h3><ul><li>If a listing is found for the <strong>Hi Country Haus</strong> condominium, <strong>there is no need</strong> to perform AO, as it is not located within the town.</li></ul>",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ]
     },
