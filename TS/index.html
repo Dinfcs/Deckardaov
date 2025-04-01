@@ -788,7 +788,7 @@ input:disabled, button:disabled, select:disabled {
         // Funciones para la tabla
         let datosCompletos = [];
         let datosFiltrados = [];
-        let filasPorPagina = 10;
+        let filasPorPagina = 5;
         let paginaActual = 1;
         let encabezados = [];
         let filaSeleccionada = null;
@@ -839,10 +839,11 @@ input:disabled, button:disabled, select:disabled {
             tabla += "</tr>";
 
             datosPaginados.forEach((fila, index) => {
-                const isChecked = filaSeleccionada !== null && datosFiltrados[filaSeleccionada] === fila;
+                const isChecked = (filaSeleccionada !== null && datosFiltrados[filaSeleccionada] === fila) || 
+                                (datosFiltrados.length === 1 && index === 0); // Esta línea es nueva
                 tabla += `<tr ${isChecked ? 'style="background-color: #6366F1;"' : ''}>`;
                 tabla += `<td class="row-selector"><input type="radio" name="filaSeleccionada" ${isChecked ? 'checked' : ''} 
-                         onclick="seleccionarFila(${inicio + index})"></td>`;
+                        onclick="seleccionarFila(${inicio + index})"></td>`;
                 
                 encabezados.forEach(col => {
                     let textoCelda = fila[col] ? fila[col].toString().replace(/'/g, "\\'") : "";
@@ -993,7 +994,15 @@ input:disabled, button:disabled, select:disabled {
                 return match1 && match2;
             });
 
-            filaSeleccionada = null;
+            // Autoseleccionar si solo queda una fila después de filtrar
+            if (datosFiltrados.length === 1) {
+                filaSeleccionada = 0; // Seleccionar la primera (y única) fila
+                // Llenar automáticamente los campos del formulario
+                seleccionarFila(filaSeleccionada);
+            } else {
+                filaSeleccionada = null;
+            }
+
             paginaActual = 1;
             actualizarTabla();
         }
