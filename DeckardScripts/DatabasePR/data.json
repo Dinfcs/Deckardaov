@@ -10568,15 +10568,15 @@
       ],
       "License List": [
         {
-          "type": "N/A",
-          "url": "N/A"
-        }
-      ],
-      "Important Info": "<ul><li>No nearmaps Aerial</li></ul>",
-      "Media": [
-        {
           "url": "N/A",
           "type": "N/A"
+        }
+      ],
+      "Important Info": "<ul><li>No Aerial in NearMaps</li></ul>",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
         }
       ]
     },
