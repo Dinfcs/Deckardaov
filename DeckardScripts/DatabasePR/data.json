@@ -10558,21 +10558,21 @@
       "Project": "CO - Town of Crested Butte",
       "Public Records & GIS": [
         {
-          "url": "https://property.spatialest.com/co/gunnison#/",
-          "type": "PR"
+          "type": "PR",
+          "url": "https://property.spatialest.com/co/gunnison#/"
         },
         {
-          "type": "GIS",
-          "url": "https://gis.gunnisoncounty.org/default_map.aspx"
+          "url": "https://gis.gunnisoncounty.org/default_map.aspx",
+          "type": "GIS"
         }
       ],
       "License List": [
         {
-          "url": "N/A",
-          "type": "N/A"
+          "type": "N/A",
+          "url": "N/A"
         }
       ],
-      "Important Info": "<p><br></p>",
+      "Important Info": "<ul><li>No nearmaps Aerial</li></ul>",
       "Media": [
         {
           "url": "N/A",
