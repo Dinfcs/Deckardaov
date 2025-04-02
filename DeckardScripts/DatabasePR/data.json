@@ -10834,12 +10834,12 @@
       "Project": "OH - Trumbull County",
       "Public Records & GIS": [
         {
-          "type": "PR",
-          "url": "https://beacon.schneidercorp.com/Application.aspx?AppID=1121&LayerID=28255&PageTypeID=2&PageID=11609"
+          "url": "https://beacon.schneidercorp.com/Application.aspx?AppID=1121&LayerID=28255&PageTypeID=2&PageID=11609",
+          "type": "PR"
         },
         {
-          "url": "https://beacon.schneidercorp.com/Application.aspx?AppID=1121&LayerID=28255&PageTypeID=1&PageID=11608",
-          "type": "GIS"
+          "type": "GIS",
+          "url": "https://beacon.schneidercorp.com/Application.aspx?AppID=1121&LayerID=28255&PageTypeID=1&PageID=11608"
         }
       ],
       "License List": [
@@ -10848,11 +10848,11 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "<p><br></p>",
+      "Important Info": "<p><strong style=\"color: rgb(55, 65, 81);\">NM ---&gt; </strong><strong style=\"color: rgb(230, 0, 0);\">*Not*</strong></p>",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ]
     },
