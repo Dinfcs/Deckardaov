@@ -11033,6 +11033,28 @@
           "type": "N/A"
         }
       ]
+    },
+    {
+      "Project": "FL - Town Of Miami Lakes",
+      "Public Records & GIS": [
+        {
+          "url": "https://www.miamidade.gov/Apps/PA/PropertySearch/#/",
+          "type": "PR and GIS"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "<p>To search with the APN in the PR, select the Folio option.</p>",
+      "Media": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ]
     }
   ]
 }
