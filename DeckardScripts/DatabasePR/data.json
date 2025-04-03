@@ -4104,29 +4104,29 @@
       "Project": "TX - City of Fort Worth",
       "Public Records & GIS": [
         {
-          "type": "Public Records",
-          "url": "https://taxonline.tarrantcounty.com/taxweb/accountsearch.asp"
+          "url": "https://taxonline.tarrantcounty.com/taxweb/accountsearch.asp",
+          "type": "Public Records (VPN)"
         },
         {
-          "type": "Public Records 2",
-          "url": "https://www.tad.org/property/search"
+          "url": "https://www.tad.org/property/search",
+          "type": "Public Records 2 (VPN)"
         },
         {
-          "type": "GIS",
+          "type": "GIS (VPN)",
           "url": "https://gisit.tarrantcounty.com/publicmapviewer/"
         }
       ],
       "License List": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ],
-      "Important Info": "Use the APN from PR, not the LightBox information. When mapping 3650 Outlet Blvd, Fort Worth, TX 76177, be sure to change the county to Denton.",
+      "Important Info": "<p>Use the APN from PR, not the LightBox information. When mapping 3650 Outlet Blvd, Fort Worth, TX 76177, be sure to change the county to Denton.</p>",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ]
     },
