@@ -6155,32 +6155,6 @@
       ]
     },
     {
-      "Project": "UT - Salt Lake City",
-      "Public Records & GIS": [
-        {
-          "type": "PR",
-          "url": "https://slco.org/assessor/new/query.cfm"
-        },
-        {
-          "type": "GIS",
-          "url": "https://slco.org/assessor/new/ParcelViewer/index.html?query=Parcel_Viewer_external_3634_5,parcel_id,"
-        }
-      ],
-      "License List": [
-        {
-          "type": "N/A",
-          "url": "N/A"
-        }
-      ],
-      "Important Info": "When we identify properties whose structure is U1OM this address format (two street numbers) in PR:\n637- 639 S WASHINGTON ST \nplease, don't use Address Override, only if we identify the unit number, add this info to the unit box.",
-      "Media": [
-        {
-          "type": "N/A",
-          "url": "N/A"
-        }
-      ]
-    },
-    {
       "Project": "CO - Broomfield County",
       "Public Records & GIS": [
         {
@@ -11075,6 +11049,28 @@
         }
       ],
       "Important Info": "<p>When we identify properties whose structure is U1OM this address format (two street numbers) in PR:\n637- 639 S WASHINGTON ST \nplease, don't use Address Override, only if we identify the unit number, add this info to the unit box.</p>",
+      "Media": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ]
+    },
+    {
+      "Project": "NY - Erie County",
+      "Public Records & GIS": [
+        {
+          "type": "PR & GIS",
+          "url": "https://gis.erie.gov/Html5Viewer133/index.html?viewer=ErieCountyNY.HTML5_2_11_0"
+        }
+      ],
+      "License List": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ],
+      "Important Info": "<p><br></p>",
       "Media": [
         {
           "url": "N/A",
