@@ -11011,6 +11011,28 @@
           "type": "APN"
         }
       ]
+    },
+    {
+      "Project": "KY - Bullitt County",
+      "Public Records & GIS": [
+        {
+          "url": "https://qpublic.schneidercorp.com/Application.aspx?AppID=943&LayerID=18440&PageTypeID=2&PageID=8234",
+          "type": "PR"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "<p><br></p>",
+      "Media": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ]
     }
   ]
 }
