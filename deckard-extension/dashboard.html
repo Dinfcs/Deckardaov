@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - DeckardScript</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <h1>📜 Dashboard - DeckardScript</h1>
+
+    <!-- Dropdown para seleccionar scripts -->
+    <div class="script-selector">
+        <label for="scriptDropdown">Seleccionar Script:</label>
+        <select id="scriptDropdown">
+            <option value="">-- Selecciona un script --</option>
+        </select>
+    </div>
+
+    <!-- Formulario para editar o borrar scripts -->
+    <form id="scriptForm">
+        <label for="scriptName">Nombre del Script:</label>
+        <input type="text" id="scriptName" placeholder="Nombre del script" required>
+        
+        <label for="scriptUrlPattern">Patrón de URL:</label>
+        <input type="text" id="scriptUrlPattern" placeholder="Ej: https://example.com/*" required>
+        
+        <label for="scriptRunAt">Momento de Inyección:</label>
+        <select id="scriptRunAt">
+            <option value="document-end">Al final (document-end)</option>
+            <option value="document-start">Al inicio (document-start)</option>
+            <option value="document-idle">Cuando esté listo (document-idle)</option>
+        </select>
+        
+        <label for="scriptCode">Código del Script:</label>
+        <textarea id="scriptCode" placeholder="Pega el código JavaScript aquí" required></textarea>
+        
+        <button type="submit" id="saveScriptBtn">💾 Guardar Cambios</button>
+        <button type="button" id="deleteScriptBtn">🗑️ Eliminar Script</button>
+    </form>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
