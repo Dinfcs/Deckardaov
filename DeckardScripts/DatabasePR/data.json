@@ -11077,6 +11077,32 @@
           "type": "N/A"
         }
       ]
+    },
+    {
+      "Project": "CA - City Of Dana Point",
+      "Public Records & GIS": [
+        {
+          "url": "https://pqweb.parcelquest.com/#login",
+          "type": "PR & GIS"
+        },
+        {
+          "url": "https://webapps.ocgis.com/oclandinsights/map-viewer?id=2",
+          "type": "GIS (Orange County)"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "<p>When searching for an APN in <strong>CA- Orange County</strong>, make sure to <strong>add dashes in the right format</strong>.</p><p><br></p><h4>Example:</h4><p>67248360<em> </em>➡️ <strong>672-483-60</strong></p><p><br></p><p><strong>Format:</strong> 3 digits – 3 digits – 2 digits → <strong>XXX-XXX-XX</strong></p>",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
