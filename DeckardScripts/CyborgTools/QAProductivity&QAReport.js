@@ -2,7 +2,7 @@
 // @name         QA Productivity & Random QA Report - Unified
 // @namespace
 // @version      3.1
-// @description  Combina funcionalidades de captura de datos QA con sistema unificado de notificaciones
+// @description  Permite tomar el registro de listings revisados y hacer los reportes de qa directamente desde cyborg
 // @match        https://cyborg.deckard.com/*
 // @grant        none
 // ==/UserScript==
@@ -80,7 +80,7 @@
         notification.style.fontSize = "16px";
         notification.style.fontWeight = "600";
         notification.style.fontFamily = "'Inter', 'Segoe UI', sans-serif";
-        notification.style.zIndex = "9999";
+        notification.style.zIndex = "99999";
         notification.style.boxShadow = "0 6px 16px rgba(0, 0, 0, 0.15)";
         notification.style.minWidth = "200px";
         notification.style.textAlign = "center";
@@ -306,6 +306,22 @@ modalContent.innerHTML = `
                         </div>
 
                         <div class="form-group">
+                            <label for="secondaryError1">Secondary Error (Optional)</label>
+                            <select id="secondaryError1">
+                                <option value="">None</option>
+                                ${errors.map(err => `<option value="${err}">${err}</option>`).join("")}
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="secondaryError2">Additional Error (Optional)</label>
+                            <select id="secondaryError2">
+                                <option value="">None</option>
+                                ${errors.map(err => `<option value="${err}">${err}</option>`).join("")}
+                            </select>
+                        </div>
+
+                        <div class="form-group">
                             <label for="affectedListings">Affected Listings</label>
                             <input id="affectedListings" type="number" value="0" min="0">
                         </div>
@@ -357,7 +373,7 @@ modalContent.innerHTML = `
     const styles = document.createElement('style');
     styles.textContent = `
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-    
+
     .qa-modal {
         font-family: 'Inter', sans-serif;
         background: rgba(255, 255, 255, 0.95);
@@ -371,7 +387,7 @@ modalContent.innerHTML = `
         border: 1px solid rgba(0,0,0,0.05);
         margin: 2.5vh auto;
     }
-    
+
     @keyframes modalSlideIn {
         from {
             opacity: 0;
@@ -382,14 +398,14 @@ modalContent.innerHTML = `
             transform: translateY(0) scale(1);
         }
     }
-    
+
     .modal-wrapper {
         display: flex;
         flex-direction: row;
         min-height: auto;
         height: 100%;
     }
-    
+
     .modal-sidebar {
         background: linear-gradient(135deg, #D1E231 0%, #D1E231 100%);
         color: #000000;
@@ -399,45 +415,45 @@ modalContent.innerHTML = `
         flex-direction: column;
         overflow-y: auto;
     }
-    
+
     .logo-container {
         display: flex;
         align-items: center;
         margin-bottom: 25px;
     }
-    
+
     .logo-container svg {
         width: 32px;
         height: 32px;
         margin-right: 12px;
         stroke: #000000;
     }
-    
+
     .logo-container h2 {
         margin: 0;
         font-size: 1.5rem;
         font-weight: 600;
         color: #000000;
     }
-    
+
     .form-sections {
         display: flex;
         flex-direction: column;
         gap: 15px;
     }
-    
+
     .form-group {
         display: flex;
         flex-direction: column;
     }
-    
+
     .form-group label {
         margin-bottom: 6px;
         color: rgba(0,0,0,0.7);
         font-weight: 500;
         font-size: 0.85rem;
     }
-    
+
     .form-group input,
     .form-group select {
         background: rgba(0,0,0,0.05);
@@ -448,7 +464,7 @@ modalContent.innerHTML = `
         transition: all 0.3s ease;
         font-size: 0.9rem;
     }
-    
+
     .form-group input:focus,
     .form-group select:focus {
         outline: none;
@@ -456,7 +472,7 @@ modalContent.innerHTML = `
         border-color: rgba(0,0,0,0.4);
         box-shadow: 0 0 0 2px rgba(209, 226, 49, 0.3);
     }
-    
+
     .modal-main {
         flex: 1;
         background: #f4f6f9;
@@ -466,7 +482,7 @@ modalContent.innerHTML = `
         justify-content: center;
         overflow-y: auto;
     }
-    
+
     .feedback-section {
         width: 100%;
         max-width: 600px;
@@ -478,32 +494,32 @@ modalContent.innerHTML = `
         display: flex;
         flex-direction: column;
     }
-    
+
     .feedback-header {
         text-align: center;
         margin-bottom: 20px;
     }
-    
+
     .feedback-header h3 {
         color: #000000;
         font-size: 1.3rem;
         margin: 0;
     }
-    
+
     .feedback-content {
         display: flex;
         flex-direction: column;
         gap: 20px;
         flex: 1;
     }
-    
+
     .textarea-wrapper {
         flex: 1;
         display: flex;
         flex-direction: column;
         margin-bottom: 0;
     }
-    
+
     .textarea-wrapper label {
         display: block;
         margin-bottom: 8px;
@@ -511,7 +527,7 @@ modalContent.innerHTML = `
         font-weight: 500;
         font-size: 0.95rem;
     }
-    
+
     .textarea-wrapper textarea {
         width: 100%;
         flex: 1;
@@ -524,20 +540,20 @@ modalContent.innerHTML = `
         transition: all 0.3s ease;
         line-height: 1.5;
     }
-    
+
     .textarea-wrapper textarea:focus {
         outline: none;
         border-color: #007BFF;
         box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
     }
-    
+
     .preview-wrapper {
         flex: 1;
         display: flex;
         flex-direction: column;
         margin-bottom: 0;
     }
-    
+
     .preview-wrapper label {
         display: block;
         margin-bottom: 8px;
@@ -545,7 +561,7 @@ modalContent.innerHTML = `
         font-weight: 500;
         font-size: 0.95rem;
     }
-    
+
     .preview-box {
         background: #f9f9f9;
         border: 1px solid #6C757D;
@@ -559,14 +575,14 @@ modalContent.innerHTML = `
         line-height: 1.5;
         white-space: pre-wrap;
     }
-    
+
     .action-buttons {
         display: flex;
         gap: 12px;
         flex-wrap: wrap;
         margin-top: 20px;
     }
-    
+
     .btn {
         flex: 1 1 120px;
         display: flex;
@@ -582,139 +598,139 @@ modalContent.innerHTML = `
         font-size: 0.9rem;
         min-width: 100px;
     }
-    
+
     .btn svg {
         width: 18px;
         height: 18px;
     }
-    
+
     .btn-primary {
         background-color: #D1E231;
         color: #000000;
     }
-    
+
     .btn-secondary {
         background-color: #6C757D;
         color: white;
     }
-    
+
     .btn-database {
         background-color: #007BFF;
         color: white;
     }
-    
+
     .btn:hover {
         opacity: 0.9;
         transform: translateY(-2px);
         box-shadow: 0 3px 8px rgba(0,0,0,0.1);
     }
-    
+
     /* Responsive adjustments */
     @media (max-width: 1200px) {
         .modal-wrapper {
             flex-direction: column;
             max-height: 85vh;
         }
-    
+
         .modal-sidebar {
             width: 100%;
             padding: 20px;
         }
-    
+
         .modal-main {
             padding: 20px;
         }
-    
+
         .feedback-section {
             max-width: 100%;
         }
     }
-    
+
     @media (max-width: 768px) {
         .qa-modal {
             max-width: 98vw;
             max-height: 98vh;
             margin: 1vh auto;
         }
-    
+
         .logo-container h2 {
             font-size: 1.3rem;
         }
-    
+
         .form-group input,
         .form-group select {
             padding: 7px 10px;
         }
-    
+
         .textarea-wrapper textarea,
         .preview-box {
             min-height: 200px;
         }
-    
+
         .action-buttons {
             gap: 8px;
         }
-    
+
         .btn {
             flex: 1 1 100px;
             padding: 8px 10px;
             font-size: 0.85rem;
         }
     }
-    
+
     @media (max-width: 480px) {
         .modal-sidebar,
         .modal-main {
             padding: 15px;
         }
-    
+
         .logo-container {
             flex-direction: column;
             text-align: center;
             margin-bottom: 15px;
         }
-    
+
         .logo-container svg {
             margin-right: 0;
             margin-bottom: 8px;
         }
-    
+
         .form-sections {
             gap: 12px;
         }
-    
+
         .feedback-header h3 {
             font-size: 1.2rem;
         }
-    
+
         .textarea-wrapper textarea,
         .preview-box {
             min-height: 180px;
             font-size: 0.9rem;
         }
-    
+
         .btn {
             flex: 1 1 80px;
             font-size: 0.8rem;
             min-width: auto;
         }
     }
-    
+
     @media (max-height: 700px) {
         .qa-modal {
             max-height: 90vh;
         }
-    
+
         .textarea-wrapper textarea,
         .preview-box {
             min-height: 150px;
         }
-    
+
         .modal-sidebar,
         .modal-main {
             overflow-y: auto;
         }
-    
+
         .form-sections {
             gap: 10px;
         }
@@ -848,32 +864,131 @@ document.body.appendChild(styles);
         modalContent.style.transform = "scale(1) translateY(0)";
     }, 10);
 
-    btnAccept.addEventListener("click", () => {
-        const editedData = {};
-        fieldsToShow.forEach(key => {
-            editedData[key] = document.getElementById(`input_${key}`).value.trim();
-        });
+     btnAccept.addEventListener("click", () => {
+         // 1. Obtener todos los valores necesarios
+         const primaryError = errorSelect.value;
+         const project = document.getElementById("input_project")?.value.trim() || "";
+         const qaer = document.getElementById("input_qaer")?.value.trim() || "";
+         const qaed = document.getElementById("input_qaed")?.value.trim() || "";
+         const listing = document.getElementById("input_listing")?.value.trim() || "";
+         const date = document.getElementById("input_date")?.value.trim() || "";
+         const dateOfMapping = document.getElementById("input_date_of_mapping")?.value.trim() || "";
 
-        editedData.urlcodeverg = data.urlcodeverg;
-        editedData.error = errorSelect.value;
-        editedData.comments = document.getElementById("commentInput").value;
-        editedData.possible_affected_listings = document.getElementById("affectedListings").value || "0";
+         // 2. Validación PRIORITARIA del Error Type
+         if (!primaryError || primaryError === "Select Error..." || primaryError === "Select Primary Error...") {
+             showNotification("You must select a valid error type", "error");
+             errorSelect.style.border = "2px solid #f44336";
+             errorSelect.style.boxShadow = "0 0 5px rgba(244, 67, 54, 0.5)";
+             errorSelect.focus();
 
-        if (!editedData.listing.startsWith("http")) { showNotification("Invalid listing link", "error"); return; }
-        if (!editedData.project) { showNotification("Project cannot be empty", "error"); return; }
-        if (!editedData.qaer) { showNotification("QAer cannot be empty", "error"); return; }
-        if (!editedData.qaed) { showNotification("QAed cannot be empty", "error"); return; }
-        if (editedData.error === "Select an option...") { showNotification("You must select an error", "error"); return; }
+             setTimeout(() => {
+                 errorSelect.style.border = "1px solid #E5E7EB";
+                 errorSelect.style.boxShadow = "none";
+             }, 3000); // Resaltar por 3 segundos
+             return; // Detener inmediatamente
+         }
 
-        showNotification("Recording data, please wait...", "success");
+         // 3. Validación del resto de campos obligatorios
+         const validations = [
+             {
+                 condition: !project,
+                 notification: () => showNotification("Project name is required", "error"),
+                 element: document.getElementById("input_project"),
+                 fieldName: "Project"
+             },
+             {
+                 condition: !qaer,
+                 notification: () => showNotification("QAer name is required", "error"),
+                 element: document.getElementById("input_qaer"),
+                 fieldName: "QAer"
+             },
+             {
+                 condition: !qaed,
+                 notification: () => showNotification("QAed name is required", "error"),
+                 element: document.getElementById("input_qaed"),
+                 fieldName: "QAed"
+             },
+             {
+                 condition: !listing || !listing.startsWith("http"),
+                 notification: () => showNotification("Valid listing URL is required (must start with http/https)", "error"),
+                 element: document.getElementById("input_listing"),
+                 fieldName: "Listing URL"
+             },
+             {
+                 condition: !date,
+                 notification: () => showNotification("Date is required", "error"),
+                 element: document.getElementById("input_date"),
+                 fieldName: "Date"
+             },
+             {
+                 condition: !dateOfMapping,
+                 notification: () => showNotification("Mapping date is required", "error"),
+                 element: document.getElementById("input_date_of_mapping"),
+                 fieldName: "Mapping Date"
+             }
+         ];
 
-        modalContent.style.opacity = 0;
-        modalContent.style.transform = "scale(0.95) translateY(10px)";
-        setTimeout(() => {
-            document.body.removeChild(modal);
-            onConfirm(editedData);
-        }, 300);
-    });
+         // 4. Encontrar el primer error (si existe)
+         const firstError = validations.find(v => v.condition);
+
+         if (firstError) {
+             firstError.notification();
+             firstError.element.focus();
+
+             // Resaltar campo con error
+             firstError.element.style.border = "2px solid #f44336";
+             firstError.element.style.boxShadow = "0 0 5px rgba(244, 67, 54, 0.5)";
+
+             // Crear tooltip de error
+             const tooltip = document.createElement("div");
+             tooltip.textContent = `${firstError.fieldName} is required`;
+             tooltip.style.position = "absolute";
+             tooltip.style.backgroundColor = "#f44336";
+             tooltip.style.color = "white";
+             tooltip.style.padding = "5px 10px";
+             tooltip.style.borderRadius = "4px";
+             tooltip.style.top = `${firstError.element.offsetTop - 35}px`;
+             tooltip.style.left = `${firstError.element.offsetLeft}px`;
+             tooltip.style.zIndex = "99999";
+             tooltip.style.fontSize = "12px";
+             tooltip.style.fontWeight = "bold";
+
+             firstError.element.parentNode.appendChild(tooltip);
+
+             setTimeout(() => {
+                 firstError.element.style.border = "1px solid #E5E7EB";
+                 firstError.element.style.boxShadow = "none";
+                 tooltip.remove();
+             }, 3000);
+
+             return;
+         }
+
+         // 5. Si todo es válido, preparar datos para enviar
+         const editedData = {
+             ...Object.fromEntries(fieldsToShow.map(key =>
+                                                    [key, document.getElementById(`input_${key}`).value.trim()]
+                                                   )),
+             urlcodeverg: data.urlcodeverg,
+             error: primaryError,
+             secondary_error_1: document.getElementById("secondaryError1").value || null,
+             secondary_error_2: document.getElementById("secondaryError2").value || null,
+             comments: document.getElementById("commentInput").value,
+             possible_affected_listings: document.getElementById("affectedListings").value || "0",
+             timestamp: new Date().toISOString()
+         };
+
+         // 6. Feedback y envío
+         showNotification("Sending QA report...", "info");
+
+         modalContent.style.opacity = 0;
+         modalContent.style.transform = "scale(0.95) translateY(10px)";
+
+         setTimeout(() => {
+             document.body.removeChild(modal);
+             onConfirm(editedData);
+         }, 500);
+     });
 
     btnCancel.addEventListener("click", () => {
         modalContent.style.opacity = 0;
@@ -965,89 +1080,172 @@ document.body.appendChild(styles);
         }
     }
 
-    function initializeQaProductivityScript() {
-        console.log("✅ Report QA detectado, activando script...");
+function initializeQaProductivityScript() {
+    console.log("✅ Report QA detectado, activando script...");
 
-        document.addEventListener("click", function(event) {
-            if (event.target.id === "btn_open_vetting_dlg") {
-                extractQaProductivityData();
-                console.log("Edit Mode abierto:", { qaer, projectName, dataUrl });
-
-                setTimeout(() => {
-                    const btnSave = document.querySelector("#btn_submit_vetting_dlg.btn-primary");
-
-                    if (btnSave && btnSave.textContent.trim() === "Save" && !document.querySelector("#QaProductivity")) {
-                        const checkbox = document.createElement("input");
-                        checkbox.type = "checkbox";
-                        checkbox.id = "QaProductivity";
-                        checkbox.style.marginLeft = "10px";
-
-                        const label = document.createElement("label");
-                        label.htmlFor = "QaProductivity";
-                        label.textContent = " QA Productivity";
-                        label.style.marginLeft = "5px";
-
-                        btnSave.parentNode.insertBefore(checkbox, btnSave.nextSibling);
-                        btnSave.parentNode.insertBefore(label, checkbox.nextSibling);
-                    }
-                }, 500);
+    // Añadimos los estilos globales una sola vez
+    if (!document.querySelector('#QaProductivityStyles')) {
+        const style = document.createElement('style');
+        style.id = 'QaProductivityStyles';
+        style.textContent = `
+            #QaProductivity {
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                width: 18px;
+                height: 18px;
+                border: 2px solid #D1E231;
+                border-radius: 4px;
+                background-color: rgba(209, 226, 49, 0.1);
+                outline: none;
+                cursor: pointer;
+                position: relative;
+                transition: all 0.2s ease;
+                vertical-align: middle;
+                margin-left: 12px;
             }
-        });
 
-        document.addEventListener("click", function(event) {
-            if (event.target.id === "btn_submit_vetting_dlg") {
-                const buttonText = event.target.textContent.trim();
-                const qaProductivityCheckbox = document.querySelector("#QaProductivity");
-                const suggestQaCheckbox = document.querySelector('input[id*="suggest_qa"]');
-
-                // Verificar si el checkbox suggest_qa está marcado
-                if (suggestQaCheckbox && suggestQaCheckbox.checked) {
-                    console.log("🚫 Acción cancelada: suggest_qa está marcado");
-                    return; // Salir sin ejecutar ninguna acción automática
-                }
-
-                // Solo continuar si suggest_qa NO está marcado
-                if (buttonText === "Submit QA Result" || (buttonText === "Save" && qaProductivityCheckbox && qaProductivityCheckbox.checked)) {
-                    validateAndExtractAgain(() => {
-                        console.log("📤 Enviando datos:", { qaer, projectName, comments, dataUrl });
-
-                        if (cleanText(comments) !== "qaed ok") {
-                            const reportQaButton = [...document.querySelectorAll('a')].find(a => cleanText(a.textContent).startsWith("report qa |"));
-                            if (reportQaButton && !suggestQaCheckbox.checked) { // Doble verificación por seguridad
-                                setTimeout(() => {
-                                    reportQaButton.click();
-                                }, 500);
-                            } else {
-                                console.log("⚠️ No se ejecutó Report QA (suggest_qa marcado o botón no encontrado)");
-                            }
-                        }
-
-                        // Solo enviar datos si suggest_qa NO está marcado
-                        if (!(suggestQaCheckbox && suggestQaCheckbox.checked)) {
-                            let payload = new FormData();
-                            payload.append("Projectname", projectName || "Unknown Project");
-                            payload.append("QAer", qaer || "Desconocido");
-                            payload.append("Comments", comments || "Sin comentarios");
-                            payload.append("dataUrl", dataUrl || "No disponible");
-
-                            fetch(RANDOM_QA_URL + "?qaproductivity", {
-                                method: "POST",
-                                body: payload,
-                                mode: "no-cors"
-                            })
-                                .then(() => {
-                                showNotification("Data registered successfully", "success");
-                            })
-                                .catch(error => {
-                                console.error("Error al enviar datos:", error);
-                                showNotification("Error sending data", "error");
-                            });
-                        }
-                    });
-                }
+            #QaProductivity:checked {
+                background-color: #D1E231;
+                border-color: #D1E231;
             }
-        });
+
+            #QaProductivity:checked::after {
+                content: "✓";
+                position: absolute;
+                color: #000;
+                font-size: 14px;
+                font-weight: bold;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            #QaProductivity:hover {
+                box-shadow: 0 0 8px rgba(209, 226, 49, 0.6);
+                transform: scale(1.05);
+            }
+
+            label[for="QaProductivity"] {
+                margin-left: 8px;
+                color: #D1E231;
+                font-weight: 600;
+                font-size: 14px;
+                cursor: pointer;
+                display: inline-flex;
+                align-items: center;
+                transition: all 0.2s ease;
+                text-shadow: 0 1px 1px rgba(0,0,0,0.2);
+            }
+
+            label[for="QaProductivity"]:hover {
+                color: #e6ff00;
+                text-shadow: 0 0 8px rgba(209, 226, 49, 0.6);
+            }
+        `;
+        document.head.appendChild(style);
     }
+
+    document.addEventListener("click", function(event) {
+        if (event.target.id === "btn_open_vetting_dlg") {
+            extractQaProductivityData();
+            console.log("Edit Mode abierto:", { qaer, projectName, dataUrl });
+
+            setTimeout(() => {
+                const btnSave = document.querySelector("#btn_submit_vetting_dlg.btn-primary");
+
+                if (btnSave && btnSave.textContent.trim() === "Save" && !document.querySelector("#QaProductivity")) {
+                    // Checkbox mejorado
+                    const checkbox = document.createElement("input");
+                    checkbox.type = "checkbox";
+                    checkbox.id = "QaProductivity";
+                    checkbox.style.cssText = `
+                        margin-left: 12px;
+                        width: 18px;
+                        height: 18px;
+                        cursor: pointer;
+                    `;
+
+                    // Label mejorado
+                    const label = document.createElement("label");
+                    label.htmlFor = "QaProductivity";
+                    label.textContent = " QA Productivity";
+                    label.style.cssText = `
+                        margin-left: 8px;
+                        color: #D1E231;
+                        font-weight: 600;
+                        font-size: 14px;
+                        cursor: pointer;
+                        display: inline-flex;
+                        align-items: center;
+                    `;
+
+                    // Contenedor para mejor alineación
+                    const container = document.createElement("div");
+                    container.style.display = "flex";
+                    container.style.alignItems = "center";
+                    container.style.marginLeft = "10px";
+                    container.appendChild(checkbox);
+                    container.appendChild(label);
+
+                    btnSave.parentNode.insertBefore(container, btnSave.nextSibling);
+                }
+            }, 500);
+        }
+    });
+
+    // El resto de la función permanece igual...
+    document.addEventListener("click", function(event) {
+        if (event.target.id === "btn_submit_vetting_dlg") {
+            const buttonText = event.target.textContent.trim();
+            const qaProductivityCheckbox = document.querySelector("#QaProductivity");
+            const suggestQaCheckbox = document.querySelector('input[id*="suggest_qa"]');
+
+            if (suggestQaCheckbox && suggestQaCheckbox.checked) {
+                console.log("🚫 Acción cancelada: suggest_qa está marcado");
+                return;
+            }
+
+            if (buttonText === "Submit QA Result" || (buttonText === "Save" && qaProductivityCheckbox && qaProductivityCheckbox.checked)) {
+                validateAndExtractAgain(() => {
+                    console.log("📤 Enviando datos:", { qaer, projectName, comments, dataUrl });
+
+                    if (cleanText(comments) !== "qaed ok") {
+                        const reportQaButton = [...document.querySelectorAll('a')].find(a => cleanText(a.textContent).startsWith("report qa |"));
+                        if (reportQaButton && !suggestQaCheckbox.checked) {
+                            setTimeout(() => {
+                                reportQaButton.click();
+                            }, 500);
+                        } else {
+                            console.log("⚠️ No se ejecutó Report QA");
+                        }
+                    }
+
+                    if (!(suggestQaCheckbox && suggestQaCheckbox.checked)) {
+                        let payload = new FormData();
+                        payload.append("Projectname", projectName || "Unknown Project");
+                        payload.append("QAer", qaer || "Desconocido");
+                        payload.append("Comments", comments || "Sin comentarios");
+                        payload.append("dataUrl", dataUrl || "No disponible");
+
+                        fetch(RANDOM_QA_URL + "?qaproductivity", {
+                            method: "POST",
+                            body: payload,
+                            mode: "no-cors"
+                        })
+                        .then(() => {
+                            showNotification("Data registered successfully", "success");
+                        })
+                        .catch(error => {
+                            console.error("Error al enviar datos:", error);
+                            showNotification("Error sending data", "error");
+                        });
+                    }
+                });
+            }
+        }
+    });
+}
 
     function watchForReportQaButton() {
         const observer = new MutationObserver(() => {
