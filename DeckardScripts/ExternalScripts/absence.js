@@ -1,9 +1,9 @@
 // ==UserScript==
-// @name         BambooHR Out Summary con Selector de Semana Mejorado
+// @name         BambooHR Ausencias - Equipo Específico
 // @namespace    http://tampermonkey.net/
-// @version      1.0
-// @description  Muestra quién está fuera por semana/mes seleccionado desde BambooHR ICS feed con interfaz mejorada y filtrado
-// @author       Tú y Asistente
+// @version      1.4
+// @description  Muestra solo ausencias de personas específicas en BambooHR
+// @author       TuNombre
 // @match        https://deckard.bamboohr.com/home/
 // @grant        GM_xmlhttpRequest
 // @grant        GM_setValue
@@ -11,12 +11,37 @@
 // @connect      deckard.bamboohr.com
 // ==/UserScript==
 
-(function () {
+(function() {
     'use strict';
 
     // Configuración
     const CALENDAR_URL = 'https://deckard.bamboohr.com/feeds/feed.php?id=fec848cc616cc7fee3ca705949e70744';
     const CACHE_DURATION = 3600000; // 1 hora en milisegundos
+
+    // Lista exacta de personas a mostrar (deben coincidir con el nombre antes del paréntesis en el SUMMARY del ICS)
+    const ALLOWED_PEOPLE = [
+        "Diego Fragozo Pérez",
+        "Alexander Mesa Arroyave",
+        "Alejandro Ospina Pulgarin",
+        "Carlos Montenegro Galan",
+        "Luis Escalante Gonzalez",
+        "Dilan Salazar Rico",
+        "Érika Meneses Granados",
+        "Paula Mancera Perdomo",
+        "Juliana Valencia Rodriguez",
+        "Linda Monzant Jiménez",
+        "Sara Osorio Castano",
+        "Juan Pineda Llano",
+        "Alejandro Gámez Pérez",
+        "Hugo Pulgarín López",
+        "Juan Amud Vásquez",
+        "Juan Velásquez",
+        "Laura Posada Bolívar",
+        "Manuel Valencia Restrepo",
+        "Santiago Correa Velásquez",
+        "Santiago Gómez Restrepo"
+    ];
+
     const THEME = {
         light: {
             bg: '#fff',
@@ -82,7 +107,6 @@
     function fetchICS(callback, forceRefresh = false) {
         const now = new Date().getTime();
 
-        // Usar caché si está disponible y es reciente
         if (!forceRefresh && cachedEvents && cachedTimestamp && (now - cachedTimestamp < CACHE_DURATION)) {
             console.log('Usando datos en caché de BambooHR');
             callback(cachedEvents);
@@ -93,7 +117,7 @@
         GM_xmlhttpRequest({
             method: "GET",
             url: CALENDAR_URL,
-            onload: function (response) {
+            onload: function(response) {
                 if (response.status === 200) {
                     const events = parseICS(response.responseText);
                     cachedEvents = events;
@@ -120,7 +144,11 @@
             const description = entry.match(/DESCRIPTION:(.+?)(?:\r\n|\n)/s)?.[1]?.trim();
             const eventType = determineEventType(summary, description);
 
-            if (summary && start && end) {
+            // Extraer solo el nombre base (sin el tipo de ausencia)
+            const nombreBase = summary?.split(' (')[0]?.trim();
+
+            // Solo procesar si la persona está en la lista permitida (comparación exacta)
+            if (summary && start && end && ALLOWED_PEOPLE.includes(nombreBase)) {
                 const startDate = new Date(
                     parseInt(start.substring(0, 4)),
                     parseInt(start.substring(4, 6)) - 1,
@@ -141,7 +169,7 @@
                     const dateStr = formatDate(d);
                     events.push({
                         date: dateStr,
-                        name: summary,
+                        name: nombreBase, // Usamos solo el nombre base sin el tipo de ausencia
                         description: description || '',
                         type: eventType,
                         startDate: formatDate(startDate),
@@ -175,8 +203,11 @@
         for (const e of events) {
             if (!grouped[e.date]) grouped[e.date] = [];
 
-            // Evitar duplicados
-            const existingIndex = grouped[e.date].findIndex(item => item.name === e.name);
+            const existingIndex = grouped[e.date].findIndex(item =>
+                item.name === e.name &&
+                item.startDate === e.startDate &&
+                item.endDate === e.endDate
+            );
             if (existingIndex === -1) {
                 grouped[e.date].push(e);
             }
@@ -237,13 +268,16 @@
         const container = document.createElement("div");
         container.id = "bamboohr-widget";
         container.style.position = "fixed";
-        container.style.top = "60px";
-        container.style.right = "20px";
+        container.style.top = "20px"; // Distancia desde la parte superior
+        container.style.left = "50%"; // Centrado horizontal
+        container.style.transform = "translateX(-50%)"; // Ajuste fino para centrar exactamente
         container.style.zIndex = "9999";
         container.style.fontFamily = "system-ui, -apple-system, sans-serif";
+        container.style.maxWidth = "90%"; // Para que no sea demasiado ancho en pantallas pequeñas
+        container.style.margin = "0 auto"; // Margen automático para centrado adicional
         applyTheme(container);
 
-        // Añadir botón de acción
+        // Añadir botón de acción (opcional, puedes eliminarlo si no lo necesitas)
         const actionButton = createActionButton();
         document.body.appendChild(actionButton);
 
@@ -268,7 +302,7 @@
         btn.innerHTML = "👥 Ver ausencias";
         btn.style.position = "fixed";
         btn.style.top = "20px";
-        btn.style.right = "20px";
+        btn.style.left = "360px"; // Moverlo a la izquierda para que no estorbe
         btn.style.zIndex = "9999";
         btn.style.padding = "10px 15px";
         btn.style.color = "#fff";
