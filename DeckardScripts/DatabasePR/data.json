@@ -11103,6 +11103,28 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "OH - Vinton County",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://beacon.schneidercorp.com/Application.aspx?AppID=1118&LayerID=28105&PageTypeID=2&PageID=11535"
+        }
+      ],
+      "License List": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ],
+      "Important Info": "<p><br></p>",
+      "Media": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ]
     }
   ]
 }
