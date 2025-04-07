@@ -11125,6 +11125,32 @@
           "type": "N/A"
         }
       ]
+    },
+    {
+      "Project": "MI - Township Of Charlevoix",
+      "Public Records & GIS": [
+        {
+          "url": "https://bsaonline.com/?uid=315",
+          "type": "PR (Charlevoix County)"
+        },
+        {
+          "url": "https://www.charlevoixcounty.org/online_services/index.php",
+          "type": "GIS"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "<p><span style=\"color: rgb(55, 65, 81);\">To search by APN in the PR and GIS, make sure you include the dashes as shown below</span></p><p><span style=\"color: rgb(55, 65, 81);\"><span class=\"ql-cursor\">﻿</span></span></p><p><img src=\"data:image/png;base64,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\"></p>",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
