@@ -2,7 +2,7 @@
 // @name         QA Productivity & Random QA Report - Unified
 // @namespace
 // @version      3.1
-// @description  Permite tomar el registro de listings revisados y hacer los reportes de qa directamente desde cyborg
+// @description  Combina funcionalidades de captura de datos QA con sistema unificado de notificaciones
 // @match        https://cyborg.deckard.com/listing/*/STR*
 // @grant        none
 // ==/UserScript==
@@ -201,42 +201,39 @@
         }
     }
 
-    // Función para generar feedback (para Random QA)
+ // Función para generar feedback (para Random QA)
     function generateFeedback(error, qaedc, project, link, qaer, dynamicFields = {}) {
         const getFirstName = (fullName) => {
         return fullName.split(' ')[0] || fullName; // Toma el primer elemento o el nombre completo si no hay espacios
     };
         const qaed = getFirstName(qaedc);
         const feedbackTemplates = {
-            "Wrong APN": `Hola ${qaed}, hoy estoy realizando Random QA y encontré <${link}|esta propiedad tuya> en ${project}. Noté que el APN no es correcto. Por favor, mis motivos son: ${dynamicFields.reasons || "(aquí van los motivos)"}. ¡Muchas Gracias! Att: ${qaer}`,
-            "Bad APN": `¡Hola ${qaed}! Hoy estoy realizando Random QA y encontré <${link}|esta propiedad tuya> en ${project}. El APN registrado tiene un formato erróneo por lo que generó una Bad APN. Trata de verificar siempre en los PR para evitar este tipo de errores. ¡Muchas gracias! Att: ${qaer}`,
-            "Missing MUS": `Hola ${qaed}, hoy estoy realizando Random QA y encontré <${link}|esta propiedad tuya> en ${project}. Noté que falta información en el campo MUS. Aun cuando en important info estaba la instrucción, sé que son detalles que a veces se nos pasan y que estarás más pendiente de esto. ¡Gracias! Att: ${qaer}`,
-            "Missing Address Override": `Saludos ${qaed}, espero que todo esté bien. Revisando Random QA, encontré <${link}|esta propiedad tuya> en ${project}. Noté que faltó hacerle Address Override. Asegúrate de agregarlo cuando sea necesario. ¡Muchas gracias! Att: ${qaer}`,
-            "Missing Address Override in an NMF Listing (If required)": `¡Saludos ${qaed}!, ¡espero que todo esté yendo bien! 🤗 Hoy estoy realizando Random QA y me encontré con <${link}|esta propiedad tuya> en ${project}. Está muy bien identificada, sin embargo, olvidaste agregar el Address Override. Ten presente que si la propiedad es un condominio y se consigue fácilmente pero no consigues la unidad, debes dejar el NMF con el Unit # unk. ¡Muchas gracias! Att: ${qaer}`,
-            "Wrong Address Override": `¡Hola ${qaed}! Espero que estés teniendo un buen día. Hoy estoy realizando Random QA y encontré <${link}|esta propiedad tuya> en ${project}. La identificación fue precisa y la evidencia espectacular. Sin embargo, al revisarla, noté que el Address Override no es correcto. Por favor, en este caso sería: ${dynamicFields.correctAddress || "(aquí va el address correcto)"}. ¡Muchas Gracias! Att: ${qaer}`,
-            "Do Not Clear Previous Address Override In An NMF Listing": `¡Saludos ${qaed}!, ¡espero que todo esté yendo bien! 🤗 Hoy estoy realizando Random QA y me encontré con <${link}|esta propiedad tuya> en ${project}. Noté que no eliminaste el Address Override anterior en un listing de NMF. Asegúrate de revisarlo y corregirlo. ¡Muchas gracias! Att: ${qaer}`,
+            "Wrong APN": `Hola ${qaed}, Estoy realizando QA y <${link}|revisé una de tus propiedades> en ${project}. Noté que el APN no es correcto, esto se debe a:: ${dynamicFields.reasons || "(aquí van los motivos)"}.  Si tienes alguna duda o necesitas más información, ¡estoy aquí para ayudar! Att: ${qaer}`,
+            "Bad APN": `¡Hola ${qaed}! Estoy realizando Random QA y encontré <${link}|esta propiedad tuya> en ${project}. El APN registrado tiene un formato erróneo por lo que generó una Bad APN. Trata de verificar siempre en los PR para evitar este tipo de errores. ¡Muchas gracias! Att: ${qaer}`,
+            "Missing MUS": `Hola ${qaed}, Estoy realizando QA y revisé <${link}|una de tus propiedades> en ${project}. Noté que falta información en el campo MUS.  Para este proyecto es necesario completarlo, según la instrucción que puedes encontrar en Important Info. No olvides revisar esa información al comenzar tu proyecto.  Si tienes alguna duda o necesitas más información, ¡estoy aquí para ayudar!  Att: ${qaer}`,
+            "Missing Address Override": `Hola ${qaed},  Estoy realizando QA y revisé <${link}|una de tus propiedades> en ${project}. Noté que faltó hacerle Address Override. Asegúrate de agregarlo cuando sea necesario. Si tienes alguna duda o necesitas más información, ¡estoy aquí para ayudar!  Att: ${qaer}`,
+            "Missing Address Override in an NMF Listing (If required)": `Hola ${qaed}, Estoy realizando QA y revisé <${link}|una de tus propiedades> en ${project}. En este caso, no pudiste identificar la propiedad, pero no te preocupes, a veces pasa. Recuerda que, si la propiedad está en un condominio que puedes identificar fácilmente pero no encuentras la unidad específica, debes hacer el Address Override en NMF utilizando el siguiente formato: House number Street name Unit # unk, City, STATE ABBREVIATION Zip code. Si tienes alguna duda o necesitas más información, ¡estoy aquí para ayudar!  Att: ${qaer}`,
+            "Wrong Address Override": `¡Hola ${qaed}! Estoy realizando QA y revisé <${link}| una de tus propiedades> en ${project}. La identificación fue precisa y la evidencia muy clara. Sin embargo, al revisarla, noté que el Address Override no es correcto. En este caso, la opción correcta sería: ${dynamicFields.correctAddress || "(aquí va el address correcto)"}. Si tienes alguna duda o necesitas más información, ¡estoy aquí para ayudar!  Att: ${qaer}`,
+            "Do Not Clear Previous Address Override In An NMF Listing": `Hola ${qaed}, Estoy realizando QA y revisé <${link}|una de tus propiedades> en ${project}. Noté que no eliminaste el Address Override anterior en un listing de NMF. Asegúrate de quitarlo cuando identifiques la propiedad, ya que de lo contrario el cliente no podrá ver la dirección correcta.Si tienes alguna duda o necesitas más información, ¡estoy aquí para ayudar!  Att: ${qaer}`,
             "QA Is Not Correct High": `Hola ${qaed}, hoy estoy realizando Random QA y encontré <${link}|esta propiedad> en ${project} la cual marcaste con QAok. Noté que el QAok no es correcto. Mis motivos son: ${dynamicFields.reasons || "(aquí van los motivos)"}. ¡Gracias! Att: ${qaer}`,
             "QA Is Not Correct Low": `Hola ${qaed}, hoy estoy realizando Random QA y encontré <${link}|esta propiedad tuya> en ${project} la cual marcaste con QAok. Noté que la QA no es correcta. Mis motivos son: ${dynamicFields.reasons || "(aquí van los motivos)"}. ¡Gracias! Att: ${qaer}`,
-            "Unit Box (If visible)": `¡Saludos ${qaed}!, ¡espero que todo esté yendo bien! 🤗 Hoy estoy realizando Random QA y me encontré con <${link}|esta propiedad tuya> en ${project}. Noté que omitiste llenar el campo 'Unit Box'. En este caso era: ${dynamicFields.unitBox || "(aquí va el unit box)"}. Recuerda que este campo es importante para separar las Property Cards en RS. Este puede estar en las imágenes o en la descripción del listing. Tenlo presente para una próxima vez. ¡Muchas gracias! Att: ${qaer}`,
-            "Wrong/ Not Required Unit Box": `¡Hola ${qaed}! Espero que estés teniendo un buen día. Hoy estoy realizando Random QA y encontré <${link}|esta propiedad tuya> en ${project}. Hiciste un buen trabajo identificando la propiedad, sin embargo, noté que dejaste ${dynamicFields.unitBox || "(aquí va el unit box)"} en el Unit Box cuando no era necesario. ¡Muchas Gracias! Att: ${qaer}`,
+            "Unit Box (If visible)": `Hola ${qaed}, Estoy realizando QA y revisé <${link}|una de tus propiedades> en ${project}. Noté que omitiste llenar el campo 'Unit Box'. En este caso era: ${dynamicFields.unitBox || "(aquí va el unit box)"}. Esta información la puedes encontrar en las imágenes, la descripción o el título del listing, y nos ayuda a separar correctamente las Property Cards. Si tienes alguna duda o necesitas más información, ¡estoy aquí para ayudar!   Att: ${qaer}`,
+            "Wrong Unit Box": `Hola ${qaed}, Estoy realizando QA y revisé <${link}|una de tus propiedades> en ${project}. Hiciste un buen trabajo identificando la propiedad, sin embargo, la unidad que colocaste en el unit box, no coincide con las que ofertan en el listing ${dynamicFields.unitBox || "(aquí va el unit box)"} es la unidad correcta. ¡Muchas Gracias! Att: ${qaer}`,
+            "Not Required Unit Box": `Hola ${qaed}, Estoy realizando QA y encontré <${link}|esta propiedad tuya> en ${project}. Hiciste un buen trabajo identificando la propiedad, sin embargo, noté que dejaste ${dynamicFields.unitBox || "(aquí va el unit box)"} en el Unit Box cuando no era necesario. . Si tienes alguna duda o necesitas más información, ¡estoy aquí para ayudar! Att: ${qaer}`,
             "Property Manager Info (If required)": `¡Hola ${qaed}! Hoy estoy realizando Random QA y encontré <${link}|esta propiedad tuya> en ${project}. Noté que falta la información del Property Manager. Por favor, asegúrate de agregarla si es requerida. ¡Gracias! Att: ${qaer}`,
             "Rental Override": `Hola ${qaed}, espero que estés bien. Hoy estoy realizando Random QA y encontré <${link}|esta propiedad tuya> en ${project}. ////////////////////////////////. ¡Gracias! Att: ${qaer}`,
-            "Evidences": `Hola ${qaed}, espero que todo esté bien. Hoy estoy realizando Random QA y encontré <${link}|esta propiedad tuya> en ${project}. Noté que faltan algunas evidencias necesarias. Por favor, asegúrate de incluir toda la información requerida. ¡Gracias! Att: ${qaer}`,
-            "Verification Data": `¡Hola ${qaed}! Hoy estoy realizando Random QA y encontré <${link}|esta propiedad tuya> en ${project}. Noté que falta información en los datos de verificación. Por favor, siempre es bueno asegurarse de que toda la información sea correcta. ¡Gracias! Att: ${qaer}`,
             "Structure": `¡Hola ${qaed}! Hoy estoy realizando Random QA y encontré <${link}|esta propiedad tuya> en ${project}. Verifiqué los registros y noté que la estructura asignada no es la correcta. En este caso la adecuada es ${dynamicFields.structure || "(aquí va la estructura correcta)"}. Te recomiendo revisarlo más a detalle. ¡Gracias! Att: ${qaer}`
         };
 
         return feedbackTemplates[error] || "Error. Please write the feedback manually and report the error to Luis Escalante";
     }
-
     // Función para mostrar la ventana de edición (para Random QA)
  function showEditWindow(data, onConfirm) {
     const errors = [
         "Wrong APN", "Bad APN", "Wrong Address Override", "Missing Address Override",
         "Missing Address Override in an NMF Listing (If required)", "Do Not Clear Previous Address Override In An NMF Listing",
         "Missing MUS", "Property Manager Info (If required)", "QA Is Not Correct High", "QA Is Not Correct Low",
-        "Wrong/ Not Required Unit Box", "Unit Box (If visible)", "Evidences", "Verification Data",
-        "Rental Override", "Structure"
+        "Wrong Unit Box", "Not Required Unit Box", "Unit Box (If visible)", "Rental Override", "Structure"
     ];
 
     const modal = document.createElement("div");
