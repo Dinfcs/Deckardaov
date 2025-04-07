@@ -221,7 +221,7 @@
             "Wrong Unit Box": `Hola ${qaed}, Estoy realizando QA y revisé <${link}|una de tus propiedades> en ${project}. Hiciste un buen trabajo identificando la propiedad, sin embargo, la unidad que colocaste en el unit box, no coincide con las que ofertan en el listing ${dynamicFields.unitBox || "(aquí va el unit box)"} es la unidad correcta. ¡Muchas Gracias! Att: ${qaer}`,
             "Not Required Unit Box": `Hola ${qaed}, Estoy realizando QA y encontré <${link}|esta propiedad tuya> en ${project}. Hiciste un buen trabajo identificando la propiedad, sin embargo, noté que dejaste ${dynamicFields.unitBox || "(aquí va el unit box)"} en el Unit Box cuando no era necesario. . Si tienes alguna duda o necesitas más información, ¡estoy aquí para ayudar! Att: ${qaer}`,
             "Property Manager Info (If required)": `¡Hola ${qaed}! Hoy estoy realizando Random QA y encontré <${link}|esta propiedad tuya> en ${project}. Noté que falta la información del Property Manager. Por favor, asegúrate de agregarla si es requerida. ¡Gracias! Att: ${qaer}`,
-            "Rental Override": `Hola ${qaed}, espero que estés bien. Hoy estoy realizando Random QA y encontré <${link}|esta propiedad tuya> en ${project}. ////////////////////////////////. ¡Gracias! Att: ${qaer}`,
+            "Rental Override": `Hola ${qaed}, espero que estés bien. Hoy estoy realizando Random QA y encontré <${link}|esta propiedad tuya> en ${project}. ¡Gracias! Att: ${qaer}`,
             "Structure": `¡Hola ${qaed}! Hoy estoy realizando Random QA y encontré <${link}|esta propiedad tuya> en ${project}. Verifiqué los registros y noté que la estructura asignada no es la correcta. En este caso la adecuada es ${dynamicFields.structure || "(aquí va la estructura correcta)"}. Te recomiendo revisarlo más a detalle. ¡Gracias! Att: ${qaer}`
         };
 
@@ -369,6 +369,13 @@ modalContent.innerHTML = `
     // Estilos CSS mejorados con áreas de texto más grandes
     const styles = document.createElement('style');
     styles.textContent = `
+    /* Agrega esto al inicio de tus estilos CSS */
+    .form-group label,
+    .feedback-section label,
+    .textarea-wrapper label,
+    .preview-wrapper label {
+        text-transform: uppercase !important;
+    }
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
     .qa-modal {
