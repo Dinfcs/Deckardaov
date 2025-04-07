@@ -3,7 +3,7 @@
 // @namespace
 // @version      3.1
 // @description  Permite tomar el registro de listings revisados y hacer los reportes de qa directamente desde cyborg
-// @match        https://cyborg.deckard.com/*
+// @match        https://cyborg.deckard.com/listing/*/STR*
 // @grant        none
 // ==/UserScript==
 
