@@ -106,7 +106,7 @@
         },
                 {
             "urlPattern": "https://deckard.bamboohr.com/home/",
-            "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/ExternalScripts/absence.js"
+            "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/ExternalScripts/Ausencias.js"
         }
     ]
 }
