@@ -10908,8 +10908,8 @@
       "Project": "NM - Village Of Ruidoso",
       "Public Records & GIS": [
         {
-          "type": "PR",
-          "url": "http://liveweb.lincolncountynm.gov/assessor.aspx?source=assessor"
+          "url": "http://liveweb.lincolncountynm.gov/assessor.aspx?source=assessor",
+          "type": "PR"
         },
         {
           "url": "https://portico.mygisonline.com/html5/?viewer=lincolnnm",
@@ -10918,11 +10918,11 @@
       ],
       "License List": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ],
-      "Important Info": "<ul><li><strong>GIS</strong> -  <strong>Pictometry</strong> and <strong>Streetiew are able in the GIS !   </strong><span style=\"color: rgb(51, 51, 51);\">☆</span><strong>    </strong><strong style=\"color: rgb(102, 185, 102);\"> </strong><span style=\"color: rgb(102, 185, 102);\">Check the Image 1*</span></li></ul><p>                       You can search by address, APN (UPC at GIS) and owner name</p><p><br></p><ul><li><strong>PR</strong> - To search, select the tab corresponding to the information you are looking for.   - Property code (APN)   <span style=\"color: rgb(51, 51, 51);\">☆</span>  <span style=\"color: rgb(230, 0, 0);\"> image 2*</span></li></ul><p>                                                                                                                                                            - Physical Address</p><p>                                                                                                                </p>",
+      "Important Info": "<ul><li><strong>GIS</strong> -  <strong>Pictometry</strong> and <strong>Streetiew are able in the GIS !   </strong><span style=\"color: rgb(51, 51, 51);\">☆</span><strong>    </strong><strong style=\"color: rgb(102, 185, 102);\"> </strong><span style=\"color: rgb(102, 185, 102);\">Check the Image 1*</span></li></ul><p>                       You can search by address, APN (UPC at GIS) and owner name</p><p><br></p><ul><li><strong>PR</strong> - To search, select the tab corresponding to the information you are looking for.   - Property code (APN)   <span style=\"color: rgb(51, 51, 51);\">☆</span>  <span style=\"color: rgb(230, 0, 0);\"> image 2*</span></li></ul><p>                                                                                                                                                           </p><ul><li>Be careful with properties with the general address \"110 Jack Little Dr\", check the PR's to identify the correct unit \"A\" or \"C\" and make an AO if necessary.                                                                                    </li></ul>",
       "Media": [
         {
           "type": "Image 1",
