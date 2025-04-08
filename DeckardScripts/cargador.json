@@ -103,6 +103,10 @@
                 {
             "urlPattern": "https://deckardtech.atlassian.net/browse/COLO*",
             "scriptUrl": "https://dinfcs.github.io/Deckardaov/TS/FrameJira.js"
+        },
+                {
+            "urlPattern": "https://deckard.bamboohr.com/*",
+            "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/ExternalScripts/absence.js"
         }
     ]
 }
