@@ -1006,14 +1006,12 @@ document.body.appendChild(styles);
         // Verificar si el checkbox suggest_qa está marcado
         const suggestQaCheckbox = document.querySelector('input[id*="suggest_qa"]');
         if (suggestQaCheckbox && suggestQaCheckbox.checked) {
-            showNotification("Action skipped: suggest_qa is checked", "warning");
             return;
         }
 
         // Verificar si los comentarios contienen "SQAed" (case insensitive)
         const commentsTextarea = document.querySelector('textarea[name="verification_comments"]');
         if (commentsTextarea && /sqae?d/i.test(commentsTextarea.value.trim())) {
-            showNotification("Action skipped: comments contain SQAed", "warning");
             return;
         }
 
@@ -1228,7 +1226,7 @@ document.addEventListener("click", function(event) {
             return;
         }
 
-        if (/sqae?d/i.test(comments)) {
+        if (/sqa/i.test(comments)) {
             console.log("🚫 Acción cancelada: comentarios contienen SQAed");
             return;
         }
