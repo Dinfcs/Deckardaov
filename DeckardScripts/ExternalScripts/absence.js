@@ -3,8 +3,11 @@
 // @namespace    http://tampermonkey.net/
 // @version      1.4
 // @description  Muestra solo ausencias de personas específicas en BambooHR
-// @author       Lucho
+// @author       TuNombre
 // @match        https://deckard.bamboohr.com/home/
+// @grant        GM_xmlhttpRequest
+// @grant        GM_setValue
+// @grant        GM_getValue
 // @connect      deckard.bamboohr.com
 // ==/UserScript==
 
@@ -86,15 +89,15 @@
         return new Date(year, month - 1, day);
     }
 
-    // Persistencia usando localStorage
+    // Persistencia
     function saveSettings() {
-        localStorage.setItem('bamboohr_theme', currentTheme);
-        localStorage.setItem('bamboohr_view', currentView);
+        GM_setValue('bamboohr_theme', currentTheme);
+        GM_setValue('bamboohr_view', currentView);
     }
 
     function loadSettings() {
-        const savedTheme = localStorage.getItem('bamboohr_theme');
-        const savedView = localStorage.getItem('bamboohr_view');
+        const savedTheme = GM_getValue('bamboohr_theme');
+        const savedView = GM_getValue('bamboohr_view');
 
         if (savedTheme) currentTheme = savedTheme;
         if (savedView) currentView = savedView;
@@ -111,22 +114,23 @@
         }
 
         console.log('Obteniendo datos frescos de BambooHR');
-        fetch(CALENDAR_URL)
-            .then(response => {
-                if (response.ok) {
-                    return response.text();
+        GM_xmlhttpRequest({
+            method: "GET",
+            url: CALENDAR_URL,
+            onload: function(response) {
+                if (response.status === 200) {
+                    const events = parseICS(response.responseText);
+                    cachedEvents = events;
+                    cachedTimestamp = now;
+                    callback(events);
+                } else {
+                    showNotification("Error cargando el calendario: " + response.statusText, "error");
                 }
-                throw new Error('Error en la respuesta de la red');
-            })
-            .then(data => {
-                const events = parseICS(data);
-                cachedEvents = events;
-                cachedTimestamp = now;
-                callback(events);
-            })
-            .catch(error => {
-                showNotification("Error cargando el calendario: " + error.message, "error");
-            });
+            },
+            onerror: function(e) {
+                showNotification("Error de red: " + e.error, "error");
+            }
+        });
     }
 
     function parseICS(data) {
@@ -801,7 +805,7 @@
             list.style.padding = "0 0 0 " + (isCompact ? "15px" : "20px");
 
             peopleList.sort((a, b) => a.name.localeCompare(b.name));
-            for (const person of peopleList) {
+      for (const person of peopleList) {
                 const item = document.createElement("li");
                 item.style.marginBottom = "4px";
 
