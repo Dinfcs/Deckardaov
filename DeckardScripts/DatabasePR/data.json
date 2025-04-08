@@ -11151,6 +11151,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "FL - City Of Oakland Park",
+      "Public Records & GIS": [
+        {
+          "url": "https://bcpa.net/RecMenu.asp",
+          "type": "PR (Broward County)"
+        },
+        {
+          "type": "GIS (Broward County)",
+          "url": "https://gisweb-adapters.bcpa.net/bcpawebmap_ex/bcpawebmap.aspx?"
+        }
+      ],
+      "License List": [
+        {
+          "type": "License List",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EU7Soebc0VhApHC9_mXC-K0B1a1Uj90JmGrYE9Ga6R-2Yg?e=FE20Ck"
+        }
+      ],
+      "Important Info": "<p><br></p>",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
