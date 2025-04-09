@@ -11177,6 +11177,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "NJ - City Of Ocean City",
+      "Public Records & GIS": [
+        {
+          "url": "https://press.capemaycountynj.gov/PRODPRESS/GoogleWithUC/Default.aspx",
+          "type": "PR"
+        },
+        {
+          "type": "GIS",
+          "url": "https://ims.capemaycountynj.gov/myiDVViewer/map/424e493aaa1267c9/Cape-May-Co-Parcel-Viewer/"
+        }
+      ],
+      "License List": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ],
+      "Important Info": "<p><br></p>",
+      "Media": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ]
     }
   ]
 }
