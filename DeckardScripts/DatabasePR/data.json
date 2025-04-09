@@ -5058,8 +5058,8 @@
           "url": "https://www.greenecountyassessor.org/assessor/search/commonsearch.aspx?mode=realprop"
         },
         {
-          "type": "GIS",
-          "url": "https://gisdata-cosmo.opendata.arcgis.com/datasets/COSMO::address-points/explore?location=37.203248%2C-93.322290%2C21.96"
+          "url": "https://cosmo.maps.arcgis.com/apps/webappviewer/index.html?id=039745f0fc374555906223e4c1e13bc5",
+          "type": "GIS"
         }
       ],
       "License List": [
@@ -5068,7 +5068,7 @@
           "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B66C542D1-1644-454E-BD70-0C5176A25AB4%7D&file=RentalScape_10-14-24_2300.csv&action=default&mobileredirect=true"
         }
       ],
-      "Important Info": "- To search in the PR with the CYBORG APN, you need to delete the first 2 digits, which are usually 88. \n- Example: APN:881219209024 : APN: 1219209024\n- The PR in some APNs has two records, please prioritize the record with only one street number. ",
+      "Important Info": "<p>- To search in the PR with the CYBORG APN, you need to delete the first 2 digits, which are usually 88. \n- Example: APN:881219209024 : APN: 1219209024\n- The PR in some APNs has two records, please prioritize the record with only one street number. </p>",
       "Media": [
         {
           "type": "N/A",
