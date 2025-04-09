@@ -8998,8 +8998,8 @@
       "Project": "OR - City of Hood River",
       "Public Records & GIS": [
         {
-          "type": "PR",
-          "url": "https://records.co.hood-river.or.us/PSO/"
+          "url": "https://records.co.hood-river.or.us/PSO/",
+          "type": "PR"
         },
         {
           "type": "GIS",
@@ -9008,15 +9008,15 @@
       ],
       "License List": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "type": "List",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EajmHRoXelZEnECBGUejjOEBRLWan0_rCTKq50RrwISbkQ?e=kk5Wnw"
         }
       ],
-      "Important Info": "You can search by address. Click on “Account” for further information.\nTo search by APN use Map.\nSome properties are located in Hood River County, please use Parcels for this County for more info.\n",
+      "Important Info": "<p>You can search by address. Click on “Account” for further information.\nTo search by APN use Map.\nSome properties are located in Hood River County, please use Parcels for this County for more info.\n</p>",
       "Media": [
         {
-          "type": "N/A",
-          "url": "https://drive.usercontent.google.com/download?id=1RZg7KXhdr1tq2y7Nc5D4Fnm6tzLEJRSi&authuser=0"
+          "url": "https://drive.usercontent.google.com/download?id=1RZg7KXhdr1tq2y7Nc5D4Fnm6tzLEJRSi&authuser=0",
+          "type": "N/A"
         }
       ]
     },
