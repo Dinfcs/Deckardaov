@@ -10532,8 +10532,8 @@
       "Project": "CO - Town of Crested Butte",
       "Public Records & GIS": [
         {
-          "type": "PR",
-          "url": "https://property.spatialest.com/co/gunnison#/"
+          "url": "https://property.spatialest.com/co/gunnison#/",
+          "type": "PR"
         },
         {
           "url": "https://gis.gunnisoncounty.org/default_map.aspx",
@@ -10542,15 +10542,15 @@
       ],
       "License List": [
         {
-          "url": "N/A",
-          "type": "N/A"
+          "type": "List",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EdjVPKaJmZhFhZMRXdg5yE0BTuhSM73yOEnc0XV4NhAMfg?e=NtLDK6"
         }
       ],
       "Important Info": "<ul><li>No Aerial in NearMaps</li></ul>",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ]
     },
