@@ -6522,8 +6522,8 @@
       "Project": "MI - City of Charlevoix",
       "Public Records & GIS": [
         {
-          "url": "https://bsaonline.com/?uid=315",
-          "type": "PR (Charlevoix County)"
+          "type": "PR (Charlevoix County)",
+          "url": "https://bsaonline.com/?uid=315"
         },
         {
           "type": "PR",
@@ -6536,15 +6536,15 @@
       ],
       "License List": [
         {
-          "url": "N/A",
-          "type": "N/A"
-        }
-      ],
-      "Important Info": "<p><span style=\"color: rgb(55, 65, 81);\">To search by APN in the PR and GIS, make sure you include the dashes as shown below</span></p><p><span style=\"color: rgb(55, 65, 81);\"><span class=\"ql-cursor\">﻿</span></span></p><p><img src=\"data:image/png;base64,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\"></p>",
-      "Media": [
-        {
           "type": "N/A",
           "url": "N/A"
+        }
+      ],
+      "Important Info": "<p><span style=\"color: rgb(55, 65, 81);\">To search by APN in the PR and GIS, make sure you include the dashes as shown below</span></p>",
+      "Media": [
+        {
+          "url": "https://drive.google.com/uc?export=view&id=1yVZ4R4gCc6c5R5WXoPl76qWqJa2XIJdZ",
+          "type": "Example"
         }
       ]
     },
