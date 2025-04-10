@@ -10588,21 +10588,21 @@
       "Project": "",
       "Public Records & GIS": [
         {
-          "url": "N/A",
-          "type": "N/A"
+          "type": "N/A",
+          "url": "N/A"
         }
       ],
       "License List": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ],
-      "Important Info": "<h3><strong>Property Search Guidelines</strong></h3><h4>🏔️ <strong>Ensure the Correct County</strong></h4><p>✅ <strong>Be sure the county is SUMMIT, NOT SUMMIT_KEYSTONE.</strong></p><p> To know more about a property, use the <strong>information button</strong> at the top of the page and select the parcel.</p><h4>🏡 <strong>Searching by Street Name</strong></h4><ul><li>Input only the <strong>street name</strong> (without suffix).</li><li>Select the <strong>suffix</strong> from the available options.</li><li>Find the needed street number.</li><li>⚠️ <strong>Using the APN is recommended</strong> since this step can be more complicated.</li><li>To learn more about each property, select it and go to <strong>\"Show Detailed Data.\"</strong></li></ul><h4>📌 <strong>Recommended Table of Contents Selections</strong></h4><p>✅ <strong>Keep only the following options selected:</strong></p><p><br></p><ul><li><strong>Address Text</strong></li><li><strong>Road Text</strong></li><li><strong>Parcels</strong></li><li><strong>2015 Aerial Imagery</strong></li></ul><h4>🏢 <strong>Handling Address Overrides</strong></h4><p>🔹 <strong>If a unit appears in an address</strong>, override it with the <strong>unit</strong> and use the <strong>unit box</strong>.</p><p>🔹 <strong>If an address override is needed for any issue other than the city:</strong></p><p><br></p><ul><li>Check the <strong>jurisdiction box</strong> and use the city shown there.</li><li>⚠️ <strong>There is NO NEED to override the address if only the city is different.</strong></li></ul><h4>🏢 <strong>Address Overrides in Condominiums</strong></h4><p>If a condominium has both a <strong>building and a unit</strong>, follow these rules:</p><p>✔️ <strong>If the same unit does not exist in a different building:</strong></p><p> Override with only the <strong>unit</strong>.</p><p>📌 <strong>Example:</strong></p><p> 📍 Address: <strong>433 Wild Irishman Rd</strong></p><p> 🏢 Buildings: <strong>1, 2, and 3</strong></p><ul><li><strong>Building 1 → Units 100s</strong></li><li><strong>Building 2 → Units 200s</strong></li><li><strong>Building 3 → Units 300s</strong></li></ul><p>✅ <strong>Override as:</strong></p><p> <strong>433 Wild Irishman Rd Unit 102</strong></p><p>✔️ <strong>If each building has the same unit numbers:</strong></p><p> Include both the <strong>building and unit</strong> in the override.</p><p>✅ <strong>Override as:</strong></p><p> <strong>433 Wild Irishman Rd Unit 1-102</strong></p>",
+      "Important Info": "<p><br></p>",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ]
     },
