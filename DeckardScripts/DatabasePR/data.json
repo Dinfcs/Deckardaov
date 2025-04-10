@@ -5314,8 +5314,8 @@
       "Project": "WY - City of Cody",
       "Public Records & GIS": [
         {
-          "type": "PR",
-          "url": "https://maps.greenwoodmap.com/park/map?tab=search"
+          "url": "https://maps.greenwoodmap.com/park/map?tab=search",
+          "type": "PR"
         },
         {
           "type": "GIS",
@@ -5328,7 +5328,7 @@
           "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B099CFFDF-2F5E-47ED-AB0B-54E11E78A02B%7D&file=Short%20Term%20Rental%20List%20for%20Deckard...%20Copy%20JC.xlsx&action=default&mobileredirect=true"
         }
       ],
-      "Important Info": "The Property Record (PR) can also function as a Geographic Information System (GIS). To view the property information, click on 'property details'.",
+      "Important Info": "<p><br></p>",
       "Media": [
         {
           "type": "N/A",
