@@ -11207,6 +11207,32 @@
           "type": "N/A"
         }
       ]
+    },
+    {
+      "Project": "MI - Township Of Charlevoix",
+      "Public Records & GIS": [
+        {
+          "url": "https://bsaonline.com/?uid=315",
+          "type": "PR (Charlevoix County)"
+        },
+        {
+          "url": "https://www.charlevoixcounty.org/online_services/index.php",
+          "type": "GIS"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "<p><span style=\"color: rgb(55, 65, 81);\">To search by APN in the PR and GIS, make sure you include the dashes as shown below</span></p>",
+      "Media": [
+        {
+          "url": "https://drive.google.com/uc?export=view&id=1i4Y6V_AknzAoWeCJY8AeuX-cTFs07B1l",
+          "type": "Image"
+        }
+      ]
     }
   ]
 }
