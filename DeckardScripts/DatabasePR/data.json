@@ -6422,16 +6422,16 @@
       "Project": "CA - City of Fremont",
       "Public Records & GIS": [
         {
-          "type": "GIS",
-          "url": "https://egis.fremont.gov/gisapps/fremont/index.html?viewer=Public.gvh&_gl=1*thjk7q*_ga*MTk4MDAzMDc2OC4xNzEzMTkyNTAw*_ga_24CKMMECR8*MTcxMzE5MjUwMC4xLjEuMTcxMzE5MjUyNS4zNS4wLjA."
+          "url": "https://egis.fremont.gov/gisapps/fremont/index.html?viewer=Public.gvh&_gl=1*thjk7q*_ga*MTk4MDAzMDc2OC4xNzEzMTkyNTAw*_ga_24CKMMECR8*MTcxMzE5MjUwMC4xLjEuMTcxMzE5MjUyNS4zNS4wLjA.",
+          "type": "GIS (Use VPN)"
+        },
+        {
+          "url": "https://www.acassessor.org/parcel_viewer/",
+          "type": "GIS (Use VPN)"
         },
         {
           "type": "PR",
           "url": "https://propinfo.acgov.org/"
-        },
-        {
-          "type": "GIS",
-          "url": "https://www.acassessor.org/parcel_viewer/"
         }
       ],
       "License List": [
@@ -6440,7 +6440,7 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "To use the public records, we need to remove the zeros from the APN provided by Cyborg and use dashes in the PR. For example, for the APN 531001213200, we should enter it in the PRs as 531-12-132.",
+      "Important Info": "<p>To use the public records, we need to:</p><p><br></p><ul><li>Remove the leading zeros from the APN provided by Cyborg.</li><li>Format the APN with dashes in the PR.</li></ul><p><br></p><p>For example, for the APN 531001213200, it should be entered in the PR as 531-12-132.</p>",
       "Media": [
         {
           "type": "N/A",
