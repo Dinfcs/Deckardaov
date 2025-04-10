@@ -10536,12 +10536,12 @@
       "Project": "CO - Town of Crested Butte",
       "Public Records & GIS": [
         {
-          "url": "https://property.spatialest.com/co/gunnison#/",
-          "type": "PR"
+          "type": "PR",
+          "url": "https://property.spatialest.com/co/gunnison#/"
         },
         {
-          "url": "https://gis.gunnisoncounty.org/default_map.aspx",
-          "type": "GIS"
+          "type": "GIS",
+          "url": "https://gis.gunnisoncounty.org/default_map.aspx"
         }
       ],
       "License List": [
@@ -10550,11 +10550,19 @@
           "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EdjVPKaJmZhFhZMRXdg5yE0BTuhSM73yOEnc0XV4NhAMfg?e=NtLDK6"
         }
       ],
-      "Important Info": "<ul><li>No Aerial in NearMaps</li></ul>",
+      "Important Info": "<ul><li>No Aerial in NearMaps</li><li>There are some parcels containig diffrent APNs, you must click on the parcel in the PR (Image 1) then you will see a pop up box telling you that the parcel contains multiple parcels, you must click on \"OK\". Then you will see at the left each parcel separated in different property cards (Image 3).</li></ul>",
       "Media": [
         {
-          "url": "N/A",
-          "type": "N/A"
+          "url": "https://drive.google.com/uc?export=view&id=1rR2uYNt3FH_p-h_eTvkCalXrJV2J7yNO",
+          "type": "Image 1"
+        },
+        {
+          "type": "Image 2",
+          "url": "https://drive.google.com/uc?export=view&id=17yMIS2ePkXuKqocAA6ECo7M9pKt7qcbZ"
+        },
+        {
+          "type": "Image 3",
+          "url": "https://drive.google.com/uc?export=view&id=1H3HQKwNQLeXka4Xczas4eky8SxBbGteV"
         }
       ]
     },
@@ -11127,32 +11135,6 @@
         {
           "url": "N/A",
           "type": "N/A"
-        }
-      ]
-    },
-    {
-      "Project": "MI - Township Of Charlevoix2",
-      "Public Records & GIS": [
-        {
-          "type": "PR (Charlevoix County)",
-          "url": "https://bsaonline.com/?uid=315"
-        },
-        {
-          "type": "GIS",
-          "url": "https://www.charlevoixcounty.org/online_services/index.php"
-        }
-      ],
-      "License List": [
-        {
-          "url": "N/A",
-          "type": "N/A"
-        }
-      ],
-      "Important Info": "<p><span style=\"color: rgb(55, 65, 81);\">To search by APN in the PR and GIS, make sure you include the dashes as shown below</span></p>",
-      "Media": [
-        {
-          "url": "https://drive.google.com/uc?export=view&id=1i4Y6V_AknzAoWeCJY8AeuX-cTFs07B1l",
-          "type": "Image"
         }
       ]
     },
