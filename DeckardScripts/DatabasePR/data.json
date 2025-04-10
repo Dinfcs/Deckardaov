@@ -6076,21 +6076,17 @@
       "Project": "CA - City of El Cajon",
       "Public Records & GIS": [
         {
-          "type": "PR",
-          "url": "https://pqweb.parcelquest.com/#login"
-        },
-        {
-          "type": "GIS",
-          "url": "https://experience.arcgis.com/experience/ed63761c046348259099a1f9dc4ddf6c/#data_s=id%3AdataSource_2-18e14d71024-layer-4-2%3A2767"
+          "url": "https://experience.arcgis.com/experience/ed63761c046348259099a1f9dc4ddf6c/#data_s=id%3AdataSource_2-18e14d71024-layer-4-2%3A2767",
+          "type": "GIS"
         }
       ],
       "License List": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ],
-      "Important Info": "N/A",
+      "Important Info": "<p> You can use PQ,  is the Public Record.</p>",
       "Media": [
         {
           "type": "N/A",
