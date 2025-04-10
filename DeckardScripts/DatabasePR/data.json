@@ -6436,15 +6436,15 @@
       ],
       "License List": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ],
       "Important Info": "<p>To use the public records, we need to:</p><p><br></p><ul><li>Remove the leading zeros from the APN provided by Cyborg.</li><li>Format the APN with dashes in the PR.</li></ul><p><br></p><p>For example, for the APN 531001213200, it should be entered in the PR as 531-12-132.</p>",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ]
     },
