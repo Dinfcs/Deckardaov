@@ -6906,19 +6906,23 @@
         {
           "type": "PR",
           "url": "https://islipny.gov/community-and-services/assessment-roll/assessment-roll-app"
+        },
+        {
+          "url": "https://gisapps.suffolkcountyny.gov/gisviewer/",
+          "type": "GIS"
         }
       ],
       "License List": [
         {
-          "type": "GIS",
-          "url": "https://gisapps.suffolkcountyny.gov/gisviewer/"
-        }
-      ],
-      "Important Info": "N/A",
-      "Media": [
-        {
           "type": "N/A",
           "url": "N/A"
+        }
+      ],
+      "Important Info": "<p>N/A</p>",
+      "Media": [
+        {
+          "url": "N/A",
+          "type": "N/A"
         }
       ]
     },
