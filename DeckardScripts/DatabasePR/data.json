@@ -10298,21 +10298,25 @@
           "url": "https://casetext.com/regulation/new-jersey-administrative-code/title-18-treasury-taxation/chapter-12-local-property-tax-general/subchapter-2-preparation-of-local-property-tax-list-and-duplicate/section-1812-22-property-classifications-with-definitions"
         },
         {
-          "type": "GIS2",
-          "url": "https://www.arcgis.com/apps/webappviewer/index.html?id=5a307d2e14b5442fb9927d5e2b6f7390"
+          "url": "https://www.arcgis.com/apps/webappviewer/index.html?id=5a307d2e14b5442fb9927d5e2b6f7390",
+          "type": "GIS2"
+        },
+        {
+          "url": "https://press.capemaycountynj.gov/PRODPRESS/GoogleWithUC/PropertyDtls.aspx",
+          "type": "PR"
         }
       ],
       "License List": [
         {
-          "url": "N/A",
-          "type": "N/A"
+          "type": "N/A",
+          "url": "N/A"
         }
       ],
       "Important Info": "<p>Use the address to look for information in Public Records. </p>",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ]
     },
