@@ -4532,25 +4532,25 @@
       "Project": "WI - Burnett County",
       "Public Records & GIS": [
         {
-          "url": "https://web.burnettcounty.org/access/master.asp",
-          "type": "Public Records"
+          "type": "Public Records",
+          "url": "https://web.burnettcounty.org/access/master.asp"
         },
         {
-          "type": "GIS",
-          "url": "https://beacon.schneidercorp.com/Application.aspx?App=BurnettCountyWI&PageType=Map"
+          "url": "https://beacon.schneidercorp.com/Application.aspx?App=BurnettCountyWI&PageType=Map",
+          "type": "GIS"
         }
       ],
       "License List": [
         {
-          "type": "License List",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EZddU23g7ydKokaH5SbDoUQBSDOwIadORsxtJTk9dAzZ_A?e=z9V3lk"
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EZddU23g7ydKokaH5SbDoUQBSDOwIadORsxtJTk9dAzZ_A?e=z9V3lk",
+          "type": "License List"
         }
       ],
       "Important Info": "<p>N/A</p>",
       "Media": [
         {
-          "url": "N/A",
-          "type": "N/A"
+          "type": "N/A",
+          "url": "N/A"
         }
       ]
     },
