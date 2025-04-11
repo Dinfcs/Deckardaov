@@ -11215,6 +11215,32 @@
           "type": "Image"
         }
       ]
+    },
+    {
+      "Project": "OH - Union County",
+      "Public Records & GIS": [
+        {
+          "url": "https://beacon.schneidercorp.com/Application.aspx?App=UnionCountyOH&PageType=Search",
+          "type": "PR"
+        },
+        {
+          "url": "https://www7.co.union.oh.us/unionoh/",
+          "type": "GIS (Use VPN)"
+        }
+      ],
+      "License List": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ],
+      "Important Info": "<p><br></p>",
+      "Media": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ]
     }
   ]
 }
