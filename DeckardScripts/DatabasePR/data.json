@@ -4908,8 +4908,8 @@
       "Project": "CO - Boulder County",
       "Public Records & GIS": [
         {
-          "type": "PR & GIS",
-          "url": "https://maps.boco.solutions/propertysearch/"
+          "url": "https://maps.boco.solutions/propertysearch/",
+          "type": "PR & GIS"
         },
         {
           "type": "PR 2.0",
@@ -4926,15 +4926,15 @@
       ],
       "License List": [
         {
-          "type": "License List",
-          "url": "https://docs.google.com/spreadsheets/d/1wi-zoZ8VnpUwh00TKNA2VfYzNtnwCxZD/edit?usp=sharing&ouid=116772286113869768763&rtpof=true&sd=true"
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B4921999B-B761-41BB-B0D2-60A21AFFD10D%7D&file=Boulder_County_Licensed_STR%20Copy%20JC.xlsx&action=default&mobileredirect=true",
+          "type": "License List"
         }
       ],
-      "Important Info": "N/A",
+      "Important Info": "<p>N/A</p>",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ]
     },
