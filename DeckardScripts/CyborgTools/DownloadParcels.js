@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         DownloadParcels
+// @name         Download Parcels
 // @namespace
-// @version      1.6
-// @description  Extrae datos de un numero de paginas en parcel y las descarga automaticamente como Excel con formato personalizado
+// @version      1.7
+// @description  Extrae datos de todas las páginas en parcel y las descarga automáticamente como Excel con formato personalizado
 // @match        https://cyborg.deckard.com/parcel/*
 // @grant        none
 // @require      https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.15.1/xlsx.full.min.js
@@ -44,9 +44,19 @@
     function getFilenameFromUrl() {
         const urlParts = window.location.pathname.split('/').filter(part => part && part !== '_');
         if (urlParts.length >= 3 && urlParts[0] === 'parcel') {
-            return `${urlParts[1]}_${urlParts[2]}_parcel`;
+            return `${urlParts[1]}_${urlParts[2]}_parcels`;
         }
         return 'table_data'; // fallback if URL doesn't match expected pattern
+    }
+
+    function getTotalPages() {
+        const lastPageElement = document.querySelector('.last-page');
+        if (lastPageElement) {
+            const pageText = lastPageElement.textContent.trim();
+            const totalPages = parseInt(pageText);
+            return isNaN(totalPages) ? 1 : totalPages;
+        }
+        return 1; // default to 1 page if element not found
     }
 
     function showProgressBar() {
@@ -248,11 +258,13 @@
     }
 
     button.addEventListener('click', async () => {
-        const numPages = prompt('Enter the number of pages to load:');
-        if (!numPages || isNaN(numPages) || numPages < 1) return;
-
         try {
-            const tableData = await collectData(parseInt(numPages));
+            const totalPages = getTotalPages();
+            const confirmDownload = confirm(`This will download data from ${totalPages} pages. Continue?`);
+
+            if (!confirmDownload) return;
+
+            const tableData = await collectData(totalPages);
             exportToFormattedExcel(tableData);
         } catch (error) {
             console.error('Error collecting data:', error);
