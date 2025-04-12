@@ -413,7 +413,7 @@ style.textContent = `
                 section.innerHTML = `
                     <div class="deckard-license">
                         ${data.license}
-                        ${!data.foundWithOriginal ? '<span style="color:#888;font-size:0.8em;">(normalized)</span>' : ''}
+                        ${!data.foundWithOriginal ? '<span style="color:#888;font-size:0.8em;">-></span>' : ''}
                         ${isInList ? '<span style="color:#0073aa;font-size:0.8em;margin-left:5px;">(in list)</span>' : ''}
                         ${hasUnitMismatch ? '<span style="color:#d32f2f;font-size:0.8em;margin-left:5px;">⚠️ Doesn\'t match</span>' : ''}
                     </div>
