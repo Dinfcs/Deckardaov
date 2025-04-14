@@ -11263,6 +11263,36 @@
           "type": "N/A"
         }
       ]
+    },
+    {
+      "Project": " CA - City of Huntington Beach",
+      "Public Records & GIS": [
+        {
+          "url": "https://taxbill.octreasurer.gov/",
+          "type": "PR (Orange County)"
+        },
+        {
+          "url": "https://assr.parcelquest.com/Home",
+          "type": "PQ"
+        },
+        {
+          "type": "GIS",
+          "url": "https://www.arcgis.com/home/webmap/viewer.html?webmap=765630ac3daf403c867461d5e904f907&mapOnly=true&find=023-031-23"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "<p>To search in PR, scroll down to the middle of the page where you will find \"Search by Property Address\" and \"Search by Parcel Number (APN)\".</p>",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
