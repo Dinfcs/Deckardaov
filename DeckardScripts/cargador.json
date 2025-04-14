@@ -101,7 +101,7 @@
             "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/ScriptsFotPrGis/Search%20in%20Leon%20County.js"
         },
                 {
-            "urlPattern": "https://deckardtech.atlassian.net/browse/COLO*",
+            "urlPattern": "https://deckardtech.atlassian.net/browse/*",
             "scriptUrl": "https://dinfcs.github.io/Deckardaov/TS/FrameJira.js"
         },
                 {
