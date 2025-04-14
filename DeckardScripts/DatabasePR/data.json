@@ -6370,17 +6370,17 @@
           "url": "https://experience.arcgis.com/experience/a51155e46d504bfab3b7a107c3eb6643/page/Planning/"
         },
         {
-          "type": "PR (Use VPN)",
-          "url": "https://propertyinquiryportal.slocounty.ca.gov/#/property-inquiry"
+          "url": "https://propertyinquiryportal.slocounty.ca.gov/#/property-inquiry",
+          "type": "PR (Use VPN)"
         }
       ],
       "License List": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ],
-      "Important Info": "N/A",
+      "Important Info": "<p>N/A</p>",
       "Media": [
         {
           "type": "N/A",
