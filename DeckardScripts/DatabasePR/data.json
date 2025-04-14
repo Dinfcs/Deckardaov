@@ -11289,6 +11289,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "CA - City Of San Luis Obispo",
+      "Public Records & GIS": [
+        {
+          "type": "GIS",
+          "url": "https://experience.arcgis.com/experience/a51155e46d504bfab3b7a107c3eb6643/page/Planning/"
+        },
+        {
+          "url": "https://propertyinquiryportal.slocounty.ca.gov/#/property-inquiry",
+          "type": "PR (Use VPN)"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "<p>N/A</p>",
+      "Media": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ]
     }
   ]
 }
