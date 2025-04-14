@@ -11272,8 +11272,8 @@
           "type": "PR (Orange County)"
         },
         {
-          "type": "PQ",
-          "url": "https://assr.parcelquest.com/Home"
+          "url": "https://assr.parcelquest.com/Home",
+          "type": "PQ"
         },
         {
           "url": "https://www.arcgis.com/home/webmap/viewer.html?webmap=765630ac3daf403c867461d5e904f907&mapOnly=true&find=023-031-23",
