@@ -1,12 +1,18 @@
 {
   "metadata": {
-    "exportedAt": "2025-04-14T18:15:37.365Z",
-    "source": "MT - City of Bozeman"
+    "exportedAt": "2025-04-14T18:20:17.011Z",
+    "source": "MT - City of Bozeman",
+    "processor": "Cyborg Converter v2.0"
   },
   "headers": {
     "apn": "APN",
     "license": "License #",
     "unit": "Unit Number"
+  },
+  "stats": {
+    "sheets": 1,
+    "totalRows": 888,
+    "validEntries": 264
   },
   "data": {
     "06079907107017007": {
