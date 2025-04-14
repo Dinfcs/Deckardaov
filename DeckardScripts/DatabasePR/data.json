@@ -6363,32 +6363,6 @@
       ]
     },
     {
-      "Project": "CA - San Luis Obispo City",
-      "Public Records & GIS": [
-        {
-          "type": "GIS",
-          "url": "https://experience.arcgis.com/experience/a51155e46d504bfab3b7a107c3eb6643/page/Planning/"
-        },
-        {
-          "url": "https://propertyinquiryportal.slocounty.ca.gov/#/property-inquiry",
-          "type": "PR (Use VPN)"
-        }
-      ],
-      "License List": [
-        {
-          "url": "N/A",
-          "type": "N/A"
-        }
-      ],
-      "Important Info": "<p>N/A</p>",
-      "Media": [
-        {
-          "type": "N/A",
-          "url": "N/A"
-        }
-      ]
-    },
-    {
       "Project": "CA - City Of Redding",
       "Public Records & GIS": [
         {
@@ -11268,12 +11242,16 @@
       "Project": "CA - City Of Huntington Beach",
       "Public Records & GIS": [
         {
-          "type": "PR (Orange County)",
-          "url": "https://taxbill.octreasurer.gov/"
+          "url": "https://taxbill.octreasurer.gov/",
+          "type": "PR (Orange County)"
         },
         {
           "type": "PQ",
           "url": "https://script.google.com/a/macros/deckard.com/s/AKfycbziAFj6j4YU0oDpCIVc0EQfcYjx5RG-RtXZPLbA43eAaA91SpQ2ZDf7rJFVESnBCVk9/exec"
+        },
+        {
+          "url": "https://www.arcgis.com/home/webmap/viewer.html?webmap=765630ac3daf403c867461d5e904f907&mapOnly=true&find=023-031-23",
+          "type": "GIS"
         }
       ],
       "License List": [
@@ -11285,8 +11263,8 @@
       "Important Info": "<p>To perform a search in PR, navigate to the middle section of the page. There, you’ll find two options: <strong>Search by Property Address</strong> and <strong>Search by Parcel Number (APN)</strong>. Select the appropriate method to proceed</p>",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ]
     },
