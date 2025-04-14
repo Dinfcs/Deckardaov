@@ -11272,25 +11272,25 @@
           "type": "PR (Orange County)"
         },
         {
-          "url": "https://assr.parcelquest.com/Home",
-          "type": "PQ"
+          "type": "PQ",
+          "url": "https://assr.parcelquest.com/Home"
         },
         {
-          "type": "GIS",
-          "url": "https://www.arcgis.com/home/webmap/viewer.html?webmap=765630ac3daf403c867461d5e904f907&mapOnly=true&find=023-031-23"
+          "url": "https://www.arcgis.com/home/webmap/viewer.html?webmap=765630ac3daf403c867461d5e904f907&mapOnly=true&find=023-031-23",
+          "type": "GIS"
         }
       ],
       "License List": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ],
       "Important Info": "<p>To search in PR, scroll down to the middle of the page where you will find \"Search by Property Address\" and \"Search by Parcel Number (APN)\".</p>",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ]
     }
