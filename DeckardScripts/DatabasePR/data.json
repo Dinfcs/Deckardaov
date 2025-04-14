@@ -10954,8 +10954,8 @@
           "type": "PR"
         },
         {
-          "type": "GIS (VPN)",
-          "url": "https://tnmap.tn.gov/assessment/"
+          "url": "https://tnmap.tn.gov/assessment/",
+          "type": "GIS (VPN)"
         }
       ],
       "License List": [
@@ -10964,7 +10964,7 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "<p>In the PRs the APN is composed by the \"County Number\" + \"Control Map\" + \"Group\" + \"Parcel\" (see image attahced)</p>",
+      "Important Info": "<p>In the PRs the APN is composed by the \"County Number\" + \"Control Map\" + \"Group\" + \"Parcel\" (see image a<span style=\"color: rgb(0, 29, 53);\">ttached</span>)</p>",
       "Media": [
         {
           "url": "https://drive.google.com/uc?export=view&id=17pRqHrvKDUXye__qmfhmEsPRuECODHgm",
