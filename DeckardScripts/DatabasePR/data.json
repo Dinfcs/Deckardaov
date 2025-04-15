@@ -6370,18 +6370,18 @@
           "type": "PR"
         },
         {
-          "type": "GIS",
-          "url": "https://gispub.cityofredding.org/reddingmap/"
+          "url": "https://gispub.cityofredding.org/reddingmap/",
+          "type": "GIS"
         },
         {
-          "type": "How to find an address using the GIS",
-          "url": "https://www.youtube.com/watch?v=NdXGDEwGBCo"
+          "url": "https://www.youtube.com/watch?v=NdXGDEwGBCo",
+          "type": "How to find an address using the GIS"
         }
       ],
       "License List": [
         {
-          "url": "https://netorgft4047789.sharepoint.com/sites/ElectricSheep/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FElectricSheep%2FShared%20Documents%2FCA%2FShasta%20County%2FRedding%2FIncoming&viewid=fd942f4a%2D85fa%2D42f6%2D8ee2%2D36ef2c23ea2e&newTargetListUrl=%2Fsites%2FElectricSheep%2FShared%20Documents&viewpath=%2Fsites%2FElectricSheep%2FShared%20Documents%2FForms%2FAllItems%2Easpx",
-          "type": "License list"
+          "type": "License list",
+          "url": "https://netorgft4047789.sharepoint.com/sites/ElectricSheep/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FElectricSheep%2FShared%20Documents%2FCA%2FShasta%20County%2FRedding%2FIncoming&viewid=fd942f4a%2D85fa%2D42f6%2D8ee2%2D36ef2c23ea2e&newTargetListUrl=%2Fsites%2FElectricSheep%2FShared%20Documents&viewpath=%2Fsites%2FElectricSheep%2FShared%20Documents%2FForms%2FAllItems%2Easpx"
         }
       ],
       "Important Info": "<p>N/A</p>",
