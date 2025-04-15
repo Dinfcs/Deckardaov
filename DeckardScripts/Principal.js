@@ -27,14 +27,13 @@
         { urlPattern: /^https:\/\/www\.bing\.com\/maps.*$/, scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/ExternalScripts/Buscador.js' },
         { urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/.*\/STR.*$/, scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/Viewer.js' },
         { urlPattern: /^https:\/\/cyborg\.deckard\.com\//, scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/StylesCyborg.js' },
-        { urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/.*\/.*\?.*subset=pending_qa/, scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/Autofilterforqa.js' },
         { urlPattern: /^https:\/\/cyborg\.deckard\.com\/parcel\/.+$/, scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/ParcelAdresses.js' },
         { urlPattern: /^https:\/\/cyborg\.deckard\.com\/parcel\/.+$/, scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/ParcelFilter.js' },
         { urlPattern: /^https:\/\/cyborg\.deckard\.com\/parcel\/.+$/, scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/DownloadParcels.js' },
         { urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/MA\/dukes...town_of_oak_bluffs\/.*\/STR.*$/, scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/ScriptsFotPrGis/PR-MA%20-Town_of_Oak_Bluffs.js' },
         { urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/MA\/dukes...town_of_tisbury\/.*\/STR.*$/, scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/ScriptsFotPrGis/PR-MA-Town_of_Tisbury.js' },
         { urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/FL\/st_johns\/.*\/STR.*$/, scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/ScriptsFotPrGis/PR%20FL%20-%20St%20Johns%20County.js' }
-        //{ urlPattern: /^https:\/\/cyborg\.deckard\.com\/parcel\/.+$/, scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/ParcelApnMapped.js' }
+
         
     ];
 
