@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         License Validator with Manual Search
 // @namespace    http://tampermonkey.net/
-// @version      3.2
-// @description  License validator with unit discrepancy alerts and manual search
+// @version      3.4
+// @description  Valida licencias, saca alerta cuando la unidad es diferente o no esta y deja buscar manualmente apn y licencias en la base de datos
 // @match        *://*/*
 // @require      https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js
 // ==/UserScript==
@@ -162,6 +162,14 @@
             animation: slideIn 0.3s ease-out;
         }
 
+        .deckard-alert.warning {
+            background: #e53935;
+        }
+
+        .deckard-alert.notice {
+            background: #ff9800;
+        }
+
         .deckard-alert-close {
             font-size: 14px;
             cursor: pointer;
@@ -263,7 +271,9 @@
         extractCurrentUnit: () => {
             const unitEl = document.querySelector('td.value[data-field-name="unit_number"] p');
             if (unitEl) {
-                const unitMatch = unitEl.textContent.match(/^\s*(\d+)/);
+                // Extrae solo el texto antes del <em> (la unidad real)
+                const unitText = unitEl.childNodes[0]?.textContent || '';
+                const unitMatch = unitText.match(/^\s*(\S+)/);
                 return unitMatch ? unitMatch[1].trim() : null;
             }
 
@@ -304,19 +314,18 @@
             }
         },
 
-        showAlert: (currentUnit, expectedUnits) => {
+        showAlert: (message, isWarning = true) => {
             document.querySelectorAll('.deckard-alert').forEach(el => el.remove());
 
             const alert = document.createElement('div');
-            alert.className = 'deckard-alert';
+            alert.className = `deckard-alert ${isWarning ? 'warning' : 'notice'}`;
             alert.innerHTML = `
                 <div class="deckard-alert-header">
-                    <span>⚠️ Unit discrepancy</span>
+                    <span>⚠️ ${isWarning ? 'Warning' : 'Notice'}</span>
                     <span class="deckard-alert-close">×</span>
                 </div>
                 <div class="deckard-alert-content">
-                    <p>Current unit "<strong>${currentUnit}</strong>" doesn't match expected units for listed licenses:</p>
-                    <p><strong>${expectedUnits.join(', ')}</strong></p>
+                    <p>${message}</p>
                 </div>
                 <div class="deckard-alert-actions">
                     <button class="deckard-alert-button">Understood</button>
@@ -329,6 +338,13 @@
 
             document.body.appendChild(alert);
             setTimeout(closeAlert, 10000);
+        },
+
+        showNoUnitAlert: (expectedUnits) => {
+            utils.showAlert(
+                `No unit number was added to this listing, but the license has associated units: <strong>${expectedUnits.join(', ')}</strong>`,
+                true
+            );
         }
     };
 
@@ -356,10 +372,27 @@
 
         checkUnitMismatch() {
             const currentUnit = utils.extractCurrentUnit();
-            if (!currentUnit || this.expectedUnits.length === 0) return false;
+            const unitFieldExists = document.querySelector('td.value[data-field-name="unit_number"]') !== null ||
+                                  document.querySelector('input[name="unit_number"], input[id*="unit_number"]') !== null;
 
-            if (!this.expectedUnits.includes(currentUnit)) {
-                utils.showAlert(currentUnit, this.expectedUnits);
+            // Case 1: No unit field in DOM (unit not added to listing)
+            if (!unitFieldExists && this.expectedUnits.length > 0) {
+                utils.showNoUnitAlert(this.expectedUnits);
+                return true;
+            }
+
+            // Case 2: Unit field exists but is empty
+            if (unitFieldExists && !currentUnit && this.expectedUnits.length > 0) {
+                utils.showNoUnitAlert(this.expectedUnits);
+                return true;
+            }
+
+            // Case 3: Unit exists but doesn't match expected units
+            if (currentUnit && this.expectedUnits.length > 0 && !this.expectedUnits.includes(currentUnit)) {
+                utils.showAlert(
+                    `Current unit "<strong>${currentUnit}</strong>" doesn't match expected units for listed licenses: <strong>${this.expectedUnits.join(', ')}</strong>`,
+                    true
+                );
                 return true;
             }
 
