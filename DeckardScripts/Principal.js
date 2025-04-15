@@ -18,6 +18,7 @@
         { urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/.*\/STR.*$/, scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/NearbyParcels.js' },
         { urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/.*\/STR.*$/, scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/QAProductivity&QAReport.js' },
         { urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/.*\/STR.*$/, scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/Validator.js' },
+        { urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/.*\/STR.*$/, scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/Licenses/LicValidator.js' },
         { urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/.*\/STR.*$/, scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/Duplicate.js' },
         { urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/.*\/STR.*$/, scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/BingAndDuck.js' },
         { urlPattern: /^https:\/\/cyborg\.deckard\.com\/listing\/.*\/STR.*$/, scriptUrl: 'https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/CopyHost.js' },
