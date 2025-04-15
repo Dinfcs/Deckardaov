@@ -6366,8 +6366,8 @@
       "Project": "CA - City Of Redding",
       "Public Records & GIS": [
         {
-          "type": "PR",
-          "url": "https://common1.mptsweb.com/mbap/shasta/asr"
+          "url": "https://common1.mptsweb.com/mbap/shasta/asr",
+          "type": "PR"
         },
         {
           "type": "GIS",
@@ -6380,8 +6380,8 @@
       ],
       "License List": [
         {
-          "type": "License list",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B9b4f8049-ca2a-4c49-9441-65a458f46568%7D&action=edit&wdinitialsession=33e6a28a-75e8-1add-392d-34525f1875f3&wdrldsc=2&wdrldc=1&wdrldr=ReloadInEditMode%2CTransitionNonMetro%2COnSaveAsWebMet"
+          "url": "https://netorgft4047789.sharepoint.com/sites/ElectricSheep/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FElectricSheep%2FShared%20Documents%2FCA%2FShasta%20County%2FRedding%2FIncoming&viewid=fd942f4a%2D85fa%2D42f6%2D8ee2%2D36ef2c23ea2e&newTargetListUrl=%2Fsites%2FElectricSheep%2FShared%20Documents&viewpath=%2Fsites%2FElectricSheep%2FShared%20Documents%2FForms%2FAllItems%2Easpx",
+          "type": "License list"
         }
       ],
       "Important Info": "<p>N/A</p>",
