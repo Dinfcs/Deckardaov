@@ -13,10 +13,6 @@
             "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/NearbyParcels.js"
         }, 
         {
-            "urlPattern": "https://cyborg.deckard.com/listing/*?tab=picked_for_qa&subset=pending_qa",
-            "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/Qaproductivity.js"
-        },
-        {
             "urlPattern": "https://cyborg.deckard.com/listing/*/STR*",
             "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/Validator.js"
         },
@@ -50,11 +46,11 @@
         },
         {
             "urlPattern": "https://www.google.com/maps/*",
-            "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/ExternalScripts/Buscador2.js"
+            "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/ExternalScripts/Buscador.js"
         },
         {
             "urlPattern": "https://www.bing.com/maps?*",
-            "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/ExternalScripts/Buscador2.js"
+            "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/ExternalScripts/Buscador.js"
         },
         {
             "urlPattern": "https://cyborg.deckard.com/listing/*/*pending_qa",
@@ -75,14 +71,6 @@
         {
             "urlPattern": "https://cyborg.deckard.com/listing/MA/dukes...town_of_tisbury/*",
             "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/ScriptsFotPrGis/PR-MA-Town_of_Tisbury.js"
-        },
-        {
-            "urlPattern": "https://login-spatialstream.prod.lightboxre.com/MemberPages*",
-            "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/ExternalScripts/AutologinLB-PQ.js"
-        },
-        {
-            "urlPattern": "https://pqweb.parcelquest.com/#login",
-            "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/ExternalScripts/AutologinLB-PQ.js"
         },
         {
             "urlPattern": "*://*/*",
