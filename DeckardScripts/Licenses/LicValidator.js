@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         License Validator with Manual Search
+// @name         License Validator with Manual Search 2.0
 // @namespace    http://tampermonkey.net/
-// @version      3.4
+// @version      3.4.3
 // @description  Valida licencias, saca alerta cuando la unidad es diferente o no esta y deja buscar manualmente apn y licencias en la base de datos
 // @match        *://*/*
 // @require      https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js
@@ -9,6 +9,30 @@
 
 (function() {
     'use strict';
+// Nueva función para asegurar visibilidad de unidades sugeridas
+    function ensureSuggestedUnitsVisible() {
+        const vettingWindow = document.getElementById('window_vetting_dlg');
+        if (!vettingWindow) return;
+
+        const floatingContainer = document.querySelector('.deckard-unit-floating-container');
+        if (!floatingContainer) return;
+
+        // Asegurar posición visible dentro de la ventana
+        const containerRect = floatingContainer.getBoundingClientRect();
+        const windowRect = vettingWindow.getBoundingClientRect();
+
+        if (containerRect.bottom > windowRect.bottom) {
+            floatingContainer.style.position = 'relative';
+            floatingContainer.style.top = '-30px';
+            floatingContainer.style.zIndex = '9999';
+        }
+    }
+    // Variables de estado global
+    let cachedSheetName = null;
+    let isProcessing = false;
+    let lastProcessedAPN = null;
+    let observerActive = true;
+    let deckardUIInstance = null;
 
     // Improved styles with alert additions
     const style = document.createElement('style');
@@ -237,6 +261,8 @@
         },
 
         extractSheetName: () => {
+            if (cachedSheetName) return cachedSheetName;
+
             const path = window.location.pathname;
             const match = path.match(/\/listing\/([^\/]+)\/([^\/]+)\/([^\/]+)\//);
 
@@ -249,18 +275,12 @@
             const county = match[2].toLowerCase();
             const city = match[3].toLowerCase();
 
-            let sheetName;
-            if (city === '_') {
-                sheetName = `${state}-${county}-str-licenses`;
-            } else {
-                sheetName = `${state}-${county}-${city.replace(/\s+/g, '_')}-str-licenses`;
-            }
+            cachedSheetName = city === '_'
+                ? `${state}-${county}-str-licenses`
+                : `${state}-${county}-${city.replace(/\s+/g, '_')}-str-licenses`;
 
-            console.log("URL analizada:", path);
-            console.log("Componentes extraídos:", {state, county, city});
-            console.log("Nombre de hoja construido:", sheetName);
-
-            return sheetName;
+            console.log("Nombre de hoja calculado y almacenado:", cachedSheetName);
+            return cachedSheetName;
         },
 
         extractLicenses: () => {
@@ -271,7 +291,6 @@
         extractCurrentUnit: () => {
             const unitEl = document.querySelector('td.value[data-field-name="unit_number"] p');
             if (unitEl) {
-                // Extrae solo el texto antes del <em> (la unidad real)
                 const unitText = unitEl.childNodes[0]?.textContent || '';
                 const unitMatch = unitText.match(/^\s*(\S+)/);
                 return unitMatch ? unitMatch[1].trim() : null;
@@ -315,7 +334,8 @@
         },
 
         showAlert: (message, isWarning = true) => {
-            document.querySelectorAll('.deckard-alert').forEach(el => el.remove());
+            const existingAlerts = document.querySelectorAll('.deckard-alert');
+            if (existingAlerts.length > 0) return;
 
             const alert = document.createElement('div');
             alert.className = `deckard-alert ${isWarning ? 'warning' : 'notice'}`;
@@ -332,7 +352,13 @@
                 </div>
             `;
 
-            const closeAlert = () => alert.remove();
+            const closeAlert = () => {
+                alert.remove();
+                document.querySelectorAll('.deckard-highlight').forEach(el => {
+                    el.replaceWith(document.createTextNode(el.textContent));
+                });
+            };
+
             alert.querySelector('.deckard-alert-close').addEventListener('click', closeAlert);
             alert.querySelector('.deckard-alert-button').addEventListener('click', closeAlert);
 
@@ -358,6 +384,7 @@
             this.listLicenses = listLicenses || [];
             this.popup = null;
             this.expectedUnits = this.getExpectedUnits();
+            deckardUIInstance = this;
         }
 
         getExpectedUnits() {
@@ -400,6 +427,7 @@
         }
 
         show() {
+            // Remove existing popup if any
             document.querySelector('.deckard-popup')?.remove();
 
             const hasMismatch = this.checkUnitMismatch();
@@ -621,6 +649,7 @@
                     el.replaceWith(document.createTextNode(el.textContent));
                 });
                 this.popup.remove();
+                deckardUIInstance = null;
             });
 
             document.addEventListener('click', e => {
@@ -648,7 +677,7 @@
             });
         }
 
-        showFloatingUnits() {
+         showFloatingUnits() {
             const unitInput = document.querySelector('input[name="unit_number"], input[id*="unit_number"]');
             if (!unitInput) return;
 
@@ -657,10 +686,12 @@
             if (this.expectedUnits.length > 0) {
                 const container = document.createElement('div');
                 container.className = 'deckard-unit-floating-container';
+                container.style.marginTop = '10px';
+                container.style.marginBottom = '10px';
 
                 const title = document.createElement('span');
                 title.className = 'deckard-unit-floating-title';
-                title.innerHTML = '<span style="font-weight: bold; color: red;">Suggested units:</span>';
+                title.innerHTML = '<span style="font-weight: bold; color: red;">Suggested unit:</span>';
                 container.appendChild(title);
 
                 this.expectedUnits.sort().forEach(unit => {
@@ -671,56 +702,136 @@
                 });
 
                 unitInput.parentNode.insertBefore(container, unitInput.nextSibling);
+
+                // Asegurar visibilidad después de crear
+                setTimeout(ensureSuggestedUnitsVisible, 100);
             }
         }
     }
-
-    function restartScript() {
-        setTimeout(() => {
-            init() || new MutationObserver(() => {
-                if (init()) this.disconnect();
-            }).observe(document.body, { childList: true, subtree: true });
-        }, 1000);
-    }
-
-    function setupButtonObservers() {
-        const handleButtonClick = (e) => {
-            if (e.target.matches('#btn_open_vetting_dlg, #btn_submit_vetting_dlg')) {
-                restartScript();
-            }
-        };
-
-        document.body.addEventListener('click', handleButtonClick);
-
-        const buttonObserver = new MutationObserver((mutations) => {
+        function setupVettingWindowObserver() {
+        const observer = new MutationObserver((mutations) => {
             mutations.forEach(mutation => {
-                mutation.addedNodes.forEach(node => {
-                    if (node.nodeType === Node.ELEMENT_NODE) {
-                        const editBtn = node.querySelector('#btn_open_vetting_dlg');
-                        const saveBtn = node.querySelector('#btn_submit_vetting_dlg');
-
-                        if (editBtn) editBtn.addEventListener('click', restartScript);
-                        if (saveBtn) saveBtn.addEventListener('click', restartScript);
-                    }
-                });
+                if (mutation.addedNodes.length) {
+                    mutation.addedNodes.forEach(node => {
+                        if (node.id === 'window_vetting_dlg' ||
+                            (node.querySelector && node.querySelector('#window_vetting_dlg'))) {
+                            ensureSuggestedUnitsVisible();
+                        }
+                    });
+                }
             });
         });
 
-        buttonObserver.observe(document.body, { childList: true, subtree: true });
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
     }
 
+    function restartScript() {
+        if (isProcessing) return;
+
+        setTimeout(() => {
+            init() || setupLazyObserver();
+        }, 1000);
+    }
+
+    function setupLazyObserver() {
+        if (!observerActive) return;
+
+        const observer = new MutationObserver((mutations, obs) => {
+            // Skip if already processing or no relevant mutations
+            if (isProcessing || !mutations.some(m =>
+                m.addedNodes.length > 0 ||
+                (m.type === 'attributes' && !m.target.matches('input, select, textarea')))) {
+                return;
+            }
+
+            if (init()) {
+                obs.disconnect();
+            }
+        });
+
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true,
+            attributes: true,
+            attributeFilter: ['class', 'style', 'data-field-name'],
+            characterData: false
+        });
+    }
+
+function setupButtonObservers() {
+    const handleSaveClick = (e) => {
+        if (e.target.matches('#btn_submit_vetting_dlg')) {
+            // Reinicio después de 2 segundos para Save
+            setTimeout(() => {
+                resetScript();
+                init();
+            }, 3500);
+        }
+    };
+
+    const handleEditClick = (e) => {
+        if (e.target.matches('#btn_open_vetting_dlg')) {
+            // Reinicio después de 1 segundo para Edit
+            setTimeout(() => {
+                resetScript();
+                init();
+            }, 500);
+        }
+    };
+
+    // Función para limpiar el estado del script
+    function resetScript() {
+        document.querySelector('.deckard-popup')?.remove();
+        document.querySelectorAll('.deckard-alert').forEach(el => el.remove());
+        document.querySelectorAll('.deckard-unit-floating-container').forEach(el => el.remove());
+
+        cachedSheetName = null;
+        isProcessing = false;
+        lastProcessedAPN = null;
+        deckardUIInstance = null;
+    }
+
+    // Event listeners directos
+    document.body.addEventListener('click', handleSaveClick);
+    document.body.addEventListener('click', handleEditClick);
+
+    const buttonObserver = new MutationObserver((mutations) => {
+        mutations.forEach(mutation => {
+            mutation.addedNodes.forEach(node => {
+                if (node.nodeType === Node.ELEMENT_NODE) {
+                    const saveBtn = node.querySelector('#btn_submit_vetting_dlg');
+                    const editBtn = node.querySelector('#btn_open_vetting_dlg');
+
+                    if (saveBtn) saveBtn.addEventListener('click', handleSaveClick);
+                    if (editBtn) editBtn.addEventListener('click', handleEditClick);
+                }
+            });
+        });
+    });
+
+    buttonObserver.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+}
+
     function processData(apn, sheetName, licenses) {
+        if (isProcessing || apn === lastProcessedAPN) return;
+
+        isProcessing = true;
+        lastProcessedAPN = apn;
+
         const jsonUrl = `https://dinfcs.github.io/Deckardaov/DeckardScripts/Licenses/${encodeURIComponent(sheetName)}.json`;
 
         fetch(jsonUrl)
             .then(res => {
-                if (!res.ok) {
-                    throw new Error('No data found for this sheet');
-                }
+                if (!res.ok) throw new Error('No data found for this sheet');
                 return res.json();
             })
             .then(jsonData => {
-                // Check if there's any data for the current APN
                 if (!jsonData.data || !jsonData.data[apn]) {
                     console.log('No data found for APN:', apn);
                     return;
@@ -747,46 +858,49 @@
             })
             .catch(error => {
                 console.log('Error loading JSON data:', error.message);
+            })
+            .finally(() => {
+                isProcessing = false;
             });
     }
 
     function init() {
         const apn = utils.extractAPN();
-        const sheet = utils.extractSheetName();
         const licenses = utils.extractLicenses();
 
-        if (apn && sheet && licenses?.length) {
-            processData(apn, sheet, licenses);
+        if (!cachedSheetName) {
+            cachedSheetName = utils.extractSheetName();
+        }
+
+        if (apn && cachedSheetName && licenses?.length) {
+            processData(apn, cachedSheetName, licenses);
             return true;
         }
         return false;
     }
 
+    // Initial setup
     if (!init()) {
-        const observer = new MutationObserver(() => {
-            if (init()) observer.disconnect();
-        });
-        observer.observe(document.body, { childList: true, subtree: true });
+        setupLazyObserver();
     }
+    setupVettingWindowObserver();
+    setupButtonObservers();
+    setupUnitChangeMonitoring();
 
     function setupUnitChangeMonitoring() {
         const unitObserver = new MutationObserver(() => {
-            const popup = document.querySelector('.deckard-popup');
-            if (popup) {
-                const ui = new DeckardUI(
-                    popup.querySelector('.deckard-header span').textContent.replace('Licenses for APN: ', ''),
-                    utils.extractSheetName(),
-                    [],
-                    {},
-                    utils.extractLicenses() || []
-                );
-                ui.checkUnitMismatch();
+            if (deckardUIInstance) {
+                deckardUIInstance.checkUnitMismatch();
             }
         });
 
         const unitContainer = document.querySelector('td.value[data-field-name="unit_number"]');
         if (unitContainer) {
-            unitObserver.observe(unitContainer, { childList: true, subtree: true, characterData: true });
+            unitObserver.observe(unitContainer, {
+                childList: true,
+                subtree: true,
+                characterData: true
+            });
         }
     }
 
