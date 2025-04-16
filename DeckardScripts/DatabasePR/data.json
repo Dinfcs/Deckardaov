@@ -1474,17 +1474,17 @@
           "url": "https://reports.nevcounty.net/property/rdPage.aspx?rdReport=parcel.ParcelReport"
         },
         {
-          "type": "GIS (Use VPN)",
-          "url": "https://gis.nevcounty.net/MyNeighborhood/"
+          "url": "https://gis.nevcounty.net/MyNeighborhood/",
+          "type": "GIS (Use VPN)"
         }
       ],
       "License List": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/ERN3UUHNjMFGk_dXN0JUt4cBNjEaZ1yd76rSGM902Z45xw?e=baeUCA",
+          "type": "List"
         }
       ],
-      "Important Info": "N/A",
+      "Important Info": "<p>N/A</p>",
       "Media": [
         {
           "type": "Video PR y GIS Nevada City",
