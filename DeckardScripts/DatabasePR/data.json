@@ -8696,17 +8696,21 @@
       "Project": "NY - Town of Southold",
       "Public Records & GIS": [
         {
-          "type": "GIS (Use VPN)",
+          "url": "https://tax.egov.basgov.com/southold/Search/Search",
+          "type": "PR"
+        },
+        {
+          "type": "GIS",
           "url": "https://gisapps.suffolkcountyny.gov/gisviewer/"
         }
       ],
       "License List": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ],
-      "Important Info": "N/A",
+      "Important Info": "<p>N/A</p>",
       "Media": [
         {
           "type": "N/A",
