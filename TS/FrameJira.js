@@ -2,9 +2,9 @@
 // @name         Pestañita con iframe flotante y nombre de rama en header clickeable
 // @namespace    https://tu-namespace-ejemplo.com
 // @version      1.7
-// @description  Iframe flotante con rama en header clickeable para copiar, movible, minimizable y redimensionable. Versión con formato correcto de COLO en mayúsculas.
+// @description  Iframe flotante con rama en header clickeable para copiar, movible, minimizable y redimensionable. Versión con formato correcto de PAM en mayúsculas.
 // @author       Tú
-// @match        https://deckardtech.atlassian.net/browse/COLO*
+// @match        https://deckardtech.atlassian.net/browse/PAM*
 // @grant        none
 // ==/UserScript==
 
@@ -18,14 +18,14 @@
             const titulo = document.querySelector('[data-testid="issue.views.issue-base.foundation.summary.heading"]')?.innerText || '';
 
             // Selector mejorado para el ticket
-            const ticketElement = document.querySelector('a[href*="/browse/COLO-"] span') ||
+            const ticketElement = document.querySelector('a[href*="/browse/PAM-"] span') ||
                                  document.querySelector('span.css-1gd7hga') ||
                                  document.querySelector('[data-testid="issue.views.issue-base.foundation.breadcrumbs.current-issue.item"] span');
 
-            const ticket = ticketElement?.innerText || 'COLO-XXXX'; // Valor por defecto si no encuentra
+            const ticket = ticketElement?.innerText || 'PAM-XXXX'; // Valor por defecto si no encuentra
 
-            // Limpiar el texto del ticket (manteniendo COLO en mayúsculas)
-            const ticketLimpio = ticket.replace(/\s+/g, '').replace(/^colo-/i, 'COLO-');
+            // Limpiar el texto del ticket (manteniendo PAM en mayúsculas)
+            const ticketLimpio = ticket.replace(/\s+/g, '').replace(/^pam-/i, 'PAM-');
 
             const match = titulo.match(/\[(.*?)\]\s*(.*)/);
             let ubicacion = '', accion = '';
