@@ -22,6 +22,7 @@ const EXCLUSIONS = `
     [data-test-id="float-window-close-btn"],
     #btnCancel,
     #btnAccept,
+    #deckard-licvalidator-btn,
     .pr-table,
     .pr-table th,
     .pr-table thead,
@@ -30,7 +31,8 @@ const EXCLUSIONS = `
     .btn-database,
     .btn-database *,
     .btn-database svg,
-    .btn-database path
+    .btn-database path,
+    .deckard-licvalidator-btn
 `;
 
     // Sistema de colores Deckard
