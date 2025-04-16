@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         StylesCybor
-// @namespace    http://tampermonkey.net/
+// @namespace   
 // @version      4
 // @description  Estilos modernos y compactos con aplicación inmediata para mejorar la experiencia de usuario.
 // @author       Luis Escalante
