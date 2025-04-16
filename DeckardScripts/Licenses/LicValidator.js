@@ -1,15 +1,15 @@
 // ==UserScript==
-// @name         License Validator with Manual Search 2.0
+// @name         License Validator with Manual Search 3.0
 // @namespace    http://tampermonkey.net/
-// @version      3.4.3
+// @version      3.4.4
 // @description  Valida licencias, saca alerta cuando la unidad es diferente o no esta y deja buscar manualmente apn y licencias en la base de datos
-// @match        *://*/*
+// @match        https://cyborg.deckard.com/*
 // @require      https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js
 // ==/UserScript==
 
 (function() {
     'use strict';
-// Nueva función para asegurar visibilidad de unidades sugeridas
+    // Nueva función para asegurar visibilidad de unidades sugeridas
     function ensureSuggestedUnitsVisible() {
         const vettingWindow = document.getElementById('window_vetting_dlg');
         if (!vettingWindow) return;
@@ -27,6 +27,93 @@
             floatingContainer.style.zIndex = '9999';
         }
     }
+
+    // Función para agregar el botón LicValidator
+    function addLicValidatorButton() {
+        const userIdSpan = document.getElementById('user_id');
+        if (!userIdSpan) {
+            setTimeout(addLicValidatorButton, 1000);
+            return;
+        }
+
+        // Verificar si el botón ya existe
+        if (document.getElementById('deckard-licvalidator-btn')) {
+            return;
+        }
+
+        const btn = document.createElement('button');
+        btn.id = 'deckard-licvalidator-btn';
+        btn.textContent = 'LicValidator';
+        btn.style.marginRight = '10px';
+        btn.style.padding = '2px 8px';
+        btn.style.background = '#00AEEF';
+        btn.style.color = 'white';
+        btn.style.border = 'none';
+        btn.style.borderRadius = '4px';
+        btn.style.cursor = 'pointer';
+        btn.style.fontSize = '12px';
+
+        btn.addEventListener('click', () => {
+            // Si ya hay una instancia UI, mostrarla
+            if (deckardUIInstance) {
+                deckardUIInstance.popup.style.display = 'block';
+                return;
+            }
+
+            // Crear una instancia manual
+            const apn = utils.extractAPN();
+            const sheetName = utils.extractSheetName();
+            const licenses = utils.extractLicenses() || [];
+
+            if (!apn || !sheetName) {
+                alert('No APN or sheet name detected. Please navigate to a valid property page.');
+                return;
+            }
+
+            const jsonUrl = `https://dinfcs.github.io/Deckardaov/DeckardScripts/Licenses/${encodeURIComponent(sheetName)}.json`;
+
+            fetch(jsonUrl)
+                .then(res => {
+                    if (!res.ok) throw new Error('No data found for this sheet');
+                    return res.json();
+                })
+                .then(jsonData => {
+                    const licensesData = licenses.map(license => {
+                        const normalized = utils.normalizeLicense(license);
+                        let units = jsonData.data[apn]?.[license] || [];
+                        let foundWithOriginal = true;
+
+                        if (!units.length) {
+                            const normalizedKey = Object.keys(jsonData.data[apn] || {})
+                                .find(k => utils.normalizeLicense(k) === normalized);
+                            if (normalizedKey) {
+                                units = jsonData.data[apn][normalizedKey];
+                                foundWithOriginal = false;
+                            }
+                        }
+
+                        return { license, units, foundWithOriginal };
+                    });
+
+                    // Si no hay licencias, mostrar solo el APN
+                    if (licenses.length === 0) {
+                        licensesData.push({
+                            license: 'No licenses detected',
+                            units: [],
+                            foundWithOriginal: true
+                        });
+                    }
+
+                    new DeckardUI(apn, sheetName, licensesData, jsonData.data || {}, licenses).show();
+                })
+                .catch(error => {
+                    alert('Error loading license data: ' + error.message);
+                });
+        });
+
+        userIdSpan.parentNode.insertBefore(btn, userIdSpan);
+    }
+
     // Variables de estado global
     let cachedSheetName = null;
     let isProcessing = false;
@@ -886,6 +973,7 @@ function setupButtonObservers() {
     setupVettingWindowObserver();
     setupButtonObservers();
     setupUnitChangeMonitoring();
+    addLicValidatorButton(); // Add the new button
 
     function setupUnitChangeMonitoring() {
         const unitObserver = new MutationObserver(() => {
