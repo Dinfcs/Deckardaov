@@ -11301,6 +11301,28 @@
           "type": "N/A"
         }
       ]
+    },
+    {
+      "Project": "KY - Powell County",
+      "Public Records & GIS": [
+        {
+          "type": "GIS",
+          "url": "https://explore.kyfromabove.ky.gov/"
+        }
+      ],
+      "License List": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ],
+      "Important Info": "<p><br></p>",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
