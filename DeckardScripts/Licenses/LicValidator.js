@@ -74,7 +74,7 @@
 
             fetch(jsonUrl)
                 .then(res => {
-                    if (!res.ok) throw new Error('No data found for this sheet');
+                    if (!res.ok) throw new Error('No data found for this Project');
                     return res.json();
                 })
                 .then(jsonData => {
