@@ -11323,6 +11323,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "CA - City Of Encinitas",
+      "Public Records & GIS": [
+        {
+          "type": "PR (use VPN)",
+          "url": "https://assr.parcelquest.com/Statewide"
+        },
+        {
+          "type": "GIS (use VPN)",
+          "url": "https://sdgis.sandag.org/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "<p><br></p>",
+      "Media": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ]
     }
   ]
 }
