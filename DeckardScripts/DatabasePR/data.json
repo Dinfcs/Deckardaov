@@ -2426,25 +2426,25 @@
           "url": "https://sccounty01.co.santa-cruz.ca.us/ASR/"
         },
         {
-          "type": "GIS (VPN)",
-          "url": "https://gis.santacruzcounty.us/gisweb/"
+          "url": "https://gis.santacruzcounty.us/gisweb/",
+          "type": "GIS (VPN)"
         },
         {
-          "type": "Classification Codes (VPN)",
-          "url": "https://www.santacruzcountyca.gov/Departments/AssessorsOffice/AssessorUseCodesDisclaimer/AssessorUseCodes.aspx"
+          "url": "https://www.santacruzcountyca.gov/Departments/AssessorsOffice/AssessorUseCodesDisclaimer/AssessorUseCodes.aspx",
+          "type": "Classification Codes (VPN)"
         }
       ],
       "License List": [
         {
-          "type": "License o N/A",
-          "url": "N/A"
+          "type": "License",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/ETKekH4kbblKvwnHSIPNqrABE5LgWymejj6A_M5GeqEzug?e=nqqata"
         }
       ],
-      "Important Info": "Use VPN for GIS and PR",
+      "Important Info": "<p>Use VPN for GIS and PR</p>",
       "Media": [
         {
-          "type": "PR and GIS Demonstration",
-          "url": "https://www.loom.com/share/00171126bc3a45fa9ae856dc0c4b8c49"
+          "url": "https://www.loom.com/share/00171126bc3a45fa9ae856dc0c4b8c49",
+          "type": "PR and GIS Demonstration"
         }
       ]
     },
