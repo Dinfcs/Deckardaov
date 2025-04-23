@@ -11250,25 +11250,25 @@
       "Project": "CA - City Of Huntington Beach",
       "Public Records & GIS": [
         {
-          "url": "https://taxbill.octreasurer.gov/",
-          "type": "PR (Orange County)"
+          "type": "PR (Orange County)",
+          "url": "https://taxbill.octreasurer.gov/"
         },
         {
           "type": "PQ",
           "url": "https://script.google.com/a/macros/deckard.com/s/AKfycbziAFj6j4YU0oDpCIVc0EQfcYjx5RG-RtXZPLbA43eAaA91SpQ2ZDf7rJFVESnBCVk9/exec"
         },
         {
-          "url": "https://www.arcgis.com/home/webmap/viewer.html?webmap=765630ac3daf403c867461d5e904f907&mapOnly=true&find=023-031-23",
-          "type": "GIS"
+          "type": "GIS",
+          "url": "https://www.arcgis.com/home/webmap/viewer.html?webmap=765630ac3daf403c867461d5e904f907&mapOnly=true&find=023-031-23"
         }
       ],
       "License List": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ],
-      "Important Info": "<p>To perform a search in PR, navigate to the middle section of the page. There, you’ll find two options: <strong>Search by Property Address</strong> and <strong>Search by Parcel Number (APN)</strong>. Select the appropriate method to proceed</p>",
+      "Important Info": "<p>To perform a search in PR, navigate to the middle section of the page. There, you’ll find two options: <strong>Search by Property Address</strong> and <strong>Search by Parcel Number (APN)</strong>. Select the appropriate method to proceed.</p><p><br></p><p>You will find parcels with addresses structured like this: <strong>A73 SURFSIDE AVE CA 90743. </strong>There’s <strong>no need to do AO</strong>, since this applies to all parcels on Surfside Ave.</p>",
       "Media": [
         {
           "url": "N/A",
