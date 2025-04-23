@@ -1,0 +1,28 @@
+logo: https://rentalscape-assets-prod-usw2.s3.us-west-2.amazonaws.com/customer_logos/sc-greenville-city_of_greenville.png
+modules:
+  notes:
+    mode: enabled
+    read:
+      - admin
+      - sc-greenville-city_of_greenville
+    rw:
+      - sc-greenville-city_of_greenville
+  rentalscape:
+    licenseEditMode: rs_on_page
+    emailCcDeckard: Rentalscape Support <rentalscape@deckard.com>
+    propertySummaryMode: IDENTIFIED
+    production:
+      warm: true
+    rentalPeriod:
+      days: 30
+    rentalTypes:
+      current: Current STR (29 nights or less)
+      hotel: Hotel/Timeshare
+      ltr: Long Term Rental
+      other: Other Rental
+      previous: Previously an STR
+      unavailable: Unavailable
+    showSuggestions: true
+name: City of Greenville, SC
+pdf: true
+placens: '02403750'
