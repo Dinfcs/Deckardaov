@@ -3,7 +3,7 @@
 // @namespace    http://tampermonkey.net/
 // @version      3.5.0
 // @description  Valida licencias, muestra status y dirección, saca alerta cuando la unidad es diferente o no esta y deja buscar manualmente apn y licencias en la base de datos
-// @match        https://cyborg.deckard.com/listing*
+// @match        https://cyborg.deckard.com/listing/*STR*
 // @require      https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js
 // ==/UserScript==
 
