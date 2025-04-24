@@ -251,13 +251,9 @@
             if (!appState.viewer || !appState.viewerOpened) return;
 
             const keyActions = {
-                'arrowright': () => appState.viewer.next(),
                 'd': () => appState.viewer.next(),
-                'arrowleft': () => appState.viewer.prev(),
                 'a': () => appState.viewer.prev(),
-                'arrowup': () => appState.viewer.zoom(0.1),
                 'w': () => appState.viewer.zoom(0.1),
-                'arrowdown': () => appState.viewer.zoom(-0.1),
                 's': () => appState.viewer.zoom(-0.1),
                 'escape': () => appState.viewer.hide()
             };
@@ -303,10 +299,6 @@
                     prev: 1,
                     play: 0,
                     next: 1,
-                    rotateLeft: 1,
-                    rotateRight: 1,
-                    flipHorizontal: 1,
-                    flipVertical: 1,
                 },
                 transition: false,
                 keyboard: true,
