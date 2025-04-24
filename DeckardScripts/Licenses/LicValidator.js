@@ -1003,6 +1003,7 @@ initTabs() {
         fetch(jsonUrl)
             .then(res => {
                 if (!res.ok) throw new Error('No data found for this sheet');
+                else addLicValidatorButton(); // Add the new button
                 return res.json();
             })
             .then(jsonData => {
@@ -1066,7 +1067,7 @@ initTabs() {
     setupVettingWindowObserver();
     setupButtonObservers();
     setupUnitChangeMonitoring();
-    addLicValidatorButton(); // Add the new button
+    
 
     function setupUnitChangeMonitoring() {
         const unitObserver = new MutationObserver(() => {
