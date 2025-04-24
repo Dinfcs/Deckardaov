@@ -11410,21 +11410,21 @@
           "url": "https://experience.arcgis.com/experience/b5a5cc7663c84761a305f70b913e1a60#widget_23=active_datasource_id:dataSource_1,center:-8068184.269177625%2C5382990.961307275%2C102100,scale:769.1193033584085"
         },
         {
-          "type": "GIS2",
-          "url": "https://www.acres.com/plat-map/map/vt/windsor-county-vt?lat=43.4625&lng=-72.4770882&zoom=17"
+          "url": "https://www.acres.com/plat-map/map/vt/windsor-county-vt?lat=43.4625&lng=-72.4770882&zoom=17",
+          "type": "GIS2"
         }
       ],
       "License List": [
         {
-          "url": "N/A",
-          "type": "N/A"
+          "type": "N/A",
+          "url": "N/A"
         }
       ],
-      "Important Info": "<p><br></p>",
+      "Important Info": "<p>✳️To search for an APN in PR &amp; GIS, enter only the last 5 digits in the following format:</p><p><strong>Example:</strong> For APN 235<strong>03135</strong>, you should enter: <strong>03-135</strong>.</p><p><br></p><p>✳️You can also search by coordinates by selecting the icon with the letters <strong>XYZ</strong> at the bottom of the screen.</p><p><br></p><p>✳️For GIS2, you need to search by address. This system also offers a 3D view.</p>",
       "Media": [
         {
-          "url": "N/A",
-          "type": "N/A"
+          "url": "https://drive.google.com/uc?export=view&id=1iXMKOJp5Z1143RDr8DNjEJtb7MHpesMn",
+          "type": "Coordinates search"
         }
       ]
     }
