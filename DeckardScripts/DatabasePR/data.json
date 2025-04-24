@@ -11349,6 +11349,32 @@
           "type": "N/A"
         }
       ]
+    },
+    {
+      "Project": "PA - Borough Of State College County",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://www2.centrecountypa.gov/centreco/claim/tri.asp"
+        },
+        {
+          "type": "GIS",
+          "url": "https://experience.arcgis.com/experience/4955d2ec3e3349f294ecc5569dc8bd1d/"
+        }
+      ],
+      "License List": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ],
+      "Important Info": "<p><br></p>",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
