@@ -1,2709 +1,5013 @@
 {
   "metadata": {
-    "exportedAt": "2025-04-16T18:52:23.740Z",
+    "exportedAt": "2025-04-24T18:47:50.024Z",
     "source": "ca-placer-str-licenses"
   },
   "headers": {
     "apn": "APN",
     "license": "License #",
-    "unit": "Unit Number"
+    "unit": "Unit Number",
+    "status": "Status",
+    "address": "Address"
   },
   "data": {
     "117210025000": {
-      "STR22-4096": [
-        "22"
-      ]
+      "STR22-4096": {
+        "units": [
+          "22"
+        ],
+        "status": "current",
+        "address": "7600 N LAKE BLVD 22, TAHOE VISTA, CA, 96148"
+      }
     },
     "116160039000": {
-      "STR22-4189": [
-        "142"
-      ]
+      "STR22-4189": {
+        "units": [
+          "142"
+        ],
+        "status": "current",
+        "address": "5101 N LAKE BLVD, CARNELIAN BAY, CA, 96140"
+      }
     },
     "090134047000": {
-      "STR23-4256": [
-        "C"
-      ],
-      "unk": [
-        "A",
-        "B",
-        "D"
-      ]
+      "STR23-4256": {
+        "units": [
+          "C"
+        ],
+        "status": "current",
+        "address": "8685 BROCKWAY VISTA AVE, KINGS BEACH, CA, 96143"
+      },
+      "unk": {
+        "units": [
+          "A",
+          "B",
+          "D"
+        ],
+        "status": "submitted",
+        "address": "8685 BROCKWAY VISTA AVE KINGS BEACH CA 96143"
+      }
     },
     "094150005000": {
-      "STR22-4327": [
-        "B"
-      ]
+      "STR22-4327": {
+        "units": [
+          "B"
+        ],
+        "status": "current",
+        "address": "1335 N LAKE BLVD, TAHOE CITY, CA, 96145"
+      }
     },
     "090400030000": {
-      "STR22-4349": [
-        "72"
-      ],
-      "STR23-8403": [
-        "72"
-      ],
-      "STR25-9333": [
-        "72"
-      ]
+      "STR22-4349": {
+        "units": [
+          "72"
+        ],
+        "status": "expired",
+        "address": "9200 BROCKWAY SPRINGS DR, KINGS BEACH, CA, 96143"
+      },
+      "STR23-8403": {
+        "units": [
+          "72"
+        ],
+        "status": "withdrawn",
+        "address": "9200 BROCKWAY SPRINGS DR, KINGS BEACH, CA, 96143"
+      },
+      "STR25-9333": {
+        "units": [
+          "72"
+        ],
+        "status": "current",
+        "address": "9200 BROCKWAY SPRINGS DR KINGS BEACH CA 96143"
+      }
     },
     "111250002000": {
-      "STR22-4463": [
-        "258"
-      ]
+      "STR22-4463": {
+        "units": [
+          "258"
+        ],
+        "status": "current",
+        "address": "1001 COMMONWEALTH DR 258, KINGS BEACH, CA, 96143"
+      }
     },
     "090380014510": {
-      "STR22-4557": [
-        "#15"
-      ]
+      "STR22-4557": {
+        "units": [
+          "#15"
+        ],
+        "status": "expired",
+        "address": "9200 BROCKWAY SPRINGS DR, KINGS BEACH, CA, 96143"
+      }
     },
     "090380012520": {
-      "STR22-4633": [
-        "12"
-      ]
+      "STR22-4633": {
+        "units": [
+          "12"
+        ],
+        "status": "current",
+        "address": "9200 BROCKWAY SPRINGS DR, KINGS BEACH, CA, 96143"
+      }
     },
     "097130030520": {
-      "STR23-4666": [
-        "A"
-      ]
+      "STR23-4666": {
+        "units": [
+          "A"
+        ],
+        "status": "current",
+        "address": "5150 W LAKE BLVD, HOMEWOOD, CA, 96141"
+      }
     },
     "090380025510": {
-      "STR22-4696": [
-        "37"
-      ]
+      "STR22-4696": {
+        "units": [
+          "37"
+        ],
+        "status": "current",
+        "address": "9200 BROCKWAY SPRINGS DR, KINGS BEACH, CA, 96143"
+      }
     },
     "090390002000": {
-      "STR22-4759": [
-        "46"
-      ]
+      "STR22-4759": {
+        "units": [
+          "46"
+        ],
+        "status": "current",
+        "address": "9200 BROCKWAY SPRINGS DR, KINGS BEACH, CA, 96143"
+      }
     },
     "083161009000": {
-      "STR22-4768": [
-        "#41"
-      ]
+      "STR22-4768": {
+        "units": [
+          "#41"
+        ],
+        "status": "expired",
+        "address": "1355 SEQUOIA AVE, TAHOE CITY, CA, 96145"
+      }
     },
     "094480009000": {
-      "STR22-4807": [
-        "38"
-      ]
+      "STR22-4807": {
+        "units": [
+          "38"
+        ],
+        "status": "current",
+        "address": "2560 LAKE FOREST RD 38, TAHOE CITY, CA, 96145"
+      }
+    },
+    "111260002000": {
+      "STR22-4851": {
+        "units": [
+          "200"
+        ],
+        "status": "suspended",
+        "address": "1001 COMMONWEALTH DR 200, KINGS BEACH, CA, 96143"
+      }
     },
     "094360001000": {
-      "STR22-4912": [
-        "154"
-      ]
+      "STR22-4912": {
+        "units": [
+          "154"
+        ],
+        "status": "current",
+        "address": "300 W LAKE BLVD 154, TAHOE CITY, CA, 96145"
+      }
     },
     "090302001000": {
-      "STR22-4987": [
-        "B"
-      ]
+      "STR22-4987": {
+        "units": [
+          "B"
+        ],
+        "status": "suspended",
+        "address": "398 GULL AVE, KINGS BEACH, CA, 96143"
+      }
     },
     "090400016000": {
-      "STR22-5007": [
-        "61"
-      ]
+      "STR22-5007": {
+        "units": [
+          "61"
+        ],
+        "status": "current",
+        "address": "9200 BROCKWAY SPRINGS DR, KINGS BEACH, CA, 96143"
+      }
     },
     "090400017000": {
-      "STR22-5012": [
-        "62"
-      ]
+      "STR22-5012": {
+        "units": [
+          "62"
+        ],
+        "status": "current",
+        "address": "9200 BROCKWAY SPRINGS DR, KINGS BEACH, CA, 96143"
+      }
     },
     "090400020000": {
-      "STR22-5019": [
-        "64"
-      ]
+      "STR22-5019": {
+        "units": [
+          "64"
+        ],
+        "status": "current",
+        "address": "9200 BROCKWAY SPRINGS DR, KINGS BEACH, CA, 96143"
+      }
     },
     "090400001000": {
-      "STR22-5024": [
-        "49"
-      ]
+      "STR22-5024": {
+        "units": [
+          "49"
+        ],
+        "status": "current",
+        "address": "9200 BROCKWAY SPRINGS DR, KINGS BEACH, CA, 96143"
+      }
     },
     "090380026520": {
-      "STR22-5050": [
-        "40"
-      ]
+      "STR22-5050": {
+        "units": [
+          "40"
+        ],
+        "status": "current",
+        "address": "9200 BROCKWAY SPRINGS DR, KINGS BEACH, CA, 96143"
+      }
     },
     "090400021000": {
-      "STR22-5054": [
-        "65"
-      ],
-      "unk": [
-        "65"
-      ]
+      "STR22-5054": {
+        "units": [
+          "65"
+        ],
+        "status": "current",
+        "address": "9200 BROCKWAY SPRINGS DR, KINGS BEACH, CA, 96143"
+      },
+      "unk": {
+        "units": [
+          "65"
+        ],
+        "status": "denied",
+        "address": "9200 BROCKWAY SPRINGS DR, KINGS BEACH, CA, 96143"
+      }
     },
     "090400014000": {
-      "STR22-5059": [
-        "59"
-      ]
+      "STR22-5059": {
+        "units": [
+          "59"
+        ],
+        "status": "current",
+        "address": "9200 BROCKWAY SPRINGS DR, KINGS BEACH, CA, 96143"
+      }
     },
     "090400019000": {
-      "STR22-5073": [
-        "63"
-      ]
+      "STR22-5073": {
+        "units": [
+          "63"
+        ],
+        "status": "current",
+        "address": "9200 BROCKWAY SPRINGS DR, KINGS BEACH, CA, 96143"
+      }
     },
     "090380017510": {
-      "STR22-5077": [
-        "21"
-      ]
+      "STR22-5077": {
+        "units": [
+          "21"
+        ],
+        "status": "current",
+        "address": "9200 BROCKWAY SPRINGS DR, KINGS BEACH, CA, 96143"
+      }
     },
     "090380018520": {
-      "STR22-5099": [
-        "24"
-      ]
+      "STR22-5099": {
+        "units": [
+          "24"
+        ],
+        "status": "current",
+        "address": "9200 BROCKWAY SPRINGS DR, KINGS BEACH, CA, 96143"
+      }
     },
     "090380012510": {
-      "STR22-5107": [
-        "11"
-      ]
+      "STR22-5107": {
+        "units": [
+          "11"
+        ],
+        "status": "current",
+        "address": "9200 BROCKWAY SPRINGS DR, KINGS BEACH, CA, 96143"
+      }
     },
     "096380020520": {
-      "STR22-5113": [
-        "10"
-      ]
+      "STR22-5113": {
+        "units": [
+          "10"
+        ],
+        "status": "current",
+        "address": "1800 Olympic Valley Rd, Olympic Valley, Ca, 96146"
+      }
     },
     "097130030550": {
-      "STR22-5171": [
-        "Unit C"
-      ]
+      "STR22-5171": {
+        "units": [
+          "Unit C"
+        ],
+        "status": "current",
+        "address": "5150 W LAKE BLVD, HOMEWOOD, CA, 96141"
+      }
     },
     "090380020510": {
-      "STR22-5282": [
-        "#27"
-      ]
+      "STR22-5282": {
+        "units": [
+          "#27"
+        ],
+        "status": "current",
+        "address": "9200 BROCKWAY SPRINGS DR, KINGS BEACH, CA, 96143"
+      }
     },
     "090380004000": {
-      "STR22-5296": [
-        "#4"
-      ]
+      "STR22-5296": {
+        "units": [
+          "#4"
+        ],
+        "status": "current",
+        "address": "9200 BROCKWAY SPRINGS DR, KINGS BEACH, CA, 96143"
+      }
     },
     "090380016510": {
-      "STR22-5298": [
-        "Unit #19"
-      ],
-      "STR23-8263": [
-        "19"
-      ]
+      "STR22-5298": {
+        "units": [
+          "Unit #19"
+        ],
+        "status": "expired",
+        "address": "9200 BROCKWAY SPRINGS DR, KINGS BEACH, CA, 96143"
+      },
+      "STR23-8263": {
+        "units": [
+          "19"
+        ],
+        "status": "current",
+        "address": "9200 BROCKWAY SPRINGS DR, KINGS BEACH, CA, 96143"
+      }
     },
     "090400010000": {
-      "STR22-5314": [
-        "#56"
-      ]
+      "STR22-5314": {
+        "units": [
+          "#56"
+        ],
+        "status": "current",
+        "address": "9200 BROCKWAY SPRINGS DR, KINGS BEACH, CA, 96143"
+      }
     },
     "096520006000": {
-      "STR22-5325": [
-        "unit # A-5"
-      ]
+      "STR22-5325": {
+        "units": [
+          "unit # A-5"
+        ],
+        "status": "current",
+        "address": "1609 CHRISTY HILL RD A-5, OLYMPIC VALLEY, CA, 96146"
+      }
     },
     "090380028510": {
-      "STR22-5366": [
-        "43"
-      ],
-      "STR23-8327": [
-        "43"
-      ]
+      "STR22-5366": {
+        "units": [
+          "43"
+        ],
+        "status": "expired",
+        "address": "9200 BROCKWAY SPRINGS DR, KINGS BEACH, CA, 96143"
+      },
+      "STR23-8327": {
+        "units": [
+          "43"
+        ],
+        "status": "current",
+        "address": "9200 BROCKWAY SPRINGS DR, KINGS BEACH, CA, 96143"
+      }
     },
     "090400015000": {
-      "STR22-5379": [
-        "#60"
-      ],
-      "STR23-8221": [
-        "60"
-      ]
+      "STR22-5379": {
+        "units": [
+          "#60"
+        ],
+        "status": "expired",
+        "address": "9200 BROCKWAY SPRINGS DR, KINGS BEACH, CA, 96143"
+      },
+      "STR23-8221": {
+        "units": [
+          "60"
+        ],
+        "status": "current",
+        "address": "9200 BROCKWAY SPRINGS DR, KINGS BEACH, CA, 96143"
+      }
     },
     "117080036000": {
-      "STR22-5413": [
-        "36"
-      ]
+      "STR22-5413": {
+        "units": [
+          "36"
+        ],
+        "status": "withdrawn",
+        "address": "6943 N LAKE BLVD 36, TAHOE VISTA, CA, 96148"
+      }
     },
     "117080064000": {
-      "STR22-5429": [
-        "64"
-      ]
+      "STR22-5429": {
+        "units": [
+          "64"
+        ],
+        "status": "expired",
+        "address": "6943 N LAKE BLVD, TAHOE VISTA, CA, 96148"
+      }
     },
     "096180006000": {
-      "STR22-5470": [
-        "2"
-      ],
-      "unk": [
-        "1"
-      ]
+      "STR22-5470": {
+        "units": [
+          "2"
+        ],
+        "status": "current",
+        "address": "1080 SANDY WAY, OLYMPIC VALLEY, CA, 96146"
+      },
+      "STR25-9386": {
+        "units": [
+          "1"
+        ],
+        "status": "current",
+        "address": "1080 SANDY WAY OLYMPIC VALLEY CA 96146"
+      }
     },
     "094500006510": {
-      "unk": [
-        "13"
-      ]
+      "unk": {
+        "units": [
+          "13"
+        ],
+        "status": "denied",
+        "address": "270 N LAKE BLVD 9-L, TAHOE CITY, CA, 96145"
+      }
     },
     "090380015510": {
-      "STR22-5494": [
-        "17"
-      ]
+      "STR22-5494": {
+        "units": [
+          "17"
+        ],
+        "status": "current",
+        "address": "9200 BROCKWAY SPRINGS DR 17, KINGS BEACH, CA, 96143"
+      }
     },
     "090400011000": {
-      "STR22-5536": [
-        "57"
-      ]
+      "STR22-5536": {
+        "units": [
+          "57"
+        ],
+        "status": "expired",
+        "address": "9200 BROCKWAY SPRINGS DR, KINGS BEACH, CA, 96146"
+      }
     },
     "093400005000": {
-      "STR22-5540": [
-        "11"
-      ]
+      "STR22-5540": {
+        "units": [
+          "11"
+        ],
+        "status": "current",
+        "address": "2755 N LAKE BLVD 27, TAHOE CITY, CA, 96145"
+      }
     },
     "090380005000": {
-      "STR22-5580": [
-        "5"
-      ]
+      "STR22-5580": {
+        "units": [
+          "5"
+        ],
+        "status": "current",
+        "address": "9200 BROCKWAY SPRINGS DR, KINGS BEACH, CA, 96143"
+      }
     },
     "090311031000": {
-      "STR22-5654": [
-        "Big Dipper"
-      ],
-      "unk": [
-        "Little Dipper"
-      ]
+      "STR22-5654": {
+        "units": [
+          "Big Dipper"
+        ],
+        "status": "current",
+        "address": "9861 DIP ST, KINGS BEACH, CA, 96143"
+      },
+      "unk": {
+        "units": [
+          "Little Dipper"
+        ],
+        "status": "submitted",
+        "address": "9861 DIP ST KINGS BEACH CA 96143"
+      }
+    },
+    "094122043000": {
+      "STR22-5687": {
+        "units": [
+          "Unit A"
+        ],
+        "status": "current",
+        "address": "510 PIONEER WAY, TAHOE CITY, CA, 96145"
+      },
+      "unk": {
+        "units": [
+          "Unit B"
+        ],
+        "status": "submitted",
+        "address": "510 PIONEER WAY TAHOE CITY CA 96145"
+      }
     },
     "093530041000": {
-      "STR22-5688": [
-        "84"
-      ]
+      "STR22-5688": {
+        "units": [
+          "84"
+        ],
+        "status": "current",
+        "address": "3115 N LAKE BLVD 84, TAHOE CITY, CA, 96145"
+      }
     },
     "114130009000": {
-      "STR22-5737": [
-        "#17"
-      ]
+      "STR22-5737": {
+        "units": [
+          "#17"
+        ],
+        "status": "current",
+        "address": "15153 BOULDER PL, TRUCKEE, CA, 96161"
+      }
     },
     "092085007000": {
-      "STR22-5761": [
-        "Unit 1"
-      ]
+      "STR22-5761": {
+        "units": [
+          "Unit 1"
+        ],
+        "status": "suspended",
+        "address": "470 NIGHTINGALE RD, CARNELIAN BAY, CA, 96140"
+      }
     },
     "117210022000": {
-      "STR22-5768": [
-        "19"
-      ]
+      "STR22-5768": {
+        "units": [
+          "19"
+        ],
+        "status": "expired",
+        "address": "7600 N LAKE BLVD 19, TAHOE VISTA, CA, 96148"
+      }
     },
     "090380008000": {
-      "STR22-5810": [
-        "8"
-      ]
+      "STR22-5810": {
+        "units": [
+          "8"
+        ],
+        "status": "current",
+        "address": "9200 BROCKWAY SPRINGS DR, KINGS BEACH, CA, 96143"
+      }
     },
     "090067029000": {
-      "STR22-5849": [
-        "2"
-      ]
+      "STR22-5849": {
+        "units": [
+          "2"
+        ],
+        "status": "current",
+        "address": "8333 RAINBOW AVE, KINGS BEACH, CA, 96143"
+      }
     },
     "090067028000": {
-      "STR22-5850": [
-        "3"
-      ]
+      "STR22-5850": {
+        "units": [
+          "3"
+        ],
+        "status": "current",
+        "address": "8333 RAINBOW AVE, KINGS BEACH, CA, 96143"
+      }
     },
     "096500033000": {
-      "STR22-5857": [
-        "11"
-      ]
+      "STR22-5857": {
+        "units": [
+          "11"
+        ],
+        "status": "current",
+        "address": "3009 RIDGE CT, OLYMPIC VALLEY, CA, 96146"
+      }
     },
     "096500014000": {
-      "STR23-5858": [
-        "12"
-      ]
+      "STR23-5858": {
+        "units": [
+          "12"
+        ],
+        "status": "current",
+        "address": "3009 RIDGE CT 12, OLYMPIC VALLEY, CA, 96146"
+      }
     },
     "090380003000": {
-      "STR22-5880": [
-        "3"
-      ]
+      "STR22-5880": {
+        "units": [
+          "3"
+        ],
+        "status": "current",
+        "address": "9200 BROCKWAY SPRINGS DR, KINGS BEACH, CA, 96143"
+      }
     },
     "090380028520": {
-      "STR22-5881": [
-        "44"
-      ]
+      "STR22-5881": {
+        "units": [
+          "44"
+        ],
+        "status": "current",
+        "address": "9200 BROCKWAY SPRINGS DR, KINGS BEACH, CA, 96143"
+      }
     },
     "110270016000": {
-      "STR22-5934": [
-        "216"
-      ]
+      "STR22-5934": {
+        "units": [
+          "216"
+        ],
+        "status": "current",
+        "address": "2000 NORTH VILLAGE DR 216, TRUCKEE, CA, 96161"
+      }
     },
     "110270024000": {
-      "STR22-5955": [
-        "223"
-      ]
+      "STR22-5955": {
+        "units": [
+          "223"
+        ],
+        "status": "current",
+        "address": "2000 NORTH VILLAGE DR 223, TRUCKEE, CA, 96161"
+      }
     },
     "110270027000": {
-      "STR22-5957": [
-        "226"
-      ],
-      "STR23-8406": [
-        "226"
-      ]
+      "STR22-5957": {
+        "units": [
+          "226"
+        ],
+        "status": "expired",
+        "address": "2000 NORTH VILLAGE DR 226, TRUCKEE, CA, 96161"
+      },
+      "STR23-8406": {
+        "units": [
+          "226"
+        ],
+        "status": "current",
+        "address": "2000 NORTH VILLAGE DR 226, TRUCKEE, CA, 96161"
+      }
     },
     "110270029000": {
-      "STR22-5958": [
-        "228"
-      ],
-      "STR23-8551": [
-        "228"
-      ]
+      "STR22-5958": {
+        "units": [
+          "228"
+        ],
+        "status": "expired",
+        "address": "2000 NORTH VILLAGE DR 228, TRUCKEE, CA, 96161"
+      },
+      "STR23-8551": {
+        "units": [
+          "228"
+        ],
+        "status": "current",
+        "address": "2000 NORTH VILLAGE DR 228 TRUCKEE CA 96161"
+      }
     },
     "110270030000": {
-      "STR22-5959": [
-        "229"
-      ]
+      "STR22-5959": {
+        "units": [
+          "229"
+        ],
+        "status": "expired",
+        "address": "2000 NORTH VILLAGE DR 229, TRUCKEE, CA, 96161"
+      }
     },
     "110270031000": {
-      "STR22-5960": [
-        "230"
-      ]
+      "STR22-5960": {
+        "units": [
+          "230"
+        ],
+        "status": "current",
+        "address": "2000 NORTH VILLAGE DR 230, TRUCKEE, CA, 96161"
+      }
     },
     "110270034000": {
-      "STR22-5961": [
-        "233"
-      ],
-      "STR23-7857": [
-        "233"
-      ]
+      "STR22-5961": {
+        "units": [
+          "233"
+        ],
+        "status": "withdrawn",
+        "address": "2000 NORTH VILLAGE DR 233, TRUCKEE, CA, 96161"
+      },
+      "STR23-7857": {
+        "units": [
+          "233"
+        ],
+        "status": "current",
+        "address": "2000 NORTH VILLAGE DR 233, TRUCKEE, CA, 96161"
+      }
     },
     "110270035000": {
-      "unk": [
-        "234"
-      ]
+      "unk": {
+        "units": [
+          "234"
+        ],
+        "status": "denied",
+        "address": "2000 NORTH VILLAGE DR 234, TRUCKEE, CA, 96161"
+      }
     },
     "095481001000": {
-      "STR22-6020": [
-        "101"
-      ],
-      "STR22-6021": [
-        "102"
-      ],
-      "STR22-6022": [
-        "103"
-      ],
-      "STR22-6023": [
-        "104"
-      ],
-      "unk": [
-        "105"
-      ],
-      "STR22-6025": [
-        "107"
-      ]
+      "STR22-6020": {
+        "units": [
+          "101"
+        ],
+        "status": "withdrawn",
+        "address": "725 GRANLIBAKKEN RD, TAHOE CITY, CA, 96145"
+      },
+      "STR22-6021": {
+        "units": [
+          "102"
+        ],
+        "status": "withdrawn",
+        "address": "725 GRANLIBAKKEN RD, TAHOE CITY, CA, 96145"
+      },
+      "STR22-6022": {
+        "units": [
+          "103"
+        ],
+        "status": "withdrawn",
+        "address": "725 GRANLIBAKKEN RD, TAHOE CITY, CA, 96145"
+      },
+      "STR22-6023": {
+        "units": [
+          "104"
+        ],
+        "status": "withdrawn",
+        "address": "725 GRANLIBAKKEN RD, TAHOE CITY, CA, 96145"
+      },
+      "unk": {
+        "units": [
+          "105"
+        ],
+        "status": "denied",
+        "address": "725 GRANLIBAKKEN RD, TAHOE CITY, CA, 96145"
+      },
+      "STR22-6025": {
+        "units": [
+          "107"
+        ],
+        "status": "withdrawn",
+        "address": "725 GRANLIBAKKEN RD, TAHOE CITY, CA, 96145"
+      }
     },
     "090380025520": {
-      "STR22-6118": [
-        "38"
-      ]
+      "STR22-6118": {
+        "units": [
+          "38"
+        ],
+        "status": "current",
+        "address": "9200 BROCKWAY SPRINGS DR, KINGS BEACH, CA, 96143"
+      }
     },
     "090380006000": {
-      "STR22-6448": [
-        "6"
-      ],
-      "STR23-8439": [
-        "6"
-      ]
+      "STR22-6448": {
+        "units": [
+          "6"
+        ],
+        "status": "expired",
+        "address": "9200 BROCKWAY SPRINGS DR, KINGS BEACH, CA, 96143"
+      },
+      "STR23-8439": {
+        "units": [
+          "6"
+        ],
+        "status": "current",
+        "address": "9200 BROCKWAY SPRINGS DR KINGS BEACH CA 96143"
+      }
     },
     "090072029000": {
-      "STR23-6496": [
-        "5"
-      ],
-      "STR22-6497": [
-        "4"
-      ]
+      "STR23-6496": {
+        "units": [
+          "5"
+        ],
+        "status": "current",
+        "address": "8268 N LAKE BLVD, KINGS BEACH, CA, 96143"
+      },
+      "STR22-6497": {
+        "units": [
+          "4"
+        ],
+        "status": "current",
+        "address": "8268 N LAKE BLVD, KINGS BEACH, CA, 96143"
+      }
     },
     "093160047000": {
-      "STR22-6512": [
-        "40"
-      ],
-      "unk": [
-        "40"
-      ]
+      "STR22-6512": {
+        "units": [
+          "40"
+        ],
+        "status": "expired",
+        "address": "520 VILLAGE RD, TAHOE CITY, CA, 96145"
+      },
+      "unk": {
+        "units": [
+          "40"
+        ],
+        "status": "denied",
+        "address": "520 VILLAGE RD, TAHOE CITY, CA, 96145"
+      }
     },
     "090400024000": {
-      "STR22-6546": [
-        "67"
-      ]
+      "STR22-6546": {
+        "units": [
+          "67"
+        ],
+        "status": "current",
+        "address": "9200 BROCKWAY SPRINGS DR, KINGS BEACH, CA, 96143"
+      }
     },
     "090380024520": {
-      "STR22-6575": [
-        "36"
-      ]
+      "STR22-6575": {
+        "units": [
+          "36"
+        ],
+        "status": "current",
+        "address": "9200 BROCKWAY SPRINGS DR, KINGS BEACH, CA, 96143"
+      }
     },
     "096380021520": {
-      "STR22-6803": [
-        "11"
-      ]
+      "STR22-6803": {
+        "units": [
+          "11"
+        ],
+        "status": "current",
+        "address": "1800 Olympic Valley Rd, Olympic Valley, Ca, 96146"
+      }
     },
     "111200001000": {
-      "STR22-6889": [
-        "1"
-      ]
+      "STR22-6889": {
+        "units": [
+          "1"
+        ],
+        "status": "current",
+        "address": "1001 COMMONWEALTH DR 1, KINGS BEACH, CA, 96143"
+      }
     },
     "096520008000": {
-      "unk": [
-        "A-5"
-      ]
+      "unk": {
+        "units": [
+          "A-5"
+        ],
+        "status": "denied",
+        "address": "1609 CHRISTY HILL RD A-6, OLYMPIC VALLEY, CA, 96146"
+      }
     },
     "090380019520": {
-      "STR22-6965": [
-        "26"
-      ]
+      "STR22-6965": {
+        "units": [
+          "26"
+        ],
+        "status": "current",
+        "address": "9200 BROCKWAY SPRINGS DR, KINGS BEACH, CA, 96143"
+      }
     },
     "117080044000": {
-      "STR22-6975": [
-        "44"
-      ]
+      "STR22-6975": {
+        "units": [
+          "44"
+        ],
+        "status": "withdrawn",
+        "address": "6943 N LAKE BLVD 44, TAHOE VISTA, CA, 96148"
+      }
     },
     "093400042000": {
-      "STR22-6976": [
-        "18"
-      ]
+      "STR22-6976": {
+        "units": [
+          "18"
+        ],
+        "status": "current",
+        "address": "2755 N LAKE BLVD 18, TAHOE CITY, CA, 96145"
+      }
     },
     "111220023000": {
-      "STR22-6977": [
-        "88"
-      ]
+      "STR22-6977": {
+        "units": [
+          "88"
+        ],
+        "status": "current",
+        "address": "1001 COMMONWEALTH DR 88, KINGS BEACH, CA, 96143"
+      }
     },
     "093414035000": {
-      "STR22-6980": [
-        "200"
-      ],
-      "STR25-9279": [
-        "200"
-      ]
+      "STR22-6980": {
+        "units": [
+          "200"
+        ],
+        "status": "withdrawn",
+        "address": "3101 LAKE FOREST RD 200, TAHOE CITY, CA, 96145"
+      },
+      "STR25-9279": {
+        "units": [
+          "200"
+        ],
+        "status": "current",
+        "address": "3101 LAKE FOREST RD 200 TAHOE CITY CA 96145"
+      }
     },
     "112240035000": {
-      "STR22-6989": [
-        "N/A"
-      ]
+      "STR22-6989": {
+        "units": [
+          "N/A"
+        ],
+        "status": "current",
+        "address": "1419 CROMWELL LN, TAHOE VISTA, CA, 96140"
+      }
     },
     "096420004000": {
-      "STR22-6990": [
-        "3"
-      ],
-      "STR23-8312": [
-        "3"
-      ]
+      "STR22-6990": {
+        "units": [
+          "3"
+        ],
+        "status": "expired",
+        "address": "460 SHIRLEY CANYON RD 3, OLYMPIC VALLEY, CA, 96146"
+      },
+      "STR23-8312": {
+        "units": [
+          "3"
+        ],
+        "status": "current",
+        "address": "460 SHIRLEY CANYON RD 3 RD 3, OLYMPIC VALLEY, CA, 96146"
+      }
     },
     "095510033000": {
-      "unk": [
-        "40"
-      ]
+      "unk": {
+        "units": [
+          "40"
+        ],
+        "status": "denied",
+        "address": "725 GRANLIBAKKEN RD 40, TAHOE CITY, CA, 96145"
+      }
     },
     "111080020000": {
-      "STR22-7001": [
-        "59"
-      ]
+      "STR22-7001": {
+        "units": [
+          "59"
+        ],
+        "status": "withdrawn",
+        "address": "1300 REGENCY WAY 59, TAHOE VISTA, CA, 96148"
+      }
     },
     "095490032000": {
-      "STR22-7008": [
-        "88"
-      ]
+      "STR22-7008": {
+        "units": [
+          "88"
+        ],
+        "status": "withdrawn",
+        "address": "725 GRANLIBAKKEN RD 88, TAHOE CITY, CA, 96145"
+      }
     },
     "110270015000": {
-      "STR23-7021": [
-        "215"
-      ]
+      "STR23-7021": {
+        "units": [
+          "215"
+        ],
+        "status": "current",
+        "address": "2000 NORTH VILLAGE DR 215, TRUCKEE, CA, 96161"
+      }
     },
     "095510023000": {
-      "STR22-7030": [
-        "51"
-      ]
+      "STR22-7030": {
+        "units": [
+          "51"
+        ],
+        "status": "withdrawn",
+        "address": "725 GRANLIBAKKEN RD 51, TAHOE CITY, CA, 96145"
+      }
     },
     "084212007000": {
-      "STR22-7045": [
-        "Bldg A"
-      ]
+      "STR22-7045": {
+        "units": [
+          "Bldg A"
+        ],
+        "status": "current",
+        "address": "590 BALSAM LN, TAHOE CITY, CA, 96145"
+      }
     },
     "093414016000": {
-      "STR22-7049": [
-        "219"
-      ]
+      "STR22-7049": {
+        "units": [
+          "219"
+        ],
+        "status": "current",
+        "address": "3101 LAKE FOREST RD 219, TAHOE CITY, CA, 96145"
+      }
     },
     "090390004000": {
-      "STR22-7051": [
-        "48"
-      ]
+      "STR22-7051": {
+        "units": [
+          "48"
+        ],
+        "status": "current",
+        "address": "9200 BROCKWAY SPRINGS DR, KINGS BEACH, CA, 96143"
+      }
     },
     "098180016530": {
-      "STR22-7060": [
-        "1"
-      ]
+      "STR22-7060": {
+        "units": [
+          "1"
+        ],
+        "status": "current",
+        "address": "6722 W LAKE BLVD, TAHOMA, CA, 96142"
+      }
     },
     "090192043000": {
-      "STR22-7064": [
-        "B"
-      ]
+      "STR22-7064": {
+        "units": [
+          "B"
+        ],
+        "status": "current",
+        "address": "8860 MINNOW AVE, KINGS BEACH, CA, 96143"
+      }
     },
     "093620054000": {
-      "STR22-7065": [
-        "170"
-      ]
+      "STR22-7065": {
+        "units": [
+          "170"
+        ],
+        "status": "expired",
+        "address": "3600 N LAKE BLVD 170, CARNELIAN BAY, CA, 96140"
+      }
     },
     "112190024000": {
-      "STR22-7067": [
-        "1"
-      ]
+      "STR22-7067": {
+        "units": [
+          "1"
+        ],
+        "status": "current",
+        "address": "682 BRASSIE AVE, TAHOE VISTA, CA, 96148"
+      }
     },
     "096420007000": {
-      "STR22-7070": [
-        "6"
-      ],
-      "STR23-8240": [
-        "6"
-      ]
+      "STR22-7070": {
+        "units": [
+          "6"
+        ],
+        "status": "withdrawn",
+        "address": "460 SHIRLEY CANYON RD 6, OLYMPIC VALLEY, CA, 96146"
+      },
+      "STR23-8240": {
+        "units": [
+          "6"
+        ],
+        "status": "current",
+        "address": "460 SHIRLEY CANYON RD 6 RD 6, OLYMPIC VALLEY, CA, 96146"
+      }
     },
     "111240042000": {
-      "STR22-7076": [
-        "135"
-      ],
-      "STR25-9332": [
-        "135"
-      ]
+      "STR22-7076": {
+        "units": [
+          "135"
+        ],
+        "status": "withdrawn",
+        "address": "1001 COMMONWEALTH DR 135, KINGS BEACH, CA, 96143"
+      },
+      "STR25-9332": {
+        "units": [
+          "135"
+        ],
+        "status": "current",
+        "address": "1001 COMMONWEALTH DR 135 KINGS BEACH CA 96143"
+      }
     },
     "093430030000": {
-      "STR22-7077": [
-        "26"
-      ],
-      "STR24-9239": [
-        "26"
-      ]
+      "STR22-7077": {
+        "units": [
+          "26"
+        ],
+        "status": "withdrawn",
+        "address": "3101 LAKE FOREST RD 26, TAHOE CITY, CA, 96145"
+      },
+      "STR24-9239": {
+        "units": [
+          "26"
+        ],
+        "status": "current",
+        "address": "3101 LAKE FOREST RD 26 TAHOE CITY CA 96145"
+      }
     },
     "111200020000": {
-      "STR22-7086": [
-        "20"
-      ]
+      "STR22-7086": {
+        "units": [
+          "20"
+        ],
+        "status": "current",
+        "address": "1001 COMMONWEALTH DR 20, KINGS BEACH, CA, 96143"
+      }
     },
     "095510017000": {
-      "STR22-7095": [
-        "45"
-      ]
+      "STR22-7095": {
+        "units": [
+          "45"
+        ],
+        "status": "withdrawn",
+        "address": "725 GRANLIBAKKEN RD 45, TAHOE CITY, CA, 96145"
+      }
     },
     "093414032000": {
-      "STR22-7113": [
-        "#203"
-      ]
+      "STR22-7113": {
+        "units": [
+          "#203"
+        ],
+        "status": "current",
+        "address": "3101 LAKE FOREST RD 203, TAHOE CITY, CA, 96145"
+      }
     },
     "111210035000": {
-      "STR22-7114": [
-        "58"
-      ]
+      "STR22-7114": {
+        "units": [
+          "58"
+        ],
+        "status": "expired",
+        "address": "1001 COMMONWEALTH DR 58, KINGS BEACH, CA, 96143"
+      }
     },
     "096460057000": {
-      "STR23-7119": [
-        "54"
-      ]
+      "STR23-7119": {
+        "units": [
+          "54"
+        ],
+        "status": "current",
+        "address": "227 Olympic Valley Rd 54, Olympic Valley, Ca, 96146"
+      }
     },
     "096470008000": {
-      "STR22-7122": [
-        "4"
-      ]
+      "STR22-7122": {
+        "units": [
+          "4"
+        ],
+        "status": "current",
+        "address": "100 WINDING CREEK RD 4, OLYMPIC VALLEY, CA, 96146"
+      }
     },
     "117080028000": {
-      "STR23-7127": [
-        "28"
-      ]
+      "STR23-7127": {
+        "units": [
+          "28"
+        ],
+        "status": "withdrawn",
+        "address": "6944 N LAKE BLVD 28, TAHOE VISTA, CA, 96148"
+      }
     },
     "110270006000": {
-      "unk": [
-        "206"
-      ],
-      "STR23-7819": [
-        "206"
-      ],
-      "STR23-8326": [
-        "206"
-      ]
+      "unk": {
+        "units": [
+          "206"
+        ],
+        "status": "denied",
+        "address": "2000 NORTH VILLAGE DR 206, TRUCKEE, CA, 96161"
+      },
+      "STR23-7819": {
+        "units": [
+          "206"
+        ],
+        "status": "withdrawn",
+        "address": "2000 NORTH VILLAGE DR 206, TRUCKEE, CA, 96161"
+      },
+      "STR23-8326": {
+        "units": [
+          "206"
+        ],
+        "status": "current",
+        "address": "2000 NORTH VILLAGE DR 206, TRUCKEE, CA, 96161"
+      }
     },
     "083360046000": {
-      "STR22-7130": [
-        "A"
-      ],
-      "unk": [
-        "B"
-      ]
+      "STR22-7130": {
+        "units": [
+          "A"
+        ],
+        "status": "current",
+        "address": "272 TAHOE WOODS BLVD, TAHOE CITY, CA, 96145"
+      },
+      "unk": {
+        "units": [
+          "B"
+        ],
+        "status": "denied",
+        "address": "272 TAHOE WOODS BLVD, TAHOE CITY, CA, 96145"
+      }
     },
     "117210020000": {
-      "STR22-7140": [
-        "17"
-      ],
-      "STR24-9069": [
-        "17"
-      ]
+      "STR22-7140": {
+        "units": [
+          "17"
+        ],
+        "status": "withdrawn",
+        "address": "7600 N LAKE BLVD 17, TAHOE VISTA, CA, 96148"
+      },
+      "STR24-9069": {
+        "units": [
+          "17"
+        ],
+        "status": "current",
+        "address": "7600 N LAKE BLVD 17 TAHOE VISTA CA 96148"
+      }
     },
     "110140024000": {
-      "STR22-7141": [
-        "3060"
-      ]
+      "STR22-7141": {
+        "units": [
+          "3060"
+        ],
+        "status": "current",
+        "address": "3060 SILVER STRIKE, TRUCKEE, CA, 96161"
+      }
     },
     "096400013000": {
-      "STR22-7146": [
-        "#29"
-      ]
+      "STR22-7146": {
+        "units": [
+          "#29"
+        ],
+        "status": "withdrawn",
+        "address": "420 SHIRLEY CANYON RD 29, OLYMPIC VALLEY, CA, 96146"
+      }
     },
     "116130017000": {
-      "STR22-7147": [
-        "57"
-      ]
+      "STR22-7147": {
+        "units": [
+          "57"
+        ],
+        "status": "current",
+        "address": "5101 N LAKE BLVD 57, CARNELIAN BAY, CA, 96140"
+      }
     },
     "094300004000": {
-      "STR22-7149": [
-        "59"
-      ],
-      "STR25-9307": [
-        "59"
-      ]
+      "STR22-7149": {
+        "units": [
+          "59"
+        ],
+        "status": "expired",
+        "address": "300 W LAKE BLVD 59, TAHOE CITY, CA, 96145"
+      },
+      "STR25-9307": {
+        "units": [
+          "59"
+        ],
+        "status": "current",
+        "address": "300 W LAKE BLVD 59 TAHOE CITY CA 96145"
+      }
     },
     "093530020000": {
-      "STR22-7152": [
-        "45"
-      ]
+      "STR22-7152": {
+        "units": [
+          "45"
+        ],
+        "status": "current",
+        "address": "3115 N LAKE BLVD 45, TAHOE CITY, CA, 96145"
+      }
     },
     "093430001000": {
-      "STR22-7153": [
-        "166"
-      ]
+      "STR22-7153": {
+        "units": [
+          "166"
+        ],
+        "status": "current",
+        "address": "3101 LAKE FOREST RD 166, TAHOE CITY, CA, 96145"
+      }
     },
     "111250044000": {
-      "STR23-7159": [
-        "216"
-      ],
-      "STR24-9016": [
-        "216"
-      ]
+      "STR23-7159": {
+        "units": [
+          "216"
+        ],
+        "status": "withdrawn",
+        "address": "1001 COMMONWEALTH DR 216, KINGS BEACH, CA, 96143"
+      },
+      "STR24-9016": {
+        "units": [
+          "216"
+        ],
+        "status": "current",
+        "address": "1001 COMMONWEALTH DR 216 KINGS BEACH CA 96143"
+      }
     },
     "117080053000": {
-      "STR22-7163": [
-        "53"
-      ]
+      "STR22-7163": {
+        "units": [
+          "53"
+        ],
+        "status": "withdrawn",
+        "address": "6943 N LAKE BLVD 53, TAHOE VISTA, CA, 96148"
+      }
     },
     "096460049000": {
-      "STR22-7169": [
-        "46"
-      ]
+      "STR22-7169": {
+        "units": [
+          "46"
+        ],
+        "status": "expired",
+        "address": "227 OLYMPIC VALLEY RD 46, OLYMPIC VALLEY, CA, 96146"
+      }
     },
     "095490034000": {
-      "STR22-7179": [
-        "86"
-      ]
+      "STR22-7179": {
+        "units": [
+          "86"
+        ],
+        "status": "withdrawn",
+        "address": "725 GRANLIBAKKEN RD 86, TAHOE CITY, CA, 96145"
+      }
     },
     "094350015000": {
-      "STR23-7183": [
-        "244"
-      ]
+      "STR23-7183": {
+        "units": [
+          "244"
+        ],
+        "status": "current",
+        "address": "180 W LAKE BLVD 244, TAHOE CITY, CA, 96145"
+      }
     },
     "093103002000": {
-      "STR22-7196": [
-        "70 Tahoma"
-      ]
+      "STR22-7196": {
+        "units": [
+          "70 Tahoma"
+        ],
+        "status": "current",
+        "address": "70 TAHOMA AVE, TAHOE CITY, CA, 96145"
+      }
     },
     "093400020000": {
-      "STR22-7199": [
-        "42"
-      ]
+      "STR22-7199": {
+        "units": [
+          "42"
+        ],
+        "status": "current",
+        "address": "2755 N LAKE BLVD 42, TAHOE CITY, CA, 96145"
+      }
     },
     "116200009000": {
-      "STR23-7237": [
-        "9"
-      ]
+      "STR23-7237": {
+        "units": [
+          "9"
+        ],
+        "status": "withdrawn",
+        "address": "5101 N LAKE BLVD 9, CARNELIAN BAY, CA, 96140"
+      }
     },
     "111240044000": {
-      "STR22-7242": [
-        "133"
-      ]
+      "STR22-7242": {
+        "units": [
+          "133"
+        ],
+        "status": "current",
+        "address": "1001 COMMONWEALTH DR 133, KINGS BEACH, CA, 96143"
+      }
     },
     "093420028000": {
-      "unk": [
-        "161"
-      ],
-      "STR22-7259": [
-        "161"
-      ],
-      "STR24-8975": [
-        "161"
-      ]
+      "unk": {
+        "units": [
+          "161"
+        ],
+        "status": "denied",
+        "address": "3101 LAKE FOREST RD 161, TAHOE CITY, CA, 96145"
+      },
+      "STR22-7259": {
+        "units": [
+          "161"
+        ],
+        "status": "expired",
+        "address": "3101 LAKE FOREST RD 161, TAHOE CITY, CA, 96145"
+      },
+      "STR24-8975": {
+        "units": [
+          "161"
+        ],
+        "status": "current",
+        "address": "3101 LAKE FOREST RD 161 TAHOE CITY CA 96145"
+      }
     },
     "096400012000": {
-      "STR22-7250": [
-        "25"
-      ]
+      "STR22-7250": {
+        "units": [
+          "25"
+        ],
+        "status": "current",
+        "address": "420 SHIRLEY CANYON RD 25, OLYMPIC VALLEY, CA, 96146"
+      }
     },
     "093530050000": {
-      "STR22-7254": [
-        "93"
-      ]
+      "STR22-7254": {
+        "units": [
+          "93"
+        ],
+        "status": "expired",
+        "address": "3115 N LAKE BLVD 93, TAHOE CITY, CA, 96145"
+      }
     },
     "094390015000": {
-      "STR22-7256": [
-        "59"
-      ]
+      "STR22-7256": {
+        "units": [
+          "59"
+        ],
+        "status": "current",
+        "address": "1877 N LAKE BLVD 59, TAHOE CITY, CA, 96145"
+      }
     },
     "095510042000": {
-      "STR23-7269": [
-        "17"
-      ]
+      "STR23-7269": {
+        "units": [
+          "17"
+        ],
+        "status": "withdrawn",
+        "address": "725 GRANLIBAKKEN RD 17, TAHOE CITY, CA, 96145"
+      }
     },
     "094500006520": {
-      "STR22-7270": [
-        "13"
-      ]
+      "STR22-7270": {
+        "units": [
+          "13"
+        ],
+        "status": "withdrawn",
+        "address": "270 N LAKE BLVD 13-U, TAHOE CITY, CA, 96145"
+      }
     },
     "116170068000": {
-      "STR22-7271": [
-        "122"
-      ]
+      "STR22-7271": {
+        "units": [
+          "122"
+        ],
+        "status": "current",
+        "address": "5101 N LAKE BLVD 122, CARNELIAN BAY, CA, 96140"
+      }
     },
     "096460007000": {
-      "STR23-7272": [
-        "7"
-      ]
+      "STR23-7272": {
+        "units": [
+          "7"
+        ],
+        "status": "current",
+        "address": "227 Olympic Valley Rd 7, Olympic Valley, Ca, 96140"
+      }
     },
     "093470010000": {
-      "STR22-7275": [
-        "28"
-      ]
+      "STR22-7275": {
+        "units": [
+          "28"
+        ],
+        "status": "current",
+        "address": "3600 N LAKE BLVD 28, CARNELIAN BAY, CA, 96140"
+      }
     },
     "093540032000": {
-      "STR22-7279": [
-        "69"
-      ]
+      "STR22-7279": {
+        "units": [
+          "69"
+        ],
+        "status": "current",
+        "address": "3600 N LAKE BLVD 69, CARNELIAN BAY, CA, 96140"
+      }
     },
     "103190032000": {
-      "unk": [
-        "502"
-      ]
+      "unk": {
+        "units": [
+          "502"
+        ],
+        "status": "denied",
+        "address": "9001 NORTHSTAR DR 502, TRUCKEE, CA, 96161"
+      }
     },
     "096400002000": {
-      "STR23-7283": [
-        "15"
-      ]
+      "STR23-7283": {
+        "units": [
+          "15"
+        ],
+        "status": "current",
+        "address": "420 SHIRLEY CANYON RD 15, OLYMPIC VALLEY, CA, 96146"
+      }
     },
     "103190029000": {
-      "unk": [
-        "405"
-      ]
+      "unk": {
+        "units": [
+          "405"
+        ],
+        "status": "denied",
+        "address": "9001 NORTHSTAR DR 405, TRUCKEE, CA, 96161"
+      }
     },
     "090400004000": {
-      "STR22-7286": [
-        "51"
-      ]
+      "STR22-7286": {
+        "units": [
+          "51"
+        ],
+        "status": "expired",
+        "address": "9200 BROCKWAY SPRINGS DR, KINGS BEACH, CA, 96143"
+      }
     },
     "110320004000": {
-      "STR23-7290": [
-        "1"
-      ]
+      "STR23-7290": {
+        "units": [
+          "1"
+        ],
+        "status": "expired",
+        "address": "111 BASQUE DR, TRUCKEE, CA, 96161"
+      }
     },
     "095540005000": {
-      "STR22-7295": [
-        "5"
-      ]
+      "STR22-7295": {
+        "units": [
+          "5"
+        ],
+        "status": "current",
+        "address": "135 ALPINE MEADOWS RD 5, ALPINE MEADOWS, CA, 96146"
+      }
     },
     "093490023000": {
-      "STR22-7299": [
-        "63"
-      ],
-      "unk": [
-        "63"
-      ]
+      "STR22-7299": {
+        "units": [
+          "63"
+        ],
+        "status": "current",
+        "address": "2755 N LAKE BLVD 63, TAHOE CITY, CA, 96145"
+      },
+      "unk": {
+        "units": [
+          "63"
+        ],
+        "status": "denied",
+        "address": "2755 N LAKE BLVD 63 TAHOE CITY CA 96145"
+      }
     },
     "090380024510": {
-      "STR22-7302": [
-        "35"
-      ]
+      "STR22-7302": {
+        "units": [
+          "35"
+        ],
+        "status": "current",
+        "address": "9200 BROCKWAY SPRINGS DR, KINGS BEACH, CA, 96143"
+      }
     },
     "098174018000": {
-      "STR22-7321": [
-        "Unit B"
-      ]
+      "STR22-7321": {
+        "units": [
+          "Unit B"
+        ],
+        "status": "current",
+        "address": "305 PLACER ST, TAHOMA, CA, 96142"
+      }
     },
     "095420002000": {
-      "STR23-7323": [
-        "32"
-      ]
+      "STR23-7323": {
+        "units": [
+          "32"
+        ],
+        "status": "current",
+        "address": "205 ALPINE MEADOWS RD 32, ALPINE MEADOWS, CA, 96146"
+      }
     },
     "090410007000": {
-      "STR22-7335": [
-        "4"
-      ]
+      "STR22-7335": {
+        "units": [
+          "4"
+        ],
+        "status": "current",
+        "address": "144 CHIPMUNK ST 4, KINGS BEACH, CA, 96143"
+      }
     },
     "093413008000": {
-      "STR22-7338": [
-        "131"
-      ],
-      "STR23-8232": [
-        "131"
-      ]
+      "STR22-7338": {
+        "units": [
+          "131"
+        ],
+        "status": "expired",
+        "address": "3101 LAKE FOREST RD 131, TAHOE CITY, CA, 96145"
+      },
+      "STR23-8232": {
+        "units": [
+          "131"
+        ],
+        "status": "current",
+        "address": "3101 LAKE FOREST RD 131, TAHOE CITY, CA, 96145"
+      }
     },
     "090380013510": {
-      "STR22-7344": [
-        "13"
-      ]
+      "STR22-7344": {
+        "units": [
+          "13"
+        ],
+        "status": "current",
+        "address": "9200 BROCKWAY SPRINGS DR, KINGS BEACH, CA, 96143"
+      }
     },
     "111200004000": {
-      "STR22-7345": [
-        "4"
-      ]
+      "STR22-7345": {
+        "units": [
+          "4"
+        ],
+        "status": "withdrawn",
+        "address": "1001 COMMONWEALTH DR 4, KINGS BEACH, CA, 96143"
+      }
     },
     "110410008000": {
-      "STR22-7353": [
-        "#4"
-      ]
+      "STR22-7353": {
+        "units": [
+          "#4"
+        ],
+        "status": "current",
+        "address": "4008 SKI VIEW, TRUCKEE, CA, 96161"
+      }
     },
     "094330017000": {
-      "STR22-7355": [
-        "94"
-      ],
-      "STR23-8343": [
-        "94"
-      ],
-      "STR24-8787": [
-        "94"
-      ]
+      "STR22-7355": {
+        "units": [
+          "94"
+        ],
+        "status": "expired",
+        "address": "300 W LAKE BLVD 94, TAHOE CITY, CA, 96145"
+      },
+      "STR23-8343": {
+        "units": [
+          "94"
+        ],
+        "status": "withdrawn",
+        "address": "300 W LAKE BLVD 94, TAHOE CITY, CA, 96145"
+      },
+      "STR24-8787": {
+        "units": [
+          "94"
+        ],
+        "status": "current",
+        "address": "300 W LAKE BLVD 94 TAHOE CITY CA 96145"
+      }
     },
     "111240019000": {
-      "STR22-7361": [
-        "157"
-      ]
+      "STR22-7361": {
+        "units": [
+          "157"
+        ],
+        "status": "expired",
+        "address": "1001 COMMONWEALTH DR 157, KINGS BEACH, CA, 96143"
+      }
     },
     "114130011000": {
-      "STR22-7377": [
-        "19"
-      ]
+      "STR22-7377": {
+        "units": [
+          "19"
+        ],
+        "status": "current",
+        "address": "15145 BOULDER PL, TRUCKEE, CA, 96161"
+      }
     },
     "116170072000": {
-      "STR22-7393": [
-        "126"
-      ]
+      "STR22-7393": {
+        "units": [
+          "126"
+        ],
+        "status": "current",
+        "address": "5101 N LAKE BLVD 126, CARNELIAN BAY, CA, 96140"
+      }
     },
     "096460047000": {
-      "STR22-7394": [
-        "44"
-      ]
+      "STR22-7394": {
+        "units": [
+          "44"
+        ],
+        "status": "current",
+        "address": "227 OLYMPIC VALLEY RD 44, OLYMPIC VALLEY, CA, 96146"
+      }
     },
     "094500002520": {
-      "STR22-7397": [
-        "5"
-      ]
+      "STR22-7397": {
+        "units": [
+          "5"
+        ],
+        "status": "expired",
+        "address": "270 N LAKE BLVD 5-U, TAHOE CITY, CA, 96145"
+      }
     },
     "096070022000": {
-      "STR23-7402": [
-        "Unit 1"
-      ],
-      "unk": [
-        "2"
-      ]
+      "STR23-7402": {
+        "units": [
+          "Unit 1"
+        ],
+        "status": "current",
+        "address": "1702 NAVAJO CT, OLYMPIC VALLEY, CA, 96146"
+      },
+      "unk": {
+        "units": [
+          "2"
+        ],
+        "status": "submitted",
+        "address": "1702 NAVAJO CT OLYMPIC VALLEY CA 96146"
+      }
     },
     "090380021510": {
-      "STR22-7403": [
-        "29"
-      ]
+      "STR22-7403": {
+        "units": [
+          "29"
+        ],
+        "status": "current",
+        "address": "9200 BROCKWAY SPRINGS DR, KINGS BEACH, CA, 96143"
+      }
     },
     "090380019510": {
-      "STR22-7406": [
-        "25"
-      ]
+      "STR22-7406": {
+        "units": [
+          "25"
+        ],
+        "status": "current",
+        "address": "9200 BROCKWAY SPRINGS DR 25, KINGS BEACH, CA, 96143"
+      }
     },
     "117220026000": {
-      "STR22-7408": [
-        "26"
-      ]
+      "STR22-7408": {
+        "units": [
+          "26"
+        ],
+        "status": "current",
+        "address": "7580 N LAKE BLVD 26, TAHOE VISTA, CA, 96148"
+      }
     },
     "090330003000": {
-      "STR22-7091": [
-        "103"
-      ]
+      "STR22-7091": {
+        "units": [
+          "103"
+        ],
+        "status": "current",
+        "address": "144 CHIPMUNK ST 103, KINGS BEACH, CA, 96143"
+      }
     },
     "094480012000": {
-      "STR22-7102": [
-        "21"
-      ]
+      "STR22-7102": {
+        "units": [
+          "21"
+        ],
+        "status": "current",
+        "address": "2560 LAKE FOREST RD 21, TAHOE CITY, CA, 96145"
+      }
     },
     "111250030000": {
-      "unk": [
-        "229"
-      ],
-      "STR24-9137": [
-        "229"
-      ]
+      "unk": {
+        "units": [
+          "229"
+        ],
+        "status": "denied",
+        "address": "1001 COMMONWEALTH DR 229, KINGS BEACH, CA, 96143"
+      },
+      "STR24-9137": {
+        "units": [
+          "229"
+        ],
+        "status": "current",
+        "address": "1001 COMMONWEALTH DR 229 KINGS BEACH CA 96143"
+      }
     },
     "117210005000": {
-      "STR22-7432": [
-        "#2"
-      ]
+      "STR22-7432": {
+        "units": [
+          "#2"
+        ],
+        "status": "expired",
+        "address": "7600 N LAKE BLVD 2, TAHOE VISTA, CA, 96148"
+      }
     },
     "116190018000": {
-      "STR22-7439": [
-        "37"
-      ]
+      "STR22-7439": {
+        "units": [
+          "37"
+        ],
+        "status": "current",
+        "address": "5101 N LAKE BLVD 37, CARNELIAN BAY, CA, 96140"
+      }
     },
     "096420003000": {
-      "STR22-7441": [
-        "2"
-      ]
+      "STR22-7441": {
+        "units": [
+          "2"
+        ],
+        "status": "current",
+        "address": "460 SHIRLEY CANYON RD 2, OLYMPIC VALLEY, CA, 96146"
+      }
     },
     "095520025000": {
-      "STR22-7442": [
-        "25"
-      ]
+      "STR22-7442": {
+        "units": [
+          "25"
+        ],
+        "status": "expired",
+        "address": "2090 CHALET RD 25, ALPINE MEADOWS, CA, 96146"
+      }
     },
     "095490020000": {
-      "STR22-7444": [
-        "72"
-      ]
+      "STR22-7444": {
+        "units": [
+          "72"
+        ],
+        "status": "withdrawn",
+        "address": "725 GRANLIBAKKEN RD 72, TAHOE CITY, CA, 96145"
+      }
     },
     "094410001000": {
-      "STR22-7449": [
-        "48"
-      ]
+      "STR22-7449": {
+        "units": [
+          "48"
+        ],
+        "status": "expired",
+        "address": "1877 N LAKE BLVD 48, TAHOE CITY, CA, 96145"
+      }
     },
     "094390021000": {
-      "STR22-7450": [
-        "52"
-      ]
+      "STR22-7450": {
+        "units": [
+          "52"
+        ],
+        "status": "expired",
+        "address": "1877 N LAKE BLVD 52, TAHOE CITY, CA, 96145"
+      }
     },
     "093411005000": {
-      "STR22-7453": [
-        "116"
-      ]
+      "STR22-7453": {
+        "units": [
+          "116"
+        ],
+        "status": "current",
+        "address": "3101 LAKE FOREST RD 116, TAHOE CITY, CA, 96145"
+      }
     },
     "094490051000": {
-      "STR22-7454": [
-        "51"
-      ]
+      "STR22-7454": {
+        "units": [
+          "51"
+        ],
+        "status": "current",
+        "address": "2560 LAKE FOREST RD 51, TAHOE CITY, CA, 96145"
+      }
     },
     "096420011000": {
-      "STR22-7467": [
-        "10"
-      ]
+      "STR22-7467": {
+        "units": [
+          "10"
+        ],
+        "status": "current",
+        "address": "460 SHIRLEY CANYON RD 10, OLYMPIC VALLEY, CA, 96146"
+      }
     },
     "093620022000": {
-      "STR22-7468": [
-        "131"
-      ],
-      "STR23-8453": [
-        "131"
-      ]
+      "STR22-7468": {
+        "units": [
+          "131"
+        ],
+        "status": "expired",
+        "address": "3600 N LAKE BLVD 131, CARNELIAN BAY, CA, 96014"
+      },
+      "STR23-8453": {
+        "units": [
+          "131"
+        ],
+        "status": "current",
+        "address": "3600 N LAKE BLVD 131 CARNELIAN BAY CA 96014"
+      }
     },
     "111070012000": {
-      "STR22-7469": [
-        "74"
-      ]
+      "STR22-7469": {
+        "units": [
+          "74"
+        ],
+        "status": "current",
+        "address": "1300 REGENCY WAY 74, TAHOE VISTA, CA, 96148"
+      }
     },
     "094430040000": {
-      "STR22-7475": [
-        "115"
-      ]
+      "STR22-7475": {
+        "units": [
+          "115"
+        ],
+        "status": "current",
+        "address": "1877 N LAKE BLVD 115, TAHOE CITY, CA, 96145"
+      }
     },
     "094340028000": {
-      "STR22-7476": [
-        "6"
-      ]
+      "STR22-7476": {
+        "units": [
+          "6"
+        ],
+        "status": "current",
+        "address": "2350 STAR HARBOR CT 6, TAHOE CITY, CA, 96145"
+      }
     },
     "096602003000": {
-      "STR22-7481": [
-        "3243"
-      ]
+      "STR22-7481": {
+        "units": [
+          "3243"
+        ],
+        "status": "expired",
+        "address": "201 SHIRLEY CANYON RD 3243, OLYMPIC VALLEY, CA, 96146"
+      }
     },
     "085217019000": {
-      "STR22-7485": [
-        "1"
-      ]
+      "STR22-7485": {
+        "units": [
+          "1"
+        ],
+        "status": "current",
+        "address": "3970 EAGLE ROCK RD, HOMEWOOD, CA, 96141"
+      }
     },
     "111070013000": {
-      "STR22-7491": [
-        "86"
-      ]
+      "STR22-7491": {
+        "units": [
+          "86"
+        ],
+        "status": "current",
+        "address": "1300 REGENCY WAY 86, TAHOE VISTA, CA, 96148"
+      }
     },
     "094390006000": {
-      "STR23-7493": [
-        "61"
-      ]
+      "STR23-7493": {
+        "units": [
+          "61"
+        ],
+        "status": "current",
+        "address": "1877 N LAKE BLVD 61, TAHOE CITY, CA, 96145"
+      }
     },
     "093460015000": {
-      "STR22-7496": [
-        "19"
-      ]
+      "STR22-7496": {
+        "units": [
+          "19"
+        ],
+        "status": "current",
+        "address": "3600 N LAKE BLVD 19, CARNELIAN BAY, CA, 96140"
+      }
     },
     "117230008570": {
-      "STR22-7501": [
-        "A"
-      ]
+      "STR22-7501": {
+        "units": [
+          "A"
+        ],
+        "status": "current",
+        "address": "8004 N LAKE BLVD A, KINGS BEACH, CA, 96143"
+      }
     },
     "102030029000": {
-      "unk": [
-        "249-251"
-      ]
+      "unk": {
+        "units": [
+          "249-251"
+        ],
+        "status": "denied",
+        "address": "400 SQUAW CREEK RD 249, OLYMPIC VALLEY, CA, 96145"
+      }
     },
     "102030005000": {
-      "unk": [
-        "235"
-      ]
+      "unk": {
+        "units": [
+          "235"
+        ],
+        "status": "denied",
+        "address": "400 SQUAW CREEK RD 235, OLYMPIC VALLEY, CA, 96145"
+      }
     },
     "117210036000": {
-      "STR22-7517": [
-        "33"
-      ]
+      "STR22-7517": {
+        "units": [
+          "33"
+        ],
+        "status": "expired",
+        "address": "7600 N LAKE BLVD 33, TAHOE VISTA, CA, 96148"
+      }
     },
     "094310004000": {
-      "STR23-7521": [
-        "204"
-      ]
+      "STR23-7521": {
+        "units": [
+          "204"
+        ],
+        "status": "current",
+        "address": "180 W LAKE BLVD 204, TAHOE CITY, CA, 96145"
+      }
     },
     "116120005000": {
-      "STR23-7530": [
-        "63"
-      ]
+      "STR23-7530": {
+        "units": [
+          "63"
+        ],
+        "status": "expired",
+        "address": "5101 N LAKE BLVD 63, CARNELIAN BAY, CA, 96140"
+      }
     },
     "111200008000": {
-      "STR22-7531": [
-        "8"
-      ]
+      "STR22-7531": {
+        "units": [
+          "8"
+        ],
+        "status": "current",
+        "address": "1001 COMMONWEALTH DR 8, KINGS BEACH, CA, 96143"
+      }
     },
     "111250042000": {
-      "unk": [
-        "218"
-      ],
-      "STR22-7699": [
-        "218"
-      ]
+      "unk": {
+        "units": [
+          "218"
+        ],
+        "status": "denied",
+        "address": "1001 COMMONWEALTH DR 218, KINGS BEACH, CA, 96143"
+      },
+      "STR22-7699": {
+        "units": [
+          "218"
+        ],
+        "status": "current",
+        "address": "1001 COMMONWEALTH DR 218, KINGS BEACH, CA, 96143"
+      }
     },
     "094280034000": {
-      "STR22-7543": [
-        "21"
-      ]
+      "STR22-7543": {
+        "units": [
+          "21"
+        ],
+        "status": "current",
+        "address": "300 W LAKE BLVD 21, TAHOE CITY, CA, 96145"
+      }
     },
     "096460024000": {
-      "STR22-7551": [
-        "24"
-      ]
+      "STR22-7551": {
+        "units": [
+          "24"
+        ],
+        "status": "current",
+        "address": "227 OLYMPIC VALLEY RD 24, OLYMPIC VALLEY, CA, 96146"
+      }
     },
     "116120015000": {
-      "STR22-7560": [
-        "73"
-      ]
+      "STR22-7560": {
+        "units": [
+          "73"
+        ],
+        "status": "current",
+        "address": "5101 N LAKE BLVD 73, CARNELIAN BAY, CA, 96140"
+      }
     },
     "093530013000": {
-      "STR22-7563": [
-        "52"
-      ]
+      "STR22-7563": {
+        "units": [
+          "52"
+        ],
+        "status": "current",
+        "address": "3115 N LAKE BLVD 52, TAHOE CITY, CA, 96145"
+      }
     },
     "094430036000": {
-      "STR22-7569": [
-        "109"
-      ]
+      "STR22-7569": {
+        "units": [
+          "109"
+        ],
+        "status": "current",
+        "address": "1877 N LAKE BLVD 109, TAHOE CITY, CA, 96145"
+      }
     },
     "096420009000": {
-      "STR22-7571": [
-        "8"
-      ]
+      "STR22-7571": {
+        "units": [
+          "8"
+        ],
+        "status": "current",
+        "address": "460 SHIRLEY CANYON RD 8, OLYMPIC VALLEY, CA, 96146"
+      }
     },
     "110270043000": {
-      "STR22-7574": [
-        "305"
-      ]
+      "STR22-7574": {
+        "units": [
+          "305"
+        ],
+        "status": "withdrawn",
+        "address": "2000 NORTH VILLAGE DR 305, TRUCKEE, CA, 96161"
+      }
     },
     "110270044000": {
-      "STR23-7575": [
-        "306"
-      ]
+      "STR23-7575": {
+        "units": [
+          "306"
+        ],
+        "status": "expired",
+        "address": "2000 NORTH VILLAGE DR 306, TRUCKEE, CA, 96161"
+      }
     },
     "111210028000": {
-      "STR22-7576": [
-        "46"
-      ]
+      "STR22-7576": {
+        "units": [
+          "46"
+        ],
+        "status": "current",
+        "address": "1001 COMMONWEALTH DR 46, KINGS BEACH, CA, 96143"
+      }
     },
     "111210041000": {
-      "STR22-7585": [
-        "63"
-      ],
-      "unk": [
-        "63"
-      ]
+      "STR22-7585": {
+        "units": [
+          "63"
+        ],
+        "status": "withdrawn",
+        "address": "1001 COMMONWEALTH DR 63, KINGS BEACH, CA, 96143"
+      },
+      "unk": {
+        "units": [
+          "63"
+        ],
+        "status": "submitted",
+        "address": "1001 COMMONWEALTH DR 63 KINGS BEACH CA 96143"
+      }
     },
     "111070014000": {
-      "STR22-7595": [
-        "84"
-      ]
+      "STR22-7595": {
+        "units": [
+          "84"
+        ],
+        "status": "withdrawn",
+        "address": "1300 REGENCY WAY 84, TAHOE VISTA, CA, 96148"
+      }
     },
     "117080020000": {
-      "STR22-7613": [
-        "20"
-      ]
+      "STR22-7613": {
+        "units": [
+          "20"
+        ],
+        "status": "withdrawn",
+        "address": "6944 N LAKE BLVD 20, TAHOE VISTA, CA, 96148"
+      }
     },
     "096500012000": {
-      "STR22-7623": [
-        "10"
-      ]
+      "STR22-7623": {
+        "units": [
+          "10"
+        ],
+        "status": "current",
+        "address": "3003 MEADOW CT 10, OLYMPIC VALLEY, CA, 96146"
+      }
     },
     "117210004000": {
-      "STR22-7629": [
-        "1"
-      ]
+      "STR22-7629": {
+        "units": [
+          "1"
+        ],
+        "status": "current",
+        "address": "7600 N LAKE BLVD 1, TAHOE VISTA, CA, 96148"
+      }
     },
     "096651014000": {
-      "STR22-7637": [
-        "317"
-      ]
+      "STR22-7637": {
+        "units": [
+          "317"
+        ],
+        "status": "withdrawn",
+        "address": "1985 OLYMPIC VALLEY RD 317, OLYMPIC VALLEY, CA, 96146"
+      }
     },
     "111200009000": {
-      "STR22-7660": [
-        "9"
-      ]
+      "STR22-7660": {
+        "units": [
+          "9"
+        ],
+        "status": "current",
+        "address": "1001 COMMONWEALTH DR 9, KINGS BEACH, CA, 96143"
+      }
     },
     "093620042000": {
-      "STR22-7662": [
-        "161"
-      ]
+      "STR22-7662": {
+        "units": [
+          "161"
+        ],
+        "status": "current",
+        "address": "3600 N LAKE BLVD 161, CARNELIAN BAY, CA, 96140"
+      }
     },
     "093620060000": {
-      "STR23-7664": [
-        "176"
-      ]
+      "STR23-7664": {
+        "units": [
+          "176"
+        ],
+        "status": "current",
+        "address": "3600 N LAKE BLVD 176, CARNELIAN BAY, CA, 96140"
+      }
     },
     "094175006000": {
-      "STR23-7682": [
-        "A"
-      ]
+      "STR23-7682": {
+        "units": [
+          "A"
+        ],
+        "status": "suspended",
+        "address": "2880 LAKE TERRACE AVE, TAHOE CITY, CA, 96145"
+      }
     },
     "110270008000": {
-      "STR22-7692": [
-        "208"
-      ]
+      "STR22-7692": {
+        "units": [
+          "208"
+        ],
+        "status": "current",
+        "address": "2000 NORTH VILLAGE DR 208, TRUCKEE, CA, 96161"
+      }
     },
     "094490063000": {
-      "STR22-7700": [
-        "18"
-      ]
+      "STR22-7700": {
+        "units": [
+          "18"
+        ],
+        "status": "current",
+        "address": "2560 LAKE FOREST RD 18, TAHOE CITY, CA, 96145"
+      }
     },
     "110300010000": {
-      "STR23-7707": [
-        "110-300-010-000"
-      ]
+      "STR23-7707": {
+        "units": [
+          "110-300-010-000"
+        ],
+        "status": "expired",
+        "address": "518 WOLF TREE, TRUCKEE, CA, 96161"
+      }
     },
     "095540030000": {
-      "STR23-7711": [
-        "32"
-      ]
+      "STR23-7711": {
+        "units": [
+          "32"
+        ],
+        "status": "current",
+        "address": "135 ALPINE MEADOWS RD 32, ALPINE MEADOWS, CA, 96146"
+      }
     },
     "093416018000": {
-      "STR23-7721": [
-        "87"
-      ]
+      "STR23-7721": {
+        "units": [
+          "87"
+        ],
+        "status": "withdrawn",
+        "address": "3101 LAKE FOREST RD 87, TAHOE CITY, CA, 96145"
+      }
     },
     "116170071000": {
-      "STR23-7727": [
-        "125"
-      ]
+      "STR23-7727": {
+        "units": [
+          "125"
+        ],
+        "status": "current",
+        "address": "5101 N LAKE BLVD 125, CARNELIAN BAY, CA, 96140"
+      }
     },
     "094280016000": {
-      "STR23-7729": [
-        "22"
-      ]
+      "STR23-7729": {
+        "units": [
+          "22"
+        ],
+        "status": "expired",
+        "address": "300 W LAKE BLVD 22, TAHOE CITY, CA, 96145"
+      }
     },
     "093620064000": {
-      "STR23-7743": [
-        "180"
-      ]
+      "STR23-7743": {
+        "units": [
+          "180"
+        ],
+        "status": "expired",
+        "address": "3600 N LAKE BLVD 180, CARNELIAN BAY, CA, 96140"
+      }
     },
     "117210078000": {
-      "unk": [
-        "38"
-      ]
+      "unk": {
+        "units": [
+          "38"
+        ],
+        "status": "denied",
+        "address": "7610 N LAKE BLVD 38, TAHOE VISTA, CA, 96148"
+      }
     },
     "096460041000": {
-      "STR23-7766": [
-        "38"
-      ],
-      "STR24-8904": [
-        "38"
-      ]
+      "STR23-7766": {
+        "units": [
+          "38"
+        ],
+        "status": "expired",
+        "address": "227 OLYMPIC VALLEY RD 38 RD 38, OLYMPIC VALLEY, CA, 96146"
+      },
+      "STR24-8904": {
+        "units": [
+          "38"
+        ],
+        "status": "current",
+        "address": "227 OLYMPIC VALLEY RD 38 OLYMPIC VALLEY CA 96146"
+      }
     },
     "110440022000": {
-      "STR23-7777": [
-        "43"
-      ]
+      "STR23-7777": {
+        "units": [
+          "43"
+        ],
+        "status": "suspended",
+        "address": "6043 BEAR TRAP RD, TRUCKEE, CA, 96161"
+      }
     },
     "093580021000": {
-      "STR23-7784": [
-        "96"
-      ]
+      "STR23-7784": {
+        "units": [
+          "96"
+        ],
+        "status": "current",
+        "address": "3600 N LAKE BLVD 96, CARNELIAN BAY, CA, 96140"
+      }
     },
     "096400009000": {
-      "unk": [
-        "22"
-      ]
+      "unk": {
+        "units": [
+          "22"
+        ],
+        "status": "denied",
+        "address": "420 SHIRLEY CANYON RD 22 RD 22, OLYMPIC VALLEY, CA, 96146"
+      }
     },
     "097222004000": {
-      "STR23-7794": [
-        "97222004000"
-      ]
+      "STR23-7794": {
+        "units": [
+          "97222004000"
+        ],
+        "status": "current",
+        "address": "5540 SACRAMENTO AVE, HOMEWOOD, CA, 96141"
+      }
     },
     "093490020000": {
-      "STR23-7795": [
-        "66"
-      ]
+      "STR23-7795": {
+        "units": [
+          "66"
+        ],
+        "status": "current",
+        "address": "2755 N LAKE BLVD 66, TAHOE CITY, CA, 96145"
+      }
     },
     "095490039000": {
-      "STR23-7796": [
-        "81"
-      ]
+      "STR23-7796": {
+        "units": [
+          "81"
+        ],
+        "status": "withdrawn",
+        "address": "725 GRANLIBAKKEN RD 81, TAHOE CITY, CA, 96145"
+      }
     },
     "093416012000": {
-      "STR23-7802": [
-        "93"
-      ]
+      "STR23-7802": {
+        "units": [
+          "93"
+        ],
+        "status": "current",
+        "address": "3101 LAKE FOREST RD 93, TAHOE CITY, CA, 96145"
+      }
     },
     "117210008000": {
-      "STR23-7808": [
-        "5"
-      ]
+      "STR23-7808": {
+        "units": [
+          "5"
+        ],
+        "status": "current",
+        "address": "7600 N LAKE BLVD 5, TAHOE VISTA, CA, 96148"
+      }
     },
     "093530040000": {
-      "STR23-7814": [
-        "83"
-      ]
+      "STR23-7814": {
+        "units": [
+          "83"
+        ],
+        "status": "current",
+        "address": "3115 N LAKE BLVD 83, TAHOE CITY, CA, 96145"
+      }
     },
     "095510018000": {
-      "STR23-7820": [
-        "31"
-      ]
+      "STR23-7820": {
+        "units": [
+          "31"
+        ],
+        "status": "withdrawn",
+        "address": "725 GRANLIBAKKEN RD 31, TAHOE CITY, CA, 96145"
+      }
     },
     "111080009000": {
-      "STR23-7823": [
-        "37"
-      ]
+      "STR23-7823": {
+        "units": [
+          "37"
+        ],
+        "status": "current",
+        "address": "1300 REGENCY WAY 37, TAHOE VISTA, CA, 96148"
+      }
     },
     "096500007000": {
-      "STR23-7824": [
-        "5"
-      ]
+      "STR23-7824": {
+        "units": [
+          "5"
+        ],
+        "status": "current",
+        "address": "3003 MEADOW CT 5, OLYMPIC VALLEY, CA, 96146"
+      }
     },
     "117210037000": {
-      "STR23-7831": [
-        "34"
-      ]
+      "STR23-7831": {
+        "units": [
+          "34"
+        ],
+        "status": "expired",
+        "address": "7600 N LAKE BLVD 34, TAHOE VISTA, CA, 96148"
+      }
     },
     "110270051000": {
-      "STR23-7834": [
-        "313"
-      ]
+      "STR23-7834": {
+        "units": [
+          "313"
+        ],
+        "status": "expired",
+        "address": "2000 NORTH VILLAGE DR 313, TRUCKEE, CA, 96161"
+      }
     },
     "093550010000": {
-      "STR23-7837": [
-        "6"
-      ]
+      "STR23-7837": {
+        "units": [
+          "6"
+        ],
+        "status": "current",
+        "address": "125 LASSEN DR 6, TAHOE CITY, CA, 96145"
+      }
     },
     "110270063000": {
-      "STR23-7838": [
-        "324"
-      ]
+      "STR23-7838": {
+        "units": [
+          "324"
+        ],
+        "status": "current",
+        "address": "2000 NORTH VILLAGE DR 324, TRUCKEE, CA, 96161"
+      }
     },
     "093520019000": {
-      "STR23-7843": [
-        "37"
-      ]
+      "STR23-7843": {
+        "units": [
+          "37"
+        ],
+        "status": "current",
+        "address": "3115 N LAKE BLVD 37, TAHOE CITY, CA, 96145"
+      }
     },
     "090330008000": {
-      "STR23-7849": [
-        "108"
-      ]
+      "STR23-7849": {
+        "units": [
+          "108"
+        ],
+        "status": "suspended",
+        "address": "144 CHIPMUNK ST 108, KINGS BEACH, CA, 96143"
+      }
     },
     "090125034000": {
-      "STR23-7855": [
-        "2"
-      ]
+      "STR23-7855": {
+        "units": [
+          "2"
+        ],
+        "status": "current",
+        "address": "281 FOX ST, KINGS BEACH, CA, 96143"
+      }
     },
     "110270033000": {
-      "STR23-7859": [
-        "232"
-      ]
+      "STR23-7859": {
+        "units": [
+          "232"
+        ],
+        "status": "current",
+        "address": "2000 NORTH VILLAGE DR 232, TRUCKEE, CA, 96161"
+      }
     },
     "116130016000": {
-      "STR23-7862": [
-        "56"
-      ]
+      "STR23-7862": {
+        "units": [
+          "56"
+        ],
+        "status": "current",
+        "address": "5101 N LAKE BLVD 56, CARNELIAN BAY, CA, 96140"
+      }
     },
     "111210033000": {
-      "STR23-7870": [
-        "56"
-      ],
-      "STR23-7969": [
-        "56"
-      ]
+      "STR23-7870": {
+        "units": [
+          "56"
+        ],
+        "status": "withdrawn",
+        "address": "1001 COMMONWEALTH DR 56, KINGS BEACH, CA, 96143"
+      },
+      "STR23-7969": {
+        "units": [
+          "56"
+        ],
+        "status": "current",
+        "address": "1001 COMMONWEALTH DR 56, KINGS BEACH, CA, 96143"
+      }
     },
     "093430013000": {
-      "STR23-7876": [
-        "2"
-      ]
+      "STR23-7876": {
+        "units": [
+          "2"
+        ],
+        "status": "current",
+        "address": "3101 LAKE FOREST RD 2, TAHOE CITY, CA, 96145"
+      }
     },
     "093400041000": {
-      "STR23-7878": [
-        "17"
-      ]
+      "STR23-7878": {
+        "units": [
+          "17"
+        ],
+        "status": "expired",
+        "address": "2755 N LAKE BLVD 17, TAHOE CITY, CA, 96145"
+      }
     },
     "093510011000": {
-      "STR23-7897": [
-        "11"
-      ]
+      "STR23-7897": {
+        "units": [
+          "11"
+        ],
+        "status": "current",
+        "address": "3115 N LAKE BLVD 11, TAHOE CITY, CA, 96145"
+      }
     },
     "117080009000": {
-      "STR23-7899": [
-        "9"
-      ]
+      "STR23-7899": {
+        "units": [
+          "9"
+        ],
+        "status": "withdrawn",
+        "address": "6844 N LAKE BLVD 9, TAHOE VISTA, CA, 96148"
+      }
     },
     "095510010000": {
-      "STR23-7900": [
-        "47"
-      ]
+      "STR23-7900": {
+        "units": [
+          "47"
+        ],
+        "status": "withdrawn",
+        "address": "725 GRANLIBAKKEN RD 47, TAHOE CITY, CA, 96145"
+      }
     },
     "090181047000": {
-      "STR23-7920": [
-        "1"
-      ]
+      "STR23-7920": {
+        "units": [
+          "1"
+        ],
+        "status": "current",
+        "address": "8855 BROOK AVE, KINGS BEACH, CA, 96143"
+      }
     },
     "093414010000": {
-      "STR23-7924": [
-        "225"
-      ],
-      "STR25-9341": [
-        "225"
-      ]
+      "STR23-7924": {
+        "units": [
+          "225"
+        ],
+        "status": "withdrawn",
+        "address": "3101 LAKE FOREST RD 225, TAHOE CITY, CA, 96145"
+      },
+      "STR25-9341": {
+        "units": [
+          "225"
+        ],
+        "status": "current",
+        "address": "3101 LAKE FOREST RD 225 TAHOE CITY CA 96145"
+      }
     },
     "093580022000": {
-      "STR23-7925": [
-        "97"
-      ]
+      "STR23-7925": {
+        "units": [
+          "97"
+        ],
+        "status": "current",
+        "address": "3600 N LAKE BLVD 97, CARNELIAN BAY, CA, 96140"
+      }
     },
     "098060029000": {
-      "STR23-7926": [
-        "1"
-      ]
+      "STR23-7926": {
+        "units": [
+          "1"
+        ],
+        "status": "current",
+        "address": "6105 CHAMBERLAND DR, TAHOMA, CA, 96142"
+      }
     },
     "111210013000": {
-      "STR23-7929": [
-        "36"
-      ]
+      "STR23-7929": {
+        "units": [
+          "36"
+        ],
+        "status": "current",
+        "address": "1001 COMMONWEALTH DR 36, KINGS BEACH, CA, 96143"
+      }
     },
     "111200022000": {
-      "STR23-7931": [
-        "22"
-      ]
+      "STR23-7931": {
+        "units": [
+          "22"
+        ],
+        "status": "current",
+        "address": "1001 COMMONWEALTH DR 22, KINGS BEACH, CA, 96143"
+      }
     },
     "094280031000": {
-      "STR23-7932": [
-        "#11"
-      ]
+      "STR23-7932": {
+        "units": [
+          "#11"
+        ],
+        "status": "current",
+        "address": "300 W LAKE BLVD 11, TAHOE CITY, CA, 96145"
+      }
     },
     "094500012510": {
-      "STR23-7934": [
-        "19"
-      ]
+      "STR23-7934": {
+        "units": [
+          "19"
+        ],
+        "status": "expired",
+        "address": "270 N LAKE BLVD 19-L, TAHOE CITY, CA, 96145"
+      }
     },
     "094280021000": {
-      "STR23-7939": [
-        "1"
-      ],
-      "STR24-8914": [
-        "1"
-      ]
+      "STR23-7939": {
+        "units": [
+          "1"
+        ],
+        "status": "withdrawn",
+        "address": "300 W LAKE BLVD 1, TAHOE CITY, CA, 96145"
+      },
+      "STR24-8914": {
+        "units": [
+          "1"
+        ],
+        "status": "current",
+        "address": "300 W LAKE BLVD 1 TAHOE CITY CA 96145"
+      }
     },
     "094360003000": {
-      "STR23-7942": [
-        "156"
-      ]
+      "STR23-7942": {
+        "units": [
+          "156"
+        ],
+        "status": "expired",
+        "address": "300 W LAKE BLVD 156, TAHOE CITY, CA, 96145"
+      }
     },
     "116200015000": {
-      "STR23-7945": [
-        "15"
-      ]
+      "STR23-7945": {
+        "units": [
+          "15"
+        ],
+        "status": "current",
+        "address": "5101 N LAKE BLVD 15, CARNELIAN BAY, CA, 96140"
+      }
     },
     "116200016000": {
-      "STR23-7946": [
-        "16"
-      ]
+      "STR23-7946": {
+        "units": [
+          "16"
+        ],
+        "status": "current",
+        "address": "5101 N LAKE BLVD 16, CARNELIAN BAY, CA, 96140"
+      }
     },
     "116200017000": {
-      "STR23-7947": [
-        "17"
-      ]
+      "STR23-7947": {
+        "units": [
+          "17"
+        ],
+        "status": "current",
+        "address": "5101 N LAKE BLVD 17, CARNELIAN BAY, CA, 96140"
+      }
     },
     "116190009000": {
-      "STR23-7948": [
-        "28"
-      ]
+      "STR23-7948": {
+        "units": [
+          "28"
+        ],
+        "status": "current",
+        "address": "5101 N LAKE BLVD 28, CARNELIAN BAY, CA, 96140"
+      }
     },
     "116190004000": {
-      "STR23-7949": [
-        "23"
-      ]
+      "STR23-7949": {
+        "units": [
+          "23"
+        ],
+        "status": "current",
+        "address": "5101 N LAKE BLVD 23, CARNELIAN BAY, CA, 96140"
+      }
     },
     "116190012000": {
-      "STR23-7950": [
-        "31"
-      ]
+      "STR23-7950": {
+        "units": [
+          "31"
+        ],
+        "status": "current",
+        "address": "5101 N LAKE BLVD 31, CARNELIAN BAY, CA, 96140"
+      }
     },
     "116190019000": {
-      "STR23-7951": [
-        "38"
-      ]
+      "STR23-7951": {
+        "units": [
+          "38"
+        ],
+        "status": "current",
+        "address": "5101 N LAKE BLVD 38, CARNELIAN BAY, CA, 96140"
+      }
     },
     "116130012000": {
-      "STR23-7952": [
-        "52"
-      ]
+      "STR23-7952": {
+        "units": [
+          "52"
+        ],
+        "status": "current",
+        "address": "5101 N LAKE BLVD 52, CARNELIAN BAY, CA, 96140"
+      }
     },
     "116130018000": {
-      "STR23-7953": [
-        "58"
-      ]
+      "STR23-7953": {
+        "units": [
+          "58"
+        ],
+        "status": "current",
+        "address": "5101 N LAKE BLVD 58, CARNELIAN BAY, CA, 96140"
+      }
     },
     "116120006000": {
-      "STR23-7954": [
-        "64"
-      ]
+      "STR23-7954": {
+        "units": [
+          "64"
+        ],
+        "status": "current",
+        "address": "5101 N LAKE BLVD 64, CARNELIAN BAY, CA, 96140"
+      }
     },
     "116120024000": {
-      "STR23-7955": [
-        "72"
-      ]
+      "STR23-7955": {
+        "units": [
+          "72"
+        ],
+        "status": "current",
+        "address": "5101 N LAKE BLVD 72, CARNELIAN BAY, CA, 96140"
+      }
     },
     "116170019000": {
-      "STR23-7956": [
-        "109"
-      ]
+      "STR23-7956": {
+        "units": [
+          "109"
+        ],
+        "status": "withdrawn",
+        "address": "5101 N LAKE BLVD 109, CARNELIAN BAY, CA, 96140"
+      }
     },
     "116170075000": {
-      "STR23-7957": [
-        "129"
-      ]
+      "STR23-7957": {
+        "units": [
+          "129"
+        ],
+        "status": "current",
+        "address": "5101 N LAKE BLVD 129, CARNELIAN BAY, CA, 96140"
+      }
     },
     "116170076000": {
-      "STR23-7958": [
-        "130"
-      ]
+      "STR23-7958": {
+        "units": [
+          "130"
+        ],
+        "status": "current",
+        "address": "5101 N LAKE BLVD 130, CARNELIAN BAY, CA, 96140"
+      }
     },
     "116170086000": {
-      "STR23-7959": [
-        "135"
-      ]
+      "STR23-7959": {
+        "units": [
+          "135"
+        ],
+        "status": "current",
+        "address": "5101 N LAKE BLVD 135, CARNELIAN BAY, CA, 96140"
+      }
     },
     "116160031000": {
-      "STR23-7960": [
-        "137"
-      ]
+      "STR23-7960": {
+        "units": [
+          "137"
+        ],
+        "status": "current",
+        "address": "5101 N LAKE BLVD 137, CARNELIAN BAY, CA, 96140"
+      }
     },
     "116170085000": {
-      "STR23-7961": [
-        "143"
-      ]
+      "STR23-7961": {
+        "units": [
+          "143"
+        ],
+        "status": "current",
+        "address": "5101 N LAKE BLVD 143, CARNELIAN BAY, CA, 96140"
+      }
     },
     "116170078000": {
-      "STR23-7962": [
-        "132"
-      ]
+      "STR23-7962": {
+        "units": [
+          "132"
+        ],
+        "status": "current",
+        "address": "5101 N LAKE BLVD 132, CARNELIAN BAY, CA, 96140"
+      }
     },
     "116170063000": {
-      "STR23-7963": [
-        "145"
-      ]
+      "STR23-7963": {
+        "units": [
+          "145"
+        ],
+        "status": "current",
+        "address": "5101 N LAKE BLVD 145, CARNELIAN BAY, CA, 96140"
+      }
     },
     "116170084000": {
-      "STR23-7964": [
-        "146"
-      ]
+      "STR23-7964": {
+        "units": [
+          "146"
+        ],
+        "status": "current",
+        "address": "5101 N LAKE BLVD 146, CARNELIAN BAY, CA, 96140"
+      }
     },
     "116170088000": {
-      "STR23-7965": [
-        "155"
-      ]
+      "STR23-7965": {
+        "units": [
+          "155"
+        ],
+        "status": "current",
+        "address": "5101 N LAKE BLVD 155, CARNELIAN BAY, CA, 96140"
+      }
     },
     "110420033000": {
-      "STR23-7967": [
-        "4113"
-      ]
+      "STR23-7967": {
+        "units": [
+          "4113"
+        ],
+        "status": "current",
+        "address": "4113 COYOTE FORK, TRUCKEE, CA, 96161"
+      }
     },
     "110410037000": {
-      "STR23-7968": [
-        "4042"
-      ]
+      "STR23-7968": {
+        "units": [
+          "4042"
+        ],
+        "status": "current",
+        "address": "4042 SKI VIEW, TRUCKEE, CA, 96161"
+      }
     },
     "094280015000": {
-      "STR23-7978": [
-        "23"
-      ]
+      "STR23-7978": {
+        "units": [
+          "23"
+        ],
+        "status": "current",
+        "address": "300 W LAKE BLVD 23, TAHOE CITY, CA, 96145"
+      }
     },
     "094370029000": {
-      "STR23-7980": [
-        "132"
-      ]
+      "STR23-7980": {
+        "units": [
+          "132"
+        ],
+        "status": "current",
+        "address": "300 W LAKE BLVD 132, TAHOE CITY, CA, 96145"
+      }
     },
     "110410060000": {
-      "STR23-7981": [
-        "4056"
-      ]
+      "STR23-7981": {
+        "units": [
+          "4056"
+        ],
+        "status": "current",
+        "address": "4056 COYOTE FORK, TRUCKEE, CA, 96161"
+      }
     },
     "094090052000": {
-      "unk": [
-        "2",
-        "1"
-      ]
+      "unk": {
+        "units": [
+          "2",
+          "1"
+        ],
+        "status": "denied",
+        "address": "690 N LAKE BLVD, TAHOE CITY, CA, 96145"
+      }
     },
     "094390013000": {
-      "STR23-8000": [
-        "65"
-      ]
+      "STR23-8000": {
+        "units": [
+          "65"
+        ],
+        "status": "current",
+        "address": "1877 N LAKE BLVD 65, TAHOE CITY, CA, 96145"
+      }
     },
     "094300003000": {
-      "STR23-8002": [
-        "60"
-      ]
+      "STR23-8002": {
+        "units": [
+          "60"
+        ],
+        "status": "current",
+        "address": "300 W LAKE BLVD 60, TAHOE CITY, CA, 96145"
+      }
     },
     "110410020000": {
-      "STR23-8005": [
-        "4023"
-      ]
+      "STR23-8005": {
+        "units": [
+          "4023"
+        ],
+        "status": "current",
+        "address": "4023 SKI VIEW, TRUCKEE, CA, 96161"
+      }
     },
     "096420010000": {
-      "STR23-8019": [
-        "9"
-      ]
+      "STR23-8019": {
+        "units": [
+          "9"
+        ],
+        "status": "current",
+        "address": "460 SHIRLEY CANYON RD 9 RD 9, OLYMPIC VALLEY, CA, 96146"
+      }
     },
     "094350023000": {
-      "STR23-8020": [
-        "#236"
-      ]
+      "STR23-8020": {
+        "units": [
+          "#236"
+        ],
+        "status": "current",
+        "address": "180 W LAKE BLVD 236, TAHOE CITY, CA, 96145"
+      }
     },
     "093470015000": {
-      "STR23-8025": [
-        "33"
-      ]
+      "STR23-8025": {
+        "units": [
+          "33"
+        ],
+        "status": "expired",
+        "address": "3600 N LAKE BLVD 33, CARNELIAN BAY, CA, 96140"
+      }
     },
     "111080006000": {
-      "STR23-8026": [
-        "45"
-      ]
+      "STR23-8026": {
+        "units": [
+          "45"
+        ],
+        "status": "withdrawn",
+        "address": "1300 REGENCY WAY 45, TAHOE VISTA, CA, 96148"
+      }
     },
     "111070023000": {
-      "unk": [
-        "65"
-      ]
+      "unk": {
+        "units": [
+          "65"
+        ],
+        "status": "denied",
+        "address": "1300 REGENCY WAY 65, TAHOE VISTA, CA, 96148"
+      }
     },
     "094340030000": {
-      "STR23-8028": [
-        "4"
-      ]
+      "STR23-8028": {
+        "units": [
+          "4"
+        ],
+        "status": "current",
+        "address": "2350 STAR HARBOR CT 4, TAHOE CITY, CA, 96145"
+      }
     },
     "096460002000": {
-      "STR23-8030": [
-        "2"
-      ]
+      "STR23-8030": {
+        "units": [
+          "2"
+        ],
+        "status": "expired",
+        "address": "227 OLYMPIC VALLEY RD 2 RD 2, OLYMPIC VALLEY, CA, 96146"
+      }
     },
     "093413007000": {
-      "STR23-8037": [
-        "130"
-      ]
+      "STR23-8037": {
+        "units": [
+          "130"
+        ],
+        "status": "withdrawn",
+        "address": "3101 LAKE FOREST RD 130, TAHOE CITY, CA, 96145"
+      }
     },
     "096460017000": {
-      "STR23-8039": [
-        "17"
-      ]
+      "STR23-8039": {
+        "units": [
+          "17"
+        ],
+        "status": "current",
+        "address": "227 OLYMPIC VALLEY RD 17 RD 17, OLYMPIC VALLEY, CA, 96146"
+      }
     },
     "093490028000": {
-      "STR23-8045": [
-        "53"
-      ]
+      "STR23-8045": {
+        "units": [
+          "53"
+        ],
+        "status": "expired",
+        "address": "2755 N LAKE BLVD 53, TAHOE CITY, CA, 96145"
+      }
     },
     "093530028000": {
-      "STR23-8066": [
-        "71"
-      ]
+      "STR23-8066": {
+        "units": [
+          "71"
+        ],
+        "status": "current",
+        "address": "3115 N LAKE BLVD 71, TAHOE CITY, CA, 96145"
+      }
     },
     "117080035000": {
-      "STR23-8078": [
-        "35"
-      ]
+      "STR23-8078": {
+        "units": [
+          "35"
+        ],
+        "status": "withdrawn",
+        "address": "6943 N LAKE BLVD 35, TAHOE VISTA, CA, 96148"
+      }
     },
     "093520011000": {
-      "STR23-8080": [
-        "25"
-      ]
+      "STR23-8080": {
+        "units": [
+          "25"
+        ],
+        "status": "current",
+        "address": "3115 N LAKE BLVD 25, TAHOE CITY, CA, 96145"
+      }
     },
     "111070004000": {
-      "STR23-8082": [
-        "64"
-      ]
+      "STR23-8082": {
+        "units": [
+          "64"
+        ],
+        "status": "current",
+        "address": "1300 REGENCY WAY 64, TAHOE VISTA, CA, 96148"
+      }
     },
     "116200020000": {
-      "STR23-8087": [
-        "20"
-      ]
+      "STR23-8087": {
+        "units": [
+          "20"
+        ],
+        "status": "current",
+        "address": "5101 N LAKE BLVD 20, CARNELIAN BAY, CA, 96140"
+      }
     },
     "090380011510": {
-      "STR23-8092": [
-        "9"
-      ]
+      "STR23-8092": {
+        "units": [
+          "9"
+        ],
+        "status": "expired",
+        "address": "9200 BROCKWAY SPRINGS DR, KINGS BEACH, CA, 96143"
+      }
     },
     "094280032000": {
-      "STR23-8101": [
-        "12"
-      ]
+      "STR23-8101": {
+        "units": [
+          "12"
+        ],
+        "status": "current",
+        "address": "300 W LAKE BLVD 12, TAHOE CITY, CA, 96145"
+      }
     },
     "095540019000": {
-      "STR23-8105": [
-        "19"
-      ]
+      "STR23-8105": {
+        "units": [
+          "19"
+        ],
+        "status": "current",
+        "address": "135 ALPINE MEADOWS RD 19, ALPINE MEADOWS, CA, 96146"
+      }
     },
     "093620038000": {
-      "STR23-8106": [
-        "154"
-      ],
-      "STR24-9049": [
-        "154"
-      ]
+      "STR23-8106": {
+        "units": [
+          "154"
+        ],
+        "status": "expired",
+        "address": "3600 N LAKE BLVD 154, CARNELIAN BAY, CA, 96140"
+      },
+      "STR24-9049": {
+        "units": [
+          "154"
+        ],
+        "status": "current",
+        "address": "3600 N LAKE BLVD 154 CARNELIAN BAY CA 96140"
+      }
     },
     "090072039000": {
-      "STR23-8108": [
-        "9"
-      ]
+      "STR23-8108": {
+        "units": [
+          "9"
+        ],
+        "status": "current",
+        "address": "8308 N LAKE BLVD 9, KINGS BEACH, CA, 96143"
+      }
     },
     "093413011000": {
-      "STR23-8113": [
-        "134"
-      ]
+      "STR23-8113": {
+        "units": [
+          "134"
+        ],
+        "status": "current",
+        "address": "3101 LAKE FOREST RD 134, TAHOE CITY, CA, 96145"
+      }
     },
     "093400026000": {
-      "STR23-8118": [
-        "2"
-      ]
+      "STR23-8118": {
+        "units": [
+          "2"
+        ],
+        "status": "current",
+        "address": "2755 N LAKE BLVD 2, TAHOE CITY, CA, 96145"
+      }
     },
     "111250029000": {
-      "STR23-8124": [
-        "231"
-      ]
+      "STR23-8124": {
+        "units": [
+          "231"
+        ],
+        "status": "current",
+        "address": "1001 COMMONWEALTH DR 231, KINGS BEACH, CA, 96143"
+      }
     },
     "095490031000": {
-      "STR23-8125": [
-        "64"
-      ]
+      "STR23-8125": {
+        "units": [
+          "64"
+        ],
+        "status": "withdrawn",
+        "address": "725 GRANLIBAKKEN RD 64, TAHOE CITY, CA, 96145"
+      }
     },
     "095330006000": {
-      "STR24-8131": [
-        "1"
-      ]
+      "STR24-8131": {
+        "units": [
+          "1"
+        ],
+        "status": "current",
+        "address": "2301 SCOTT PEAK PL 1, ALPINE MEADOWS, CA, 96146"
+      }
     },
     "110100007000": {
-      "STR23-8132": [
-        "3161"
-      ]
+      "STR23-8132": {
+        "units": [
+          "3161"
+        ],
+        "status": "current",
+        "address": "3161 ASPEN GROVE RD, TRUCKEE, CA, 96161"
+      }
     },
     "096460010000": {
-      "STR23-8134": [
-        "10"
-      ]
+      "STR23-8134": {
+        "units": [
+          "10"
+        ],
+        "status": "current",
+        "address": "227 OLYMPIC VALLEY RD 10 RD 10, OLYMPIC VALLEY, CA, 96146"
+      }
     },
     "095520011000": {
-      "STR23-8138": [
-        "11"
-      ]
+      "STR23-8138": {
+        "units": [
+          "11"
+        ],
+        "status": "withdrawn",
+        "address": "2090 CHALET RD 11, ALPINE MEADOWS, CA, 96146"
+      }
     },
     "093430041000": {
-      "STR23-8140": [
-        "37"
-      ]
+      "STR23-8140": {
+        "units": [
+          "37"
+        ],
+        "status": "expired",
+        "address": "3101 LAKE FOREST RD 37, TAHOE CITY, CA, 96145"
+      }
     },
     "095510032000": {
-      "STR23-8142": [
-        "28"
-      ]
+      "STR23-8142": {
+        "units": [
+          "28"
+        ],
+        "status": "withdrawn",
+        "address": "725 GRANLIBAKKEN RD 28, TAHOE CITY, CA, 96145"
+      }
     },
     "090400012000": {
-      "STR23-8143": [
-        "58"
-      ]
+      "STR23-8143": {
+        "units": [
+          "58"
+        ],
+        "status": "withdrawn",
+        "address": "9200 BROCKWAY SPRINGS DR, KINGS BEACH, CA, 96143"
+      }
     },
     "111100010000": {
-      "STR23-8151": [
-        "7045"
-      ]
+      "STR23-8151": {
+        "units": [
+          "7045"
+        ],
+        "status": "current",
+        "address": "7045 ALLENBY WAY, TAHOE VISTA, CA, 96148"
+      }
     },
     "110500038000": {
-      "STR23-8152": [
-        "6117"
-      ]
+      "STR23-8152": {
+        "units": [
+          "6117"
+        ],
+        "status": "current",
+        "address": "6117 ROCKY POINT CIR, TRUCKEE, CA, 96161"
+      }
     },
     "110100008000": {
-      "STR23-8154": [
-        "3162"
-      ]
+      "STR23-8154": {
+        "units": [
+          "3162"
+        ],
+        "status": "current",
+        "address": "3162 ASPEN GROVE RD, TRUCKEE, CA, 96161"
+      }
     },
     "095520007000": {
-      "STR23-8159": [
-        "9"
-      ]
+      "STR23-8159": {
+        "units": [
+          "9"
+        ],
+        "status": "current",
+        "address": "2090 CHALET RD 9, ALPINE MEADOWS, CA, 96146"
+      }
     },
     "095481014000": {
-      "STR23-8165": [
-        "90"
-      ]
+      "STR23-8165": {
+        "units": [
+          "90"
+        ],
+        "status": "withdrawn",
+        "address": "725 GRANLIBAKKEN RD 90, TAHOE CITY, CA, 96145"
+      }
     },
     "095490026000": {
-      "STR23-8168": [
-        "66"
-      ]
+      "STR23-8168": {
+        "units": [
+          "66"
+        ],
+        "status": "withdrawn",
+        "address": "725 GRANLIBAKKEN RD 66, TAHOE CITY, CA, 96145"
+      }
     },
     "110270012000": {
-      "STR23-8170": [
-        "212"
-      ]
+      "STR23-8170": {
+        "units": [
+          "212"
+        ],
+        "status": "current",
+        "address": "2000 NORTH VILLAGE DR 212, TRUCKEE, CA, 96161"
+      }
     },
     "093420051000": {
-      "STR23-8171": [
-        "55"
-      ]
+      "STR23-8171": {
+        "units": [
+          "55"
+        ],
+        "status": "current",
+        "address": "3101 LAKE FOREST RD 55, TAHOE CITY, CA, 96145"
+      }
     },
     "116190013000": {
-      "STR23-8175": [
-        "32"
-      ]
+      "STR23-8175": {
+        "units": [
+          "32"
+        ],
+        "status": "current",
+        "address": "5101 N LAKE BLVD 32, CARNELIAN BAY, CA, 96140"
+      }
     },
     "093480040000": {
-      "STR23-8177": [
-        "108"
-      ]
+      "STR23-8177": {
+        "units": [
+          "108"
+        ],
+        "status": "current",
+        "address": "2755 N LAKE BLVD 108, TAHOE CITY, CA, 96145"
+      }
     },
     "094380007000": {
-      "STR23-8180": [
-        "7"
-      ]
+      "STR23-8180": {
+        "units": [
+          "7"
+        ],
+        "status": "current",
+        "address": "1877 N LAKE BLVD 7, TAHOE CITY, CA, 96145"
+      }
     },
     "111240001000": {
-      "STR23-8182": [
-        "173"
-      ]
+      "STR23-8182": {
+        "units": [
+          "173"
+        ],
+        "status": "suspended",
+        "address": "1001 COMMONWEALTH DR 173, KINGS BEACH, CA, 96143"
+      }
     },
     "111080039000": {
-      "STR23-8186": [
-        "26"
-      ]
+      "STR23-8186": {
+        "units": [
+          "26"
+        ],
+        "status": "current",
+        "address": "1300 REGENCY WAY 26, TAHOE VISTA, CA, 96148"
+      }
     },
     "111240025000": {
-      "STR23-8191": [
-        "151"
-      ]
+      "STR23-8191": {
+        "units": [
+          "151"
+        ],
+        "status": "current",
+        "address": "1001 COMMONWEALTH DR 151, KINGS BEACH, CA, 96143"
+      }
     },
     "111210017000": {
-      "STR23-8192": [
-        "39"
-      ]
+      "STR23-8192": {
+        "units": [
+          "39"
+        ],
+        "status": "current",
+        "address": "1001 COMMONWEALTH DR 39, KINGS BEACH, CA, 96143"
+      }
     },
     "093420042000": {
-      "STR23-8204": [
-        "64"
-      ]
+      "STR23-8204": {
+        "units": [
+          "64"
+        ],
+        "status": "current",
+        "address": "3101 LAKE FOREST RD 64, TAHOE CITY, CA, 96145"
+      }
     },
     "110110013000": {
-      "STR23-8213": [
-        "3141"
-      ]
+      "STR23-8213": {
+        "units": [
+          "3141"
+        ],
+        "status": "current",
+        "address": "3141 ASPEN GROVE RD, TRUCKEE, CA, 96161"
+      }
     },
     "096460044000": {
-      "STR23-8220": [
-        "41"
-      ]
+      "STR23-8220": {
+        "units": [
+          "41"
+        ],
+        "status": "current",
+        "address": "227 OLYMPIC VALLEY RD 41 RD 41, OLYMPIC VALLEY, CA, 96146"
+      }
     },
     "110330027000": {
-      "STR23-8228": [
-        "n.a."
-      ],
-      "STR25-9109": [
-        "5102"
-      ]
+      "STR23-8228": {
+        "units": [
+          "n.a."
+        ],
+        "status": "withdrawn",
+        "address": "5102 GOLD BEND, TRUCKEE, CA, 96161"
+      },
+      "STR25-9109": {
+        "units": [
+          "5102"
+        ],
+        "status": "current",
+        "address": "5102 GOLD BEND TRUCKEE CA 96161"
+      }
     },
     "093480031000": {
-      "STR23-8245": [
-        "109"
-      ]
+      "STR23-8245": {
+        "units": [
+          "109"
+        ],
+        "status": "current",
+        "address": "2755 N LAKE BLVD 109, TAHOE CITY, CA, 96145"
+      }
     },
     "111220006000": {
-      "STR23-8248": [
-        "73"
-      ]
+      "STR23-8248": {
+        "units": [
+          "73"
+        ],
+        "status": "current",
+        "address": "1001 COMMONWEALTH DR 73, KINGS BEACH, CA, 96143"
+      }
     },
     "095420007000": {
-      "STR23-8254": [
-        "27"
-      ]
+      "STR23-8254": {
+        "units": [
+          "27"
+        ],
+        "status": "current",
+        "address": "205 ALPINE MEADOWS RD 27, ALPINE MEADOWS, CA, 96146"
+      }
     },
     "094390010000": {
-      "STR23-8271": [
-        "68"
-      ]
+      "STR23-8271": {
+        "units": [
+          "68"
+        ],
+        "status": "current",
+        "address": "1877 N LAKE BLVD 68, TAHOE CITY, CA, 96145"
+      }
     },
     "098173005000": {
-      "STR23-8298": [
-        "n/a"
-      ]
+      "STR23-8298": {
+        "units": [
+          "n/a"
+        ],
+        "status": "current",
+        "address": "315 TOMAHAWK ST, TAHOMA, CA, 96142"
+      }
     },
     "116120021000": {
-      "STR23-8300": [
-        "59"
-      ]
+      "STR23-8300": {
+        "units": [
+          "59"
+        ],
+        "status": "current",
+        "address": "5101 N LAKE BLVD 59, CARNELIAN BAY, CA, 96140"
+      }
     },
     "093490035000": {
-      "STR23-8304": [
-        "51"
-      ]
+      "STR23-8304": {
+        "units": [
+          "51"
+        ],
+        "status": "current",
+        "address": "2755 N LAKE BLVD 51, TAHOE CITY, CA, 96145"
+      }
     },
     "110270001000": {
-      "STR23-8310": [
-        "201"
-      ]
+      "STR23-8310": {
+        "units": [
+          "201"
+        ],
+        "status": "current",
+        "address": "2000 NORTH VILLAGE DR 201, TRUCKEE, CA, 96161"
+      }
     },
     "096460005000": {
-      "STR23-8315": [
-        "5"
-      ]
+      "STR23-8315": {
+        "units": [
+          "5"
+        ],
+        "status": "withdrawn",
+        "address": "227 OLYMPIC VALLEY RD 5 RD 5, OLYMPIC VALLEY, CA, 96146"
+      }
     },
     "117080048000": {
-      "unk": [
-        "48"
-      ]
+      "unk": {
+        "units": [
+          "48"
+        ],
+        "status": "denied",
+        "address": "6943 N LAKE BLVD 48, TAHOE VISTA, CA, 96148"
+      }
     },
     "117080051000": {
-      "unk": [
-        "51"
-      ]
+      "unk": {
+        "units": [
+          "51"
+        ],
+        "status": "denied",
+        "address": "6943 N LAKE BLVD 51, TAHOE VISTA, CA, 96148"
+      }
     },
     "117080054000": {
-      "unk": [
-        "54"
-      ]
+      "unk": {
+        "units": [
+          "54"
+        ],
+        "status": "denied",
+        "address": "6943 N LAKE BLVD 54, TAHOE VISTA, CA, 96148"
+      }
     },
     "117080055000": {
-      "unk": [
-        "55"
-      ]
+      "unk": {
+        "units": [
+          "55"
+        ],
+        "status": "denied",
+        "address": "6943 N LAKE BLVD 55, TAHOE VISTA, CA, 96148"
+      }
     },
     "117080042000": {
-      "unk": [
-        "42"
-      ]
+      "unk": {
+        "units": [
+          "42"
+        ],
+        "status": "denied",
+        "address": "6943 N LAKE BLVD 42, TAHOE VISTA, CA, 96148"
+      }
     },
     "117080057000": {
-      "unk": [
-        "57"
-      ]
+      "unk": {
+        "units": [
+          "57"
+        ],
+        "status": "denied",
+        "address": "6943 N LAKE BLVD 57, TAHOE VISTA, CA, 96148"
+      }
     },
     "117080060000": {
-      "unk": [
-        "60"
-      ]
+      "unk": {
+        "units": [
+          "60"
+        ],
+        "status": "denied",
+        "address": "6944 N LAKE BLVD 60, TAHOE VISTA, CA, 96148"
+      }
     },
     "117080024000": {
-      "unk": [
-        "24"
-      ]
+      "unk": {
+        "units": [
+          "24"
+        ],
+        "status": "denied",
+        "address": "6944 N LAKE BLVD 24, TAHOE VISTA, CA, 96148"
+      }
     },
     "117080039000": {
-      "unk": [
-        "39"
-      ]
+      "unk": {
+        "units": [
+          "39"
+        ],
+        "status": "denied",
+        "address": "6943 N LAKE BLVD 39, TAHOE VISTA, CA, 96148"
+      }
     },
     "117080046000": {
-      "unk": [
-        "46"
-      ]
+      "unk": {
+        "units": [
+          "46"
+        ],
+        "status": "denied",
+        "address": "6943 N LAKE BLVD 46, TAHOE VISTA, CA, 96148"
+      }
     },
     "111210016000": {
-      "STR23-8348": [
-        "40"
-      ]
+      "STR23-8348": {
+        "units": [
+          "40"
+        ],
+        "status": "current",
+        "address": "1001 COMMONWEALTH DR 40, KINGS BEACH, CA, 96143"
+      }
     },
     "093400033000": {
-      "STR23-8356": [
-        "9"
-      ]
+      "STR23-8356": {
+        "units": [
+          "9"
+        ],
+        "status": "current",
+        "address": "2755 N LAKE BLVD 9, TAHOE CITY, CA, 96145"
+      }
     },
     "096450003000": {
-      "STR23-8378": [
-        "3"
-      ]
+      "STR23-8378": {
+        "units": [
+          "3"
+        ],
+        "status": "current",
+        "address": "1560 OLYMPIC VALLEY RD 3 RD 3, OLYMPIC VALLEY, CA, 96146"
+      }
     },
     "095540008000": {
-      "STR23-8387": [
-        "8"
-      ]
+      "STR23-8387": {
+        "units": [
+          "8"
+        ],
+        "status": "expired",
+        "address": "135 ALPINE MEADOWS RD 8, ALPINE MEADOWS, CA, 96146"
+      }
     },
     "093520010000": {
-      "STR23-8389": [
-        "24"
-      ]
+      "STR23-8389": {
+        "units": [
+          "24"
+        ],
+        "status": "current",
+        "address": "3115 N LAKE BLVD 24, TAHOE CITY, CA, 96145"
+      }
     },
     "110160015000": {
-      "STR23-8390": [
-        "3095"
-      ]
+      "STR23-8390": {
+        "units": [
+          "3095"
+        ],
+        "status": "expired",
+        "address": "3095 SILVER STRIKE, TRUCKEE, CA, 96161"
+      }
     },
     "093480029000": {
-      "STR23-8391": [
-        "95"
-      ]
+      "STR23-8391": {
+        "units": [
+          "95"
+        ],
+        "status": "current",
+        "address": "2755 N LAKE BLVD 95, TAHOE CITY, CA, 96145"
+      }
     },
     "117220011000": {
-      "STR23-8392": [
-        "11"
-      ]
+      "STR23-8392": {
+        "units": [
+          "11"
+        ],
+        "status": "current",
+        "address": "7580 N LAKE BLVD 11, TAHOE VISTA, CA, 96148"
+      }
     },
     "090380027510": {
-      "STR23-8397": [
-        "41"
-      ]
+      "STR23-8397": {
+        "units": [
+          "41"
+        ],
+        "status": "current",
+        "address": "9200 BROCKWAY SPRINGS DR, KINGS BEACH, CA, 96143"
+      }
     },
     "110270010000": {
-      "STR23-8405": [
-        "210"
-      ]
+      "STR23-8405": {
+        "units": [
+          "210"
+        ],
+        "status": "current",
+        "address": "2000 NORTH VILLAGE DR 210, TRUCKEE, CA, 96161"
+      }
     },
     "094370017000": {
-      "STR23-8407": [
-        "112"
-      ]
+      "STR23-8407": {
+        "units": [
+          "112"
+        ],
+        "status": "current",
+        "address": "300 W LAKE BLVD 112 TAHOE CITY CA 96145"
+      }
     },
     "117220002000": {
-      "STR23-8408": [
-        "2"
-      ]
+      "STR23-8408": {
+        "units": [
+          "2"
+        ],
+        "status": "current",
+        "address": "7580 N LAKE BLVD 2, TAHOE VISTA, CA, 96148"
+      }
     },
     "117220008000": {
-      "STR23-8410": [
-        "8"
-      ]
+      "STR23-8410": {
+        "units": [
+          "8"
+        ],
+        "status": "current",
+        "address": "7580 N LAKE BLVD 8, TAHOE VISTA, CA, 96148"
+      }
     },
     "095510037000": {
-      "STR23-8416": [
-        "22"
-      ]
+      "STR23-8416": {
+        "units": [
+          "22"
+        ],
+        "status": "withdrawn",
+        "address": "725 GRANLIBAKKEN RD 22, TAHOE CITY, CA, 96145"
+      }
     },
     "095510048000": {
-      "STR23-8417": [
-        "10"
-      ]
+      "STR23-8417": {
+        "units": [
+          "10"
+        ],
+        "status": "withdrawn",
+        "address": "725 GRANLIBAKKEN RD 10, TAHOE CITY, CA, 96145"
+      }
     },
     "095510043000": {
-      "STR23-8419": [
-        "16"
-      ]
+      "STR23-8419": {
+        "units": [
+          "16"
+        ],
+        "status": "withdrawn",
+        "address": "725 GRANLIBAKKEN RD 16, TAHOE CITY, CA, 96145"
+      }
     },
     "095490030000": {
-      "STR23-8420": [
-        "63"
-      ]
+      "STR23-8420": {
+        "units": [
+          "63"
+        ],
+        "status": "withdrawn",
+        "address": "725 GRANLIBAKKEN RD 63, TAHOE CITY, CA, 96145"
+      }
     },
     "095510021000": {
-      "STR23-8421": [
-        "41"
-      ]
+      "STR23-8421": {
+        "units": [
+          "41"
+        ],
+        "status": "withdrawn",
+        "address": "725 GRANLIBAKKEN RD 41, TAHOE CITY, CA, 96145"
+      }
     },
     "093420015000": {
-      "STR23-8423": [
-        "178"
-      ]
+      "STR23-8423": {
+        "units": [
+          "178"
+        ],
+        "status": "current",
+        "address": "3101 LAKE FOREST RD 178, TAHOE CITY, CA, 96145"
+      }
     },
     "093590011000": {
-      "STR23-8428": [
-        "89"
-      ]
+      "STR23-8428": {
+        "units": [
+          "89"
+        ],
+        "status": "current",
+        "address": "3600 N LAKE BLVD 89, CARNELIAN BAY, CA, 96140"
+      }
     },
     "096460045000": {
-      "STR23-8447": [
-        "42"
-      ]
+      "STR23-8447": {
+        "units": [
+          "42"
+        ],
+        "status": "current",
+        "address": "227 OLYMPIC VALLEY RD 42 OLYMPIC VALLEY CA 96146"
+      }
     },
     "094290017000": {
-      "STR23-8449": [
-        "67"
-      ]
+      "STR23-8449": {
+        "units": [
+          "67"
+        ],
+        "status": "expired",
+        "address": "300 W LAKE BLVD 67 TAHOE CITY CA 96145"
+      }
     },
     "111240053000": {
-      "STR23-8452": [
-        "125"
-      ]
+      "STR23-8452": {
+        "units": [
+          "125"
+        ],
+        "status": "current",
+        "address": "1001 COMMONWEALTH DR 125 KINGS BEACH CA 96143"
+      }
     },
     "096400017000": {
-      "STR23-8454": [
-        "30"
-      ]
+      "STR23-8454": {
+        "units": [
+          "30"
+        ],
+        "status": "current",
+        "address": "420 SHIRLEY CANYON RD 30 OLYMPIC VALLEY CA 96146"
+      }
     },
     "097130030510": {
-      "STR23-8455": [
-        "Unit B"
-      ]
+      "STR23-8455": {
+        "units": [
+          "Unit B"
+        ],
+        "status": "current",
+        "address": "5150 W LAKE BLVD HOMEWOOD CA 96141"
+      }
     },
     "111260019000": {
-      "STR23-8467": [
-        "183"
-      ]
+      "STR23-8467": {
+        "units": [
+          "183"
+        ],
+        "status": "current",
+        "address": "1001 COMMONWEALTH DR 183 KINGS BEACH CA 96143"
+      }
     },
     "111250056000": {
-      "STR23-8487": [
-        "204"
-      ]
+      "STR23-8487": {
+        "units": [
+          "204"
+        ],
+        "status": "current",
+        "address": "1001 COMMONWEALTH DR 204 KINGS BEACH CA 96143"
+      }
     },
     "117180048550": {
-      "STR23-8490": [
-        "L6"
-      ]
+      "STR23-8490": {
+        "units": [
+          "L6"
+        ],
+        "status": "current",
+        "address": "8000 N LAKE BLVD 6 KINGS BEACH CA 96143"
+      }
     },
     "093520017000": {
-      "STR23-8495": [
-        "35"
-      ]
+      "STR23-8495": {
+        "units": [
+          "35"
+        ],
+        "status": "current",
+        "address": "3115 N LAKE BLVD 35 TAHOE CITY CA 96145"
+      }
     },
     "110410049000": {
-      "STR23-8501": [
-        "4049"
-      ]
+      "STR23-8501": {
+        "units": [
+          "4049"
+        ],
+        "status": "current",
+        "address": "4049 COYOTE FORK TRUCKEE CA 96161"
+      }
     },
     "117210006000": {
-      "STR23-8509": [
-        "3"
-      ]
+      "STR23-8509": {
+        "units": [
+          "3"
+        ],
+        "status": "current",
+        "address": "7600 N LAKE BLVD 3 TAHOE VISTA CA 96148"
+      }
     },
     "111070003000": {
-      "STR23-8511": [
-        "94"
-      ]
+      "STR23-8511": {
+        "units": [
+          "94"
+        ],
+        "status": "current",
+        "address": "1300 REGENCY WAY 94 TAHOE VISTA CA 96148"
+      }
     },
     "093530024000": {
-      "STR23-8525": [
-        "67"
-      ]
+      "STR23-8525": {
+        "units": [
+          "67"
+        ],
+        "status": "current",
+        "address": "3115 N LAKE BLVD 67 TAHOE CITY CA 96145"
+      }
     },
     "094300010000": {
-      "STR24-8532": [
-        "40"
-      ]
+      "STR24-8532": {
+        "units": [
+          "40"
+        ],
+        "status": "expired",
+        "address": "300 W LAKE BLVD 40 TAHOE CITY CA 96145"
+      }
     },
     "117080001000": {
-      "STR23-8533": [
-        "1"
-      ]
+      "STR23-8533": {
+        "units": [
+          "1"
+        ],
+        "status": "withdrawn",
+        "address": "6844 N LAKE BLVD 1 TAHOE VISTA CA 96148"
+      }
     },
     "093520002000": {
-      "STR23-8535": [
-        "39"
-      ]
+      "STR23-8535": {
+        "units": [
+          "39"
+        ],
+        "status": "current",
+        "address": "3115 N LAKE BLVD 39 TAHOE CITY CA 96145"
+      }
     },
     "093510008000": {
-      "unk": [
-        "14"
-      ]
+      "unk": {
+        "units": [
+          "14"
+        ],
+        "status": "denied",
+        "address": "3115 N LAKE BLVD 14 TAHOE CITY CA 96145"
+      }
     },
     "094500003510": {
-      "STR23-8572": [
-        "2"
-      ]
+      "STR23-8572": {
+        "units": [
+          "2"
+        ],
+        "status": "withdrawn",
+        "address": "270 N LAKE BLVD 2-L TAHOE CITY CA 96145"
+      }
     },
     "094500007510": {
-      "STR23-8573": [
-        "10"
-      ]
+      "STR23-8573": {
+        "units": [
+          "10"
+        ],
+        "status": "withdrawn",
+        "address": "270 N LAKE BLVD 10-L TAHOE CITY CA 96145"
+      }
     },
     "090410008000": {
-      "STR24-8582": [
-        "3"
-      ]
+      "STR24-8582": {
+        "units": [
+          "3"
+        ],
+        "status": "current",
+        "address": "144 CHIPMUNK ST 3 KINGS BEACH CA 96143"
+      }
     },
     "093510013000": {
-      "STR23-8583": [
-        "9"
-      ]
+      "STR23-8583": {
+        "units": [
+          "9"
+        ],
+        "status": "current",
+        "address": "3115 N LAKE BLVD 9 TAHOE CITY CA 96145"
+      }
     },
     "094500010510": {
-      "STR23-8585": [
-        "17"
-      ]
+      "STR23-8585": {
+        "units": [
+          "17"
+        ],
+        "status": "withdrawn",
+        "address": "270 N LAKE BLVD 17-L TAHOE CITY CA 96145"
+      }
     },
     "096103015000": {
-      "STR23-8593": [
-        "C-7"
-      ]
+      "STR23-8593": {
+        "units": [
+          "C-7"
+        ],
+        "status": "current",
+        "address": "1609 CHRISTY HILL RD C-7 OLYMPIC VALLEY CA 96146"
+      }
     },
     "096030047000": {
-      "STR24-8596": [
-        "3"
-      ]
+      "STR24-8596": {
+        "units": [
+          "3"
+        ],
+        "status": "current",
+        "address": "233 GRANITE CHIEF RD OLYMPIC VALLEY CA 96146"
+      }
     },
     "090330002000": {
-      "STR23-8601": [
-        "102"
-      ]
+      "STR23-8601": {
+        "units": [
+          "102"
+        ],
+        "status": "expired",
+        "address": "144 CHIPMUNK ST 102 KINGS BEACH CA 96143"
+      }
     },
     "104010018000": {
-      "STR23-8605": [
-        "JCL 215"
-      ]
+      "STR23-8605": {
+        "units": [
+          "JCL 215"
+        ],
+        "status": "expired",
+        "address": "600 SUGAR BOWL RD 215 NORDEN CA 95724"
+      }
     },
     "069103042000": {
-      "STR23-8606": [
-        "EV 28"
-      ]
+      "STR23-8606": {
+        "units": [
+          "EV 28"
+        ],
+        "status": "suspended",
+        "address": "940 PAINT BRUSH HILL CT NORDEN CA 96161"
+      }
     },
     "069320018000": {
-      "STR23-8607": [
-        "CT 05"
-      ]
+      "STR23-8607": {
+        "units": [
+          "CT 05"
+        ],
+        "status": "current",
+        "address": "719 MULE EARS CT NORDEN CA 95724"
+      }
     },
     "104020011000": {
-      "STR24-8609": [
-        "SC 11"
-      ]
+      "STR24-8609": {
+        "units": [
+          "SC 11"
+        ],
+        "status": "current",
+        "address": "5731 TIGER LILY CT NORDEN CA 95724"
+      }
     },
     "094500007520": {
-      "STR23-8610": [
-        "14"
-      ]
+      "STR23-8610": {
+        "units": [
+          "14"
+        ],
+        "status": "withdrawn",
+        "address": "270 N LAKE BLVD 14-U TAHOE CITY CA 96145"
+      }
     },
     "094360004000": {
-      "STR23-8612": [
-        "153"
-      ]
+      "STR23-8612": {
+        "units": [
+          "153"
+        ],
+        "status": "current",
+        "address": "300 W LAKE BLVD 153 TAHOE CITY CA 96145"
+      }
     },
     "094300009000": {
-      "STR23-8617": [
-        "39"
-      ]
+      "STR23-8617": {
+        "units": [
+          "39"
+        ],
+        "status": "current",
+        "address": "300 W LAKE BLVD 39 TAHOE CITY CA 96145"
+      }
     },
     "094350004000": {
-      "STR23-8618": [
-        "255"
-      ]
+      "STR23-8618": {
+        "units": [
+          "255"
+        ],
+        "status": "current",
+        "address": "180 W LAKE BLVD 255 TAHOE CITY CA 96145"
+      }
     },
     "093550030000": {
-      "STR23-8623": [
-        "26"
-      ]
+      "STR23-8623": {
+        "units": [
+          "26"
+        ],
+        "status": "current",
+        "address": "125 LASSEN DR 26 TAHOE CITY CA 96145"
+      }
     },
     "069103013000": {
-      "STR24-8645": [
-        "EV 09"
-      ]
+      "STR24-8645": {
+        "units": [
+          "EV 09"
+        ],
+        "status": "expired",
+        "address": "58615 CORN LILY LN NORDEN CA 96161"
+      }
     },
     "094500019000": {
-      "STR23-8653": [
-        "43"
-      ]
+      "STR23-8653": {
+        "units": [
+          "43"
+        ],
+        "status": "withdrawn",
+        "address": "270 N LAKE BLVD 43 TAHOE CITY CA 96145"
+      }
     },
     "094480010000": {
-      "STR23-8658": [
-        "39"
-      ]
+      "STR23-8658": {
+        "units": [
+          "39"
+        ],
+        "status": "current",
+        "address": "2560 LAKE FOREST RD 39 TAHOE CITY CA 96145"
+      }
     },
     "096460023000": {
-      "STR23-8663": [
-        "23"
-      ]
+      "STR23-8663": {
+        "units": [
+          "23"
+        ],
+        "status": "expired",
+        "address": "227 OLYMPIC VALLEY RD 23 OLYMPIC VALLEY CA 96146"
+      }
     },
     "110270036000": {
-      "STR23-8668": [
-        "235"
-      ]
+      "STR23-8668": {
+        "units": [
+          "235"
+        ],
+        "status": "current",
+        "address": "2000 NORTH VILLAGE DR 235 TRUCKEE CA 96161"
+      }
     },
     "094430037000": {
-      "STR23-8669": [
-        "111"
-      ]
+      "STR23-8669": {
+        "units": [
+          "111"
+        ],
+        "status": "current",
+        "address": "1877 N LAKE BLVD 111 TAHOE CITY CA 96145"
+      }
     },
     "090380002000": {
-      "STR23-8683": [
-        "2"
-      ]
+      "STR23-8683": {
+        "units": [
+          "2"
+        ],
+        "status": "current",
+        "address": "9200 BROCKWAY SPRINGS DR KINGS BEACH CA 96143"
+      }
     },
     "111250019000": {
-      "STR23-8686": [
-        "241"
-      ]
+      "STR23-8686": {
+        "units": [
+          "241"
+        ],
+        "status": "current",
+        "address": "1001 COMMONWEALTH DR 241 KINGS BEACH CA 96143"
+      }
     },
     "110270039000": {
-      "STR23-8690": [
-        "301"
-      ]
+      "STR23-8690": {
+        "units": [
+          "301"
+        ],
+        "status": "current",
+        "address": "2000 NORTH VILLAGE DR 301 TRUCKEE CA 96161"
+      }
     },
     "093400038000": {
-      "STR23-8694": [
-        "14"
-      ]
+      "STR23-8694": {
+        "units": [
+          "14"
+        ],
+        "status": "current",
+        "address": "2755 N LAKE BLVD 14 TAHOE CITY CA 96145"
+      }
     },
     "094370010000": {
-      "STR23-8715": [
-        "119"
-      ]
+      "STR23-8715": {
+        "units": [
+          "119"
+        ],
+        "status": "current",
+        "address": "300 W LAKE BLVD 119 TAHOE CITY CA 96145"
+      }
     },
     "111240034000": {
-      "STR24-8719": [
-        "142"
-      ]
+      "STR24-8719": {
+        "units": [
+          "142"
+        ],
+        "status": "current",
+        "address": "1001 COMMONWEALTH DR 142 KINGS BEACH CA 96143"
+      }
     },
     "111200017000": {
-      "STR24-8730": [
-        "17"
-      ]
+      "STR24-8730": {
+        "units": [
+          "17"
+        ],
+        "status": "expired",
+        "address": "1001 COMMONWEALTH DR 17 KINGS BEACH CA 96143"
+      }
     },
     "094490018000": {
-      "STR24-8737": [
-        "13"
-      ]
+      "STR24-8737": {
+        "units": [
+          "13"
+        ],
+        "status": "current",
+        "address": "2560 LAKE FOREST RD 13 TAHOE CITY CA 96145"
+      }
     },
     "111220018000": {
-      "STR23-8739": [
-        "83"
-      ]
+      "STR23-8739": {
+        "units": [
+          "83"
+        ],
+        "status": "current",
+        "address": "1001 COMMONWEALTH DR 83 KINGS BEACH CA 96143"
+      }
     },
     "098060013000": {
-      "STR24-8752": [
-        "6230"
-      ]
+      "STR24-8752": {
+        "units": [
+          "6230"
+        ],
+        "status": "current",
+        "address": "6230 CHAMBERLAND DR TAHOMA CA 96142"
+      }
     },
     "096400003000": {
-      "STR24-8762": [
-        "16"
-      ]
+      "STR24-8762": {
+        "units": [
+          "16"
+        ],
+        "status": "current",
+        "address": "420 SHIRLEY CANYON RD 16 OLYMPIC VALLEY CA 96146"
+      }
     },
     "111080033000": {
-      "STR24-8763": [
-        "30"
-      ]
+      "STR24-8763": {
+        "units": [
+          "30"
+        ],
+        "status": "current",
+        "address": "1300 REGENCY WAY 30 TAHOE VISTA CA 96148"
+      }
     },
     "111230003000": {
-      "STR24-8770": [
-        "96"
-      ]
+      "STR24-8770": {
+        "units": [
+          "96"
+        ],
+        "status": "current",
+        "address": "1001 COMMONWEALTH DR 96 KINGS BEACH CA 96143"
+      }
     },
     "093420054000": {
-      "STR24-8784": [
-        "52"
-      ]
+      "STR24-8784": {
+        "units": [
+          "52"
+        ],
+        "status": "expired",
+        "address": "3101 LAKE FOREST RD 52 TAHOE CITY CA 96145"
+      }
     },
     "104010009000": {
-      "STR24-8789": [
-        "JCL 107"
-      ]
+      "STR24-8789": {
+        "units": [
+          "JCL 107"
+        ],
+        "status": "current",
+        "address": "600 SUGAR BOWL RD 107 NORDEN CA 95724"
+      }
     },
     "111080043000": {
-      "STR24-8793": [
-        "62"
-      ]
+      "STR24-8793": {
+        "units": [
+          "62"
+        ],
+        "status": "current",
+        "address": "1300 REGENCY WAY 62 TAHOE VISTA CA 96148"
+      }
     },
     "093430002000": {
-      "STR24-8795": [
-        "167"
-      ]
+      "STR24-8795": {
+        "units": [
+          "167"
+        ],
+        "status": "current",
+        "address": "3101 LAKE FOREST RD 167 TAHOE CITY CA 96145"
+      }
     },
     "093580010000": {
-      "STR24-8802": [
-        "79"
-      ]
+      "STR24-8802": {
+        "units": [
+          "79"
+        ],
+        "status": "current",
+        "address": "3600 N LAKE BLVD 79 CARNELIAN BAY CA 96140"
+      }
     },
     "093620073000": {
-      "STR24-8803": [
-        "189"
-      ]
+      "STR24-8803": {
+        "units": [
+          "189"
+        ],
+        "status": "current",
+        "address": "3600 N LAKE BLVD 189 CARNELIAN BAY CA 96140"
+      }
     },
     "111210040000": {
-      "STR24-8821": [
-        "64"
-      ]
+      "STR24-8821": {
+        "units": [
+          "64"
+        ],
+        "status": "current",
+        "address": "1001 COMMONWEALTH DR 64 KINGS BEACH CA 96143"
+      }
     },
     "110420034000": {
-      "STR24-8831": [
-        "4115"
-      ]
+      "STR24-8831": {
+        "units": [
+          "4115"
+        ],
+        "status": "current",
+        "address": "4115 COYOTE FORK TRUCKEE CA 96161"
+      }
     },
     "111210015000": {
-      "STR24-8841": [
-        "41"
-      ]
+      "STR24-8841": {
+        "units": [
+          "41"
+        ],
+        "status": "current",
+        "address": "1001 COMMONWEALTH DR 41 KINGS BEACH CA 96143"
+      }
     },
     "111260026000": {
-      "STR24-8842": [
-        "177"
-      ]
+      "STR24-8842": {
+        "units": [
+          "177"
+        ],
+        "status": "withdrawn",
+        "address": "1001 COMMONWEALTH DR 177 KINGS BEACH CA 96143"
+      }
     },
     "096030014000": {
-      "STR24-8855": [
-        "1A"
-      ]
+      "STR24-8855": {
+        "units": [
+          "1A"
+        ],
+        "status": "current",
+        "address": "213 GRANITE CHIEF RD OLYMPIC VALLEY CA 96146"
+      }
     },
     "069320053000": {
-      "STR24-8859": [
-        "MT 08"
-      ]
+      "STR24-8859": {
+        "units": [
+          "MT 08"
+        ],
+        "status": "expired",
+        "address": "741 MULE EARS DR NORDEN CA 96161"
+      }
     },
     "093510016000": {
-      "STR24-8863": [
-        "6"
-      ]
+      "STR24-8863": {
+        "units": [
+          "6"
+        ],
+        "status": "current",
+        "address": "3115 N LAKE BLVD 6 TAHOE CITY CA 96145"
+      }
     },
     "093570011000": {
-      "STR24-8866": [
-        "60"
-      ]
+      "STR24-8866": {
+        "units": [
+          "60"
+        ],
+        "status": "current",
+        "address": "100 LASSEN DR 60 TAHOE CITY CA 96145"
+      }
     },
     "093570004000": {
-      "STR24-8867": [
-        "70"
-      ]
+      "STR24-8867": {
+        "units": [
+          "70"
+        ],
+        "status": "expired",
+        "address": "100 LASSEN DR 70 TAHOE CITY CA 96145"
+      }
     },
     "117080007000": {
-      "STR24-8872": [
-        "7"
-      ]
+      "STR24-8872": {
+        "units": [
+          "7"
+        ],
+        "status": "withdrawn",
+        "address": "6844 N LAKE BLVD 7 TAHOE VISTA CA 96148"
+      }
     },
     "117180047540": {
-      "STR24-8880": [
-        "5"
-      ]
+      "STR24-8880": {
+        "units": [
+          "5"
+        ],
+        "status": "current",
+        "address": "8000 N LAKE BLVD 5 KINGS BEACH CA 96143"
+      }
     },
     "117230002510": {
-      "STR24-8881": [
-        "GU2"
-      ]
+      "STR24-8881": {
+        "units": [
+          "GU2"
+        ],
+        "status": "current",
+        "address": "8004 N LAKE BLVD B KINGS BEACH CA 96143"
+      }
     },
     "111230022000": {
-      "STR24-8882": [
-        "114"
-      ]
+      "STR24-8882": {
+        "units": [
+          "114"
+        ],
+        "status": "current",
+        "address": "1001 COMMONWEALTH DR 114 KINGS BEACH CA 96143"
+      }
     },
     "111080032000": {
-      "STR24-8888": [
-        "32"
-      ]
+      "STR24-8888": {
+        "units": [
+          "32"
+        ],
+        "status": "current",
+        "address": "1300 REGENCY WAY 32 TAHOE VISTA CA 96148"
+      }
     },
     "110270014000": {
-      "STR24-8893": [
-        "214"
-      ]
+      "STR24-8893": {
+        "units": [
+          "214"
+        ],
+        "status": "current",
+        "address": "2000 NORTH VILLAGE DR 214 TRUCKEE CA 96161"
+      }
     },
     "110270003000": {
-      "STR24-8899": [
-        "203"
-      ]
+      "STR24-8899": {
+        "units": [
+          "203"
+        ],
+        "status": "current",
+        "address": "2000 NORTH VILLAGE DR 203 TRUCKEE CA 96161"
+      }
     },
     "093540012000": {
-      "STR24-8910": [
-        "49"
-      ]
+      "STR24-8910": {
+        "units": [
+          "49"
+        ],
+        "status": "current",
+        "address": "3600 N LAKE BLVD 49 CARNELIAN BAY CA 96140"
+      }
     },
     "094122056000": {
-      "STR24-8912": [
-        "A"
-      ],
-      "unk": [
-        "B"
-      ]
+      "STR24-8912": {
+        "units": [
+          "A"
+        ],
+        "status": "current",
+        "address": "499 RED CEDAR ST TAHOE CITY CA 96145"
+      },
+      "unk": {
+        "units": [
+          "B"
+        ],
+        "status": "denied",
+        "address": "499 RED CEDAR ST TAHOE CITY CA 96145"
+      }
     },
     "116200008000": {
-      "STR24-8916": [
-        "8"
-      ]
+      "STR24-8916": {
+        "units": [
+          "8"
+        ],
+        "status": "current",
+        "address": "5101 N LAKE BLVD 8 CARNELIAN BAY CA 96140"
+      }
     },
     "117080043000": {
-      "STR24-8922": [
-        "43"
-      ]
+      "STR24-8922": {
+        "units": [
+          "43"
+        ],
+        "status": "withdrawn",
+        "address": "6943 N LAKE BLVD 43 TAHOE VISTA CA 96148"
+      }
     },
     "096520007000": {
-      "STR24-8930": [
-        "A-7"
-      ]
+      "STR24-8930": {
+        "units": [
+          "A-7"
+        ],
+        "status": "current",
+        "address": "1609 CHRISTY HILL RD A-7 OLYMPIC VALLEY CA 96146"
+      }
     },
     "096420008000": {
-      "STR24-8935": [
-        "7"
-      ]
+      "STR24-8935": {
+        "units": [
+          "7"
+        ],
+        "status": "current",
+        "address": "460 SHIRLEY CANYON RD 7 OLYMPIC VALLEY CA 96146"
+      }
     },
     "084213013000": {
-      "unk": [
-        "Building A"
-      ]
+      "STR25-8940": {
+        "units": [
+          "Building A"
+        ],
+        "status": "current",
+        "address": "670 PINELAND DR TAHOE CITY CA 96145"
+      }
     },
     "093520001000": {
-      "STR24-8952": [
-        "38"
-      ]
+      "STR24-8952": {
+        "units": [
+          "38"
+        ],
+        "status": "current",
+        "address": "3115 N LAKE BLVD 38 TAHOE CITY CA 96145"
+      }
     },
     "093414034000": {
-      "STR24-8953": [
-        "201"
-      ]
+      "STR24-8953": {
+        "units": [
+          "201"
+        ],
+        "status": "current",
+        "address": "3101 LAKE FOREST RD 201 TAHOE CITY CA 96145"
+      }
     },
     "069103021000": {
-      "unk": [
-        "EV 04"
-      ]
+      "unk": {
+        "units": [
+          "EV 04"
+        ],
+        "status": "denied",
+        "address": "58570 CORN LILY LN NORDEN CA 96161"
+      }
     },
     "093530034000": {
-      "STR25-8968": [
-        "77"
-      ]
+      "STR25-8968": {
+        "units": [
+          "77"
+        ],
+        "status": "current",
+        "address": "3115 N LAKE BLVD 77 TAHOE CITY CA 96145"
+      }
     },
     "111250049000": {
-      "STR24-8970": [
-        "212"
-      ]
+      "STR24-8970": {
+        "units": [
+          "212"
+        ],
+        "status": "current",
+        "address": "1001 COMMONWEALTH DR 212 KINGS BEACH CA 96143"
+      }
     },
     "093420020000": {
-      "STR24-8974": [
-        "173"
-      ]
+      "STR24-8974": {
+        "units": [
+          "173"
+        ],
+        "status": "current",
+        "address": "3101 LAKE FOREST RD 173 TAHOE CITY CA 96145"
+      }
     },
     "111100011000": {
-      "STR24-8977": [
-        "16"
-      ]
+      "STR24-8977": {
+        "units": [
+          "16"
+        ],
+        "status": "current",
+        "address": "7047 ALLENBY WAY TAHOE VISTA CA 96148"
+      }
     },
     "093530044000": {
-      "STR24-8984": [
-        "87"
-      ]
+      "STR24-8984": {
+        "units": [
+          "87"
+        ],
+        "status": "current",
+        "address": "3115 N LAKE BLVD 87 TAHOE CITY CA 96145"
+      }
     },
     "110270007000": {
-      "STR24-8988": [
-        "207"
-      ]
+      "STR24-8988": {
+        "units": [
+          "207"
+        ],
+        "status": "current",
+        "address": "2000 NORTH VILLAGE DR 207 TRUCKEE CA 96161"
+      }
     },
     "116130009000": {
-      "STR24-8992": [
-        "49"
-      ]
+      "STR24-8992": {
+        "units": [
+          "49"
+        ],
+        "status": "current",
+        "address": "5101 N LAKE BLVD 49 CARNELIAN BAY CA 96140"
+      }
     },
     "094380004000": {
-      "STR24-9011": [
-        "4"
-      ]
+      "STR24-9011": {
+        "units": [
+          "4"
+        ],
+        "status": "current",
+        "address": "1877 N LAKE BLVD 4 TAHOE CITY CA 96145"
+      }
     },
     "093416026000": {
-      "unk": [
-        "79"
-      ]
+      "unk": {
+        "units": [
+          "79"
+        ],
+        "status": "denied",
+        "address": "3101 LAKE FOREST RD 79 TAHOE CITY CA 96145"
+      }
     },
     "090400009000": {
-      "STR24-9015": [
-        "55"
-      ]
+      "STR24-9015": {
+        "units": [
+          "55"
+        ],
+        "status": "current",
+        "address": "9200 BROCKWAY SPRINGS DR KINGS BEACH CA 96143"
+      }
     },
     "111070009000": {
-      "STR24-9028": [
-        "88"
-      ]
+      "STR24-9028": {
+        "units": [
+          "88"
+        ],
+        "status": "current",
+        "address": "1300 REGENCY WAY 88 TAHOE VISTA CA 96148"
+      }
     },
     "093620075000": {
-      "STR25-9029": [
-        "121"
-      ]
+      "STR25-9029": {
+        "units": [
+          "121"
+        ],
+        "status": "current",
+        "address": "3600 N LAKE BLVD 121 CARNELIAN BAY CA 96140"
+      }
     },
     "093550017000": {
-      "STR24-9035": [
-        "13"
-      ]
+      "STR24-9035": {
+        "units": [
+          "13"
+        ],
+        "status": "current",
+        "address": "125 LASSEN DR 13 TAHOE CITY CA 96145"
+      }
     },
     "090330011000": {
-      "STR24-9056": [
-        "211"
-      ]
+      "STR24-9056": {
+        "units": [
+          "211"
+        ],
+        "status": "current",
+        "address": "144 CHIPMUNK ST 211 KINGS BEACH CA 96143"
+      }
     },
     "093430019000": {
-      "STR24-9063": [
-        "15"
-      ]
+      "STR24-9063": {
+        "units": [
+          "15"
+        ],
+        "status": "current",
+        "address": "3101 LAKE FOREST RD 15 TAHOE CITY CA 96145"
+      }
     },
     "117150042000": {
-      "STR24-9067": [
-        "2"
-      ]
+      "STR24-9067": {
+        "units": [
+          "2"
+        ],
+        "status": "current",
+        "address": "7699 N LAKE BLVD 2 TAHOE VISTA CA 96148"
+      }
     },
     "093340023000": {
-      "STR24-9073": [
-        "ADU in back"
-      ]
+      "STR24-9073": {
+        "units": [
+          "ADU in back"
+        ],
+        "status": "current",
+        "address": "3015 HIGHLANDS DR TAHOE CITY CA 96145"
+      }
     },
     "111220001000": {
-      "STR25-9074": [
-        "70"
-      ]
+      "STR25-9074": {
+        "units": [
+          "70"
+        ],
+        "status": "current",
+        "address": "1001 COMMONWEALTH DR 70 KINGS BEACH CA 96143"
+      }
     },
     "111070024000": {
-      "STR24-9075": [
-        "67"
-      ]
+      "STR24-9075": {
+        "units": [
+          "67"
+        ],
+        "status": "current",
+        "address": "1300 REGENCY WAY 67 TAHOE VISTA CA 96148"
+      }
     },
     "093415012000": {
-      "STR24-9083": [
-        "149"
-      ]
+      "STR24-9083": {
+        "units": [
+          "149"
+        ],
+        "status": "current",
+        "address": "3101 LAKE FOREST RD 149 TAHOE CITY CA 96145"
+      }
     },
     "096500008000": {
-      "STR24-9105": [
-        "6"
-      ]
+      "STR24-9105": {
+        "units": [
+          "6"
+        ],
+        "status": "current",
+        "address": "3003 MEADOW CT 6 OLYMPIC VALLEY CA 96146"
+      }
     },
     "096460014000": {
-      "unk": [
-        "14"
-      ]
+      "unk": {
+        "units": [
+          "14"
+        ],
+        "status": "denied",
+        "address": "227 OLYMPIC VALLEY RD 14 OLYMPIC VALLEY CA 96146"
+      }
     },
     "111210031000": {
-      "STR25-9157": [
-        "44"
-      ]
+      "STR25-9157": {
+        "units": [
+          "44"
+        ],
+        "status": "current",
+        "address": "1001 COMMONWEALTH DR 44 KINGS BEACH CA 96143"
+      }
     },
     "111230019000": {
-      "STR24-9173": [
-        "117"
-      ]
+      "STR24-9173": {
+        "units": [
+          "117"
+        ],
+        "status": "current",
+        "address": "1001 COMMONWEALTH DR 117 KINGS BEACH CA 96143"
+      }
     },
     "090072033000": {
-      "STR24-9194": [
-        "3"
-      ]
+      "STR24-9194": {
+        "units": [
+          "3"
+        ],
+        "status": "current",
+        "address": "8308 N LAKE BLVD 3 KINGS BEACH CA 96143"
+      }
     },
     "111070006000": {
-      "unk": [
-        "68"
-      ]
+      "unk": {
+        "units": [
+          "68"
+        ],
+        "status": "denied",
+        "address": "1300 REGENCY WAY 68 TAHOE VISTA CA 96148"
+      }
     },
     "111070010000": {
-      "unk": [
-        "68"
-      ]
+      "unk": {
+        "units": [
+          "68"
+        ],
+        "status": "denied",
+        "address": "1300 REGENCY WAY 70 TAHOE VISTA CA 96148"
+      }
     },
     "095520026000": {
-      "unk": [
-        "26"
-      ]
+      "unk": {
+        "units": [
+          "26"
+        ],
+        "status": "denied",
+        "address": "2090 CHALET RD 26 ALPINE MEADOWS CA 96146"
+      }
     },
     "117210040000": {
-      "STR25-9208": [
-        "37"
-      ]
+      "STR25-9208": {
+        "units": [
+          "37"
+        ],
+        "status": "current",
+        "address": "7600 N LAKE BLVD 37 TAHOE VISTA CA 96148"
+      }
     },
     "111230013000": {
-      "STR25-9215": [
-        "105"
-      ]
+      "STR25-9215": {
+        "units": [
+          "105"
+        ],
+        "status": "current",
+        "address": "1001 COMMONWEALTH DR 105 KINGS BEACH CA 96143"
+      }
     },
     "069320056000": {
-      "STR24-9224": [
-        "MT11"
-      ]
+      "STR24-9224": {
+        "units": [
+          "MT11"
+        ],
+        "status": "current",
+        "address": "711 MULE EARS DR NORDEN CA 96161"
+      }
     },
     "094350007000": {
-      "STR25-9236": [
-        "252"
-      ]
+      "STR25-9236": {
+        "units": [
+          "252"
+        ],
+        "status": "current",
+        "address": "180 W LAKE BLVD 252 TAHOE CITY CA 96145"
+      }
     },
     "110420019000": {
-      "STR25-9240": [
-        "4093"
-      ]
+      "STR25-9240": {
+        "units": [
+          "4093"
+        ],
+        "status": "current",
+        "address": "4093 COYOTE FORK TRUCKEE CA 96161"
+      }
     },
     "096400016000": {
-      "STR24-9245": [
-        "26"
-      ]
+      "STR24-9245": {
+        "units": [
+          "26"
+        ],
+        "status": "current",
+        "address": "420 SHIRLEY CANYON RD 26 OLYMPIC VALLEY CA 96146"
+      }
     },
     "117210029000": {
-      "unk": [
-        "Unit 26",
-        "26"
-      ]
+      "unk": {
+        "units": [
+          "Unit 26",
+          "26"
+        ],
+        "status": "denied",
+        "address": "7600 N LAKE BLVD 26 TAHOE VISTA CA 96148"
+      }
     },
     "094430033000": {
-      "STR25-9264": [
-        "104"
-      ]
+      "STR25-9264": {
+        "units": [
+          "104"
+        ],
+        "status": "current",
+        "address": "1877 N LAKE BLVD 104 TAHOE CITY CA 96145"
+      }
     },
     "093490037000": {
-      "STR25-9266": [
-        "49"
-      ]
+      "STR25-9266": {
+        "units": [
+          "49"
+        ],
+        "status": "current",
+        "address": "2755 N LAKE BLVD 49 TAHOE CITY CA 96145"
+      }
     },
     "096460048000": {
-      "STR25-9268": [
-        "45"
-      ]
+      "STR25-9268": {
+        "units": [
+          "45"
+        ],
+        "status": "current",
+        "address": "227 OLYMPIC VALLEY RD 45 OLYMPIC VALLEY CA 96146"
+      }
     },
     "093412003000": {
-      "unk": [
-        "121"
-      ]
+      "unk": {
+        "units": [
+          "121"
+        ],
+        "status": "pending fire",
+        "address": "3101 LAKE FOREST RD 121 TAHOE CITY CA 96145"
+      }
     },
     "111240014000": {
-      "unk": [
-        "162"
-      ]
+      "unk": {
+        "units": [
+          "162"
+        ],
+        "status": "denied",
+        "address": "1001 COMMONWEALTH DR 162 KINGS BEACH CA 96143"
+      }
     },
     "111250043000": {
-      "STR25-9294": [
-        "217"
-      ]
+      "STR25-9294": {
+        "units": [
+          "217"
+        ],
+        "status": "current",
+        "address": "1001 COMMONWEALTH DR 217 KINGS BEACH CA 96143"
+      }
     },
     "104010004000": {
-      "unk": [
-        "JCL102"
-      ]
+      "unk": {
+        "units": [
+          "JCL102"
+        ],
+        "status": "denied",
+        "address": "600 SUGAR BOWL RD 102 NORDEN CA 95724"
+      }
     },
     "111230009000": {
-      "unk": [
-        "101"
-      ]
+      "unk": {
+        "units": [
+          "101"
+        ],
+        "status": "pending fire",
+        "address": "1001 COMMONWEALTH DR 101 KINGS BEACH CA 96143"
+      }
     },
     "093390016000": {
-      "unk": [
-        "10"
-      ]
+      "unk": {
+        "units": [
+          "10"
+        ],
+        "status": "denied",
+        "address": "3200 N LAKE BLVD 10 TAHOE CITY CA 96145"
+      }
     },
     "097081008000": {
-      "unk": [
-        "n/a"
-      ]
+      "unk": {
+        "units": [
+          "n/a"
+        ],
+        "status": "denied",
+        "address": "4895 SACRAMENTO ST HOMEWOOD CA 96142"
+      }
     },
     "094490059000": {
-      "STR25-9323": [
-        "58"
-      ]
+      "STR25-9323": {
+        "units": [
+          "58"
+        ],
+        "status": "current",
+        "address": "2560 LAKE FOREST RD 58 TAHOE CITY CA 96145"
+      }
     },
     "096460011000": {
-      "unk": [
-        "11"
-      ]
+      "unk": {
+        "units": [
+          "11"
+        ],
+        "status": "pending fire",
+        "address": "227 OLYMPIC VALLEY RD 11 OLYMPIC VALLEY CA 96146"
+      }
     },
     "111240055000": {
-      "unk": [
-        "123"
-      ]
+      "unk": {
+        "units": [
+          "123"
+        ],
+        "status": "submitted",
+        "address": "1001 COMMONWEALTH DR 123 KINGS BEACH CA 96143"
+      }
     },
     "093620012000": {
-      "unk": [
-        "118"
-      ]
+      "unk": {
+        "units": [
+          "118"
+        ],
+        "status": "pending fire",
+        "address": "3600 N LAKE BLVD 118 CARNELIAN BAY CA 96140"
+      }
     },
     "094124004000": {
-      "unk": [
-        "400"
-      ]
+      "unk": {
+        "units": [
+          "400"
+        ],
+        "status": "submitted",
+        "address": "410 JACKPINE ST TAHOE CITY CA 96145"
+      }
     },
     "116190021000": {
-      "unk": [
-        "40"
-      ]
+      "unk": {
+        "units": [
+          "40"
+        ],
+        "status": "submitted",
+        "address": "5101 N LAKE BLVD 40 CARNELIAN BAY CA 96140"
+      }
     },
     "116190006000": {
-      "STR25-9357": [
-        "25"
-      ]
+      "STR25-9357": {
+        "units": [
+          "25"
+        ],
+        "status": "current",
+        "address": "5101 N LAKE BLVD 25 CARNELIAN BAY CA 96140"
+      }
     },
     "093530043000": {
-      "STR25-9362": [
-        "86"
-      ]
+      "STR25-9362": {
+        "units": [
+          "86"
+        ],
+        "status": "current",
+        "address": "3115 N LAKE BLVD 86 TAHOE CITY CA 96145"
+      }
     },
     "096380022510": {
-      "unk": [
-        "5"
-      ]
+      "STR25-9367": {
+        "units": [
+          "5"
+        ],
+        "status": "current",
+        "address": "1800 OLYMPIC VALLEY RD OLYMPIC VALLEY CA 96146"
+      }
+    },
+    "111260023000": {
+      "unk": {
+        "units": [
+          "179"
+        ],
+        "status": "submitted",
+        "address": "1001 COMMONWEALTH DR # 179 KINGS BEACH CA 96143"
+      }
+    },
+    "111250016000": {
+      "unk": {
+        "units": [
+          "244"
+        ],
+        "status": "submitted",
+        "address": "1001 COMMONWEALTH DR # 244 KINGS BEACH CA 96143"
+      }
+    },
+    "110270045000": {
+      "unk": {
+        "units": [
+          "307"
+        ],
+        "status": "submitted",
+        "address": "2000 NORTH VILLAGE DR 307 TRUCKEE CA 96161"
+      }
+    },
+    "111220011000": {
+      "unk": {
+        "units": [
+          "77"
+        ],
+        "status": "submitted",
+        "address": "1001 COMMONWEALTH DR # 77 KINGS BEACH CA 96143"
+      }
+    },
+    "112190008000": {
+      "unk": {
+        "units": [
+          "B"
+        ],
+        "status": "submitted",
+        "address": "7820 MASHIE AVE TAHOE VISTA CA 96148"
+      }
     }
   }
 }
