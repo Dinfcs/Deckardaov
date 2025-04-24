@@ -3,7 +3,7 @@
 // @namespace
 // @version      3.1
 // @description  Combina funcionalidades de captura de datos QA con sistema unificado de notificaciones
-// @match        https://cyborg.deckard.com/listing/*/STR*
+// @match        https://cyborg.deckard.com/listing/*STR*
 // @grant        none
 // ==/UserScript==
 
