@@ -1456,11 +1456,11 @@ document.addEventListener("click", function(event) {
 
         // Plantillas de mensaje
         const templates = {
-            'Structure': `Hola ${qaed}, hoy me encuentro haciendo SQA y encontré este listing tuyo: <${listingUrl}|${projectName}>. Noté un problema con la estructura asignada. ¿Podrías revisarlo?`,
-            'Address Override': `Hola ${qaed}, hoy me encuentro haciendo SQA y encontré este listing tuyo: <${listingUrl}|${projectName}>. Hay un tema con el Address Override que necesita revisión.`,
-            'Bad APN': `Hola ${qaed}, hoy me encuentro haciendo SQA y encontré este listing tuyo: <${listingUrl}|${projectName}>. El APN parece tener un formato incorrecto.`,
-            'Unit Box': `Hola ${qaed}, hoy me encuentro haciendo SQA y encontré este listing tuyo: <${listingUrl}|${projectName}>. Hay una discrepancia con el Unit Box que deberíamos revisar.`,
-            'Other': `Hola ${qaed}, hoy me encuentro haciendo SQA y encontré este listing tuyo: <${listingUrl}|${projectName}>. Tengo una consulta al respecto:`
+            'Structure': `Hola ${qaed}, hoy me encuentro haciendo SQA y encontré este listing tuyo: <${listingUrl}|${projectName}>. `,
+            'Address Override': `Hola ${qaed}, hoy me encuentro haciendo SQA y encontré este listing tuyo: <${listingUrl}|${projectName}>.`,
+            'Bad APN': `Hola ${qaed}, hoy me encuentro haciendo SQA y encontré este listing tuyo: <${listingUrl}|${projectName}>.`,
+            'Unit Box': `Hola ${qaed}, hoy me encuentro haciendo SQA y encontré este listing tuyo: <${listingUrl}|${projectName}>.`,
+            'Other': `Hola ${qaed}, hoy me encuentro haciendo SQA y encontré este listing tuyo: <${listingUrl}|${projectName}>. `
         };
 
         // Event listeners
