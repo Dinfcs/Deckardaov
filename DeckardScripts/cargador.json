@@ -41,10 +41,6 @@
             "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/Viewer.js"
         },
         {
-            "urlPattern": "https://cyborg.deckard.com/listing/CA/sonoma/*",
-            "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/ScriptsFotPrGis/PrSonoma.js"
-        },
-        {
             "urlPattern": "https://www.google.com/maps/*",
             "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/ExternalScripts/Buscador.js"
         },
