@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         License Validator with Manual Search 3.0
+// @name         License Validator with Manual Search 4
 // @namespace    http://tampermonkey.net/
-// @version      3.4.4
-// @description  Valida licencias, saca alerta cuando la unidad es diferente o no esta y deja buscar manualmente apn y licencias en la base de datos
+// @version      3.5.0
+// @description  Valida licencias, muestra status y dirección, saca alerta cuando la unidad es diferente o no esta y deja buscar manualmente apn y licencias en la base de datos
 // @match        https://cyborg.deckard.com/listing*
 // @require      https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js
 // ==/UserScript==
@@ -65,8 +65,8 @@
             const sheetName = utils.extractSheetName();
             const licenses = utils.extractLicenses() || [];
 
-            if (!apn || !sheetName) {
-                alert('No APN or sheet name detected. Please navigate to a valid property page.');
+            if (!sheetName) {
+                alert('No data available for this project');
                 return;
             }
 
@@ -80,19 +80,25 @@
                 .then(jsonData => {
                     const licensesData = licenses.map(license => {
                         const normalized = utils.normalizeLicense(license);
-                        let units = jsonData.data[apn]?.[license] || [];
+                        let licenseData = jsonData.data[apn]?.[license] || null;
                         let foundWithOriginal = true;
 
-                        if (!units.length) {
+                        if (!licenseData) {
                             const normalizedKey = Object.keys(jsonData.data[apn] || {})
                                 .find(k => utils.normalizeLicense(k) === normalized);
                             if (normalizedKey) {
-                                units = jsonData.data[apn][normalizedKey];
+                                licenseData = jsonData.data[apn][normalizedKey];
                                 foundWithOriginal = false;
                             }
                         }
 
-                        return { license, units, foundWithOriginal };
+                        return {
+                            license,
+                            units: licenseData?.units || [],
+                            status: licenseData?.status || 'Unknown',
+                            address: licenseData?.address || 'Not available',
+                            foundWithOriginal
+                        };
                     });
 
                     // Si no hay licencias, mostrar solo el APN
@@ -100,6 +106,8 @@
                         licensesData.push({
                             license: 'No licenses detected',
                             units: [],
+                            status: '',
+                            address: '',
                             foundWithOriginal: true
                         });
                     }
@@ -128,7 +136,7 @@
             position: fixed;
             top: 20px;
             right: 20px;
-            width: 300px;
+            width: 350px;
             background: #fff;
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -321,6 +329,41 @@
             color: #00AEEF;
         }
 
+        .deckard-status {
+            font-size: 11px;
+            padding: 2px 6px;
+            border-radius: 3px;
+            display: inline-block;
+            margin-left: 5px;
+        }
+
+        .deckard-status.active {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .deckard-status.expired {
+            background: #f44336;
+            color: white;
+        }
+
+        .deckard-status.current {
+            background: #2196F3;
+            color: white;
+        }
+
+        .deckard-status.unknown {
+            background: #9E9E9E;
+            color: white;
+        }
+
+        .deckard-address {
+            font-size: 11px;
+            color: #555;
+            margin-top: 4px;
+            line-height: 1.3;
+        }
+
         @keyframes slideIn {
             from { transform: translateY(-10px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
@@ -458,6 +501,15 @@
                 `No unit number was added to this listing, but the license has associated units: <strong>${expectedUnits.join(', ')}</strong>`,
                 true
             );
+        },
+
+        getStatusClass: (status) => {
+            if (!status) return 'unknown';
+            const lowerStatus = status.toLowerCase();
+            if (lowerStatus.includes('active')) return 'active';
+            if (lowerStatus.includes('expir')) return 'expired';
+            if (lowerStatus.includes('current')) return 'current';
+            return 'unknown';
         }
     };
 
@@ -575,13 +627,18 @@
 
                 let html = '<div style="margin-bottom:10px;"><strong>APN:</strong> ' + normalizedSearch + '</div>';
 
-                Object.entries(apnData).forEach(([license, units]) => {
+                Object.entries(apnData).forEach(([license, licenseData]) => {
+                    const statusClass = utils.getStatusClass(licenseData.status);
                     html += `
                         <div class="deckard-section" style="margin-bottom:8px;">
-                            <div><strong>License:</strong> ${license}</div>
+                            <div>
+                                <strong>License:</strong> ${license}
+                                <span class="deckard-status ${statusClass}">${licenseData.status || 'Unknown'}</span>
+                            </div>
+                            <div class="deckard-address">${licenseData.address || 'Not available'}</div>
                             <div style="margin-top:4px;">
-                                ${units.length ?
-                                    units.map(u => `<span class="deckard-unit">${u}</span>`).join('') :
+                                ${licenseData.units?.length ?
+                                    licenseData.units.map(u => `<span class="deckard-unit">${u}</span>`).join('') :
                                     '<span style="color:#999;">No units associated</span>'}
                             </div>
                         </div>
@@ -596,16 +653,21 @@
                 let html = '<div style="margin-bottom:10px;"><strong>Search results for:</strong> ' + normalizedSearch + '</div>';
 
                 Object.entries(this.jsonData).forEach(([apn, licenses]) => {
-                    Object.entries(licenses).forEach(([license, units]) => {
+                    Object.entries(licenses).forEach(([license, licenseData]) => {
                         if (utils.normalizeLicense(license).includes(utils.normalizeLicense(normalizedSearch))) {
                             found = true;
+                            const statusClass = utils.getStatusClass(licenseData.status);
                             html += `
                                 <div class="deckard-section" style="margin-bottom:8px;">
                                     <div><strong>APN:</strong> ${apn}</div>
-                                    <div><strong>License:</strong> ${license}</div>
+                                    <div>
+                                        <strong>License:</strong> ${license}
+                                        <span class="deckard-status ${statusClass}">${licenseData.status || 'Unknown'}</span>
+                                    </div>
+                                    <div class="deckard-address">${licenseData.address || 'Not available'}</div>
                                     <div style="margin-top:4px;">
-                                        ${units.length ?
-                                            units.map(u => `<span class="deckard-unit">${u}</span>`).join('') :
+                                        ${licenseData.units?.length ?
+                                            licenseData.units.map(u => `<span class="deckard-unit">${u}</span>`).join('') :
                                             '<span style="color:#999;">No units associated</span>'}
                                     </div>
                                 </div>
@@ -622,77 +684,101 @@
             }
         }
 
-        initTabs() {
-            const tabContent = this.popup.querySelector('#deckard-tab-content');
-            const currentUnit = utils.extractCurrentUnit();
+initTabs() {
+    const tabContent = this.popup.querySelector('#deckard-tab-content');
+    const currentUnit = utils.extractCurrentUnit();
 
-            // Licenses tab content
-            const licensesContent = document.createElement('div');
-            this.licensesData.forEach(data => {
-                const section = document.createElement('div');
-                section.className = 'deckard-section';
+    // Licenses tab content (se mantiene igual)
+    const licensesContent = document.createElement('div');
+    this.licensesData.forEach(data => {
+        const section = document.createElement('div');
+        section.className = 'deckard-section';
 
-                const isInList = this.listLicenses.includes(data.license);
-                const hasUnitMismatch = isInList && currentUnit &&
-                                      data.units && !data.units.includes(currentUnit);
+        const isInList = this.listLicenses.includes(data.license);
+        const hasUnitMismatch = isInList && currentUnit &&
+                              data.units && !data.units.includes(currentUnit);
+        const statusClass = utils.getStatusClass(data.status);
 
-                section.innerHTML = `
-                    <div class="deckard-license">
-                        ${data.license}
-                        ${!data.foundWithOriginal ? '<span style="color:#888;font-size:0.8em;">-></span>' : ''}
-                        ${isInList ? '<span style="color:#0073aa;font-size:0.8em;margin-left:5px;">(in list)</span>' : ''}
-                        ${hasUnitMismatch ? '<span style="color:#d32f2f;font-size:0.8em;margin-left:5px;">⚠️ Doesn\'t match</span>' : ''}
-                    </div>
-                    ${data.units?.length ?
-                        data.units.map(u => {
-                            const isCurrentUnit = u === currentUnit;
-                            return `<span class="deckard-unit ${isCurrentUnit ? 'highlighted' : ''}"
-                                  style="${isCurrentUnit ? 'border:2px solid #4caf50;' : ''}">${u}</span>`;
-                        }).join('') :
-                        '<span style="color:#999;font-style:italic">No associated units</span>'}
-                `;
-                licensesContent.appendChild(section);
-            });
+        section.innerHTML = `
+            <div class="deckard-license">
+                ${data.license}
+                ${!data.foundWithOriginal ? '<span style="color:#888;font-size:0.8em;">-></span>' : ''}
+                ${isInList ? '<span style="color:#0073aa;font-size:0.8em;margin-left:5px;">(in list)</span>' : ''}
+                ${hasUnitMismatch ? '<span style="color:#d32f2f;font-size:0.8em;margin-left:5px;">⚠️ Doesn\'t match</span>' : ''}
+                ${data.status ? `<span class="deckard-status ${statusClass}">${data.status}</span>` : ''}
+            </div>
+            ${data.address ? `<div class="deckard-address">${data.address}</div>` : ''}
+            ${data.units?.length ?
+                data.units.map(u => {
+                    const isCurrentUnit = u === currentUnit;
+                    return `<span class="deckard-unit ${isCurrentUnit ? 'highlighted' : ''}"
+                          style="${isCurrentUnit ? 'border:2px solid #4caf50;' : ''}">${u}</span>`;
+                }).join('') :
+                '<span style="color:#999;font-style:italic">No associated units</span>'}
+        `;
+        licensesContent.appendChild(section);
+    });
 
-            // Units tab content
-            const unitsMap = new Map();
-            if (this.jsonData[this.apn]) {
-                Object.entries(this.jsonData[this.apn]).forEach(([license, units]) => {
-                    units.forEach(unit => {
-                        if (!unitsMap.has(unit)) unitsMap.set(unit, []);
-                        unitsMap.get(unit).push(license);
-                    });
+    // Units tab content - MODIFICADO para mostrar cada licencia individualmente
+    const unitsContent = document.createElement('div');
+
+    // Primero recolectamos todas las licencias con sus unidades
+    const allLicensesWithUnits = [];
+    if (this.jsonData[this.apn]) {
+        Object.entries(this.jsonData[this.apn]).forEach(([license, licenseData]) => {
+            licenseData.units?.forEach(unit => {
+                allLicensesWithUnits.push({
+                    license,
+                    unit,
+                    status: licenseData.status || 'Unknown',
+                    address: licenseData.address || 'Not available',
+                    isInList: this.listLicenses.includes(license)
                 });
-            }
-
-            const unitsContent = document.createElement('div');
-            Array.from(unitsMap.entries()).sort().forEach(([unit, licenses]) => {
-                const isCurrentUnit = unit === currentUnit;
-                const unitsInList = licenses.filter(license => this.listLicenses.includes(license));
-                const isInListLicenses = unitsInList.length > 0;
-
-                unitsContent.innerHTML += `
-                    <div style="margin-bottom:8px;padding:8px;background:#f9f9f9;border-radius:6px;
-                         ${isCurrentUnit ? 'border:2px solid #4caf50;' : ''}
-                         ${isInListLicenses ? 'background:#e3f2fd;' : ''}">
-                        <span class="deckard-unit ${licenses.length ? '' : 'unk'} ${isCurrentUnit ? 'highlighted' : ''}">
-                            ${unit}
-                            ${isCurrentUnit ? ' (current unit)' : ''}
-                            ${isInListLicenses ? ' (in listed licenses)' : ''}
-                        </span>
-                        ${licenses.length ? `
-                            <div style="font-size:11px;margin-top:4px;color:#666;">
-                                ${licenses.map(l => this.listLicenses.includes(l) ?
-                                    `<strong style="color:#0073aa">${l}</strong>` : l).join(', ')}
-                            </div>` : ''}
-                    </div>
-                `;
             });
+        });
+    }
 
-            tabContent.appendChild(licensesContent);
-            this.licensesContent = licensesContent;
-            this.unitsContent = unitsContent;
-        }
+    // Ordenamos por unidad para agrupar visualmente
+    allLicensesWithUnits.sort((a, b) => a.unit.localeCompare(b.unit));
+
+    // Mostramos cada licencia individualmente
+    allLicensesWithUnits.forEach(item => {
+        const isCurrentUnit = item.unit === currentUnit;
+        const statusClass = utils.getStatusClass(item.status);
+
+        unitsContent.innerHTML += `
+            <div style="margin-bottom:8px;padding:8px;background:#f9f9f9;border-radius:6px;
+                 ${isCurrentUnit ? 'border:2px solid #4caf50;' : ''}
+                 ${item.isInList ? 'background:#e3f2fd;' : ''}">
+                <div style="font-weight:bold;">
+                    ${item.license}
+                    ${item.isInList ? '<span style="color:#0073aa;font-size:0.8em;margin-left:5px;">(in list)</span>' : ''}
+                </div>
+
+                <div style="margin-top:4px;">
+                    <strong>Unit:</strong>
+                    <span class="deckard-unit ${isCurrentUnit ? 'highlighted' : ''}">
+                        ${item.unit}
+                        ${isCurrentUnit ? ' (current)' : ''}
+                    </span>
+                </div>
+
+                <div style="margin-top:4px;">
+                    <strong>Status:</strong>
+                    <span class="deckard-status ${statusClass}">${item.status}</span>
+                </div>
+
+                <div class="deckard-address" style="margin-top:4px;">
+                    <strong>Address:</strong> ${item.address}
+                </div>
+            </div>
+        `;
+    });
+
+    tabContent.appendChild(licensesContent);
+    this.licensesContent = licensesContent;
+    this.unitsContent = unitsContent;
+}
 
         setupEvents() {
             const tabContent = this.popup.querySelector('#deckard-tab-content');
@@ -764,7 +850,7 @@
             });
         }
 
-         showFloatingUnits() {
+        showFloatingUnits() {
             const unitInput = document.querySelector('input[name="unit_number"], input[id*="unit_number"]');
             if (!unitInput) return;
 
@@ -795,7 +881,8 @@
             }
         }
     }
-        function setupVettingWindowObserver() {
+
+    function setupVettingWindowObserver() {
         const observer = new MutationObserver((mutations) => {
             mutations.forEach(mutation => {
                 if (mutation.addedNodes.length) {
@@ -848,62 +935,62 @@
         });
     }
 
-function setupButtonObservers() {
-    const handleSaveClick = (e) => {
-        if (e.target.matches('#btn_submit_vetting_dlg')) {
-            // Reinicio después de 2 segundos para Save
-            setTimeout(() => {
-                resetScript();
-                init();
-            }, 3500);
+    function setupButtonObservers() {
+        const handleSaveClick = (e) => {
+            if (e.target.matches('#btn_submit_vetting_dlg')) {
+                // Reinicio después de 2 segundos para Save
+                setTimeout(() => {
+                    resetScript();
+                    init();
+                }, 3500);
+            }
+        };
+
+        const handleEditClick = (e) => {
+            if (e.target.matches('#btn_open_vetting_dlg')) {
+                // Reinicio después de 1 segundo para Edit
+                setTimeout(() => {
+                    resetScript();
+                    init();
+                }, 500);
+            }
+        };
+
+        // Función para limpiar el estado del script
+        function resetScript() {
+            document.querySelector('.deckard-popup')?.remove();
+            document.querySelectorAll('.deckard-alert').forEach(el => el.remove());
+            document.querySelectorAll('.deckard-unit-floating-container').forEach(el => el.remove());
+
+            cachedSheetName = null;
+            isProcessing = false;
+            lastProcessedAPN = null;
+            deckardUIInstance = null;
         }
-    };
 
-    const handleEditClick = (e) => {
-        if (e.target.matches('#btn_open_vetting_dlg')) {
-            // Reinicio después de 1 segundo para Edit
-            setTimeout(() => {
-                resetScript();
-                init();
-            }, 500);
-        }
-    };
+        // Event listeners directos
+        document.body.addEventListener('click', handleSaveClick);
+        document.body.addEventListener('click', handleEditClick);
 
-    // Función para limpiar el estado del script
-    function resetScript() {
-        document.querySelector('.deckard-popup')?.remove();
-        document.querySelectorAll('.deckard-alert').forEach(el => el.remove());
-        document.querySelectorAll('.deckard-unit-floating-container').forEach(el => el.remove());
+        const buttonObserver = new MutationObserver((mutations) => {
+            mutations.forEach(mutation => {
+                mutation.addedNodes.forEach(node => {
+                    if (node.nodeType === Node.ELEMENT_NODE) {
+                        const saveBtn = node.querySelector('#btn_submit_vetting_dlg');
+                        const editBtn = node.querySelector('#btn_open_vetting_dlg');
 
-        cachedSheetName = null;
-        isProcessing = false;
-        lastProcessedAPN = null;
-        deckardUIInstance = null;
-    }
-
-    // Event listeners directos
-    document.body.addEventListener('click', handleSaveClick);
-    document.body.addEventListener('click', handleEditClick);
-
-    const buttonObserver = new MutationObserver((mutations) => {
-        mutations.forEach(mutation => {
-            mutation.addedNodes.forEach(node => {
-                if (node.nodeType === Node.ELEMENT_NODE) {
-                    const saveBtn = node.querySelector('#btn_submit_vetting_dlg');
-                    const editBtn = node.querySelector('#btn_open_vetting_dlg');
-
-                    if (saveBtn) saveBtn.addEventListener('click', handleSaveClick);
-                    if (editBtn) editBtn.addEventListener('click', handleEditClick);
-                }
+                        if (saveBtn) saveBtn.addEventListener('click', handleSaveClick);
+                        if (editBtn) editBtn.addEventListener('click', handleEditClick);
+                    }
+                });
             });
         });
-    });
 
-    buttonObserver.observe(document.body, {
-        childList: true,
-        subtree: true
-    });
-}
+        buttonObserver.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+    }
 
     function processData(apn, sheetName, licenses) {
         if (isProcessing || apn === lastProcessedAPN) return;
@@ -926,19 +1013,25 @@ function setupButtonObservers() {
 
                 const licensesData = licenses.map(license => {
                     const normalized = utils.normalizeLicense(license);
-                    let units = jsonData.data[apn][license] || [];
+                    let licenseData = jsonData.data[apn][license] || null;
                     let foundWithOriginal = true;
 
-                    if (!units.length) {
+                    if (!licenseData) {
                         const normalizedKey = Object.keys(jsonData.data[apn] || {})
                             .find(k => utils.normalizeLicense(k) === normalized);
                         if (normalizedKey) {
-                            units = jsonData.data[apn][normalizedKey];
+                            licenseData = jsonData.data[apn][normalizedKey];
                             foundWithOriginal = false;
                         }
                     }
 
-                    return { license, units, foundWithOriginal };
+                    return {
+                        license,
+                        units: licenseData?.units || [],
+                        status: licenseData?.status || 'Unknown',
+                        address: licenseData?.address || 'Not available',
+                        foundWithOriginal
+                    };
                 });
 
                 new DeckardUI(apn, sheetName, licensesData, jsonData.data || {}, licenses).show();
@@ -991,7 +1084,4 @@ function setupButtonObservers() {
             });
         }
     }
-
-    setupButtonObservers();
-    setupUnitChangeMonitoring();
 })();
