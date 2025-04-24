@@ -85,6 +85,10 @@
             "scriptUrl": "https://dinfcs.github.io/Deckardaov/TS/FrameJira.js"
         },
                 {
+            "urlPattern": "https://deckardtech.atlassian.net/issues/*",
+            "scriptUrl": "https://dinfcs.github.io/Deckardaov/TS/FrameJira.js"
+        },
+                {
             "urlPattern": "https://deckard.bamboohr.com/home/",
             "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/ExternalScripts/Ausencias.js"
         },
