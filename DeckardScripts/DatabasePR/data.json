@@ -11427,6 +11427,32 @@
           "type": "Coordinates search"
         }
       ]
+    },
+    {
+      "Project": "TX - City Of Lago Vista",
+      "Public Records & GIS": [
+        {
+          "url": "https://travis.prodigycad.com/property-search",
+          "type": "PR"
+        },
+        {
+          "type": "GIS",
+          "url": "https://travis.prodigycad.com/maps"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "<ul><li>To search by APN in PR or GIS, make sure to select the \"Geographic ID\" option.</li><li>You can also use the \"Property ID\" option to search with the Regrid APN.</li></ul><p><br></p>",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
