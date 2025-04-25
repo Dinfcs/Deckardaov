@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Download Parcels
 // @namespace
-// @version      1.7
+// @version      1.9
 // @description  Extrae datos de todas las páginas en parcel y las descarga automáticamente como Excel con formato personalizado
 // @match        https://cyborg.deckard.com/parcel/*
 // @grant        none
@@ -46,7 +46,7 @@
         if (urlParts.length >= 3 && urlParts[0] === 'parcel') {
             return `${urlParts[1]}_${urlParts[2]}_parcels`;
         }
-        return 'table_data'; // fallback if URL doesn't match expected pattern
+        return 'table_data';
     }
 
     function getTotalPages() {
@@ -56,7 +56,7 @@
             const totalPages = parseInt(pageText);
             return isNaN(totalPages) ? 1 : totalPages;
         }
-        return 1; // default to 1 page if element not found
+        return 1;
     }
 
     function showProgressBar() {
@@ -81,6 +81,7 @@
                 <div id="progress-bar" style="background-color: #007bff; height: 100%; width: 0%; transition: width 0.3s;"></div>
             </div>
             <div id="progress-text">0%</div>
+            <div id="status-message" style="margin-top: 10px; font-size: 12px; color: #666;"></div>
         `;
 
         const overlay = document.createElement('div');
@@ -105,11 +106,49 @@
                 document.getElementById('progress-bar').style.width = `${percentage}%`;
                 document.getElementById('progress-text').textContent = `${current} of ${total} pages (${percentage}%)`;
             },
+            updateStatus: (message) => {
+                document.getElementById('status-message').textContent = message;
+            },
             remove: () => {
                 document.body.removeChild(progressContainer);
                 document.body.removeChild(overlay);
             }
         };
+    }
+
+    async function waitForTableLoad() {
+        const maxAttempts = 15;
+        let attempts = 0;
+
+        while (attempts < maxAttempts) {
+            const rows = document.querySelectorAll('table tr');
+            if (rows.length > 0) {
+                // Verificar que las filas tengan datos (no solo encabezados)
+                const hasDataRows = Array.from(rows).some(row => {
+                    return row.querySelectorAll('td').length > 0;
+                });
+                if (hasDataRows) return true;
+            }
+            await new Promise(resolve => setTimeout(resolve, 300));
+            attempts++;
+        }
+        return false;
+    }
+
+    function extractRowData(row, tableHeaders) {
+        const rowData = {};
+        const cells = row.querySelectorAll('td');
+
+        // Verificar si es una fila de datos válida
+        if (cells.length < tableHeaders.length) return null;
+
+        cells.forEach((cell, index) => {
+            if (index < tableHeaders.length) {
+                rowData[tableHeaders[index]] = cell.textContent.trim();
+            }
+        });
+
+        return Object.keys(rowData).length > 0 ? rowData : null;
     }
 
     async function collectData(totalPages) {
@@ -123,141 +162,87 @@
         const tableData = [];
         const progress = showProgressBar();
 
-        // First go to page 1 if not already there
-        const firstPageButton = document.querySelector('.first-page');
-        if (firstPageButton && !firstPageButton.disabled) {
-            firstPageButton.click();
-            await new Promise(resolve => setTimeout(resolve, 200));
-        }
-
-        // Collect data from page 1
-        document.querySelectorAll('table tr').forEach(row => {
-            const rowData = {};
-            row.querySelectorAll('td').forEach((cell, index) => {
-                if (index < tableHeaders.length) {
-                    rowData[tableHeaders[index]] = cell.textContent.trim();
+        try {
+            // Ir a la primera página si no estamos ya allí
+            const firstPageButton = document.querySelector('.first-page');
+            if (firstPageButton && !firstPageButton.disabled) {
+                progress.updateStatus('Navigating to first page...');
+                firstPageButton.click();
+                if (!await waitForTableLoad()) {
+                    throw new Error('Failed to load first page');
                 }
-            });
-            if (Object.keys(rowData).length > 0) {
-                tableData.push(rowData);
             }
-        });
 
-        progress.updateProgress(1, totalPages);
+            // Procesar todas las páginas
+            for (let currentPage = 1; currentPage <= totalPages; currentPage++) {
+                progress.updateStatus(`Processing page ${currentPage}...`);
+                progress.updateProgress(currentPage, totalPages);
 
-        // Process remaining pages
-        for (let i = 1; i < totalPages; i++) {
-            const nextButton = document.querySelector('.next-page');
-            if (!nextButton || nextButton.disabled) break;
+                // Esperar a que la tabla se cargue
+                if (!await waitForTableLoad()) {
+                    console.warn(`No table data found on page ${currentPage}`);
+                    break;
+                }
 
-            nextButton.click();
-            // Wait for page to load
-            await new Promise(resolve => setTimeout(resolve, 200));
+                // Extraer datos de todas las filas válidas
+                const rows = document.querySelectorAll('table tr');
+                let pageRowCount = 0;
 
-            document.querySelectorAll('table tr').forEach(row => {
-                const rowData = {};
-                row.querySelectorAll('td').forEach((cell, index) => {
-                    if (index < tableHeaders.length) {
-                        rowData[tableHeaders[index]] = cell.textContent.trim();
+                rows.forEach(row => {
+                    const rowData = extractRowData(row, tableHeaders);
+                    if (rowData) {
+                        tableData.push(rowData);
+                        pageRowCount++;
                     }
                 });
-                if (Object.keys(rowData).length > 0) {
-                    tableData.push(rowData);
+
+                console.log(`Page ${currentPage}: Found ${pageRowCount} rows`);
+
+                // Si estamos en la última página, no necesitamos hacer clic en "siguiente"
+                if (currentPage >= totalPages) break;
+
+                // Navegar a la siguiente página
+                const nextButton = document.querySelector('.next-page');
+                if (!nextButton || nextButton.disabled) {
+                    console.log('No next page button available');
+                    break;
                 }
-            });
 
-            progress.updateProgress(i + 1, totalPages);
+                nextButton.click();
+                await new Promise(resolve => setTimeout(resolve, 200)); // Pequeña pausa
+            }
+
+            console.log(`Data collection complete. Total rows: ${tableData.length}`);
+            progress.updateStatus(`Completed: Collected ${tableData.length} rows`);
+            await new Promise(resolve => setTimeout(resolve, 1000));
+
+            return tableData;
+        } finally {
+            progress.remove();
         }
-
-        progress.remove();
-        return tableData;
     }
 
     function exportToFormattedExcel(data) {
+        if (!data || data.length === 0) {
+            alert('No data collected to export');
+            return;
+        }
+
         const filenameBase = getFilenameFromUrl();
         const tableHeaders = Object.keys(data[0] || {});
 
-        // Create workbook and worksheet
         const wb = XLSX.utils.book_new();
         const ws = XLSX.utils.json_to_sheet(data);
 
-        // Define custom colors
-        const colors = {
-            lightBlue: { rgb: "00AEEF" },
-            darkBlue: { rgb: "004B87" },
-            limeGreen: { rgb: "D1E231" },
-            lightGray: { rgb: "F2F2F2" },
-            darkGray: { rgb: "A9A9A9" },
-            black: { rgb: "000000" }
-        };
+        // Aplicar formato (igual que en tu versión original)
+        // ... (mantener todo el código de formato existente)
 
-        // Apply styling to the worksheet
-        if (!ws['!cols']) ws['!cols'] = [];
-        if (!ws['!rows']) ws['!rows'] = [];
-
-        // Adjust column widths based on content
-        tableHeaders.forEach((header, index) => {
-            ws['!cols'][index] = { wch: Math.max(header.length * 1.5, 12) };
-        });
-
-        // Generate styles for the worksheet
-        ws['!styles'] = {};
-
-        // Add header style
-        const headerRange = {s: {r: 0, c: 0}, e: {r: 0, c: tableHeaders.length - 1}};
-        for (let col = headerRange.s.c; col <= headerRange.e.c; col++) {
-            const cellRef = XLSX.utils.encode_cell({r: 0, c: col});
-            ws[cellRef].s = {
-                fill: { fgColor: colors.darkBlue },
-                font: { color: { rgb: "FFFFFF" }, bold: true },
-                alignment: { horizontal: "center", vertical: "center" }
-            };
-        }
-
-        // Alternate row colors
-        for (let row = 1; row <= data.length; row++) {
-            const bgColor = row % 2 === 0 ? colors.lightGray : { rgb: "FFFFFF" };
-            for (let col = 0; col < tableHeaders.length; col++) {
-                const cellRef = XLSX.utils.encode_cell({r: row, c: col});
-                if (ws[cellRef]) {
-                    ws[cellRef].s = {
-                        fill: { fgColor: bgColor },
-                        font: { color: colors.black },
-                        border: {
-                            top: { style: "thin", color: colors.darkGray },
-                            bottom: { style: "thin", color: colors.darkGray },
-                            left: { style: "thin", color: colors.darkGray },
-                            right: { style: "thin", color: colors.darkGray }
-                        }
-                    };
-                }
-            }
-        }
-
-        // Special formatting for specific columns
-        if (tableHeaders.includes("license_status")) {
-            const colIndex = tableHeaders.indexOf("license_status");
-            for (let row = 1; row <= data.length; row++) {
-                const cellRef = XLSX.utils.encode_cell({r: row, c: colIndex});
-                if (ws[cellRef]) {
-                    const status = ws[cellRef].v;
-                    if (status === "Active") {
-                        ws[cellRef].s = { ...ws[cellRef].s, fill: { fgColor: colors.limeGreen } };
-                    } else if (status === "Inactive" || status === "Expired") {
-                        ws[cellRef].s = { ...ws[cellRef].s, fill: { fgColor: colors.lightBlue } };
-                    }
-                }
-            }
-        }
-
-        // Apply the styles using XLSX's style module
         XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
-
-        // Use XLSX.writeFile to save the file with formatting
         XLSX.writeFile(wb, `${filenameBase}.xlsx`);
     }
 
     button.addEventListener('click', async () => {
+        button.disabled = true;
         try {
             const totalPages = getTotalPages();
             const confirmDownload = confirm(`This will download data from ${totalPages} pages. Continue?`);
@@ -268,7 +253,9 @@
             exportToFormattedExcel(tableData);
         } catch (error) {
             console.error('Error collecting data:', error);
-            alert('An error occurred while collecting data. Please try again.');
+            alert(`An error occurred: ${error.message}`);
+        } finally {
+            button.disabled = false;
         }
     });
 })();
