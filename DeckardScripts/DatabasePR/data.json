@@ -11531,6 +11531,32 @@
           "type": "N/A"
         }
       ]
+    },
+    {
+      "Project": "AL - City Of Gulf Shores",
+      "Public Records & GIS": [
+        {
+          "url": "https://baldwinproperty.countygovservices.com/Property/Search",
+          "type": "PR"
+        },
+        {
+          "type": "GIS (VPN)",
+          "url": "https://isv.kcsgis.com/al.baldwin_revenue/"
+        }
+      ],
+      "License List": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ],
+      "Important Info": "<p><br></p>",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
