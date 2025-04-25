@@ -1471,15 +1471,18 @@ document.body.appendChild(styles);
         const cancelBtn = modal.querySelector('#sqaCancelBtn');
         const submitBtn = modal.querySelector('#sqaSubmitBtn');
 
+                const getFirstName = (fullName) => {
+        return fullName.split(' ')[0] || fullName; // Toma el primer elemento o el nombre completo si no hay espacios
+    };
+        const qaedc = getFirstName(qaed);
         // Plantillas de mensaje
         const templates = {
-            'Structure': `Hola ${qaed}, hoy me encuentro haciendo SQA y encontré este listing tuyo: <${listingUrl}|${projectName}>. `,
-            'Address Override': `Hola ${qaed}, hoy me encuentro haciendo SQA y encontré este listing tuyo: <${listingUrl}|${projectName}>.`,
-            'Bad APN': `Hola ${qaed}, hoy me encuentro haciendo SQA y encontré este listing tuyo: <${listingUrl}|${projectName}>.`,
-            'Unit Box': `Hola ${qaed}, hoy me encuentro haciendo SQA y encontré este listing tuyo: <${listingUrl}|${projectName}>.`,
-            'Other': `Hola ${qaed}, hoy me encuentro haciendo SQA y encontré este listing tuyo: <${listingUrl}|${projectName}>. `
+            'Structure': `Hola ${qaedc}, hoy me encuentro haciendo SQA (${qaer}) y encontré este listing tuyo: <${listingUrl}|${projectName}>. `,
+            'Address Override': `Hola ${qaedc}, hoy me encuentro haciendo SQA (${qaer}) y encontré este listing tuyo: <${listingUrl}|${projectName}>.`,
+            'Bad APN': `Hola ${qaedc}, hoy me encuentro haciendo SQA (${qaer}) y encontré este listing tuyo: <${listingUrl}|${projectName}>.`,
+            'Unit Box': `Hola ${qaedc}, hoy me encuentro haciendo SQA (${qaer}) y encontré este listing tuyo: <${listingUrl}|${projectName}>.`,
+            'Other': `Hola ${qaedc}, hoy me encuentro haciendo SQA (${qaer}) y encontré este listing tuyo: <${listingUrl}|${projectName}>. `
         };
-
         // Event listeners
         caseTypeSelect.addEventListener('change', function() {
             if (this.value && templates[this.value]) {
