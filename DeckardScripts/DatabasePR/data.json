@@ -11479,6 +11479,32 @@
           "url": "https://drive.google.com/uc?export=view&id=1MPCYHtur3P_K9JTXbFK9tyXgUu3aG4bo"
         }
       ]
+    },
+    {
+      "Project": "AL - City Of Orange Beach",
+      "Public Records & GIS": [
+        {
+          "type": "PR (Use VPN)",
+          "url": "https://baldwinproperty.countygovservices.com/Property/Search"
+        },
+        {
+          "type": "GIS (Use VPN)",
+          "url": "https://isv.kcsgis.com/al.baldwin_revenue/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "<ul><li>For GIS, please search by address.</li><li>For PR, do not select the parcel, as the complete address is only visible in the preview.</li></ul>",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
