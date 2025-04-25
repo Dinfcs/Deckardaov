@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         QA Productivity & Random QA Report 3.0
+// @name         QA Productivity & Random QA Report25-04-2025
 // @namespace
 // @version      3.1
 // @description  Combina funcionalidades de captura de datos QA con sistema unificado de notificaciones
@@ -15,7 +15,12 @@
     const MINIONS = RANDOM_QA_URL + "?qaers";
     const CACHE_DATA = 'qaersData';
     const CACHE_EXPIRATION_TIME = 60 * 60 * 1000; // 1 hora
-
+     let QaFlag = "No"; // Valor por defecto
+        // Verificar si estamos en modo QA
+        const qaModeButton = document.querySelector('#btn_open_vetting_dlg_as_qa_mode');
+        if (qaModeButton && qaModeButton.textContent.trim() === "QA") {
+            QaFlag = "Yes";
+        }
     // Patrones comunes para nombres de proyecto
     const PROJECT_NAME_PATTERNS = [
         { regex: /\/listing\/AUS\/([^\/]+)\/([^\/]+)\/(STR[^\/]+)/, format: m => `AUS - ${m[2].replace(/_/g, ' ') === 'Bass Coast' ? m[2].replace(/_/g, ' ') : 'City of ' + capitalizeWords(m[2].replace(/_/g, ' '))}` },
@@ -1081,6 +1086,8 @@ document.body.appendChild(styles);
         dataUrl = window.location.href;
         let commentsTextarea = document.querySelector('textarea[name="verification_comments"]');
         comments = commentsTextarea ? commentsTextarea.value.trim() : "Sin comentarios";
+
+
     }
 
     function validateAndExtractAgain(callback) {
@@ -1097,8 +1104,16 @@ document.body.appendChild(styles);
         }
     }
 
-function initializeQaProductivityScript() {
+    function initializeQaProductivityScript() {
     console.log("✅ Report QA detectado, activando script...");
+
+            // Observar clics en el botón QA para actualizar QaFlag
+        document.addEventListener("click", function(event) {
+            if (event.target.id === "btn_open_vetting_dlg_as_qa_mode") {
+                QaFlag = "Yes";
+                console.log("Modo QA activado, QaFlag:", QaFlag);
+            }
+        });
 
     // Añadimos los estilos globales una sola vez
     if (!document.querySelector('#QaProductivityStyles')) {
@@ -1212,63 +1227,65 @@ function initializeQaProductivityScript() {
     });
 
 
-document.addEventListener("click", function(event) {
-    if (event.target.id === "btn_submit_vetting_dlg") {
-        const buttonText = event.target.textContent.trim();
-        const qaProductivityCheckbox = document.querySelector("#QaProductivity");
-        const suggestQaCheckbox = document.querySelector('input[id*="suggest_qa"]');
-        const commentsTextarea = document.querySelector('textarea[name="verification_comments"]');
-        const comments = commentsTextarea ? commentsTextarea.value.trim() : "";
+ document.addEventListener("click", function(event) {
+            if (event.target.id === "btn_submit_vetting_dlg") {
+                const buttonText = event.target.textContent.trim();
+                const qaProductivityCheckbox = document.querySelector("#QaProductivity");
+                const suggestQaCheckbox = document.querySelector('input[id*="suggest_qa"]');
+                const commentsTextarea = document.querySelector('textarea[name="verification_comments"]');
+                const comments = commentsTextarea ? commentsTextarea.value.trim() : "";
 
-        // Verificar condiciones de bloqueo
-        if (suggestQaCheckbox && suggestQaCheckbox.checked) {
-            console.log("🚫 Acción cancelada: suggest_qa está marcado");
-            return;
-        }
-
-        if (/sqa/i.test(comments)) {
-            console.log("🚫 Acción cancelada: comentarios contienen SQAed");
-            return;
-        }
-
-        if (buttonText === "Submit QA Result" || (buttonText === "Save" && qaProductivityCheckbox && qaProductivityCheckbox.checked)) {
-            validateAndExtractAgain(() => {
-                console.log("📤 Enviando datos:", { qaer, projectName, comments, dataUrl });
-
-                if (cleanText(comments) !== "qaed ok") {
-                    const reportQaButton = [...document.querySelectorAll('a')].find(a => cleanText(a.textContent).startsWith("report qa |"));
-                    if (reportQaButton) {
-                        setTimeout(() => {
-                            reportQaButton.click();
-                        }, 500);
-                    } else {
-                        console.log("⚠️ No se ejecutó Report QA");
-                    }
+                // Verificar condiciones de bloqueo
+                if (suggestQaCheckbox && suggestQaCheckbox.checked) {
+                    console.log("🚫 Acción cancelada: suggest_qa está marcado");
+                    return;
                 }
 
-                let payload = new FormData();
-                payload.append("Projectname", projectName || "Unknown Project");
-                payload.append("QAer", qaer || "Desconocido");
-                payload.append("Comments", comments || "Sin comentarios");
-                payload.append("dataUrl", dataUrl || "No disponible");
+                if (/sqa/i.test(comments)) {
+                    console.log("🚫 Acción cancelada: comentarios contienen SQAed");
+                    return;
+                }
 
-                fetch(RANDOM_QA_URL + "?qaproductivity", {
-                    method: "POST",
-                    body: payload,
-                    mode: "no-cors"
-                })
-                .then(() => {
-                    showNotification("Data registered successfully", "success");
-                })
-                .catch(error => {
-                    console.error("Error al enviar datos:", error);
-                    showNotification("Error sending data", "error");
-                });
-            });
-        }
+                if (buttonText === "Submit QA Result" || (buttonText === "Save" && qaProductivityCheckbox && qaProductivityCheckbox.checked)) {
+                    validateAndExtractAgain(() => {
+                        console.log("📤 Enviando datos:", { qaer, projectName, comments, dataUrl, QaFlag });
+
+                        if (cleanText(comments) !== "qaed ok") {
+                            const reportQaButton = [...document.querySelectorAll('a')].find(a => cleanText(a.textContent).startsWith("report qa |"));
+                            if (reportQaButton) {
+                                setTimeout(() => {
+                                    reportQaButton.click();
+                                }, 500);
+                            } else {
+                                console.log("⚠️ No se ejecutó Report QA");
+                            }
+                        }
+
+                        let payload = new FormData();
+                        payload.append("Projectname", projectName || "Unknown Project");
+                        payload.append("QAer", qaer || "Desconocido");
+                        payload.append("Comments", comments || "Sin comentarios");
+                        payload.append("dataUrl", dataUrl || "No disponible");
+                        payload.append("QaFlag", QaFlag); // Añadir QaFlag al payload
+
+                        fetch(RANDOM_QA_URL + "?qaproductivity", {
+                            method: "POST",
+                            body: payload,
+                            mode: "no-cors"
+                        })
+                        .then(() => {
+                            showNotification("Data registered successfully", "success");
+                            QaFlag = "No"; // Resetear el flag después del envío
+                        })
+                        .catch(error => {
+                            console.error("Error al enviar datos:", error);
+                            showNotification("Error sending data", "error");
+                        });
+                    });
+                }
+            }
+        });
     }
-});
-}
 
     function watchForReportQaButton() {
         const observer = new MutationObserver(() => {
