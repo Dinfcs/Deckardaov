@@ -234,9 +234,6 @@
         const wb = XLSX.utils.book_new();
         const ws = XLSX.utils.json_to_sheet(data);
 
-        // Aplicar formato (igual que en tu versión original)
-        // ... (mantener todo el código de formato existente)
-
         XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
         XLSX.writeFile(wb, `${filenameBase}.xlsx`);
     }
