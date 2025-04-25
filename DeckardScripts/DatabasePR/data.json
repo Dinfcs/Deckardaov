@@ -11464,18 +11464,18 @@
       ],
       "License List": [
         {
-          "url": "N/A",
-          "type": "N/A"
+          "type": "N/A",
+          "url": "N/A"
         }
       ],
-      "Important Info": "<p>GIS ----------------&gt; you can search by address  1. street number - 2. street name - 3. Directional --------      Check image 1</p>",
+      "Important Info": "<p>GIS ----------------&gt; you can search by address  1. street number - 2. street name - 3. Directional --------      Check image 2</p>",
       "Media": [
         {
           "url": "https://drive.google.com/uc?export=view&id=1VV3B4BLw-L4P88NMIVoDB6qEyN5qnsdH",
           "type": "Image 1"
         },
         {
-          "type": "PR",
+          "type": "Image 2",
           "url": "https://drive.google.com/uc?export=view&id=1MPCYHtur3P_K9JTXbFK9tyXgUu3aG4bo"
         }
       ]
