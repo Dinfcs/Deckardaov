@@ -11505,6 +11505,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "FL - City Of Indian Harbour Beach",
+      "Public Records & GIS": [
+        {
+          "url": "https://www.bcpao.us/PropertySearch/#/nav/Search",
+          "type": "PR"
+        },
+        {
+          "url": "https://www.bcpao.us/map/",
+          "type": "GIS"
+        }
+      ],
+      "License List": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ],
+      "Important Info": "<p>To search for the APN in Public Records, make sure to include the dashes in the format.</p><ul><li>Example: <strong>27370200264</strong> → <strong>27-37-02-00-264</strong></li></ul>",
+      "Media": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ]
     }
   ]
 }
