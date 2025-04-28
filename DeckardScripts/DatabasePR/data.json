@@ -11328,8 +11328,8 @@
       "Project": "CA - City Of Encinitas",
       "Public Records & GIS": [
         {
-          "url": "https://pqweb.parcelquest.com/#login",
-          "type": "PR"
+          "type": "PR",
+          "url": "https://pqweb.parcelquest.com/#login"
         },
         {
           "type": "GIS (use VPN)",
@@ -11342,7 +11342,7 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "<ul><li>Si es un&nbsp;<strong>U1OM</strong>, solo se debe indicar el número completo de la unidad en el&nbsp;<strong>Unit Box</strong>.&nbsp;<img src=\"https://a.slack-edge.com/production-standard-emoji-assets/14.0/google-medium/2705.png\" alt=\":white_check_mark:\"></li><li>El&nbsp;<strong>AO</strong>&nbsp;únicamente se debe hacer si en la dirección hay un&nbsp;<strong>error</strong>.&nbsp;<img src=\"https://a.slack-edge.com/production-standard-emoji-assets/14.0/google-medium/2705.png\" alt=\":white_check_mark:\"></li></ul><p><br></p>",
+      "Important Info": "<ul><li>If it is a <strong>U1OM</strong>, you should only indicate the complete unit number in the <strong>Unit Box</strong>.✅</li><li><strong>AO</strong> should only be done if there is an <strong>error</strong> in the address.✅</li></ul><p><br></p>",
       "Media": [
         {
           "url": "N/A",
