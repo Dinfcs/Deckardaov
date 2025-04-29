@@ -78,33 +78,47 @@
                     return res.json();
                 })
                 .then(jsonData => {
-                    const licensesData = licenses.map(license => {
-                        const normalized = utils.normalizeLicense(license);
-                        let licenseData = jsonData.data[apn]?.[license] || null;
-                        let foundWithOriginal = true;
+                    let licensesData = [];
 
-                        if (!licenseData) {
-                            const normalizedKey = Object.keys(jsonData.data[apn] || {})
-                                .find(k => utils.normalizeLicense(k) === normalized);
-                            if (normalizedKey) {
-                                licenseData = jsonData.data[apn][normalizedKey];
-                                foundWithOriginal = false;
-                            }
+                    if (apn && jsonData.data[apn]) {
+                        // Si hay licencias en el listing, mostrarlas
+                        if (licenses.length > 0) {
+                            licensesData = licenses.map(license => {
+                                const normalized = utils.normalizeLicense(license);
+                                let licenseData = jsonData.data[apn]?.[license] || null;
+                                let foundWithOriginal = true;
+
+                                if (!licenseData) {
+                                    const normalizedKey = Object.keys(jsonData.data[apn] || {})
+                                        .find(k => utils.normalizeLicense(k) === normalized);
+                                    if (normalizedKey) {
+                                        licenseData = jsonData.data[apn][normalizedKey];
+                                        foundWithOriginal = false;
+                                    }
+                                }
+
+                                return {
+                                    license,
+                                    units: licenseData?.units || [],
+                                    status: licenseData?.status || 'Unknown',
+                                    address: licenseData?.address || 'Not available',
+                                    foundWithOriginal
+                                };
+                            });
+                        } else {
+                            // Si no hay licencias, mostrar todas las licencias del APN
+                            licensesData = Object.entries(jsonData.data[apn]).map(([license, licenseData]) => ({
+                                license,
+                                units: licenseData?.units || [],
+                                status: licenseData?.status || 'Unknown',
+                                address: licenseData?.address || 'Not available',
+                                foundWithOriginal: true
+                            }));
                         }
-
-                        return {
-                            license,
-                            units: licenseData?.units || [],
-                            status: licenseData?.status || 'Unknown',
-                            address: licenseData?.address || 'Not available',
-                            foundWithOriginal
-                        };
-                    });
-
-                    // Si no hay licencias, mostrar solo el APN
-                    if (licenses.length === 0) {
+                    } else {
+                        // Si no hay datos para el APN, mostrar mensaje
                         licensesData.push({
-                            license: 'No licenses detected',
+                            license: 'No license data found',
                             units: [],
                             status: '',
                             address: '',
@@ -115,7 +129,14 @@
                     new DeckardUI(apn, sheetName, licensesData, jsonData.data || {}, licenses).show();
                 })
                 .catch(error => {
-                    alert('Error loading license data: ' + error.message);
+                    // Mostrar UI incluso con error para permitir búsqueda manual
+                    new DeckardUI(apn, sheetName, [{
+                        license: 'Error loading data',
+                        units: [],
+                        status: error.message,
+                        address: '',
+                        foundWithOriginal: true
+                    }], {}, licenses).show();
                 });
         });
 
@@ -1183,28 +1204,33 @@
         })
             .catch(error => {
             console.log('Error loading JSON data:', error.message);
-           
+
         })
             .finally(() => {
             isProcessing = false;
         });
     }
     function init() {
-        const apn = utils.extractAPN();
-        const licenses = utils.extractLicenses();
-
         if (!cachedSheetName) {
             cachedSheetName = utils.extractSheetName();
         }
 
+        // Siempre agregar el botón
+        addLicValidatorButton();
+
+        // Procesar datos si hay APN y licencias
+        const apn = utils.extractAPN();
+        const licenses = utils.extractLicenses();
+
         if (apn && cachedSheetName && licenses?.length) {
             processData(apn, cachedSheetName, licenses);
             return true;
-        } 
+        }
         return false;
     }
 
     // Initial setup
+    addLicValidatorButton(); // Asegurar que el botón se agregue inmediatamente
     if (!init()) {
         setupLazyObserver();
     }
