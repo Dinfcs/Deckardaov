@@ -93,7 +93,7 @@
             "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/ExternalScripts/Ausencias.js"
         },
                 {
-            "urlPattern": "https://cyborg.deckard.com/listing/*",
+            "urlPattern": "https://cyborg.deckard.com/listing/*STR*",
             "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/Licenses/LicValidator.js"
         },
         {
