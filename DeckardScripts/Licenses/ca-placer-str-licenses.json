@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "exportedAt": "2025-04-24T21:42:15.047Z",
+    "exportedAt": "2025-04-29T15:50:10.411Z",
     "source": "ca-placer-str-licenses"
   },
   "headers": {
@@ -927,7 +927,7 @@
       },
       "STR23-7742": {
         "units": [],
-        "status": "expired",
+        "status": "current",
         "address": "3130 CEDARWOOD DR, TAHOE CITY, CA, 96145"
       }
     },
@@ -3546,7 +3546,7 @@
       },
       "STR22-5367": {
         "units": [],
-        "status": "suspended",
+        "status": "current",
         "address": "3205 ANN RD, HOMEWOOD, CA, 96141"
       }
     },
@@ -4396,7 +4396,7 @@
       },
       "STR22-6777": {
         "units": [],
-        "status": "current",
+        "status": "suspended",
         "address": "1036 SNOW CREST RD, ALPINE MEADOWS, CA, 96146"
       }
     },
@@ -7211,10 +7211,25 @@
         "status": "Archived",
         "address": "400 squaw creek rd #305 olympic valley ca"
       },
+      "29673": {
+        "units": [],
+        "status": "Archived",
+        "address": "400 resort rd #305 olympic valley ca"
+      },
+      "29674": {
+        "units": [],
+        "status": "Archived",
+        "address": "400 resort rd #305 olympic valley ca"
+      },
       "82766": {
         "units": [],
         "status": "Active",
         "address": "400 squaw creek rd #305 olympic valley ca"
+      },
+      "85239": {
+        "units": [],
+        "status": "Active",
+        "address": "400 resort rd #305 olympic valley ca"
       }
     },
     "102060007000": {
@@ -10169,7 +10184,7 @@
       },
       "STR22-4990": {
         "units": [],
-        "status": "current",
+        "status": "expired",
         "address": "180 W LAKE BLVD 226, TAHOE CITY, CA, 96145"
       }
     },
@@ -10186,7 +10201,7 @@
       },
       "STR22-5055": {
         "units": [],
-        "status": "current",
+        "status": "expired",
         "address": "300 W LAKE BLVD 17, TAHOE CITY, CA, 96145"
       }
     },
@@ -12196,7 +12211,7 @@
       },
       "STR22-5378": {
         "units": [],
-        "status": "current",
+        "status": "suspended",
         "address": "3101 LAKE FOREST RD 192, TAHOE CITY, CA, 96145"
       }
     },
@@ -12450,7 +12465,7 @@
       "84951": {
         "units": [],
         "status": "Active",
-        "address": "1995 olympic valley rd #208 olympic valley ca"
+        "address": "1995 olympic valley rd #208# olympic valley ca"
       }
     },
     "096650010000": {
@@ -14305,7 +14320,7 @@
       },
       "STR22-5376": {
         "units": [],
-        "status": "current",
+        "status": "suspended",
         "address": "3101 LAKE FOREST RD 62, TAHOE CITY, CA, 96145"
       }
     },
@@ -16930,6 +16945,16 @@
         "status": "Archived",
         "address": "5063 gold bend truckee ca"
       },
+      "29721": {
+        "units": [],
+        "status": "Archived",
+        "address": "5063 gold bend truckee ca"
+      },
+      "85269": {
+        "units": [],
+        "status": "Active",
+        "address": "5063 gold bend truckee ca"
+      },
       "STR22-4916": {
         "units": [],
         "status": "current",
@@ -18862,7 +18887,7 @@
       "9193": {
         "units": [],
         "status": "Active",
-        "address": "1800 squaw valley rd olympic valley ca"
+        "address": "1800 squaw valley rd #3 olympic valley ca"
       },
       "12996": {
         "units": [],
@@ -19170,7 +19195,7 @@
         "units": [
           "2"
         ],
-        "status": "current",
+        "status": "expired",
         "address": "3101 LAKE FOREST RD 2, TAHOE CITY, CA, 96145"
       }
     },
@@ -20628,7 +20653,7 @@
       },
       "STR22-4997": {
         "units": [],
-        "status": "current",
+        "status": "expired",
         "address": "300 W LAKE BLVD 63, TAHOE CITY, CA, 96145"
       }
     },
@@ -33332,6 +33357,16 @@
         "status": "Archived",
         "address": "6943 n lake bl #62 tahoe vista ca"
       },
+      "29709": {
+        "units": [],
+        "status": "Archived",
+        "address": "6943 n lake bl #62 tahoe vista ca"
+      },
+      "85259": {
+        "units": [],
+        "status": "Active",
+        "address": "6943 n lake bl #62 tahoe vista ca"
+      },
       "STR22-5426": {
         "units": [],
         "status": "expired",
@@ -33538,6 +33573,16 @@
       "18395": {
         "units": [],
         "status": "Archived",
+        "address": "6943 n lake bl #47 tahoe vista ca"
+      },
+      "29683": {
+        "units": [],
+        "status": "Archived",
+        "address": "6943 n lake bl #47 tahoe vista ca"
+      },
+      "85251": {
+        "units": [],
+        "status": "Active",
         "address": "6943 n lake bl #47 tahoe vista ca"
       },
       "STR22-6269": {
@@ -35528,7 +35573,7 @@
       },
       "STR22-5627": {
         "units": [],
-        "status": "current",
+        "status": "suspended",
         "address": "25 OBSERVATION DR, TAHOE CITY, CA, 96145"
       }
     },
@@ -38232,12 +38277,16 @@
         "address": "8683 dolly varden av kings beach ca"
       },
       "STR22-5848": {
-        "units": [],
+        "units": [
+          "Unit A"
+        ],
         "status": "current",
         "address": "8683 DOLLY VARDEN AVE, KINGS BEACH, CA, 96143"
       },
       "no_license": {
-        "units": [],
+        "units": [
+          "Unit B"
+        ],
         "status": "submitted",
         "address": "8683 DOLLY VARDEN AV KINGS BEACH CA 96143"
       }
@@ -39324,11 +39373,11 @@
         "status": "current",
         "address": "9861 DIP ST, KINGS BEACH, CA, 96143"
       },
-      "no_license": {
+      "STR25-9326": {
         "units": [
           "Little Dipper"
         ],
-        "status": "submitted",
+        "status": "current",
         "address": "9861 DIP ST KINGS BEACH CA 96143"
       }
     },
@@ -39472,6 +39521,16 @@
       "20935": {
         "units": [],
         "status": "Archived",
+        "address": "10141 sagebrush ct truckee ca"
+      },
+      "29739": {
+        "units": [],
+        "status": "Archived",
+        "address": "10141 sagebrush ct truckee ca"
+      },
+      "85272": {
+        "units": [],
+        "status": "Active",
         "address": "10141 sagebrush ct truckee ca"
       },
       "STR22-6888": {
@@ -39964,6 +40023,16 @@
       "17597": {
         "units": [],
         "status": "Archived",
+        "address": "3101 lake forest rd #117 tahoe city ca"
+      },
+      "29733": {
+        "units": [],
+        "status": "Archived",
+        "address": "3101 lake forest rd #117 tahoe city ca"
+      },
+      "85268": {
+        "units": [],
+        "status": "Active",
         "address": "3101 lake forest rd #117 tahoe city ca"
       },
       "no_license": {
@@ -41884,10 +41953,25 @@
         "status": "Archived",
         "address": "400 squaw creek rd #250 olympic valley ca"
       },
+      "29670": {
+        "units": [],
+        "status": "Archived",
+        "address": "400 resort rd #250 olympic valley ca"
+      },
+      "29671": {
+        "units": [],
+        "status": "Archived",
+        "address": "400 resort rd #250 olympic valley ca"
+      },
       "82764": {
         "units": [],
         "status": "Active",
         "address": "400 squaw creek rd #250 olympic valley ca"
+      },
+      "85238": {
+        "units": [],
+        "status": "Active",
+        "address": "400 resort rd #250 olympic valley ca"
       }
     },
     "102060019000": {
@@ -44076,10 +44160,25 @@
         "status": "Archived",
         "address": "1985 squaw valley rd #228 olympic valley ca"
       },
+      "29727": {
+        "units": [],
+        "status": "Archived",
+        "address": "1985 olympic valley rd #228 olympic valley ca"
+      },
+      "29728": {
+        "units": [],
+        "status": "Archived",
+        "address": "1985 olympic valley rd #228 olympic valley ca"
+      },
       "81040": {
         "units": [],
         "status": "Active",
         "address": "1985 squaw valley rd #228 olympic valley ca"
+      },
+      "85264": {
+        "units": [],
+        "status": "Active",
+        "address": "1985 olympic valley rd #228 olympic valley ca"
       }
     },
     "096651003000": {
@@ -47921,7 +48020,7 @@
       },
       "STR22-5003": {
         "units": [],
-        "status": "current",
+        "status": "expired",
         "address": "7201 LARKSPUR CT, TRUCKEE, CA, 96161"
       }
     },
@@ -48266,7 +48365,7 @@
       },
       "STR23-6674": {
         "units": [],
-        "status": "expired",
+        "status": "current",
         "address": "226 RIM DR, TAHOE VISTA, CA, 96148"
       },
       "no_license": {
@@ -49274,7 +49373,7 @@
       },
       "STR23-7882": {
         "units": [],
-        "status": "current",
+        "status": "expired",
         "address": "8703 DOLLY VARDEN AVE, KINGS BEACH, CA, 96143"
       }
     },
@@ -49660,7 +49759,7 @@
       },
       "STR22-5199": {
         "units": [],
-        "status": "expired",
+        "status": "current",
         "address": "180 W LAKE BLVD 235, TAHOE CITY, CA, 96145"
       }
     },
@@ -50694,7 +50793,9 @@
         "address": "7820 mashie av tahoe vista ca"
       },
       "STR22-6661": {
-        "units": [],
+        "units": [
+          "A"
+        ],
         "status": "current",
         "address": "7820 MASHIE AVE, TAHOE VISTA, CA, 96148"
       },
@@ -51365,7 +51466,17 @@
         "status": "Archived",
         "address": "180 lakewood ln tahoe city ca"
       },
+      "29713": {
+        "units": [],
+        "status": "Archived",
+        "address": "180 lakewood ln tahoe city ca"
+      },
       "70883": {
+        "units": [],
+        "status": "Active",
+        "address": "180 lakewood ln tahoe city ca"
+      },
+      "85261": {
         "units": [],
         "status": "Active",
         "address": "180 lakewood ln tahoe city ca"
@@ -60537,7 +60648,7 @@
       },
       "STR23-7865": {
         "units": [],
-        "status": "current",
+        "status": "expired",
         "address": "375 ELLIS RD, TAHOMA, CA, 96142"
       }
     },
@@ -61485,7 +61596,7 @@
       },
       "STR22-7317": {
         "units": [],
-        "status": "suspended",
+        "status": "current",
         "address": "3060 POLARIS RD, TAHOE CITY, CA, 96145"
       }
     },
@@ -62300,7 +62411,7 @@
       },
       "STR24-8876": {
         "units": [],
-        "status": "expired",
+        "status": "current",
         "address": "9907 COVE AVE KINGS BEACH CA 96143"
       }
     },
@@ -65246,7 +65357,7 @@
       },
       "STR22-4043": {
         "units": [],
-        "status": "expired",
+        "status": "current",
         "address": "2560 LAKE FOREST RD 54, TAHOE CITY, CA, 96145"
       }
     },
@@ -67648,6 +67759,16 @@
         "status": "Archived",
         "address": "1001 commonwealth dr #244 kings beach ca"
       },
+      "29725": {
+        "units": [],
+        "status": "Archived",
+        "address": "1001 commonwealth dr #244 kings beach ca"
+      },
+      "85263": {
+        "units": [],
+        "status": "Active",
+        "address": "1001 commonwealth dr #244 kings beach ca"
+      },
       "STR22-6123": {
         "units": [],
         "status": "withdrawn",
@@ -69047,7 +69168,7 @@
       },
       "STR24-8853": {
         "units": [],
-        "status": "expired",
+        "status": "current",
         "address": "7782 PINEDROP LN TAHOE VISTA CA 96148"
       }
     },
@@ -69570,6 +69691,11 @@
         "address": "3001 northstar dr #303 truckee ca"
       },
       "82868": {
+        "units": [],
+        "status": "Active",
+        "address": "3001 northstar dr #303 truckee ca"
+      },
+      "82877": {
         "units": [],
         "status": "Active",
         "address": "3001 northstar dr #303 truckee ca"
@@ -71212,9 +71338,9 @@
         "status": "withdrawn",
         "address": "3125 ASPEN GROVE RD, TRUCKEE, CA, 96161"
       },
-      "no_license": {
+      "STR25-9366": {
         "units": [],
-        "status": "pending fire",
+        "status": "current",
         "address": "3125 ASPEN GROVE RD TRUCKEE CA 96161"
       }
     },
@@ -72268,7 +72394,7 @@
         "units": [
           "180"
         ],
-        "status": "expired",
+        "status": "current",
         "address": "3600 N LAKE BLVD 180, CARNELIAN BAY, CA, 96140"
       }
     },
@@ -73019,12 +73145,22 @@
         "status": "Archived",
         "address": "3101 lake forest rd #93 tahoe city ca"
       },
+      "29712": {
+        "units": [],
+        "status": "Archived",
+        "address": "3101 lake forest rd #93 tahoe city ca"
+      },
       "83209": {
         "units": [],
         "status": "Active",
         "address": "3101 lake forest rd #93 tahoe city ca"
       },
       "83807": {
+        "units": [],
+        "status": "Active",
+        "address": "3101 lake forest rd #93 tahoe city ca"
+      },
+      "85260": {
         "units": [],
         "status": "Active",
         "address": "3101 lake forest rd #93 tahoe city ca"
@@ -73313,7 +73449,7 @@
       },
       "STR23-7828": {
         "units": [],
-        "status": "expired",
+        "status": "current",
         "address": "6635 MCKINNEY CREEK RD, TAHOMA, CA, 96142"
       }
     },
@@ -73473,7 +73609,7 @@
         "units": [
           "313"
         ],
-        "status": "expired",
+        "status": "current",
         "address": "2000 NORTH VILLAGE DR 313, TRUCKEE, CA, 96161"
       }
     },
@@ -76474,10 +76610,25 @@
         "status": "Archived",
         "address": "400 squaw creek rd #755 olympic valley ca"
       },
+      "29742": {
+        "units": [],
+        "status": "Archived",
+        "address": "400 resort rd #755 olympic valley ca"
+      },
+      "29743": {
+        "units": [],
+        "status": "Archived",
+        "address": "400 resort rd #755 olympic valley ca"
+      },
       "83499": {
         "units": [],
         "status": "Active",
         "address": "400 squaw creek rd #755 olympic valley ca"
+      },
+      "85273": {
+        "units": [],
+        "status": "Active",
+        "address": "400 resort rd #755 olympic valley ca"
       }
     },
     "110590016000": {
@@ -78152,7 +78303,7 @@
       },
       "STR23-8353": {
         "units": [],
-        "status": "current",
+        "status": "suspended",
         "address": "125 OBSERVATION DR, TAHOE CITY, CA, 96145"
       }
     },
@@ -79792,7 +79943,17 @@
         "status": "Archived",
         "address": "5859 dodowah rd carnelian bay ca"
       },
+      "29694": {
+        "units": [],
+        "status": "Archived",
+        "address": "5859 dodowah rd carnelian bay ca"
+      },
       "83854": {
+        "units": [],
+        "status": "Active",
+        "address": "5859 dodowah rd carnelian bay ca"
+      },
+      "85240": {
         "units": [],
         "status": "Active",
         "address": "5859 dodowah rd carnelian bay ca"
@@ -81095,7 +81256,7 @@
       },
       "STR23-7738": {
         "units": [],
-        "status": "expired",
+        "status": "current",
         "address": "892 EVERGREEN WAY, TAHOMA, CA, 96142"
       }
     },
@@ -81842,7 +82003,22 @@
         "status": "Archived",
         "address": "3003 meadow ct #8 olympic valley ca"
       },
+      "29718": {
+        "units": [],
+        "status": "Archived",
+        "address": "3003 meadow ct #8 olympic valley ca"
+      },
+      "29719": {
+        "units": [],
+        "status": "Archived",
+        "address": "3003 meadow ct #8 olympic valley ca"
+      },
       "84033": {
+        "units": [],
+        "status": "Active",
+        "address": "3003 meadow ct #8 olympic valley ca"
+      },
+      "85266": {
         "units": [],
         "status": "Active",
         "address": "3003 meadow ct #8 olympic valley ca"
@@ -83145,7 +83321,17 @@
         "status": "Archived",
         "address": "6029 mill camp truckee ca"
       },
+      "29679": {
+        "units": [],
+        "status": "Archived",
+        "address": "6029 mill camp truckee ca"
+      },
       "84176": {
+        "units": [],
+        "status": "Active",
+        "address": "6029 mill camp truckee ca"
+      },
+      "85248": {
         "units": [],
         "status": "Active",
         "address": "6029 mill camp truckee ca"
@@ -86681,7 +86867,17 @@
         "status": "Archived",
         "address": "7407 larkspur ln truckee ca"
       },
+      "29734": {
+        "units": [],
+        "status": "Archived",
+        "address": "7407 larkspur ln truckee ca"
+      },
       "84472": {
+        "units": [],
+        "status": "Active",
+        "address": "7407 larkspur ln truckee ca"
+      },
+      "85270": {
         "units": [],
         "status": "Active",
         "address": "7407 larkspur ln truckee ca"
@@ -92255,9 +92451,9 @@
         "status": "Active",
         "address": "250 sierra crest tr olympic valley ca"
       },
-      "no_license": {
+      "STR25-9246": {
         "units": [],
-        "status": "denied",
+        "status": "current",
         "address": "250 SIERRA CREST TRL OLYMPIC VALLEY CA 96146"
       }
     },
@@ -92399,7 +92595,17 @@
         "status": "Archived",
         "address": "405 granlibakken rd tahoe city ca"
       },
+      "29736": {
+        "units": [],
+        "status": "Archived",
+        "address": "405 granlibakken rd tahoe city ca"
+      },
       "84978": {
+        "units": [],
+        "status": "Active",
+        "address": "405 granlibakken rd tahoe city ca"
+      },
+      "85271": {
         "units": [],
         "status": "Active",
         "address": "405 granlibakken rd tahoe city ca"
@@ -95788,6 +95994,11 @@
         "status": "Active",
         "address": "15805 conifer dr truckee ca"
       },
+      "85249": {
+        "units": [],
+        "status": "Active",
+        "address": "15805 conifer dr truckee ca"
+      },
       "STR22-7650": {
         "units": [],
         "status": "withdrawn",
@@ -97893,6 +98104,16 @@
       }
     },
     "117080029000": {
+      "29730": {
+        "units": [],
+        "status": "Archived",
+        "address": "6944 n lake bl #29 tahoe vista ca"
+      },
+      "85267": {
+        "units": [],
+        "status": "Active",
+        "address": "6944 n lake bl #29 tahoe vista ca"
+      },
       "STR22-5409": {
         "units": [],
         "status": "withdrawn",
@@ -98566,6 +98787,16 @@
       }
     },
     "110200044000": {
+      "29716": {
+        "units": [],
+        "status": "Archived",
+        "address": "1003 martis landing truckee ca"
+      },
+      "85265": {
+        "units": [],
+        "status": "Active",
+        "address": "1003 martis landing truckee ca"
+      },
       "no_license": {
         "units": [],
         "status": "denied",
@@ -99603,6 +99834,16 @@
       }
     },
     "093510013000": {
+      "29706": {
+        "units": [],
+        "status": "Archived",
+        "address": "3115 n lake bl #9 tahoe city ca"
+      },
+      "85257": {
+        "units": [],
+        "status": "Active",
+        "address": "3115 n lake bl #9 tahoe city ca"
+      },
       "STR23-8583": {
         "units": [
           "9"
@@ -100018,6 +100259,16 @@
       }
     },
     "083062020000": {
+      "29685": {
+        "units": [],
+        "status": "Archived",
+        "address": "1640 willow av tahoe city ca"
+      },
+      "85250": {
+        "units": [],
+        "status": "Active",
+        "address": "1640 willow av tahoe city ca"
+      },
       "no_license": {
         "units": [],
         "status": "submitted",
@@ -100063,6 +100314,16 @@
       }
     },
     "110440025000": {
+      "29676": {
+        "units": [],
+        "status": "Archived",
+        "address": "6046 bear trap truckee ca"
+      },
+      "85243": {
+        "units": [],
+        "status": "Active",
+        "address": "6046 bear trap truckee ca"
+      },
       "no_license": {
         "units": [],
         "status": "submitted",
@@ -100070,6 +100331,16 @@
       }
     },
     "083161006000": {
+      "29740": {
+        "units": [],
+        "status": "Archived",
+        "address": "1361 sequoia av tahoe city ca"
+      },
+      "85274": {
+        "units": [],
+        "status": "Active",
+        "address": "1361 sequoia av tahoe city ca"
+      },
       "no_license": {
         "units": [],
         "status": "submitted",
@@ -100097,6 +100368,160 @@
         "units": [],
         "status": "submitted",
         "address": "6090 ROCKY POINT CIR TRUCKEE CA 96161"
+      }
+    },
+    "103090020000": {
+      "29667": {
+        "units": [],
+        "status": "Archived",
+        "address": "4001 northstar dr #509 truckee ca"
+      },
+      "85244": {
+        "units": [],
+        "status": "Active",
+        "address": "4001 northstar dr #509 truckee ca"
+      }
+    },
+    "092141015000": {
+      "29678": {
+        "units": [],
+        "status": "Archived",
+        "address": "4005 robert av carnelian bay ca"
+      },
+      "85241": {
+        "units": [],
+        "status": "Active",
+        "address": "4005 robert av carnelian bay ca"
+      }
+    },
+    "103080013000": {
+      "29681": {
+        "units": [],
+        "status": "Archived",
+        "address": "4001 northstar dr #302 truckee ca"
+      },
+      "85247": {
+        "units": [],
+        "status": "Active",
+        "address": "4001 northstar dr #302 truckee ca"
+      }
+    },
+    "112060010000": {
+      "29688": {
+        "units": [],
+        "status": "Archived",
+        "address": "6918 grey ln tahoe vista ca"
+      },
+      "85252": {
+        "units": [],
+        "status": "Active",
+        "address": "6918 grey ln tahoe vista ca"
+      }
+    },
+    "093411004000": {
+      "29690": {
+        "units": [],
+        "status": "Archived",
+        "address": "3101 lake forest rd #115 tahoe city ca"
+      },
+      "85245": {
+        "units": [],
+        "status": "Active",
+        "address": "3101 lake forest rd #115 tahoe city ca"
+      }
+    },
+    "080340016000": {
+      "29692": {
+        "units": [],
+        "status": "Archived",
+        "address": "10970 palisades dr truckee ca"
+      },
+      "85246": {
+        "units": [],
+        "status": "Active",
+        "address": "10970 palisades dr truckee ca"
+      }
+    },
+    "093243003000": {
+      "29697": {
+        "units": [],
+        "status": "Archived",
+        "address": "105 mammoth dr tahoe city ca"
+      },
+      "85254": {
+        "units": [],
+        "status": "Active",
+        "address": "105 mammoth dr tahoe city ca"
+      }
+    },
+    "096691004000": {
+      "29698": {
+        "units": [],
+        "status": "Archived",
+        "address": "1750 village east #107 olympic valley ca"
+      },
+      "29700": {
+        "units": [],
+        "status": "Archived",
+        "address": "1750 village east #107 olympic valley ca"
+      },
+      "85255": {
+        "units": [],
+        "status": "Active",
+        "address": "1750 village east #107 olympic valley ca"
+      }
+    },
+    "093540028000": {
+      "29703": {
+        "units": [],
+        "status": "Archived",
+        "address": "3600 n lake bl #65 carnelian bay ca"
+      },
+      "85256": {
+        "units": [],
+        "status": "Active",
+        "address": "3600 n lake bl #65 carnelian bay ca"
+      }
+    },
+    "097200024000": {
+      "29708": {
+        "units": [],
+        "status": "Archived",
+        "address": "5855 lagoon rd homewood ca"
+      },
+      "85258": {
+        "units": [],
+        "status": "Active",
+        "address": "5855 lagoon rd homewood ca"
+      }
+    },
+    "096180010000": {
+      "29722": {
+        "units": [],
+        "status": "Archived",
+        "address": "1141 sandy wy olympic valley ca"
+      },
+      "29723": {
+        "units": [],
+        "status": "Archived",
+        "address": "1141 sandy wy olympic valley ca"
+      },
+      "85262": {
+        "units": [],
+        "status": "Active",
+        "address": "1141 sandy wy olympic valley ca"
+      }
+    },
+    "112190003000": {
+      "29745": {
+        "units": [],
+        "status": "Archived",
+        "address": "641 brassie av tahoe vista ca"
+      },
+      "29746": {
+        "units": [],
+        "status": "Active",
+        "address": "641 brassie av tahoe vista ca"
       }
     }
   }
