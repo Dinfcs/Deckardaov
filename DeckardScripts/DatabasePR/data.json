@@ -10898,8 +10898,8 @@
       "Project": "NM - Village Of Ruidoso",
       "Public Records & GIS": [
         {
-          "type": "PR",
-          "url": "http://liveweb.lincolncountynm.gov/assessor.aspx?source=assessor"
+          "url": "http://liveweb.lincolncountynm.gov/assessor.aspx?source=assessor",
+          "type": "PR"
         },
         {
           "url": "https://portico.mygisonline.com/html5/?viewer=lincolnnm",
@@ -10908,11 +10908,11 @@
       ],
       "License List": [
         {
-          "url": "N/A",
-          "type": "N/A"
+          "type": "N/A",
+          "url": "N/A"
         }
       ],
-      "Important Info": "<ul><li><strong>GIS</strong> -  <strong>Pictometry</strong> and <strong>Streeview are able in the GIS !   </strong><span style=\"color: rgb(51, 51, 51);\">☆</span><strong>    </strong><strong style=\"color: rgb(102, 185, 102);\"> Check the Image 1*</strong></li></ul><p>                       You can search by address, APN (UPC at GIS) and owner name</p><p><br></p><ul><li><strong>PR</strong> - To search, select the tab corresponding to the information you are looking for.   - Property code (APN)   <span style=\"color: rgb(51, 51, 51);\">☆</span>  <span style=\"color: rgb(255, 153, 0);\"> </span></li></ul><p>                                                                                                                                                           </p><ul><li> <span style=\"color: rgb(230, 0, 0);\">☢</span><span style=\"color: rgb(51, 51, 51);\"> </span>Be careful with properties with the general address <span style=\"color: rgb(230, 0, 0);\">\"110 Jack Little Dr\"</span>, check the PR's to identify the correct unit \"A\" or \"C\" and make an AO if necessary.   <strong style=\"color: rgb(194, 133, 255);\">Image 2*</strong><strong>   </strong></li><li><span style=\"color: rgb(230, 0, 0);\">☢</span><span style=\"color: rgb(51, 51, 51);\"> </span>Be aware <strong style=\"color: rgb(230, 0, 0);\">\"Ruidoso River Resort\"</strong> <span style=\"color: rgb(230, 0, 0);\">is not a Resort / U1oM</span> the general address is \"<span style=\"color: rgb(230, 0, 0);\">206 N Eagle Dr</span>...\" it needs AO.   <span style=\"color: rgb(255, 153, 0);\"> </span><strong style=\"color: rgb(255, 153, 0);\">Image 3*</strong>                                                     </li></ul>",
+      "Important Info": "<ul><li><strong>GIS</strong> -  <strong>Pictometry</strong> and <strong>Streeview are able in the GIS !   </strong><span style=\"color: rgb(51, 51, 51);\">☆</span><strong>    </strong><strong style=\"color: rgb(102, 185, 102);\"> Check the Image 1*</strong></li></ul><p>                       You can search by address, APN (UPC at GIS) and owner name</p><p><br></p><ul><li><strong>PR</strong> - To search, select the tab corresponding to the information you are looking for.   - Property code (APN)   <span style=\"color: rgb(51, 51, 51);\">☆</span>  <span style=\"color: rgb(255, 153, 0);\"> </span></li></ul><p>                                                                                                                                                           </p><ul><li> <span style=\"color: rgb(230, 0, 0);\">☢</span><span style=\"color: rgb(51, 51, 51);\"> </span>Be careful with properties with the general address <span style=\"color: rgb(230, 0, 0);\">\"110 Jack Little Dr\"</span>, check the PR's to identify the correct unit \"A\" or \"C\" and make an AO if necessary.                                                                                                          <strong style=\"color: rgb(194, 133, 255);\">Image 2*</strong><strong>   </strong></li></ul><p><span style=\"color: rgb(230, 0, 0);\">☢</span><span style=\"color: rgb(51, 51, 51);\"> </span>Be aware with <strong style=\"color: rgb(230, 0, 0);\">\"Ruidoso River Resort\"</strong> <span style=\"color: rgb(230, 0, 0);\">is not a Resort / not a U1oM</span> <span style=\"color: rgb(68, 68, 68);\">each apartment has its APN, check the PR's. you can search by subdivision with the name «RUIDOSO RIVER RESORT CONDOMINIUMS» it shows the units also it needs AO, include the unit to this address: </span></p><p> <span style=\"color: rgb(230, 0, 0);\">206 N Eagle Dr Unit XXXX, Ruidoso, NM 88345</span>\".                                                                                     <span style=\"color: rgb(255, 153, 0);\"> </span><strong style=\"color: rgb(255, 153, 0);\">Image 3*</strong>                      </p><p><br></p><p> <span style=\"color: rgb(230, 0, 0);\">☢</span><span style=\"color: rgb(51, 51, 51);\"> </span>Be careful with properties at <span style=\"color: rgb(230, 0, 0);\">\"904 Carrizo Canyon Rd\"</span>, if you are using LB to identified the APN <strong style=\"color: rgb(240, 102, 102);\">check the</strong> <strong style=\"color: rgb(240, 102, 102);\">image 4 </strong></p><p>You can also find the APN in the PR's searching by <span style=\"color: rgb(68, 68, 68);\">subdivision with the name «</span><span style=\"color: rgb(33, 37, 41);\">CARRIZO LODGE CONDOMINIUMS</span><span style=\"color: rgb(68, 68, 68);\">» it chows the unit for each APN</span></p>",
       "Media": [
         {
           "url": "https://drive.google.com/uc?export=view&id=1RfeQNJzoFpnSzi8oALy4X90TPDN_k4yn",
@@ -10923,8 +10923,12 @@
           "type": "Image 2 ┌(◉ ͜ʖ◉)つ Jack Little"
         },
         {
-          "type": "Image 3 ✿  206 N Eagle",
-          "url": "https://drive.google.com/uc?export=view&id=1rVefiZKbYbQV5lMP-VRkcJD03-5cEnjZ"
+          "url": "https://drive.google.com/uc?export=view&id=1rVefiZKbYbQV5lMP-VRkcJD03-5cEnjZ",
+          "type": "Image 3 ✿  206 N Eagle"
+        },
+        {
+          "type": "Image 4 - 904 Carrizo Canyon Rd",
+          "url": "https://drive.google.com/uc?export=view&id=1zje_oRIZHS2Zdphm3jfkORBCW3HWg4FE"
         }
       ]
     },
