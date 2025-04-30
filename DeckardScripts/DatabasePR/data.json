@@ -11336,18 +11336,18 @@
       "Project": "CA - City Of Encinitas",
       "Public Records & GIS": [
         {
-          "type": "PR",
+          "type": "PR (Use PQ from Lucho tools)",
           "url": "https://pqweb.parcelquest.com/#login"
         },
         {
-          "type": "GIS (use VPN)",
-          "url": "https://sdgis.sandag.org/"
+          "url": "https://sdgis.sandag.org/",
+          "type": "GIS (use VPN)"
         }
       ],
       "License List": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ],
       "Important Info": "<ul><li>If it is a <strong>U1OM</strong>, you should only indicate the complete unit number in the <strong>Unit Box</strong>.✅</li><li><strong>AO</strong> should only be done if there is an <strong>error</strong> in the address.✅</li></ul><p><br></p>",
