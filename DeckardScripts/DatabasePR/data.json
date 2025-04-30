@@ -8238,17 +8238,17 @@
       "Project": "ME - Town of Camden",
       "Public Records & GIS": [
         {
-          "type": "GIS",
-          "url": "https://next.axisgis.com/CamdenME/"
+          "url": "https://next.axisgis.com/CamdenME/",
+          "type": "GIS"
         }
       ],
       "License List": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ],
-      "Important Info": "N/A",
+      "Important Info": "<p><strong>Note:</strong> Do <strong><em>not</em> </strong>include the ADU unit in the <strong>Unit box</strong> when mapping this structure in this project. </p>",
       "Media": [
         {
           "type": "N/A",
