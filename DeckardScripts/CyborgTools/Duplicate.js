@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Duplicate Listing Data
-// @version      0.2
+// @version      0.3
 // @description  Duplica la información del listado de una página a otra y añade botón al hacer clic en "Nearby parcels"
 // @author       Lucho
 // @match        https://cyborg.deckard.com/listing/*
@@ -15,7 +15,8 @@
         // Crear el botón
         let button = document.createElement("button");
         button.innerHTML = "Duplicate";
-        button.style.marginLeft = "1px";
+        button.style.marginLeft = "10px";
+        button.style.marginRight = "5px";
         button.id = "btn_duplicate";
 
         // Evento de clic en el botón
@@ -45,14 +46,14 @@
         return button;
     }
 
-    // Función para añadir el botón Duplicate al lado del botón "Map to selected parcel"
+    // Función para añadir el botón Duplicate al lado del botón "Map to selected parcel" o "Nearby listings"
     function addButton() {
         // Verificar si el botón ya existe
         if (document.getElementById("btn_duplicate")) {
             return; // El botón ya existe, no hacer nada
         }
 
-        // Encontrar el botón "Map to selected parcel"
+        // Primero intentar encontrar el botón "Map to selected parcel"
         let mapButton = document.getElementById("btn_map_to_selected_probable_parcel");
 
         if (mapButton) {
@@ -62,8 +63,19 @@
             // Insertar el botón "Duplicate" justo debajo del botón "Map to selected parcel"
             mapButton.parentNode.insertBefore(duplicateButton, mapButton.nextSibling);
         } else {
-            // Intentar nuevamente después de un breve retraso
-            setTimeout(addButton, 1000);
+            // Si no existe el botón "Map to selected parcel", buscar el enlace "Nearby listings"
+            let nearbyListingsLink = document.querySelector("a[href*='/listing/'][href*='near_location='][target='_blank']");
+
+            if (nearbyListingsLink && nearbyListingsLink.textContent.includes("Nearby listings")) {
+                // Crear el botón Duplicate
+                let duplicateButton = createDuplicateButton();
+
+                // Insertar el botón después del enlace "Nearby listings"
+                nearbyListingsLink.parentNode.insertBefore(duplicateButton, nearbyListingsLink.nextSibling);
+            } else {
+                // Si no se encuentra ninguno de los dos, intentar nuevamente después de un breve retraso
+                setTimeout(addButton, 1000);
+            }
         }
     }
 
