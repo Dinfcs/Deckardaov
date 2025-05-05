@@ -6024,21 +6024,21 @@
       "Project": "AZ - City of Litchfield Park",
       "Public Records & GIS": [
         {
-          "type": "PR",
-          "url": "https://www.mcassessor.maricopa.gov/"
+          "url": "https://www.mcassessor.maricopa.gov/",
+          "type": "PR"
         },
         {
-          "type": "GIS",
-          "url": "https://maps.mcassessor.maricopa.gov/"
+          "url": "https://maps.mcassessor.maricopa.gov/",
+          "type": "GIS"
         }
       ],
       "License List": [
         {
           "type": "License list",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EQoCGpdgHTNOmwQMecQepkwB-REXiNXeWn5vvm6b1U2lmA?e=kY0mZk"
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/Ec81it2Pk2xGlG7zAgxPP38BAH5O9e_ee3F55fMdEJ84nA?e=sxNTtF"
         }
       ],
-      "Important Info": "N/A",
+      "Important Info": "<p>N/A</p>",
       "Media": [
         {
           "type": "N/A",
