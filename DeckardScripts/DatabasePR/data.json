@@ -2564,13 +2564,13 @@
           "type": "PR (Use VPN)"
         },
         {
-          "type": "GIS",
-          "url": "https://www.arcgis.com/home/webmap/viewer.html?webmap=48814fe3c5cc4d96aa881db397075aa3&extent=-108.0421,37.9438,-107.317,38.282"
+          "url": "https://www.arcgis.com/home/webmap/viewer.html?webmap=48814fe3c5cc4d96aa881db397075aa3&extent=-108.0421,37.9438,-107.317,38.282",
+          "type": "GIS"
         }
       ],
       "License List": [
         {
-          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EZeMWc9kv3BFna-PNEw4Vk0B3tmeCpNE9k18udWOBjJk2Q?e=ggv0n6",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EUB8VAoBPLdKqpI89hg86qoBpj64yE9G4O4Tky8h8aTMYQ?e=XzyFzk",
           "type": "License List"
         }
       ],
