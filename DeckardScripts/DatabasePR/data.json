@@ -6662,11 +6662,11 @@
           "url": "https://maps.cityofwhitefish.org/portal/apps/sites/#/public/app/d50b532815a44afa92f01ddd68ee3529"
         },
         {
-          "type": "GIS2",
-          "url": "https://maps.flathead.mt.gov/portal/apps/webappviewer/index.html?id=a0f8edf25599410a8e8ddc993fecbb0e"
+          "url": "https://maps.flathead.mt.gov/portal/apps/webappviewer/index.html?id=a0f8edf25599410a8e8ddc993fecbb0e",
+          "type": "GIS2"
         },
         {
-          "type": "PR",
+          "type": "PR (VPN)",
           "url": "https://taxes.flathead.mt.gov/"
         }
       ],
@@ -6676,7 +6676,7 @@
           "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B7FCD4CF1-4AC3-4AEE-9FDD-0F0CFF12C320%7D&file=Deckard%20Spreadsheet%20SL.xlsx&action=default&mobileredirect=true"
         }
       ],
-      "Important Info": "For the condo located at 300 Bay Point Dr, please look up in Public Records which level of the unit is before mapping it. It could be Up or Down.",
+      "Important Info": "<p>For the condo located at 300 Bay Point Dr, please look up in Public Records which level of the unit is before mapping it. It could be Up or Down.</p>",
       "Media": [
         {
           "type": "N/A",
