@@ -11514,25 +11514,25 @@
       "Project": "FL - City Of Indian Harbour Beach",
       "Public Records & GIS": [
         {
-          "url": "https://www.bcpao.us/PropertySearch/#/nav/Search",
-          "type": "PR"
+          "type": "PR",
+          "url": "https://www.bcpao.us/PropertySearch/#/nav/Search"
         },
         {
-          "url": "https://www.bcpao.us/map/",
-          "type": "GIS"
+          "type": "GIS",
+          "url": "https://www.bcpao.us/map/"
         }
       ],
       "License List": [
         {
-          "url": "N/A",
-          "type": "N/A"
+          "type": "N/A",
+          "url": "N/A"
         }
       ],
-      "Important Info": "<p>To search for the APN in Public Records, make sure to include the dashes in the format.</p><ul><li>Example: <strong>27370200264</strong> → <strong>27-37-02-00-264</strong></li></ul>",
+      "Important Info": "<p>To search for the APN in Public Records, make sure to include the dashes in the format.</p><ul><li>Example: <strong>27370200264</strong> → <strong>27-37-02-00-264</strong></li></ul><p><br></p><p>For the property located at<strong> 2105 HIGHWAY INDIAN HARBOUR BEACH FL 32937, </strong>map it as <strong>Timeshare</strong> with the <strong>APN</strong> <strong>27-37-12-00-516.A</strong></p><p><br></p><p><br></p><p><br></p><p><br></p><p><br></p><p><br></p><p><br></p><p class=\"ql-align-justify\"><br></p><p><br></p><p><br></p>",
       "Media": [
         {
-          "url": "N/A",
-          "type": "N/A"
+          "type": "N/A",
+          "url": "N/A"
         }
       ]
     },
