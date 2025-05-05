@@ -2564,8 +2564,8 @@
       "Project": "CO - City of Ouray",
       "Public Records & GIS": [
         {
-          "type": "PR (Use VPN) ",
-          "url": "https://ouraycountyco-assessor.tylerhost.net/assessor/web/login.jsp?submit=Enter+EagleWeb"
+          "url": "https://ouraycountyco-assessor.tylerhost.net/assessor/web/login.jsp?submit=Enter+EagleWeb",
+          "type": "PR (Use VPN)"
         },
         {
           "type": "GIS",
@@ -2574,15 +2574,15 @@
       ],
       "License List": [
         {
-          "type": "License List City of Ouray 2021-12-17",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EakdL_AD6k1Pp-yk7iuw0PsBuu7tZ1W7LySyZ25ro5Ouxw?e=IyivOD"
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EZeMWc9kv3BFna-PNEw4Vk0B3tmeCpNE9k18udWOBjJk2Q?e=ggv0n6",
+          "type": "License List"
         }
       ],
-      "Important Info": "After opening the PR, click on Account Search.",
+      "Important Info": "<p>After opening the PR, click on Account Search.</p>",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ]
     },
