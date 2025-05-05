@@ -3164,21 +3164,21 @@
           "url": "https://qpublic.schneidercorp.com/Application.aspx?App=HenryCountyGA&PageType=Search"
         },
         {
-          "type": "GIS",
-          "url": "https://qpublic.schneidercorp.com/Application.aspx?AppID=1035&LayerID=22139&PageTypeID=1&PageID=9365"
+          "url": "https://qpublic.schneidercorp.com/Application.aspx?AppID=1035&LayerID=22139&PageTypeID=1&PageID=9365",
+          "type": "GIS"
         }
       ],
       "License List": [
         {
           "type": "License list",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/Eas2TXovtcBJm8LpOzZokJwBSl1OoHnwOiw4TLiDTqCHwA?e=d343a5"
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EfZ6X89Y6oNLkWZtnogdjNgBvhdKkhagZP7MNvzoY6Q8Qw?e=89Q5ab"
         }
       ],
-      "Important Info": "N/A",
+      "Important Info": "<p>N/A</p>",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ]
     },
