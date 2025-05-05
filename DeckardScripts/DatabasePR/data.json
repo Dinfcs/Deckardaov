@@ -2788,8 +2788,8 @@
       "Project": "FL - City of Fernandina Beach",
       "Public Records & GIS": [
         {
-          "type": "PR",
-          "url": "https://search.ncpafl.com/"
+          "url": "https://search.ncpafl.com/",
+          "type": "PR"
         },
         {
           "type": "GIS",
@@ -2798,7 +2798,7 @@
       ],
       "License List": [
         {
-          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7BB66C0911-1F9F-4657-B225-93BB99391FCE%7D&file=Deckard%20Resort%20Rental%20Report%20SL.xlsx&action=default&mobileredirect=true",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EceG67xXb9BKirmLfu8aeNQBENX1UKSSr74qFovrCfJ92Q?e=rVNrSb",
           "type": "License list"
         }
       ],
