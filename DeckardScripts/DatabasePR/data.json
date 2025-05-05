@@ -3108,12 +3108,16 @@
       "Project": "GA - City of Savannah",
       "Public Records & GIS": [
         {
-          "type": "PR",
-          "url": "https://qpublic.schneidercorp.com/Application.aspx?App=ChathamCountyGA&PageType=Search"
+          "url": "https://qpublic.schneidercorp.com/Application.aspx?App=ChathamCountyGA&PageType=Search",
+          "type": "PR"
         },
         {
           "type": "GIS",
           "url": "https://qpublic.schneidercorp.com/Application.aspx?AppID=1094&LayerID=27085&PageTypeID=1&PageID=10978"
+        },
+        {
+          "type": "GIS 2",
+          "url": "https://www.sagis.org/map/"
         }
       ],
       "License List": [
@@ -3122,11 +3126,11 @@
           "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/ERu9qC-N-1pKmmIeloiNB2kBCBU7TibY6bdssiFyhFsOsA?e=cKrQtD"
         }
       ],
-      "Important Info": "The Public Record has photo of the front of the house.\nCyborg loads the address with a comma between the state and the ZIP code, is not necessary to do AO.",
+      "Important Info": "<p>The Public Record has photo of the front of the house.\nCyborg loads the address with a comma between the state and the ZIP code, is not necessary to do AO.</p>",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ]
     },
