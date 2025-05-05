@@ -2516,21 +2516,21 @@
           "url": "https://tuolumne.maps.arcgis.com/apps/webappviewer/index.html?id=3e926c5038e74b729ed2e78dcfe490d9&extent=-13476902.3442%2C4529999.5288%2C-13309352.3782%2C4633648.1392%2C102100"
         },
         {
-          "type": "PR (PQ)",
-          "url": "https://assr.parcelquest.com/Home/Usage"
+          "url": "https://assr.parcelquest.com/Home/Usage",
+          "type": "PR (PQ)"
         }
       ],
       "License List": [
         {
-          "type": "License List",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/Eb9sdp5PTc5GkGtWgKGg29gBwGELQJMMrkJ0sln6yWMtPg?e=90QIiC"
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EeRVZYns_mdKneVZrQ7WsCwB4zcXGBkC5OOFAVJT_lvHxA?e=zf3jYf",
+          "type": "License List"
         }
       ],
       "Important Info": "<p>N/A</p>",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ]
     },
