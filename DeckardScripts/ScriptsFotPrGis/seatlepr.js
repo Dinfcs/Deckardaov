@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         SearchPR Button seatle
+// @name         SearchPR Button Seattle
 // @namespace    http://tampermonkey.net/
 // @version      1.0
-// @description  Botón flotante para buscar parcelas en King County sin GM_* functions
+// @description  Floating button to search parcels in King County without GM_* functions
 // @author       You
 // @match        https://cyborg.deckard.com/listing/WA/king/city_of_seattle/STR*
 // @grant        none
@@ -11,7 +11,7 @@
 (function() {
     'use strict';
 
-    // Crear el botón flotante
+    // Create the floating button
     const button = document.createElement('button');
     button.id = 'searchPRButton';
     button.textContent = 'searchPR';
@@ -28,27 +28,27 @@
     button.style.fontSize = '14px';
     button.style.boxShadow = '0 2px 5px rgba(0,0,0,0.3)';
 
-    // Efecto hover
+    // Hover effect
     button.addEventListener('mouseover', () => button.style.backgroundColor = '#45a049');
     button.addEventListener('mouseout', () => button.style.backgroundColor = '#4CAF50');
 
-    // Función para limpiar y validar el APN
+    // Function to clean and validate APN
     function cleanAPN(apn) {
         return apn.replace(/[\s\-\.]/g, '');
     }
 
-    // Función para mostrar el menú de opciones
+    // Function to show options menu
     async function showOptions() {
         try {
             const clipboardText = await navigator.clipboard.readText();
             const cleanedAPN = cleanAPN(clipboardText);
 
             if (!/^\d+$/.test(cleanedAPN) || cleanedAPN.length === 0) {
-                alert(`El valor copiado no es válido. Por favor copie una APN.\n\nValor copiado: "${clipboardText}"`);
+                alert(`The copied value is not valid. Please copy an APN.\n\nCopied value: "${clipboardText}"`);
                 return;
             }
 
-            // Crear un menú flotante
+            // Create floating menu
             const menu = document.createElement('div');
             menu.style.position = 'fixed';
             menu.style.bottom = '60px';
@@ -63,9 +63,9 @@
             menu.style.flexDirection = 'column';
             menu.style.gap = '8px';
 
-            // Opción 1: Detalle de la Parcela
+            // Option 1: Parcel Detail
             const option1 = document.createElement('button');
-            option1.textContent = 'Ver Detalle de Parcela';
+            option1.textContent = 'View Parcel Detail';
             option1.style.padding = '8px 12px';
             option1.style.backgroundColor = '#4CAF50';
             option1.style.color = 'white';
@@ -77,9 +77,9 @@
                 menu.remove();
             });
 
-            // Opción 2: Dashboard
+            // Option 2: Dashboard
             const option2 = document.createElement('button');
-            option2.textContent = 'Ver Dashboard';
+            option2.textContent = 'View Dashboard';
             option2.style.padding = '8px 12px';
             option2.style.backgroundColor = '#2196F3';
             option2.style.color = 'white';
@@ -91,9 +91,9 @@
                 menu.remove();
             });
 
-            // Botón para cerrar
+            // Close button
             const closeButton = document.createElement('button');
-            closeButton.textContent = 'Cerrar';
+            closeButton.textContent = 'Close';
             closeButton.style.padding = '8px 12px';
             closeButton.style.backgroundColor = '#f44336';
             closeButton.style.color = 'white';
@@ -102,15 +102,15 @@
             closeButton.style.cursor = 'pointer';
             closeButton.addEventListener('click', () => menu.remove());
 
-            // Añadir elementos al menú
+            // Add elements to menu
             menu.appendChild(option1);
             menu.appendChild(option2);
             menu.appendChild(closeButton);
 
-            // Añadir el menú al cuerpo del documento
+            // Add menu to document body
             document.body.appendChild(menu);
 
-            // Cerrar el menú al hacer clic fuera
+            // Close menu when clicking outside
             document.addEventListener('click', function closeMenu(e) {
                 if (!menu.contains(e.target) && e.target !== button) {
                     menu.remove();
@@ -120,7 +120,7 @@
 
         } catch (error) {
             console.error('Error:', error);
-            alert('No se pudo leer el portapapeles. Asegúrese de permitir el acceso.');
+            alert('Could not read clipboard. Please ensure you have granted access.');
         }
     }
 
