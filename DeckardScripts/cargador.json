@@ -97,6 +97,10 @@
             "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/Licenses/LicValidator.js"
         },
         {
+            "urlPattern": "https://cyborg.deckard.com/listing/WA/king/city_of_seattle/STR*",
+            "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/ScriptsFotPrGis/seatlepr.js"
+        },
+        {
             "urlPattern": "https://cyborg.deckard.com/listing/*STR*",
             "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/qa-sqa-productivity.js"
         }
