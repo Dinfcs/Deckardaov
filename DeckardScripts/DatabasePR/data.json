@@ -11565,6 +11565,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "NY - Washington County",
+      "Public Records & GIS": [
+        {
+          "type": "PR(Use VPN)",
+          "url": "https://imo.washingtoncountyny.gov/search.aspx"
+        },
+        {
+          "type": "GIS",
+          "url": "https://gis.washingtoncountyny.gov/webmap/"
+        }
+      ],
+      "License List": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ],
+      "Important Info": "<p><br></p>",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
