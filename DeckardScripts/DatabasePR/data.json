@@ -11492,8 +11492,8 @@
       "Project": "AL - City Of Orange Beach",
       "Public Records & GIS": [
         {
-          "type": "PR (Use VPN)",
-          "url": "https://baldwinproperty.countygovservices.com/Property/Search"
+          "url": "https://baldwinproperty.countygovservices.com/Property/Search",
+          "type": "PR (Use VPN)"
         },
         {
           "url": "https://isv.kcsgis.com/al.baldwin_revenue/",
@@ -11502,15 +11502,15 @@
       ],
       "License List": [
         {
-          "url": "N/A",
-          "type": "N/A"
+          "type": "N/A",
+          "url": "N/A"
         }
       ],
-      "Important Info": "<ul><li>For GIS, please search by address.</li><li>For PR, do not select the parcel, as the complete address is only visible in the preview.</li></ul><p><br></p><p>There's a condo on <strong>Saltgrass Way, Orange Beach AL</strong>, where <strong>Cyborg shows parcel addresses slightly off</strong>.</p><p>Example:</p><ul><li> Cyborg shows <strong>2489 Saltgrass Way</strong> with <strong>APN: 6606133001035028</strong>, but the correct PR address is <strong>2491 Saltgrass Way</strong>.</li></ul><p><br></p><p>👉 <strong>Address Override is needed.</strong></p><p><br></p><p>Each unit at <strong>23601 Perdido Beach Blvd</strong> has its <strong>own APN</strong>, viewable via GIS.</p><p><br></p><p>The condo at <strong>23008 Perdido Beach Blvd</strong> shows <strong>no</strong> Multiple Owners in Lightbox, but PRs list different owners per unit.</p><p> It's a <strong>Main Structure</strong> — <strong>only map if the unit is identified.</strong></p>",
+      "Important Info": "<ul><li>For GIS, please search by address.</li><li>For PR, do not select the parcel, as the complete address is only visible in the preview.</li></ul><p><br></p><p>There's a condo on <strong>Saltgrass Way, Orange Beach AL</strong>, where <strong>Cyborg shows parcel addresses slightly off</strong>.</p><p>Example:</p><ul><li> Cyborg shows <strong>2489 Saltgrass Way</strong> with <strong>APN: 6606133001035028</strong>, but the correct PR address is <strong>2491 Saltgrass Way</strong>.</li></ul><p><br></p><p>👉 <strong>Address Override is needed.</strong></p><p><br></p><p>Each unit at <strong>23601 Perdido Beach Blvd</strong> has its <strong>own APN</strong>, viewable via GIS, structure may be <strong>RV</strong> in most of the cases. </p><p><br></p><p>The condo at <strong>23008 Perdido Beach Blvd</strong> shows <strong>no</strong> Multiple Owners in Lightbox, but PRs list different owners per unit.</p><p> It's a <strong>Main Structure</strong> — <strong>only map if the unit is identified.</strong></p>",
       "Media": [
         {
-          "url": "N/A",
-          "type": "N/A"
+          "type": "N/A",
+          "url": "N/A"
         }
       ]
     },
