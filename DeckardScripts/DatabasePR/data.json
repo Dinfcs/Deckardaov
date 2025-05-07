@@ -2486,8 +2486,8 @@
           "url": "https://assr.parcelquest.com/Statewide/Details/0"
         },
         {
-          "type": "GIS",
-          "url": "https://koordinates.com/layer/107906-tulare-county-california-parcels/"
+          "url": "https://koordinates.com/layer/107906-tulare-county-california-parcels/",
+          "type": "GIS"
         },
         {
           "type": "GIS 2 (VPN Needed)",
@@ -2496,15 +2496,15 @@
       ],
       "License List": [
         {
-          "type": "License List",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B18A8F30E-4B27-4567-98F7-E60909D9A0A9%7D&file=tot%20operator%20list%20(3).xlsx&action=default&mobileredirect=true"
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EZDR9sYB805BpicLy2WG7u4BrgqL9-dS2e44TPykahwaiQ?e=wO2SnH",
+          "type": "License List"
         }
       ],
-      "Important Info": "N/A",
+      "Important Info": "<p>N/A</p>",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ]
     },
