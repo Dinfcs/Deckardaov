@@ -4610,12 +4610,16 @@
       "Project": "ID - Bonner County",
       "Public Records & GIS": [
         {
-          "url": "https://cloudgisapps.bonnercountyid.gov/PropertySearch/",
-          "type": "PR"
+          "type": "PR",
+          "url": "https://cloudgisapps.bonnercountyid.gov/PropertySearch/"
         },
         {
           "type": "GIS",
           "url": "https://cloudgisapps.bonnercountyid.gov/public/"
+        },
+        {
+          "type": "GIS2",
+          "url": "https://bcgisid.maps.arcgis.com/apps/webappviewer/index.html?id=333b605f7c2e46a9ad6d42bf5e42b04d"
         }
       ],
       "License List": [
@@ -4624,7 +4628,7 @@
           "type": "License List"
         }
       ],
-      "Important Info": "<p>N/A</p>",
+      "Important Info": "<p>In the PR delete the \"A\" at the end of each APN.</p>",
       "Media": [
         {
           "type": "N/A",
