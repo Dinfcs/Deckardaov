@@ -4610,8 +4610,8 @@
       "Project": "ID - Bonner County",
       "Public Records & GIS": [
         {
-          "type": "PR",
-          "url": "https://bcgisid.maps.arcgis.com/apps/webappviewer/index.html?id=333b605f7c2e46a9ad6d42bf5e42b04d"
+          "url": "https://cloudgisapps.bonnercountyid.gov/PropertySearch/",
+          "type": "PR"
         },
         {
           "type": "GIS",
@@ -4620,11 +4620,11 @@
       ],
       "License List": [
         {
-          "type": "License List",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7BEE3C859A-A232-4124-93D9-9CF4053EC103%7D&file=VRP%20report%20for%20Deckard%20Copy..xlsx&action=default&mobileredirect=true"
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7BEE3C859A-A232-4124-93D9-9CF4053EC103%7D&file=VRP%20report%20for%20Deckard%20Copy..xlsx&action=default&mobileredirect=true",
+          "type": "License List"
         }
       ],
-      "Important Info": "N/A",
+      "Important Info": "<p>N/A</p>",
       "Media": [
         {
           "type": "N/A",
