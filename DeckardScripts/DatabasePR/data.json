@@ -408,20 +408,20 @@
       "Project": "AZ - Town of Queen Creek",
       "Public Records & GIS": [
         {
-          "type": "PR - Maricopa County",
-          "url": "https://www.mcassessor.maricopa.gov/"
+          "url": "https://www.mcassessor.maricopa.gov/",
+          "type": "PR - Maricopa County"
         },
         {
-          "type": "GIS - Maricopa County",
-          "url": "https://maps.mcassessor.maricopa.gov/"
+          "url": "https://maps.mcassessor.maricopa.gov/",
+          "type": "GIS - Maricopa County"
         },
         {
-          "url": "https://www.loom.com/share/f16a28df26464f51b334bb473e119a6b",
-          "type": "Maricopa GIS demo/How to active frontal view?"
+          "type": "Maricopa GIS demo/How to active frontal view?",
+          "url": "https://www.loom.com/share/f16a28df26464f51b334bb473e119a6b"
         },
         {
-          "url": "https://www.pinalcountyaz.gov/ASSESSOR/Pages/ParcelSearch.aspx",
-          "type": "PR - Pinal County"
+          "type": "PR - Pinal County",
+          "url": "https://www.pinalcountyaz.gov/ASSESSOR/Pages/ParcelSearch.aspx"
         },
         {
           "url": "https://pinal.maps.arcgis.com/apps/webappviewer/index.html?id=d92bad11160e425ca191f048ef6ca556",
@@ -431,7 +431,7 @@
       "License List": [
         {
           "type": "License List",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EaJCVumdlF5MmTKk-4H-uBoB5jjbpLTJHBvT5zNL2OMC-w?e=KA2aU2"
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EVPd6lYzjuVInXmmjMcVXgQBoWjqsZLBTlQLwZsp4r5hQQ?e=sOHjPu"
         }
       ],
       "Important Info": "<p>The Town is in two different counties, so It’s important to consider both PR and GIS.</p>",
