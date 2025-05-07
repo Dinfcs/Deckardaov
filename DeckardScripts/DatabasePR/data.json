@@ -11340,25 +11340,25 @@
       "Project": "CA - City Of Encinitas",
       "Public Records & GIS": [
         {
-          "type": "PR (Use PQ from Lucho tools)",
-          "url": "https://pqweb.parcelquest.com/#login"
+          "url": "https://pqweb.parcelquest.com/#login",
+          "type": "PR (Use PQ from Lucho tools)"
         },
         {
-          "url": "https://sdgis.sandag.org/",
-          "type": "GIS (use VPN)"
+          "url": "https://geo.sandag.org/portal/apps/experiencebuilder/experience/?id=1d105857933641e0a8496d2769b31aec#data_s=id%3AdataSource_1-1951f287896-layer-36%3A900209",
+          "type": "GIS"
         }
       ],
       "License List": [
         {
-          "url": "N/A",
-          "type": "N/A"
+          "type": "N/A",
+          "url": "N/A"
         }
       ],
       "Important Info": "<ul><li>If it is a <strong>U1OM</strong>, you should only indicate the complete unit number in the <strong>Unit Box</strong>.✅</li><li><strong>AO</strong> should only be done if there is an <strong>error</strong> in the address.✅</li></ul><p><br></p>",
       "Media": [
         {
-          "url": "N/A",
-          "type": "N/A"
+          "type": "N/A",
+          "url": "N/A"
         }
       ]
     },
