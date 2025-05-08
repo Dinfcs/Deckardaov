@@ -1642,8 +1642,8 @@
       "Project": "CA - City of Pismo Beach",
       "Public Records & GIS": [
         {
-          "type": "PR ",
-          "url": "https://propertyinquiryportal.slocounty.ca.gov/#/property-inquiry"
+          "url": "https://propertyinquiryportal.slocounty.ca.gov/#/property-inquiry",
+          "type": "PR"
         },
         {
           "type": "GIS",
@@ -1652,15 +1652,15 @@
       ],
       "License List": [
         {
-          "type": "License ",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B610B43DE-D7EC-472F-8689-7F29AE4A9B03%7D&file=2024%20LicenseUploadTemplate-MM.xlsx&action=default&mobileredirect=true"
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7BA1D15878-DAE3-49D6-8170-7B32CF34530A%7D&file=Pismo%20Beach%20License%20List.xlsx&action=default&mobileredirect=true",
+          "type": "License"
         }
       ],
-      "Important Info": "N/A",
+      "Important Info": "<p>N/A</p>",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ]
     },
