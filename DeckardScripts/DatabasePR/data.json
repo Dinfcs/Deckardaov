@@ -7378,25 +7378,25 @@
       "Project": "GA - Douglas County",
       "Public Records & GIS": [
         {
-          "type": "PR",
-          "url": "https://qpublic.schneidercorp.com/Application.aspx?AppID=988&LayerID=20162&PageTypeID=2&PageID=8760"
+          "url": "https://qpublic.schneidercorp.com/Application.aspx?AppID=988&LayerID=20162&PageTypeID=2&PageID=8760",
+          "type": "PR"
         },
         {
-          "type": "GIS",
-          "url": "https://qpublic.schneidercorp.com/Application.aspx?AppID=988&LayerID=20162&PageTypeID=1&PageID=8759"
+          "url": "https://qpublic.schneidercorp.com/Application.aspx?AppID=988&LayerID=20162&PageTypeID=1&PageID=8759",
+          "type": "GIS"
         }
       ],
       "License List": [
         {
           "type": "License",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EfqnPmBAWhhDmm9tVIoTDh8BgeA23jPO19QHhKHKvawyUw?e=RITEay"
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B67ABF1D7-D851-4403-A43A-E8ABCC6CE3A0%7D&file=Approved%20STRs%20(2)%202.28.25%20(1).xlsx&action=default&mobileredirect=true"
         }
       ],
-      "Important Info": "To search in the Pr by APN delete one of the zeros before the last number of the apn for example. 017902500016 or  017902500008",
+      "Important Info": "<p>To search in the Pr by APN delete one of the zeros before the last number of the apn for example. 017902500016 or  017902500008</p>",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ]
     },
