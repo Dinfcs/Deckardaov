@@ -2138,21 +2138,21 @@
           "url": "https://www.maderacounty.com/government/assessor/parcel-search-information"
         },
         {
-          "type": "GIS",
-          "url": "https://gis.maderacounty.com/portal/apps/webappviewer/index.html?id=d2d780a4dc354d9e814cd9e10ba93c85"
+          "url": "https://gis.maderacounty.com/portal/apps/webappviewer/index.html?id=d2d780a4dc354d9e814cd9e10ba93c85",
+          "type": "GIS"
         }
       ],
       "License List": [
         {
           "type": "License List",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7BFE9994F5-124E-429F-BB6D-102C198D062D%7D&file=Deckard_RentalScape_Current%20Operators_9.27.2024%20-%20Copy%20CG.xlsx&action=default&mobileredirect=true"
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B81E93994-4B2D-4A37-9691-1C8BD299CEBE%7D&file=Operators_Current%20Listing.xlsx&action=default&mobileredirect=true"
         }
       ],
-      "Important Info": "N/A",
+      "Important Info": "<p>N/A</p>",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ]
     },
