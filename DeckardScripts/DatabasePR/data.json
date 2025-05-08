@@ -7884,8 +7884,8 @@
       "Project": "CO - Town of Silverthorne",
       "Public Records & GIS": [
         {
-          "type": "PR",
-          "url": "https://twn-silverthorne-co.smartgovcommunity.com/Parcels/ParcelHome"
+          "url": "https://twn-silverthorne-co.smartgovcommunity.com/Parcels/ParcelHome",
+          "type": "PR"
         },
         {
           "type": "GIS (Use VPN)",
@@ -7899,13 +7899,13 @@
       "License List": [
         {
           "type": "License list",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EU-SZ0_WjqhAq8gxbKjXMp4BMt-lSCcuqMWHzkukKZG5Sw?e=T6WrTS"
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7BD7700643-6072-41E3-9030-D2424047DBD3%7D&file=05062025%20STR%20Data.xlsx&action=default&mobileredirect=true"
         }
       ],
-      "Important Info": "Use GIS 2 to find the short APN that we have in our data in Cyborg. The APN is called a Schedule Number. You can find the image in the Media Section.",
+      "Important Info": "<p>Use GIS 2 to find the short APN that we have in our data in Cyborg. The APN is called a Schedule Number. You can find the image in the Media Section.</p>",
       "Media": [
         {
-          "type": "Example of GIS 2 ",
+          "type": "Example of GIS 2",
           "url": "https://drive.usercontent.google.com/download?id=1IRxeg5-7qCJ5Pa0NDy5aw-6H5uyyQVi8&authuser=0"
         }
       ]
