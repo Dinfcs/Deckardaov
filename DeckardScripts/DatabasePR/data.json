@@ -11579,6 +11579,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "OK - City of Tulsa",
+      "Public Records & GIS": [
+        {
+          "type": "PR (VPN)",
+          "url": "https://assessor.tulsacounty.org/Property/Search"
+        },
+        {
+          "type": "GIS",
+          "url": "https://www.arcgis.com/apps/webappviewer/index.html?id=667674fd6c8445f0a9cdfdb5379e923e"
+        }
+      ],
+      "License List": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ],
+      "Important Info": "<p><br></p>",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
