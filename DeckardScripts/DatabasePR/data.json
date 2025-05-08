@@ -2814,8 +2814,8 @@
       "Project": "FL - City of Hallandale Beach",
       "Public Records & GIS": [
         {
-          "type": "PR",
-          "url": "https://bcpa.net/RecMenu.asp"
+          "url": "https://bcpa.net/RecMenu.asp",
+          "type": "PR"
         },
         {
           "type": "GIS",
@@ -2826,32 +2826,20 @@
           "url": "https://www.miamiresidence.com/ocean-view/ocean-view-a.htm"
         },
         {
-          "type": "Hallandale Beach Floor Plans",
-          "url": "https://docs.google.com/document/d/1o1pXTvkBtCy72WC8QUTwaNkXIhWDVX9H/edit"
-        },
-        {
-          "type": "Recording meeting 08/05/2022",
-          "url": "https://drive.google.com/file/d/1gs4oW-4A8j61QbpT2YjWf4aOSOAk5O_9/view?usp=sharing"
-        },
-        {
           "type": "Use Type - Code Descriptions",
           "url": "https://bcpa.net/UseType.asp"
         },
         {
-          "type": "Hallandale Beach MUS",
-          "url": "https://netorgft4047789-my.sharepoint.com/:x:/g/personal/jackson_rico_deckardtech_com/EZXa5e_aZ1RBgCGLrrTKbOcB6ER24yg6rVHFCthBdxCzYA?e=xvzGGN"
-        },
-        {
-          "type": "Licenses Florida",
-          "url": "https://www.myfloridalicense.com/"
+          "url": "https://www.myfloridalicense.com/",
+          "type": "Licenses Florida"
         },
         {
           "type": "Sunny Isles/Hallandale Part 1",
           "url": "https://www.loom.com/share/8dbd5630d6b44f49b5d6ffda3bb951fa"
         },
         {
-          "type": "Sunny Isles/Hallandale Part 2",
-          "url": "https://www.loom.com/share/a2d2186959894faeb4eb3c25cf1a8114"
+          "url": "https://www.loom.com/share/a2d2186959894faeb4eb3c25cf1a8114",
+          "type": "Sunny Isles/Hallandale Part 2"
         },
         {
           "type": "Sunny Isles/Hallandale Part 3",
@@ -2864,15 +2852,15 @@
           "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EQTBe9GKqCxJqmfw8wV5vFkBHzNUcEu3Wcc8EqE-sYYI8g?e=J2aZvy"
         },
         {
-          "type": "Licenses online",
-          "url": "https://hallandalebeachfl.gov/1134/Vacation-Rentals"
+          "url": "https://hallandalebeachfl.gov/1134/Vacation-Rentals",
+          "type": "Licenses online"
         }
       ],
-      "Important Info": "1.We are only interested in properties within the city. \nIf it is a MUS and located outside the city: \n·Add the MUS. \n·Leave the APN blank. \n2.For MUS in general: \n·Always assign the MUS, even if it is \"No Match Found.\" \n·Classify the MUS: \no “-H”: Within the city. \no “-O”: Outside the city. Mark as \"outside boundaries\" and assign the MUS. \n3.For the condo located at2602 E Hallandale Beach Blvd, Hallandale Beach, FL 33009, there are two types of units based on the initial of the APN: \n·“R”: Hotel units (Resort). \n·“T”: Residential units (Main Structure). \nWhen a MUS is located outside the city:\nAssign the MUS and do not try to identify it. It would be without APN or NMF.",
+      "Important Info": "<p>1.We are only interested in properties within the city. \nIf it is a MUS and located outside the city: \n·Add the MUS. \n·Leave the APN blank. \n2.For MUS in general: \n·Always assign the MUS, even if it is \"No Match Found.\" \n·Classify the MUS: \no “-H”: Within the city. \no “-O”: Outside the city. Mark as \"outside boundaries\" and assign the MUS. \n</p><p>3.For the condo located at2602 E Hallandale Beach Blvd, Hallandale Beach, FL 33009, there are two types of units based on the initial of the APN: \n·“R”: Hotel units (Resort). \n·“T”: Residential units (Main Structure). \nWhen a MUS is located outside the city:\nAssign the MUS and do not try to identify it. It would be without APN or NMF.</p><p><br></p><p>PD: </p><ul><li>The MUS follows the same name as in Public Records.</li><li>If a new MUS is found, please inform the data lead so it can be added.</li></ul>",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ]
     },
