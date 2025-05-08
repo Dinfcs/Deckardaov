@@ -6548,37 +6548,37 @@
       "Project": "SC - City of North Charleston",
       "Public Records & GIS": [
         {
-          "type": "PR Charleston",
-          "url": "https://sc-charleston.publicaccessnow.com/RealPropertyRecordSearch.aspx?s=PrimaryKey:4661200396&pg=1&g=-1&moduleId=382"
+          "url": "https://sc-charleston.publicaccessnow.com/RealPropertyRecordSearch.aspx?s=PrimaryKey:4661200396&pg=1&g=-1&moduleId=382",
+          "type": "PR Charleston"
         },
         {
           "type": "GIS Charleston",
           "url": "https://gisccweb.charlestoncounty.org/public_search/"
         },
         {
-          "type": "PR Berkeley ",
+          "type": "PR Berkeley",
           "url": "https://berkeleycountysc.gov/propcards/prop_card_search.php?searchmethod=address&streetnum=201+&streetname=sawyer&rpsearch=rpsearch&searchoption=contains&ownername="
         },
         {
-          "type": "GIS Berkeley ",
+          "type": "GIS Berkeley",
           "url": "https://gis.berkeleycountysc.gov/maps/desktop/lite-mapping.html"
         },
         {
-          "type": "PR Dorchester ",
-          "url": "https://www.dorchestercountysc.gov/government/property-tax-services/assessor/real-estate-mobile-home-search/cama-parcel-lookup"
+          "url": "https://www.dorchestercountysc.gov/government/property-tax-services/assessor/real-estate-mobile-home-search/cama-parcel-lookup",
+          "type": "PR Dorchester"
         },
         {
-          "type": "GIS Dorchester ",
+          "type": "GIS Dorchester",
           "url": "https://dcscgis.maps.arcgis.com/apps/webappviewer/index.html?id=c5b2bd07c3b84ce98d09c6611377e89c"
         }
       ],
       "License List": [
         {
           "type": "License o N/A",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EROj8QINGqdOkX97TvJFYjUBGJzOMGOUIoCOiPA1Mep2BA?e=Ns337T"
+          "url": "https://netorgft4047789.sharepoint.com/sites/ElectricSheep/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FElectricSheep%2FShared%20Documents%2FSC%2FCharleston%20County%2FCity%20of%20North%20Charleston%2FIncoming%2F2025%2D06%2D07&viewid=21bf7f0a%2D3cd2%2D4351%2Da5c7%2D69e29b2b37b9&newTargetListUrl=%2Fsites%2FElectricSheep%2FShared%20Documents&viewpath=%2Fsites%2FElectricSheep%2FShared%20Documents%2FForms%2FAllItems%2Easpx"
         }
       ],
-      "Important Info": "The project is within 3 Counties, check carefully.\n\nIf you are taking APNs from the Dorchester County PRs, please remove the last three zeros.\n\nIf Cyborg’s address is listed as “Charleston” but the PR confirms that is “North Charleston”, please do the address override with the PR information.\nWhen a duplex has a unit number in the address: override the address based on the listed unit and also include the unit in the unit box.",
+      "Important Info": "<p>The project is within 3 Counties, check carefully.\n\nIf you are taking APNs from the Dorchester County PRs, please remove the last three zeros.\n\nIf Cyborg’s address is listed as “Charleston” but the PR confirms that is “North Charleston”, please do the address override with the PR information.\nWhen a duplex has a unit number in the address: override the address based on the listed unit and also include the unit in the unit box.</p>",
       "Media": [
         {
           "type": "N/A",
