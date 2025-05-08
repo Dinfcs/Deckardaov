@@ -9158,8 +9158,8 @@
       "Project": "FL - City Of Sunny Isles Beach",
       "Public Records & GIS": [
         {
-          "type": "Miami Dade PR",
-          "url": "https://www.miamidade.gov/Apps/PA/propertysearch/#/"
+          "url": "https://www.miamidade.gov/Apps/PA/propertysearch/#/",
+          "type": "Miami Dade PR"
         },
         {
           "type": "Sunny Isles Condos",
@@ -9174,28 +9174,24 @@
           "url": "https://gis-mdc.opendata.arcgis.com/datasets/dor-code/explore?showTable=true"
         },
         {
-          "type": "Winston Tower 600 Condo Association Plans",
-          "url": "http://nebula.wsimg.com/63c88fe2eea27ab9e5aaf6c64416fa7c?AccessKeyId=993E9173C7153F9FA6C4&disposition=0&alloworigin=1"
-        },
-        {
-          "type": "Florida License",
-          "url": "https://www.myfloridalicense.com/wl11.asp?mode=0&SID=&brd=&typ=N"
+          "url": "https://www.myfloridalicense.com/wl11.asp?mode=0&SID=&brd=&typ=N",
+          "type": "Florida License"
         },
         {
           "type": "Meeting Recording",
           "url": "https://drive.google.com/file/d/1Y1Jeu2MuUBSRreF0K4Q-4AF5g3khS7hw/view?usp=share_link"
         },
         {
-          "type": "Sunny Isles/Hallandale Part 1",
-          "url": "https://www.loom.com/share/8dbd5630d6b44f49b5d6ffda3bb951fa"
+          "url": "https://www.loom.com/share/8dbd5630d6b44f49b5d6ffda3bb951fa",
+          "type": "Sunny Isles/Hallandale Part 1"
         },
         {
           "type": "Sunny Isles/Hallandale Part 2",
           "url": "https://www.loom.com/share/a2d2186959894faeb4eb3c25cf1a8114"
         },
         {
-          "type": "Sunny Isles/Hallandale Part 3",
-          "url": "https://www.loom.com/share/9bf4ac724ebc438c8b93fe75afe74a0a"
+          "url": "https://www.loom.com/share/9bf4ac724ebc438c8b93fe75afe74a0a",
+          "type": "Sunny Isles/Hallandale Part 3"
         }
       ],
       "License List": [
@@ -9204,11 +9200,11 @@
           "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EV6R10g6GylJkI49YCw6f2MBYWIt6ebHvcbb2xoutktnCg?e=DXNL55"
         }
       ],
-      "Important Info": "1. Map only listings within the city. \n2. If it is outside: \no Mark as\"outside of boundaries\". \no Add the MUS. \no Leave the APN blank. \n3. Always assign the MUS,even with \"No Match Found.\" \n4. Classify the MUS as follows: \no “-S”: Within Sunny Isles Beach. \no “-O”: Outside Sunny Isles Beach.",
+      "Important Info": "<p>1. Map only listings within the city. \n2. If it is outside: \no Mark as\"outside of boundaries\". \no Add the MUS. \no Leave the APN blank. \n3. Always assign the MUS,even with \"No Match Found.\" \n4. Classify the MUS as follows: \no “-S”: Within Sunny Isles Beach. \no “-O”: Outside Sunny Isles Beach.</p><p><br></p><p>PD: </p><ul><li>The MUS follows the same name as in Public Records.</li><li>If a new MUS is found, please inform the data lead so it can be added.</li></ul>",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ]
     },
