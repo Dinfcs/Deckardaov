@@ -1547,7 +1547,7 @@ document.body.appendChild(styles);
         if (!reportQaButtonExists()) return;
         const buttonText = event.target.textContent.trim();
         if (buttonText === 'Save' || buttonText === 'Submit QA Result') {
-            setTimeout(showSQAModal, 100);
+            //setTimeout(showSQAModal, 100);
         }
     }
 
