@@ -11668,15 +11668,15 @@
       ],
       "License List": [
         {
-          "url": "N/A",
-          "type": "N/A"
+          "type": "N/A",
+          "url": "N/A"
         }
       ],
-      "Important Info": "<p>To search by APN in the GIS, dashes must be included: Ex. APN <strong>182816628560020010</strong> ➝ <strong>28-16-62856-002-0010</strong>.</p>",
+      "Important Info": "<p>To search by APN in the GIS, dashes must be included: Ex. APN <strong>182816628560020010</strong> ➝ <strong>18-28-16-62856-002-0010</strong>.</p>",
       "Media": [
         {
-          "url": "N/A",
-          "type": "N/A"
+          "type": "N/A",
+          "url": "N/A"
         }
       ]
     }
