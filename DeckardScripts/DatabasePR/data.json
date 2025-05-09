@@ -11605,6 +11605,28 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "SC - City Of Greenville",
+      "Public Records & GIS": [
+        {
+          "url": "https://www.gcgis.org/apps/greenvillejs/",
+          "type": "GIS & PR (VPN)"
+        }
+      ],
+      "License List": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ],
+      "Important Info": "<p><br></p>",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
