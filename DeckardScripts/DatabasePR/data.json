@@ -11662,12 +11662,12 @@
       "Project": "FL - City Of Dunedin",
       "Public Records & GIS": [
         {
-          "type": "PR",
-          "url": "https://www.pcpao.gov/"
+          "url": "https://www.pcpao.gov/",
+          "type": "PR"
         },
         {
-          "url": "https://www.pcpao.gov/gis.html?v=5&home",
-          "type": "GIS"
+          "type": "GIS",
+          "url": "https://www.pcpao.gov/gis.html?v=5&home"
         }
       ],
       "License List": [
@@ -11676,7 +11676,7 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "<p>To search by APN in the GIS, dashes must be included: Ex. APN <strong>182816628560020010</strong> ➝ <strong>18-28-16-62856-002-0010</strong>.</p>",
+      "Important Info": "<p>To search by APN in the GIS, dashes must be included: Ex. APN <strong>182816628560020010</strong> ➝ <strong>18-28-16-62856-002-0010</strong>.</p><p><br></p><p>To activate the pictographic view in the GIS, click on <strong>Angled Aerial Views</strong> in the parcel information.</p><p><br></p>",
       "Media": [
         {
           "type": "N/A",
