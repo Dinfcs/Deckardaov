@@ -11662,8 +11662,8 @@
           "url": "https://www.pcpao.gov/"
         },
         {
-          "type": "GIS",
-          "url": "https://www.pcpao.gov/gis.html?v=5&home"
+          "url": "https://www.pcpao.gov/gis.html?v=5&home",
+          "type": "GIS"
         }
       ],
       "License List": [
@@ -11672,7 +11672,7 @@
           "type": "N/A"
         }
       ],
-      "Important Info": "<p>To search by APN in the GIS, dashes must be included: Ex. APN <strong>18-182816628560020010</strong> ➝ <strong>28-16-62856-002-0010</strong>.</p>",
+      "Important Info": "<p>To search by APN in the GIS, dashes must be included: Ex. APN <strong>182816628560020010</strong> ➝ <strong>28-16-62856-002-0010</strong>.</p>",
       "Media": [
         {
           "url": "N/A",
