@@ -254,8 +254,8 @@
         buttonsContainer.id = 'gmst-buttons-container';
         Object.assign(buttonsContainer.style, {
             position: 'fixed',
-            right: '15px',
-            top: '50%',
+            right: '9px',
+            top: '54%',
             transform: 'translateY(-50%)',
             display: 'flex',
             flexDirection: 'column',
