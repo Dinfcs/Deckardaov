@@ -11627,6 +11627,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "FL - City Of Panama City Beach",
+      "Public Records & GIS": [
+        {
+          "url": "https://qpublic.schneidercorp.com/application.aspx?app=BayCountyFL&PageType=Search",
+          "type": "PR"
+        },
+        {
+          "type": "GIS",
+          "url": "https://qpublic.schneidercorp.com/application.aspx?AppID=834&LayerID=15170&PageTypeID=1&PageID=6822"
+        }
+      ],
+      "License List": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ],
+      "Important Info": "<p><br></p>",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
