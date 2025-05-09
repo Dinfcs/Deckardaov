@@ -11202,8 +11202,12 @@
           "type": "PR"
         },
         {
-          "url": "https://www7.co.union.oh.us/unionoh/",
-          "type": "GIS (Use VPN)"
+          "type": "GIS2 (Use VPN)",
+          "url": "https://www7.co.union.oh.us/unionoh/"
+        },
+        {
+          "type": "GIS",
+          "url": "https://beacon.schneidercorp.com/Application.aspx?AppID=1260&LayerID=41600&PageTypeID=1&PageID=15390&KeyValue=02-0020003.2000"
         }
       ],
       "License List": [
@@ -11215,8 +11219,8 @@
       "Important Info": "<p><br></p>",
       "Media": [
         {
-          "url": "N/A",
-          "type": "N/A"
+          "type": "N/A",
+          "url": "N/A"
         }
       ]
     },
