@@ -6388,12 +6388,12 @@
       "Project": "CA - City of Fremont",
       "Public Records & GIS": [
         {
-          "url": "https://egis.fremont.gov/gisapps/fremont/index.html?viewer=Public.gvh&_gl=1*thjk7q*_ga*MTk4MDAzMDc2OC4xNzEzMTkyNTAw*_ga_24CKMMECR8*MTcxMzE5MjUwMC4xLjEuMTcxMzE5MjUyNS4zNS4wLjA.",
-          "type": "GIS (Use VPN)"
+          "type": "GIS (Use VPN)",
+          "url": "https://egis.fremont.gov/gisapps/fremont/index.html?viewer=Public.gvh&_gl=1*thjk7q*_ga*MTk4MDAzMDc2OC4xNzEzMTkyNTAw*_ga_24CKMMECR8*MTcxMzE5MjUwMC4xLjEuMTcxMzE5MjUyNS4zNS4wLjA."
         },
         {
-          "url": "https://www.acassessor.org/parcel_viewer/",
-          "type": "GIS (Use VPN)"
+          "type": "GIS (Use VPN)",
+          "url": "https://www.acassessor.org/parcel_viewer/"
         },
         {
           "type": "PR",
@@ -6402,15 +6402,15 @@
       ],
       "License List": [
         {
-          "url": "N/A",
-          "type": "N/A"
+          "type": "N/A",
+          "url": "N/A"
         }
       ],
-      "Important Info": "<p>To use the public records, we need to:</p><p><br></p><ul><li>Remove the leading zeros from the APN provided by Cyborg.</li><li>Format the APN with dashes in the PR.</li></ul><p><br></p><p>For example, for the APN 531001213200, it should be entered in the PR as 531-12-132.</p>",
+      "Important Info": "<p>To use the public records, we need to:</p><p><br></p><ul><li>Remove the leading zeros from the APN provided by Cyborg.</li><li>Format the APN with dashes in the PR.</li></ul><p><br></p><p>For example, for the APN 531001213200, it should be entered in the PR as 531-12-132.</p><p><br></p><ul><li>Be careful with the following addresses: 45500 Fremont Blvd, Fremont, CA 94538 and 44758 Old Warm Springs Blvd, Fremont, CA 94538. They may appear to be UOMs, but each apartment has its own unit with a corresponding APN.</li></ul>",
       "Media": [
         {
-          "url": "N/A",
-          "type": "N/A"
+          "type": "N/A",
+          "url": "N/A"
         }
       ]
     },
