@@ -11713,6 +11713,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "NE - City of Lincoln",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://orion.lancaster.ne.gov/"
+        },
+        {
+          "type": "GIS (VPN)",
+          "url": "https://maps.lincoln.ne.gov/default/index.html?viewer=GISViewer&run=FindParcel&PID=006718"
+        }
+      ],
+      "License List": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ],
+      "Important Info": "<p><br></p>",
+      "Media": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ]
     }
   ]
 }
