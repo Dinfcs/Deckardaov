@@ -11683,6 +11683,28 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "OK - City Of Broken Arrow",
+      "Public Records & GIS": [
+        {
+          "url": "https://www.assessor.tulsacounty.org/",
+          "type": "TulsaCountyPR&GIS"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "<p><br></p>",
+      "Media": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ]
     }
   ]
 }
