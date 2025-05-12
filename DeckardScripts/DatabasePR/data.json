@@ -11436,8 +11436,8 @@
           "type": "PR"
         },
         {
-          "type": "GIS",
-          "url": "https://travis.prodigycad.com/maps"
+          "url": "https://travis.prodigycad.com/maps",
+          "type": "GIS"
         }
       ],
       "License List": [
@@ -11446,7 +11446,7 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "<ul><li>To search by APN in PR or GIS, make sure to select the \"Geographic ID\" option.</li><li>You can also use the \"Property ID\" option to search with the Regrid APN.</li></ul><p><br></p>",
+      "Important Info": "<ul><li>To search by APN in PR or GIS, make sure to select the \"Geographic ID\" option.</li><li>You can also use the \"Property ID\" option to search with the Regrid APN.</li><li>The properties located at coordinates 30.4088089949585, -97.99169876328116 appear as a single parcel in the GIS; however, each house has its own APN and should therefore be considered as <strong>main structure</strong>. Each house has a different street number as well as a unit number, which corresponds to the same street number. In these cases, AO is not required.</li><li>However, some parcels show incorrect street names in Cyborg. In such cases, AO should be performed to correct the street name, and the unit number listed in the PR must be included.</li></ul><p><br></p>",
       "Media": [
         {
           "type": "N/A",
