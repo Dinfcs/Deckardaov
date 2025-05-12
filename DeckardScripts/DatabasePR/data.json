@@ -10614,33 +10614,41 @@
       "Project": "VA - Town Of Cape Charles",
       "Public Records & GIS": [
         {
-          "url": "https://gis.vgsi.com/northamptonva/Search.aspx",
-          "type": "PR"
+          "type": "PR",
+          "url": "https://gis.vgsi.com/northamptonva/Search.aspx"
         },
         {
-          "url": "https://northampton.civ.quest/",
-          "type": "GIS (Northampton County)"
-        },
-        {
-          "type": "GIS (VA County)",
+          "type": "GIS (VA)",
           "url": "https://hub.arcgis.com/datasets/VDOT::virginia-parcels-map-service/explore?location=37.256171%2C-76.005069%2C20.46"
         },
         {
-          "url": "https://charlescityvagis.maps.arcgis.com/apps/webappviewer/index.html?id=2b70fc5f91794787b0d934ce43724a36",
-          "type": "GIS 3"
+          "type": "GIS 2",
+          "url": "https://charlescityvagis.maps.arcgis.com/apps/webappviewer/index.html?id=2b70fc5f91794787b0d934ce43724a36"
         }
       ],
       "License List": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ],
-      "Important Info": "<p>GIS from Virginia County only allows to see the parcel division</p>",
+      "Important Info": "<ol><li>APNs must include dashes according to the format in Cyborg. If they are omitted, the system will not be able to correctly distinguish between different APNs.</li><li>Some addresses appear with two different APN formats in the parcels (image 1).</li></ol><p><br></p><p>       In these cases, to identify the correct APN, we should refer to the PR or GIS as follows:</p><p><br></p><ul><li>Search for the address in the PR and click on “Search,” <strong>not</strong> on the suggested address (highlighted in the red box) (image 2).</li><li>This way, you will be able to view the APN information as shown in image 3. The correct APN will be the one that includes the “Block\".</li><li>To use this format in Cyborg and save it without issues, any extra zeros must be removed as needed.</li></ul><p><br></p><ul><li><strong>To view the APN in GIS: </strong>Search for the address and click on the corresponding parcel. In the “PARCELID” section, you will see the APN in the correct format, which includes the <em>Block</em>. (image 4)</li></ul>",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "type": "Image 1",
+          "url": "https://drive.google.com/uc?export=view&id=1XMXk7kx0CQvQ93JoeXZJMWPPwD-HnUA2"
+        },
+        {
+          "type": "Image 2",
+          "url": "https://drive.google.com/uc?export=view&id=1wXMH0ELAhFdcPOQ168Lz55ZE1tkY9_Pj"
+        },
+        {
+          "type": "Image 3",
+          "url": "https://drive.google.com/uc?export=view&id=1Km1C66lWgjff0tJSgaG8UIBfWXyLSoHO"
+        },
+        {
+          "type": "Image 4",
+          "url": "https://drive.google.com/uc?export=view&id=1SjwYNfoKSBKRIgn7WjYi1fx0FFjDTfKJ"
         }
       ]
     },
