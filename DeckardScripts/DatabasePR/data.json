@@ -11766,14 +11766,14 @@
       "Project": "CA - City of Elk Grove",
       "Public Records & GIS": [
         {
-          "type": "PR & GIS (Lucho Tools)",
-          "url": "https://pqweb.parcelquest.com/#login"
+          "url": "https://pqweb.parcelquest.com/#login",
+          "type": "PR & GIS (PQ Lucho Tools)"
         }
       ],
       "License List": [
         {
-          "url": "N/A",
-          "type": "N/A"
+          "type": "N/A",
+          "url": "N/A"
         }
       ],
       "Important Info": "<p><br></p>",
