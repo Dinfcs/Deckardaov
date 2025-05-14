@@ -7828,8 +7828,8 @@
       "Project": "AZ - City of Casa Grande",
       "Public Records & GIS": [
         {
-          "type": "PR (Use VPN)",
-          "url": "https://app1.pinal.gov/Search/Parcel-Search.aspx"
+          "url": "https://app1.pinal.gov/Search/Parcel-Search.aspx",
+          "type": "PR (Use VPN)"
         },
         {
           "type": "GIS",
@@ -7842,7 +7842,7 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "N/A",
+      "Important Info": "<p>Make sure to check if parcels has two apns and, if that's true, use the one with a 0 at the end.</p>",
       "Media": [
         {
           "type": "N/A",
