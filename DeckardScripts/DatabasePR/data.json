@@ -11739,6 +11739,32 @@
           "type": "N/A"
         }
       ]
+    },
+    {
+      "Project": "NY - Yates County",
+      "Public Records & GIS": [
+        {
+          "url": "https://yates.sdgnys.com/search.aspx",
+          "type": "PR"
+        },
+        {
+          "url": "https://gisportal.yatescounty.org/portal/apps/webappviewer/index.html?id=f73dd0463ae747a7a011564b20c17409",
+          "type": "GIS"
+        }
+      ],
+      "License List": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ],
+      "Important Info": "<p>🔎 Important Info:</p><p><br></p><p>When searching for properties in PR <strong>it’s easier to use the street number and street name</strong>. This is because the APN is split into two parts: a SWIS number and a Tax ID, and the Tax ID contains punctuation that can make direct searches more difficult.</p>",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
