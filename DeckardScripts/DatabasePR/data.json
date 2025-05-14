@@ -1832,14 +1832,14 @@
           "type": "PR (Use VPN)"
         },
         {
-          "type": "GIS (Use VPN)",
-          "url": "https://maps.ventura.org/countyview/"
+          "url": "https://maps.ventura.org/countyview/",
+          "type": "GIS (Use VPN)"
         }
       ],
       "License List": [
         {
-          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EUsS-ptJkWhNlmBwFK0tI0UBDukIxCo5fVWK4GzcI08RIw?e=tuaSB3",
-          "type": "Updated License List"
+          "type": "Updated License List",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/ER4L__duz2xBmD_UwZsUceEBUAweG-_2szTHMo26fO6j-Q?e=NaQ81o"
         },
         {
           "type": "Permit List Spreadsheet",
@@ -1849,8 +1849,8 @@
       "Important Info": "<p>N/A</p>",
       "Media": [
         {
-          "url": "N/A",
-          "type": "N/A"
+          "type": "N/A",
+          "url": "N/A"
         }
       ]
     },
