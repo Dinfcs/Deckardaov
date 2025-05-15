@@ -11869,6 +11869,28 @@
           "type": "Image 2"
         }
       ]
+    },
+    {
+      "Project": "NY - Suffolk County",
+      "Public Records & GIS": [
+        {
+          "type": "GIS (use VPN)",
+          "url": "https://gisapps.suffolkcountyny.gov/gisviewer/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "<p><br></p>",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
