@@ -7104,15 +7104,19 @@
         {
           "type": "PR - GIS",
           "url": "https://beacon.schneidercorp.com/Application.aspx?AppID=1120&LayerID=28246&PageTypeID=2&PageID=11592"
+        },
+        {
+          "type": "PR2",
+          "url": "https://auditor.eriecounty.oh.gov/Search/Location"
         }
       ],
       "License List": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ],
-      "Important Info": "N/A",
+      "Important Info": "<p>N/A</p>",
       "Media": [
         {
           "type": "N/A",
