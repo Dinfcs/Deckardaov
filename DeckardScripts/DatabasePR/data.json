@@ -11809,6 +11809,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "FL - City Of Bradenton",
+      "Public Records & GIS": [
+        {
+          "url": "https://cityofbradenton.maps.arcgis.com/apps/webappviewer/index.html?id=cc3a8bd6fb064e49b2ec8cd4b505589d",
+          "type": "GIS1"
+        },
+        {
+          "url": "https://cityofbradenton.maps.arcgis.com/apps/webappviewer/index.html?id=be8a2ced2a6846cd9599732098d70cd9",
+          "type": "GIS2"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "<p><br></p>",
+      "Media": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ]
     }
   ]
 }
