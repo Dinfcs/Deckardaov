@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         Barra de Búsqueda Mejorada v2.4
+// @name         Barra de Búsqueda Mejorada v3.2
 // @namespace    http://tampermonkey.net/
-// @version      2.4
-// @description  Barra de búsqueda con ventana flotante grande, zoom en imágenes y diseño mejorado.
+// @version      3.2
+// @description  Ícono de lupa que abre ventana flotante con barra de búsqueda integrada (versión corregida)
 // @author
 // @match        https://cyborg.deckard.com/listing/*STR*
 // ==/UserScript==
@@ -10,113 +10,70 @@
 (function() {
     'use strict';
 
-    // --- Variable para almacenar los datos de FAQ ---
+    // --- Variables globales ---
     let faqData = [];
+    let isDragging = false;
+    let dragOffsetX, dragOffsetY;
+    let searchTimeout;
+    let isWindowVisible = false;
+    let isDataLoaded = false;
 
-    // --- Estilos CSS Mejorados ---
+    // --- Estilos CSS optimizados ---
     const styles = `
-        :root {
-            --search-primary-color: #007bff;
-            --search-secondary-color: #6c757d;
-            --search-light-gray: #f8f9fa;
-            --search-medium-gray: #e9ecef;
-            --search-dark-gray: #343a40;
-            --search-text-color: #212529;
-            --search-bg-color: #ffffff;
-            --search-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            --search-border-radius: 12px;
-            --search-font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        }
-
         .floating-search-container {
             position: fixed;
-            bottom: 25px;
-            right: 25px;
+            bottom: 50px;
+            right: 15px;
             z-index: 8000;
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            font-family: var(--search-font-family);
-        }
-
-        .floating-search-bar {
-            display: flex;
-            align-items: center;
-            background: var(--search-bg-color);
-            border-radius: 28px;
-            box-shadow: var(--search-shadow);
-            padding: 8px 15px;
-            width: 200px;
-            max-width: calc(100vw - 40px);
-            border: 1px solid var(--search-medium-gray);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            font-family: 'Segoe UI', Roboto, sans-serif;
             transition: all 0.3s ease;
         }
 
-        .floating-search-bar:hover {
-            width: 300px;
-        }
-
-        .floating-search-input {
-            flex-grow: 1;
-            border: none;
-            background: transparent;
-            padding: 8px 0;
-            font-size: 14px;
-            outline: none;
-            color: var(--search-text-color);
-            margin-right: 10px;
-        }
-
-        .floating-search-input::placeholder {
-            color: #888;
-            opacity: 1;
-        }
-
         .floating-search-button {
-            background: var(--search-primary-color);
+            background: #007bff;
             border: none;
             color: white;
             cursor: pointer;
-            padding: 8px;
-            font-size: 16px;
+            padding: 12px;
+            font-size: 20px;
             border-radius: 50%;
-            width: 32px;
-            height: 32px;
+            width: 48px;
+            height: 48px;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: background-color 0.2s ease;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
         .floating-search-button:hover {
             background: #0056b3;
+            transform: scale(1.1);
         }
 
         .search-results-window {
             position: fixed;
-            top: 10px;
+            top: 50%;
             left: 50%;
+            transform: translate(-50%, -50%);
             width: 90vw;
-            height: calc(100vh - 40px);
-            min-width: 320px;
             max-width: 850px;
-            background: var(--search-bg-color);
-            border-radius: var(--search-border-radius);
+            height: 85vh;
+            background: white;
+            border-radius: 12px;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
             z-index: 8000;
             display: none;
             flex-direction: column;
             overflow: hidden;
-            border: 1px solid var(--search-medium-gray);
+            border: 1px solid #e9ecef;
             opacity: 0;
-            transform: translateX(-50%) scale(0.95);
-            transition: opacity 0.25s ease-out, transform 0.25s ease-out;
+            transition: opacity 0.25s ease;
         }
 
         .search-results-window.visible {
             display: flex;
             opacity: 1;
-            transform: translateX(-50%) scale(1);
         }
 
         .search-results-header {
@@ -124,29 +81,47 @@
             justify-content: space-between;
             align-items: center;
             padding: 12px 20px;
-            background: var(--search-light-gray);
-            border-bottom: 1px solid var(--search-medium-gray);
+            background: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
             cursor: move;
             user-select: none;
-            border-top-left-radius: var(--search-border-radius);
-            border-top-right-radius: var(--search-border-radius);
+        }
+
+        .window-search-container {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .window-search-input {
+            flex-grow: 1;
+            border: 1px solid #e9ecef;
+            border-radius: 20px;
+            padding: 8px 15px;
+            font-size: 14px;
+            outline: none;
+            color: #212529;
+            margin-right: 10px;
+            transition: all 0.2s ease;
+        }
+
+        .window-search-input:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
         }
 
         .search-results-title {
             font-weight: 600;
-            color: var(--search-dark-gray);
+            color: #343a40;
             font-size: 17px;
-        }
-
-        .window-controls-container {
-            display: flex;
-            align-items: center;
         }
 
         .window-control {
             background: transparent;
             border: none;
-            color: var(--search-secondary-color);
+            color: #6c757d;
             cursor: pointer;
             font-size: 20px;
             margin-left: 10px;
@@ -156,83 +131,73 @@
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            transition: background-color 0.2s ease, color 0.2s ease;
+            transition: all 0.2s ease;
         }
 
         .window-control:hover {
-            background: var(--search-medium-gray);
-            color: var(--search-dark-gray);
+            background: #e9ecef;
+            color: #343a40;
         }
 
         .search-results-content {
             padding: 10px;
             overflow-y: auto;
             flex-grow: 1;
-            scrollbar-width: thin;
-            scrollbar-color: var(--search-primary-color) var(--search-light-gray);
         }
 
         .search-results-content::-webkit-scrollbar {
-            width: 10px;
+            width: 8px;
         }
 
         .search-results-content::-webkit-scrollbar-track {
-            background: var(--search-light-gray);
-            border-radius: 10px;
+            background: #f8f9fa;
         }
 
         .search-results-content::-webkit-scrollbar-thumb {
-            background-color: var(--search-primary-color);
-            border-radius: 10px;
-            border: 2px solid var(--search-light-gray);
+            background-color: #007bff;
+            border-radius: 4px;
         }
 
         .faq-item {
-            margin-bottom: 20px;
-            padding: 20px;
+            margin-bottom: 15px;
+            padding: 15px;
             border-radius: 8px;
-            background: var(--search-bg-color);
+            background: white;
             border: 1px solid #e9ecef;
-            transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-
-        .faq-item:last-child {
-            margin-bottom: 0;
+            transition: all 0.2s ease;
         }
 
         .faq-item:hover {
-            border-color: var(--search-primary-color);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            transform: translateY(-2px);
+            border-color: #007bff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
 
         .faq-question {
             font-weight: 600;
-            color: var(--search-primary-color);
-            margin-bottom: 10px;
-            font-size: 18px;
+            color: #007bff;
+            margin-bottom: 8px;
+            font-size: 16px;
         }
 
         .faq-answer {
             color: #555;
-            line-height: 1.7;
+            line-height: 1.6;
             white-space: pre-line;
-            font-size: 15px;
+            font-size: 14px;
         }
 
         .faq-answer img {
+            display: block;
             max-width: 100%;
             height: auto;
             border-radius: 6px;
-            margin: 10px 0;
+            margin: 8px auto;
             cursor: zoom-in;
             transition: transform 0.2s ease;
         }
 
         .faq-answer img:hover {
             transform: scale(1.02);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
         .highlight {
@@ -240,22 +205,19 @@
             font-weight: bold;
             padding: 1px 3px;
             border-radius: 3px;
-            color: #333;
         }
 
-        .no-results, .initial-message, .error-message {
+        .status-message {
             text-align: center;
-            color: var(--search-secondary-color);
-            padding: 50px 20px;
-            font-size: 16px;
-            font-style: italic;
+            color: #6c757d;
+            padding: 40px 20px;
+            font-size: 15px;
         }
 
         .error-message {
             color: #d9534f;
         }
 
-        /* Modal para imágenes */
         .image-modal {
             display: none;
             position: fixed;
@@ -265,7 +227,6 @@
             height: 100%;
             background-color: rgba(0,0,0,0.9);
             z-index: 8000;
-            overflow: auto;
             justify-content: center;
             align-items: center;
         }
@@ -273,9 +234,6 @@
         .image-modal-content {
             max-width: 90%;
             max-height: 90%;
-            margin: auto;
-            display: block;
-            animation: zoom 0.3s;
         }
 
         .image-modal-close {
@@ -285,421 +243,264 @@
             color: #f1f1f1;
             font-size: 40px;
             font-weight: bold;
-            transition: 0.3s;
             cursor: pointer;
-        }
-
-        .image-modal-close:hover {
-            color: #bbb;
-        }
-
         }
     `;
 
-    const styleElement = document.createElement('style');
-    styleElement.textContent = styles;
-    document.head.appendChild(styleElement);
-
-    // --- Crear Elementos HTML ---
-    const container = document.createElement('div');
-    container.className = 'floating-search-container';
-
-    const searchBar = document.createElement('div');
-    searchBar.className = 'floating-search-bar';
-
-    const searchInput = document.createElement('input');
-    searchInput.className = 'floating-search-input';
-    searchInput.type = 'text';
-    searchInput.placeholder = 'Cargando FAQs...';
-    searchInput.autocomplete = 'off';
-    searchInput.setAttribute('aria-label', 'Campo de búsqueda');
-    searchInput.disabled = true;
-
-    const searchButton = document.createElement('button');
-    searchButton.className = 'floating-search-button';
-    searchButton.innerHTML = '<span>&#x1F50D;</span>';
-    searchButton.title = 'Buscar';
-    searchButton.setAttribute('aria-label', 'Botón de búsqueda');
-    searchButton.disabled = true;
-
-    const resultsWindow = document.createElement('div');
-    resultsWindow.className = 'search-results-window';
-    resultsWindow.setAttribute('role', 'dialog');
-    resultsWindow.setAttribute('aria-modal', 'true');
-    resultsWindow.setAttribute('aria-labelledby', 'searchResultsTitle');
-
-    const resultsHeader = document.createElement('div');
-    resultsHeader.className = 'search-results-header';
-
-    const resultsTitle = document.createElement('div');
-    resultsTitle.className = 'search-results-title';
-    resultsTitle.id = 'searchResultsTitle';
-    resultsTitle.textContent = 'Resultados de Búsqueda';
-
-    const windowControlsContainer = document.createElement('div');
-    windowControlsContainer.className = 'window-controls-container';
-
-    const closeButton = document.createElement('button');
-    closeButton.className = 'window-control';
-    closeButton.innerHTML = '<span>&times;</span>';
-    closeButton.title = 'Cerrar';
-    closeButton.setAttribute('aria-label', 'Cerrar ventana de resultados');
-
-    const resultsContent = document.createElement('div');
-    resultsContent.className = 'search-results-content';
-
-    // Crear modal para imágenes
-    const imageModal = document.createElement('div');
-    imageModal.className = 'image-modal';
-
-    const modalClose = document.createElement('span');
-    modalClose.className = 'image-modal-close';
-    modalClose.innerHTML = '&times;';
-    modalClose.title = 'Cerrar';
-
-    const modalContent = document.createElement('img');
-    modalContent.className = 'image-modal-content';
-
-    imageModal.appendChild(modalClose);
-    imageModal.appendChild(modalContent);
-
-    // --- Construir la Estructura del DOM ---
-    windowControlsContainer.appendChild(closeButton);
-    resultsHeader.appendChild(resultsTitle);
-    resultsHeader.appendChild(windowControlsContainer);
-
-    resultsWindow.appendChild(resultsHeader);
-    resultsWindow.appendChild(resultsContent);
-
-    searchBar.appendChild(searchInput);
-    searchBar.appendChild(searchButton);
-
-    container.appendChild(searchBar);
-    document.body.appendChild(resultsWindow);
-    document.body.appendChild(container);
-    document.body.appendChild(imageModal);
-
-    // --- Lógica de Funcionalidad ---
-    let isDragging = false;
-    let dragOffsetX, dragOffsetY;
-    let searchTimeout;
-    let isWindowVisible = false;
-
-    // --- Función para cargar los datos de FAQ desde JSON ---
+    // --- Funciones principales ---
     async function loadFaqData() {
         try {
-           const response = await fetch('https://dinfcs.github.io/Deckardaov/DeckardScripts/FAQ/faqs.json');
-            //const response = await fetch('https://script.google.com/a/macros/deckard.com/s/AKfycbwTWV21oVCGJqeOtDNgJ_14XH89wjqrP0M7kEqfo3aGNjnQqaCJRio0F1VG9JdhHUYz/exec?endpoint=json');
-            if (!response.ok) {
-                throw new Error(`Error HTTP! estado: ${response.status}`);
-            }
+            const response = await fetch('https://dinfcs.github.io/Deckardaov/DeckardScripts/FAQ/faqs.json');
+            if (!response.ok) throw new Error(`Error HTTP: ${response.status}`);
+
             const data = await response.json();
+            faqData = Array.isArray(data) ? data :
+                     data?.preguntasFrecuentes ? data.preguntasFrecuentes :
+                     data?.FAQ ? data.FAQ : [];
 
-            if (Array.isArray(data)) {
-                faqData = data;
-            } else if (data && Array.isArray(data.preguntasFrecuentes)) {
-                faqData = data.preguntasFrecuentes;
-            } else if (data && Array.isArray(data.FAQ)) {
-                 faqData = data.FAQ;
-            }
-            else {
-                throw new Error('Formato de FAQ JSON inesperado.');
-            }
-
-            searchInput.placeholder = 'Busca en la Base de Conocimiento...';
-            console.log('Datos de FAQ cargados:', faqData.length, 'elementos');
-
+            isDataLoaded = true;
+            console.log("Datos de FAQ cargados correctamente");
         } catch (error) {
-            console.error('Error al cargar los datos de FAQ:', error);
-            faqData = [];
-            searchInput.placeholder = 'Error al cargar FAQs.';
-            resultsContent.innerHTML = '';
-            const errorMessage = document.createElement('p');
-            errorMessage.className = 'error-message';
-            errorMessage.textContent = 'No se pudieron cargar las FAQs. Por favor, inténtalo más tarde.';
-            resultsContent.appendChild(errorMessage);
-            if (!isWindowVisible) showResultsWindow();
+            console.error('Error al cargar FAQs:', error);
+            showStatusMessage('No se pudieron cargar las FAQs. Por favor, inténtalo más tarde.', true);
         } finally {
-            searchInput.disabled = false;
             searchButton.disabled = false;
-            if (document.activeElement === searchInput) {
-                 displayResults(searchInput.value);
-            }
         }
     }
 
-    // Función para mostrar resultados con debounce
-function displayResults(searchTerm) {
-    clearTimeout(searchTimeout);
-
-    searchTimeout = setTimeout(() => {
+    function displayAllFAQs(searchTerm = '') {
         resultsContent.innerHTML = '';
 
-        if (searchInput.disabled) {
-            const statusMessage = document.createElement('p');
-            statusMessage.className = 'initial-message';
-            statusMessage.textContent = searchInput.placeholder;
-            resultsContent.appendChild(statusMessage);
-            return;
+        if (!faqData.length) {
+            return showStatusMessage('No hay datos de FAQ disponibles.');
         }
 
-        if (!searchTerm.trim()) {
-            const initialMessage = document.createElement('p');
-            initialMessage.className = 'initial-message';
-            initialMessage.textContent = 'Escribe algo para buscar en las FAQs.';
-            resultsContent.appendChild(initialMessage);
-            return;
-        }
-
-        if (faqData.length === 0 && !resultsContent.querySelector('.error-message')) {
-            const noDataMessage = document.createElement('p');
-            noDataMessage.className = 'no-results';
-            noDataMessage.textContent = 'No hay datos de FAQ disponibles para buscar.';
-            resultsContent.appendChild(noDataMessage);
-            return;
-        }
-
-        const lowerSearchTerm = searchTerm.toLowerCase().trim();
-        let foundResults = false;
         const fragment = document.createDocumentFragment();
+        let hasResults = false;
 
         faqData.forEach(item => {
-            if (item && typeof item.question === 'string' && typeof item.answer === 'string') {
-                const textOnlyAnswer = item.answer.replace(/<img[^>]+src="data:image[^"]*"[^>]*>/g, '');
-                const lowerQuestion = item.question.toLowerCase();
+            if (!item?.question || !item?.answer) return;
 
-                if (lowerQuestion.includes(lowerSearchTerm) || textOnlyAnswer.toLowerCase().includes(lowerSearchTerm)) {
-                    foundResults = true;
-                    const resultItem = document.createElement('div');
-                    resultItem.className = 'faq-item';
-
-                    // Procesar pregunta
-                    const questionElement = document.createElement('h3');
-                    questionElement.className = 'faq-question';
-                    questionElement.innerHTML = highlightText(item.question, searchTerm);
-                    resultItem.appendChild(questionElement);
-
-                    // Procesar respuesta
-                    const answerElement = document.createElement('div');
-                    answerElement.className = 'faq-answer';
-
-                    // Solución mejorada para evitar duplicados
-                    const tempDiv = document.createElement('div');
-                    tempDiv.innerHTML = item.answer;
-
-                    // Procesar solo los nodos de primer nivel
-                    Array.from(tempDiv.childNodes).forEach(node => {
-                        if (node.nodeType === Node.TEXT_NODE && node.textContent.trim() !== '') {
-                            const textNode = document.createElement('div');
-                            textNode.innerHTML = highlightText(node.textContent, searchTerm);
-                            answerElement.appendChild(textNode);
-                        } else if (node.nodeType === Node.ELEMENT_NODE) {
-                            if (node.tagName === 'IMG') {
-                                const imgContainer = document.createElement('div');
-                                imgContainer.className = 'faq-image-container';
-                                const img = node.cloneNode(true);
-                                img.addEventListener('click', () => openImageModal(img.src));
-                                imgContainer.appendChild(img);
-                                answerElement.appendChild(imgContainer);
-                            } else {
-                                // Procesar elementos que no son imágenes
-                                const element = node.cloneNode(true);
-                                if (element.textContent) {
-                                    // Solo resaltar texto en elementos que no contengan imágenes
-                                    if (!element.querySelector('img')) {
-                                        element.innerHTML = highlightText(element.innerHTML, searchTerm);
-                                    }
-                                }
-                                answerElement.appendChild(element);
-                            }
-                        }
-                    });
-
-                    resultItem.appendChild(answerElement);
-                    fragment.appendChild(resultItem);
+            if (searchTerm) {
+                const lowerSearchTerm = searchTerm.toLowerCase();
+                const textOnlyAnswer = item.answer.replace(/<img[^>]*>/g, '');
+                if (!item.question.toLowerCase().includes(lowerSearchTerm) &&
+                    !textOnlyAnswer.toLowerCase().includes(lowerSearchTerm)) {
+                    return;
                 }
+            }
+
+            hasResults = true;
+            const resultItem = createResultItem(item, searchTerm);
+            fragment.appendChild(resultItem);
+        });
+
+        if (hasResults) {
+            resultsContent.appendChild(fragment);
+        } else {
+            showStatusMessage('No se encontraron resultados para tu búsqueda.');
+        }
+    }
+
+    function createResultItem(item, searchTerm) {
+        const resultItem = document.createElement('div');
+        resultItem.className = 'faq-item';
+
+        const questionElement = document.createElement('h3');
+        questionElement.className = 'faq-question';
+        questionElement.innerHTML = highlightText(item.question, searchTerm);
+        resultItem.appendChild(questionElement);
+
+        const answerElement = document.createElement('div');
+        answerElement.className = 'faq-answer';
+        answerElement.innerHTML = processAnswerContent(item.answer, searchTerm);
+        resultItem.appendChild(answerElement);
+
+        return resultItem;
+    }
+
+    function processAnswerContent(answer, searchTerm) {
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = answer;
+
+        const images = tempDiv.querySelectorAll('img');
+        images.forEach(img => {
+            img.addEventListener('click', () => openImageModal(img.src));
+        });
+
+        const textNodes = [];
+        tempDiv.childNodes.forEach(node => {
+            if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
+                textNodes.push(highlightText(node.textContent, searchTerm));
+            } else if (node.nodeType === Node.ELEMENT_NODE && node.tagName !== 'IMG') {
+                textNodes.push(node.outerHTML);
             }
         });
 
-        if (foundResults) {
-            resultsContent.appendChild(fragment);
-        } else if (!resultsContent.querySelector('.error-message')) {
-            const noResults = document.createElement('p');
-            noResults.className = 'no-results';
-            noResults.textContent = 'No se encontraron resultados para tu búsqueda. Intenta con otros términos.';
-            resultsContent.appendChild(noResults);
-        }
-
-        if (searchTerm.trim() && !isWindowVisible) {
-            showResultsWindow();
-        }
-    }, 250);
-}
-
-// Función auxiliar para extraer imágenes del answer sin modificar
-function extractImagesFromAnswer(html) {
-    const imgRegex = /<img[^>]+src="data:image[^"]*"[^>]*>/g;
-    let imagesHtml = '';
-    let match;
-
-    while ((match = imgRegex.exec(html)) !== null) {
-        imagesHtml += match[0];
+        return textNodes.join('');
     }
 
-    return imagesHtml;
-}
-
-// Función para resaltar texto (sin cambios)
-function highlightText(text, searchTerm) {
-    if (!searchTerm.trim()) return text;
-    const escapedSearchTerm = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    const regex = new RegExp(`(${escapedSearchTerm})`, 'gi');
-    return text.replace(regex, '<span class="highlight">$1</span>');
-}
-
-    // Función para resaltar texto
     function highlightText(text, searchTerm) {
-        if (!searchTerm.trim()) return text;
-        const escapedSearchTerm = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-        const regex = new RegExp(`(${escapedSearchTerm})`, 'gi');
-        return text.replace(regex, '<span class="highlight">$1</span>');
+        if (!searchTerm?.trim()) return text;
+        const escapedTerm = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        return text.replace(new RegExp(`(${escapedTerm})`, 'gi'), '<span class="highlight">$1</span>');
     }
 
-    // Mostrar ventana de resultados
+    function showStatusMessage(message, isError = false) {
+        resultsContent.innerHTML = '';
+        const msgElement = document.createElement('p');
+        msgElement.className = isError ? 'error-message status-message' : 'status-message';
+        msgElement.textContent = message;
+        resultsContent.appendChild(msgElement);
+    }
+
     function showResultsWindow() {
-        if (isWindowVisible) return;
+        console.log("Mostrando ventana de resultados");
         resultsWindow.classList.add('visible');
         isWindowVisible = true;
-        searchInput.setAttribute('aria-expanded', 'true');
+        windowSearchInput.focus();
     }
 
-    // Ocultar ventana de resultados
     function hideResultsWindow() {
-        if (!isWindowVisible) return;
         resultsWindow.classList.remove('visible');
         isWindowVisible = false;
-        searchInput.setAttribute('aria-expanded', 'false');
     }
 
-    // Función para abrir imagen en modal
+    function toggleResultsWindow() {
+        if (!isWindowVisible) {
+            if (!isDataLoaded) {
+                showStatusMessage("Cargando FAQs...");
+                showResultsWindow();
+                return;
+            }
+            displayAllFAQs();
+            showResultsWindow();
+        } else {
+            hideResultsWindow();
+        }
+    }
+
     function openImageModal(src) {
         modalContent.src = src;
         imageModal.style.display = 'flex';
         document.body.style.overflow = 'hidden';
     }
 
-    // Función para cerrar modal de imagen
     function closeImageModal() {
         imageModal.style.display = 'none';
         document.body.style.overflow = 'auto';
     }
 
-    // --- Event Listeners ---
-    searchInput.addEventListener('input', (e) => {
-        const searchTerm = e.target.value;
-        displayResults(searchTerm);
-        if (searchTerm.trim() && !isWindowVisible && !searchInput.disabled) {
-            showResultsWindow();
-        }
+    // --- Creación de elementos DOM ---
+    const styleElement = document.createElement('style');
+    styleElement.textContent = styles;
+    document.head.appendChild(styleElement);
+
+    // Contenedor principal con solo el botón de lupa
+    const container = document.createElement('div');
+    container.className = 'floating-search-container';
+
+    const searchButton = document.createElement('button');
+    searchButton.className = 'floating-search-button';
+    searchButton.innerHTML = '&#x1F50D;';
+    searchButton.disabled = true;
+    searchButton.title = 'Abrir buscador de FAQs';
+
+    // Ventana de resultados con barra de búsqueda integrada
+    const resultsWindow = document.createElement('div');
+    resultsWindow.className = 'search-results-window';
+
+    const resultsHeader = document.createElement('div');
+    resultsHeader.className = 'search-results-header';
+
+    const resultsTitle = document.createElement('div');
+    resultsTitle.className = 'search-results-title';
+    resultsTitle.textContent = 'Base de Conocimiento';
+
+    const closeButton = document.createElement('button');
+    closeButton.className = 'window-control';
+    closeButton.innerHTML = '&times;';
+    closeButton.title = 'Cerrar ventana';
+
+    // Barra de búsqueda dentro de la ventana
+    const searchContainer = document.createElement('div');
+    searchContainer.className = 'window-search-container';
+
+    const windowSearchInput = document.createElement('input');
+    windowSearchInput.className = 'window-search-input';
+    windowSearchInput.type = 'text';
+    windowSearchInput.placeholder = 'Buscar en las FAQs...';
+
+    const resultsContent = document.createElement('div');
+    resultsContent.className = 'search-results-content';
+
+    // Modal para imágenes
+    const imageModal = document.createElement('div');
+    imageModal.className = 'image-modal';
+
+    const modalClose = document.createElement('span');
+    modalClose.className = 'image-modal-close';
+    modalClose.innerHTML = '&times;';
+
+    const modalContent = document.createElement('img');
+    modalContent.className = 'image-modal-content';
+
+    // --- Ensamblaje del DOM ---
+    resultsHeader.append(resultsTitle, closeButton);
+    searchContainer.appendChild(windowSearchInput);
+    resultsWindow.append(resultsHeader, searchContainer, resultsContent);
+    container.appendChild(searchButton);
+    imageModal.append(modalClose, modalContent);
+    document.body.append(container, resultsWindow, imageModal);
+
+    // --- Event listeners ---
+    searchButton.addEventListener('click', toggleResultsWindow);
+
+    windowSearchInput.addEventListener('input', () => {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => {
+            displayAllFAQs(windowSearchInput.value.trim());
+        }, 300);
     });
 
-    searchInput.addEventListener('focus', () => {
-        if (searchInput.disabled) return;
-        if (searchInput.value.trim() || faqData.length > 0 || resultsContent.querySelector('.error-message')) {
-             displayResults(searchInput.value);
-             showResultsWindow();
-        }
-    });
-
-    searchButton.addEventListener('click', () => {
-        if (searchInput.disabled) return;
-        displayResults(searchInput.value);
-        showResultsWindow();
-        searchInput.focus();
-    });
-
-    closeButton.addEventListener('click', (e) => {
-        e.stopPropagation();
-        hideResultsWindow();
-    });
-
-    // Event listeners para el modal de imágenes
+    closeButton.addEventListener('click', hideResultsWindow);
     modalClose.addEventListener('click', closeImageModal);
+    imageModal.addEventListener('click', e => e.target === imageModal && closeImageModal());
 
-    imageModal.addEventListener('click', function(e) {
-        if (e.target === imageModal) {
-            closeImageModal();
-        }
-    });
-
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && imageModal.style.display === 'flex') {
-            closeImageModal();
-        }
-    });
-
-    resultsHeader.addEventListener('mousedown', (e) => {
+    resultsHeader.addEventListener('mousedown', e => {
         if (e.button !== 0) return;
         isDragging = true;
         const rect = resultsWindow.getBoundingClientRect();
-        resultsWindow.style.transform = 'none';
-        resultsWindow.style.left = `${rect.left}px`;
-        resultsWindow.style.top = `${rect.top}px`;
         dragOffsetX = e.clientX - rect.left;
         dragOffsetY = e.clientY - rect.top;
         resultsHeader.style.cursor = 'grabbing';
-        document.body.style.userSelect = 'none';
         e.preventDefault();
     });
 
-    document.addEventListener('mousemove', (e) => {
+    document.addEventListener('mousemove', e => {
         if (!isDragging) return;
-        let x = e.clientX - dragOffsetX;
-        let y = e.clientY - dragOffsetY;
-        const minX = 0;
-        const minY = 0;
-        const maxX = window.innerWidth - resultsWindow.offsetWidth;
-        const maxY = window.innerHeight - resultsWindow.offsetHeight;
-        x = Math.max(minX, Math.min(x, maxX));
-        y = Math.max(minY, Math.min(y, maxY));
-        resultsWindow.style.left = `${x}px`;
-        resultsWindow.style.top = `${y}px`;
+        resultsWindow.style.left = `${e.clientX - dragOffsetX}px`;
+        resultsWindow.style.top = `${e.clientY - dragOffsetY}px`;
     });
 
     document.addEventListener('mouseup', () => {
-        if (isDragging) {
-            isDragging = false;
-            resultsHeader.style.cursor = 'move';
-            document.body.style.userSelect = '';
+        isDragging = false;
+        resultsHeader.style.cursor = 'move';
+    });
+
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') {
+            if (imageModal.style.display === 'flex') closeImageModal();
+            else if (isWindowVisible) hideResultsWindow();
         }
     });
 
-    document.addEventListener('click', (e) => {
+    document.addEventListener('click', e => {
         if (isWindowVisible && !resultsWindow.contains(e.target) && !container.contains(e.target)) {
             hideResultsWindow();
         }
     });
 
-    resultsWindow.addEventListener('click', (e) => {
-        e.stopPropagation();
-    });
-
-    searchBar.addEventListener('click', (e) => {
-        e.stopPropagation();
-    });
-
     // --- Inicialización ---
-    loadFaqData().then(() => {
-        displayResults(searchInput.value);
-    });
-
-    if (searchInput.disabled) {
-        displayResults('');
-    }
-
-    setTimeout(() => {
-        container.style.bottom = '50px';
-        container.style.right = '15px';
-    }, 100);
-
+    loadFaqData();
 })();
