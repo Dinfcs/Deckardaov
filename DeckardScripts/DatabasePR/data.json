@@ -11835,6 +11835,36 @@
           "type": "N/A"
         }
       ]
+    },
+    {
+      "Project": "VA - City Of Norfolk",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://air.norfolk.gov/#/"
+        },
+        {
+          "type": "GIS",
+          "url": "https://norfolkgisdata-orf.opendata.arcgis.com/datasets/a516ce5d20b3431baae9ba99b256cb08_1/explore?location=36.892218%2C-76.307429%2C17.57"
+        }
+      ],
+      "License List": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ],
+      "Important Info": "<ul><li>In PR, you can search by either APN or address. It also includes a house front image of the property, which can be useful. The correct APN format to use is the one labeled as \"Account Number\" (Image 1). </li><li>In GIS, you can only search by address. The APN we use in Cyborg is found under the field \"TAX_ACCT\" (Image 2).</li></ul>",
+      "Media": [
+        {
+          "type": "Image 1",
+          "url": "https://drive.google.com/uc?export=view&id=1LNvxQSYY5VplhGSmnrKcOD0pIplOdcg7"
+        },
+        {
+          "url": "https://drive.google.com/uc?export=view&id=1lBWkAXP7tKpLtqyVlBZyQq3zpuLPGJEs",
+          "type": "Image 2"
+        }
+      ]
     }
   ]
 }
