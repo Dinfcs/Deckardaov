@@ -94,12 +94,12 @@
 
         .search-results-window {
             position: fixed;
-            top: 20px;
+            top: 10px;
             left: 50%;
             width: 90vw;
             height: calc(100vh - 40px);
             min-width: 320px;
-            max-width: 1200px;
+            max-width: 850px;
             background: var(--search-bg-color);
             border-radius: var(--search-border-radius);
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
@@ -165,7 +165,7 @@
         }
 
         .search-results-content {
-            padding: 25px;
+            padding: 10px;
             overflow-y: auto;
             flex-grow: 1;
             scrollbar-width: thin;
@@ -293,68 +293,6 @@
             color: #bbb;
         }
 
-        @keyframes zoom {
-            from {transform: scale(0.5)}
-            to {transform: scale(1)}
-        }
-
-        @media (max-width: 768px) {
-            .floating-search-container {
-                bottom: 15px;
-                right: 15px;
-            }
-
-            .floating-search-bar {
-                width: 50px;
-                padding: 8px;
-                justify-content: flex-end;
-            }
-
-            .floating-search-bar:hover {
-                width: calc(100vw - 30px);
-            }
-
-            .floating-search-input {
-                display: none;
-                margin-right: 0;
-            }
-
-            .floating-search-bar:hover .floating-search-input {
-                display: block;
-                margin-right: 10px;
-            }
-
-            .search-results-window {
-                width: 95vw;
-                height: calc(100vh - 20px);
-                top: 10px;
-            }
-
-            .search-results-header {
-                padding: 10px 15px;
-            }
-
-            .search-results-title {
-                font-size: 16px;
-            }
-
-            .window-control {
-                font-size: 18px;
-                width: 28px;
-                height: 28px;
-            }
-
-            .search-results-content {
-                padding: 15px;
-            }
-
-            .faq-question {
-                font-size: 17px;
-            }
-
-            .faq-answer {
-                font-size: 14px;
-            }
         }
     `;
 
@@ -495,9 +433,8 @@ function displayResults(searchTerm) {
     clearTimeout(searchTimeout);
 
     searchTimeout = setTimeout(() => {
-        resultsContent.innerHTML = ''; // Limpiar resultados anteriores
+        resultsContent.innerHTML = '';
 
-        // Si el input está deshabilitado (cargando o error)
         if (searchInput.disabled) {
             const statusMessage = document.createElement('p');
             statusMessage.className = 'initial-message';
@@ -514,7 +451,6 @@ function displayResults(searchTerm) {
             return;
         }
 
-        // Si faqData está vacío y no es debido a un error de carga
         if (faqData.length === 0 && !resultsContent.querySelector('.error-message')) {
             const noDataMessage = document.createElement('p');
             noDataMessage.className = 'no-results';
@@ -529,12 +465,10 @@ function displayResults(searchTerm) {
 
         faqData.forEach(item => {
             if (item && typeof item.question === 'string' && typeof item.answer === 'string') {
-                // Extraer solo el texto (excluyendo imágenes en base64)
                 const textOnlyAnswer = item.answer.replace(/<img[^>]+src="data:image[^"]*"[^>]*>/g, '');
                 const lowerQuestion = item.question.toLowerCase();
-                const lowerAnswer = textOnlyAnswer.toLowerCase();
 
-                if (lowerQuestion.includes(lowerSearchTerm) || lowerAnswer.includes(lowerSearchTerm)) {
+                if (lowerQuestion.includes(lowerSearchTerm) || textOnlyAnswer.toLowerCase().includes(lowerSearchTerm)) {
                     foundResults = true;
                     const resultItem = document.createElement('div');
                     resultItem.className = 'faq-item';
@@ -543,36 +477,52 @@ function displayResults(searchTerm) {
                     const questionElement = document.createElement('h3');
                     questionElement.className = 'faq-question';
                     questionElement.innerHTML = highlightText(item.question, searchTerm);
+                    resultItem.appendChild(questionElement);
 
-                    // Procesar respuesta (texto + imágenes preservadas)
+                    // Procesar respuesta
                     const answerElement = document.createElement('div');
                     answerElement.className = 'faq-answer';
 
-                    // Highlight solo en el texto y preservar imágenes
-                    const processedText = highlightText(textOnlyAnswer, searchTerm);
-                    const imagesHtml = extractImagesFromAnswer(item.answer);
-                    answerElement.innerHTML = processedText + imagesHtml;
+                    // Solución mejorada para evitar duplicados
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = item.answer;
 
-                    resultItem.appendChild(questionElement);
+                    // Procesar solo los nodos de primer nivel
+                    Array.from(tempDiv.childNodes).forEach(node => {
+                        if (node.nodeType === Node.TEXT_NODE && node.textContent.trim() !== '') {
+                            const textNode = document.createElement('div');
+                            textNode.innerHTML = highlightText(node.textContent, searchTerm);
+                            answerElement.appendChild(textNode);
+                        } else if (node.nodeType === Node.ELEMENT_NODE) {
+                            if (node.tagName === 'IMG') {
+                                const imgContainer = document.createElement('div');
+                                imgContainer.className = 'faq-image-container';
+                                const img = node.cloneNode(true);
+                                img.addEventListener('click', () => openImageModal(img.src));
+                                imgContainer.appendChild(img);
+                                answerElement.appendChild(imgContainer);
+                            } else {
+                                // Procesar elementos que no son imágenes
+                                const element = node.cloneNode(true);
+                                if (element.textContent) {
+                                    // Solo resaltar texto en elementos que no contengan imágenes
+                                    if (!element.querySelector('img')) {
+                                        element.innerHTML = highlightText(element.innerHTML, searchTerm);
+                                    }
+                                }
+                                answerElement.appendChild(element);
+                            }
+                        }
+                    });
+
                     resultItem.appendChild(answerElement);
                     fragment.appendChild(resultItem);
                 }
-            } else {
-                console.warn('Item de FAQ con formato incorrecto, omitido:', item);
             }
         });
 
         if (foundResults) {
             resultsContent.appendChild(fragment);
-            // Agregar event listeners a las imágenes después de añadirlas al DOM
-            setTimeout(() => {
-                const images = resultsContent.querySelectorAll('.faq-answer img');
-                images.forEach(img => {
-                    img.addEventListener('click', function() {
-                        openImageModal(this.src);
-                    });
-                });
-            }, 0);
         } else if (!resultsContent.querySelector('.error-message')) {
             const noResults = document.createElement('p');
             noResults.className = 'no-results';
@@ -580,11 +530,10 @@ function displayResults(searchTerm) {
             resultsContent.appendChild(noResults);
         }
 
-        // Mostrar ventana si hay término de búsqueda y no está visible
         if (searchTerm.trim() && !isWindowVisible) {
             showResultsWindow();
         }
-    }, 250); // Debounce de 250ms
+    }, 250);
 }
 
 // Función auxiliar para extraer imágenes del answer sin modificar
