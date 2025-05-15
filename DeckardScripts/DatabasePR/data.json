@@ -8628,8 +8628,8 @@
           "url": "https://common1.mptsweb.com/mbap/SONOMA/asr"
         },
         {
-          "url": "https://parcelsearch.permitsonoma.org/PermitSearch",
-          "type": "PR2 and License Search"
+          "type": "PR2 and License Search",
+          "url": "https://parcelsearch.permitsonoma.org/PermitSearch"
         },
         {
           "type": "GIS",
@@ -8638,15 +8638,19 @@
       ],
       "License List": [
         {
-          "type": "License",
-          "url": "https://parcelsearch.permitsonoma.org/PermitSearch"
+          "url": "https://parcelsearch.permitsonoma.org/PermitSearch",
+          "type": "License web"
+        },
+        {
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7BFB6A8617-D262-46D4-8B3D-C6BF8C285640%7D&file=LicenseUploadTemplate%2005-14-25%20(2).xlsx&action=default&mobileredirect=true",
+          "type": "License List"
         }
       ],
       "Important Info": "<p>The license finder only works with licenses starting with THR.\nAddress Override is NOT required when the city is listed as UNINCORPORATED\n\n\n</p>",
       "Media": [
         {
-          "url": "N/A",
-          "type": "N/A"
+          "type": "N/A",
+          "url": "N/A"
         }
       ]
     },
