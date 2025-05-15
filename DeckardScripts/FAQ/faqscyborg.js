@@ -450,8 +450,8 @@
     // --- Función para cargar los datos de FAQ desde JSON ---
     async function loadFaqData() {
         try {
-           // const response = await fetch('https://dinfcs.github.io/Deckardaov/DeckardScripts/FAQ/FAQ.json');
-            const response = await fetch('https://script.google.com/a/macros/deckard.com/s/AKfycbwTWV21oVCGJqeOtDNgJ_14XH89wjqrP0M7kEqfo3aGNjnQqaCJRio0F1VG9JdhHUYz/exec?endpoint=json');
+           const response = await fetch('https://dinfcs.github.io/Deckardaov/DeckardScripts/FAQ/faqs.json');
+            //const response = await fetch('https://script.google.com/a/macros/deckard.com/s/AKfycbwTWV21oVCGJqeOtDNgJ_14XH89wjqrP0M7kEqfo3aGNjnQqaCJRio0F1VG9JdhHUYz/exec?endpoint=json');
             if (!response.ok) {
                 throw new Error(`Error HTTP! estado: ${response.status}`);
             }
