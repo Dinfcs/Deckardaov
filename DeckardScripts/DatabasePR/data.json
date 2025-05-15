@@ -7102,18 +7102,18 @@
       "Project": "OH - City of Sandusky",
       "Public Records & GIS": [
         {
-          "type": "PR - GIS",
-          "url": "https://beacon.schneidercorp.com/Application.aspx?AppID=1120&LayerID=28246&PageTypeID=2&PageID=11592"
+          "url": "https://auditor.eriecounty.oh.gov/Search/Location",
+          "type": "PR"
         },
         {
-          "type": "PR2",
-          "url": "https://auditor.eriecounty.oh.gov/Search/Location"
+          "type": "GIS",
+          "url": "https://arcgis.eriecounty.oh.gov/portal/apps/webappviewer/index.html?id=3b09aa247ce74b569fde76c6c1e91b5e"
         }
       ],
       "License List": [
         {
-          "url": "N/A",
-          "type": "N/A"
+          "type": "N/A",
+          "url": "N/A"
         }
       ],
       "Important Info": "<p>N/A</p>",
