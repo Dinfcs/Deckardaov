@@ -5302,25 +5302,25 @@
       "Project": "WY - City of Cody",
       "Public Records & GIS": [
         {
-          "url": "https://maps.greenwoodmap.com/park/map?tab=search",
-          "type": "PR"
+          "type": "PR",
+          "url": "https://maps.greenwoodmap.com/park/map?tab=search"
         },
         {
-          "type": "GIS",
-          "url": "https://cityofcody.maps.arcgis.com/apps/instant/basic/index.html?appid=635dd3d3aa3447008f28902f743fd2a2"
+          "url": "https://cityofcody.maps.arcgis.com/apps/instant/basic/index.html?appid=635dd3d3aa3447008f28902f743fd2a2",
+          "type": "GIS"
         }
       ],
       "License List": [
         {
-          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7BE1C36C08-E77C-4D1A-AA15-9A53DB872497%7D&file=Short%20Term%20Rental%20List%20for%20Deckard.xlsx&action=default&mobileredirect=true",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7BD75B910D-9D57-4810-B7AE-40795BC1FB38%7D&file=Short%20Term%20Rental%20List%20for%20Deckard.xlsx&action=default&mobileredirect=true",
           "type": "License List"
         }
       ],
       "Important Info": "<p><br></p>",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ]
     },
