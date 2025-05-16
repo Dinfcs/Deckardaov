@@ -1,3 +1,4 @@
+
 // ==UserScript==
 // @name         Enhanced Search Bar v3.3
 // @namespace    http://tampermonkey.net/
@@ -183,7 +184,11 @@
             line-height: 1.6;
             white-space: pre-line;
             font-size: 14px;
+            margin-bottom: 0; /* Eliminamos margen inferior extra */
         }
+        .faq-answer p {
+    margin: 0em 0; /* Controlamos el espacio entre párrafos */
+}
 
         .faq-answer img {
             display: block;
@@ -227,7 +232,9 @@
             }
 
             // Always fetch fresh data but only update if different
-            const response = await fetch('https://dinfcs.github.io/Deckardaov/DeckardScripts/FAQ/faqs.json');
+           //const response = await fetch('https://dinfcs.github.io/Deckardaov/DeckardScripts/FAQ/faqs.json');
+            const response = await fetch('https://script.google.com/a/macros/deckard.com/s/AKfycbwTWV21oVCGJqeOtDNgJ_14XH89wjqrP0M7kEqfo3aGNjnQqaCJRio0F1VG9JdhHUYz/exec?endpoint=json');
+
             if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
 
             const freshData = await response.json();
