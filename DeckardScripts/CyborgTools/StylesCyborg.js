@@ -32,7 +32,9 @@ const EXCLUSIONS = `
     .btn-database *,
     .btn-database svg,
     .btn-database path,
-    .deckard-licvalidator-btn
+    .deckard-licvalidator-btn,
+    floating-search-button,
+    floating-search-container
 `;
 
     // Sistema de colores Deckard
