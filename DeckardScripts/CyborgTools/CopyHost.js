@@ -1,20 +1,24 @@
 // ==UserScript==
-// @name         Copiar Nombre de Host al Portapapeles
+// @name         Copiar Nombre de Host y Licencias al Portapapeles
 // @namespace    http://tampermonkey.net/
-// @version      1.6
-// @description  Copia el contenido del campo host_name al portapapeles al hacer clic en él, mostrando notificaciones
+// @version      1.8
+// @description  Copia el contenido de los campos host_name y probable_licenses al portapapeles al hacer clic en ellos, mostrando notificaciones (eventos se agregan solo una vez)
 // @author       Lucho
-// @match        *://*/*
+// @match        https://cyborg.deckard.com/listing/*/STR*
 // @grant        none
 // ==/UserScript==
 
 (function() {
     'use strict';
 
+    // Variables para rastrear si ya se agregaron los eventos
+    let hostNameEventAdded = false;
+    let licenseEventAdded = false;
+
     // Función para copiar el texto al portapapeles
     function copyToClipboard(text) {
         navigator.clipboard.writeText(text).then(function() {
-            console.log('Texto copiado al portapapeles:', text);
+            console.log('Texto copiado al portapeles:', text);
             showNotification(`${text} copied`);
         }).catch(function(err) {
             console.error('Error al copiar el texto al portapapeles:', err);
@@ -42,32 +46,45 @@
         }, 3000);
     }
 
-    // Función para agregar el evento de clic al campo host_name
-    function addClickEvent() {
+    // Función para agregar el evento de clic a los campos especificados
+    function addClickEvents() {
+        // Campo host_name
         let hostNameField = document.querySelector('td.value[data-field-name="host_name"]');
-
-        if (hostNameField) {
+        if (hostNameField && !hostNameEventAdded) {
             hostNameField.addEventListener('click', function() {
-                let hostNameValue = hostNameField.textContent;
+                let hostNameValue = hostNameField.textContent.trim();
                 copyToClipboard(hostNameValue);
             });
-
+            hostNameEventAdded = true;
             console.log('Evento click agregado al campo host_name');
-        } else {
-            console.log('No se encontró el campo host_name');
+        }
+
+        // Campo probable_licenses
+        let licenseField = document.querySelector('td.value[data-field-name="probable_licenses"]');
+        if (licenseField && !licenseEventAdded) {
+            licenseField.addEventListener('click', function() {
+                let licenseValue = licenseField.textContent.trim();
+                copyToClipboard(licenseValue);
+            });
+            licenseEventAdded = true;
+            console.log('Evento click agregado al campo probable_licenses');
         }
     }
 
-    // Observar cambios en el DOM para detectar cuando se agregue el campo host_name
+    // Observar cambios en el DOM para detectar cuando se agreguen los campos
     let observer = new MutationObserver(function(mutations) {
-        mutations.forEach(function(mutation) {
-            if (mutation.addedNodes.length > 0) {
-                addClickEvent();
-            }
-        });
+        if (!hostNameEventAdded || !licenseEventAdded) {
+            mutations.forEach(function(mutation) {
+                if (mutation.addedNodes.length > 0) {
+                    addClickEvents();
+                }
+            });
+        }
     });
 
     // Iniciar el observador en el cuerpo del documento
     observer.observe(document.body, { childList: true, subtree: true });
 
+    // Ejecutar también al cargar la página por si los campos ya están presentes
+    addClickEvents();
 })();
