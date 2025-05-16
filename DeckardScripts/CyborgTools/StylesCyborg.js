@@ -34,7 +34,9 @@ const EXCLUSIONS = `
     .btn-database path,
     .deckard-licvalidator-btn,
     floating-search-button,
-    floating-search-container
+    floating-search-container,
+    .floating-search-button,
+    .floating-search-container
 `;
 
     // Sistema de colores Deckard
