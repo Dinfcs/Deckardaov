@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         Barra de Búsqueda Mejorada v3.2
+// @name         Enhanced Search Bar v3.3
 // @namespace    http://tampermonkey.net/
-// @version      3.2
-// @description  Ícono de lupa que abre ventana flotante con barra de búsqueda integrada (versión corregida)
+// @version      3.3
+// @description  Search icon that opens a floating window with integrated search bar (improved version)
 // @author
 // @match        https://cyborg.deckard.com/listing/*STR*
 // ==/UserScript==
@@ -10,35 +10,37 @@
 (function() {
     'use strict';
 
-    // --- Variables globales ---
+    // --- Global variables ---
     let faqData = [];
     let isDragging = false;
     let dragOffsetX, dragOffsetY;
     let searchTimeout;
     let isWindowVisible = false;
     let isDataLoaded = false;
+    const STORAGE_KEY = 'faqDataCache';
+    const CACHE_TIMESTAMP_KEY = 'faqDataTimestamp';
 
-    // --- Estilos CSS optimizados ---
+    // --- Optimized CSS styles ---
     const styles = `
         .floating-search-container {
             position: fixed;
-            bottom: 50px;
-            right: 15px;
+            bottom: 60px;
+            left: 11px;
             z-index: 8000;
             font-family: 'Segoe UI', Roboto, sans-serif;
             transition: all 0.3s ease;
         }
 
         .floating-search-button {
-            background: #007bff;
+            background: #6fb833;
             border: none;
             color: white;
             cursor: pointer;
             padding: 12px;
             font-size: 20px;
-            border-radius: 50%;
-            width: 48px;
-            height: 48px;
+            border-radius: 25%;
+            width: 34px;
+            height: 34px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -53,9 +55,6 @@
 
         .search-results-window {
             position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
             width: 90vw;
             max-width: 850px;
             height: 85vh;
@@ -192,12 +191,6 @@
             height: auto;
             border-radius: 6px;
             margin: 8px auto;
-            cursor: zoom-in;
-            transition: transform 0.2s ease;
-        }
-
-        .faq-answer img:hover {
-            transform: scale(1.02);
         }
 
         .highlight {
@@ -217,54 +210,48 @@
         .error-message {
             color: #d9534f;
         }
-
-        .image-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.9);
-            z-index: 8000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .image-modal-content {
-            max-width: 90%;
-            max-height: 90%;
-        }
-
-        .image-modal-close {
-            position: absolute;
-            top: 15px;
-            right: 35px;
-            color: #f1f1f1;
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer;
-        }
     `;
 
-    // --- Funciones principales ---
+    // --- Main functions ---
     async function loadFaqData() {
         try {
-            const response = await fetch('https://dinfcs.github.io/Deckardaov/DeckardScripts/FAQ/faqs.json');
-            if (!response.ok) throw new Error(`Error HTTP: ${response.status}`);
+            // Try to load from localStorage first
+            const cachedData = localStorage.getItem(STORAGE_KEY);
+            const cachedTimestamp = localStorage.getItem(CACHE_TIMESTAMP_KEY);
 
-            const data = await response.json();
-            faqData = Array.isArray(data) ? data :
-                     data?.preguntasFrecuentes ? data.preguntasFrecuentes :
-                     data?.FAQ ? data.FAQ : [];
+            if (cachedData && cachedTimestamp) {
+                faqData = JSON.parse(cachedData);
+                isDataLoaded = true;
+                searchButton.disabled = false;
+                console.log("Loaded FAQ data from cache");
+            }
+
+            // Always fetch fresh data but only update if different
+            const response = await fetch('https://dinfcs.github.io/Deckardaov/DeckardScripts/FAQ/faqs.json');
+            if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
+
+            const freshData = await response.json();
+            const freshDataString = JSON.stringify(freshData);
+
+            if (!cachedData || freshDataString !== cachedData) {
+                faqData = Array.isArray(freshData) ? freshData :
+                         freshData?.preguntasFrecuentes ? freshData.preguntasFrecuentes :
+                         freshData?.FAQ ? freshData.FAQ : [];
+
+                localStorage.setItem(STORAGE_KEY, freshDataString);
+                localStorage.setItem(CACHE_TIMESTAMP_KEY, Date.now());
+                console.log("Updated FAQ data from server");
+            }
 
             isDataLoaded = true;
-            console.log("Datos de FAQ cargados correctamente");
-        } catch (error) {
-            console.error('Error al cargar FAQs:', error);
-            showStatusMessage('No se pudieron cargar las FAQs. Por favor, inténtalo más tarde.', true);
-        } finally {
             searchButton.disabled = false;
+        } catch (error) {
+            console.error('Error loading FAQs:', error);
+            showStatusMessage('Failed to load FAQs. Please try again later.', true);
+
+            if (!isDataLoaded && faqData.length === 0) {
+                showStatusMessage('Using cached data (offline mode)', false);
+            }
         }
     }
 
@@ -272,7 +259,7 @@
         resultsContent.innerHTML = '';
 
         if (!faqData.length) {
-            return showStatusMessage('No hay datos de FAQ disponibles.');
+            return showStatusMessage('No FAQ data available.');
         }
 
         const fragment = document.createDocumentFragment();
@@ -298,7 +285,7 @@
         if (hasResults) {
             resultsContent.appendChild(fragment);
         } else {
-            showStatusMessage('No se encontraron resultados para tu búsqueda.');
+            showStatusMessage('No results found for your search.');
         }
     }
 
@@ -323,16 +310,11 @@
         const tempDiv = document.createElement('div');
         tempDiv.innerHTML = answer;
 
-        const images = tempDiv.querySelectorAll('img');
-        images.forEach(img => {
-            img.addEventListener('click', () => openImageModal(img.src));
-        });
-
         const textNodes = [];
         tempDiv.childNodes.forEach(node => {
             if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
                 textNodes.push(highlightText(node.textContent, searchTerm));
-            } else if (node.nodeType === Node.ELEMENT_NODE && node.tagName !== 'IMG') {
+            } else if (node.nodeType === Node.ELEMENT_NODE) {
                 textNodes.push(node.outerHTML);
             }
         });
@@ -355,10 +337,17 @@
     }
 
     function showResultsWindow() {
-        console.log("Mostrando ventana de resultados");
+        console.log("Showing results window");
         resultsWindow.classList.add('visible');
         isWindowVisible = true;
         windowSearchInput.focus();
+
+        // Position window near the button if not already positioned
+        if (!resultsWindow.style.left && !resultsWindow.style.top) {
+            const buttonRect = searchButton.getBoundingClientRect();
+            resultsWindow.style.left = '28%';// Distancia desde la izquierda
+            resultsWindow.style.top = '6%';// Distancia desde arriba
+        }
     }
 
     function hideResultsWindow() {
@@ -369,34 +358,32 @@
     function toggleResultsWindow() {
         if (!isWindowVisible) {
             if (!isDataLoaded) {
-                showStatusMessage("Cargando FAQs...");
+                showStatusMessage("Loading FAQs...");
                 showResultsWindow();
                 return;
             }
-            displayAllFAQs();
+
+            // Restore previous search if any
+            const previousSearch = windowSearchInput.value.trim();
+            if (previousSearch) {
+                displayAllFAQs(previousSearch);
+            } else {
+                displayAllFAQs();
+            }
+
             showResultsWindow();
         } else {
-            hideResultsWindow();
+            // Just bring to front if already visible
+            resultsWindow.style.zIndex = '8000';
         }
     }
 
-    function openImageModal(src) {
-        modalContent.src = src;
-        imageModal.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-    }
-
-    function closeImageModal() {
-        imageModal.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    }
-
-    // --- Creación de elementos DOM ---
+    // --- DOM element creation ---
     const styleElement = document.createElement('style');
     styleElement.textContent = styles;
     document.head.appendChild(styleElement);
 
-    // Contenedor principal con solo el botón de lupa
+    // Main container with search button
     const container = document.createElement('div');
     container.className = 'floating-search-container';
 
@@ -404,9 +391,9 @@
     searchButton.className = 'floating-search-button';
     searchButton.innerHTML = '&#x1F50D;';
     searchButton.disabled = true;
-    searchButton.title = 'Abrir buscador de FAQs';
+    searchButton.title = 'Open FAQ search';
 
-    // Ventana de resultados con barra de búsqueda integrada
+    // Results window with integrated search bar
     const resultsWindow = document.createElement('div');
     resultsWindow.className = 'search-results-window';
 
@@ -415,43 +402,31 @@
 
     const resultsTitle = document.createElement('div');
     resultsTitle.className = 'search-results-title';
-    resultsTitle.textContent = 'Base de Conocimiento';
+    resultsTitle.textContent = 'Knowledge Base';
 
     const closeButton = document.createElement('button');
     closeButton.className = 'window-control';
     closeButton.innerHTML = '&times;';
-    closeButton.title = 'Cerrar ventana';
+    closeButton.title = 'Close window';
 
-    // Barra de búsqueda dentro de la ventana
+    // Search bar inside window
     const searchContainer = document.createElement('div');
     searchContainer.className = 'window-search-container';
 
     const windowSearchInput = document.createElement('input');
     windowSearchInput.className = 'window-search-input';
     windowSearchInput.type = 'text';
-    windowSearchInput.placeholder = 'Buscar en las FAQs...';
+    windowSearchInput.placeholder = 'Search in FAQs...';
 
     const resultsContent = document.createElement('div');
     resultsContent.className = 'search-results-content';
 
-    // Modal para imágenes
-    const imageModal = document.createElement('div');
-    imageModal.className = 'image-modal';
-
-    const modalClose = document.createElement('span');
-    modalClose.className = 'image-modal-close';
-    modalClose.innerHTML = '&times;';
-
-    const modalContent = document.createElement('img');
-    modalContent.className = 'image-modal-content';
-
-    // --- Ensamblaje del DOM ---
+    // --- DOM assembly ---
     resultsHeader.append(resultsTitle, closeButton);
     searchContainer.appendChild(windowSearchInput);
     resultsWindow.append(resultsHeader, searchContainer, resultsContent);
     container.appendChild(searchButton);
-    imageModal.append(modalClose, modalContent);
-    document.body.append(container, resultsWindow, imageModal);
+    document.body.append(container, resultsWindow);
 
     // --- Event listeners ---
     searchButton.addEventListener('click', toggleResultsWindow);
@@ -464,8 +439,6 @@
     });
 
     closeButton.addEventListener('click', hideResultsWindow);
-    modalClose.addEventListener('click', closeImageModal);
-    imageModal.addEventListener('click', e => e.target === imageModal && closeImageModal());
 
     resultsHeader.addEventListener('mousedown', e => {
         if (e.button !== 0) return;
@@ -481,6 +454,7 @@
         if (!isDragging) return;
         resultsWindow.style.left = `${e.clientX - dragOffsetX}px`;
         resultsWindow.style.top = `${e.clientY - dragOffsetY}px`;
+        resultsWindow.style.transform = 'none'; // Remove any previous transform
     });
 
     document.addEventListener('mouseup', () => {
@@ -489,18 +463,11 @@
     });
 
     document.addEventListener('keydown', e => {
-        if (e.key === 'Escape') {
-            if (imageModal.style.display === 'flex') closeImageModal();
-            else if (isWindowVisible) hideResultsWindow();
-        }
-    });
-
-    document.addEventListener('click', e => {
-        if (isWindowVisible && !resultsWindow.contains(e.target) && !container.contains(e.target)) {
+        if (e.key === 'Escape' && isWindowVisible) {
             hideResultsWindow();
         }
     });
 
-    // --- Inicialización ---
+    // --- Initialization ---
     loadFaqData();
 })();
