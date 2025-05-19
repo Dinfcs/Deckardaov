@@ -11891,6 +11891,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "AZ - Town of Cave Creek",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://mcassessor.maricopa.gov/"
+        },
+        {
+          "type": "GIS",
+          "url": "https://maps.mcassessor.maricopa.gov/"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "<p>N/A</p>",
+      "Media": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ]
     }
   ]
 }
