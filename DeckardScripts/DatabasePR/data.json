@@ -11921,6 +11921,28 @@
           "type": "N/A"
         }
       ]
+    },
+    {
+      "Project": "AUS - City of Hobart",
+      "Public Records & GIS": [
+        {
+          "url": "https://hobartcc.maps.arcgis.com/apps/mapviewer/index.html?webmap=ffa2876916fd4e9fa25eca58aaf497ef",
+          "type": "GIS"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "<ul><li><span style=\"color: rgb(55, 65, 81);\">There are no public records, as privacy laws in the country protect property data.</span></li><li>To use the GIS efficiently, click on \"Layers\" and keep only the following three filters active (disable all others): \"House Number\", \"Cadastral Parcels\", and \"Road Names\" (see Image 1).</li><li>To switch to the satellite view in the GIS, click on \"Basemap\" and select the \"Imagery\" option.</li></ul><p><br></p>",
+      "Media": [
+        {
+          "type": "Image 1",
+          "url": "https://drive.google.com/uc?export=view&id=1FOnKo6JWm6vTGYdChJpF0FcCLNowA4hV"
+        }
+      ]
     }
   ]
 }
