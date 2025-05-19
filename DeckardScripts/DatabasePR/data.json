@@ -11932,11 +11932,11 @@
       ],
       "License List": [
         {
-          "url": "N/A",
-          "type": "N/A"
+          "type": "N/A",
+          "url": "N/A"
         }
       ],
-      "Important Info": "<ol><li><span style=\"color: rgb(55, 65, 81);\">There are no public records, as privacy laws in the country protect property data.</span></li><li>To use the GIS efficiently, click on \"Layers\" and keep only the following three filters active (disable all others): \"<strong>House Number</strong>\", \"<strong>Cadastral Parcels</strong>\", and \"<strong>Road Names</strong>\" (see Image 1).</li><li>To switch to the satellite view in the GIS, click on \"Basemap\" and select the \"Imagery\" option.</li><li>The correct APN format is displayed in the GIS as <strong>\"PID\"</strong> (see Image 2).</li><li>Addresses do not include the state abbreviation; however, there is <strong>no need</strong> to perform AO because of this.</li><li>If an AO must be performed for any other reason, do not include the state abbreviation.</li></ol><ul><li><strong>AO Example:</strong> 1/2 Fisher Ln, Sandy Bay 7005.</li></ul><p><br></p><p><br></p>",
+      "Important Info": "<ol><li>There are no public records, as privacy laws in the country protect property data.</li><li>To use the GIS efficiently, click on \"Layers\" and keep only the following three filters active (disable all others): \"<strong>House Number</strong>\", \"<strong>Cadastral Parcels</strong>\", and \"<strong>Road Names</strong>\" (see Image 1).</li><li>To switch to the satellite view in the GIS, click on \"Basemap\" and select the \"Imagery\" option.</li><li>The correct APN format is displayed in the GIS as <strong>\"PID\"</strong> (see Image 2).</li><li>Addresses do not include the state abbreviation; however, there is <strong>no need</strong> to perform AO because of this.</li><li><strong>Example of an address in Hobart: </strong>1/2 Fisher Ln, Sandy Bay 7005. Please note that, unlike U.S. projects, the unit number appears before the \"/\". </li><li>If an AO must be performed for any other reason, do not include the state abbreviation.</li></ol><ul><li><strong>AO Example:</strong> 1/2 Fisher Ln, Sandy Bay 7005.</li><li><strong>AO for NMFs: </strong>Unit # unk<strong>/</strong>2 Fisher Ln, Sandy Bay 7005.</li></ul><p><br></p><p><br></p>",
       "Media": [
         {
           "type": "Image 1",
