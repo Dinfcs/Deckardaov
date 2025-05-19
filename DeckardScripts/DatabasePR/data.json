@@ -11926,21 +11926,25 @@
       "Project": "AUS - City of Hobart",
       "Public Records & GIS": [
         {
-          "url": "https://hobartcc.maps.arcgis.com/apps/mapviewer/index.html?webmap=ffa2876916fd4e9fa25eca58aaf497ef",
-          "type": "GIS"
+          "type": "GIS",
+          "url": "https://hobartcc.maps.arcgis.com/apps/mapviewer/index.html?webmap=ffa2876916fd4e9fa25eca58aaf497ef"
         }
       ],
       "License List": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ],
-      "Important Info": "<ul><li><span style=\"color: rgb(55, 65, 81);\">There are no public records, as privacy laws in the country protect property data.</span></li><li>To use the GIS efficiently, click on \"Layers\" and keep only the following three filters active (disable all others): \"House Number\", \"Cadastral Parcels\", and \"Road Names\" (see Image 1).</li><li>To switch to the satellite view in the GIS, click on \"Basemap\" and select the \"Imagery\" option.</li></ul><p><br></p>",
+      "Important Info": "<ol><li><span style=\"color: rgb(55, 65, 81);\">There are no public records, as privacy laws in the country protect property data.</span></li><li>To use the GIS efficiently, click on \"Layers\" and keep only the following three filters active (disable all others): \"<strong>House Number</strong>\", \"<strong>Cadastral Parcels</strong>\", and \"<strong>Road Names</strong>\" (see Image 1).</li><li>To switch to the satellite view in the GIS, click on \"Basemap\" and select the \"Imagery\" option.</li><li>The correct APN format is displayed in the GIS as <strong>\"PID\"</strong> (see Image 2).</li><li>Addresses do not include the state abbreviation; however, there is <strong>no need</strong> to perform AO because of this.</li><li>If an AO must be performed for any other reason, do not include the state abbreviation.</li></ol><ul><li><strong>AO Example:</strong> 1/2 Fisher Ln, Sandy Bay 7005.</li></ul><p><br></p><p><br></p>",
       "Media": [
         {
           "type": "Image 1",
           "url": "https://drive.google.com/uc?export=view&id=1FOnKo6JWm6vTGYdChJpF0FcCLNowA4hV"
+        },
+        {
+          "type": "Image 2",
+          "url": "https://drive.google.com/uc?export=view&id=1rKTdzDjii7QWmBEaKxDFJO86ExURtS6i"
         }
       ]
     }
