@@ -11947,6 +11947,28 @@
           "url": "https://drive.google.com/uc?export=view&id=1rKTdzDjii7QWmBEaKxDFJO86ExURtS6i"
         }
       ]
+    },
+    {
+      "Project": "MT - City Of Red Lodge",
+      "Public Records & GIS": [
+        {
+          "url": "https://svc.mt.gov/msl/cadastral/?page=Map",
+          "type": "GIS/ PR - MT"
+        }
+      ],
+      "License List": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ],
+      "Important Info": "<p>Searches can be done using APN (Geocode on GIS/PR), Address or Owner Name.  <strong style=\"color: rgb(240, 102, 102);\">Image 1*</strong></p>",
+      "Media": [
+        {
+          "type": "Image 1",
+          "url": "https://drive.google.com/uc?export=view&id=1bJJGASkyH0th6uP_BSEt9F891fH7-lP6"
+        }
+      ]
     }
   ]
 }
