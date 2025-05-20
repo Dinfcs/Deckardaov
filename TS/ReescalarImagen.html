@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Procesador de Logos</title>
+    <title>Logo Processor</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
@@ -14,7 +14,7 @@
             margin-left: auto;
             margin-right: auto;
         }
-        /* Estilo para el slider */
+        /* Slider style */
         input[type=range]::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
@@ -63,15 +63,15 @@
 
     <div class="container bg-white p-6 md:p-8 rounded-xl shadow-xl">
         <header class="mb-8 text-center">
-            <h1 class="text-3xl md:text-4xl font-bold text-blue-600">Procesador de Logos</h1>
-            <p class="text-gray-600 mt-2">Sube tu logo para redimensionarlo y darle forma según tus necesidades.</p>
+            <h1 class="text-3xl md:text-4xl font-bold text-blue-600">Logo Processor</h1>
+            <p class="text-gray-600 mt-2">Upload your logo to resize and shape it according to your needs.</p>
         </header>
 
         <main>
             <section class="mb-8 p-6 bg-gray-50 rounded-lg shadow">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
                     <div>
-                        <label for="imageLoader" class="block text-sm font-medium text-gray-700 mb-2">1. Sube tu imagen:</label>
+                        <label for="imageLoader" class="block text-sm font-medium text-gray-700 mb-2">1. Upload your image:</label>
                         <input type="file" id="imageLoader" accept="image/*" class="block w-full text-sm text-gray-500
                             file:mr-4 file:py-2 file:px-4
                             file:rounded-lg file:border-0
@@ -81,13 +81,13 @@
                         ">
                     </div>
                     <div>
-                        <label for="sizeSlider" class="block text-sm font-medium text-gray-700 mb-2">2. Tamaño final deseado: <span id="sizeValue" class="font-bold text-blue-600">400</span>px</label>
+                        <label for="sizeSlider" class="block text-sm font-medium text-gray-700 mb-2">2. Desired final size: <span id="sizeValue" class="font-bold text-blue-600">400</span>px</label>
                         <input type="range" id="sizeSlider" min="300" max="500" value="400" step="10" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
                     </div>
                 </div>
                 <div class="mt-6 text-center">
                      <button id="processButton" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-150 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed" disabled>
-                        Procesar Imagen
+                        Process Image
                     </button>
                 </div>
             </section>
@@ -96,11 +96,11 @@
                 <div class="text-center">
                     <h2 class="text-xl font-semibold mb-3 text-gray-700">Original</h2>
                     <div class="w-full aspect-square bg-gray-200 rounded-lg flex items-center justify-center overflow-hidden shadow">
-                        <img id="originalPreview" src="https://placehold.co/400x400/e2e8f0/9ca3af?text=Original" alt="Vista previa original" class="max-w-full max-h-full object-contain rounded">
+                        <img id="originalPreview" src="https://placehold.co/400x400/e2e8f0/9ca3af?text=Original" alt="Original preview" class="max-w-full max-h-full object-contain rounded">
                     </div>
                 </div>
                 <div class="text-center">
-                    <h2 class="text-xl font-semibold mb-3 text-gray-700">Procesada (1:1)</h2>
+                    <h2 class="text-xl font-semibold mb-3 text-gray-700">Processed (1:1)</h2>
                      <div class="w-full aspect-square bg-transparent rounded-lg flex items-center justify-center shadow"> <canvas id="imageCanvas" class="rounded-lg max-w-full max-h-full"></canvas>
                     </div>
                 </div>
@@ -108,14 +108,14 @@
             
             <section class="text-center">
                 <button id="downloadButton" class="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-150 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed" disabled>
-                    Descargar Imagen Procesada (.png)
+                    Download Processed Image (.png)
                 </button>
                  <p id="messageArea" class="mt-4 text-sm text-red-600"></p>
             </section>
         </main>
 
         <footer class="mt-12 pt-6 border-t border-gray-200 text-center">
-            <p class="text-sm text-gray-500">&copy; <span id="year"></span> Herramienta de Procesamiento de Logos para BCC</p>
+            <p class="text-sm text-gray-500">&copy; <span id="year"></span> Logo Processing Tool for BCC.</p>
         </footer>
     </div>
 
@@ -132,7 +132,7 @@
         document.getElementById('year').textContent = new Date().getFullYear();
 
         let currentImage = null;
-        let currentFileName = 'logo_procesado.png';
+        let currentFileName = 'processed_logo.png'; // Changed filename to English
 
         // Placeholder for canvas until an image is processed
         function drawPlaceholderCanvas(size = 400) {
@@ -143,7 +143,7 @@
             ctx.font = `${size / 15}px Inter`;
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
-            ctx.fillText('Procesada (1:1)', size / 2, size / 2);
+            ctx.fillText('Processed (1:1)', size / 2, size / 2);
         }
         drawPlaceholderCanvas(parseInt(sizeSlider.value));
 
@@ -162,7 +162,7 @@
         imageLoader.addEventListener('change', (event) => {
             const file = event.target.files[0];
             if (file) {
-                currentFileName = file.name.split('.')[0] + '_procesado.png';
+                currentFileName = file.name.split('.')[0] + '_processed.png'; // Changed filename to English
                 const reader = new FileReader();
                 reader.onload = (e) => {
                     originalPreview.src = e.target.result;
@@ -170,18 +170,18 @@
                     currentImage.onload = () => {
                         processButton.disabled = false;
                         downloadButton.disabled = true; // Disable download until processed
-                        messageArea.textContent = 'Imagen cargada. Ajusta el tamaño y haz clic en "Procesar Imagen".';
+                        messageArea.textContent = 'Image loaded. Adjust size and click "Process Image".'; // Translated
                         // Optionally auto-process: processAndDisplayImage();
                     };
                     currentImage.onerror = () => {
-                        messageArea.textContent = 'Error: No se pudo cargar el archivo de imagen.';
+                        messageArea.textContent = 'Error: Could not load the image file.'; // Translated
                         currentImage = null;
                         processButton.disabled = true;
                     }
                     currentImage.src = e.target.result;
                 }
                 reader.onerror = () => {
-                     messageArea.textContent = 'Error al leer el archivo.';
+                     messageArea.textContent = 'Error reading file.'; // Translated
                      currentImage = null;
                      processButton.disabled = true;
                 }
@@ -200,13 +200,13 @@
             if (currentImage) {
                 processAndDisplayImage();
             } else {
-                messageArea.textContent = 'Por favor, carga una imagen primero.';
+                messageArea.textContent = 'Please upload an image first.'; // Translated
             }
         });
 
         function processAndDisplayImage() {
             if (!currentImage) {
-                messageArea.textContent = 'Error: No hay imagen para procesar.';
+                messageArea.textContent = 'Error: No image to process.'; // Translated
                 return;
             }
 
@@ -236,25 +236,26 @@
 
             ctx.save(); 
 
-            const isRectangular = Math.abs(originalWidth - originalHeight) > 1; 
-
-            if (isRectangular) {
-                ctx.beginPath();
-                ctx.ellipse(dx + scaledWidth / 2, dy + scaledHeight / 2, scaledWidth / 2, scaledHeight / 2, 0, 0, 2 * Math.PI);
-                ctx.clip();
-            }
+            // --- START OF CHANGE: Oval transformation removed ---
+            // const isRectangular = Math.abs(originalWidth - originalHeight) > 1; 
+            // if (isRectangular) {
+            //     ctx.beginPath();
+            //     ctx.ellipse(dx + scaledWidth / 2, dy + scaledHeight / 2, scaledWidth / 2, scaledHeight / 2, 0, 0, 2 * Math.PI);
+            //     ctx.clip();
+            // }
+            // --- END OF CHANGE ---
             
             ctx.drawImage(currentImage, dx, dy, scaledWidth, scaledHeight);
 
             ctx.restore(); 
 
             downloadButton.disabled = false;
-            messageArea.textContent = 'Imagen procesada exitosamente.';
+            messageArea.textContent = 'Image processed successfully.'; // Translated
         }
 
         downloadButton.addEventListener('click', () => {
             if (!currentImage || downloadButton.disabled) {
-                messageArea.textContent = 'Primero procesa una imagen para poder descargarla.';
+                messageArea.textContent = 'Please process an image first to download it.'; // Translated
                 return;
             }
             try {
@@ -265,12 +266,12 @@
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
-                messageArea.textContent = `Imagen descargada como ${currentFileName}.`;
+                messageArea.textContent = `Image downloaded as ${currentFileName}.`; // Translated
             } catch (error) {
-                console.error("Error al descargar:", error);
-                messageArea.textContent = 'Error al intentar descargar la imagen. Revisa la consola para más detalles.';
+                console.error("Error downloading:", error);
+                messageArea.textContent = 'Error trying to download the image. Check console for more details.'; // Translated
                 if (error.name === 'SecurityError') {
-                     messageArea.textContent = 'Error de seguridad al descargar. Esto puede ocurrir si la imagen es de un origen diferente y el canvas se considera "tainted". Intenta con otra imagen o asegúrate de que se carga correctamente.';
+                     messageArea.textContent = 'Security error on download. This can happen if the image is from a different origin and the canvas is considered "tainted". Try with another image or ensure it loads correctly.'; // Translated
                 }
             }
         });
