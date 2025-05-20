@@ -11874,25 +11874,25 @@
       "Project": "NY - Suffolk County",
       "Public Records & GIS": [
         {
-          "url": "https://gisapps.suffolkcountyny.gov/gisviewer/",
-          "type": "GIS (use VPN)"
+          "type": "GIS (use VPN)",
+          "url": "https://gisapps.suffolkcountyny.gov/gisviewer/"
         },
         {
-          "url": "https://suffolk.munisselfservice.com/citizens/RealEstate/Default.aspx?mode=new",
-          "type": "PR"
+          "type": "PR",
+          "url": "https://suffolk.munisselfservice.com/citizens/RealEstate/Default.aspx?mode=new"
         }
       ],
       "License List": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EbzKh7OleV9EsuzUWmHuoHMBjDPjFcC3QvX6xo0B2fOvQQ?e=nNbWvD",
+          "type": "List"
         }
       ],
       "Important Info": "<ul><li>To search by APN in the Public Records (PR), add four zeros to the end of the number. </li><li>To view the property information, select \"View Bill\" for the most recent available year and click on \"Property Detail\" (image 1).</li></ul>",
       "Media": [
         {
-          "type": "Image 1",
-          "url": "https://drive.google.com/uc?export=view&id=1JSOg4Q7tbox06fPUKwSJC0KQBB8aboxS"
+          "url": "https://drive.google.com/uc?export=view&id=1JSOg4Q7tbox06fPUKwSJC0KQBB8aboxS",
+          "type": "Image 1"
         }
       ]
     },
