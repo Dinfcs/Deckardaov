@@ -1,11 +1,12 @@
-
 // ==UserScript==
-// @name         Enhanced Search Bar v3.3
+// @name         Enhanced Search Bar v3.6
 // @namespace    http://tampermonkey.net/
-// @version      3.3
-// @description  Search icon that opens a floating window with integrated search bar (improved version)
-// @author
+// @version      3.6
+// @description  Search icon with floating window and optimized cache management for large datasets
+// @author       Your Name
 // @match        https://cyborg.deckard.com/listing/*STR*
+// @require      https://cdn.jsdelivr.net/npm/lz-string@1.4.4/libs/lz-string.min.js
+// @grant        none
 // ==/UserScript==
 
 (function() {
@@ -20,12 +21,16 @@
     let isDataLoaded = false;
     const STORAGE_KEY = 'faqDataCache';
     const CACHE_TIMESTAMP_KEY = 'faqDataTimestamp';
+    const ESSENTIAL_DATA_KEY = 'faqEssentialData';
+    const DB_NAME = 'FAQDatabase';
+    const DB_VERSION = 1;
+    const STORE_NAME = 'faqs';
 
     // --- Optimized CSS styles ---
     const styles = `
         .floating-search-container {
             position: fixed;
-            bottom: 50px;
+            bottom: 49px;
             left: 11px;
             z-index: 8000;
             font-family: 'Segoe UI', Roboto, sans-serif;
@@ -41,7 +46,7 @@
             font-size: 20px;
             border-radius: 25%;
             width: 28px;
-            height: 30px;
+            height: 28px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -184,11 +189,11 @@
             line-height: 1.6;
             white-space: pre-line;
             font-size: 14px;
-            margin-bottom: 0; /* Eliminamos margen inferior extra */
+            margin-bottom: 0;
         }
         .faq-answer p {
-    margin: 0em 0; /* Controlamos el espacio entre párrafos */
-}
+            margin: 0em 0;
+        }
 
         .faq-answer img {
             display: block;
@@ -215,51 +220,315 @@
         .error-message {
             color: #d9534f;
         }
+
+        .loading-container {
+            position: relative;
+            height: 4px;
+            background: #f0f0f0;
+            display: none;
+        }
+
+        .loading-bar {
+            position: absolute;
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, #6fb833, #007bff);
+            transition: width 0.3s ease;
+        }
+
+        .loading-text {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 11px;
+            color: #6c757d;
+        }
+
+        .pagination-controls {
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+            background: #f8f9fa;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .pagination-button {
+            margin: 0 5px;
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+            background: white;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .pagination-button:hover {
+            background: #eee;
+        }
+
+        .pagination-button:disabled {
+            background: #f8f9fa;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
     `;
 
-    // --- Main functions ---
+    // --- IndexedDB Functions ---
+    function openDB() {
+        return new Promise((resolve, reject) => {
+            const request = indexedDB.open(DB_NAME, DB_VERSION);
+
+            request.onerror = () => {
+                console.error('IndexedDB error:', request.error);
+                reject(request.error);
+            };
+
+            request.onsuccess = () => resolve(request.result);
+
+            request.onupgradeneeded = (event) => {
+                const db = event.target.result;
+                if (!db.objectStoreNames.contains(STORE_NAME)) {
+                    db.createObjectStore(STORE_NAME, { keyPath: 'id' });
+                }
+            };
+        });
+    }
+
+    async function saveToIndexedDB(data) {
+        try {
+            const db = await openDB();
+            return new Promise((resolve, reject) => {
+                const transaction = db.transaction(STORE_NAME, 'readwrite');
+                const store = transaction.objectStore(STORE_NAME);
+
+                store.put({
+                    id: 'fullData',
+                    data: data,
+                    timestamp: Date.now(),
+                    compressed: false
+                });
+
+                transaction.oncomplete = () => resolve();
+                transaction.onerror = () => reject(transaction.error);
+            });
+        } catch (error) {
+            console.error('Error saving to IndexedDB:', error);
+            throw error;
+        }
+    }
+
+    async function readFromIndexedDB() {
+        try {
+            const db = await openDB();
+            return new Promise((resolve, reject) => {
+                const transaction = db.transaction(STORE_NAME, 'readonly');
+                const store = transaction.objectStore(STORE_NAME);
+                const request = store.get('fullData');
+
+                request.onsuccess = () => resolve(request.result?.data);
+                request.onerror = () => reject(request.error);
+            });
+        } catch (error) {
+            console.error('Error reading from IndexedDB:', error);
+            return null;
+        }
+    }
+
+    async function clearIndexedDBCache() {
+        try {
+            const db = await openDB();
+            return new Promise((resolve, reject) => {
+                const transaction = db.transaction(STORE_NAME, 'readwrite');
+                const store = transaction.objectStore(STORE_NAME);
+                const request = store.clear();
+
+                request.onsuccess = () => resolve();
+                request.onerror = () => reject(request.error);
+            });
+        } catch (error) {
+            console.error('Error clearing IndexedDB:', error);
+            throw error;
+        }
+    }
+
+    // --- Data Processing Functions ---
+    function getEssentialData(fullData) {
+        if (!Array.isArray(fullData)) return [];
+
+        return fullData.map(item => ({
+            id: item.id || Math.random().toString(36).substring(2, 9),
+            question: item.question || '',
+            answerPreview: item.answer
+                ? (item.answer.substring(0, 200) + (item.answer.length > 200 ? '...' : ''))
+                : '',
+            category: item.category || '',
+            tags: item.tags || []
+        }));
+    }
+
+    function processFullAnswer(answer, searchTerm = '') {
+        if (!answer) return '';
+
+        // Simple sanitization and processing
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = answer;
+
+        // Process images
+        const images = tempDiv.querySelectorAll('img');
+        images.forEach(img => {
+            img.style.maxWidth = '100%';
+            img.style.height = 'auto';
+            img.loading = 'lazy';
+        });
+
+        // Highlight search terms if present
+        if (searchTerm.trim()) {
+            const textNodes = [];
+            const walker = document.createTreeWalker(tempDiv, NodeFilter.SHOW_TEXT);
+
+            let node;
+            while (node = walker.nextNode()) {
+                if (node.nodeValue.trim()) {
+                    const highlighted = highlightText(node.nodeValue, searchTerm);
+                    const span = document.createElement('span');
+                    span.innerHTML = highlighted;
+                    node.parentNode.replaceChild(span, node);
+                }
+            }
+        }
+
+        return tempDiv.innerHTML;
+    }
+
+    // --- Main Functions ---
     async function loadFaqData() {
         try {
-            // Try to load from localStorage first
-            const cachedData = localStorage.getItem(STORAGE_KEY);
-            const cachedTimestamp = localStorage.getItem(CACHE_TIMESTAMP_KEY);
+            // Create loading indicator
+            const loadingContainer = document.createElement('div');
+            loadingContainer.className = 'loading-container';
+            const loadingBar = document.createElement('div');
+            loadingBar.className = 'loading-bar';
+            const loadingText = document.createElement('div');
+            loadingText.className = 'loading-text';
+            loadingText.textContent = 'Updating data...';
 
-            if (cachedData && cachedTimestamp) {
-                faqData = JSON.parse(cachedData);
-                isDataLoaded = true;
-                searchButton.disabled = false;
-                console.log("Loaded FAQ data from cache");
+            loadingContainer.appendChild(loadingBar);
+            loadingContainer.appendChild(loadingText);
+            resultsWindow.appendChild(loadingContainer);
+
+            // Show loading indicator
+            loadingContainer.style.display = 'block';
+            loadingBar.style.width = '10%';
+
+            // 1. Try to load essential data from localStorage for quick display
+            const cachedEssential = localStorage.getItem(ESSENTIAL_DATA_KEY);
+            if (cachedEssential) {
+                const essentialData = JSON.parse(cachedEssential);
+                if (essentialData.length) {
+                    faqData = essentialData;
+                    isDataLoaded = true;
+                    searchButton.disabled = false;
+                    loadingBar.style.width = '30%';
+                    displayAllFAQs(); // Show essential data immediately
+                }
             }
 
-            // Always fetch fresh data but only update if different
-           //const response = await fetch('https://dinfcs.github.io/Deckardaov/DeckardScripts/FAQ/faqs.json');
-            const response = await fetch('https://script.google.com/a/macros/deckard.com/s/AKfycbwTWV21oVCGJqeOtDNgJ_14XH89wjqrP0M7kEqfo3aGNjnQqaCJRio0F1VG9JdhHUYz/exec?endpoint=json');
+            // 2. Try to load full data from IndexedDB
+            const indexedDBData = await readFromIndexedDB();
+            if (indexedDBData && Array.isArray(indexedDBData) && indexedDBData.length) {
+                faqData = indexedDBData;
+                isDataLoaded = true;
+                searchButton.disabled = false;
+                loadingBar.style.width = '50%';
 
-            if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
+                // Update essential data in localStorage
+                const essentialData = getEssentialData(indexedDBData);
+                localStorage.setItem(ESSENTIAL_DATA_KEY, JSON.stringify(essentialData));
 
-            const freshData = await response.json();
-            const freshDataString = JSON.stringify(freshData);
+                displayAllFAQs(); // Update with full data
+            }
 
-            if (!cachedData || freshDataString !== cachedData) {
-                faqData = Array.isArray(freshData) ? freshData :
-                         freshData?.preguntasFrecuentes ? freshData.preguntasFrecuentes :
-                         freshData?.FAQ ? freshData.FAQ : [];
+            // 3. Always fetch fresh data
+            try {
+                loadingBar.style.width = '60%';
+                const response = await fetch('https://script.google.com/a/macros/deckard.com/s/AKfycbwTWV21oVCGJqeOtDNgJ_14XH89wjqrP0M7kEqfo3aGNjnQqaCJRio0F1VG9JdhHUYz/exec?endpoint=json');
 
-                localStorage.setItem(STORAGE_KEY, freshDataString);
-                localStorage.setItem(CACHE_TIMESTAMP_KEY, Date.now());
-                console.log("Updated FAQ data from server");
+                if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
+
+                loadingBar.style.width = '75%';
+                const freshData = await response.json();
+
+                // Process the fresh data
+                const processedData = Array.isArray(freshData) ? freshData :
+                                   freshData?.preguntasFrecuentes ? freshData.preguntasFrecuentes :
+                                   freshData?.FAQ ? freshData.FAQ : [];
+
+                // Save to IndexedDB
+                loadingBar.style.width = '85%';
+                await saveToIndexedDB(processedData);
+
+                // Update local variables
+                faqData = processedData;
+                isDataLoaded = true;
+
+                // Update essential data in localStorage
+                const essentialData = getEssentialData(processedData);
+                localStorage.setItem(ESSENTIAL_DATA_KEY, JSON.stringify(essentialData));
+
+                loadingBar.style.width = '95%';
+                displayAllFAQs(); // Update with fresh data
+
+            } catch (fetchError) {
+                console.error('Fetch error:', fetchError);
+                if (!faqData.length) {
+                    showStatusMessage('Using cached data (offline mode)');
+                }
             }
 
             isDataLoaded = true;
             searchButton.disabled = false;
+            loadingBar.style.width = '100%';
+
+            // Hide loading indicator after a short delay
+            setTimeout(() => {
+                loadingContainer.style.display = 'none';
+            }, 500);
+
         } catch (error) {
             console.error('Error loading FAQs:', error);
-            showStatusMessage('Failed to load FAQs. Please try again later.', true);
+            showStatusMessage('Failed to load FAQs. Using cached data if available.', true);
 
-            if (!isDataLoaded && faqData.length === 0) {
-                showStatusMessage('Using cached data (offline mode)', false);
+            // Hide loading indicator on error
+            const loadingContainer = resultsWindow.querySelector('.loading-container');
+            if (loadingContainer) {
+                loadingContainer.style.display = 'none';
+            }
+
+            if (faqData.length) {
+                displayAllFAQs(); // Show whatever data we have
             }
         }
+    }
+
+    function clearCache() {
+        // Clear all storage
+        Promise.all([
+            clearIndexedDBCache(),
+            new Promise((resolve) => {
+                localStorage.removeItem(ESSENTIAL_DATA_KEY);
+                localStorage.removeItem(STORAGE_KEY);
+                localStorage.removeItem(CACHE_TIMESTAMP_KEY);
+                resolve();
+            })
+        ]).then(() => {
+            faqData = [];
+            isDataLoaded = false;
+            showStatusMessage('Cache cleared. Reloading data...');
+            loadFaqData();
+        }).catch(error => {
+            console.error('Error clearing cache:', error);
+            showStatusMessage('Error clearing cache', true);
+        });
     }
 
     function displayAllFAQs(searchTerm = '') {
@@ -272,14 +541,34 @@
         const fragment = document.createDocumentFragment();
         let hasResults = false;
 
+        // If we only have essential data, show a message
+        const firstItem = faqData[0];
+        if (!firstItem.answer && firstItem.answerPreview) {
+            const message = document.createElement('div');
+            message.className = 'status-message';
+            message.innerHTML = `
+                <p>Showing simplified results from cache. Full data is loading...</p>
+                <button id="retryLoad" style="margin-top: 10px; padding: 5px 10px; background: #6fb833; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                    Retry Full Load
+                </button>
+            `;
+            resultsContent.appendChild(message);
+
+            document.getElementById('retryLoad')?.addEventListener('click', loadFaqData);
+            return;
+        }
+
         faqData.forEach(item => {
-            if (!item?.question || !item?.answer) return;
+            if (!item?.question) return;
 
             if (searchTerm) {
                 const lowerSearchTerm = searchTerm.toLowerCase();
-                const textOnlyAnswer = item.answer.replace(/<img[^>]*>/g, '');
-                if (!item.question.toLowerCase().includes(lowerSearchTerm) &&
-                    !textOnlyAnswer.toLowerCase().includes(lowerSearchTerm)) {
+                const questionMatch = item.question.toLowerCase().includes(lowerSearchTerm);
+                const answerMatch = item.answer
+                    ? item.answer.toLowerCase().includes(lowerSearchTerm)
+                    : false;
+
+                if (!questionMatch && !answerMatch) {
                     return;
                 }
             }
@@ -307,30 +596,22 @@
 
         const answerElement = document.createElement('div');
         answerElement.className = 'faq-answer';
-        answerElement.innerHTML = processAnswerContent(item.answer, searchTerm);
+
+        if (item.answer) {
+            answerElement.innerHTML = processFullAnswer(item.answer, searchTerm);
+        } else if (item.answerPreview) {
+            answerElement.innerHTML = highlightText(item.answerPreview, searchTerm);
+            answerElement.style.color = '#888';
+            answerElement.style.fontStyle = 'italic';
+        }
+
         resultItem.appendChild(answerElement);
 
         return resultItem;
     }
 
-    function processAnswerContent(answer, searchTerm) {
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = answer;
-
-        const textNodes = [];
-        tempDiv.childNodes.forEach(node => {
-            if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
-                textNodes.push(highlightText(node.textContent, searchTerm));
-            } else if (node.nodeType === Node.ELEMENT_NODE) {
-                textNodes.push(node.outerHTML);
-            }
-        });
-
-        return textNodes.join('');
-    }
-
     function highlightText(text, searchTerm) {
-        if (!searchTerm?.trim()) return text;
+        if (!searchTerm?.trim() || !text) return text || '';
         const escapedTerm = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
         return text.replace(new RegExp(`(${escapedTerm})`, 'gi'), '<span class="highlight">$1</span>');
     }
@@ -344,16 +625,14 @@
     }
 
     function showResultsWindow() {
-        console.log("Showing results window");
         resultsWindow.classList.add('visible');
         isWindowVisible = true;
         windowSearchInput.focus();
 
-        // Position window near the button if not already positioned
         if (!resultsWindow.style.left && !resultsWindow.style.top) {
             const buttonRect = searchButton.getBoundingClientRect();
-            resultsWindow.style.left = '28%';// Distancia desde la izquierda
-            resultsWindow.style.top = '6%';// Distancia desde arriba
+            resultsWindow.style.left = '28%';
+            resultsWindow.style.top = '6%';
         }
     }
 
@@ -364,28 +643,18 @@
 
     function toggleResultsWindow() {
         if (!isWindowVisible) {
-            if (!isDataLoaded) {
-                showStatusMessage("Loading FAQs...");
-                showResultsWindow();
-                return;
-            }
-
-            // Restore previous search if any
-            const previousSearch = windowSearchInput.value.trim();
-            if (previousSearch) {
-                displayAllFAQs(previousSearch);
-            } else {
-                displayAllFAQs();
-            }
-
             showResultsWindow();
+            if (!isDataLoaded) {
+                loadFaqData();
+            } else {
+                displayAllFAQs(windowSearchInput.value.trim());
+            }
         } else {
-            // Just bring to front if already visible
             resultsWindow.style.zIndex = '8000';
         }
     }
 
-    // --- DOM element creation ---
+    // --- DOM Setup ---
     const styleElement = document.createElement('style');
     styleElement.textContent = styles;
     document.head.appendChild(styleElement);
@@ -416,6 +685,12 @@
     closeButton.innerHTML = '&times;';
     closeButton.title = 'Close window';
 
+    const clearCacheButton = document.createElement('button');
+    clearCacheButton.className = 'window-control';
+    clearCacheButton.innerHTML = '🔄';
+    clearCacheButton.title = 'Clear cache and reload';
+    clearCacheButton.addEventListener('click', clearCache);
+
     // Search bar inside window
     const searchContainer = document.createElement('div');
     searchContainer.className = 'window-search-container';
@@ -428,14 +703,14 @@
     const resultsContent = document.createElement('div');
     resultsContent.className = 'search-results-content';
 
-    // --- DOM assembly ---
-    resultsHeader.append(resultsTitle, closeButton);
+    // --- DOM Assembly ---
+    resultsHeader.append(resultsTitle, clearCacheButton, closeButton);
     searchContainer.appendChild(windowSearchInput);
     resultsWindow.append(resultsHeader, searchContainer, resultsContent);
     container.appendChild(searchButton);
     document.body.append(container, resultsWindow);
 
-    // --- Event listeners ---
+    // --- Event Listeners ---
     searchButton.addEventListener('click', toggleResultsWindow);
 
     windowSearchInput.addEventListener('input', () => {
@@ -461,7 +736,7 @@
         if (!isDragging) return;
         resultsWindow.style.left = `${e.clientX - dragOffsetX}px`;
         resultsWindow.style.top = `${e.clientY - dragOffsetY}px`;
-        resultsWindow.style.transform = 'none'; // Remove any previous transform
+        resultsWindow.style.transform = 'none';
     });
 
     document.addEventListener('mouseup', () => {
