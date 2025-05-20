@@ -25,7 +25,7 @@
     const styles = `
         .floating-search-container {
             position: fixed;
-            bottom: 60px;
+            bottom: 50px;
             left: 11px;
             z-index: 8000;
             font-family: 'Segoe UI', Roboto, sans-serif;
@@ -40,8 +40,8 @@
             padding: 12px;
             font-size: 20px;
             border-radius: 25%;
-            width: 34px;
-            height: 34px;
+            width: 28px;
+            height: 30px;
             display: flex;
             align-items: center;
             justify-content: center;
