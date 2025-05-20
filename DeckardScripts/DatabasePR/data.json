@@ -2810,8 +2810,8 @@
       "Project": "FL - City of Hallandale Beach",
       "Public Records & GIS": [
         {
-          "type": "PR",
-          "url": "https://bcpa.net/RecMenu.asp"
+          "url": "https://bcpa.net/RecMenu.asp",
+          "type": "PR"
         },
         {
           "url": "https://gisweb-adapters.bcpa.net/bcpawebmap_ex/bcpawebmap.aspx",
@@ -2822,30 +2822,30 @@
           "type": "Hallandale Beach Condos"
         },
         {
-          "type": "Use Type - Code Descriptions",
-          "url": "https://bcpa.net/UseType.asp"
+          "url": "https://bcpa.net/UseType.asp",
+          "type": "Use Type - Code Descriptions"
         },
         {
-          "url": "https://www.myfloridalicense.com/",
-          "type": "Licenses Florida"
+          "type": "Licenses Florida",
+          "url": "https://www.myfloridalicense.com/"
         },
         {
-          "url": "https://www.loom.com/share/8dbd5630d6b44f49b5d6ffda3bb951fa",
-          "type": "Sunny Isles/Hallandale Part 1"
+          "type": "Sunny Isles/Hallandale Part 1",
+          "url": "https://www.loom.com/share/8dbd5630d6b44f49b5d6ffda3bb951fa"
         },
         {
           "type": "Sunny Isles/Hallandale Part 2",
           "url": "https://www.loom.com/share/a2d2186959894faeb4eb3c25cf1a8114"
         },
         {
-          "url": "https://www.loom.com/share/9bf4ac724ebc438c8b93fe75afe74a0a",
-          "type": "Sunny Isles/Hallandale Part 3"
+          "type": "Sunny Isles/Hallandale Part 3",
+          "url": "https://www.loom.com/share/9bf4ac724ebc438c8b93fe75afe74a0a"
         }
       ],
       "License List": [
         {
-          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EQTBe9GKqCxJqmfw8wV5vFkBHzNUcEu3Wcc8EqE-sYYI8g?e=J2aZvy",
-          "type": "License List"
+          "type": "License List",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EQTBe9GKqCxJqmfw8wV5vFkBHzNUcEu3Wcc8EqE-sYYI8g?e=J2aZvy"
         },
         {
           "url": "https://hallandalebeachfl.gov/1134/Vacation-Rentals",
