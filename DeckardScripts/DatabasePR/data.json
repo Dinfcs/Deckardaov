@@ -2810,12 +2810,12 @@
       "Project": "FL - City of Hallandale Beach",
       "Public Records & GIS": [
         {
-          "type": "PR",
-          "url": "https://bcpa.net/RecMenu.asp"
+          "url": "https://bcpa.net/RecMenu.asp",
+          "type": "PR"
         },
         {
-          "type": "GIS",
-          "url": "https://gisweb-adapters.bcpa.net/bcpawebmap_ex/bcpawebmap.aspx"
+          "url": "https://gisweb-adapters.bcpa.net/bcpawebmap_ex/bcpawebmap.aspx",
+          "type": "GIS"
         },
         {
           "url": "https://www.miamiresidence.com/ocean-view/ocean-view-a.htm",
@@ -2830,12 +2830,12 @@
           "type": "Licenses Florida"
         },
         {
-          "type": "Sunny Isles/Hallandale Part 1",
-          "url": "https://www.loom.com/share/8dbd5630d6b44f49b5d6ffda3bb951fa"
+          "url": "https://www.loom.com/share/8dbd5630d6b44f49b5d6ffda3bb951fa",
+          "type": "Sunny Isles/Hallandale Part 1"
         },
         {
-          "type": "Sunny Isles/Hallandale Part 2",
-          "url": "https://www.loom.com/share/a2d2186959894faeb4eb3c25cf1a8114"
+          "url": "https://www.loom.com/share/a2d2186959894faeb4eb3c25cf1a8114",
+          "type": "Sunny Isles/Hallandale Part 2"
         },
         {
           "url": "https://www.loom.com/share/9bf4ac724ebc438c8b93fe75afe74a0a",
@@ -2852,7 +2852,7 @@
           "url": "https://hallandalebeachfl.gov/1134/Vacation-Rentals"
         }
       ],
-      "Important Info": "<ol><li>We are only interested in properties within the city. \nIf it is a MUS and located outside the city: \n·Add the MUS. \n·Leave the APN blank. </li><li>For MUS in general: \n·Always assign the MUS, even if it is \"No Match Found.\" \n·Classify the MUS: \no “-H”: Within the city. \no “-O”: Outside the city. Mark as \"outside boundaries\" and assign the MUS. </li><li>For the condo located at 2602 E Hallandale Beach Blvd, Hallandale Beach, FL 33009, there are two types of units based on the initial of the Unit: \n·“R”: Hotel units (Resort). \n·“T”: Residential units (Main Structure). \nWhen a MUS is located outside the city:\nAssign the MUS and do not try to identify it. It would be without APN or NMF.</li></ol><p><br></p><p>PD: </p><ul><li>The MUS follows the same name as in Public Records.</li><li>If a new MUS is found, please inform the data lead so it can be added.</li></ul>",
+      "Important Info": "<ol><li>We are only interested in properties within the city. \nIf it is a MUS and located outside the city: \n·Add the MUS. \n·Leave the APN blank. </li><li>For MUS in general: \n·Always assign the MUS, even if it is \"No Match Found.\" \n·Classify the MUS: \no “-H”: Within the city. \no “-O”: Outside the city. Mark as \"outside boundaries\" and assign the MUS. </li><li>For the condo located at 2602 E Hallandale Beach Blvd, Hallandale Beach, FL 33009, there are two types of units based on the initial of the Unit: \n·“R”: Hotel units (Resort). \n·“T”: Residential units (Main Structure). \nWhen a MUS is located outside the city:\nAssign the MUS and do not try to identify it. It would be without APN or NMF.</li><li>The <strong>Imperial Towers -H</strong> <strong>MUS</strong> includes units at both <strong>1825 S Ocean Dr</strong> and <strong>1817 S Ocean Dr</strong>, Hallandale Beach, FL 33009. Please assign each unit to the correct address.</li><li>The condo at <strong>2100 Diana Dr</strong> should be mapped normally, <strong>without a MUS</strong>. Identify its units and complete the <strong>Address Override</strong> as the city is incomplete the full address should be: <strong>2100 Diana Dr Unit ?, Hallandale Beach, FL 33009</strong>.</li></ol><p><br></p><p>PD: </p><ul><li>The MUS follows the same name as in Public Records.</li><li>If a new MUS is found, please inform the data lead so it can be added.</li></ul>",
       "Media": [
         {
           "type": "N/A",
