@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         PREDIT4
 // @namespace    ProjectResources Cyborg
-// @version      3.7.2
+// @version      3.7
 // @description  Visualización mejorada de recursos de proyectos
 // @author
 // @match        https://cyborg.deckard.com/listing/*/STR*
@@ -681,108 +681,94 @@
         localStorage.setItem(IMAGE_CACHE_KEY, JSON.stringify(cache));
     }
 
-    function createIframeWithTabs() {
-        if (document.querySelector('#parcel-iframe')) return;
+function createIframeWithTabs() {
+    if (document.querySelector('#parcel-iframe')) return;
 
-        let parcelUrl; // Variable to store the determined parcel URL
+    // Buscar primero el enlace "All parcels in the region"
+    const allParcelsLink = document.querySelector('a[href*="/parcel/"][href$="/_"]');
+    // Si no existe, buscar el enlace alternativo
+    const parcelLink = allParcelsLink || document.querySelector('a[href*="/parcel/"]');
 
-        // Regex to check for the specific Fraser URL pattern
-        // Example: https://cyborg.deckard.com/listing/CO/grand/town_of_fraser/STR...
-        const fraserPattern = /^https:\/\/cyborg\.deckard\.com\/listing\/CO\/grand\/town_of_fraser\/STR.*/;
+    if (!parcelLink) return;
 
-        if (fraserPattern.test(window.location.href)) {
-            // If the current URL matches the Fraser pattern, use the specific parcel URL
-            parcelUrl = 'https://cyborg.deckard.com/parcel/CO/grand/town_of_fraser';
+    // Obtener la URL base sin parámetros
+    let parcelUrl = 'https://cyborg.deckard.com' + parcelLink.getAttribute('href');
+    // Eliminar todo después del ? (incluyendo el ?)
+    parcelUrl = parcelUrl.split('?')[0];
+
+    // Obtener la URL base para el segundo iframe
+    const currentUrl = window.location.href;
+    const baseUrl = currentUrl.split('/STR')[0];
+    const mappedUrl = `${baseUrl}?tab=all&subset=mapped`;
+
+    // Contenedor principal
+    const container = document.createElement('div');
+    container.className = 'pr-container';
+    container.style.margin = '0px';
+
+    // Crear pestañas
+    const tabContainer = document.createElement('div');
+    tabContainer.style.display = 'flex';
+    tabContainer.style.width = '100%';
+
+    // Pestaña All Parcels
+    const allParcelsTab = document.createElement('div');
+    allParcelsTab.className = 'pr-tab pr-tab--selected';
+    allParcelsTab.innerHTML = '<span>All Parcels</span>';
+
+    // Pestaña All Listings Mapped
+    const allListingsMappedTab = document.createElement('div');
+    allListingsMappedTab.className = 'pr-tab';
+    allListingsMappedTab.innerHTML = '<span>All Listings Mapped</span>';
+
+    // Crear contenedor de iframes
+    const iframeContainer = document.createElement('div');
+    iframeContainer.className = 'pr-iframe-container';
+
+    // Iframe para All Parcels
+    const allParcelsIframe = document.createElement('iframe');
+    allParcelsIframe.className = 'pr-iframe';
+    allParcelsIframe.id = 'parcel-iframe';
+    allParcelsIframe.src = parcelUrl;
+
+    // Iframe para All Listings Mapped
+    const allListingsMappedIframe = document.createElement('iframe');
+    allListingsMappedIframe.className = 'pr-iframe';
+    allListingsMappedIframe.id = 'mapped-iframe';
+    allListingsMappedIframe.src = mappedUrl;
+    allListingsMappedIframe.style.display = 'none';
+    allListingsMappedIframe.style.height = '2040px';
+
+    // Función para cambiar entre pestañas
+    const switchTab = (tab) => {
+        if (tab === 'allParcels') {
+            allParcelsIframe.style.display = 'block';
+            allListingsMappedIframe.style.display = 'none';
+            allParcelsTab.classList.add('pr-tab--selected');
+            allListingsMappedTab.classList.remove('pr-tab--selected');
         } else {
-            // Otherwise, use the existing logic to find the parcel link
-            // Buscar primero el enlace "All parcels in the region"
-            const allParcelsLink = document.querySelector('a[href*="/parcel/"][href$="/_"]');
-            // Si no existe, buscar el enlace alternativo
-            const parcelLink = allParcelsLink || document.querySelector('a[href*="/parcel/"]');
-
-            if (!parcelLink) {
-                // console.log('Parcel link not found for iframe.'); // Optional: log if no link is found
-                return; // Exit if no parcel link is found
-            }
-            // Obtener la URL base sin parámetros
-            parcelUrl = 'https://cyborg.deckard.com' + parcelLink.getAttribute('href');
-            // Eliminar todo después del ? (incluyendo el ?)
-            parcelUrl = parcelUrl.split('?')[0];
+            allParcelsIframe.style.display = 'none';
+            allListingsMappedIframe.style.display = 'block';
+            allListingsMappedTab.classList.add('pr-tab--selected');
+            allParcelsTab.classList.remove('pr-tab--selected');
         }
+    };
 
-        // Obtener la URL base para el segundo iframe
-        const currentUrl = window.location.href;
-        const baseUrl = currentUrl.split('/STR')[0];
-        const mappedUrl = `${baseUrl}?tab=all&subset=mapped`;
+    // Event listeners para las pestañas
+    allParcelsTab.addEventListener('click', () => switchTab('allParcels'));
+    allListingsMappedTab.addEventListener('click', () => switchTab('allListingsMapped'));
 
-        // Contenedor principal
-        const container = document.createElement('div');
-        container.className = 'pr-container';
-        container.style.margin = '0px';
+    // Activar la pestaña inicial
+    switchTab('allParcels');
 
-        // Crear pestañas
-        const tabContainer = document.createElement('div');
-        tabContainer.style.display = 'flex';
-        tabContainer.style.width = '100%';
-
-        // Pestaña All Parcels
-        const allParcelsTab = document.createElement('div');
-        allParcelsTab.className = 'pr-tab pr-tab--selected';
-        allParcelsTab.innerHTML = '<span>All Parcels</span>';
-
-        // Pestaña All Listings Mapped
-        const allListingsMappedTab = document.createElement('div');
-        allListingsMappedTab.className = 'pr-tab';
-        allListingsMappedTab.innerHTML = '<span>All Listings Mapped</span>';
-
-        // Crear contenedor de iframes
-        const iframeContainer = document.createElement('div');
-        iframeContainer.className = 'pr-iframe-container';
-
-        // Iframe para All Parcels
-        const allParcelsIframe = document.createElement('iframe');
-        allParcelsIframe.className = 'pr-iframe';
-        allParcelsIframe.id = 'parcel-iframe';
-        allParcelsIframe.src = parcelUrl; // Use the determined parcelUrl
-
-        // Iframe para All Listings Mapped
-        const allListingsMappedIframe = document.createElement('iframe');
-        allListingsMappedIframe.className = 'pr-iframe';
-        allListingsMappedIframe.id = 'mapped-iframe';
-        allListingsMappedIframe.src = mappedUrl;
-        allListingsMappedIframe.style.display = 'none';
-        allListingsMappedIframe.style.height = '2040px';
-
-        // Función para cambiar entre pestañas
-        const switchTab = (tab) => {
-            if (tab === 'allParcels') {
-                allParcelsIframe.style.display = 'block';
-                allListingsMappedIframe.style.display = 'none';
-                allParcelsTab.classList.add('pr-tab--selected');
-                allListingsMappedTab.classList.remove('pr-tab--selected');
-            } else {
-                allParcelsIframe.style.display = 'none';
-                allListingsMappedIframe.style.display = 'block';
-                allListingsMappedTab.classList.add('pr-tab--selected');
-                allParcelsTab.classList.remove('pr-tab--selected');
-            }
-        };
-
-        // Event listeners para las pestañas
-        allParcelsTab.addEventListener('click', () => switchTab('allParcels'));
-        allListingsMappedTab.addEventListener('click', () => switchTab('allListingsMapped'));
-
-        // Activar la pestaña inicial
-        switchTab('allParcels');
-
-        // Agregar elementos al DOM
-        tabContainer.appendChild(allParcelsTab);
-        tabContainer.appendChild(allListingsMappedTab);
-        iframeContainer.appendChild(allParcelsIframe);
-        iframeContainer.appendChild(allListingsMappedIframe);
-        container.appendChild(tabContainer);
-        container.appendChild(iframeContainer);
-        document.body.appendChild(container);
-    }
+    // Agregar elementos al DOM
+    tabContainer.appendChild(allParcelsTab);
+    tabContainer.appendChild(allListingsMappedTab);
+    iframeContainer.appendChild(allParcelsIframe);
+    iframeContainer.appendChild(allListingsMappedIframe);
+    container.appendChild(tabContainer);
+    container.appendChild(iframeContainer);
+    document.body.appendChild(container);
+}
     waitForElement('#btn_open_vetting_dlg', fetchData);
 })();
