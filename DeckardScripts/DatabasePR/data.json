@@ -4602,8 +4602,8 @@
           "url": "https://cloudgisapps.bonnercountyid.gov/public/"
         },
         {
-          "type": "GIS2",
-          "url": "https://bcgisid.maps.arcgis.com/apps/webappviewer/index.html?id=333b605f7c2e46a9ad6d42bf5e42b04d"
+          "url": "https://bcgisid.maps.arcgis.com/apps/webappviewer/index.html?id=333b605f7c2e46a9ad6d42bf5e42b04d",
+          "type": "GIS2"
         }
       ],
       "License List": [
@@ -4612,7 +4612,7 @@
           "type": "License List"
         }
       ],
-      "Important Info": "<p>In the PR delete the \"A\" at the end of each APN.</p>",
+      "Important Info": "<p>In the PR delete the \"A\" at the end of each APN.</p><p>🚫 No NM</p>",
       "Media": [
         {
           "type": "N/A",
