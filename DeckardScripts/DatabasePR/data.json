@@ -3946,8 +3946,8 @@
       "Project": "TX - Bosque County",
       "Public Records & GIS": [
         {
-          "type": "Public Records 1",
-          "url": "https://esearch.bosquecad.com/"
+          "url": "https://esearch.bosquecad.com/",
+          "type": "Public Records 1"
         },
         {
           "type": "GIS.",
@@ -3964,11 +3964,11 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "N/A",
+      "Important Info": "<p>The GIS for this project is excellent; it has good aerial imagery and outlines the properties. As for the PR, the <strong>Property ID </strong>would be the <strong>APN.</strong></p>",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ]
     },
