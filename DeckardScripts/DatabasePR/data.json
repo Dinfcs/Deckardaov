@@ -11986,22 +11986,22 @@
       "Project": "OK - City of Edmond",
       "Public Records & GIS": [
         {
-          "type": "PR (Use VPN)",
-          "url": "https://docs.oklahomacounty.org/AssessorWP5/DefaultSearch.asp"
+          "url": "https://docs.oklahomacounty.org/AssessorWP5/DefaultSearch.asp",
+          "type": "PR (Use VPN)"
         },
         {
           "url": "https://oklahomacounty.geocortex.com/Html5Viewer/Index.html?configBase=http://oklahomacounty.geocortex.com/Geocortex/Essentials/REST/sites/OKCAssessor/viewers/OKCAssessor_gvh/virtualdirectory/Resources/Config/Default",
           "type": "GIS (Use VPN)"
         },
         {
-          "type": "GIS 2 (Use VPN)",
-          "url": "https://www.arcgis.com/apps/webappviewer/index.html?id=61cd0fbf236543848d270b2c1a526674&extent=-10934558.627%2C4190358.9168%2C-10738879.8346%2C4284452.8986%2C102100"
+          "url": "https://www.arcgis.com/apps/webappviewer/index.html?id=61cd0fbf236543848d270b2c1a526674&extent=-10934558.627%2C4190358.9168%2C-10738879.8346%2C4284452.8986%2C102100",
+          "type": "GIS 2 (Use VPN)"
         }
       ],
       "License List": [
         {
-          "url": "N/A",
-          "type": "N/A"
+          "type": "N/A",
+          "url": "N/A"
         }
       ],
       "Important Info": "<p>N/A</p>",
