@@ -292,6 +292,13 @@ modalContent.innerHTML = `
                     </div>
 
                     <div class="form-sections">
+                        <!-- Nuevo selector Dispute -->
+                        <div class="form-group dispute-group">
+                            <label for="disputeCheckbox">Dispute</label>
+                            <input type="checkbox" id="disputeCheckbox">
+                        </div>
+                        <!-- Fin Nuevo selector Dispute -->
+
                         ${fieldsToShow.map(key => `
                             <div class="form-group">
                                 <label for="input_${key}">${key.replace(/_/g, ' ')}</label>
@@ -455,6 +462,42 @@ modalContent.innerHTML = `
         display: flex;
         flex-direction: column;
     }
+
+    /* Estilos específicos para el grupo Dispute */
+    .form-group.dispute-group {
+        flex-direction: row; /* Alinea el label y el checkbox horizontalmente */
+        align-items: center; /* Centra verticalmente */
+        justify-content: flex-start; /* Alinea al inicio */
+        margin-bottom: 15px; /* Espacio debajo del grupo */
+    }
+
+    .form-group.dispute-group label {
+        margin-bottom: 0; /* No margin-bottom para el label en esta configuración */
+        margin-right: 10px; /* Espacio entre el label y el checkbox */
+        font-size: 0.95rem; /* Ajusta el tamaño de la fuente si es necesario */
+        min-width: 80px; /* Asegura un ancho mínimo para el label */
+    }
+
+    .form-group.dispute-group input[type="checkbox"] {
+        width: 20px; /* Tamaño del checkbox */
+        height: 20px;
+        accent-color: #000000; /* Color del "tick" o fondo cuando está marcado */
+        border: 2px solid #000000; /* Borde del checkbox */
+        border-radius: 4px;
+        background-color: rgba(0,0,0,0.05); /* Fondo ligero */
+        transition: all 0.2s ease;
+        cursor: pointer;
+    }
+
+    .form-group.dispute-group input[type="checkbox"]:checked {
+        background-color: #D1E231; /* Fondo cuando está marcado */
+        border-color: #000000; /* Borde cuando está marcado */
+    }
+
+    .form-group.dispute-group input[type="checkbox"]:hover {
+        box-shadow: 0 0 8px rgba(0,0,0,0.3); /* Sombra al pasar el ratón */
+    }
+
 
     .form-group label {
         margin-bottom: 6px;
@@ -757,6 +800,7 @@ document.body.appendChild(styles);
     const btnAccept = document.getElementById("btnAccept");
     const btnCancel = document.getElementById("btnCancel");
     const dynamicFieldsContainer = document.getElementById("dynamicFieldsContainer");
+    const disputeCheckbox = document.getElementById("disputeCheckbox"); // Nuevo: Referencia al checkbox
 
     // Agregar efectos hover a los botones
     btnAccept.addEventListener("mouseover", () => {
@@ -882,6 +926,9 @@ document.body.appendChild(styles);
          const listing = document.getElementById("input_listing")?.value.trim() || "";
          const date = document.getElementById("input_date")?.value.trim() || "";
          const dateOfMapping = document.getElementById("input_date_of_mapping")?.value.trim() || "";
+         const isDisputed = disputeCheckbox.checked; // Nuevo: Estado del checkbox Dispute
+
+
 
          // 2. Validación PRIORITARIA del Error Type
          if (!primaryError || primaryError === "Select Error..." || primaryError === "Select Primary Error...") {
@@ -984,6 +1031,7 @@ document.body.appendChild(styles);
              secondary_error_2: document.getElementById("secondaryError2").value || null,
              comments: document.getElementById("commentInput").value,
              possible_affected_listings: document.getElementById("affectedListings").value || "0",
+             dispute: disputeCheckbox.checked ? "Yes" : "No",
              timestamp: new Date().toISOString()
          };
 
