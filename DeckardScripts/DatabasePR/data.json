@@ -11981,6 +11981,40 @@
           "url": "https://drive.google.com/uc?export=view&id=19j1HtspEH_jC_cSIk3R2jzmEbXeY7p5r"
         }
       ]
+    },
+    {
+      "Project": "OK - City of Edmond",
+      "Public Records & GIS": [
+        {
+          "type": "PR (Use VPN)",
+          "url": "https://docs.oklahomacounty.org/AssessorWP5/DefaultSearch.asp"
+        },
+        {
+          "url": "https://oklahomacounty.geocortex.com/Html5Viewer/Index.html?configBase=http://oklahomacounty.geocortex.com/Geocortex/Essentials/REST/sites/OKCAssessor/viewers/OKCAssessor_gvh/virtualdirectory/Resources/Config/Default",
+          "type": "GIS (Use VPN)"
+        },
+        {
+          "type": "N/A",
+          "url": "N/A"
+        },
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ],
+      "License List": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ],
+      "Important Info": "<p>N/A</p>",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
