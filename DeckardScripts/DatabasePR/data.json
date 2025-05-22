@@ -8209,16 +8209,16 @@
         },
         {
           "type": "GIS (Use VPN)",
-          "url": "https://gis.sullivanny.us/portal/apps/webappviewer/index.html?id=7bc08b0aa879400196398ca1db03937e"
+          "url": "https://gis2017-04-13t155717567z-sullconygiso.opendata.arcgis.com/apps/7bc08b0aa879400196398ca1db03937e/explore"
         }
       ],
       "License List": [
         {
-          "type": "License list",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B402F3BC7-59E3-4782-803E-4A9030F57F29%7D&file=Room%20Tax%20Properties%202024%20-%20Revised%2010.29.24%20Copy%20IR.xlsx&action=default&mobileredirect=true"
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B402F3BC7-59E3-4782-803E-4A9030F57F29%7D&file=Room%20Tax%20Properties%202024%20-%20Revised%2010.29.24%20Copy%20IR.xlsx&action=default&mobileredirect=true",
+          "type": "License list"
         }
       ],
-      "Important Info": "For parcel search through Public Records, put the last 5 or 6 digits of the APN in the Tax ID field. Example 48240019.-1-23.1 = 9.-1-23.1\n\nIn the PR, there is a Pictometry option that provides an excellent aerial view.\n\nIn the GIS, it is possible to search using coordinates by clicking on the XYZ icon at the top.",
+      "Important Info": "<p>For parcel search through Public Records, put the last 5 or 6 digits of the APN in the Tax ID field. Example 48240019.-1-23.1 = 9.-1-23.1\n\nIn the PR, there is a Pictometry option that provides an excellent aerial view.\n\n</p>",
       "Media": [
         {
           "type": "N/A",
