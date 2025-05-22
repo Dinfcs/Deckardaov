@@ -1,49 +1,29 @@
 // ==UserScript==
-// @name         Download All Parcels to CSV
+// @name         Download All Parcels to CSV (Deduplicated, Faster Attempts)
 // @namespace    http://tampermonkey.net/
-// @version      3.0
-// @description  Extrae datos de todas las páginas de 'parcel' y las descarga directamente en un archivo CSV.
+// @version      3.2 // Nueva versión
+// @description  Extrae datos de todas las páginas de 'parcel', deduplica y los descarga directamente en un archivo CSV.
 // @match        https://cyborg.deckard.com/parcel/*
 // @grant        none
+// @downloadURL  https://raw.githubusercontent.com/your-username/your-repo/main/DownloadAllParcelsToCSV.user.js
+// @updateURL    https://raw.githubusercontent.com/your-username/your-repo/main/DownloadAllParcelsToCSV.user.js
 // ==/UserScript==
 
 (function() {
     'use strict';
 
-    console.log('🚀 UserScript: Download All Parcels to CSV - Iniciado!');
+    console.log('🚀 UserScript: Download All Parcels to CSV - Iniciado (Deduplicación activa, intento de mayor velocidad)!');
 
-    // 1. Definir la URL de la página objetivo
     const TARGET_URL_PATH = '/parcel/';
 
-    // 2. *** ¡CRÍTICO! AJUSTA ESTOS SELECTORES BASÁNDOTE EN TU INSPECCIÓN DEL DOM REAL DE LA PÁGINA! ***
-    //    Usa las Herramientas de Desarrollador (F12) para ver el HTML y encontrar IDs o clases únicas.
-    //    Si la paginación está dentro de un div con una ID, por ejemplo: `#pagination-container .first-page`
-    //    Si la tabla principal tiene una ID, por ejemplo: `#main-data-table tbody tr`
     const SELECTORS = {
-        // Selector para el contenedor de los botones de paginación.
-        // EJEMPLO: '#pagination-container', '.my-custom-pager', 'div.pagination-wrapper'
-        PAGINATION_CONTAINER: '.pagination-controls', // ESTE ES UN EJEMPLO. ¡AJÚSTALO!
-
-        // Selector para el botón que lleva a la primera página.
-        // EJEMPLO: '#firstPageButton', '.pager-button.first', 'a[title="Go to first page"]'
-        FIRST_PAGE_BUTTON: '.first-page', // ESTE ES UN EJEMPLO. ¡AJÚSTALO!
-
-        // Selector para el botón de "Siguiente Página".
-        // EJEMPLO: '#nextPageButton', '.pager-button.next', 'a[title="Go to next page"]'
-        NEXT_PAGE_BUTTON: '.next-page', // ESTE ES UN EJEMPLO. ¡AJÚSTALO!
-
-        // Selector para el botón que muestra la última página o el número total de páginas.
-        // EJEMPLO: '#lastPageButton', '.pager-button.last', 'span.total-pages'
-        LAST_PAGE_BUTTON: '.last-page', // ESTE ES UN EJEMPLO. ¡AJÚSTALO!
-
-        // Selector para las filas de datos de la tabla principal.
-        // ES MUY IMPORTANTE QUE ESTE SELECTOR APUNTE SÓLO A LA TABLA DE DATOS DE PARCEL.
-        // EJEMPLO: '#parcel-data-table tbody tr', 'table.listing-data tr:not(.header-row)', '#content table tr'
-        MAIN_DATA_TABLE_ROWS: 'table tr' // ESTE ES UN EJEMPLO MUY GENÉRICO. ¡AJÚSTALO A UNA TABLA ESPECÍFICA!
+        PAGINATION_CONTAINER: '.pagination-controls', // AJUSTAR
+        FIRST_PAGE_BUTTON: '.first-page', // AJUSTAR
+        NEXT_PAGE_BUTTON: '.next-page', // AJUSTAR
+        LAST_PAGE_BUTTON: '.last-page', // AJUSTAR
+        MAIN_DATA_TABLE_ROWS: 'table tr' // AJUSTAR
     };
 
-    // Encabezados de la tabla, en el orden en que deben aparecer en el CSV
-    // Deben coincidir con los datos que se extraen en extractRowData
     const TABLE_HEADERS = [
         "parcel_apn", "license", "license_status", "people_on_license",
         "parcel_state", "parcel_county", "parcel_use_type", "parcel_owner_name_1",
@@ -51,14 +31,15 @@
         "parcel_bedrooms", "owner_address", "claiming_hoe", "parcel_latitude", "parcel_longitude"
     ];
 
-    // Crear el botón de descarga CSV
+    const UNIQUE_IDENTIFIER_FIELDS = ["parcel_apn"];
+
     const downloadCsvButton = document.createElement('button');
     downloadCsvButton.textContent = 'Download All Parcels (CSV)';
-    downloadCsvButton.id = 'tm-download-parcel-csv-button'; // ID única para evitar conflictos
+    downloadCsvButton.id = 'tm-download-parcel-csv-button';
 
     Object.assign(downloadCsvButton.style, {
         padding: '10px 15px',
-        backgroundColor: '#004B87', // Color azul oscuro
+        backgroundColor: '#004B87',
         color: '#fff',
         border: 'none',
         borderRadius: '5px',
@@ -70,16 +51,12 @@
         boxSizing: 'border-box'
     });
 
-    /**
-     * Inserta el botón de descarga en la página.
-     */
     function insertButton() {
         console.log('--- insertButton() called ---');
         if (!window.location.pathname.startsWith(TARGET_URL_PATH)) {
             console.warn(`[Download Parcels] Script running on unexpected URL: ${window.location.pathname}. Not inserting button.`);
             return;
         }
-
         if (document.getElementById(downloadCsvButton.id)) {
             console.log('[Download Parcels] Button with ID', downloadCsvButton.id, 'already exists. Skipping insertion.');
             return;
@@ -111,7 +88,6 @@
         console.log('--- insertButton() finished ---');
     }
 
-    // Usar MutationObserver para esperar que los elementos de la página estén cargados.
     const observer = new MutationObserver((mutations, obs) => {
         if (window.location.pathname.startsWith(TARGET_URL_PATH) && document.querySelector(SELECTORS.FIRST_PAGE_BUTTON)) {
             console.log('[Download Parcels] Target element (FIRST_PAGE_BUTTON) found by MutationObserver! Proceeding with button insertion.');
@@ -124,17 +100,12 @@
     observer.observe(document.body, { childList: true, subtree: true });
     console.log('[Download Parcels] MutationObserver connected to document body.');
 
-    // Asegurarse de que el botón se inserta incluso si los elementos ya están presentes al cargar la página
     if (window.location.pathname.startsWith(TARGET_URL_PATH) && document.querySelector(SELECTORS.FIRST_PAGE_BUTTON)) {
         console.log('[Download Parcels] Target element (FIRST_PAGE_BUTTON) already present on initial load. Inserting button directly.');
         insertButton();
         observer.disconnect();
     }
 
-    /**
-     * Genera un nombre de archivo CSV basado en la URL y la fecha actual.
-     * @returns {string} El nombre de archivo propuesto.
-     */
     function getFilenameFromUrl() {
         const urlParts = window.location.pathname.split('/').filter(part => part && part !== '_');
         if (urlParts.length >= 3 && urlParts[0] === 'parcel') {
@@ -143,10 +114,6 @@
         return `parcel_data_${new Date().toISOString().slice(0,10)}.csv`;
     }
 
-    /**
-     * Obtiene el número total de páginas de la paginación.
-     * @returns {number} El número total de páginas, por defecto 1.
-     */
     function getTotalPages() {
         const lastPageElement = document.querySelector(SELECTORS.LAST_PAGE_BUTTON);
         if (lastPageElement) {
@@ -158,10 +125,6 @@
         return 1;
     }
 
-    /**
-     * Muestra una barra de progreso modal al usuario.
-     * @returns {object} Objeto con métodos para actualizar y remover la barra.
-     */
     function showProgressBar() {
         const progressContainer = document.createElement('div');
         Object.assign(progressContainer.style, {
@@ -228,12 +191,8 @@
         };
     }
 
-    /**
-     * Espera a que los datos de la tabla se carguen y sean visibles.
-     * @returns {Promise<boolean>} True si la tabla se cargó, false si hubo timeout.
-     */
     async function waitForTableLoad() {
-        const maxAttempts = 30; // Aumentar intentos para mayor resiliencia (30 * 300ms = 9 segundos)
+        const maxAttempts = 30;
         let attempts = 0;
         console.log('[Download Parcels] Waiting for table to load using selector:', SELECTORS.MAIN_DATA_TABLE_ROWS);
 
@@ -249,25 +208,19 @@
                     return true;
                 }
             }
-            await new Promise(resolve => setTimeout(resolve, 300));
+            await new Promise(resolve => setTimeout(resolve, 50)); // Reducido a 50ms para chequeos más rápidos
             attempts++;
         }
         console.warn(`[Download Parcels] Timed out waiting for table to load after ${maxAttempts} attempts. No valid data rows found.`);
         return false;
     }
 
-    /**
-     * Extrae los datos de una fila HTML y los mapea a los encabezados definidos.
-     * @param {HTMLElement} row - El elemento TR de la fila.
-     * @param {string[]} tableHeaders - Array de nombres de encabezado.
-     * @returns {object|null} Objeto con los datos de la fila o null si no es una fila válida.
-     */
     function extractRowData(row, tableHeaders) {
         const rowData = {};
         const cells = row.querySelectorAll('td');
 
         if (cells.length < tableHeaders.length) {
-            return null; // No suficientes celdas para ser una fila de datos completa
+            return null;
         }
 
         cells.forEach((cell, index) => {
@@ -280,7 +233,6 @@
             }
         });
 
-        // Asegurarse de que la fila tenga al menos algún dato significativo (ej. el primer campo no esté vacío)
         if (tableHeaders.length > 0 && !rowData[tableHeaders[0]] && rowData[tableHeaders[0]] !== '') {
              return null;
         }
@@ -288,18 +240,14 @@
         return Object.keys(rowData).length > 0 ? rowData : null;
     }
 
-    /**
-     * Recolecta todos los datos de las páginas de la tabla.
-     * @param {number} totalPages - El número total de páginas a procesar.
-     * @returns {Promise<object[]>} Un array de objetos con todos los datos recolectados.
-     */
     async function collectData(totalPages) {
         const tableData = [];
+        const seenIdentifiers = new Set();
         let progress = null;
 
         try {
             progress = showProgressBar();
-            console.log('[Download Parcels] Starting data collection for', totalPages, 'pages.');
+            console.log('[Download Parcels] Starting data collection for', totalPages, 'pages (deduplication active).');
 
             const firstPageButton = document.querySelector(SELECTORS.FIRST_PAGE_BUTTON);
             if (firstPageButton && !firstPageButton.disabled && firstPageButton.href && !firstPageButton.classList.contains('active')) {
@@ -330,23 +278,33 @@
 
                 const rows = document.querySelectorAll(SELECTORS.MAIN_DATA_TABLE_ROWS);
                 let pageRowCount = 0;
+                let deduplicatedRowCount = 0;
 
                 rows.forEach(row => {
                     const rowData = extractRowData(row, TABLE_HEADERS);
                     if (rowData) {
-                        tableData.push(rowData);
                         pageRowCount++;
+
+                        const identifierKey = UNIQUE_IDENTIFIER_FIELDS.map(field => rowData[field]).join('|~|');
+
+                        if (identifierKey && !seenIdentifiers.has(identifierKey)) {
+                            seenIdentifiers.add(identifierKey);
+                            tableData.push(rowData);
+                            deduplicatedRowCount++;
+                        } else if (!identifierKey) {
+                            console.warn(`[Download Parcels] Skipping row from page ${currentPage} due to missing identifier key for:`, rowData);
+                        }
                     }
                 });
 
                 progress.updateRowCount(tableData.length);
-                console.log(`[Download Parcels] Page ${currentPage}: Found ${pageRowCount} new rows. Total collected: ${tableData.length}.`);
+                console.log(`[Download Parcels] Page ${currentPage}: Extracted ${pageRowCount} rows. Added ${deduplicatedRowCount} unique rows. Total unique collected: ${tableData.length}.`);
 
                 if (currentPage >= totalPages) {
                     console.log('[Download Parcels] Reached last page or total pages limit.');
                     break;
                 }
-                if (pageRowCount === 0 && currentPage > 1) { // Si no hay filas en una página subsiguiente, asumir fin de datos
+                if (pageRowCount === 0 && currentPage > 1) {
                     console.warn('[Download Parcels] No new rows found on current page. Assuming end of data.');
                     break;
                 }
@@ -359,12 +317,12 @@
 
                 progress.updateStatus(`Loading page ${currentPage + 1}...`);
                 nextButton.click();
-                await new Promise(resolve => setTimeout(resolve, 300));
+                await new Promise(resolve => setTimeout(resolve, 100)); // *** AJUSTE PRINCIPAL AQUÍ (REDUCIDO A 100ms) ***
             }
 
-            console.log(`[Download Parcels] Data collection complete. Final total rows: ${tableData.length}.`);
+            console.log(`[Download Parcels] Data collection complete. Final total UNIQUE rows: ${tableData.length}.`);
             progress.updateStatus('Finalizing data export...');
-            progress.updateRowCount(`Total rows collected: ${tableData.length}`);
+            progress.updateRowCount(`Total unique rows collected: ${tableData.length}`);
             await new Promise(resolve => setTimeout(resolve, 1000));
 
             return tableData;
@@ -383,29 +341,17 @@
         }
     }
 
-    /**
-     * Convierte un array de objetos en una cadena CSV.
-     * @param {object[]} data - Array de objetos con los datos.
-     * @param {string[]} headers - Array de encabezados en el orden deseado.
-     * @returns {string} La cadena CSV.
-     */
     function convertToCsv(data, headers) {
         if (!data || data.length === 0) {
-            return headers.map(h => `"${h}"`).join(',') + '\n'; // Sólo encabezados si no hay datos
+            return headers.map(h => `"${h.replace(/"/g, '""')}"`).join(',') + '\n';
         }
 
         const csvRows = [];
-        // Añadir encabezados
-        csvRows.push(headers.map(header => {
-            // Escapar comillas dobles y encerrar en comillas dobles
-            return `"${header.replace(/"/g, '""')}"`;
-        }).join(','));
+        csvRows.push(headers.map(header => `"${header.replace(/"/g, '""')}"`).join(','));
 
-        // Añadir filas de datos
         for (const row of data) {
             const values = headers.map(header => {
                 let value = row[header] === undefined || row[header] === null ? '' : String(row[header]);
-                // Escapar comillas dobles y encerrar en comillas dobles
                 return `"${value.replace(/"/g, '""')}"`;
             });
             csvRows.push(values.join(','));
@@ -414,15 +360,10 @@
         return csvRows.join('\n');
     }
 
-    /**
-     * Descarga una cadena de texto como un archivo CSV.
-     * @param {string} csvString - La cadena de texto CSV.
-     * @param {string} filename - El nombre del archivo a descargar.
-     */
     function downloadCsvFile(csvString, filename) {
         const blob = new Blob([csvString], { type: 'text/csv;charset=utf-8;' });
         const link = document.createElement('a');
-        if (link.download !== undefined) { // Navegadores que soportan el atributo 'download'
+        if (link.download !== undefined) {
             const url = URL.createObjectURL(blob);
             link.setAttribute('href', url);
             link.setAttribute('download', filename);
@@ -430,7 +371,7 @@
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
-            URL.revokeObjectURL(url); // Liberar el objeto URL
+            URL.revokeObjectURL(url);
             console.log(`[Download Parcels] CSV file "${filename}" generated and downloaded successfully.`);
         } else {
             alert('Your browser does not support automatic downloads. Please save the content manually.');
@@ -439,7 +380,6 @@
         }
     }
 
-    // Listener para el botón de descarga CSV
     downloadCsvButton.addEventListener('click', async () => {
         console.log('[Download Parcels] Download CSV button clicked.');
         downloadCsvButton.disabled = true;
@@ -448,7 +388,7 @@
 
         try {
             const totalPages = getTotalPages();
-            const confirmMessage = `This will download data from ${totalPages} pages (approx. ${totalPages * 10} records) to CSV. Continue?`;
+            const confirmMessage = `This will download data from ${totalPages} pages (approx. ${totalPages * 10} records), deduplicating by ${UNIQUE_IDENTIFIER_FIELDS.join(' & ')}. Continue?`;
 
             if (!confirm(confirmMessage)) {
                 console.log('[Download Parcels] User cancelled download.');
@@ -466,8 +406,8 @@
                 const filename = getFilenameFromUrl();
                 downloadCsvFile(csvString, filename);
             } else {
-                alert('No data was collected. The table might be empty or page structure has changed. Check console for details.');
-                console.warn('[Download Parcels] No data collected to export.');
+                alert('No data was collected. The table might be empty, page structure has changed, or all records were duplicates. Check console for details.');
+                console.warn('[Download Parcels] No data collected to export or all records were duplicates.');
             }
 
         } catch (error) {
