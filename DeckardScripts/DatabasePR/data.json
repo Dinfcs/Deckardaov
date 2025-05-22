@@ -224,8 +224,8 @@
       "Project": "AUS - City of Brisbane",
       "Public Records & GIS": [
         {
-          "url": "https://qldglobe.information.qld.gov.au/",
-          "type": "GIS"
+          "type": "GIS",
+          "url": "https://qldglobe.information.qld.gov.au/"
         },
         {
           "type": "You can check the property ID here (only when the property is outside of the city",
@@ -242,15 +242,15 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "<ul><li class=\"ql-align-justify\">Please work with filters: Unresolved + yet_to_review + rental  = self_contained  + hoe_violation = true.\nBing Maps has better aerial images than Google Maps.</li><li class=\"ql-align-justify\">There are no free public records, as privacy laws in the country protect property data.\nYou can check the owner’s name in Core Logic.</li><li class=\"ql-align-justify\">FV Brisbane by Peppers, 191, Brunswick St: Officially first unit is on floor 1. In practice first residential floor is floor 6. For example, the 5-floor offset between official and day-to-day addresses means the 19th floor in the listing description relates to floor 14 on the official address.</li><li class=\"ql-align-justify\">Please send to the Data Lead all listings that are located in Tangalooma Island Resort.</li></ul>",
+      "Important Info": "<ul><li class=\"ql-align-justify\"><strong>Please work with filters: Unresolved + yet_to_review_and_live + hoe_violation = true.</strong></li><li class=\"ql-align-justify\">Bing Maps has better aerial images than Google Maps.</li><li class=\"ql-align-justify\">There are no free public records, as privacy laws in the country protect property data.</li><li class=\"ql-align-justify\">You can check the owner’s name in Core Logic.</li><li class=\"ql-align-justify\">FV Brisbane by Peppers, 191, Brunswick St: Officially first unit is on floor 1. In practice first residential floor is floor 6. For example, the 5-floor offset between official and day-to-day addresses means the 19th floor in the listing description relates to floor 14 on the official address.</li><li class=\"ql-align-justify\">Please send to the Data Lead all listings that are located in Tangalooma Island Resort.</li></ul>",
       "Media": [
         {
-          "type": "Confluece",
-          "url": "https://deckardtech.atlassian.net/wiki/spaces/PC/pages/1841758216/Address+Mapping+in+Australia?atlOrigin=eyJpIjoiNmRjNDUyNzA2YTliNDk4MmJmYzAwNmI1MmNjYjNiNWYiLCJwIjoiY29uZmx1ZW5jZS1jaGF0cy1pbnQifQ"
+          "url": "https://deckardtech.atlassian.net/wiki/spaces/PC/pages/1841758216/Address+Mapping+in+Australia?atlOrigin=eyJpIjoiNmRjNDUyNzA2YTliNDk4MmJmYzAwNmI1MmNjYjNiNWYiLCJwIjoiY29uZmx1ZW5jZS1jaGF0cy1pbnQifQ",
+          "type": "Confluece"
         },
         {
           "url": "https://www.loom.com/share/2e7229e222dd420796880fdd6a53ad31",
-          "type": "Trainig "
+          "type": "Trainig"
         }
       ]
     },
@@ -7009,32 +7009,6 @@
         }
       ],
       "Important Info": "When a duplex has a unit number in the address: override the address based on the listed unit and also include the unit in the unit box. \nCondo Spinnaker Beachhouses Rentals does not need any AO at the moment, some units use “Seabrook Island Rd“ and others “Beach Club Villas“, leave it just as cyborg brings it.",
-      "Media": [
-        {
-          "type": "N/A",
-          "url": "N/A"
-        }
-      ]
-    },
-    {
-      "Project": "OK - Edmond City",
-      "Public Records & GIS": [
-        {
-          "type": "PR (Use VPN)",
-          "url": "https://docs.oklahomacounty.org/AssessorWP5/DefaultSearch.asp"
-        },
-        {
-          "type": "GIS (Use VPN)",
-          "url": "https://oklahomacounty.geocortex.com/Html5Viewer/Index.html?configBase=http://oklahomacounty.geocortex.com/Geocortex/Essentials/REST/sites/OKCAssessor/viewers/OKCAssessor_gvh/virtualdirectory/Resources/Config/Default"
-        }
-      ],
-      "License List": [
-        {
-          "type": "N/A",
-          "url": "N/A"
-        }
-      ],
-      "Important Info": "N/A",
       "Media": [
         {
           "type": "N/A",
