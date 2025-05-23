@@ -4384,8 +4384,8 @@
           "url": "https://cameron.prodigycad.com/property-search"
         },
         {
-          "type": "GIS",
-          "url": "https://cameron.prodigycad.com/maps"
+          "url": "https://cameron.prodigycad.com/maps",
+          "type": "GIS"
         },
         {
           "type": "GIS with the APN tool",
@@ -4394,31 +4394,31 @@
       ],
       "License List": [
         {
-          "type": "License List",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EbzSF1q3pNRLubzxQ-EidyEBtsN2aHJt6UH8KOBVyXsoow?e=GP3ffA"
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EbzSF1q3pNRLubzxQ-EidyEBtsN2aHJt6UH8KOBVyXsoow?e=GP3ffA",
+          "type": "License List"
         },
         {
-          "type": "PPD",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B01414BE8-6A64-4DBF-82CD-DEEC5C806D7A%7D&file=harmari_report__2023-01-05__.csv&action=default&mobileredirect=true"
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B01414BE8-6A64-4DBF-82CD-DEEC5C806D7A%7D&file=harmari_report__2023-01-05__.csv&action=default&mobileredirect=true",
+          "type": "PPD"
         },
         {
-          "type": "Harmari STR Report",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/ERLHPClDuFVEsjLZYbR0H9EBgkzfnnLA3Z-5ZOrg32CbJw?e=HCv8DN"
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/ERLHPClDuFVEsjLZYbR0H9EBgkzfnnLA3Z-5ZOrg32CbJw?e=HCv8DN",
+          "type": "Harmari STR Report"
         },
         {
-          "type": "Online Database Search",
-          "url": "https://www.salestaxonline.com/ShortTermRentalPermit/default.aspx"
+          "url": "https://www.salestaxonline.com/ShortTermRentalPermit/default.aspx",
+          "type": "Online Database Search"
         },
         {
           "type": "Tiki Condo",
           "url": "https://thetikispi.com/south-padre-island-condo-rentals/"
         },
         {
-          "type": "Tiki condo algunas unidades",
-          "url": "https://padreu.com/condominiums/"
+          "url": "https://padreu.com/condominiums/",
+          "type": "Tiki condo algunas unidades"
         }
       ],
-      "Important Info": "When working with the unit number \"condos,\" which are the main structure and have their own APN, even if the address includes the unit in Cyborg, please use the unit box and re-enter it there. Example:103 E Marlin St Unit 123, South Padre Island, TX 78597 Unit number in unit box. (123.)\nPlease make sure that you review the AO and also include the unit number in the unit box in this type of listing. If you don't, RS will not display the correct unit.\nExample: AO:103 E Marlin St Unit 123, South Padre Island, TX 78597\nUnit number in unit box [123]",
+      "Important Info": "<p>When working with the unit number \"condos,\" which are the main structure and have their own APN, even if the address includes the unit in Cyborg, please use the unit box and re-enter it there. Example:103 E Marlin St Unit 123, South Padre Island, TX 78597 Unit number in unit box. (123.)\nPlease make sure that you review the AO and also include the unit number in the unit box in this type of listing. If you don't, RS will not display the correct unit.\nExample: AO:103 E Marlin St Unit 123, South Padre Island, TX 78597\nUnit number in unit box [123]</p><p>If you want to look for the APn in the PR, select the Geo ID and use the following format: <span style=\"background-color: rgb(242, 242, 242); color: rgb(33, 37, 41);\">67-6400-0780-0071-00&nbsp;</span></p>",
       "Media": [
         {
           "type": "N/A",
