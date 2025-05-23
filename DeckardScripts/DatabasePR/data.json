@@ -12011,6 +12011,28 @@
           "type": "N/A"
         }
       ]
+    },
+    {
+      "Project": "VT - Town Of Woodstock",
+      "Public Records & GIS": [
+        {
+          "url": "https://nemrc.info/web_data/vtwoos/searchT.php",
+          "type": "PR"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "<p>To search by <strong>APN</strong> in Public Records, remove the starting <strong>250</strong> and add dots to format it like this: <strong>250245129001</strong> ➝ <strong>24.51.29001</strong>.</p>",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
