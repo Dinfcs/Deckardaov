@@ -11985,6 +11985,32 @@
           "type": "N/A"
         }
       ]
+    },
+    {
+      "Project": "TX - City of League City",
+      "Public Records & GIS": [
+        {
+          "type": "PR Galveston County",
+          "url": "https://esearch.galvestoncad.org/"
+        },
+        {
+          "type": "GIS Galveston County",
+          "url": "https://galvestoncad.maps.arcgis.com/apps/webappviewer/index.html?id=3e00357dbce04d7682785436e4713974"
+        }
+      ],
+      "License List": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ],
+      "Important Info": "<p>N/A</p>",
+      "Media": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ]
     }
   ]
 }
