@@ -11622,8 +11622,8 @@
       "Project": "FL - City Of Panama City Beach",
       "Public Records & GIS": [
         {
-          "url": "https://qpublic.schneidercorp.com/application.aspx?app=BayCountyFL&PageType=Search",
-          "type": "PR"
+          "type": "PR",
+          "url": "https://qpublic.schneidercorp.com/application.aspx?app=BayCountyFL&PageType=Search"
         },
         {
           "type": "GIS",
@@ -11632,15 +11632,15 @@
       ],
       "License List": [
         {
-          "url": "N/A",
-          "type": "N/A"
-        }
-      ],
-      "Important Info": "<p><br></p>",
-      "Media": [
-        {
           "type": "N/A",
           "url": "N/A"
+        }
+      ],
+      "Important Info": "<p>The condo located at <strong>16819 Front Beach Rd</strong> is a <strong>main structure</strong>, so please make sure to identify its units before mapping.</p>",
+      "Media": [
+        {
+          "url": "N/A",
+          "type": "N/A"
         }
       ]
     },
