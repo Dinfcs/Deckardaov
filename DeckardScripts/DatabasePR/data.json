@@ -9290,25 +9290,25 @@
       "Project": "FL - City Of Holmes Beach",
       "Public Records & GIS": [
         {
-          "type": "PR",
-          "url": "https://www.manateepao.gov/search/"
+          "url": "https://www.manateepao.gov/search/",
+          "type": "PR"
         },
         {
-          "type": "GIS (Use VPN)",
-          "url": "https://www.mymanatee.org/gisapps/gis/clipzipship/map2.html"
+          "url": "https://www.mymanatee.org/gisapps/gis/clipzipship/map2.html",
+          "type": "GIS (Use VPN)"
         },
         {
-          "type": "GIS 2",
-          "url": "https://www.manateepao.gov/parcel/?display=fullaerial&referer=search"
+          "url": "https://www.manateepao.gov/parcel/?display=fullaerial&referer=search",
+          "type": "GIS 2"
         }
       ],
       "License List": [
         {
-          "type": "License",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EbmX47VDRRxJmTLazJidXq0Bd9M1vu98mN_BwVpfX61QmQ?e=eM5sy3"
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EQo7bH--t3RJkYim6Q0CASwB-kpAFEDTe9fNmVKbNF3i3Q?e=4R5TKa",
+          "type": "License"
         }
       ],
-      "Important Info": "When working on U1OM be careful with the following cases: \n·If the address cyborg brings up has a unit on it, ex: 3154 Almaneda Ave # A, Holmes Beach, FL 34217, it can: \n1.Be the same unit as the one cyborg pops up, in this case, the address remains the same (Unit A for this example) \n2.Be adifferent unit as the one cyborg pops up, in this case, you have to perform AO and input your unit in the unit box (Unit B for this example, 3154 Almaneda Ave Unit B, Holmes Beach, FL 34217) \n3.Not be sureabout which unit they are renting, in this case, the address remains the same cyborg brings up. \n·If within the main address there are more main addresses with their own unit use the unit box and AO to separate them. \nExample:202 Ave F Unit 1, Holmes Beach, FL 34217204 Ave F Unit 1, Holmes Beach, FL 34217",
+      "Important Info": "<p>When working on U1OM be careful with the following cases: \n·If the address cyborg brings up has a unit on it, ex: 3154 Almaneda Ave # A, Holmes Beach, FL 34217, it can: \n1.Be the same unit as the one cyborg pops up, in this case, the address remains the same (Unit A for this example) \n2.Be adifferent unit as the one cyborg pops up, in this case, you have to perform AO and input your unit in the unit box (Unit B for this example, 3154 Almaneda Ave Unit B, Holmes Beach, FL 34217) \n3.Not be sureabout which unit they are renting, in this case, the address remains the same cyborg brings up. \n·If within the main address there are more main addresses with their own unit use the unit box and AO to separate them. \nExample:202 Ave F Unit 1, Holmes Beach, FL 34217204 Ave F Unit 1, Holmes Beach, FL 34217</p>",
       "Media": [
         {
           "type": "N/A",
