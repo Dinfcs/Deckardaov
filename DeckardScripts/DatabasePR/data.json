@@ -11930,21 +11930,21 @@
           "type": "1. GIS/ PR"
         },
         {
-          "type": "2. PR/ GIS",
-          "url": "https://svc.mt.gov/dor/property/Home"
+          "url": "https://svc.mt.gov/dor/property/Home",
+          "type": "2. PR/ GIS"
         }
       ],
       "License List": [
         {
-          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EQdKquiX-PdBn5VrJAbhL2MBWpROzasnavAnaBikVNrKXw?e=cB7VzU",
-          "type": "List"
+          "type": "List",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7BC98C530F-67D7-4D00-96F2-3A3AD0A8043B%7D&file=Copy%20of%20City_of_Red_Lodge_LicenseUploadTemplate.xlsx&action=default&mobileredirect=true"
         }
       ],
       "Important Info": "<ol><li>Searches can be done using APN (Geocode on <strong><u>GIS/PR 1</u></strong>), Address or Owner Name.<span style=\"color: rgb(240, 102, 102);\">--------&gt;</span>  <strong style=\"color: rgb(240, 102, 102);\">Image 1*</strong></li><li>Searches can be done using APN, Address.</li></ol><p>                                 for the GIS in <strong><u>PR/ GIS 2</u></strong> click on \"Open Map\" <span style=\"color: rgb(153, 51, 255);\"> </span><strong style=\"color: rgb(153, 51, 255);\">---------&gt;  Image 2**</strong></p><p><strong style=\"color: rgb(153, 51, 255);\">                                 </strong>then Click on the gear icon ⚙️ and select \"Satellite\"  <strong style=\"color: rgb(102, 185, 102);\">-------&gt;    Image 3***</strong></p><p><br></p><ul><li>They contracted reg system.</li></ul>",
       "Media": [
         {
-          "url": "https://drive.google.com/uc?export=view&id=1bJJGASkyH0th6uP_BSEt9F891fH7-lP6",
-          "type": "Image 1*"
+          "type": "Image 1*",
+          "url": "https://drive.google.com/uc?export=view&id=1bJJGASkyH0th6uP_BSEt9F891fH7-lP6"
         },
         {
           "type": "Image 2**",
