@@ -12037,6 +12037,36 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "NY - Clinton County",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://clinton.sdgnys.com/search.aspx"
+        },
+        {
+          "url": "https://experience.arcgis.com/experience/fe5bd2d3891a4792ab3c2a49880e0ec4/page/Page?org=ClinCo%2CClinCo",
+          "type": "GIS"
+        }
+      ],
+      "License List": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ],
+      "Important Info": "<ul><li>To view the parcels division in the GIS, make sure the filters \"<strong>Parcels 05-06-2025</strong>\" and \"<strong>Parcels 05-06-2025 web</strong>\" are enabled (image 1). </li><li>Then, adjust the zoom level —by zooming in or out— until the parcel divisions are visible, as shown in image 2.</li></ul>",
+      "Media": [
+        {
+          "url": "https://drive.google.com/uc?export=view&id=1IqWquPB4KdDDjh8ZjSX6tr4zUSbMA4Yx",
+          "type": "Image 1"
+        },
+        {
+          "type": "Image 2",
+          "url": "https://drive.google.com/uc?export=view&id=1o0f9wsHFBDycaaj6HzT8jF6PCWLLHkWa"
+        }
+      ]
     }
   ]
 }
