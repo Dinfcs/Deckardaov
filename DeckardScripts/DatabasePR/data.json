@@ -10002,16 +10002,16 @@
       "Project": "CA - City of Glendale",
       "Public Records & GIS": [
         {
-          "type": "PR",
-          "url": "https://portal.assessor.lacounty.gov/"
+          "url": "https://portal.assessor.lacounty.gov/",
+          "type": "PR"
         },
         {
           "type": "GIS",
           "url": "https://www.arcgis.com/apps/webappviewer/index.html?id=79315f9193f8454ba277ca12019d3226"
         },
         {
-          "type": "GIS Los Angeles",
-          "url": "https://rpgis.isd.lacounty.gov/Html5Viewer/index.html?viewer=GISNET_Public.GIS-NET_Public"
+          "url": "https://rpgis.isd.lacounty.gov/Html5Viewer/index.html?viewer=GISNET_Public.GIS-NET_Public",
+          "type": "GIS Los Angeles"
         }
       ],
       "License List": [
@@ -10020,7 +10020,7 @@
           "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EcRTVWeUKSJDre8M6AMx80wBa-wpdm1zuOOOZ5bhy4Agdw?e=7hwaQZ"
         }
       ],
-      "Important Info": "Use the rental override classification in this project, the client needs to know when a property is self_contained or non_self_contained.\n\nThe satellite imagery on Bing Maps is excellent, use the bird's eye view option.",
+      "Important Info": "<p>Use the rental override classification in this project, the client needs to know when a property is self_contained or non_self_contained.\n\nThe satellite imagery on Bing Maps is excellent, use the bird's eye view option.</p><p><br></p><p>The Los Angeles GIS offers better imagery and information.</p>",
       "Media": [
         {
           "type": "N/A",
