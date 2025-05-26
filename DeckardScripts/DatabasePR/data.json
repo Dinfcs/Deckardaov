@@ -12067,6 +12067,28 @@
           "url": "https://drive.google.com/uc?export=view&id=1o0f9wsHFBDycaaj6HzT8jF6PCWLLHkWa"
         }
       ]
+    },
+    {
+      "Project": "NY - Rockland County",
+      "Public Records & GIS": [
+        {
+          "url": "https://www.rocklandgis.com/webapps/base_public/",
+          "type": "GIS (VPN)"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "<p>to use the rockland gis, you need to click the icon that says <strong>find address an intersection</strong> sothe property you're looking for appears.</p>",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
