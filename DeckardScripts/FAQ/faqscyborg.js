@@ -38,7 +38,7 @@
         }
 
         .floating-search-button {
-            background: #6fb833;
+            background: #D1E231;
             border: none;
             color: white;
             cursor: pointer;
@@ -232,7 +232,7 @@
             position: absolute;
             height: 100%;
             width: 0;
-            background: linear-gradient(90deg, #6fb833, #007bff);
+            background: linear-gradient(90deg, #D1E231, #007bff);
             transition: width 0.3s ease;
         }
 
@@ -548,7 +548,7 @@
             message.className = 'status-message';
             message.innerHTML = `
                 <p>Showing simplified results from cache. Full data is loading...</p>
-                <button id="retryLoad" style="margin-top: 10px; padding: 5px 10px; background: #6fb833; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                <button id="retryLoad" style="margin-top: 10px; padding: 5px 10px; background: #D1E231; color: white; border: none; border-radius: 4px; cursor: pointer;">
                     Retry Full Load
                 </button>
             `;
