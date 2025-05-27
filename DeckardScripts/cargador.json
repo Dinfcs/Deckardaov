@@ -14,7 +14,7 @@
         },
         {
             "urlPattern": "https://cyborg.deckard.com/listing/*STR*",
-            "scriptUrl": "https://github.com/Dinfcs/Deckardaov/blob/main/DeckardScripts/CyborgTools/LbPqFrame.js"
+            "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/LbPqFrame.js"
         }, 
         {
             "urlPattern": "https://cyborg.deckard.com/listing/*STR*",
