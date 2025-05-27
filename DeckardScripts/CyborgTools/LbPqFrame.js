@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         LB&PQ FRAME
+// @name         LbPqFrame
 // @namespace    http://tampermonkey.net/
-// @version      3.1
-// @description  Botón lateral delgado que abre app en iframe con control simple
+// @version      3.3
+// @description  Botón lateral que carga el iframe solo al hacer clic
 // @author       Luis
 // @match        https://cyborg.deckard.com/listing*
 // ==/UserScript==
@@ -45,22 +45,22 @@
             letter-spacing: 1px;
         }
 
-        #iframeOverlay {
+        #iframeContainer {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.85);
             display: none;
             z-index: 10000;
+            background: transparent;
         }
 
-        .iframe-container {
+        .iframe-wrapper {
             position: relative;
             width: 95%;
             height: 100%;
-            margin: 0 auto;
+            margin: 0% auto;
         }
 
         #appFrame {
@@ -68,7 +68,7 @@
             height: 100%;
             border: none;
             background: white;
-            box-shadow: 0 0 15px rgba(0,0,0,0.3);
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
             border-radius: 4px;
         }
 
@@ -103,46 +103,51 @@
     floatingTab.innerHTML = '<span>LB & PQ</span>';
     document.body.appendChild(floatingTab);
 
-    // Overlay del iframe
-    const iframeOverlay = document.createElement('div');
-    iframeOverlay.id = 'iframeOverlay';
-
-    // Contenedor del iframe
+    // Contenedor principal del iframe (vacío inicialmente)
     const iframeContainer = document.createElement('div');
-    iframeContainer.className = 'iframe-container';
+    iframeContainer.id = 'iframeContainer';
+    document.body.appendChild(iframeContainer);
 
-    // Crear el iframe
-    const iframe = document.createElement('iframe');
-    iframe.id = 'appFrame';
-    iframe.src = 'https://script.google.com/a/macros/deckard.com/s/AKfycbziAFj6j4YU0oDpCIVc0EQfcYjx5RG-RtXZPLbA43eAaA91SpQ2ZDf7rJFVESnBCVk9/exec';
+    // Variable para controlar si ya se cargó el iframe
+    let iframeLoaded = false;
 
-    // Botón de cerrar (X)
-    const closeBtn = document.createElement('button');
-    closeBtn.className = 'close-btn';
-    closeBtn.innerHTML = '×';
-    closeBtn.title = 'Cerrar';
-
-    // Agregar elementos
-    iframeContainer.appendChild(closeBtn);
-    iframeContainer.appendChild(iframe);
-    iframeOverlay.appendChild(iframeContainer);
-    document.body.appendChild(iframeOverlay);
-
-    // Mostrar el iframe al hacer clic en la pestaña
+    // Mostrar y cargar el iframe al hacer clic en la pestaña
     floatingTab.onclick = function() {
-        iframeOverlay.style.display = 'block';
-    };
+        if (!iframeLoaded) {
+            // Crear elementos solo cuando se hace clic por primera vez
+            const iframeWrapper = document.createElement('div');
+            iframeWrapper.className = 'iframe-wrapper';
 
-    // Cerrar el iframe
-    closeBtn.onclick = function(e) {
-        e.stopPropagation();
-        iframeOverlay.style.display = 'none';
-    };
+            const iframe = document.createElement('iframe');
+            iframe.id = 'appFrame';
+            iframe.src = 'https://script.google.com/a/macros/deckard.com/s/AKfycbziAFj6j4YU0oDpCIVc0EQfcYjx5RG-RtXZPLbA43eAaA91SpQ2ZDf7rJFVESnBCVk9/exec';
 
-    // Cerrar al hacer clic fuera del iframe
-    iframeOverlay.onclick = function(e) {
-        if (e.target === iframeOverlay) {
-            iframeOverlay.style.display = 'none';
+            const closeBtn = document.createElement('button');
+            closeBtn.className = 'close-btn';
+            closeBtn.innerHTML = '×';
+            closeBtn.title = 'Cerrar';
+
+            // Configurar eventos
+            closeBtn.onclick = function(e) {
+                e.stopPropagation();
+                iframeContainer.style.display = 'none';
+            };
+
+            iframeContainer.onclick = function(e) {
+                if (e.target === iframeContainer) {
+                    iframeContainer.style.display = 'none';
+                }
+            };
+
+            // Agregar elementos
+            iframeWrapper.appendChild(closeBtn);
+            iframeWrapper.appendChild(iframe);
+            iframeContainer.appendChild(iframeWrapper);
+
+            iframeLoaded = true;
         }
+
+        // Mostrar el contenedor
+        iframeContainer.style.display = 'block';
     };
 })();
