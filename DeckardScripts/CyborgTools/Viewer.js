@@ -1,8 +1,9 @@
 // ==UserScript==
 // @name         Cyborg Image Viewer Pro
-// @version      7.4
+// @version      7.6 // Nueva versión
 // @description  Visor avanzado de imágenes con carrusel de miniaturas
 // @match        https://cyborg.deckard.com/listing/*
+// @grant        none
 // ==/UserScript==
 
 (function() {
@@ -20,7 +21,10 @@
         viewerOpened: false,
         currentThumbnail: null,
         pageUrl: window.location.href,
-        modalObserver: null
+        modalObserver: null,
+        buttonObserver: null,
+        isSilentPreloading: false, // NUEVO: Bandera para la precarga silenciosa
+        silentPreloadButtonCheckInterval: null // NUEVO: Intervalo para la precarga silenciosa
     };
 
     // Cargador de recursos
@@ -154,6 +158,7 @@
                 return null;
             }
 
+            // Guardar en caché al extraer, independientemente de si es precarga silenciosa o no
             cacheManager.set(imageLinks);
             return imageLinks;
         }
@@ -180,12 +185,13 @@
             appState.modalObserver = new MutationObserver((mutations, obs) => {
                 const modal = document.querySelector('.modal.show');
                 if (modal) {
-                    console.log("Modal detectado");
-                    obs.disconnect();
+                    // console.log("Modal detectado por observer."); // Descomentar para depurar
+                    obs.disconnect(); // Desconectar el observer una vez que se detecta el modal
                     callback(modal);
                 }
             });
 
+            // Observar el body para detectar la aparición del modal
             appState.modalObserver.observe(document.body, {
                 childList: true,
                 subtree: true
@@ -198,7 +204,7 @@
         createThumbsContainer(imageLinks) {
             const container = document.createElement('div');
             container.id = "thumbsContainer";
-            container.style.gridTemplateColumns = imageLinks.length < 8 ? "1fr" : "repeat(2, 1fr)";
+            container.style.gridTemplateColumns = imageLinks.length <= 6 ? "1fr" : "repeat(2, 1fr)";
 
             imageLinks.forEach((imgUrl, index) => {
                 const thumb = document.createElement('img');
@@ -207,7 +213,7 @@
                 thumb.dataset.index = index;
 
                 thumb.addEventListener('click', (e) => {
-                    if (e.ctrlKey || e.metaKey) {
+                    if (e.ctrlKey || e.metaKey) { // CMD key for Mac
                         window.open(imgUrl, '_blank');
                     } else {
                         appState.viewer.view(index);
@@ -245,6 +251,18 @@
         }
     };
 
+    // Cargador/precargador de imágenes
+    const imageLoader = {
+        preload(imageUrls) {
+            if (!imageUrls || imageUrls.length === 0) return;
+            console.log(`Iniciando precarga de ${imageUrls.length} imágenes...`);
+            imageUrls.forEach(url => {
+                const img = new Image();
+                img.src = url;
+            });
+        }
+    };
+
     // Controlador de eventos
     const eventHandler = {
         setupKeyboardNavigation(e) {
@@ -259,7 +277,10 @@
             };
 
             const action = keyActions[e.key.toLowerCase()];
-            if (action) action();
+            if (action) {
+                e.preventDefault();
+                action();
+            }
         },
 
         setupGlobalShortcut(e) {
@@ -278,14 +299,12 @@
             console.log('Iniciando visor de imágenes...');
             appState.viewerOpened = true;
 
-            // Crear elementos UI
             const thumbsContainer = uiBuilder.createThumbsContainer(imageLinks);
             const viewerContainer = uiBuilder.createViewerContainer(imageLinks);
 
             document.body.appendChild(thumbsContainer);
             document.body.appendChild(viewerContainer);
 
-            // Inicializar Viewer.js
             appState.viewer = new Viewer(viewerContainer, {
                 inline: false,
                 button: true,
@@ -303,7 +322,6 @@
                 transition: false,
                 keyboard: true,
                 viewed(e) {
-                    // Resaltar miniatura actual
                     if (appState.currentThumbnail) {
                         appState.currentThumbnail.classList.remove('current-thumbnail');
                     }
@@ -312,12 +330,20 @@
                     if (thumbs && thumbs.length > e.detail.index) {
                         appState.currentThumbnail = thumbs[e.detail.index];
                         appState.currentThumbnail.classList.add('current-thumbnail');
-                        appState.currentThumbnail.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        const containerRect = thumbsContainer.getBoundingClientRect();
+                        const thumbRect = appState.currentThumbnail.getBoundingClientRect();
+
+                        if (thumbRect.top < containerRect.top || thumbRect.bottom > containerRect.bottom) {
+                            appState.currentThumbnail.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }
                     }
                 },
                 hidden() {
-                    // Limpieza al cerrar
-                    cacheManager.setLastViewedIndex(appState.viewer.index);
+                    if (appState.viewer) {
+                       cacheManager.setLastViewedIndex(appState.viewer.index);
+                       appState.viewer.destroy();
+                       appState.viewer = null;
+                    }
                     thumbsContainer.remove();
                     viewerContainer.remove();
                     appState.viewerOpened = false;
@@ -325,34 +351,45 @@
                 }
             });
 
-            // Mostrar el viewer
             appState.viewer.show();
 
-            // Restaurar última posición
             const lastIndex = cacheManager.getLastViewedIndex();
             if (lastIndex >= 0 && lastIndex < imageLinks.length) {
                 setTimeout(() => appState.viewer.view(lastIndex), 100);
             }
 
-            // Configurar navegación por teclado
             document.addEventListener('keydown', eventHandler.setupKeyboardNavigation);
         },
 
         openModalAndViewer() {
-            console.log("Iniciando flujo completo...");
+            console.log("Iniciando flujo completo (manual o atajo)...");
+
+            // Si la precarga silenciosa está en curso, la desconectamos
+            if (appState.isSilentPreloading && appState.silentPreloadButtonCheckInterval) {
+                clearInterval(appState.silentPreloadButtonCheckInterval);
+                appState.isSilentPreloading = false; // Resetear la bandera
+                console.log("Precarga silenciosa interrumpida por acción del usuario.");
+            }
+            if (appState.modalObserver) {
+                appState.modalObserver.disconnect(); // Desconectar cualquier observer pendiente
+                appState.modalObserver = null;
+            }
 
             // Verificar caché primero
             const cachedImages = cacheManager.get();
             if (cachedImages) {
-                console.log("Usando imágenes desde caché");
+                console.log("Usando imágenes desde caché. Abriendo visor directamente.");
+                // Aunque ya se precargaron, una llamada extra no hace daño y asegura que estén listas.
+                imageLoader.preload(cachedImages);
                 this.show(cachedImages);
                 return;
             }
 
-            // Configurar observer para detectar cuando el modal está abierto
+            // Configurar observer para detectar cuando el modal está abierto (para extracción manual)
             modalManager.observeForOpen(() => {
                 const images = imageExtractor.fromModal();
                 if (images) {
+                    imageLoader.preload(images);
                     modalManager.close();
                     setTimeout(() => this.show(images), 300);
                 }
@@ -362,8 +399,9 @@
             const originalBtn = document.getElementById("btn_show_all_images");
             if (originalBtn) {
                 originalBtn.click();
+                console.log("Botón original clicado para abrir modal (manual).");
             } else {
-                console.error("No se encontró el botón para abrir el modal");
+                console.error("No se encontró el botón para abrir el modal (manual).");
             }
         }
     };
@@ -373,28 +411,123 @@
         init() {
             resourceLoader.load();
             styleManager.inject();
-            this.setupButtons();
+            this.setupButtons(); // Configura el botón del carrusel y lo añade si no existe
+            this.setupTabListener(); // Asegura que el botón del carrusel reaparezca al cambiar de pestaña
 
             // Atajo de teclado global
             document.addEventListener('keydown', eventHandler.setupGlobalShortcut);
+
+            // NUEVO: Iniciar la precarga silenciosa al cargar la página
+            this.startSilentPreload();
 
             console.log("Cyborg Image Viewer Pro inicializado");
         },
 
         setupButtons() {
-            const checkInterval = setInterval(() => {
+            const initialCheckInterval = setInterval(() => {
                 const originalBtn = document.getElementById("btn_show_all_images");
                 if (originalBtn) {
-                    clearInterval(checkInterval);
-
-                    if (!document.getElementById("btn_carousel_viewer")) {
-                        const viewerBtn = uiBuilder.createViewerButton();
-                        originalBtn.parentNode.insertBefore(viewerBtn, originalBtn.nextSibling);
-                        viewerBtn.addEventListener("click", () => imageViewer.openModalAndViewer());
-                        console.log("Botón del viewer creado exitosamente");
-                    }
+                    clearInterval(initialCheckInterval);
+                    this.addViewerButtonIfNeeded(originalBtn);
                 }
             }, 500);
+        },
+
+        setupTabListener() {
+            if (appState.buttonObserver) {
+                appState.buttonObserver.disconnect();
+            }
+
+            appState.buttonObserver = new MutationObserver((mutations) => {
+                const originalBtn = document.getElementById("btn_show_all_images");
+                if (originalBtn) {
+                    this.addViewerButtonIfNeeded(originalBtn);
+                } else {
+                    const viewerBtn = document.getElementById("btn_carousel_viewer");
+                    if (viewerBtn) {
+                        viewerBtn.remove();
+                        console.log("Botón del viewer eliminado porque el botón original no está presente.");
+                    }
+                }
+            });
+
+            appState.buttonObserver.observe(document.body, {
+                childList: true,
+                subtree: true
+            });
+            console.log("Observer de botones para pestañas configurado.");
+        },
+
+        addViewerButtonIfNeeded(originalBtn) {
+            if (!document.getElementById("btn_carousel_viewer")) {
+                const viewerBtn = uiBuilder.createViewerButton();
+                if (originalBtn.parentNode) {
+                    originalBtn.parentNode.insertBefore(viewerBtn, originalBtn.nextSibling);
+                    viewerBtn.addEventListener("click", () => imageViewer.openModalAndViewer());
+                    console.log("Botón del viewer creado exitosamente");
+                }
+            }
+        },
+
+        // NUEVO: Función para la precarga silenciosa
+        startSilentPreload() {
+            // No iniciar si ya estamos en un proceso de precarga o si el visor ya está abierto
+            if (appState.isSilentPreloading || appState.viewerOpened) {
+                console.log("Precarga silenciosa no iniciada: ya en curso o visor abierto.");
+                return;
+            }
+
+            // 1. Verificar si ya tenemos imágenes en caché
+            const cachedImages = cacheManager.get();
+            if (cachedImages && cachedImages.length > 0) {
+                console.log("Imágenes ya en caché. Iniciando precarga silenciosa desde caché.");
+                imageLoader.preload(cachedImages);
+                return; // No necesitamos abrir el modal
+            }
+
+            console.log("No hay imágenes en caché. Intentando precarga silenciosa via modal.");
+            appState.isSilentPreloading = true; // Activar la bandera de precarga silenciosa
+
+            // 2. Esperar a que el botón original de imágenes aparezca
+            appState.silentPreloadButtonCheckInterval = setInterval(() => {
+                const originalBtn = document.getElementById("btn_show_all_images");
+                if (originalBtn) {
+                    clearInterval(appState.silentPreloadButtonCheckInterval); // Detener la comprobación
+                    console.log("Botón original de imágenes detectado para precarga silenciosa.");
+
+                    // 3. Configurar un observer para detectar cuando el modal se abra
+                    modalManager.observeForOpen(() => {
+                        console.log("Modal abierto por precarga silenciosa. Extrayendo imágenes...");
+                        const images = imageExtractor.fromModal(); // Esto también guarda en caché
+                        if (images && images.length > 0) {
+                            imageLoader.preload(images); // Iniciar la precarga de las imágenes
+                            console.log(`Precarga silenciosa completada para ${images.length} imágenes.`);
+                        } else {
+                            console.warn("No se encontraron imágenes para la precarga silenciosa.");
+                        }
+                        // 4. Cerrar el modal inmediatamente
+                        modalManager.close();
+                        appState.isSilentPreloading = false; // Desactivar la bandera
+                        console.log("Modal cerrado tras precarga silenciosa.");
+                    });
+
+                    // 5. Clicar el botón para abrir el modal (invisiblemente)
+                    // Pequeño retardo para asegurar que el observer esté activo antes del clic
+                    setTimeout(() => {
+                        originalBtn.click();
+                        console.log("Clic simulado en botón original para precarga silenciosa.");
+                    }, 50); // Un pequeño retardo
+                }
+            }, 500); // Comprobar cada 0.5 segundos si el botón está disponible
+
+            // Opcional: Un timeout para detener el proceso si el botón nunca aparece (ej. página sin imágenes)
+            setTimeout(() => {
+                if (appState.isSilentPreloading && appState.silentPreloadButtonCheckInterval) {
+                    clearInterval(appState.silentPreloadButtonCheckInterval);
+                    appState.isSilentPreloading = false;
+                    console.warn("Precarga silenciosa cancelada: El botón de imágenes no apareció a tiempo.");
+                }
+            }, 10000); // Cancelar después de 10 segundos
         }
     };
 
