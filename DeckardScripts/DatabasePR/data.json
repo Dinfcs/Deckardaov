@@ -11626,8 +11626,8 @@
           "url": "https://qpublic.schneidercorp.com/application.aspx?app=BayCountyFL&PageType=Search"
         },
         {
-          "type": "GIS",
-          "url": "https://qpublic.schneidercorp.com/application.aspx?AppID=834&LayerID=15170&PageTypeID=1&PageID=6822"
+          "url": "https://qpublic.schneidercorp.com/application.aspx?AppID=834&LayerID=15170&PageTypeID=1&PageID=6822",
+          "type": "GIS"
         }
       ],
       "License List": [
@@ -11636,11 +11636,11 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "<p>The condo located at <strong>16819 Front Beach Rd</strong> is a <strong>main structure</strong>, so please make sure to identify its units before mapping.</p>",
+      "Important Info": "<p>The condo located at <strong>16819 Front Beach Rd</strong> is a <strong>main structure</strong>, so please make sure to identify its units before mapping.</p><p><br></p><p>Listings at <strong>17001 Front Beach Rd</strong> should be mapped as <strong>Resort</strong> with <strong>APN 32776000000</strong></p>",
       "Media": [
         {
-          "url": "N/A",
-          "type": "N/A"
+          "type": "N/A",
+          "url": "N/A"
         }
       ]
     },
