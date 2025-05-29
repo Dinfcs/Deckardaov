@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         CyborgButtons
 // @namespace    http://tampermonkey.net/
-// @version      4.9 // Incremented version to reflect significant changes
-// @description  Botones laterales que cargan iframes (con ancho y posición configurables, todos persistentes) o abren pestañas nuevas al hacer clic, con estilos unificados y animaciones de deslizamiento. No se ejecuta dentro de iframes. Ahora con barra inferior estilo dock más compacta y botones más bajos.
+// @version      5.1 // Incremented version
+// @description  Botones laterales que cargan iframes (con ancho y posición configurables, todos persistentes y con deslizamiento horizontal) o abren pestañas nuevas al hacer clic, con estilos unificados y animaciones. No se ejecuta dentro de iframes. Ahora con barra inferior estilo dock más compacta y botones más bajos.
 // @author       Luis
 // @match        https://cyborg.deckard.com/listing*
 // @match        *://cyborg.deckard.com/*
@@ -26,7 +26,7 @@
         #dockBar {
             position: fixed;
             bottom: 0; /* Pegado al fondo */
-            left: 50%; /* Centrado horizontalmente (anteriormente 205px, ahora centrado absoluto) */
+            left: 50%; /* Centrado horizontalmente */
             transform: translateX(-50%); /* Ajuste para centrarlo perfectamente */
             z-index: 9999;
             display: flex;
@@ -87,35 +87,27 @@
             height: 100%;
             display: none; /* Oculto por defecto */
             z-index: 10000;
-            background: transparent; /* ¡Fondo completamente transparente! */
-            display: flex; /* Usar flexbox para centrar o alinear contenido */
-            align-items: center; /* Centrar verticalmente */
-            /* justify-content se establecerá dinámicamente en JS (flex-end, flex-start o center) */
+            background: rgba(0,0,0,0.1); /* Ligero fondo oscuro para el modal */
             pointer-events: none; /* Permitir clics a través del fondo cuando está oculto */
         }
         #iframeContainer.active {
-            display: flex;
+            display: block; /* Simplemente mostrar el overlay */
             pointer-events: auto; /* Habilitar clics cuando está activo */
         }
 
-        /* Estilos base para el wrapper del iframe. Dimensiones, bordes y sombras son dinámicos via JS */
+        /* Estilos para el wrapper del iframe */
         .iframe-wrapper {
-            position: relative;
-            background: white;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
+            position: fixed; /* Posicionamiento fijo para el iframe en la pantalla */
+            top: 0;
+            /* left y width serán establecidos por JS para el efecto de deslizamiento */
+            height: 100%;
+            background: white; /* Color de fondo para el wrapper */
             box-sizing: border-box;
-
-            /* Animación de deslizamiento - ahora desde abajo */
-            transform: translateY(100vh); /* Inicia fuera de la pantalla por debajo */
-            opacity: 0; /* Inicia invisible */
-            transition: transform 0.4s ease-out, opacity 0.4s ease-out;
-        }
-
-        .iframe-wrapper.slide-in {
-            transform: translateY(0); /* Se desliza a su posición final */
-            opacity: 1; /* Se hace visible */
+            overflow: hidden;
+            border: none; /* Borde se manejará dinámicamente */
+            box-shadow: none; /* Sombra se manejará dinámicamente */
+            transition: width 0.3s ease, left 0.3s ease, right 0.3s ease; /* Transición para el deslizamiento horizontal */
+            z-index: 10001; /* Sobre el iframeContainer pero debajo del close button global */
         }
 
         /* Estilo para el iframe dentro del wrapper */
@@ -126,36 +118,38 @@
             background: white;
         }
 
-        .close-btn {
-            position: absolute;
-            top: 10px; /* Posición ajustada */
-            left: 10px; /* Posición ajustada */
-            width: 28px; /* Tamaño ajustado */
-            height: 28px; /* Tamaño ajustado */
+        /* Estilos para el botón de cierre global */
+        #global-close-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 38px; /* Tamaño más grande para el botón de cierre */
+            height: 38px;
             border-radius: 50%;
-            background: #ff4444;
+            background: #cc0000; /* Rojo más oscuro */
             color: white;
             border: none;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 16px; /* Tamaño ajustado */
+            font-size: 20px; /* Tamaño de fuente más grande */
             font-weight: bold;
-            z-index: 10001;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.25); /* Sombra ajustada */
+            z-index: 10002; /* Para que siempre esté encima de todo */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
             transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            display: none; /* Oculto por defecto */
         }
 
-        .close-btn:hover {
-            background: #cc0000;
-            transform: scale(1.1) rotate(90deg);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.35);
+        #global-close-btn:hover {
+            background: #990000; /* Rojo aún más oscuro al pasar el ratón */
+            transform: scale(1.05) rotate(90deg);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.4);
         }
     `;
     document.head.appendChild(style);
 
-    // Contenedor principal del iframe (vacío inicialmente)
+    // Contenedor principal del iframe (el overlay transparente)
     const iframeContainer = document.createElement('div');
     iframeContainer.id = 'iframeContainer';
     document.body.appendChild(iframeContainer);
@@ -169,36 +163,41 @@
     let activeIframeWrapper = null;
     const persistentIframesMap = new Map(); // Map to store persistent iframe wrappers by label
 
-    // Function to create an iframe wrapper, iframe, and close button
+    // Crear el botón de cierre global una única vez
+    const globalCloseBtn = document.createElement('button');
+    globalCloseBtn.id = 'global-close-btn';
+    globalCloseBtn.innerHTML = '×';
+    globalCloseBtn.title = 'Cerrar Iframe';
+    globalCloseBtn.onclick = function(e) {
+        e.stopPropagation(); // Prevenir que el clic se propague al iframeContainer
+        closeActiveIframe();
+    };
+    document.body.appendChild(globalCloseBtn);
+
+    // Función para crear un iframe wrapper y el iframe interno
     function createIframeElements(config) {
         const iframeWrapper = document.createElement('div');
         iframeWrapper.className = 'iframe-wrapper';
-        iframeWrapper.dataset.label = config.label; // For debugging/identification
+        iframeWrapper.dataset.label = config.label; // Para identificación
 
         const iframe = document.createElement('iframe');
-        iframe.src = config.url; // URL loaded only on creation
-        iframe.setAttribute('allow', 'clipboard-write'); // Permitir acceso al portapapeles si es necesario
+        iframe.src = config.url; // URL se carga solo en la creación
+        iframe.setAttribute('allow', 'clipboard-write'); // Permitir acceso al portapapeles
 
-        const closeBtn = document.createElement('button');
-        closeBtn.className = 'close-btn';
-        closeBtn.innerHTML = '×';
-        closeBtn.title = `Cerrar ${config.label}`;
-        closeBtn.onclick = function(e) {
-            e.stopPropagation(); // Prevenir que el clic se propague al iframeContainer
-            closeActiveIframe();
-        };
-
-        iframeWrapper.appendChild(closeBtn);
         iframeWrapper.appendChild(iframe);
-
-        return { iframeWrapper, iframe, closeBtn };
+        return iframeWrapper;
     }
 
-    // Function to manage showing and hiding iframes
+    // Función para mostrar y manejar la posición y tamaño de un iframe
     function showIframe(iframeWrapper, config) {
         // Ocultar el iframe actualmente activo si es diferente
         if (activeIframeWrapper && activeIframeWrapper !== iframeWrapper) {
-            activeIframeWrapper.classList.remove('slide-in'); // Inicia la animación de salida para el actual
+            // Animación de salida para el iframe anterior
+            activeIframeWrapper.style.width = '0%';
+            // Resetear left/right para que la transición de salida sea limpia
+            if (activeIframeWrapper.style.left) activeIframeWrapper.style.left = 'auto';
+            if (activeIframeWrapper.style.right) activeIframeWrapper.style.right = 'auto';
+
             activeIframeWrapper.addEventListener('transitionend', function handler() {
                 if (activeIframeWrapper.parentNode) {
                     activeIframeWrapper.parentNode.removeChild(activeIframeWrapper);
@@ -208,19 +207,25 @@
         }
 
         // --- APLICAR ESTILOS DINÁMICOS CADA VEZ QUE SE MUESTRA EL IFRAME ---
-        // Esto es crucial para que los iframes persistentes se muestren con el tamaño y posición correctos
-        iframeWrapper.style.width = `${config.iframeWidth}%`;
         iframeWrapper.style.height = `${config.iframeHeight}%`;
 
-        // Configurar la alineación horizontal del contenedor del iframe
+        // Posicionamiento horizontal inicial (para la animación desde 0%)
+        // Resetear left/right para evitar conflictos
+        iframeWrapper.style.left = 'auto';
+        iframeWrapper.style.right = 'auto';
+
         if (config.iframePosition === 'right') {
-            iframeContainer.style.justifyContent = 'flex-end';
+            iframeWrapper.style.right = '0';
         } else if (config.iframePosition === 'left') {
-            iframeContainer.style.justifyContent = 'flex-start';
-        } else {
-            iframeContainer.style.justifyContent = 'center'; // Por defecto o 'center'
+            iframeWrapper.style.left = '0';
+        } else { // 'center' o default
+            // Centrar: calcular left para que el iframe quede centrado
+            // Se moverá desde 0% de ancho a config.iframeWidth% manteniendo el centro
+            iframeWrapper.style.left = `${(100 - config.iframeWidth) / 2}%`;
         }
-        iframeContainer.style.alignItems = 'center'; // Siempre centrar verticalmente
+
+        iframeWrapper.style.width = '0%'; // Inicia en 0% para el efecto de deslizamiento
+
 
         // Aplicar estilos de borde y sombra para iframes que no son 100% de pantalla
         if (config.iframeWidth === 100 && config.iframeHeight === 100) {
@@ -232,15 +237,20 @@
         }
         // --- FIN DE APLICACIÓN DE ESTILOS DINÁMICOS ---
 
-        // Añadir el iframeWrapper al contenedor principal si no está ya
-        if (!iframeContainer.contains(iframeWrapper)) {
-            iframeContainer.appendChild(iframeWrapper);
+        // Añadir el iframeWrapper al body si no está ya
+        if (!document.body.contains(iframeWrapper)) {
+            document.body.appendChild(iframeWrapper);
         }
 
-        // Mostrar el contenedor y disparar la animación de entrada
+        // Mostrar el contenedor de overlay y disparar la animación de entrada
         iframeContainer.classList.add('active');
+        globalCloseBtn.style.display = 'flex'; // Mostrar el botón de cierre global
+
+        // Usar requestAnimationFrame y un setTimeout para asegurar que la transición se aplique
         requestAnimationFrame(() => {
-            iframeWrapper.classList.add('slide-in');
+            setTimeout(() => {
+                iframeWrapper.style.width = `${config.iframeWidth}%`; // Animar al ancho deseado
+            }, 10); // Pequeño retardo para asegurar que el DOM ha procesado el 0% de width
         });
 
         activeIframeWrapper = iframeWrapper; // Actualizar la referencia al iframe activo
@@ -249,9 +259,14 @@
     // Función para cerrar el iframe actualmente activo
     const closeActiveIframe = () => {
         if (activeIframeWrapper) {
-            activeIframeWrapper.classList.remove('slide-in'); // Inicia la animación de salida
+            // Animación de salida del iframe
+            activeIframeWrapper.style.width = '0%';
+
             activeIframeWrapper.addEventListener('transitionend', function handler() {
-                iframeContainer.classList.remove('active'); // Ocultar el contenedor modal
+                // Una vez que la transición termina, ocultar el overlay y el botón de cierre
+                iframeContainer.classList.remove('active');
+                globalCloseBtn.style.display = 'none';
+
                 // Eliminar el iframeWrapper del DOM, pero no de `persistentIframesMap`
                 // para mantener su estado si es un iframe persistente.
                 if (activeIframeWrapper.parentNode) {
@@ -287,36 +302,36 @@
             openInNewTab: false, // Abre iframe modal
             iframeWidth: 40,     // Ancho del iframe: 40%
             iframeHeight: 100,   // Alto del iframe: 100%
-            iframePosition: 'left', // Pegado a la izquierda
+            iframePosition: 'right', // Pegado a la derecha
             persistent: true
         },
         {
-            label: 'ADV-FILTER', // Nombre en mayúsculas
+            label: 'ADV-FILTER',
             url: 'https://dinfcs.github.io/Deckardaov/FilterGeneratorv2/index.html',
             openInNewTab: false, // Abre iframe modal
             iframeWidth: 40,     // Ancho del iframe: 40%
             iframeHeight: 100,   // Alto del iframe: 100%
-            iframePosition: 'left', // Pegado a la izquierda
+            iframePosition: 'right', // Pegado a la derecha
             persistent: true
         },
         {
-            label: 'PREDIT', // Nombre en mayúsculas
+            label: 'ACCOUNTS',
+            url: 'https://script.google.com/a/macros/deckard.com/s/AKfycbziAFj6j4YU0oDpCIVc0EQfcYjx5RG-RtXZPLbA43eAaA91SpQ2ZDf7rJFVESnBCVk9/exec',
+            openInNewTab: true // Abre en nueva pestaña
+        },
+        {
+            label: 'REGRID',
+            url: 'https://app.regrid.com/',
+            openInNewTab: true // Abre en nueva pestaña
+        },
+                {
+            label: 'PREDIT',
             url: 'https://script.google.com/a/macros/deckard.com/s/AKfycbzlbnt8-hCek-5BBAfCpMMwkh8iw-30ULecqU6RyvMYooFuZkeR97YE8YjfDFTBkYO8xQ/exec',
             openInNewTab: false, // Abre iframe modal
             iframeWidth: 90,     // Ancho del iframe: 90%
             iframeHeight: 100,   // Alto del iframe: 100%
             iframePosition: 'center', // Centrado
             persistent: true
-        },
-        {
-            label: 'ACCOUNTS', // Nombre en mayúsculas
-            url: 'https://script.google.com/a/macros/deckard.com/s/AKfycbziAFj6j4YU0oDpCIVc0EQfcYjx5RG-RtXZPLbA43eAaA41SpQ2ZDf7rJFVESnBCVk9/exec',
-            openInNewTab: true // Abre en nueva pestaña
-        },
-        {
-            label: 'REGRID', // Nombre en mayúsculas
-            url: 'https://app.regrid.com/',
-            openInNewTab: true // Abre en nueva pestaña
         }
     ];
 
@@ -331,6 +346,10 @@
         dockButton.onclick = () => {
             if (config.openInNewTab) {
                 window.open(config.url, '_blank');
+                // Si openMultiple es true, abre la segunda URL también
+                if (config.openMultiple) {
+                    window.open('https://www.appsheet.com/start/0e4a5be2-014b-4c32-a963-9cced65a14e5?platform=desktop#vss=H4sIAAAAAAAAA6WQwU7DMBBEfwXt2UVJWqjwDSgghABBIw7UPZh4AxGJbdkOUEX-d9ahCA5cgJs9njee3QFeGnxdBlk9A18NX7cL3ACHQUC5sSiACzg2OjjTCmACrmT3Id4c7thWat3oRwER4pp9RgT0wIdfJ_B_d2DQKNShqRt0KS7BFLNF6TmBJHzDIDLo-iDfWhybJ2zr_8HM4NaYQGItfSgTRNJCBklsZ0kvsmI2yfNJsVdmOc_3eTbdzWbzg_k0vyfrmTO9PaLRVrStpXFhPKcf277TxJ9i9STJeO1UGgEW6CvUaiy6jpHK1qbqPao72tTfNuTP9cmblVpdGkXz1bL1GN8Beq_D3g0CAAA=&view=QA%20planning&appName=QAProductivity-985429461-24-10-30', '_blank');
+                }
             } else {
                 let iframeWrapper;
 
@@ -339,9 +358,7 @@
                     iframeWrapper = persistentIframesMap.get(config.label);
                 } else {
                     // Crear nuevos elementos si no es persistente o si es persistente pero no se ha creado aún
-                    const elements = createIframeElements(config);
-                    iframeWrapper = elements.iframeWrapper;
-
+                    iframeWrapper = createIframeElements(config);
                     if (config.persistent) {
                         persistentIframesMap.set(config.label, iframeWrapper);
                     }
