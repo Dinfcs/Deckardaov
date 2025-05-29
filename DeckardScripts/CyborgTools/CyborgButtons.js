@@ -1,190 +1,311 @@
 // ==UserScript==
-// @name         Iframe qa
-// @namespace    
-// @version      2.7
-// @description  Añade botones para abrir iframes en la parte inferior izquierda de la página, con funcionalidad personalizada y botones de cierre para cada iframe en la parte inferior izquierda que desaparecen al cerrarse cualquier iframe.
-// @author       Luis Escalante
+// @name          Cyborg Buttons
+// @namespace    http://tampermonkey.net/
+// @version      3.9
+// @description  Botones laterales que cargan iframes (con ancho y posición configurables) o abren pestañas nuevas al hacer clic, con estilos unificados y animaciones de deslizamiento. No se ejecuta dentro de iframes.
+// @author       Luis
+// @match        https://cyborg.deckard.com/listing*
 // @match        *://cyborg.deckard.com/*
 // @grant        none
 // ==/UserScript==
 
-(function () {
+(function() {
     'use strict';
 
-    // Identificador del contenedor de botones
-    const buttonContainerId = 'iframe-button-container';
-
-    // Crea el contenedor de botones en la parte inferior izquierda
-    function createButtonContainer() {
-        if (document.getElementById(buttonContainerId)) return;
-
-        const container = document.createElement('div');
-        container.id = buttonContainerId;
-        container.style.position = 'fixed';
-        container.style.bottom = '10px';
-        container.style.left = '50px';
-        container.style.backgroundColor = '#f1f1f1';
-        container.style.display = 'none'; // Empieza oculto
-        container.style.gap = '5px';
-        container.style.padding = '8px';
-        container.style.zIndex = '9999';
-        container.style.borderRadius = '5px';
-        container.style.boxShadow = '0px 4px 8px rgba(0, 0, 0, 0.2)';
-
-        // Botones en el orden especificado
-
-             const buttons = [
-            { text: 'QA', url: 'https://www.appsheet.com/start/f9378e0d-cef0-48b9-bd15-618bac8a35a4?platform=desktop#vss=H4sIAAAAAAAAA6WOywrCMBBFf0XuOl-QnYgLEQUfuDEuYjOFYJuUJlVLyL879blWl3OHc-5NOFu6bKIuTpD79Lnm1EMiKWz7hhSkwsS72PpKQSgsdf0IV-PRmhrfRoWMfBAvQaQAmb7k5Z_9AtaQi7a01A6yAWXJE-T3gHHwhpAF6i7qY0X3zQzlzFnpiy6Q2fGYX0aEmZteG-3Mwht2lroKlG_kad0ragEAAA==&view=QA%20Report&appName=RandomQAReport-985429461-24-11-28', color: '#8e44ad', openMultiple: true },
-            { text: 'FAQ', url: 'https://deckardtech.atlassian.net/wiki/spaces/PC/pages/1751286409/FAQ+-+Address+Mapping', color: '#75a2c9', openInNewTab: true },
-            { text: 'AO', url: 'https://dinfcs.github.io/Deckardaov/', color: '#6c757d' },
-            { text: 'Adv-Filter', url: 'https://dinfcs.github.io/Deckardaov/FilterGeneratorv2/index.html', color: '#6c757d' },
-            { text: 'Accounts', url: 'https://script.google.com/a/macros/deckard.com/s/AKfycbziAFj6j4YU0oDpCIVc0EQfcYjx5RG-RtXZPLbA43eAaA91SpQ2ZDf7rJFVESnBCVk9/exec',color: '#75a2c9', openInNewTab: true },
-            { text: 'Regrid', url: 'https://app.regrid.com/', color: '#28a745', openInNewTab: true },
-            { text: 'PrEdit', url: 'https://script.google.com/a/macros/deckard.com/s/AKfycbzlbnt8-hCek-5BBAfCpMMwkh8iw-30ULecqU6RyvMYooFuZkeR97YE8YjfDFTBkYO8xQ/exec', color: '#75a2c9', openInNewTab: true }
-        ];
-        buttons.forEach(({ text, url, color, openInNewTab, openMultiple }) => {
-            const button = document.createElement('button');
-            button.textContent = text;
-            button.onclick = () => {
-                if (openInNewTab) {
-                    window.open(url, '_blank');
-                } else if (openMultiple) {
-                    window.open(url, '_blank');
-                    window.open('https://www.appsheet.com/start/0e4a5be2-014b-4c32-a963-9cced65a14e5?platform=desktop#vss=H4sIAAAAAAAAA6WQwU7DMBBEfwXt2UVJWqjwDSgghABBIw7UPZh4AxGJbdkOUEX-d9ahCA5cgJs9njee3QFeGnxdBlk9A18NX7cL3ACHQUC5sSiACzg2OjjTCmACrmT3Id4c7thWat3oRwER4pp9RgT0wIdfJ_B_d2DQKNShqRt0KS7BFLNF6TmBJHzDIDLo-iAfWhybJ2zr_8HM4NaYQGItfSgTRNJCBklsZ0kvsmI2yfNJsVdmOc_3eTbdzWbzg_k0vyfrmTO9PaLRVrStpXFhPKcf277TxJ9i9STJeO1UGgEW6CvUaiy6jpHK1qbqPao72tTfNuTP9cmblVpdGkXz1bL1GN8Beq_D3g0CAAA=&view=QA%20planning&appName=QAProductivity-985429461-24-10-30', '_blank');
-                } else {
-                    toggleIframe(url, `${text.toLowerCase()}-iframe`, text === 'LB' ? 95 : 50);
-                }
-            };
-            button.style.padding = '5px 8px';
-            button.style.cursor = 'pointer';
-            button.style.backgroundColor = color;
-            button.style.color = 'white';
-            button.style.border = 'none';
-            button.style.borderRadius = '4px';
-            button.style.fontWeight = 'bold';
-            button.style.fontSize = '12px';  // Tamaño de letra más pequeño
-            container.appendChild(button);
-        });
-
-        document.body.appendChild(container);
-        createToggleButton();
+    // *** INICIO DE LA COMPROBACIÓN PARA EVITAR EJECUCIÓN EN IFRAMES ***
+    if (window.self !== window.top) {
+        // Este script se está ejecutando dentro de un iframe, por lo tanto, no hacemos nada.
+        return;
     }
+    // *** FIN DE LA COMPROBACIÓN ***
 
-    // === Funciones para manejar iframes ===
-
-    function hideAllIframes() {
-        const iframes = document.querySelectorAll('iframe');
-        iframes.forEach(iframe => {
-            iframe.style.width = '0%';
-        });
-        hideCloseButton();
-    }
-
-    function toggleIframe(url, iframeId, widthPercentage, backgroundColor = 'White') {
-        const iframe = document.getElementById(iframeId);
-
-        if (iframe) {
-            if (iframe.style.width === `${widthPercentage}%`) {
-                iframe.style.width = '0%';
-                hideCloseButton();
-            } else {
-                hideAllIframes();
-                iframe.style.width = `${widthPercentage}%`;
-                showCloseButton(iframeId);
-            }
-            return;
+    // Crear elemento style para los estilos CSS comunes
+    const style = document.createElement('style');
+    style.textContent = `
+        /* Estilos base para todos los botones laterales */
+        .floating-button-tab {
+            position: fixed;
+            right: 0;
+            width: 20px;
+            height: 70px; /* Altura estándar para todos los botones */
+            background: #093140; /* Color de fondo consistente */
+            color: white;
+            border-top-left-radius: 6px;
+            border-bottom-left-radius: 6px;
+            cursor: pointer;
+            z-index: 9999;
+            box-shadow: -1px 0 3px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease, background 0.2s ease; /* Transición para la animación de hover */
         }
 
-        const newIframe = document.createElement('iframe');
-        newIframe.src = url;
-        newIframe.style.position = 'fixed';
-        newIframe.style.top = '0';
-        newIframe.style.right = '0';
-        newIframe.style.width = '0';
-        newIframe.style.height = '100%';
-        newIframe.style.border = 'none';
-        newIframe.style.zIndex = '9998';
-        newIframe.style.transition = 'width 0.3s ease';
-        newIframe.style.backgroundColor = backgroundColor;
-        newIframe.id = iframeId;
-        newIframe.setAttribute('allow', 'clipboard-write');
-
-        document.body.appendChild(newIframe);
-        setTimeout(() => newIframe.style.width = `${widthPercentage}%`, 10);
-        showCloseButton(iframeId);
-    }
-
-    function showCloseButton(iframeId) {
-        let closeButton = document.getElementById('iframe-close-button');
-
-        if (!closeButton) {
-            closeButton = document.createElement('button');
-            closeButton.id = 'iframe-close-button';
-            closeButton.textContent = 'Cerrar';
-            closeButton.style.position = 'fixed';
-            closeButton.style.top = '20px';
-            closeButton.style.right = '20px';
-            closeButton.style.zIndex = '9999';
-            closeButton.style.padding = '10px 20px';
-            closeButton.style.cursor = 'pointer';
-            closeButton.style.backgroundColor = 'red';
-            closeButton.style.color = 'white';
-            closeButton.style.border = 'none';
-            closeButton.style.borderRadius = '8px';
-            closeButton.style.fontSize = '16px';
-            closeButton.onclick = hideAllIframes;
-
-            document.body.appendChild(closeButton);
+        /* Posicionamiento inicial específico para el primer botón (LB & PQ) */
+        .floating-button-tab.first-button {
+            transform: translateY(-50%); /* Centra verticalmente respecto a su 'top' */
         }
 
-        closeButton.style.display = 'block';
-    }
-
-    function hideCloseButton() {
-        const closeButton = document.getElementById('iframe-close-button');
-        if (closeButton) {
-            closeButton.style.display = 'none';
+        /* Efecto hover uniforme para TODOS los botones */
+        .floating-button-tab:hover {
+            background: #072633; /* Oscurecer un poco al pasar el ratón */
+            /* El transform se ajustará a continuación para cada caso */
         }
-    }
 
-    function createToggleButton() {
-        const toggleButton = document.createElement('button');
-        toggleButton.id = 'toggle-button';
-        toggleButton.textContent = '➤';
-        toggleButton.style.position = 'fixed';
-        toggleButton.style.bottom = '13px';
-        toggleButton.style.left = '10px';
-        toggleButton.style.zIndex = '9999';
-        toggleButton.style.padding = '8px 10px';
-        toggleButton.style.cursor = 'pointer';
-        toggleButton.style.backgroundColor = '#0096d2';
-        toggleButton.style.color = 'white';
-        toggleButton.style.border = 'none';
-        toggleButton.style.borderRadius = '5px';
+        /* Hover para el primer botón (LB & PQ) - mantiene el translateY(-50%) y añade translateX(-3px) */
+        .floating-button-tab.first-button:hover {
+            transform: translateY(-50%) translateX(-3px);
+        }
 
-        let hideTimeout;
+        /* Hover para los demás botones (posicionados por píxeles) - solo añade translateX(-3px) */
+        .floating-button-tab:not(.first-button):hover {
+            transform: translateX(-3px);
+        }
 
-        toggleButton.onclick = () => {
-            const container = document.getElementById(buttonContainerId);
 
-            if (container.style.display === 'none') {
-                container.style.display = 'flex';
-                toggleButton.textContent = '⮜';
+        .floating-button-tab span {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            font-size: 10px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            padding: 2px;
+            box-sizing: border-box;
+        }
 
-                hideTimeout = setTimeout(() => {
-                    container.style.display = 'none';
-                    toggleButton.textContent = '➤';
-                }, 30000);
+        /* Contenedor principal del iframe (modal) */
+        #iframeContainer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none; /* Oculto por defecto */
+            z-index: 10000;
+            background: transparent; /* Fondo ahora transparente */
+            display: flex; /* Usar flexbox para centrar o alinear contenido */
+            align-items: center; /* Centrar verticalmente */
+            /* justify-content se establecerá dinámicamente en JS (flex-end o center) */
+            pointer-events: none; /* Permitir clics a través del fondo cuando está oculto */
+        }
+        #iframeContainer.active {
+            display: flex;
+            pointer-events: auto; /* Habilitar clics cuando está activo */
+        }
 
-            } else {
-                container.style.display = 'none';
-                toggleButton.textContent = '➤';
-                clearTimeout(hideTimeout);
+
+        .iframe-wrapper {
+            position: relative;
+            /* width se ajustará dinámicamente en JS */
+            height: 95%; /* Altura fija para el wrapper del iframe */
+            background: white; /* Color de fondo para el wrapper */
+            border-radius: 8px; /* Bordes redondeados para el contenedor del iframe */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Sombra más pronunciada */
+            display: flex; /* Para que el iframe ocupe todo el wrapper */
+            flex-direction: column; /* Para apilar elementos si hubiera varios */
+            overflow: hidden; /* Asegurar que los bordes redondeados se apliquen */
+            box-sizing: border-box; /* Asegurar que el padding/border no afecte el ancho dinámico */
+
+            /* Animación de deslizamiento */
+            transform: translateX(100vw); /* Inicia fuera de la pantalla a la derecha */
+            opacity: 0; /* Inicia invisible */
+            transition: transform 0.4s ease-out, opacity 0.4s ease-out; /* Transición para la animación */
+        }
+
+        .iframe-wrapper.slide-in {
+            transform: translateX(0); /* Se desliza a su posición final */
+            opacity: 1; /* Se hace visible */
+        }
+
+        #appFrame {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: white;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            left: 10px; /* Posicionado en la esquina superior izquierda del wrapper */
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #ff4444; /* Rojo para cerrar */
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px; /* Tamaño un poco más grande */
+            font-weight: bold;
+            z-index: 10001; /* Asegurar que esté por encima del iframe */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .close-btn:hover {
+            background: #cc0000;
+            transform: scale(1.1);
+        }
+    `;
+    document.head.appendChild(style);
+
+    // Contenedor principal del iframe (vacío inicialmente)
+    const iframeContainer = document.createElement('div');
+    iframeContainer.id = 'iframeContainer';
+    document.body.appendChild(iframeContainer);
+
+    // Función para cargar y mostrar un iframe modal
+    function loadAndShowIframe(url, title, widthPercentage, position) {
+        // Limpiar el contenido previo del contenedor
+        iframeContainer.innerHTML = '';
+
+        // Configurar la alineación horizontal del contenedor del iframe
+        // 'flex-end' para pegar a la derecha, 'center' para centrar
+        iframeContainer.style.justifyContent = (position === 'right') ? 'flex-end' : 'center';
+
+        // Crear elementos del iframe
+        const iframeWrapper = document.createElement('div');
+        iframeWrapper.className = 'iframe-wrapper';
+        iframeWrapper.style.width = `${widthPercentage}%`; // Asignar el ancho dinámicamente
+
+        const iframe = document.createElement('iframe');
+        iframe.id = 'appFrame'; // Usamos un ID genérico ya que solo uno estará activo
+        iframe.src = url;
+        iframe.setAttribute('allow', 'clipboard-write'); // Permitir acceso al portapapeles si es necesario
+
+        const closeBtn = document.createElement('button');
+        closeBtn.className = 'close-btn';
+        closeBtn.innerHTML = '×';
+        closeBtn.title = `Cerrar ${title}`; // Título para accesibilidad
+
+        // Función para cerrar el iframe con animación
+        const closeIframe = () => {
+            iframeWrapper.classList.remove('slide-in'); // Inicia la animación de salida
+            // Esperar a que la transición termine antes de ocultar el contenedor
+            iframeWrapper.addEventListener('transitionend', function handler() {
+                iframeContainer.classList.remove('active'); // Ocultar el contenedor
+                // Restablecer justify-content para futuras aperturas
+                iframeContainer.style.justifyContent = 'center';
+                iframeWrapper.removeEventListener('transitionend', handler); // Limpiar el listener
+            }, { once: true }); // El listener se remueve automáticamente después de una ejecución
+        };
+
+        // Configurar eventos para el botón de cierre y el clic fuera del iframe
+        closeBtn.onclick = function(e) {
+            e.stopPropagation(); // Evitar que el clic se propague al contenedor
+            closeIframe();
+        };
+
+        // Cerrar el iframe al hacer clic fuera de él (en el fondo)
+        iframeContainer.onclick = function(e) {
+            if (e.target === iframeContainer) {
+                closeIframe();
             }
         };
 
-        document.body.appendChild(toggleButton);
+        // Agregar elementos al wrapper y luego al contenedor principal
+        iframeWrapper.appendChild(closeBtn);
+        iframeWrapper.appendChild(iframe);
+        iframeContainer.appendChild(iframeWrapper);
+
+        // Mostrar el contenedor (sin el iframe aún en posición final)
+        iframeContainer.classList.add('active');
+
+        // Disparar la animación de entrada después de un pequeño retardo
+        // requestAnimationFrame asegura que el navegador ha renderizado el estado inicial
+        requestAnimationFrame(() => {
+            iframeWrapper.classList.add('slide-in');
+        });
     }
 
-    createButtonContainer();
+    // Definición de los botones
+    const buttonsConfig = [
+        {
+            label: 'LB & PQ',
+            url: 'https://script.google.com/a/macros/deckard.com/s/AKfycbziAFj6j4YU0oDpCIVc0EQfcYjx5RG-RtXZPLbA43eAaA91SpQ2ZDf7rJFVESnBCVk9/exec',
+            topOffset: 15, // Aumentado a 15% para bajar todos los botones
+            openInNewTab: false, // Abre iframe modal
+            iframeWidth: 95, // Ancho del iframe
+            iframePosition: 'center' // Posición del iframe
+        },
+        {
+            label: 'AO',
+            url: 'https://dinfcs.github.io/Deckardaov/',
+            openInNewTab: false, // Abre iframe modal
+            iframeWidth: 50, // La mitad del ancho
+            iframePosition: 'right' // Pegado a la derecha
+        },
+        {
+            label: 'Adv-Filter',
+            url: 'https://dinfcs.github.io/Deckardaov/FilterGeneratorv2/index.html',
+            openInNewTab: false, // Abre iframe modal
+            iframeWidth: 50, // La mitad del ancho
+            iframePosition: 'right' // Pegado a la derecha
+        },
+        {
+            label: 'PrEdit',
+            url: 'https://script.google.com/a/macros/deckard.com/s/AKfycbzlbnt8-hCek-5BBAfCpMMwkh8iw-30ULecqU6RyvMYooFuZkeR97YE8YjfDFTBkYO8xQ/exec',
+            openInNewTab: false, // Abre iframe modal
+            iframeWidth: 95, // Ancho del iframe
+            iframePosition: 'center' // Posición del iframe
+        },
+        {
+            label: 'Accounts',
+            url: 'https://script.google.com/a/macros/deckard.com/s/AKfycbziAFj6j4YU0oDpCIVc0EQfcYjx5RG-RtXZPLbA43eAaA91SpQ2ZDf7rJFVESnBCVk9/exec',
+            openInNewTab: true // Abre en nueva pestaña
+        },
+        {
+            label: 'Regrid',
+            url: 'https://app.regrid.com/',
+            openInNewTab: true // Abre en nueva pestaña
+        },
+        {
+            label: 'QA', // Este botón se mueve al final
+            url: 'https://www.appsheet.com/start/f9378e0d-cef0-48b9-bd15-618bac8a35a4?platform=desktop#vss=H4sIAAAAAAAAA6WOywrCMBBFf0XuOl-QnYgLEQUfuDEuYjOFYJuUJlVLyL879blWl3OHc-5NOFu6bKIuTpD79Lnm1EMiKWz7hhSkwsS72PpKQSgsdf0IV-PRmhrfRoWMfBAvQaQAmb7k5Z_9AtaQi7a01A6yAWXJE-T3gHHwhpAF6i7qY0X3zQzlzFnpiy6Q2fGYX0aEmZteG3Mwht2lroKlG_kad0ragEAAA==&view=QA%20Report&appName=RandomQAReport-985429461-24-11-28',
+            openInNewTab: true // Abre en nueva pestaña
+        }
+    ];
+
+    const buttonHeight = 70; // Altura definida en CSS para .floating-button-tab
+    const verticalGap = 10; // Espacio entre botones en píxeles
+
+    // Calcular la posición del borde inferior del primer botón (LB & PQ)
+    // Su centro está en `topOffset%` de la altura de la ventana debido a 'top' y 'translateY(-50%)'.
+    // Para calcular el borde inferior, sumamos la mitad de su altura a su posición central.
+    let lastButtonBottomPx = (window.innerHeight * (buttonsConfig[0].topOffset / 100)) + (buttonHeight / 2);
+
+    buttonsConfig.forEach((config, index) => {
+        const floatingTab = document.createElement('div');
+        floatingTab.className = 'floating-button-tab';
+        floatingTab.innerHTML = `<span>${config.label}</span>`;
+
+        if (index === 0) {
+            floatingTab.style.top = `${config.topOffset}%`;
+            floatingTab.classList.add('first-button'); // Añadir clase para estilos específicos del primer botón
+        } else {
+            // Para los botones subsiguientes, colocarlos debajo del anterior con un gap
+            floatingTab.style.top = `${lastButtonBottomPx + verticalGap}px`;
+            // No se añade transform:none explícitamente porque no tienen el transform inicial del primer botón.
+            // Su hover ya es handled por ':not(.first-button):hover'
+
+            // Actualizar lastButtonBottomPx para el siguiente botón
+            lastButtonBottomPx = (lastButtonBottomPx + verticalGap) + buttonHeight;
+        }
+
+        // Configurar la acción al hacer clic
+        floatingTab.onclick = () => {
+            if (config.openInNewTab) {
+                window.open(config.url, '_blank');
+            } else {
+                // Pasar el ancho y la posición al cargar el iframe
+                loadAndShowIframe(config.url, config.label, config.iframeWidth, config.iframePosition);
+            }
+        };
+
+        document.body.appendChild(floatingTab);
+    });
+
 })();
