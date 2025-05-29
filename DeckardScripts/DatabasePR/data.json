@@ -12149,6 +12149,28 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "OR - City Of Ashland",
+      "Public Records & GIS": [
+        {
+          "url": "https://jcgis.maps.arcgis.com/apps/webappviewer/index.html?id=6fe19d6400bb497b832458c427181e89",
+          "type": "GIS & PR (VPN)"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "<p><br></p>",
+      "Media": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ]
     }
   ]
 }
