@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Cyborg Image Viewer Pro
-// @version      7.7 // Versión actualizada
-// @description  Visor avanzado de imágenes con carrusel de miniaturas y recarga de caché
+// @version      7.6 // Nueva versión
+// @description  Visor avanzado de imágenes con carrusel de miniaturas
 // @match        https://cyborg.deckard.com/listing/*
 // @grant        none
 // ==/UserScript==
@@ -108,28 +108,6 @@
                 .viewer-toolbar > ul > li {
                     margin: 0 8px !important;
                 }
-
-                /* NUEVO: Estilos para el botón de recarga */
-                #thumbsContainer button {
-                    width: 100%;
-                    padding: 8px;
-                    margin-bottom: 15px;
-                    background-color: #4CAF50; /* Verde */
-                    color: white;
-                    border: none;
-                    border-radius: 5px;
-                    cursor: pointer;
-                    font-size: 14px;
-                    transition: background-color 0.3s ease;
-                    display: flex; /* Para centrar el icono y el texto */
-                    align-items: center;
-                    justify-content: center;
-                    gap: 5px; /* Espacio entre el icono y el texto */
-                }
-
-                #thumbsContainer button:hover {
-                    background-color: #45a049;
-                }
             `;
 
             const styleElement = document.createElement('style');
@@ -156,7 +134,6 @@
 
         clear() {
             sessionStorage.removeItem(this.getKey());
-            console.log(`Caché de imágenes limpiada para ${appState.pageUrl}`);
         },
 
         getLastViewedIndex() {
@@ -208,8 +185,8 @@
             appState.modalObserver = new MutationObserver((mutations, obs) => {
                 const modal = document.querySelector('.modal.show');
                 if (modal) {
+                    // console.log("Modal detectado por observer."); // Descomentar para depurar
                     obs.disconnect(); // Desconectar el observer una vez que se detecta el modal
-                    appState.modalObserver = null; // Limpiar la referencia
                     callback(modal);
                 }
             });
@@ -228,13 +205,6 @@
             const container = document.createElement('div');
             container.id = "thumbsContainer";
             container.style.gridTemplateColumns = imageLinks.length <= 6 ? "1fr" : "repeat(2, 1fr)";
-
-            // NUEVO: Botón de recarga de imágenes
-            const refreshButton = document.createElement('button');
-            refreshButton.innerHTML = ' Recargar Imágenes'; // Unicode refresh symbol
-            refreshButton.title = "Borrar caché y recargar todas las imágenes";
-            refreshButton.addEventListener('click', () => imageViewer.refreshImages());
-            container.appendChild(refreshButton);
 
             imageLinks.forEach((imgUrl, index) => {
                 const thumb = document.createElement('img');
@@ -369,21 +339,15 @@
                     }
                 },
                 hidden() {
-                    // Este callback se llama cuando el visor se oculta o se destruye.
                     if (appState.viewer) {
                        cacheManager.setLastViewedIndex(appState.viewer.index);
-                       // NOTA: No llamar a viewer.destroy() aquí si ya se ha llamado desde fuera,
-                       // porque se podría entrar en un bucle o error si la instancia ya está siendo destruida.
-                       // La instancia de viewer se establece a null en el método `destroy()` de Viewer.js.
+                       appState.viewer.destroy();
+                       appState.viewer = null;
                     }
-                    // Remover los contenedores de forma segura si existen
-                    if (thumbsContainer && thumbsContainer.parentNode) thumbsContainer.remove();
-                    if (viewerContainer && viewerContainer.parentNode) viewerContainer.remove();
-
-                    appState.viewer = null; // Asegurarse de que la referencia se limpie
+                    thumbsContainer.remove();
+                    viewerContainer.remove();
                     appState.viewerOpened = false;
                     document.removeEventListener('keydown', eventHandler.setupKeyboardNavigation);
-                    console.log("Visor cerrado y limpiado.");
                 }
             });
 
@@ -428,9 +392,6 @@
                     imageLoader.preload(images);
                     modalManager.close();
                     setTimeout(() => this.show(images), 300);
-                } else {
-                    console.warn("No se encontraron imágenes en el modal durante la apertura manual. Cerrando modal.");
-                    modalManager.close();
                 }
             });
 
@@ -442,69 +403,6 @@
             } else {
                 console.error("No se encontró el botón para abrir el modal (manual).");
             }
-        },
-
-        // NUEVO: Método para recargar imágenes (limpiar caché y extraer de nuevo)
-        refreshImages() {
-            if (!confirm("¿Estás seguro de que quieres recargar las imágenes? Esto borrará la caché local y buscará nuevas imágenes.")) {
-                return;
-            }
-
-            console.log("Iniciando recarga de imágenes...");
-
-            // Detener cualquier precarga silenciosa activa y desconectar observers
-            if (appState.isSilentPreloading && appState.silentPreloadButtonCheckInterval) {
-                clearInterval(appState.silentPreloadButtonCheckInterval);
-                appState.isSilentPreloading = false;
-                console.log("Precarga silenciosa interrumpida por recarga manual.");
-            }
-            if (appState.modalObserver) {
-                appState.modalObserver.disconnect();
-                appState.modalObserver = null;
-            }
-
-            // 1. Limpiar caché
-            cacheManager.clear();
-
-            // 2. Destruir el visor actual si está abierto
-            // Esto activará el callback 'hidden' que se encarga de limpiar el DOM y el estado.
-            if (appState.viewer) {
-                appState.viewer.destroy();
-                // appState.viewer será null y appState.viewerOpened false después de que 'hidden' se dispare.
-            } else {
-                console.warn("Intento de recargar imágenes, pero el visor no estaba abierto. Procediendo a la extracción.");
-            }
-
-            // Usar un setTimeout para asegurar que el DOM está limpio y el estado se ha actualizado
-            // antes de intentar abrir el modal y el nuevo visor.
-            setTimeout(() => {
-                // 3. Configurar observer para detectar cuando el modal está abierto (para extracción de nuevas imágenes)
-                modalManager.observeForOpen(() => {
-                    console.log("Modal abierto por recarga manual. Extrayendo imágenes...");
-                    const images = imageExtractor.fromModal(); // Esto también guarda en caché
-                    if (images && images.length > 0) {
-                        imageLoader.preload(images); // Iniciar la precarga de las nuevas imágenes
-                        modalManager.close(); // Cerrar el modal inmediatamente
-
-                        // 4. Mostrar el visor con las nuevas imágenes
-                        // Usar un setTimeout para dar tiempo al modal a cerrarse completamente
-                        setTimeout(() => this.show(images), 300);
-                        console.log(`Recarga de imágenes completada para ${images.length} imágenes.`);
-                    } else {
-                        console.warn("No se encontraron imágenes después de la recarga. El visor no se abrirá.");
-                        modalManager.close(); // Asegurarse de cerrar el modal
-                    }
-                });
-
-                // Simular clic en el botón original para abrir el modal
-                const originalBtn = document.getElementById("btn_show_all_images");
-                if (originalBtn) {
-                    originalBtn.click();
-                    console.log("Botón original clicado para abrir modal (recarga manual).");
-                } else {
-                    console.error("No se encontró el botón para abrir el modal (recarga manual). No se puede recargar.");
-                }
-            }, 100); // Pequeño retardo para dar tiempo a la destrucción del visor anterior
         }
     };
 
@@ -553,7 +451,6 @@
                 }
             });
 
-            // Observar el body para detectar cambios que puedan indicar un cambio de pestaña (visibilidad del botón original)
             appState.buttonObserver.observe(document.body, {
                 childList: true,
                 subtree: true
