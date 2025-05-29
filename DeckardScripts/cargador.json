@@ -45,6 +45,10 @@
             "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/Viewer.js"
         },
         {
+            "urlPattern": "https://cyborg.deckard.com/listing/*/STR*",
+            "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/Viewer2.js"
+        },
+        {
             "urlPattern": "https://www.google.com/maps/*",
             "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/ExternalScripts/Buscador.js"
         },
