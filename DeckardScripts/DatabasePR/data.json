@@ -12119,6 +12119,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "CA - Yuba County",
+      "Public Records & GIS": [
+        {
+          "url": "https://pqweb.parcelquest.com/#login",
+          "type": "PQ"
+        },
+        {
+          "url": "https://yubacounty.maps.arcgis.com/apps/View/index.html?appid=3f1f521b03994e3390a7ad617a0aa43e",
+          "type": "GIS"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "<p><br></p>",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
