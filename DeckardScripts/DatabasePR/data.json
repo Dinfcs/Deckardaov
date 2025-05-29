@@ -12171,6 +12171,32 @@
           "type": "N/A"
         }
       ]
+    },
+    {
+      "Project": "TX - City Of Austin",
+      "Public Records & GIS": [
+        {
+          "type": "PR (VPN)",
+          "url": "https://travis.prodigycad.com/property-search"
+        },
+        {
+          "type": "GIS",
+          "url": "https://geocortex.traviscountytx.gov/Html5Viewer/index.html?viewer=TNR_Web_Map_Viewer_public.TNR_Web_Map"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "<p><br></p>",
+      "Media": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ]
     }
   ]
 }
