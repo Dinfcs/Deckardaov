@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         LbPqFrame_Extended
 // @namespace    http://tampermonkey.net/
-// @version      4.3 // Incrementamos la versión de nuevo
+// @version      4.4 
 // @description  Botones laterales que cargan iframes (con ancho y posición configurables) o abren pestañas nuevas al hacer clic, con estilos unificados y animaciones de deslizamiento. No se ejecuta dentro de iframes. Ahora con barra inferior estilo dock más compacta y botones más bajos.
 // @author       Luis
 // @match        https://cyborg.deckard.com/listing*
