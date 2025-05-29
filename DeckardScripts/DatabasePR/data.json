@@ -12089,6 +12089,28 @@
           "type": "N/A"
         }
       ]
+    },
+    {
+      "Project": "TX - Town Of Northlake",
+      "Public Records & GIS": [
+        {
+          "type": "PR/GIs",
+          "url": "https://gissolutions.halff.com/portal/apps/webappviewer/index.html?id=ac9327af78194cd0af74bf2d47db34a5"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "<p><br></p>",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
