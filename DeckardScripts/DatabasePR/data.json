@@ -11058,12 +11058,16 @@
       "Project": "CA - City Of Dana Point",
       "Public Records & GIS": [
         {
-          "type": "PR & GIS",
-          "url": "https://pqweb.parcelquest.com/#login"
+          "type": "GIS / PR 1",
+          "url": "https://danapoint.maps.arcgis.com/apps/webappviewer/index.html?id=61e136868b284e2bbe40b3c0a4a79235"
         },
         {
           "type": "GIS (Orange County)",
           "url": "https://webapps.ocgis.com/oclandinsights/map-viewer?id=2"
+        },
+        {
+          "url": "https://pqweb.parcelquest.com/#login",
+          "type": "PR & GIS"
         }
       ],
       "License List": [
@@ -11072,11 +11076,11 @@
           "type": "License list"
         }
       ],
-      "Important Info": "<p>When searching for an APN in <strong>CA- Orange County</strong>, make sure to <strong>add dashes in the right format</strong>.</p><p><br></p><h4>Example:</h4><p>67248360<em> </em>➡️ <strong>672-483-60</strong></p><p><br></p><p><strong>Format:</strong> 3 digits – 3 digits – 2 digits → <strong>XXX-XXX-XX</strong></p>",
+      "Important Info": "<p><span style=\"color: rgb(230, 0, 0);\">It’s preferable to use GIS / PR 1</span></p><p><span style=\"color: rgb(230, 0, 0);\">If the parcel shows more than 1 yellow point it is probably an u1om -------- Image 1</span></p><p><br></p><p><br></p><p>When searching for an APN in <strong>CA- Orange County</strong>, make sure to <strong>add dashes in the right format</strong>.</p><p><br></p><h4>Example:</h4><p>67248360<em> </em>➡️ <strong>672-483-60</strong></p><p><br></p><p><strong>Format:</strong> 3 digits – 3 digits – 2 digits → <strong>XXX-XXX-XX</strong></p>",
       "Media": [
         {
           "type": "N/A",
-          "url": "N/A"
+          "url": "https://drive.google.com/uc?export=view&id=1Y4ASK9M14tV3qa7sreyWpTK3cmrCYQMD"
         }
       ]
     },
