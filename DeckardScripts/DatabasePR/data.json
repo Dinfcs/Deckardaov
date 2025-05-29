@@ -12094,16 +12094,16 @@
       "Project": "TX - Town Of Northlake",
       "Public Records & GIS": [
         {
-          "url": "https://www.dentoncad.com/property-search",
-          "type": "PR"
+          "type": "PR",
+          "url": "https://www.dentoncad.com/property-search"
         },
         {
-          "url": "https://www.dentoncad.com/property-detail/283840/2025/gis",
-          "type": "GIS"
+          "type": "GIS",
+          "url": "https://www.dentoncad.com/property-detail/283840/2025/gis"
         },
         {
-          "type": "GIS2",
-          "url": "https://gissolutions.halff.com/portal/apps/webappviewer/index.html?id=ac9327af78194cd0af74bf2d47db34a5"
+          "url": "https://gissolutions.halff.com/portal/apps/webappviewer/index.html?id=ac9327af78194cd0af74bf2d47db34a5",
+          "type": "GIS2"
         }
       ],
       "License List": [
@@ -12112,7 +12112,7 @@
           "type": "N/A"
         }
       ],
-      "Important Info": "<p><br></p>",
+      "Important Info": "<p>GIs1 is better than GIs2</p>",
       "Media": [
         {
           "type": "N/A",
