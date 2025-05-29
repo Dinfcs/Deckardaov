@@ -30,9 +30,9 @@
     const styles = `
         .floating-search-container {
             position: fixed;
-            bottom: 49px;
+            bottom: 3px;
             left: 11px;
-            z-index: 8000;
+            z-index: 500;
             font-family: 'Segoe UI', Roboto, sans-serif;
             transition: all 0.3s ease;
         }
@@ -67,7 +67,7 @@
             background: white;
             border-radius: 12px;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-            z-index: 8000;
+            z-index: 500;
             display: none;
             flex-direction: column;
             overflow: hidden;
