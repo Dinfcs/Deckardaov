@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         LbPqFrame_Extended
+// @name         CyborgButtons
 // @namespace    http://tampermonkey.net/
 // @version      4.4
 // @description  Botones laterales que cargan iframes (con ancho y posición configurables) o abren pestañas nuevas al hacer clic, con estilos unificados y animaciones de deslizamiento. No se ejecuta dentro de iframes. Ahora con barra inferior estilo dock más compacta y botones más bajos.
@@ -26,7 +26,7 @@
         #dockBar {
             position: fixed;
             bottom: 0; /* Pegado al fondo */
-            left: 10.6%; /* Centrado horizontalmente */
+            left: 205px; /* Centrado horizontalmente */
             transform: translateX(-50%); /* Ajuste para centrarlo perfectamente */
             z-index: 9999;
             display: flex;
