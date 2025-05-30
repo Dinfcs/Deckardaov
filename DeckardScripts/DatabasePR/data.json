@@ -12271,6 +12271,28 @@
           "type": "N/A"
         }
       ]
+    },
+    {
+      "Project": "OR - City Of Medford",
+      "Public Records & GIS": [
+        {
+          "type": "GIS & PR",
+          "url": "https://jcgis.maps.arcgis.com/apps/MapSeries/index.html?appid=fa99a30541d94b86aef4a39bc68d0580"
+        }
+      ],
+      "License List": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ],
+      "Important Info": "<p><br></p>",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
