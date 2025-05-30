@@ -12197,6 +12197,32 @@
           "type": "N/A"
         }
       ]
+    },
+    {
+      "Project": "OK - City Of Oklahoma City",
+      "Public Records & GIS": [
+        {
+          "type": "PR (VPN)",
+          "url": "https://docs.oklahomacounty.org/AssessorWP5/DefaultSearch.asp"
+        },
+        {
+          "url": "https://ok-co.maps.arcgis.com/apps/webappviewer/index.html?id=61cd0fbf236543848d270b2c1a526674",
+          "type": "GIS"
+        }
+      ],
+      "License List": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ],
+      "Important Info": "<p><br></p>",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
