@@ -12223,6 +12223,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "NY - Greene County",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://greene.sdgnys.com/search.aspx"
+        },
+        {
+          "url": "https://gis.gcgovny.com/greenewebmap/",
+          "type": "GIS"
+        }
+      ],
+      "License List": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ],
+      "Important Info": "<p><br></p>",
+      "Media": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ]
     }
   ]
 }
