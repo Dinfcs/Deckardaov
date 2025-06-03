@@ -12293,6 +12293,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "GA - Greene County",
+      "Public Records & GIS": [
+        {
+          "url": "https://qpublic.schneidercorp.com/Application.aspx?App=GreeneCountyGA&Layer=Parcels&PageType=Search",
+          "type": "PR"
+        },
+        {
+          "url": "https://qpublic.schneidercorp.com/Application.aspx?AppID=698&LayerID=11403&PageTypeID=1",
+          "type": "GIS"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "<p><br></p>",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
