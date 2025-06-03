@@ -5620,14 +5620,14 @@
           "url": "https://www.alabamagis.com/Lee/frameset.cfm?cfid=1617882&cftoken=89503038"
         },
         {
-          "url": "https://webgis.auburnalabama.org/coamap/",
-          "type": "GIS2"
+          "type": "GIS2",
+          "url": "https://webgis.auburnalabama.org/coamap/"
         }
       ],
       "License List": [
         {
-          "type": "License",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/r/sites/ElectricSheep/_layouts/15/Doc.aspx?sourcedoc=%7B2FC4F1A5-5621-43D8-AE53-7B86B9A1706C%7D&file=COA_Rental_Permit_Licenses%20(6).xlsx&action=default&mobileredirect=true"
+          "url": "https://netorgft4047789.sharepoint.com/sites/ElectricSheep/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FElectricSheep%2FShared%20Documents%2FAL%2FLee%20County%2FAuburn%2C%20AL%2FIncoming&sortField=LinkFilename&isAscending=false&viewid=21bf7f0a%2D3cd2%2D4351%2Da5c7%2D69e29b2b37b9&ga=1",
+          "type": "License"
         }
       ],
       "Important Info": "<p>N/A</p>",
