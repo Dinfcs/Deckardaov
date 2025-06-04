@@ -26,7 +26,7 @@
         #dockBar {
             position: fixed;
             bottom: 0; /* Pegado al fondo */
-            left: 50%; /* Centrado horizontalmente */
+            left:  211.8px; /* Centrado horizontalmente */
             transform: translateX(-50%); /* Ajuste para centrarlo perfectamente */
             z-index: 9999;
             display: flex;
