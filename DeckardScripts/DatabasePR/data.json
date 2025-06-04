@@ -12423,6 +12423,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "CO - Saguache County",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://saguachecountyco-assessor.tylerhost.net/assessor/taxweb/search.jsp"
+        },
+        {
+          "type": "GIS",
+          "url": "https://slvgis.maps.arcgis.com/apps/instant/sidebar/index.html?appid=1425b904ce68430aad178315192b0af5"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "<p><br></p>",
+      "Media": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ]
     }
   ]
 }
