@@ -12371,6 +12371,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "AZ - Gila County",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://assessor.gilacountyaz.gov/assessor/taxweb/search.jsp"
+        },
+        {
+          "type": "GIS",
+          "url": "https://gilacountyaz.maps.arcgis.com/apps/webappviewer/index.html?id=9876c13a5aab4db980e4496679ee902d"
+        }
+      ],
+      "License List": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ],
+      "Important Info": "<p><br></p>",
+      "Media": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ]
     }
   ]
 }
