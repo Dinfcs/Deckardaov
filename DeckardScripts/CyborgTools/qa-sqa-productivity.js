@@ -220,8 +220,8 @@
             "Missing Address Override in an NMF Listing (If required)": `Hola ${qaed}, Estoy realizando QA y revisé <${link}|una de tus propiedades> en ${project}. En este caso, no pudiste identificar la propiedad, pero no te preocupes, a veces pasa. Recuerda que, si la propiedad está en un condominio que puedes identificar fácilmente pero no encuentras la unidad específica, debes hacer el Address Override en NMF utilizando el siguiente formato: House number Street name Unit # unk, City, STATE ABBREVIATION Zip code. Si tienes alguna duda o necesitas más información, ¡estoy aquí para ayudar!  Att: ${qaer}`,
             "Wrong Address Override": `¡Hola ${qaed}! Estoy realizando QA y revisé <${link}| una de tus propiedades> en ${project}. La identificación fue precisa y la evidencia muy clara. Sin embargo, al revisarla, noté que el Address Override no es correcto. En este caso, la opción correcta sería: ${dynamicFields.correctAddress || "(aquí va el address correcto)"}. Si tienes alguna duda o necesitas más información, ¡estoy aquí para ayudar!  Att: ${qaer}`,
             "Do Not Clear Previous Address Override In An NMF Listing": `Hola ${qaed}, Estoy realizando QA y revisé <${link}|una de tus propiedades> en ${project}. Noté que no eliminaste el Address Override anterior en un listing de NMF. Asegúrate de quitarlo cuando identifiques la propiedad, ya que de lo contrario el cliente no podrá ver la dirección correcta.Si tienes alguna duda o necesitas más información, ¡estoy aquí para ayudar!  Att: ${qaer}`,
-            "QA Is Not Correct High": `Hola ${qaed}, hoy estoy realizando Random QA y encontré <${link}|esta propiedad> en ${project} la cual marcaste con QAok. Noté que el QAok no es correcto. Mis motivos son: ${dynamicFields.reasons || "(aquí van los motivos)"}. ¡Gracias! Att: ${qaer}`,
-            "QA Is Not Correct Low": `Hola ${qaed}, hoy estoy realizando Random QA y encontré <${link}|esta propiedad tuya> en ${project} la cual marcaste con QAok. Noté que la QA no es correcta. Mis motivos son: ${dynamicFields.reasons || "(aquí van los motivos)"}. ¡Gracias! Att: ${qaer}`,
+            "QA Is Not Correct - High": `Hola ${qaed}, hoy estoy realizando Random QA y encontré <${link}|esta propiedad> en ${project} la cual marcaste con QAok. Noté que el QAok no es correcto. Mis motivos son: ${dynamicFields.reasons || "(aquí van los motivos)"}. ¡Gracias! Att: ${qaer}`,
+            "QA Is Not Correct - Low": `Hola ${qaed}, hoy estoy realizando Random QA y encontré <${link}|esta propiedad tuya> en ${project} la cual marcaste con QAok. Noté que la QA no es correcta. Mis motivos son: ${dynamicFields.reasons || "(aquí van los motivos)"}. ¡Gracias! Att: ${qaer}`,
             "Unit Box (If visible)": `Hola ${qaed}, Estoy realizando QA y revisé <${link}|una de tus propiedades> en ${project}. Noté que omitiste llenar el campo 'Unit Box'. En este caso era: ${dynamicFields.unitBox || "(aquí va el unit box)"}. Esta información la puedes encontrar en las imágenes, la descripción o el título del listing, y nos ayuda a separar correctamente las Property Cards. Si tienes alguna duda o necesitas más información, ¡estoy aquí para ayudar!   Att: ${qaer}`,
             "Wrong Unit Box": `Hola ${qaed}, Estoy realizando QA y revisé <${link}|una de tus propiedades> en ${project}. Hiciste un buen trabajo identificando la propiedad, sin embargo, la unidad que colocaste en el unit box, no coincide con las que ofertan en el listing ${dynamicFields.unitBox || "(aquí va el unit box)"} es la unidad correcta. ¡Muchas Gracias! Att: ${qaer}`,
             "Not Required Unit Box": `Hola ${qaed}, Estoy realizando QA y encontré <${link}|esta propiedad tuya> en ${project}. Hiciste un buen trabajo identificando la propiedad, sin embargo, noté que dejaste ${dynamicFields.unitBox || "(aquí va el unit box)"} en el Unit Box cuando no era necesario. . Si tienes alguna duda o necesitas más información, ¡estoy aquí para ayudar! Att: ${qaer}`,
@@ -237,7 +237,7 @@
     const errors = [
         "Wrong APN", "Bad APN", "Wrong Address Override", "Missing Address Override",
         "Missing Address Override in an NMF Listing (If required)", "Do Not Clear Previous Address Override In An NMF Listing",
-        "Missing MUS", "Property Manager Info (If required)", "QA Is Not Correct High", "QA Is Not Correct Low",
+        "Missing MUS", "Property Manager Info (If required)", "QA Is Not Correct - High", "QA Is Not Correct - Low",
         "Wrong Unit Box", "Not Required Unit Box", "Unit Box (If visible)", "Rental Override", "Structure"
     ];
 
@@ -845,8 +845,8 @@ document.body.appendChild(styles);
             "Wrong APN": [{ label: "Motivos del error APN:", id: "reasons" }],
             "Wrong Address Override": [{ label: "Dirección correcta:", id: "correctAddress" }],
             "Unit Box (If visible)": [{ label: "Unit Box correcto:", id: "unitBox" }],
-            "QA Is Not Correct High": [{ label: "Motivos de QA incorrecto:", id: "reasons" }],
-            "QA Is Not Correct Low": [{ label: "Motivos de QA incorrecto:", id: "reasons" }],
+            "QA Is Not Correct - High": [{ label: "Motivos de QA incorrecto:", id: "reasons" }],
+            "QA Is Not Correct - Low": [{ label: "Motivos de QA incorrecto:", id: "reasons" }],
             "Wrong/ Not Required Unit Box": [{ label: "Unit Box incorrecto:", id: "unitBox" }]
         };
 
@@ -889,7 +889,7 @@ document.body.appendChild(styles);
 
          if (selectedError === "Structure") {
              dynamicFields.structure = document.getElementById("structure")?.value || "";
-         } else if (selectedError === "Wrong APN" || selectedError === "QA Is Not Correct High" || selectedError === "QA Is Not Correct Low") {
+         } else if (selectedError === "Wrong APN" || selectedError === "QA Is Not Correct - High" || selectedError === "QA Is Not Correct - Low") {
              dynamicFields.reasons = document.getElementById("reasons")?.value || "";
          } else if (selectedError === "Wrong Address Override") {
              dynamicFields.correctAddress = document.getElementById("correctAddress")?.value || "";
