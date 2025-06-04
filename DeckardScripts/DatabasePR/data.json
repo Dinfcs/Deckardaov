@@ -12345,6 +12345,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "CA - DRM",
+      "Public Records & GIS": [
+        {
+          "type": "PR",
+          "url": "https://ca-riverside-acr.publicaccessnow.com/"
+        },
+        {
+          "url": "https://gis1.countyofriverside.us/Html5Viewer/?viewer=MMC_Public",
+          "type": "GIS"
+        }
+      ],
+      "License List": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ],
+      "Important Info": "<p><br></p>",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
