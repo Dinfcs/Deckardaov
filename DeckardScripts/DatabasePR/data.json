@@ -11656,8 +11656,8 @@
           "type": "PR"
         },
         {
-          "url": "https://www.pcpao.gov/gis.html?v=5&home",
-          "type": "GIS"
+          "type": "GIS",
+          "url": "https://www.pcpao.gov/gis.html?v=5&home"
         }
       ],
       "License List": [
@@ -11666,11 +11666,11 @@
           "type": "N/A"
         }
       ],
-      "Important Info": "<p>To search by APN in the GIS, dashes must be included: Ex. APN <strong>182816628560020010</strong> ➝ <strong>18-28-16-62856-002-0010</strong>.</p><p><br></p><p>To activate the <strong>pictographic</strong> view in the <strong>GIS</strong>, click on <strong>Angled Aerial Views</strong> in the parcel information.</p><p><br></p>",
+      "Important Info": "<p>To search by APN in the GIS, dashes must be included: Ex. APN <strong>182816628560020010</strong> ➝ <strong>18-28-16-62856-002-0010</strong>.</p><p><br></p><p>To activate the <strong>pictographic</strong> view in the <strong>GIS</strong>, click on <strong>Angled Aerial Views</strong> in the parcel information.</p><p><br></p><p>The condo located at <strong>1420 / 1414 BAYSHORE BLVD</strong> is a <strong>main structure</strong>, so please make sure to <strong>identify </strong>its <strong>units </strong>before mapping.</p>",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ]
     },
