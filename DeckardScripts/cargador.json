@@ -59,6 +59,9 @@
         {
             "urlPattern": "https://cyborg.deckard.com/parcel/*",
             "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/ParcelFilter.js"
+        },        {
+            "urlPattern": "https://cyborg.deckard.com/parcel/*",
+            "scriptUrl": "https://dinfcs.github.io/Deckardaov/DeckardScripts/CyborgTools/ParcelPages.js"
         },
         {
             "urlPattern": "https://cyborg.deckard.com/listing/MA/dukes...town_of_oak_bluffs/*",
