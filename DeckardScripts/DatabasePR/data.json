@@ -1106,12 +1106,12 @@
           "url": "https://assr.parcelquest.com/Statewide/Disclaimer"
         },
         {
-          "type": "GIS",
-          "url": "https://gis.cityofirvine.org/onlineparcel/"
+          "url": "https://gis.cityofirvine.org/onlineparcel/",
+          "type": "GIS"
         },
         {
-          "type": "GIS - Orange County",
-          "url": "https://www.ocgis.com/ocpw/landrecords/"
+          "url": "https://www.ocgis.com/ocpw/landrecords/",
+          "type": "GIS - Orange County (VPN)"
         }
       ],
       "License List": [
@@ -1120,11 +1120,11 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "Please, also work part-time on Cyborg in CA - Orange County with the keyword \"Irvine\". ",
+      "Important Info": "<p>Please, also work part-time on Cyborg in CA - Orange County with the keyword \"Irvine\". </p>",
       "Media": [
         {
-          "type": "Image",
-          "url": "https://drive.usercontent.google.com/download?id=1C__OElflMmWp1AfO1qG2_io11FSdtMKx&authuser=0"
+          "url": "https://drive.usercontent.google.com/download?id=1C__OElflMmWp1AfO1qG2_io11FSdtMKx&authuser=0",
+          "type": "Image"
         }
       ]
     },
