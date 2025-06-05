@@ -1,42 +1,357 @@
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!DOCTYPE html>
 <html lang="en">
-    <!-- Contenedor del logo de carga -->
-<div id="loading-container">
-    <img src="logo.png" alt="Cargando..." id="loading-logo">
-    <div id="loading-circle"></div>
-  </div>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Address Formatter</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Intelligent Address Formatter</title>
+    <style>
+        /* Modern Dark Mode Theme */
+        :root {
+            --bg-color: #1a1d21; /* Fondo principal, casi negro */
+            --surface-color: #24282f; /* Contenedor principal, un gris más suave */
+            --primary-text-color: #e2e8f0; /* Texto principal, blanco roto */
+            --secondary-text-color: #94a3b8; /* Etiquetas y texto secundario, gris claro */
+            --border-color: #3e444c; /* Bordes sutiles */
+            --accent-color: #38bdf8; /* Azul cielo vibrante para acentos */
+            --accent-hover-color: #7dd3fc; /* Versión más clara del acento para hover */
+            --input-bg-color: #1e2125; /* Fondo de los campos de entrada */
+            --error-bg-color: #3d2527; /* Fondo para errores, rojo oscuro */
+            --error-border-color: #713e3b;
+            --error-text-color: #ff8a80; /* Texto de error, rojo claro */
+            --monospace-font: "SF Mono", "Consolas", "Courier New", monospace;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--primary-text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 650px;
+            width: 100%;
+            padding: 2rem;
+            background-color: var(--surface-color);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            color: var(--accent-color);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--secondary-text-color);
+        }
+        
+        /* Panel de Notificaciones/Errores */
+        #notification-panel {
+            background-color: var(--error-bg-color);
+            color: var(--error-text-color);
+            border: 1px solid var(--error-border-color);
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        input[type="text"], select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 1rem;
+            background-color: var(--input-bg-color);
+            color: var(--primary-text-color);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            box-sizing: border-box;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        input[type="text"]:focus, select:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.25);
+            outline: none;
+        }
+        
+        input[type="text"]::placeholder {
+            color: #64748b;
+        }
+
+        button {
+            padding: 12px 20px;
+            margin: 10px 5px 10px 0;
+            background-color: var(--accent-color);
+            color: #0c2b3a; /* Texto oscuro para mayor contraste en botón claro */
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: background-color 0.3s, transform 0.1s;
+        }
+
+        button:hover {
+            background-color: var(--accent-hover-color);
+        }
+        
+        button:active {
+            transform: translateY(1px);
+        }
+
+        p.formatted-address {
+            background-color: var(--bg-color);
+            padding: 1rem;
+            border-radius: 6px;
+            margin-top: 0.5rem;
+            word-wrap: break-word;
+            min-height: 24px;
+            font-family: var(--monospace-font);
+            color: var(--primary-text-color);
+            border: 1px solid var(--border-color);
+        }
+
+        .output-section {
+            margin-top: 1.5rem;
+        }
+
+         h3 {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--primary-text-color);
+        }
+
+        #skipApnValidation-label {
+            display: inline-flex; 
+            align-items: center; 
+            font-weight: normal; 
+            color: var(--secondary-text-color);
+            cursor: pointer;
+            margin-bottom: 1rem;
+        }
+
+        #skipApnValidation {
+            margin-right: 8px;
+            accent-color: var(--accent-color);
+        }
+    </style>
 </head>
 <body>
-    <!-- Sección de los botones Home y parcel search -->
-    <div class="nav-buttons">
-        <a href="https://dinfcs.github.io/Deckardaov/PrTools/">PrTools</a>
-        <a href="https://dinfcs.github.io/Deckardaov/FilterGeneratorv2/index.html">FilterGenerator</a>        
-    </div>
 
     <div class="container">
-        <h2>Enter an address:</h2>
-        <label for="addressInput">Address:</label>
-        <input type="text" id="addressInput" name="address" placeholder="Example: 319 ANTELOPE AVE PAGOSA SPRINGS CO 81147" autocomplete="off" required>
-        
-        <h2>Formatted Address:</h2>
-        <p id="formattedAddress"></p>
-        <button id="copyButton">Copy</button>
+        <h2>Intelligent Address Formatter</h2>
 
-        <!-- Sección adicional para Direcciones de Condominios -->
-        <div id="condoAddressSection" style="display: none;">
-            <p id="condoAddress"></p>
-            <button id="copyCondoButton">Copy Condo Address</button>
+        <!-- Panel de notificaciones que se mostrará cuando sea necesario -->
+        <div id="notification-panel" style="display: none;"></div>
+        
+        <div>
+            <label for="countrySelect">Country:</label>
+            <select id="countrySelect">
+                <option value="usa">USA</option>
+                <option value="australia">Australia</option>
+            </select>
+        </div>
+
+        <label for="addressInput">Address:</label>
+        <input type="text" id="addressInput" placeholder="Enter address with State and ZIP/Postcode">
+
+        <div>
+            <label id="skipApnValidation-label">
+                <input type="checkbox" id="skipApnValidation">
+                Skip APN Validation
+            </label>
+        </div>
+
+        <!-- USA Section -->
+        <div id="usa-section">
+            <div class="output-section">
+                <h3>Formatted Address (USA)</h3>
+                <p id="formattedAddress" class="formatted-address"></p>
+                <button onclick="copyToClipboard('formattedAddress', event)">Copy</button>
+            </div>
+            <div class="output-section" id="condoAddressSection">
+                <h3>Formatted with Unknown Unit (USA)</h3>
+                <p id="condoAddress" class="formatted-address"></p>
+                <button onclick="copyToClipboard('condoAddress', event)">Copy</button>
+            </div>
+        </div>
+
+        <!-- Australia Section -->
+        <div id="australia-section" style="display: none;">
+            <div class="output-section">
+                <h3>Formatted Address (Australia)</h3>
+                <p id="australiaAddress" class="formatted-address"></p>
+                <button onclick="copyToClipboard('australiaAddress', event)">Copy</button>
+            </div>
+            <div class="output-section" id="australiaCondoSection">
+                 <h3>Formatted with Unknown Unit (Australia)</h3>
+                <p id="australiaCondoAddress" class="formatted-address"></p>
+                <button onclick="copyToClipboard('australiaCondoAddress', event)">Copy</button>
+            </div>
         </div>
     </div>
 
+    <script>
+        const replacements = {
+            "Avenue": "Ave", "Boulevard": "Blvd", "Circle": "Cir", "Court": "Ct", "Drive": "Dr", "Expressway": "Expy", "Freeway": "Fwy", "Lane": "Ln", "Parkway": "Pkwy", "Place": "Pl", "Road": "Rd", "Square": "Sq", "Street": "St", "Terrace": "Ter", "Highway": "Hwy", "Roads": "Rds", "Alley": "Aly", "Annex": "Anx", "Arcade": "Arc", "Bayou": "Byu", "Beach": "Bch", "Bend": "Bnd", "Bluff": "Blf", "Bottom": "Btm", "Branch": "Br", "Bridge": "Brg", "Brook": "Brk", "Burg": "Bg", "Bypass": "Byp", "Camp": "Cp", "Canyon": "Cyn", "Cape": "Cpe", "Causeway": "Cswy", "Center": "Ctr", "Cliff": "Clf", "Club": "Clb", "Common": "Cmn", "Corner": "Cor", "Corners": "Cors", "Course": "Crse", "Cove": "Cv", "Creek": "Crk", "Crescent": "Cres", "Crest": "Crst", "Crossing": "Xing", "Crossroad": "Xrd", "Curve": "Curv", "Dale": "Dl", "Dam": "Dm", "Divide": "Dv", "Estates": "Ests", "Estate": "Est", "Fall": "Fall", "Falls": "Fls", "Ferry": "Fry", "Field": "Fld", "Fields": "Flds", "Flats": "Flts", "Flat": "Flt", "Ford": "Frd", "Forest": "Frst", "Forge": "Frg", "Fork": "Frk", "Forks": "Frks", "Fort": "Ft", "Gardens": "Gdns", "Garden": "Gdn", "Gateway": "Gtwy", "Glen": "Gln", "Green": "Grn", "Grove": "Grv", "Harbor": "Hbr", "Haven": "Hvn", "Heights": "Hts", "Hill": "Hl", "Hills": "Hls", "Hollow": "Holw", "Inlet": "Inlt", "Island": "Is", "Islands": "Iss", "Isle": "Isle", "Junction": "Jct", "Key": "Ky", "Knoll": "Knl", "Lake": "Lk", "Lakes": "Lks", "Land": "Land", "Landing": "Lndg", "Light": "Lgt", "Loaf": "Lf", "Lock": "Lck", "Lodge": "Ldg", "Loop": "Loop", "Mall": "Mall", "Manor": "Mnr", "Meadows": "Mdws", "Meadow": "Mdw", "Mill": "Ml", "Mission": "Msn", "Motorway": "Mtwy", "Mount": "Mt", "Mountain": "Mtn", "Neck": "Nck", "Orchard": "Orch", "Oval": "Oval", "Park": "Park", "Pines": "Pnes", "Plain": "Pln", "Plains": "Plns", "Plaza": "Plz", "Point": "Pt", "Port": "Prt", "Prairie": "Pr", "Radial": "Radl", "Ranch": "Rnch", "Rapids": "Rpds", "Rapid": "Rpd", "Rest": "Rst", "Ridge": "Rdg", "River": "Riv", "Row": "Row", "Run": "Run", "Shoal": "Shl", "Shoals": "Shls", "Shore": "Shr", "Shores": "Shrs", "Spring": "Spg", "Springs": "Spgs", "Spur": "Spur", "Station": "Sta", "Stream": "Strm", "Summit": "Smt", "Trace": "Trce", "Track": "Trak", "Trafficway": "Trfy", "Trail": "Trl", "Tunnel": "Tunl", "Union": "Un", "Valley": "Vly", "Valleys": "Vlys", "Viaduct": "Via", "View": "Vw", "Views": "Vws", "Village": "Vlg", "Ville": "Vl", "Vista": "Vis", "Walk": "Walk", "Wall": "Wall", "Wells": "Wls",
+            "Parade": "Pde", "Esplanade": "Esp", "Circuit": "Cct", "Close": "Cl", "Chase": "Ch", "Concourse": "Conc", "Promenade": "Prom", "Quay": "Qy", "Retreat": "Rtt", "Front": "Frt"
+        };
+        const replacementValues = Object.values(replacements);
+        const stateAbbreviations = {
+            usa: ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"],
+            australia: ["QLD", "SA", "NSW", "VIC", "TAS", "WA", "ACT", "NT"]
+        };
+        const cardinalPoints = { "North": "N", "South": "S", "East": "E", "West": "W", "Northwest": "NW", "Northeast": "NE", "Southwest": "SW", "Southeast": "SE"};
 
-    <!-- Archivo JavaScript -->
-    <script src="script.js"></script>
+        document.getElementById('countrySelect').addEventListener('change', formatAddress);
+        document.getElementById('addressInput').addEventListener('input', formatAddress);
+
+        function titleCase(str) {
+            return str.toLowerCase().replace(/\b(\w)/g, char => char.toUpperCase());
+        }
+
+        function formatAddress() {
+            const country = document.getElementById('countrySelect').value;
+            // Reset UI state at the beginning of every run
+            document.getElementById('notification-panel').style.display = 'none';
+            document.querySelectorAll('.formatted-address').forEach(el => el.textContent = '');
+            document.querySelectorAll('.output-section[id*="Condo"]').forEach(el => el.style.display = 'none');
+
+            if (country === 'usa') {
+                document.getElementById('usa-section').style.display = 'block';
+                document.getElementById('australia-section').style.display = 'none';
+                formatUsaAddress();
+            } else {
+                document.getElementById('usa-section').style.display = 'none';
+                document.getElementById('australia-section').style.display = 'block';
+                formatAustraliaAddress();
+            }
+        }
+        
+        function parseAddress(address, country) {
+            let cleanAddress = address.replace(/,/g, '').replace(/\s+/g, ' ').trim();
+            if (/p\.?o\.?\s+box|rr\s+\d+/i.test(cleanAddress)) return { error: "Non-standard address format (PO Box / RR). Formatter stopped." };
+            
+            cleanAddress = titleCase(cleanAddress).replace(/\b(United States|Australia)\b/ig, '').trim();
+            cleanAddress = cleanAddress.replace(/\s#\s?/, ' Unit ');
+            cleanAddress = cleanAddress.replace(/\b(Apt|Apartment)\s?/i, 'Unit ');
+            cleanAddress = cleanAddress.replace(/(Unit\s)([\w-]+)/, (match, unitText, unitNumber) => unitText + unitNumber.toUpperCase());
+            
+            const states = stateAbbreviations[country];
+            const zipPattern = country === 'usa' ? '\\d{5}' : '\\d{4}';
+            const stateRegex = new RegExp(`\\b(${states.join('|')})\\s+(${zipPattern})\\b`, 'i');
+            const match = cleanAddress.match(stateRegex);
+
+            // *** CORE OF THE NEW FEATURE: Specific error message if state/zip is missing ***
+            if (!match) return { error: "Address is incomplete. Please provide a State and ZIP Code (or Postcode for Australia)." };
+
+            const state = match[1].toUpperCase();
+            const zip = match[2];
+            let firstPart = cleanAddress.substring(0, match.index).trim();
+            let streetPart = firstPart, cityPart = '';
+            let words = firstPart.split(' ');
+            
+            let suffixIndex = -1;
+            for (let i = words.length - 1; i >= 0; i--) {
+                let tempWord = words[i];
+                if (replacements[tempWord]) {
+                    words[i] = replacements[tempWord];
+                    tempWord = replacements[tempWord];
+                }
+                if (replacementValues.includes(tempWord)) { suffixIndex = i; break; }
+            }
+
+            if (suffixIndex !== -1) {
+                streetPart = words.slice(0, suffixIndex + 1).join(' ');
+                cityPart = words.slice(suffixIndex + 1).join(' ').trim();
+            } else {
+                let lastSpaceIndex = firstPart.lastIndexOf(' ');
+                if (lastSpaceIndex !== -1) {
+                    streetPart = firstPart.substring(0, lastSpaceIndex);
+                    cityPart = firstPart.substring(lastSpaceIndex + 1);
+                }
+            }
+            
+            let streetWords = streetPart.split(' ');
+            if(streetWords.length > 1 && cardinalPoints[streetWords[1]]){
+                 streetWords[1] = cardinalPoints[streetWords[1]];
+                 streetPart = streetWords.join(' ');
+            }
+            
+            const unitInCityRegex = /^(Unit\s[\w-]+)\s(.+)/i;
+            if (unitInCityRegex.test(cityPart)){
+                const citySplit = cityPart.match(unitInCityRegex);
+                streetPart += ` ${citySplit[1]}`;
+                cityPart = citySplit[2];
+            }
+
+            return { streetPart, cityPart, state, zip };
+        }
+
+        function handleParseResult(parsed, country) {
+            const notificationPanel = document.getElementById('notification-panel');
+            if (parsed.error) {
+                notificationPanel.textContent = parsed.error;
+                notificationPanel.style.display = 'block';
+                return false;
+            }
+            return true;
+        }
+
+        function formatUsaAddress() {
+            const parsed = parseAddress(document.getElementById('addressInput').value, 'usa');
+            if (!handleParseResult(parsed, 'usa')) return;
+            
+            const baseStreetPart = parsed.streetPart.replace(/\s+Unit\s+[\w-]+$/, '');
+            document.getElementById('formattedAddress').textContent = `${parsed.streetPart}, ${parsed.cityPart}, ${parsed.state} ${parsed.zip}`;
+            document.getElementById('condoAddress').textContent = `${baseStreetPart} Unit # unk, ${parsed.cityPart}, ${parsed.state} ${parsed.zip}`;
+            document.getElementById('condoAddressSection').style.display = 'block';
+        }
+
+        function formatAustraliaAddress() {
+            const parsed = parseAddress(document.getElementById('addressInput').value, 'australia');
+            if (!handleParseResult(parsed, 'australia')) return;
+
+            const baseStreetPart = parsed.streetPart
+                .replace(/\s+Unit\s+[\w-]+$/, '') 
+                .replace(/^[\d\w\/-]+\s/, (match) => match.includes('/') ? (match.split('/')[1] || '').trim() + ' ' : match);
+            
+            document.getElementById('australiaAddress').textContent = `${parsed.streetPart}, ${parsed.cityPart}, ${parsed.state} ${parsed.zip}`;
+            document.getElementById('australiaCondoAddress').textContent = `Unit # unk/${baseStreetPart}, ${parsed.cityPart}, ${parsed.state} ${parsed.zip}`;
+            document.getElementById('australiaCondoSection').style.display = 'block';
+        }
+
+        function copyToClipboard(elementId, event) {
+            const element = document.getElementById(elementId);
+            const textToCopy = element.textContent;
+            if (navigator.clipboard && textToCopy) {
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    if(event){
+                        const originalButtonText = event.target.textContent;
+                        event.target.textContent = 'Copied!';
+                        setTimeout(() => event.target.textContent = originalButtonText, 1500);
+                    }
+                }).catch(err => console.error('Error copying text: ', err));
+            }
+        }
+
+        // Initial call
+        formatAddress();
+    </script>
 </body>
 </html>
