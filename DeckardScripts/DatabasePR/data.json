@@ -8416,8 +8416,8 @@
       "Project": "FL - City of Naples",
       "Public Records & GIS": [
         {
-          "url": "https://county-taxes.net/fl-collier/property-tax",
-          "type": "PR"
+          "type": "PR",
+          "url": "https://county-taxes.net/fl-collier/property-tax"
         },
         {
           "url": "https://collierbcc.maps.arcgis.com/apps/mapviewer/index.html",
@@ -8426,6 +8426,10 @@
         {
           "url": "https://experience.arcgis.com/experience/352b7fb5e01b4f859bb1748cbee8e275",
           "type": "GIS with parcels"
+        },
+        {
+          "type": "GIS / PR 3.0",
+          "url": "https://www.collierappraiser.com/index.html?ref=/map.aspx&dl=yes"
         }
       ],
       "License List": [
@@ -8434,11 +8438,11 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "<ul><li>APNs must have 11 digits — add a <strong>0 at the beginning</strong> if needed.</li><li> In GIS, <strong>turn off</strong> the <em>City Limits</em> layer for proper display.</li><li> The condo at <strong>1500 5th Ave (Naples Bay Resort)</strong> has multiple owners and APNs, so it's a <strong>Main Structure</strong>.</li></ul><p><br></p><p>For these addresses, <strong>identify</strong> the <strong>unit</strong> and mark as <strong>Resort: </strong></p><p><br></p><ol><li>720 5Th Ave S</li><li>101 8Th St S</li><li>555 5Th Ave S&nbsp;</li><li>600 Neapolitan Way</li><li>175 5Th Ave S</li><li>221 9Th St</li><li>2555 Tamiami Tr</li></ol>",
+      "Important Info": "<ul><li>APNs must have 11 digits — add a <strong>0 at the beginning</strong> if needed.</li><li> In GIS, <strong>turn off</strong> the <em>City Limits</em> layer for proper display.</li><li> The condo at <strong>1500 5th Ave (Naples Bay Resort)</strong> has multiple owners and APNs, so it's a <strong>Main Structure</strong>.</li><li>For GIS / PR 3.0 click on \"I Accept\" then search by address</li></ul><p><br></p><p>For these addresses, <strong>identify</strong> the <strong>unit</strong> and mark as <strong>Resort: </strong></p><p><br></p><ol><li>720 5Th Ave S</li><li>101 8Th St S</li><li>555 5Th Ave S&nbsp;</li><li>600 Neapolitan Way</li><li>175 5Th Ave S</li><li>221 9Th St</li><li>2555 Tamiami Tr</li></ol>",
       "Media": [
         {
-          "url": "N/A",
-          "type": "N/A"
+          "type": "N/A",
+          "url": "N/A"
         }
       ]
     },
