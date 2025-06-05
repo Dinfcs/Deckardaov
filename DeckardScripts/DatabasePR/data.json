@@ -12509,6 +12509,32 @@
           "url": "https://drive.google.com/uc?export=view&id=1zqToPVWTrDv49ips9HPsFld3OpsrUYIi"
         }
       ]
+    },
+    {
+      "Project": "NY - Town of Hunter",
+      "Public Records & GIS": [
+        {
+          "url": "https://greene.sdgnys.com/search.aspx",
+          "type": "PR"
+        },
+        {
+          "url": "https://gis.gcgovny.com/greenewebmap/",
+          "type": "GIS"
+        }
+      ],
+      "License List": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ],
+      "Important Info": "<p><br></p>",
+      "Media": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ]
     }
   ]
 }
