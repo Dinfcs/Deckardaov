@@ -12202,8 +12202,8 @@
       "Project": "OK - City Of Oklahoma City",
       "Public Records & GIS": [
         {
-          "type": "PR (VPN)",
-          "url": "https://docs.oklahomacounty.org/AssessorWP5/DefaultSearch.asp"
+          "url": "https://docs.oklahomacounty.org/AssessorWP5/DefaultSearch.asp",
+          "type": "PR (VPN)"
         },
         {
           "url": "https://ok-co.maps.arcgis.com/apps/webappviewer/index.html?id=61cd0fbf236543848d270b2c1a526674",
@@ -12212,11 +12212,11 @@
       ],
       "License List": [
         {
-          "url": "N/A",
-          "type": "N/A"
+          "type": "Licenses",
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EUuEGtOfUk9KrrR6Rs-u9o0BXyx9HXheCNYGKKGgrPhQ_A?e=TUrVu8"
         }
       ],
-      "Important Info": "<p><br></p>",
+      "Important Info": "<p>Please note the following for the <em>license list</em>: These are not the usual \"HS-xxxx\" licenses issued by the city. Instead, these licenses are <strong>BOA-xxx</strong>, which come from zoning board exceptions for home sharing.</p><p><br></p>",
       "Media": [
         {
           "type": "N/A",
