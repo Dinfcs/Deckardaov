@@ -1,15 +1,46 @@
 // ==UserScript==
-// @name         Fullscreen Table with Filter and Export (CSV Mod)
+// @name         Fullscreen Table with Filter and Export (CSV Mod, No Require)
 // @namespace    http://tampermonkey.net/
-// @version      1.3
-// @description  Extrae datos de un numero de paginas en parcel, las muestra en una tabla, elimina duplicados y exporta a CSV.
+// @version      1.4
+// @description  Extrae datos, elimina duplicados y exporta a CSV sin dependencias externas.
 // @match        https://cyborg.deckard.com/parcel/*
 // @grant        none
-// @require      https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.15.1/xlsx.full.min.js
 // ==/UserScript==
 
 (function() {
     'use strict';
+
+    // --- NUEVA FUNCIÓN: Convierte un array de objetos a un string CSV ---
+    function convertToCSV(data, headers) {
+        // Función para escapar caracteres especiales en una celda de CSV
+        const escapeCSVCell = (cell) => {
+            if (cell === null || cell === undefined) {
+                return '';
+            }
+            const cellString = String(cell);
+            // Si la celda contiene una coma, una comilla doble o un salto de línea, debe ir entre comillas
+            if (cellString.search(/("|,|\n)/g) >= 0) {
+                // Escapa las comillas dobles existentes duplicándolas
+                const escapedString = cellString.replace(/"/g, '""');
+                return `"${escapedString}"`;
+            }
+            return cellString;
+        };
+
+        // 1. Crear la fila de encabezados
+        const headerRow = headers.map(escapeCSVCell).join(',');
+
+        // 2. Crear las filas de datos
+        const dataRows = data.map(row => {
+            return headers.map(header => {
+                return escapeCSVCell(row[header]);
+            }).join(',');
+        });
+
+        // 3. Unir todo con saltos de línea
+        return [headerRow, ...dataRows].join('\n');
+    }
+
 
     const button = document.createElement('button');
     button.textContent = 'Load Pages';
@@ -41,46 +72,27 @@
 
     observer.observe(document.body, { childList: true, subtree: true });
 
-    function showTableInModal(tableHTML, tableData) {
+    function showTableInModal(tableHTML, tableData, tableHeaders) {
         const modal = document.createElement('div');
         Object.assign(modal.style, {
-            position: 'fixed',
-            top: '0',
-            left: '0',
-            width: '100%',
-            height: '100%',
-            backgroundColor: 'rgba(0, 0, 0, 0.6)',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            zIndex: '1001'
+            position: 'fixed', top: '0', left: '0', width: '100%', height: '100%',
+            backgroundColor: 'rgba(0, 0, 0, 0.6)', display: 'flex',
+            justifyContent: 'center', alignItems: 'center', zIndex: '1001'
         });
 
         const modalContent = document.createElement('div');
         Object.assign(modalContent.style, {
-            backgroundColor: '#fff',
-            padding: '20px',
-            borderRadius: '10px',
-            width: '95%',
-            height: '95%',
-            overflow: 'auto',
-            boxShadow: '0 0 15px rgba(0, 0, 0, 0.4)',
-            position: 'relative'
+            backgroundColor: '#fff', padding: '20px', borderRadius: '10px',
+            width: '95%', height: '95%', overflow: 'auto',
+            boxShadow: '0 0 15px rgba(0, 0, 0, 0.4)', position: 'relative'
         });
 
         const closeButton = document.createElement('button');
         closeButton.textContent = '✖';
         Object.assign(closeButton.style, {
-            position: 'absolute',
-            top: '10px',
-            right: '10px',
-            padding: '5px 10px',
-            backgroundColor: '#ff4d4d',
-            color: '#fff',
-            border: 'none',
-            borderRadius: '4px',
-            cursor: 'pointer',
-            fontSize: '14px'
+            position: 'absolute', top: '10px', right: '10px', padding: '5px 10px',
+            backgroundColor: '#ff4d4d', color: '#fff', border: 'none',
+            borderRadius: '4px', cursor: 'pointer', fontSize: '14px'
         });
         closeButton.onclick = () => document.body.removeChild(modal);
 
@@ -108,17 +120,15 @@
             });
         });
 
-        // --- MODIFICACIÓN: LÓGICA PARA EXPORTAR A CSV ---
+        // --- MODIFICACIÓN: Lógica de exportación usa nuestra nueva función ---
         modalContent.querySelector('#export-csv-btn').addEventListener('click', () => {
-            // Convertir el array de objetos a una hoja de cálculo
-            const worksheet = XLSX.utils.json_to_sheet(tableData);
-            // Convertir la hoja de cálculo a un string CSV
-            const csvOutput = XLSX.utils.sheet_to_csv(worksheet);
+            // Llama a la función manual para generar el contenido del CSV
+            const csvOutput = convertToCSV(tableData, tableHeaders);
 
             const blob = new Blob([csvOutput], { type: 'text/csv;charset=utf-8;' });
             const link = document.createElement('a');
             link.href = URL.createObjectURL(blob);
-            link.download = 'table_data.csv'; // Nombre del archivo
+            link.download = 'table_data.csv';
             link.click();
         });
     }
@@ -139,7 +149,6 @@
 
         let tableData = [];
 
-        // Función para extraer datos de la tabla visible actual
         const extractDataFromCurrentPage = () => {
             document.querySelectorAll('table tr').forEach(row => {
                 const rowData = {};
@@ -154,30 +163,23 @@
             });
         };
 
-        // Extraer de la primera página
         extractDataFromCurrentPage();
 
-        // Extraer de las páginas siguientes
         for (let i = 1; i < numPages; i++) {
             const nextButton = document.querySelector('.next-page');
             if (!nextButton || nextButton.disabled) break;
             nextButton.click();
-            // Esperar un poco para que cargue la nueva página
             await new Promise(resolve => setTimeout(resolve, 10));
             extractDataFromCurrentPage();
         }
 
-        // --- MODIFICACIÓN: ELIMINAR FILAS REPETIDAS ---
         const seen = new Set();
         const uniqueTableData = tableData.filter(row => {
-            // Convertimos el objeto de la fila a un string para una comparación sencilla
             const rowString = JSON.stringify(row);
-            // Si el string no ha sido visto, lo agregamos al Set y mantenemos la fila
             if (!seen.has(rowString)) {
                 seen.add(rowString);
                 return true;
             }
-            // Si ya fue visto, lo filtramos (retornando false)
             return false;
         });
 
@@ -198,7 +200,7 @@
             </table>
         `;
 
-        // Pasamos los datos ya sin duplicados a la función de la modal
-        showTableInModal(tableHTML, uniqueTableData);
+        // Pasamos los datos y los encabezados a la función de la modal
+        showTableInModal(tableHTML, uniqueTableData, tableHeaders);
     });
 })();
