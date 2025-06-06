@@ -7,17 +7,17 @@
     <style>
         /* Modern Dark Mode Theme */
         :root {
-            --bg-color: #1a1d21; /* Fondo principal, casi negro */
-            --surface-color: #24282f; /* Contenedor principal, un gris más suave */
-            --primary-text-color: #e2e8f0; /* Texto principal, blanco roto */
-            --secondary-text-color: #94a3b8; /* Etiquetas y texto secundario, gris claro */
-            --border-color: #3e444c; /* Bordes sutiles */
-            --accent-color: #38bdf8; /* Azul cielo vibrante para acentos */
-            --accent-hover-color: #7dd3fc; /* Versión más clara del acento para hover */
-            --input-bg-color: #1e2125; /* Fondo de los campos de entrada */
-            --error-bg-color: #3d2527; /* Fondo para errores, rojo oscuro */
+            --bg-color: #1a1d21;
+            --surface-color: #24282f;
+            --primary-text-color: #e2e8f0;
+            --secondary-text-color: #94a3b8;
+            --border-color: #3e444c;
+            --accent-color: #38bdf8;
+            --accent-hover-color: #7dd3fc;
+            --input-bg-color: #1e2125;
+            --error-bg-color: #3d2527;
             --error-border-color: #713e3b;
-            --error-text-color: #ff8a80; /* Texto de error, rojo claro */
+            --error-text-color: #ff8a80;
             --monospace-font: "SF Mono", "Consolas", "Courier New", monospace;
         }
 
@@ -57,7 +57,6 @@
             color: var(--secondary-text-color);
         }
         
-        /* Panel de Notificaciones/Errores */
         #notification-panel {
             background-color: var(--error-bg-color);
             color: var(--error-text-color);
@@ -95,7 +94,7 @@
             padding: 12px 20px;
             margin: 10px 5px 10px 0;
             background-color: var(--accent-color);
-            color: #0c2b3a; /* Texto oscuro para mayor contraste en botón claro */
+            color: #0c2b3a;
             border: none;
             border-radius: 6px;
             cursor: pointer;
@@ -156,7 +155,6 @@
     <div class="container">
         <h2>Intelligent Address Formatter</h2>
 
-        <!-- Panel de notificaciones que se mostrará cuando sea necesario -->
         <div id="notification-panel" style="display: none;"></div>
         
         <div>
@@ -169,6 +167,13 @@
 
         <label for="addressInput">Address:</label>
         <input type="text" id="addressInput" placeholder="Enter address with State and ZIP/Postcode">
+
+        <div>
+            <label id="skipApnValidation-label">
+                <input type="checkbox" id="skipApnValidation">
+                Skip APN Validation
+            </label>
+        </div>
 
         <!-- USA Section -->
         <div id="usa-section">
@@ -201,8 +206,10 @@
 
     <script>
         const replacements = {
-            "Avenue": "Ave", "Boulevard": "Blvd", "Circle": "Cir", "Court": "Ct", "Drive": "Dr", "Expressway": "Expy", "Freeway": "Fwy", "Lane": "Ln", "Parkway": "Pkwy", "Place": "Pl", "Road": "Rd", "Square": "Sq", "Street": "St", "Terrace": "Ter", "Highway": "Hwy", "Roads": "Rds", "Alley": "Aly", "Annex": "Anx", "Arcade": "Arc", "Bayou": "Byu", "Beach": "Bch", "Bend": "Bnd", "Bluff": "Blf", "Bottom": "Btm", "Branch": "Br", "Bridge": "Brg", "Brook": "Brk", "Burg": "Bg", "Bypass": "Byp", "Camp": "Cp", "Canyon": "Cyn", "Cape": "Cpe", "Causeway": "Cswy", "Center": "Ctr", "Cliff": "Clf", "Club": "Clb", "Common": "Cmn", "Corner": "Cor", "Corners": "Cors", "Course": "Crse", "Cove": "Cv", "Creek": "Crk", "Crescent": "Cres", "Crest": "Crst", "Crossing": "Xing", "Crossroad": "Xrd", "Curve": "Curv", "Dale": "Dl", "Dam": "Dm", "Divide": "Dv", "Estates": "Ests", "Estate": "Est", "Fall": "Fall", "Falls": "Fls", "Ferry": "Fry", "Field": "Fld", "Fields": "Flds", "Flats": "Flts", "Flat": "Flt", "Ford": "Frd", "Forest": "Frst", "Forge": "Frg", "Fork": "Frk", "Forks": "Frks", "Fort": "Ft", "Gardens": "Gdns", "Garden": "Gdn", "Gateway": "Gtwy", "Glen": "Gln", "Green": "Grn", "Grove": "Grv", "Harbor": "Hbr", "Haven": "Hvn", "Heights": "Hts", "Hill": "Hl", "Hills": "Hls", "Hollow": "Holw", "Inlet": "Inlt", "Island": "Is", "Islands": "Iss", "Isle": "Isle", "Junction": "Jct", "Key": "Ky", "Knoll": "Knl", "Lake": "Lk", "Lakes": "Lks", "Land": "Land", "Landing": "Lndg", "Light": "Lgt", "Loaf": "Lf", "Lock": "Lck", "Lodge": "Ldg", "Loop": "Loop", "Mall": "Mall", "Manor": "Mnr", "Meadows": "Mdws", "Meadow": "Mdw", "Mill": "Ml", "Mission": "Msn", "Motorway": "Mtwy", "Mount": "Mt", "Mountain": "Mtn", "Neck": "Nck", "Orchard": "Orch", "Oval": "Oval", "Park": "Park", "Pines": "Pnes", "Plain": "Pln", "Plains": "Plns", "Plaza": "Plz", "Point": "Pt", "Port": "Prt", "Prairie": "Pr", "Radial": "Radl", "Ranch": "Rnch", "Rapids": "Rpds", "Rapid": "Rpd", "Rest": "Rst", "Ridge": "Rdg", "River": "Riv", "Row": "Row", "Run": "Run", "Shoal": "Shl", "Shoals": "Shls", "Shore": "Shr", "Shores": "Shrs", "Spring": "Spg", "Springs": "Spgs", "Spur": "Spur", "Station": "Sta", "Stream": "Strm", "Summit": "Smt", "Trace": "Trce", "Track": "Trak", "Trafficway": "Trfy", "Trail": "Trl", "Tunnel": "Tunl", "Union": "Un", "Valley": "Vly", "Valleys": "Vlys", "Viaduct": "Via", "View": "Vw", "Views": "Vws", "Village": "Vlg", "Ville": "Vl", "Vista": "Vis", "Walk": "Walk", "Wall": "Wall", "Wells": "Wls",
-            "Parade": "Pde", "Esplanade": "Esp", "Circuit": "Cct", "Close": "Cl", "Chase": "Ch", "Concourse": "Conc", "Promenade": "Prom", "Quay": "Qy", "Retreat": "Rtt", "Front": "Frt"
+            // High-confidence, non-ambiguous suffixes
+            "Avenue": "Ave", "Boulevard": "Blvd", "Circle": "Cir", "Court": "Ct", "Drive": "Dr", "Expressway": "Expy", "Freeway": "Fwy", "Lane": "Ln", "Parkway": "Pkwy", "Place": "Pl", "Road": "Rd", "Square": "Sq", "Street": "St", "Terrace": "Ter", "Highway": "Hwy", "Roads": "Rds", "Alley": "Aly", "Annex": "Anx", "Arcade": "Arc", "Bayou": "Byu", "Beach": "Bch", "Bend": "Bnd", "Bluff": "Blf", "Bottom": "Btm", "Branch": "Br", "Bridge": "Brg", "Brook": "Brk", "Bypass": "Byp", "Camp": "Cp", "Canyon": "Cyn", "Cape": "Cpe", "Causeway": "Cswy", "Center": "Ctr", "Cliff": "Clf", "Common": "Cmn", "Corner": "Cor", "Corners": "Cors", "Course": "Crse", "Creek": "Crk", "Crescent": "Cres", "Crest": "Crst", "Crossing": "Xing", "Crossroad": "Xrd", "Curve": "Curv", "Dale": "Dl", "Dam": "Dm", "Divide": "Dv", "Estate": "Est", "Estates": "Ests", "Fall": "Fall", "Falls": "Fls", "Ferry": "Fry", "Field": "Fld", "Fields": "Flds", "Flats": "Flts", "Flat": "Flt", "Ford": "Frd", "Forest": "Frst", "Forge": "Frg", "Fork": "Frk", "Forks": "Frks", "Fort": "Ft", "Gateway": "Gtwy", "Harbor": "Hbr", "Hill": "Hl", "Hills": "Hls", "Hollow": "Holw", "Inlet": "Inlt", "Island": "Is", "Islands": "Iss", "Isle": "Isle", "Junction": "Jct", "Key": "Ky", "Knoll": "Knl", "Lake": "Lk", "Lakes": "Lks", "Landing": "Lndg", "Light": "Lgt", "Loaf": "Lf", "Lock": "Lck", "Lodge": "Ldg", "Loop": "Loop", "Mall": "Mall", "Manor": "Mnr", "Meadows": "Mdws", "Meadow": "Mdw", "Mill": "Ml", "Mission": "Msn", "Motorway": "Mtwy", "Mount": "Mt", "Mountain": "Mtn", "Neck": "Nck", "Orchard": "Orch", "Oval": "Oval", "Pines": "Pnes", "Plain": "Pln", "Plains": "Plns", "Plaza": "Plz", "Point": "Pt", "Port": "Prt", "Prairie": "Pr", "Radial": "Radl", "Ranch": "Rnch", "Rapids": "Rpds", "Rapid": "Rpd", "Rest": "Rst", "Ridge": "Rdg", "River": "Riv", "Row": "Row", "Run": "Run", "Shoal": "Shl", "Shoals": "Shls", "Shore": "Shr", "Shores": "Shrs", "Spring": "Spg", "Springs": "Spgs", "Spur": "Spur", "Station": "Sta", "Stream": "Strm", "Summit": "Smt", "Trace": "Trce", "Track": "Trak", "Trafficway": "Trfy", "Trail": "Trl", "Tunnel": "Tunl", "Union": "Un", "Valley": "Vly", "Valleys": "Vlys", "Viaduct": "Via", "View": "Vw", "Views": "Vws", "Village": "Vlg", "Ville": "Vl", "Vista": "Vis", "Walk": "Walk", "Wall": "Wall", "Way": "Way", "Wells": "Wls",
+            // Australian Suffixes
+            "Parade": "Pde", "Esplanade": "Esp", "Circuit": "Cct", "Close": "Cl", "Chase": "Ch", "Concourse": "Conc", "Promenade": "Prom", "Quay": "Qy", "Retreat": "Rtt", "Front": "Frt",
         };
         const replacementValues = Object.values(replacements);
         const stateAbbreviations = {
@@ -220,7 +227,6 @@
 
         function formatAddress() {
             const country = document.getElementById('countrySelect').value;
-            // Reset UI state at the beginning of every run
             document.getElementById('notification-panel').style.display = 'none';
             document.querySelectorAll('.formatted-address').forEach(el => el.textContent = '');
             document.querySelectorAll('.output-section[id*="Condo"]').forEach(el => el.style.display = 'none');
@@ -250,7 +256,6 @@
             const stateRegex = new RegExp(`\\b(${states.join('|')})\\s+(${zipPattern})\\b`, 'i');
             const match = cleanAddress.match(stateRegex);
 
-            // *** CORE OF THE NEW FEATURE: Specific error message if state/zip is missing ***
             if (!match) return { error: "Address is incomplete. Please provide a State and ZIP Code (or Postcode for Australia)." };
 
             const state = match[1].toUpperCase();
@@ -296,7 +301,7 @@
             return { streetPart, cityPart, state, zip };
         }
 
-        function handleParseResult(parsed, country) {
+        function handleParseResult(parsed) {
             const notificationPanel = document.getElementById('notification-panel');
             if (parsed.error) {
                 notificationPanel.textContent = parsed.error;
@@ -308,7 +313,7 @@
 
         function formatUsaAddress() {
             const parsed = parseAddress(document.getElementById('addressInput').value, 'usa');
-            if (!handleParseResult(parsed, 'usa')) return;
+            if (!handleParseResult(parsed)) return;
             
             const baseStreetPart = parsed.streetPart.replace(/\s+Unit\s+[\w-]+$/, '');
             document.getElementById('formattedAddress').textContent = `${parsed.streetPart}, ${parsed.cityPart}, ${parsed.state} ${parsed.zip}`;
@@ -318,14 +323,27 @@
 
         function formatAustraliaAddress() {
             const parsed = parseAddress(document.getElementById('addressInput').value, 'australia');
-            if (!handleParseResult(parsed, 'australia')) return;
+            if (!handleParseResult(parsed)) return;
 
             const baseStreetPart = parsed.streetPart
                 .replace(/\s+Unit\s+[\w-]+$/, '') 
                 .replace(/^[\d\w\/-]+\s/, (match) => match.includes('/') ? (match.split('/')[1] || '').trim() + ' ' : match);
             
-            document.getElementById('australiaAddress').textContent = `${parsed.streetPart}, ${parsed.cityPart}, ${parsed.state} ${parsed.zip}`;
-            document.getElementById('australiaCondoAddress').textContent = `Unit # unk/${baseStreetPart}, ${parsed.cityPart}, ${parsed.state} ${parsed.zip}`;
+            // *** CORE LOGIC FOR REGIONAL EXCEPTIONS ***
+            let finalPart;
+            if (parsed.state === 'TAS') {
+                // Tasmania Rule: No state, just postcode
+                finalPart = parsed.zip;
+            } else if (parsed.state === 'SA') {
+                // SA Rule: No state, no postcode
+                finalPart = '';
+            } else {
+                // Standard Rule: State and postcode
+                finalPart = `${parsed.state} ${parsed.zip}`;
+            }
+
+            document.getElementById('australiaAddress').textContent = `${parsed.streetPart}, ${parsed.cityPart}${finalPart ? ', ' + finalPart : ''}`;
+            document.getElementById('australiaCondoAddress').textContent = `Unit # unk/${baseStreetPart}, ${parsed.cityPart}${finalPart ? ', ' + finalPart : ''}`;
             document.getElementById('australiaCondoSection').style.display = 'block';
         }
 
