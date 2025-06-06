@@ -11634,8 +11634,8 @@
           "url": "https://qpublic.schneidercorp.com/application.aspx?app=BayCountyFL&PageType=Search"
         },
         {
-          "url": "https://qpublic.schneidercorp.com/application.aspx?AppID=834&LayerID=15170&PageTypeID=1&PageID=6822",
-          "type": "GIS"
+          "type": "GIS",
+          "url": "https://qpublic.schneidercorp.com/application.aspx?AppID=834&LayerID=15170&PageTypeID=1&PageID=6822"
         }
       ],
       "License List": [
@@ -11644,11 +11644,11 @@
           "url": "N/A"
         }
       ],
-      "Important Info": "<p>The condo located at <strong>16819 Front Beach Rd</strong> is a <strong>main structure</strong>, so please make sure to identify its units before mapping.</p><p><br></p><p>Listings at <strong>17001 Front Beach Rd</strong> should be mapped as <strong>Resort</strong> with <strong>APN 32776000000</strong></p>",
+      "Important Info": "<p>The condo located at <strong>16819 Front Beach Rd</strong> is a <strong>main structure</strong>, so please make sure to identify its units before mapping.</p><p><br></p><p>Listings at <strong>17001 Front Beach Rd</strong> should be mapped as <strong>Resort</strong> with <strong>APN 32776000000</strong></p><p><br></p><p>At <strong>The Inn at St. Thomas Square</strong> (8730 Thomas Dr), some units share the same number but have different APNs because they’re in <strong>different buildings</strong>, marked with <strong>Roman numerals</strong> in PR. </p><p>Please do <strong>Address Override</strong> like in <strong>Public Records</strong>:</p><ul><li>8730 Thomas Dr Unit 1304A, Panama City Beach, FL 32408 <strong>→</strong> 8730 Thomas Dr Unit III-1304, Panama City Beach, FL 32408</li></ul>",
       "Media": [
         {
-          "type": "N/A",
-          "url": "N/A"
+          "url": "N/A",
+          "type": "N/A"
         }
       ]
     },
