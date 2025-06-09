@@ -12565,6 +12565,32 @@
           "type": "N/A"
         }
       ]
+    },
+    {
+      "Project": "OH - Ottawa County",
+      "Public Records & GIS": [
+        {
+          "url": "https://beacon.schneidercorp.com/Application.aspx?AppID=1112&LayerID=28099&PageTypeID=2&PageID=11487&KeyValue=0240924921264001",
+          "type": "PR"
+        },
+        {
+          "type": "GIS",
+          "url": "https://gis.co.ottawa.oh.us/portal/apps/webappviewer/index.html?id=f3d55facd3fe454681361639a662a67b"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "<p><br></p>",
+      "Media": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ]
     }
   ]
 }
