@@ -12539,6 +12539,32 @@
           "url": "N/A"
         }
       ]
+    },
+    {
+      "Project": "CA - City Of Petaluma",
+      "Public Records & GIS": [
+        {
+          "url": "https://common1.mptsweb.com/mbap/SONOMA/asr",
+          "type": "PR"
+        },
+        {
+          "url": "https://www.arcgis.com/apps/webappviewer/index.html?id=790a6977918e47559a06ae0b65c14cbc",
+          "type": "GIS"
+        }
+      ],
+      "License List": [
+        {
+          "type": "N/A",
+          "url": "N/A"
+        }
+      ],
+      "Important Info": "<p><br></p>",
+      "Media": [
+        {
+          "url": "N/A",
+          "type": "N/A"
+        }
+      ]
     }
   ]
 }
