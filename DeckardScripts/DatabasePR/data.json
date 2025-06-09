@@ -11856,21 +11856,21 @@
       "Project": "NY - Suffolk County",
       "Public Records & GIS": [
         {
-          "type": "GIS (use VPN)",
-          "url": "https://gisapps.suffolkcountyny.gov/gisviewer/"
+          "url": "https://gisapps.suffolkcountyny.gov/gisviewer/",
+          "type": "GIS (use VPN)"
         },
         {
-          "url": "https://suffolk.munisselfservice.com/citizens/RealEstate/Default.aspx?mode=new",
-          "type": "PR"
+          "type": "PR",
+          "url": "https://suffolk.munisselfservice.com/citizens/RealEstate/Default.aspx?mode=new"
         }
       ],
       "License List": [
         {
-          "url": "https://drive.google.com/uc?export=view&id=1M3Z-7mt-FOTkuAEt9WEP4ibISBOX_Wj0",
-          "type": "List"
+          "type": "List",
+          "url": "https://drive.google.com/uc?export=view&id=1M3Z-7mt-FOTkuAEt9WEP4ibISBOX_Wj0"
         }
       ],
-      "Important Info": "<ul><li>To search by APN in the Public Records (PR), add four zeros to the end of the number. </li><li>To view the property information, select \"View Bill\" for the most recent available year and click on \"Property Detail\" (image 1).</li></ul>",
+      "Important Info": "<ul><li>To search by APN in the Public Records (PR), add four zeros to the end of the number. </li><li>To view the property information, select \"View Bill\" for the most recent available year and click on \"Property Detail\" (image 1).</li><li>If you come across properties with the address <strong>100 Deforest Rd, Montauk, NY 11954</strong>, you must assign the <strong>AO</strong> to the corresponding <strong>unit</strong>. In some listings, the unit number appears in the <strong>Housefront</strong>. If the unit cannot be identified, it should be marked as <strong>NMF</strong> along with its respective <strong>AO</strong>.</li></ul>",
       "Media": [
         {
           "url": "https://drive.google.com/uc?export=view&id=1JSOg4Q7tbox06fPUKwSJC0KQBB8aboxS",
