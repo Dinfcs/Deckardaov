@@ -309,7 +309,7 @@
             label: 'ADV-FILTER',
             url: 'https://dinfcs.github.io/Deckardaov/FilterGeneratorv2/index.html',
             openInNewTab: false, // Abre iframe modal
-            iframeWidth: 40,     // Ancho del iframe: 40%
+            iframeWidth: 48,     // Ancho del iframe: 40%
             iframeHeight: 100,   // Alto del iframe: 100%
             iframePosition: 'right', // Pegado a la derecha
             persistent: true
