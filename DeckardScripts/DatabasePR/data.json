@@ -1054,17 +1054,17 @@
           "url": "https://assr.parcelquest.com/Statewide"
         },
         {
-          "type": "GIS",
+          "type": "GIS (VPN)",
           "url": "https://sdgis.sandag.org/"
         }
       ],
       "License List": [
         {
-          "type": "License List",
-          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EdgDQDkOvZxCrEomCTVZLTgBakq9nXOCYeqskvXi5vl7dw?e=5oLwwf"
+          "url": "https://netorgft4047789.sharepoint.com/:x:/s/ElectricSheep/EdgDQDkOvZxCrEomCTVZLTgBakq9nXOCYeqskvXi5vl7dw?e=5oLwwf",
+          "type": "License List"
         }
       ],
-      "Important Info": "N/A",
+      "Important Info": "<p>N/A</p>",
       "Media": [
         {
           "type": "N/A",
