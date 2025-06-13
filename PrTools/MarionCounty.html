@@ -75,6 +75,11 @@
                         return `${p1}-${p2}-${p3}`;
                     });
                     break;
+                case 'format4': // xxxxx-xx-xxx
+                    formattedAPN = apnInput.replace(/^(\d{5})(\d{2})(\d{3})$/, (match, p1, p2, p3) => {
+                        return `${p1}-${p2}-${p3}`;
+                    });
+                    break;
                 default:
                     formattedAPN = apnInput;
             }
@@ -141,6 +146,9 @@
                 </label>
                 <label>
                     <input type="radio" name="format" value="format3"> xxxxx-xxx-xx
+                </label>
+                <label>
+                    <input type="radio" name="format" value="format4"> xxxxx-xx-xxx
                 </label>
             </fieldset>
 
