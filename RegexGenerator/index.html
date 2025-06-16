@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Automatic Regex Generator (Client-Side)</title>
+    <title>Smart Regex Generator</title>
     
-    <!-- CSS for Styling -->
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -48,96 +47,53 @@
             color: #c0c0c0;
             line-height: 1.6;
         }
-        .instructions li {
-            margin-bottom: 0.7em;
-        }
+        .instructions li { margin-bottom: 0.7em; }
         .instructions code {
-            background-color: #121212;
-            color: #03dac6;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-family: "Courier New", Courier, monospace;
-            font-size: 0.9em;
+            background-color: #121212; color: #03dac6; padding: 2px 6px;
+            border-radius: 4px; font-family: "Courier New", Courier, monospace; font-size: 0.9em;
         }
         textarea {
-            width: 100%;
-            height: 120px;
-            background-color: #2c2c2c;
-            border: 1px solid #444;
-            color: #f0f0f0;
-            padding: 10px;
-            border-radius: 4px;
-            font-size: 16px;
-            box-sizing: border-box;
-            resize: vertical;
+            width: 100%; height: 140px; background-color: #2c2c2c; border: 1px solid #444;
+            color: #f0f0f0; padding: 10px; border-radius: 4px; font-size: 16px;
+            box-sizing: border-box; resize: vertical;
         }
         button {
-            display: block;
-            width: 100%;
-            padding: 12px;
-            font-size: 18px;
-            font-weight: bold;
-            background-color: #03dac6;
-            color: #000;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-top: 1em;
-            transition: background-color 0.3s ease;
+            display: block; width: 100%; padding: 12px; font-size: 18px; font-weight: bold;
+            background-color: #03dac6; color: #000; border: none; border-radius: 4px;
+            cursor: pointer; margin-top: 1em; transition: background-color 0.3s ease;
         }
-        button:hover {
-            background-color: #018786;
-        }
+        button:hover { background-color: #018786; }
         .result-area {
-            margin-top: 2em;
-            background-color: #2c2c2c;
-            padding: 1em;
-            border-radius: 4px;
-            border-left: 4px solid #bb86fc;
-            display: none; /* Hidden by default */
+            margin-top: 2em; background-color: #2c2c2c; padding: 1em; border-radius: 4px;
+            border-left: 4px solid #bb86fc; display: none; /* Hidden by default */
         }
-        .result-area h3 {
-            margin: 0 0 10px 0;
-            color: #bb86fc;
-        }
+        .result-area h3 { margin: 0 0 10px 0; color: #bb86fc; }
         #regex-output {
-            font-family: "Courier New", Courier, monospace;
-            background-color: #1e1e1e;
-            color: #03dac6;
-            padding: 10px;
-            border-radius: 4px;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-            user-select: all; /* Makes selecting the text easy */
+            font-family: "Courier New", Courier, monospace; background-color: #1e1e1e;
+            color: #03dac6; padding: 10px; border-radius: 4px;
+            white-space: pre-wrap; word-wrap: break-word; user-select: all;
         }
         #error-message {
-            color: #cf6679;
-            margin-top: 1em;
-            text-align: center;
-            font-weight: bold;
-            min-height: 1.2em;
+            color: #cf6679; margin-top: 1em; text-align: center; font-weight: bold; min-height: 1.2em;
         }
     </style>
 </head>
 <body>
-
     <div class="container">
-        <h1>Regex Generator</h1>
-
-        <!-- Instructions Section -->
+        <h1>Smart Regex Generator</h1>
         <div class="instructions">
             <h3>How to Use This Tool</h3>
             <ul>
-                <li>Enter one or more examples of the text you want to match in the box below. <strong>Place each example on a new line.</strong></li>
-                <li><strong>Crucial Rule:</strong> For this simple generator to work, all your examples must have the <strong>exact same length.</strong></li>
-                <li>The tool analyzes the character type (letter, number, symbol) at each position across all examples to infer the common pattern.</li>
-                <li><strong>Example:</strong> If you enter <code>item-001</code> and <code>item-002</code>, the tool will generate <code>item-\d{3}</code>.</li>
+                <li>Enter 2 or more text examples below, each on a new line.</li>
+                <li>This tool now supports examples of <strong>different lengths</strong>!</li>
+                <li>It works best when your examples share a common structure (e.g., text-hyphen-numbers).</li>
+                <li><strong>Example:</strong> If you enter <code>Unit-1234</code>, <code>unit-678</code>, and <code>unit-9524</code>, the tool will infer a pattern like <code>[a-zA-Z]{4}\-\d{3,4}</code>.</li>
             </ul>
         </div>
         
-        <textarea id="text-input" placeholder="e.g., AB1234
-CD5678
-XY9012"></textarea>
+        <textarea id="text-input" placeholder="e.g., Unit-1234
+unit-678
+unit-9524"></textarea>
         
         <button id="generate-btn">Generate Regex</button>
         
@@ -149,88 +105,134 @@ XY9012"></textarea>
         </div>
     </div>
 
-    <!-- JavaScript for the Logic -->
+    <!-- The New, Smarter JavaScript Logic -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // DOM element references
             const generateBtn = document.getElementById('generate-btn');
             const textInput = document.getElementById('text-input');
             const resultArea = document.getElementById('result-area');
             const regexOutput = document.getElementById('regex-output');
             const errorMessage = document.getElementById('error-message');
 
-            /**
-             * Escapes special regex characters to be treated literally.
-             * @param {string} str - The string to escape.
-             * @returns {string} - The escaped string.
-             */
-            function escapeRegex(str) {
-                return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-            }
+            const getCharType = (char) => {
+                if (/\d/.test(char)) return 'DIGIT';
+                if (/[a-zA-Z]/.test(char)) return 'ALPHA';
+                if (/\s/.test(char)) return 'SPACE';
+                return 'SYMBOL';
+            };
 
-            /**
-             * The main function to generate a regex from text examples.
-             * @param {string[]} examples - An array of example strings.
-             * @returns {string} - The generated regex.
-             */
-            function generateRegexFromExamples(examples) {
-                if (!examples || examples.length === 0) {
-                    return "";
-                }
+            const tokenize = (text) => {
+                if (!text) return [];
+                const tokens = [];
+                let currentType = getCharType(text[0]);
+                let currentValue = text[0];
 
-                const firstLength = examples[0].length;
-                if (!examples.every(ex => ex.length === firstLength)) {
-                    throw new Error("For accurate generation, all examples must have the same length.");
-                }
-
-                let regexParts = [];
-                // Iterate through each character position (column).
-                for (let i = 0; i < firstLength; i++) {
-                    const charsAtPos = new Set(examples.map(ex => ex[i]));
-                    const charArray = Array.from(charsAtPos);
-                    
-                    if (charsAtPos.size === 1) {
-                        regexParts.push(escapeRegex(charArray[0]));
+                for (let i = 1; i < text.length; i++) {
+                    const char = text[i];
+                    const charType = getCharType(char);
+                    if (charType === currentType) {
+                        currentValue += char;
                     } else {
-                        const isDigit = charArray.every(c => /\d/.test(c));
-                        const isLower = charArray.every(c => /[a-z]/.test(c));
-                        const isUpper = charArray.every(c => /[A-Z]/.test(c));
-                        const isAlpha = charArray.every(c => /[a-zA-Z]/.test(c));
-                        const isAlnum = charArray.every(c => /[a-zA-Z0-9]/.test(c));
-                        const isSpace = charArray.every(c => /\s/.test(c));
+                        tokens.push({ type: currentType, value: currentValue });
+                        currentType = charType;
+                        currentValue = char;
+                    }
+                }
+                tokens.push({ type: currentType, value: currentValue });
+                return tokens;
+            };
+            
+            const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+            function generateRegexFromExamples(examples) {
+                if (!examples || examples.length === 0) return "";
+                
+                const allTokenized = examples.map(tokenize);
+                const baseTokens = allTokenized[0];
+                
+                for (let i = 1; i < allTokenized.length; i++) {
+                    if (allTokenized[i].length !== baseTokens.length) {
+                        throw new Error("Examples have different structures (e.g., missing a hyphen). Please provide examples with a consistent structure.");
+                    }
+                }
+
+                const pattern = baseTokens.map(token => ({
+                    type: token.type,
+                    min: token.value.length,
+                    max: token.value.length,
+                    // Check if all characters in the token are the same
+                    isLiteral: new Set(token.value).size === 1, 
+                    // Store the value for later checks
+                    baseValue: token.value
+                }));
+
+                for (let i = 1; i < allTokenized.length; i++) {
+                    for (let j = 0; j < allTokenized[i].length; j++) {
+                        const currentToken = allTokenized[i][j];
+                        const patternPart = pattern[j];
+
+                        if (currentToken.type !== patternPart.type) {
+                           throw new Error("Examples have different structures (character types mismatch).");
+                        }
                         
-                        if (isDigit) regexParts.push('\\d');
-                        else if (isLower) regexParts.push('[a-z]');
-                        else if (isUpper) regexParts.push('[A-Z]');
-                        else if (isAlpha) regexParts.push('[a-zA-Z]');
-                        else if (isAlnum) regexParts.push('[a-zA-Z0-9]');
-                        else if (isSpace) regexParts.push('\\s');
-                        else regexParts.push('.'); // Fallback to a wildcard
+                        patternPart.min = Math.min(patternPart.min, currentToken.value.length);
+                        patternPart.max = Math.max(patternPart.max, currentToken.value.length);
+
+                        if (patternPart.type === "ALPHA" && currentToken.value.toLowerCase() !== patternPart.baseValue.toLowerCase()) {
+                           // If the text part is different (e.g., 'unit' vs 'item'), it's not a literal
+                           patternPart.isLiteral = false;
+                        }
+                        if (patternPart.type === "SYMBOL" && currentToken.value !== patternPart.baseValue) {
+                           patternPart.isLiteral = false;
+                        }
                     }
                 }
                 
-                // Compress the regex (e.g., [A-Z][A-Z] becomes [A-Z]{2})
-                if (regexParts.length === 0) return "";
-                let compressedRegex = "";
-                let i = 0;
-                while (i < regexParts.length) {
-                    let part = regexParts[i];
-                    let count = 1;
-                    let j = i + 1;
-                    while (j < regexParts.length && regexParts[j] === part) {
-                        count++;
-                        j++;
+                let regexString = "";
+                for (let i = 0; i < pattern.length; i++) {
+                    const part = pattern[i];
+                    let segment = "";
+
+                    switch (part.type) {
+                        case 'ALPHA':
+                            // If the word is always the same (ignoring case), match it literally but in a case-insensitive group.
+                            // Otherwise, match any letter. This makes the regex more specific and useful.
+                            if(part.isLiteral) {
+                                segment = `[${escapeRegex(part.baseValue[0].toUpperCase())}${escapeRegex(part.baseValue[0].toLowerCase())}]${escapeRegex(part.baseValue.slice(1).toLowerCase())}`;
+                            } else {
+                                segment = '[a-zA-Z]';
+                            }
+                            break;
+                        case 'DIGIT':   segment = '\\d'; break;
+                        case 'SPACE':   segment = '\\s'; break;
+                        case 'SYMBOL':
+                            if (part.isLiteral) {
+                                segment = escapeRegex(part.baseValue);
+                            } else {
+                                segment = '.'; // Wildcard if symbols change
+                            }
+                            break;
                     }
-                    compressedRegex += (count > 1) ? `${part}{${count}}` : part;
-                    i = j;
+                    
+                    if (!part.isLiteral && part.type !== "SYMBOL") { // Add quantifier only to non-literal token types
+                        if (part.min === part.max) {
+                            if (part.min > 1) regexString += `${segment}{${part.min}}`;
+                            else regexString += segment;
+                        } else if (part.min === 1 && part.max > 10) { // Assume 'one or more' for large variance
+                            regexString += `${segment}+`;
+                        }
+                        else {
+                            regexString += `${segment}{${part.min},${part.max}}`;
+                        }
+                    } else { // Literals are added as they are
+                        regexString += segment;
+                    }
                 }
-                
-                return compressedRegex;
+
+                return regexString;
             }
 
-            // Event listener for the "Generate" button
             generateBtn.addEventListener('click', () => {
-                // Hide previous results and errors
                 resultArea.style.display = 'none';
                 errorMessage.textContent = '';
                 
@@ -246,13 +248,12 @@ XY9012"></textarea>
                 try {
                     const generatedRegex = generateRegexFromExamples(lines);
                     regexOutput.textContent = generatedRegex;
-                    resultArea.style.display = 'block'; // Show the result
+                    resultArea.style.display = 'block';
                 } catch (error) {
                     errorMessage.textContent = 'Error: ' + error.message;
                 }
             });
         });
     </script>
-
 </body>
 </html>
