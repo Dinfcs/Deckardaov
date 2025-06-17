@@ -2,746 +2,82 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Generador de Filtros Avanzados v3</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-  
-  <!-- =================================================================
-       INICIO: ESTILOS CSS
-       ================================================================= -->
-  <style>
-    /* --- VARIABLES Y RESET BÁSICO --- */
-    :root {
-      --primary-color: #5a9bd4;
-      --primary-hover: #4a8cc2;
-      --secondary-color: #6c757d;
-      --danger-color: #ff6b6b;
-      --danger-hover: #ff4b4b;
-      --success-color: #28a745;
-      --light-color: #e0e0e0;
-      --dark-color: #ffffff;
-      --border-color: #4a4a6a;
-      --bg-color: #1e1e2f;
-      --card-bg: #2e2e3e;
-      --input-bg: #3a3a4e;
-      --font-family: 'Poppins', sans-serif;
-      --border-radius: 8px;
-      --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: var(--font-family);
-      background-color: var(--bg-color);
-      color: var(--light-color);
-      line-height: 1.6;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-
-    header {
-      text-align: center;
-      margin-bottom: 2.5rem;
-    }
-
-    header h1 {
-      font-size: 2.5rem;
-      color: var(--primary-color);
-      font-weight: 600;
-    }
-
-    header p {
-      font-size: 1.1rem;
-      color: var(--secondary-color);
-    }
-
-    main {
-      display: grid;
-      gap: 1.5rem;
-    }
-
-    /* --- ESTILO DE TARJETAS (CARDS) --- */
-    .card {
-      background-color: var(--card-bg);
-      border-radius: var(--border-radius);
-      padding: 1.5rem;
-      box-shadow: var(--box-shadow);
-      border: 1px solid var(--border-color);
-    }
-
-    .card h2 {
-      font-size: 1.4rem;
-      margin-bottom: 1rem;
-      font-weight: 500;
-      padding-bottom: 0.5rem;
-      border-bottom: 1px solid var(--border-color);
-    }
-
-    /* --- SECCIÓN DEL CONSTRUCTOR DE FILTROS --- */
-    .builder-controls {
-      display: grid;
-      grid-template-columns: auto 1fr auto 1fr;
-      gap: 1rem;
-      align-items: center;
-    }
-
-    .control-element {
-      padding: 0.6rem 0.8rem;
-      font-size: 1rem;
-      border: 1px solid var(--border-color);
-      border-radius: var(--border-radius);
-      background-color: var(--input-bg);
-      color: var(--light-color);
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-    
-    select {
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
-      background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23b0b0b0%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22/%3E%3C/svg%3E');
-      background-repeat: no-repeat;
-      background-position: right .7em top 50%;
-      background-size: .65em auto;
-      padding-right: 2.5em;
-    }
-
-    .control-element:focus {
-      outline: none;
-      border-color: var(--primary-color);
-      box-shadow: 0 0 0 3px rgba(90, 155, 212, 0.3);
-    }
-    
-    input::placeholder {
-        color: #8a8a9e;
-    }
-
-    #logical-operator-select {
-      visibility: hidden;
-    }
-
-    .value-container {
-      position: relative;
-    }
-
-    .builder-actions {
-      margin-top: 1.5rem;
-      display: flex;
-      gap: 0.75rem;
-    }
-
-    /* --- ESTILOS DE BOTONES --- */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.6rem 1.2rem;
-      font-size: 1rem;
-      font-weight: 500;
-      border: none;
-      border-radius: var(--border-radius);
-      cursor: pointer;
-      transition: background-color 0.2s, transform 0.1s;
-    }
-
-    .btn:hover:not(:disabled) {
-      transform: translateY(-1px);
-    }
-
-    .btn:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-      transform: none;
-    }
-
-    .btn-primary { background-color: var(--primary-color); color: var(--dark-color); }
-    .btn-primary:hover:not(:disabled) { background-color: var(--primary-hover); }
-    .btn-secondary { background-color: var(--secondary-color); color: white; }
-    .btn-secondary:hover:not(:disabled) { background-color: #555; }
-    .btn-danger { background-color: var(--danger-color); color: white; }
-    .btn-danger:hover:not(:disabled) { background-color: var(--danger-hover); }
-
-    /* --- SECCIÓN DE FILTROS ACTIVOS --- */
-    #active-filters-section { display: flex; flex-direction: column; }
-    #filter-list-container { flex-grow: 1; min-height: 50px; }
-    #no-filters-message { color: var(--secondary-color); }
-    #filter-list { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.5rem; }
-
-    .filter-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background-color: #4a4a6a;
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      animation: fadeIn 0.3s ease;
-    }
-    .filter-item .logical-op { font-weight: bold; color: #a9c5e2; }
-    .filter-item .value-text { background: rgba(0,0,0,0.2); padding: 2px 6px; border-radius: 4px; }
-    .filter-item .actions { margin-left: 0.5rem; display: flex; gap: 0.25rem; }
-    .filter-item button {
-      background: none;
-      border: 1px solid transparent;
-      color: var(--light-color);
-      cursor: pointer;
-      padding: 2px 6px;
-      border-radius: 4px;
-      transition: all 0.2s;
-    }
-    .filter-item button:hover { background-color: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); }
-    .filter-item .btn-edit { color: #81c784; }
-    .filter-item .btn-remove { color: var(--danger-color); }
-    .filter-item .btn-edit:hover { background-color: #81c784; color: black; }
-    .filter-item .btn-remove:hover { background-color: var(--danger-color); color: white; }
-
-    #clear-filters-btn { align-self: flex-end; margin-top: 1rem; }
-
-    /* --- SECCIÓN DEL SCRIPT FINAL --- */
-    #final-script-section { display: flex; flex-direction: column; }
-    #final-script {
-      width: 100%;
-      min-height: 120px;
-      font-family: 'Courier New', Courier, monospace;
-      font-size: 1rem;
-      padding: 0.75rem;
-      border: 1px solid var(--border-color);
-      border-radius: var(--border-radius);
-      resize: vertical;
-      background-color: var(--input-bg);
-      color: var(--light-color);
-    }
-    #copy-button { align-self: flex-end; margin-top: 1rem; }
-
-    /* --- NOTIFICACIÓN --- */
-    #notification {
-      position: fixed;
-      bottom: -100px; /* Start off-screen */
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: var(--success-color);
-      color: white;
-      padding: 12px 24px;
-      border-radius: var(--border-radius);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-      z-index: 1001;
-      transition: bottom 0.5s ease-in-out;
-    }
-    #notification.show { bottom: 20px; }
-
-    /* --- SUGERENCIAS --- */
-    #suggestions-container {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      background-color: var(--input-bg);
-      border: 1px solid var(--primary-color);
-      border-top: none;
-      border-radius: 0 0 var(--border-radius) var(--border-radius);
-      box-shadow: var(--box-shadow);
-      max-height: 200px;
-      overflow-y: auto;
-      z-index: 1000;
-    }
-    .suggestion-item { padding: 0.6rem 0.8rem; cursor: pointer; }
-    .suggestion-item:hover { background-color: var(--primary-color); color: var(--dark-color); }
-
-    /* --- PANTALLA DE CARGA --- */
-    #loading-container {
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: var(--bg-color);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      z-index: 9999;
-      transition: opacity 0.5s ease;
-    }
-    #loading-container.hidden { opacity: 0; pointer-events: none; }
-    #loading-logo { width: 150px; height: auto; margin-bottom: 20px; }
-    #loading-circle {
-      width: 50px; height: 50px;
-      border: 5px solid var(--primary-color);
-      border-radius: 50%;
-      border-top-color: transparent;
-      animation: spin 1s linear infinite;
-    }
-    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-
-    /* --- RESPONSIVIDAD --- */
-    @keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
-    @media (max-width: 768px) {
-      .builder-controls { grid-template-columns: 1fr; }
-      #logical-operator-select { visibility: visible; }
-    }
-  </style>
-  <!-- =================================================================
-       FIN: ESTILOS CSS
-       ================================================================= -->
+  <title>Generador de Filtros Avanzados</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<!-- Contenedor del logo de carga -->
+<div id="loading-container">
+  <img src="logo.png" alt="Cargando..." id="loading-logo">
+  <div id="loading-circle"></div>
+</div>
 
-  <!-- Contenedor del logo de carga -->
-  <div id="loading-container">
-    <!-- Si tienes un logo.png, mantenlo. Si no, puedes borrar la línea img -->
-    <img src="logo.png" alt="Cargando..." id="loading-logo" onerror="this.style.display='none'">
-    <div id="loading-circle"></div>
-  </div>
-
-  <div class="container">
-    <header>
-      <h1>Generador de Filtros Avanzados</h1>
-      <p>Construye, edita y guarda consultas complejas de forma sencilla.</p>
-    </header>
-
-    <main>
-      <!-- SECCIÓN PARA CONSTRUIR/EDITAR FILTRO -->
-      <section class="card" id="builder-section">
-        <h2 id="builder-title">1. Añadir Nueva Condición</h2>
-        <div class="builder-controls">
-          <select id="logical-operator-select" class="control-element" aria-label="Operador Lógico">
-            <option value="and" selected>AND</option>
-            <option value="or">OR</option>
-            <option value="and not">AND NOT</option>
-          </select>
-
-          <select id="column-select" class="control-element" aria-label="Columna">
-            <option value="">Seleccionar Columna</option>
-            <option value="title">title</option>
-            <option value="description">description</option>
-            <option value="host_name">host_name</option>
-            <option value="location_exact">location_exact (bool)</option>
-            <option value="visibility">visibility</option>
-            <option value="activity">activity</option>
-            <option value="by_who">by_who</option>
-            <option value="updated_at">updated_at (fecha)</option>
-            <option value="hoe_violation">hoe_violation (bool)</option>
-            <option value="suggest_qa">suggest_qa (bool)</option>
-            <option value="apn_mapped_via_cyborg">apn_mapped_via_cyborg</option>
-            <option value="resolved_apn">resolved_apn</option>
-            <option value="partial_apn">partial_apn</option>
-            <option value="property_type">property_type</option>
-            <option value="bathrooms">bathrooms</option>
-            <option value="bedrooms">bedrooms</option>
-            <option value="occupancy">occupancy</option>
-            <option value="deckard_id">deckard_id</option>
-            <option value="geo_cluster">geo_cluster</option>
-            <option value="structure">structure</option>
-            <option value="rental">rental</option>
-            <option value="address">address</option>
-            <option value="override_address">override_address</option>
-            <option value="unit_number">unit_number</option>
-            <option value="use_type">use_type</option>
-          </select>
-
-          <select id="operator-select" class="control-element" aria-label="Operador de Comparación">
-            <!-- Las opciones se generan dinámicamente -->
-          </select>
-
-          <div class="value-container">
-            <input type="text" id="value-input" class="control-element" placeholder="Valor" autocomplete="off">
-            <div id="suggestions-container"></div>
-          </div>
-        </div>
-        <div class="builder-actions">
-          <button id="add-filter-btn" class="btn btn-primary">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg>
-            Agregar Filtro
-          </button>
-          <button id="clear-fields-btn" class="btn btn-secondary">Limpiar Campos</button>
-        </div>
-      </section>
-
-      <!-- SECCIÓN DE FILTROS APLICADOS -->
-      <section class="card" id="active-filters-section">
-          <h2>2. Filtros Activos</h2>
-          <div id="filter-list-container">
-            <p id="no-filters-message">Aún no se han añadido filtros.</p>
-            <div id="filter-list"></div>
-          </div>
-          <button id="clear-filters-btn" class="btn btn-danger">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/><path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/></svg>
-            Borrar Todos
-          </button>
-      </section>
-      
-      <!-- SECCIÓN DEL SCRIPT FINAL -->
-      <section class="card" id="final-script-section">
-        <h2>3. Script Resultante</h2>
-        <textarea id="final-script" readonly placeholder="El script del filtro aparecerá aquí..."></textarea>
-        <button id="copy-button" class="btn btn-primary">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h6a.5.5 0 0 0 .5-.5zm0 3a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h6a.5.5 0 0 0 .5-.5zm0 3a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h6a.5.5 0 0 0 .5-.5zm-5 4a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4z"/><path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2zm10-1v12a3 3 0 0 1-3 3H2a3 3 0 0 1-3-3V4a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3z"/></svg>
-          Copiar Script
-        </button>
-      </section>
-    </main>
-  </div>
+  <h1>Generador de Filtros Avanzados</h1>
   
-  <div id="notification">¡Copiado al portapapeles!</div>
+  <div class="filter-row">
+    <select id="logical-operator-select">
+      <option value="">(Ninguno)</option>
+      <option value="and" selected>AND</option>
+      <option value="or">OR</option>
+      <option value="and not">AND NOT</option>
+    </select>
 
-<!-- =================================================================
-     INICIO: LÓGICA JAVASCRIPT
-     ================================================================= -->
-<script>
-let filters = [];
-let editIndex = null;
+    <select id="column-select" onchange="updateSuggestions()">
+        <option value="">Seleccionar Columna</option>
+        <option value="title">title</option>
+        <option value="description">description</option>
+        <option value="host_name">host_name</option>
+        <option value="location_exact">location</option>
+        <option value="visibility">visibility</option>
+        <option value="activity">activity</option>
+        <option value="by_who">by_who</option>
+        <option value="updated_at">updated_at</option>
+        <option value="hoe_violation">hoe_violation</option>
+        <option value="suggest_qa">suggest_qa</option>
+        <option value="apn_mapped_via_cyborg">apn_mapped_via_cyborg</option>
+        <option value="resolved_apn">resolved_apn</option>
+        <option value="partial_apn">partial_apn</option>
+        <option value="property_type">property_type</option>
+        <option value="bathrooms">bathrooms</option>
+        <option value="bedrooms">bedrooms</option>
+        <option value="occupancy">occupancy</option>
+        <option value="deckard_id">deckard_id</option>
+        <option value="geo_cluster">geo_cluster</option>
+        <option value="structure">structure</option>
+        <option value="rental">rental</option>
+        <option value="address">address</option>
+        <option value="override_address">override_address</option>
+        <option value="unit_number">unit_number</option>
+        <option value="use_type">use_type</option>
+      </select>
 
-// --- DOM ELEMENTOS ---
-const logicalOpSelect = document.getElementById('logical-operator-select');
-const columnSelect = document.getElementById('column-select');
-const operatorSelect = document.getElementById('operator-select');
-const valueInput = document.getElementById('value-input');
-const filterList = document.getElementById('filter-list');
-const finalScriptTextarea = document.getElementById('final-script');
-const copyButton = document.getElementById('copy-button');
-const clearFiltersBtn = document.getElementById('clear-filters-btn');
-const noFiltersMessage = document.getElementById('no-filters-message');
-const suggestionsContainer = document.getElementById('suggestions-container');
-const addFilterBtn = document.getElementById('add-filter-btn');
-const clearFieldsBtn = document.getElementById('clear-fields-btn');
-const builderTitle = document.getElementById('builder-title');
-
-// --- DATOS Y CONFIGURACIÓN ---
-const columnSuggestions = {
-  location_exact: ["true", "false"],
-  property_type: ["Apart-hotel", "Apartment", "B&B", "Barn", "Bed & breakfast", "Building", "Bungalow", "Bus", "Cabin", "Camp ground", "Camper/RV", "Castle", "Condo", "Corporate apartment", "Cottage", "Dome", "Earthen home", "Entire apartment", "Entire bungalow", "Entire cabin", "Entire chalet", "Entire condo", "Entire condominium", "Entire cottage", "Entire guest suite", "Entire guesthouse", "Entire holiday home", "Entire home", "Entire home/apt", "Entire home/flat", "Entire house", "Entire loft", "Entire place", "Entire rental unit", "Entire residential home", "Entire serviced apartment", "Entire townhouse", "Entire vacation home", "Entire villa", "Estate", "Farm stay", "Farmhouse", "Guest House", "Hotel", "House", "Hut", "Lodge", "Mobile Home", "Private room", "Room in hotel", "Studio", "Tent", "Townhome", "Villa", "Yurt"],
-  visibility: ["now", "not_live", "upcoming", "no_bookings", "past_30"],
-  activity: ["blocked", "upcoming", "no_bookings"],
-  structure: ["main structure", "adu", "unit (1 of many)", "RV", "timeshare", "resort", "event space", "other", "unknown"],
-  rental: ["non_self_contained", "self_contained"],
-  use_type: ["RESIDENTIAL", "COMMERCIAL (RETAIL)", "AGRICULTURAL/RURAL", "VACANT LAND", "MULTIFAMILY"],
-  hoe_violation: ["true", "false"],
-  suggest_qa: ["true", "false"]
-};
-
-const booleanColumns = ["location_exact", "hoe_violation", "suggest_qa"];
-
-const operatorOptions = {
-    standard: `
+      <select id="operator-select" onchange="handleOperatorChange()">
         <option value="=" selected>=</option>
         <option value="!=">≠</option>
-        <option value="icontains">contiene</option>
-        <option value="is blank">está vacío</option>
+        <option value="icontains">contains</option>
+        <option value="is blank">is blank</option>
         <option value=">">></option>
         <option value="<"><</option>
         <option value=">=">≥</option>
         <option value="<=">≤</option>
-    `,
-    date: `
-        <option value="=" selected>=</option>
-        <option value="!=">≠</option>
-        <option value=">">></option>
-        <option value="<"><</option>
-        <option value=">=">≥</option>
-        <option value="<=">≤</option>
-    `,
-    boolean: `
-        <option value="=" selected>es</option>
-    `
-};
+    </select>
 
-let currentSuggestions = [];
+    <input type="text" id="value-input" placeholder="Valor de filtro" oninput="showSuggestions()" autocomplete="off">
+    <button onclick="addFilter()">Agregar Filtro</button>
+    <button onclick="clearFields()">Limpiar Campos</button>
+    <button id="clear-filters-btn">Borrar Todos los Filtros</button>
+  </div>
 
-// --- MANEJO DE SUGERENCIAS ---
-function updateSuggestionsUI() {
-    const inputText = valueInput.value.toLowerCase();
-    const selectedColumn = columnSelect.value;
-    currentSuggestions = columnSuggestions[selectedColumn] || [];
-    
-    if (operatorSelect.value === 'is blank' || currentSuggestions.length === 0) {
-        hideSuggestions();
-        return;
-    }
+  <div id="filter-list"></div>
   
-    const filteredSuggestions = currentSuggestions.filter(s => s.toLowerCase().includes(inputText));
+  <textarea id="final-script" readonly placeholder="Script del filtro final"></textarea>
+  <div id="suggestions-container" class="suggestions-dropdown"></div>
 
-    suggestionsContainer.innerHTML = '';
-    if (filteredSuggestions.length > 0) {
-        filteredSuggestions.forEach(s => {
-            const item = document.createElement('div');
-            item.className = 'suggestion-item';
-            item.textContent = s;
-            item.onclick = () => selectSuggestion(s);
-            suggestionsContainer.appendChild(item);
-        });
-        suggestionsContainer.style.display = 'block';
-    } else {
-        hideSuggestions();
-    }
-}
+  <button id="copy-button" onclick="copyToClipboard()">Copiar Script</button>
+  
+  
+  <div id="notification">¡Filtro copiado al portapapeles!</div>
 
-function selectSuggestion(suggestion) {
-  valueInput.value = suggestion;
-  hideSuggestions();
-  valueInput.focus();
-}
-
-function hideSuggestions() {
-  suggestionsContainer.style.display = 'none';
-}
-
-// --- LÓGICA DE FILTROS ---
-function addOrUpdateFilter() {
-    const column = columnSelect.value;
-    const operator = operatorSelect.value;
-    let value = valueInput.value.trim();
-
-    if (!column) {
-        alert('Por favor, selecciona una columna.');
-        columnSelect.focus();
-        return;
-    }
-    if (operator !== 'is blank' && value === '') {
-        alert('Por favor, introduce un valor.');
-        valueInput.focus();
-        return;
-    }
-
-    const newFilter = {
-        logical: logicalOpSelect.value,
-        column,
-        operator,
-        value: operator === "is blank" ? "" : value,
-    };
-
-    if (editIndex !== null) {
-        filters[editIndex] = newFilter;
-    } else {
-        filters.push(newFilter);
-    }
-    
-    resetBuilder();
-    render();
-}
-
-function editFilter(index) {
-    const filter = filters[index];
-    if (!filter) return;
-    
-    editIndex = index;
-
-    columnSelect.value = filter.column;
-    // Disparar el evento change para actualizar operadores y tipo de input
-    columnSelect.dispatchEvent(new Event('change')); 
-    
-    logicalOpSelect.value = filter.logical;
-    operatorSelect.value = filter.operator;
-    valueInput.value = filter.value;
-
-    handleOperatorChange(); // Asegurarse que el input se deshabilite si es 'is blank'
-
-    builderTitle.textContent = "2. Editando Condición";
-    addFilterBtn.innerHTML = `
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm-2.206 2.206-8.5 8.5a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708 0l8.5-8.5a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/></svg>
-      Actualizar Filtro`;
-    builderTitle.scrollIntoView({ behavior: 'smooth' });
-}
-
-
-function removeFilter(index) {
-    if (confirm(`¿Eliminar el filtro: ${filters[index].column} ${filters[index].operator} ${filters[index].value}?`)) {
-        filters.splice(index, 1);
-        if (editIndex === index) resetBuilder();
-        render();
-    }
-}
-
-function clearAllFilters() {
-    if (filters.length > 0 && confirm('¿Estás seguro de que quieres borrar todos los filtros?')) {
-        filters = [];
-        resetBuilder();
-        render();
-    }
-}
-
-function resetBuilder() {
-    editIndex = null;
-    logicalOpSelect.value = 'and';
-    columnSelect.value = '';
-    columnSelect.dispatchEvent(new Event('change'));
-    valueInput.value = '';
-    builderTitle.textContent = "1. Añadir Nueva Condición";
-    addFilterBtn.innerHTML = `
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg>
-      Agregar Filtro`;
-    columnSelect.focus();
-}
-
-// --- RENDERIZADO Y ACTUALIZACIÓN DE UI ---
-function render() {
-    renderFilterList();
-    generateFinalScript();
-    updateUIState();
-    saveFilters();
-}
-
-function renderFilterList() {
-    filterList.innerHTML = '';
-    noFiltersMessage.style.display = filters.length === 0 ? 'block' : 'none';
-
-    filters.forEach((filter, index) => {
-        const tag = document.createElement('div');
-        tag.className = 'filter-item';
-        
-        let logicalHTML = index > 0 ? `<span class="logical-op">${filter.logical.toUpperCase()}</span>` : '';
-        let valueHTML = `<span class="value-text">${filter.operator === 'is blank' ? '' : filter.value}</span>`;
-        let operatorText = operatorSelect.querySelector(`option[value="${filter.operator}"]`)?.textContent || filter.operator;
-        
-        tag.innerHTML = `
-            ${logicalHTML}
-            <span><strong>${filter.column}</strong> ${operatorText} ${valueHTML}</span>
-            <span class="actions">
-              <button class="btn-edit" onclick="editFilter(${index})" title="Editar">✎</button>
-              <button class="btn-remove" onclick="removeFilter(${index})" title="Eliminar">✖</button>
-            </span>
-        `;
-        filterList.appendChild(tag);
-    });
-}
-
-function generateFinalScript() {
-    if (filters.length === 0) {
-        finalScriptTextarea.value = '';
-        return;
-    }
-
-    const formatCondition = (filter) => {
-        const { column, operator, value } = filter;
-        if (operator === 'is blank') {
-            return `(${column} = '' OR ${column} IS NULL)`;
-        }
-        const isBool = booleanColumns.includes(column) && (value === "true" || value === "false");
-        const formattedValue = isBool ? value : `'${value.replace(/'/g, "''")}'`;
-        
-        return `(${column} ${operator} ${formattedValue})`;
-    };
-
-    let script = formatCondition(filters[0]);
-    for (let i = 1; i < filters.length; i++) {
-        script += ` ${filters[i].logical.toUpperCase()} ${formatCondition(filters[i])}`;
-    }
-
-    finalScriptTextarea.value = script.replace(/\s\s+/g, ' ').trim();
-}
-
-function updateUIState() {
-    const hasFilters = filters.length > 0;
-    logicalOpSelect.style.visibility = hasFilters ? 'visible' : 'hidden';
-    copyButton.disabled = !hasFilters;
-    clearFiltersBtn.disabled = !hasFilters;
-
-    if (window.innerWidth <= 768) {
-       logicalOpSelect.style.display = hasFilters ? 'block' : 'none';
-    } else {
-       logicalOpSelect.style.display = 'block';
-    }
-}
-
-// --- MANEJADORES DE EVENTOS ---
-function handleColumnChange() {
-    const selectedColumn = columnSelect.value;
-    
-    if (selectedColumn === 'updated_at') {
-        valueInput.type = 'date';
-        operatorSelect.innerHTML = operatorOptions.date;
-    } else if (booleanColumns.includes(selectedColumn)) {
-        valueInput.type = 'text';
-        operatorSelect.innerHTML = operatorOptions.boolean;
-        operatorSelect.value = '='; // 'is' no es un operador SQL estándar, usamos '='
-    } else {
-        valueInput.type = 'text';
-        operatorSelect.innerHTML = operatorOptions.standard;
-    }
-    
-    handleOperatorChange();
-    updateSuggestionsUI();
-}
-
-function handleOperatorChange() {
-    valueInput.disabled = operatorSelect.value === 'is blank';
-    valueInput.value = valueInput.disabled ? '' : valueInput.value;
-    valueInput.placeholder = valueInput.disabled ? 'No se necesita valor' : 'Valor';
-}
-
-function copyToClipboard() {
-    if (!finalScriptTextarea.value) return;
-    navigator.clipboard.writeText(finalScriptTextarea.value).then(() => {
-        const notification = document.getElementById('notification');
-        notification.classList.add('show');
-        setTimeout(() => notification.classList.remove('show'), 2000);
-    });
-}
-
-// --- PERSISTENCIA (localStorage) ---
-function saveFilters() {
-    localStorage.setItem('deckardFilterGenerator', JSON.stringify(filters));
-}
-
-function loadFilters() {
-    const saved = localStorage.getItem('deckardFilterGenerator');
-    if (saved) {
-        try {
-            filters = JSON.parse(saved);
-            if (!Array.isArray(filters)) filters = [];
-        } catch {
-            filters = [];
-        }
-    }
-    render();
-}
-
-// --- INICIALIZACIÓN ---
-document.addEventListener('DOMContentLoaded', () => {
-    // Event Listeners
-    addFilterBtn.addEventListener('click', addOrUpdateFilter);
-    clearFieldsBtn.addEventListener('click', resetBuilder);
-    clearFiltersBtn.addEventListener('click', clearAllFilters);
-    copyButton.addEventListener('click', copyToClipboard);
-    columnSelect.addEventListener('change', handleColumnChange);
-    operatorSelect.addEventListener('change', handleOperatorChange);
-    valueInput.addEventListener('input', updateSuggestionsUI);
-    valueInput.addEventListener('focus', updateSuggestionsUI);
-    valueInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
-            e.preventDefault();
-            addOrUpdateFilter();
-        }
-    });
-    document.addEventListener('click', (e) => {
-        if (!valueInput.contains(e.target) && !suggestionsContainer.contains(e.target)) {
-            hideSuggestions();
-        }
-    });
-
-    // Estado inicial
-    handleColumnChange();
-    loadFilters();
-
-    // Pantalla de carga
-    const loadingContainer = document.getElementById('loading-container');
-    setTimeout(() => {
-        loadingContainer.classList.add('hidden');
-    }, 500);
-});
-
-</script>
-<!-- =================================================================
-     FIN: LÓGICA JAVASCRIPT
-     ================================================================= -->
+  <script src="script.js"></script>
 </body>
 </html>
