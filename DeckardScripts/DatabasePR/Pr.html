@@ -113,8 +113,8 @@ td.important-info {
     line-height: 1.7;
     padding: 18px;
     font-size: 14px;
-    background-color: inherit; /* Hereda el fondo de la fila */
-    border-left: none; /* Elimina el borde izquierdo */
+    background-color: inherit;
+    border-left: none;
 }
 
 /* Estilo para la barra de búsqueda */
@@ -155,6 +155,18 @@ td.important-info {
     transform: translateY(-2px);
     box-shadow: 0 4px 15px rgba(9, 49, 64, 0.3);
 }
+
+/* --- NUEVO: Animación para el botón de actualizar --- */
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+#updateButton.updating {
+    animation: pulse 1.5s infinite;
+}
+
 
 .search-update-container {
     display: flex;
@@ -237,18 +249,15 @@ img:hover {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Suavizar divisores entre filas */
 tr:not(:last-child) td {
     border-bottom: 1px solid #edf0f2;
 }
 
-/* Eliminar cualquier línea divisoria entre columnas */
 td {
     border-right: none !important;
     border-left: none !important;
 }
 
-/* Añadir animación al cargar la tabla */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
@@ -258,7 +267,6 @@ td {
     animation: fadeIn 0.5s ease forwards;
 }
 
-/* Mejoras para dispositivos móviles */
 @media (max-width: 768px) {
     th, td {
         padding: 12px 15px;
@@ -289,9 +297,8 @@ td {
 
     <div id="tableContainer"></div>
 
-    <!-- Modal para mostrar imágenes -->
     <div id="imageModal">
-        <span id="closeModal">&times;</span>
+        <span id="closeModal">×</span>
         <img id="modalImage" src="" alt="Modal Image">
     </div>
 
@@ -300,12 +307,10 @@ td {
         const NO_PREVIEW_IMAGE = "https://dinfcs.github.io/Deckardaov/DeckardScripts/DatabasePR/imagen.png";
         let projectData = [];
     
-        // Función para obtener datos desde el servidor
         async function fetchServerData() {
             try {
                 const response = await fetch(jsonURL, { cache: "no-store" });
                 if (!response.ok) throw new Error(`Error al leer la base de datos: ${response.statusText}`);
-    
                 return await response.json();
             } catch (error) {
                 console.error('Error al cargar los datos:', error);
@@ -313,24 +318,19 @@ td {
             }
         }
     
-        // Función para verificar si los datos han cambiado
         function hasDataChanged(newData) {
             const cachedData = localStorage.getItem('projectData');
-            if (!cachedData) return true; // No hay datos en caché, es necesario actualizar
-    
+            if (!cachedData) return true;
             try {
-                const parsedCachedData = JSON.parse(cachedData);
-                return JSON.stringify(parsedCachedData) !== JSON.stringify(newData);
+                return JSON.stringify(JSON.parse(cachedData)) !== JSON.stringify(newData);
             } catch (error) {
                 console.error('Error comparando datos:', error);
-                return true; // Si hay un error en los datos en caché, se actualiza
+                return true;
             }
         }
     
-        // Función para cargar los datos
         async function loadData() {
             const cachedData = localStorage.getItem('projectData');
-    
             if (cachedData) {
                 console.log("Cargando datos desde caché...");
                 projectData = JSON.parse(cachedData);
@@ -346,8 +346,11 @@ td {
             }
         }
     
-        // Función para actualizar los datos solo si han cambiado
         async function updateData() {
+            const updateButton = document.getElementById('updateButton');
+            updateButton.classList.add('updating');
+            updateButton.disabled = true;
+
             console.log("Verificando actualizaciones...");
             const serverData = await fetchServerData();
             if (serverData && hasDataChanged(serverData.tabla)) {
@@ -358,18 +361,17 @@ td {
             } else {
                 console.log("Los datos no han cambiado. Usando caché.");
             }
+
+            updateButton.classList.remove('updating');
+            updateButton.disabled = false;
         }
     
-        // Función para mostrar la tabla
         function displayTable(data) {
-            data.sort((a, b) => a.Project.localeCompare(b.Project));
-    
+            data.sort((a, b) => (a.Project || '').localeCompare(b.Project || ''));
             const tableContainer = document.getElementById('tableContainer');
             tableContainer.innerHTML = '';
-    
             const table = document.createElement('table');
             const headers = ['Project', 'Public Records & GIS', 'License List', 'Important Info', 'Media'];
-    
             const thead = document.createElement('thead');
             const headerRow = document.createElement('tr');
             headers.forEach(header => {
@@ -388,7 +390,22 @@ td {
     
                     if (header === 'Important Info') {
                         td.classList.add('important-info');
-                        td.innerHTML = item[header]; // Permite interpretar HTML
+                        // --- INICIO DE LA MODIFICACIÓN ---
+                        // Construimos el contenido dinámicamente con las fechas
+                        let infoContent = item[header] || '';
+                        const creationDate = item.creationDateInfo;
+                        const updateDate = item.lastUpdateInfo;
+                        let displayText = infoContent;
+
+                        if (updateDate) {
+                            displayText += `<br><p style="margin-top:15px; font-size:12px; color:#555; font-style:italic;">Última actualización: ${updateDate}</p>`;
+                        }
+                        if (creationDate) {
+                            displayText = `<p style="margin-bottom:15px; font-weight:bold; font-size:12px; color:#333;">Fecha de creación: ${creationDate}</p>` + displayText;
+                        }
+                        
+                        td.innerHTML = displayText;
+                        // --- FIN DE LA MODIFICACIÓN ---
                     } 
                     else if (['Public Records & GIS', 'License List'].includes(header) && Array.isArray(item[header])) {
                         item[header].forEach(link => {
@@ -403,10 +420,8 @@ td {
                     else if (header === 'Media' && Array.isArray(item[header])) {
                         item[header].forEach(media => {
                             if (media.url === 'N/A') return;
-    
                             const imgContainer = document.createElement('div');
                             imgContainer.style.marginBottom = '8px';
-    
                             if (media.url.includes('drive.google.com')) {
                                 fetchGoogleDriveImage(media.url)
                                     .then(base64Image => {
@@ -417,31 +432,21 @@ td {
                                             img.addEventListener('click', () => openModalWithImage(base64Image));
                                             imgContainer.appendChild(img);
                                         }
-                                    })
-                                    .catch(() => {
-                                        const img = document.createElement('img');
-                                        img.src = NO_PREVIEW_IMAGE;
-                                        img.alt = media.type;
-                                        imgContainer.appendChild(img);
                                     });
                             } else {
                                 const a = document.createElement('a');
-                                a.href = media.url;
-                                a.target = '_blank';
+                                a.href = media.url; a.target = '_blank';
                                 const img = document.createElement('img');
-                                img.src = NO_PREVIEW_IMAGE;
-                                img.alt = media.type;
+                                img.src = NO_PREVIEW_IMAGE; img.alt = media.type;
                                 a.appendChild(img);
                                 imgContainer.appendChild(a);
                             }
-    
                             td.appendChild(imgContainer);
                         });
                     } 
                     else {
                         td.textContent = item[header];
                     }
-    
                     row.appendChild(td);
                 });
                 tbody.appendChild(row);
@@ -450,15 +455,12 @@ td {
             tableContainer.appendChild(table);
         }
     
-        // Función para obtener imágenes de Google Drive
         async function fetchGoogleDriveImage(imageUrl) {
             const scriptUrl = 'https://script.google.com/macros/s/AKfycbyB3xq3Lz8OZtRMg0qxtXBD8cvjqlDx97eXWiqPu5zgJ1cxWJ04GsajAZ8ctK-zHLxHLQ/exec';
             const fullUrl = `${scriptUrl}?url=${encodeURIComponent(imageUrl)}`;
-    
             try {
                 const response = await fetch(fullUrl);
                 if (!response.ok) throw new Error(`Error en la solicitud: ${response.statusText}`);
-    
                 const data = await response.json();
                 if (data && data.success && data.base64) return data.base64;
                 throw new Error('La respuesta no contiene una imagen válida.');
@@ -468,7 +470,6 @@ td {
             }
         }
     
-        // Función para abrir el modal con la imagen
         function openModalWithImage(imageUrl) {
             const modal = document.getElementById('imageModal');
             const modalImage = document.getElementById('modalImage');
@@ -476,23 +477,25 @@ td {
             modal.style.display = 'flex';
         }
     
-        // Función para cerrar el modal
         document.getElementById('closeModal').addEventListener('click', () => {
             document.getElementById('imageModal').style.display = 'none';
         });
     
-        // Función para buscar proyectos
         function searchProjects() {
             const input = document.getElementById('searchBar').value.toLowerCase();
-            const filteredData = projectData.filter(project => project.Project.toLowerCase().includes(input));
+            const filteredData = projectData.filter(project => (project.Project || '').toLowerCase().includes(input));
             displayTable(filteredData);
         }
     
-        // Actualizar los datos al hacer clic en "Update"
         document.getElementById('updateButton').addEventListener('click', updateData);
     
         // Cargar los datos al iniciar
         loadData();
+
+        // --- INICIO DE LA MODIFICACIÓN ---
+        // Iniciar la actualización automática cada minuto (60,000 milisegundos)
+        setInterval(updateData, 60000);
+        // --- FIN DE LA MODIFICACIÓN ---
     </script>
     
 </body>
