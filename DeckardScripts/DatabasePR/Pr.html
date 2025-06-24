@@ -398,10 +398,10 @@ td {
                         let displayText = infoContent;
 
                         if (updateDate) {
-                            displayText += `<br><p style="margin-top:15px; font-size:12px; color:#555; font-style:italic;">Última actualización: ${updateDate}</p>`;
+                            displayText += `<br><p style="margin-top:8px; font-size:12px; color:#555; font-style:italic;">Last updated: ${updateDate}</p>`;
                         }
                         if (creationDate) {
-                            displayText = `<p style="margin-bottom:15px; font-weight:bold; font-size:12px; color:#333;">Fecha de creación: ${creationDate}</p>` + displayText;
+                            displayText = `<p style="margin-bottom:5px; font-weight:bold; font-size:12px; color:#333;">Date of creation: ${creationDate}</p>` + displayText;
                         }
                         
                         td.innerHTML = displayText;
