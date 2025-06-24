@@ -6,6 +6,7 @@
     <title>Turn on Cyborg Projects</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
+/* ... (TUS ESTILOS CSS PERMANECEN EXACTAMENTE IGUALES, SIN CAMBIOS) ... */
 body {
     background-color: #121418;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
@@ -187,6 +188,22 @@ tr.selected {
     color: #a0aec0;
     font-size: 0.85rem;
 }
+
+/* <!-- MODIFICADO: Estilo para que la etiqueta del logo y la lupa estén en la misma línea --> */
+.input-label-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.logo-visualizer-icon {
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 10px;
+    user-select: none;
+}
+/* <!-- FIN DE LA MODIFICACIÓN --> */
 
 .input-field {
     width: 100%;
@@ -507,7 +524,7 @@ input:disabled, button:disabled, select:disabled {
             </div>
             <input type="text" id="buscar1" class="search-input" placeholder="Filtro 1" oninput="autoSplitSearch(); filtrarTabla()">
             <input type="text" id="buscar2" class="search-input" placeholder="Filtro 2" oninput="filtrarTabla()">
-            <!-- BOTÓN MODIFICADO -->
+            <!-- Este botón ya estaba, así que lo mantenemos. -->
             <button class="btn" style="background-color: #ff9900; color: white;" onclick="window.open('https://webapp-8ba8c4de11154ee89.transfer-webapp.us-west-2.on.aws/', '_blank')">S3</button>
         </div>
         
@@ -532,7 +549,12 @@ input:disabled, button:disabled, select:disabled {
                     <h2>Requirements</h2>
         
                     <div class="input-group">
-                        <label for="logoUrl" class="input-label">Logo Link</label>
+                        <!-- <!-- MODIFICADO: Añadido el visualizador de logo (lupa) -->
+                        <label for="logoUrl" class="input-label input-label-flex">
+                            Logo Link
+                            <span id="logoVisualizer" class="logo-visualizer-icon" title="Previsualizar el logo enlazado">🔍</span>
+                        </label>
+                        <!-- <!-- FIN DE LA MODIFICACIÓN --> -->
                         <input type="text" id="logoUrl" class="input-field" placeholder="Example: https://mi-servidor.com/logo.png" required>
                         <div class="error-message" id="logoUrl-error">This field is required</div>
                     </div>
@@ -621,6 +643,7 @@ input:disabled, button:disabled, select:disabled {
     <div id="notificacion">Copiado</div>
 
     <script>
+        // ... (TUS FUNCIONES DE LÓGICA DE NEGOCIO PERMANECEN IGUALES) ...
         // Funciones para el generador de YAML
         function autoFillFields() {
             const placeKey = document.getElementById("placeKey").value.trim().toLowerCase();
@@ -1036,6 +1059,71 @@ input:disabled, button:disabled, select:disabled {
                 mostrarNotificacion("Texto copiado");
             });
         }
+        
+        // <!-- MODIFICADO: Funciones y listeners integrados desde iframe-helper.js -->
+        
+        // Función para mostrar la previsualización de la imagen
+        const showImageOverlay = (src) => {
+            // Eliminar cualquier overlay anterior para evitar duplicados
+            document.getElementById('image-overlay-userscript')?.remove();
+            
+            const overlay = document.createElement('div');
+            overlay.id = 'image-overlay-userscript';
+            Object.assign(overlay.style, {
+                position: 'fixed', top: '0', left: '0', width: '100%', height: '100%',
+                backgroundColor: 'rgba(0, 0, 0, 0.85)', zIndex: '20000', display: 'flex',
+                justifyContent: 'center', alignItems: 'center', cursor: 'pointer'
+            });
+            
+            const imagePreview = document.createElement('img');
+            imagePreview.src = src;
+            // Manejo de errores si la imagen no carga
+            imagePreview.onerror = () => { 
+                overlay.innerText = 'Error al cargar la imagen. ¿El enlace es correcto?'; 
+                imagePreview.remove(); 
+            };
+            imagePreview.style.cssText = 'max-width: 90%; max-height: 90%; border: 4px solid white; border-radius: 8px; box-shadow: 0 0 25px rgba(0,0,0,0.5);';
+            
+            overlay.appendChild(imagePreview);
+            // Hacer clic en cualquier lugar del overlay lo cierra
+            overlay.addEventListener('click', () => overlay.remove());
+            document.body.appendChild(overlay);
+        };
+
+        // Listener para la comunicación con Jira
+        window.addEventListener('message', (event) => {
+            // Medida de seguridad: solo aceptar mensajes desde el dominio de Jira
+            if (event.origin !== 'https://deckardtech.atlassian.net') {
+                return;
+            }
+
+            // Si el mensaje tiene el formato esperado...
+            if (event.data && event.data.type === 'AUTOFILL_SEARCH' && event.data.payload) {
+                const textoDeJira = event.data.payload;
+                const inputElement = document.getElementById('buscarSplit');
+                if (inputElement) {
+                    inputElement.value = textoDeJira;
+                    // Dispara un evento "input" para que la página reaccione
+                    // como si el usuario hubiera escrito manualmente.
+                    inputElement.dispatchEvent(new Event('input', { bubbles: true, cancelable: true }));
+                }
+            }
+        });
+        
+        // Listener para el icono de la lupa
+        document.getElementById('logoVisualizer').addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const logoInput = document.getElementById('logoUrl');
+            const imageUrl = logoInput.value.trim();
+            if (imageUrl) {
+                showImageOverlay(imageUrl);
+            } else {
+                alert('El campo "Logo Link" está vacío.');
+            }
+        });
+
+        // <!-- FIN DE LA MODIFICACIÓN -->
     </script>
 </body>
 </html>
