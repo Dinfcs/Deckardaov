@@ -309,67 +309,46 @@ td {
     
         async function fetchServerData() {
             try {
+                // La opción "no-store" le indica al navegador que no guarde en caché esta solicitud
                 const response = await fetch(jsonURL, { cache: "no-store" });
                 if (!response.ok) throw new Error(`Error al leer la base de datos: ${response.statusText}`);
                 return await response.json();
             } catch (error) {
                 console.error('Error al cargar los datos:', error);
+                // Muestra un error en la tabla para el usuario
+                const tableContainer = document.getElementById('tableContainer');
+                tableContainer.innerHTML = `<p style="text-align:center; padding: 20px; color: red;">Error: No se pudieron cargar los datos del proyecto. Inténtelo de nuevo más tarde.</p>`;
                 return null;
             }
         }
-    
-        function hasDataChanged(newData) {
-            const cachedData = localStorage.getItem('projectData');
-            if (!cachedData) return true;
-            try {
-                return JSON.stringify(JSON.parse(cachedData)) !== JSON.stringify(newData);
-            } catch (error) {
-                console.error('Error comparando datos:', error);
-                return true;
-            }
-        }
-    
-        async function loadData() {
-            const cachedData = localStorage.getItem('projectData');
-            if (cachedData) {
-                console.log("Cargando datos desde caché...");
-                projectData = JSON.parse(cachedData);
-                displayTable(projectData);
-            } else {
-                console.log("No hay datos en caché. Cargando desde el servidor...");
-                const serverData = await fetchServerData();
-                if (serverData) {
-                    projectData = serverData.tabla;
-                    localStorage.setItem('projectData', JSON.stringify(serverData.tabla));
-                    displayTable(projectData);
-                }
-            }
-        }
-    
-        async function updateData() {
+
+        // --- INICIO DE LA MODIFICACIÓN ---
+        // Función unificada para obtener y mostrar datos siempre desde el servidor
+        async function fetchAndDisplayData() {
             const updateButton = document.getElementById('updateButton');
             updateButton.classList.add('updating');
             updateButton.disabled = true;
 
-            console.log("Verificando actualizaciones...");
+            console.log("Solicitando datos frescos desde el servidor...");
             const serverData = await fetchServerData();
-            if (serverData && hasDataChanged(serverData.tabla)) {
-                console.log("Los datos han cambiado. Actualizando...");
+            
+            if (serverData && serverData.tabla) {
                 projectData = serverData.tabla;
-                localStorage.setItem('projectData', JSON.stringify(serverData.tabla));
                 displayTable(projectData);
+                console.log("Tabla actualizada con datos del servidor.");
             } else {
-                console.log("Los datos no han cambiado. Usando caché.");
+                console.log("No se recibieron datos válidos del servidor.");
             }
 
             updateButton.classList.remove('updating');
             updateButton.disabled = false;
         }
-    
+        // --- FIN DE LA MODIFICACIÓN ---
+
         function displayTable(data) {
             data.sort((a, b) => (a.Project || '').localeCompare(b.Project || ''));
             const tableContainer = document.getElementById('tableContainer');
-            tableContainer.innerHTML = '';
+            tableContainer.innerHTML = ''; // Limpia la tabla anterior
             const table = document.createElement('table');
             const headers = ['Project', 'Public Records & GIS', 'License List', 'Important Info', 'Media'];
             const thead = document.createElement('thead');
@@ -383,74 +362,82 @@ td {
             table.appendChild(thead);
     
             const tbody = document.createElement('tbody');
-            data.forEach(item => {
+            if (data.length === 0) {
+                 // Si no hay datos (por ej. búsqueda sin resultados), muestra un mensaje
                 const row = document.createElement('tr');
-                headers.forEach(header => {
-                    const td = document.createElement('td');
-    
-                    if (header === 'Important Info') {
-                        td.classList.add('important-info');
-                        // --- INICIO DE LA MODIFICACIÓN ---
-                        // Construimos el contenido dinámicamente con las fechas
-                        let infoContent = item[header] || '';
-                        const creationDate = item.creationDateInfo;
-                        const updateDate = item.lastUpdateInfo;
-                        let displayText = infoContent;
-
-                        if (updateDate) {
-                            displayText += `<br><p style="margin-top:8px; font-size:12px; color:#555; font-style:italic;">Last updated: ${updateDate}</p>`;
-                        }
-                        if (creationDate) {
-                            displayText = `<p style="margin-bottom:5px; font-weight:bold; font-size:12px; color:#333;">Date of creation: ${creationDate}</p>` + displayText;
-                        }
-                        
-                        td.innerHTML = displayText;
-                        // --- FIN DE LA MODIFICACIÓN ---
-                    } 
-                    else if (['Public Records & GIS', 'License List'].includes(header) && Array.isArray(item[header])) {
-                        item[header].forEach(link => {
-                            const a = document.createElement('a');
-                            a.href = link.url;
-                            a.textContent = link.type;
-                            a.target = '_blank';
-                            td.appendChild(a);
-                            td.appendChild(document.createElement('br'));
-                        });
-                    } 
-                    else if (header === 'Media' && Array.isArray(item[header])) {
-                        item[header].forEach(media => {
-                            if (media.url === 'N/A') return;
-                            const imgContainer = document.createElement('div');
-                            imgContainer.style.marginBottom = '8px';
-                            if (media.url.includes('drive.google.com')) {
-                                fetchGoogleDriveImage(media.url)
-                                    .then(base64Image => {
-                                        if (base64Image) {
-                                            const img = document.createElement('img');
-                                            img.src = base64Image;
-                                            img.alt = media.type;
-                                            img.addEventListener('click', () => openModalWithImage(base64Image));
-                                            imgContainer.appendChild(img);
-                                        }
-                                    });
-                            } else {
-                                const a = document.createElement('a');
-                                a.href = media.url; a.target = '_blank';
-                                const img = document.createElement('img');
-                                img.src = NO_PREVIEW_IMAGE; img.alt = media.type;
-                                a.appendChild(img);
-                                imgContainer.appendChild(a);
-                            }
-                            td.appendChild(imgContainer);
-                        });
-                    } 
-                    else {
-                        td.textContent = item[header];
-                    }
-                    row.appendChild(td);
-                });
+                const cell = document.createElement('td');
+                cell.colSpan = headers.length;
+                cell.textContent = 'No projects found.';
+                cell.style.textAlign = 'center';
+                row.appendChild(cell);
                 tbody.appendChild(row);
-            });
+            } else {
+                data.forEach(item => {
+                    const row = document.createElement('tr');
+                    headers.forEach(header => {
+                        const td = document.createElement('td');
+        
+                        if (header === 'Important Info') {
+                            td.classList.add('important-info');
+                            let infoContent = item[header] || '';
+                            const creationDate = item.creationDateInfo;
+                            const updateDate = item.lastUpdateInfo;
+                            let displayText = infoContent;
+
+                            if (updateDate) {
+                                displayText += `<br><p style="margin-top:8px; font-size:12px; color:#555; font-style:italic;">Last updated: ${updateDate}</p>`;
+                            }
+                            if (creationDate) {
+                                displayText = `<p style="margin-bottom:5px; font-weight:bold; font-size:12px; color:#333;">Date of creation: ${creationDate}</p>` + displayText;
+                            }
+                            
+                            td.innerHTML = displayText;
+                        } 
+                        else if (['Public Records & GIS', 'License List'].includes(header) && Array.isArray(item[header])) {
+                            item[header].forEach(link => {
+                                const a = document.createElement('a');
+                                a.href = link.url;
+                                a.textContent = link.type;
+                                a.target = '_blank';
+                                td.appendChild(a);
+                                td.appendChild(document.createElement('br'));
+                            });
+                        } 
+                        else if (header === 'Media' && Array.isArray(item[header])) {
+                            item[header].forEach(media => {
+                                if (media.url === 'N/A') return;
+                                const imgContainer = document.createElement('div');
+                                imgContainer.style.marginBottom = '8px';
+                                if (media.url.includes('drive.google.com')) {
+                                    fetchGoogleDriveImage(media.url)
+                                        .then(base64Image => {
+                                            if (base64Image) {
+                                                const img = document.createElement('img');
+                                                img.src = base64Image;
+                                                img.alt = media.type;
+                                                img.addEventListener('click', () => openModalWithImage(base64Image));
+                                                imgContainer.appendChild(img);
+                                            }
+                                        });
+                                } else {
+                                    const a = document.createElement('a');
+                                    a.href = media.url; a.target = '_blank';
+                                    const img = document.createElement('img');
+                                    img.src = NO_PREVIEW_IMAGE; img.alt = media.type;
+                                    a.appendChild(img);
+                                    imgContainer.appendChild(a);
+                                }
+                                td.appendChild(imgContainer);
+                            });
+                        } 
+                        else {
+                            td.textContent = item[header];
+                        }
+                        row.appendChild(td);
+                    });
+                    tbody.appendChild(row);
+                });
+            }
             table.appendChild(tbody);
             tableContainer.appendChild(table);
         }
@@ -487,14 +474,15 @@ td {
             displayTable(filteredData);
         }
     
-        document.getElementById('updateButton').addEventListener('click', updateData);
-    
-        // Cargar los datos al iniciar
-        loadData();
-
         // --- INICIO DE LA MODIFICACIÓN ---
-        // Iniciar la actualización automática cada minuto (60,000 milisegundos)
-        setInterval(updateData, 60000);
+        // El botón de actualizar ahora llama a la nueva función de carga
+        document.getElementById('updateButton').addEventListener('click', fetchAndDisplayData);
+    
+        // Cargar los datos desde el servidor al iniciar la página
+        fetchAndDisplayData();
+
+        // Iniciar la actualización automática cada minuto
+        setInterval(fetchAndDisplayData, 60000);
         // --- FIN DE LA MODIFICACIÓN ---
     </script>
     
