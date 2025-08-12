@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Guía de Estudio: HTML y YAML</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 40px;
+      max-width: 960px;
+    }
+    h1, h2, h3 {
+      color: #2c3e50;
+    }
+    pre {
+      background-color: #f9f9f9;
+      padding: 12px;
+      border-left: 4px solid #3498db;
+      overflow-x: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #eef;
+    }
+    code {
+      background-color: #eee;
+      padding: 2px 4px;
+      border-radius: 3px;
+    }
+    hr {
+      margin: 40px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>📚 Guía de Estudio: HTML y YAML</h1>
+
+  <!-- Sección HTML -->
+  <hr>
+  <h2>Parte 1: HTML (HyperText Markup Language)</h2>
+
+  <h3>1. Introducción</h3>
+  <p>HTML es el lenguaje que estructura la información visual en una página web. Utiliza etiquetas <code>&lt;nombre&gt;</code> para definir elementos.</p>
+
+  <h3>2. Etiquetas de Texto</h3>
+  <ul>
+    <li><code>&lt;p&gt;</code>: Define un párrafo completo.</li>
+    <li><code>&lt;strong&gt;</code>: Marca texto como importante (semántico).</li>
+    <li><code>&lt;b&gt;</code>: Aplica negrita por estilo visual, sin importancia semántica.</li>
+    <li><code>&lt;em&gt;</code>: Da énfasis (semántico) con cursiva.</li>
+    <li><code>&lt;i&gt;</code>: Pone texto en cursiva por estilo.</li>
+    <li><code>&lt;br&gt;</code>: Inserta un salto de línea.</li>
+    <li><code>&lt;hr&gt;</code>: Crea una línea horizontal que separa contenido.</li>
+  </ul>
+
+  <pre><code>&lt;p&gt;Este es un texto &lt;strong&gt;muy importante&lt;/strong&gt; con &lt;em&gt;énfasis&lt;/em&gt; visual.&lt;/p&gt;</code></pre>
+
+  <h3>3. Imágenes</h3>
+  <p><code>&lt;img&gt;</code> incrusta una imagen. Es una etiqueta de cierre automático.</p>
+  <ul>
+    <li><code>src</code>: Ruta o URL de la imagen.</li>
+    <li><code>alt</code>: Texto alternativo si la imagen no carga.</li>
+    <li><code>width</code> y <code>height</code>: Dimensiones en píxeles.</li>
+  </ul>
+
+  <pre><code>&lt;img src="https://i.blogs.es/f7234d/imagen/1200_800.webp" alt="Descripción de la imagen" width="600" height="400"&gt;</code></pre>
+
+  <h3>4. Enlaces (Hipervínculos)</h3>
+  <p><code>&lt;a&gt;</code> crea enlaces a otras páginas o secciones.</p>
+  <ul>
+    <li><code>href</code>: Define la URL o ruta de destino.</li>
+    <li><code>target="_blank"</code>: Abre el enlace en una nueva pestaña.</li>
+    <li><code>#id</code>: Navega internamente dentro de la misma página.</li>
+  </ul>
+
+  <pre><code>&lt;a href="https://www.google.com"&gt;Ir a Google&lt;/a&gt;</code></pre>
+  <pre><code>&lt;a href="contacto.html" target="_blank"&gt;Abrir Contacto&lt;/a&gt;</code></pre>
+  <pre><code>&lt;a href="#seccion-info"&gt;Ir a sección info&lt;/a&gt;
+&lt;h2 id="seccion-info"&gt;Información Adicional&lt;/h2&gt;</code></pre>
+
+  <h3>5. Listas</h3>
+  <p>Usa <code>&lt;ul&gt;</code> para listas no ordenadas y <code>&lt;ol&gt;</code> para listas con orden.</p>
+  <ul>
+    <li><code>&lt;li&gt;</code>: Cada ítem de la lista.</li>
+  </ul>
+
+  <pre><code>&lt;ul&gt;
+  &lt;li&gt;Bebidas calientes
+    &lt;ol&gt;
+      &lt;li&gt;Café&lt;/li&gt;
+      &lt;li&gt;Té&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Bebidas frías&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+  <h3>6. Tablas</h3>
+  <p>Las tablas organizan información en filas y columnas.</p>
+  <ul>
+    <li><code>&lt;table&gt;</code>: Contenedor principal.</li>
+    <li><code>&lt;thead&gt;</code>: Cabecera de columna.</li>
+    <li><code>&lt;tbody&gt;</code>: Cuerpo de datos.</li>
+    <li><code>&lt;tr&gt;</code>: Fila de la tabla.</li>
+    <li><code>&lt;th&gt;</code>: Celda de título.</li>
+    <li><code>&lt;td&gt;</code>: Celda de contenido.</li>
+    <li><code>colspan</code>: Une columnas horizontales.</li>
+    <li><code>rowspan</code>: Une filas verticales.</li>
+    <li><code>table border="1"</code>: agrega borde grosos 1</li>
+  </ul>
+
+  <pre><code>&lt;table border="1"&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Producto&lt;/th&gt;
+      &lt;th&gt;Precio&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Laptop&lt;/td&gt;
+      &lt;td&gt;$1200&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td colspan="2"&gt;Envío gratuito incluido&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+
+  <hr>
+
+  <!-- Sección YAML -->
+  <h2>Parte 2: YAML (YAML Ain’t Markup Language)</h2>
+
+  <h3>1. Introducción</h3>
+  <p>YAML es un lenguaje de serialización de datos, útil en configuración de sistemas. Usa indentación con espacios y estructura clara.</p>
+
+  <ul>
+    <li>Los comentarios comienzan con <code>#</code>.</li>
+    <li>No se permiten tabuladores, solo espacios.</li>
+    <li>Es sensible a la jerarquía (niveles).</li>
+  </ul>
+
+  <h3>2. Listas</h3>
+  <p>Las listas se representan con guiones <code>-</code>.</p>
+  <pre><code># Lista de tareas
+tareas:
+  - Comprar leche
+  - Llamar al cliente
+  - Enviar el reporte</code></pre>
+
+  <h3>3. Diccionarios</h3>
+  <p>Los diccionarios usan pares clave: valor.</p>
+  <pre><code>database:
+  host: localhost
+  port: 5432
+  user: admin</code></pre>
+
+  <h3>4. Estructuras Combinadas</h3>
+  <p>YAML permite mezclar listas y diccionarios anidados.</p>
+  <pre><code>usuarios:
+  - id: 1
+    nombre: Carlos Rivera
+    activo: true
+    roles:
+      - editor
+      - revisor
+  - id: 2
+    nombre: Laura Gómez
+    activo: false
+    roles:
+      - lector</code></pre>
+
+</body>
+</html>

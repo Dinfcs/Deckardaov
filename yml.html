@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Conceptos Básicos de YAML</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #f9f9f9;
+      padding: 20px;
+      color: #333;
+    }
+    h1, h2, h3 {
+      color: #2c3e50;
+    }
+    code {
+      background-color: #eef;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: Consolas, monospace;
+    }
+    pre {
+      background-color: #eef;
+      padding: 10px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 10px 0;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #ddd;
+    }
+  </style>
+</head>
+<body>
+  <h1>Conceptos Básicos de YAML</h1>
+
+  <h2>¿Qué es YAML?</h2>
+  <p><strong>YAML</strong> (YAML Ain’t Markup Language) es un lenguaje de serialización de datos, legible por humanos, usado para definir configuraciones, estructuras de datos, y más.</p>
+
+  <h2>1. Clave-Valor</h2>
+  <pre><code>name: "Luis"
+age: 30</code></pre>
+
+  <h2>2. Objetos (Mappings)</h2>
+  <pre><code>author:
+  name: "Luis"
+  email: "luis@example.com"</code></pre>
+
+  <h2>3. Listas (Sequences)</h2>
+  <pre><code>languages:
+  - Python
+  - JavaScript
+  - Bash</code></pre>
+
+  <h2>4. Lista de Objetos</h2>
+  <pre><code>servers:
+  - name: "web01"
+    ip: "192.168.1.10"
+  - name: "db01"
+    ip: "192.168.1.20"</code></pre>
+
+  <h2>5. Indentación</h2>
+  <p>Usa espacios (no tabuladores) para definir jerarquías.</p>
+
+  <h2>6. Comentarios</h2>
+  <pre><code># Este es un comentario
+name: "Luis"  # Comentario al final de línea</code></pre>
+
+  <h2>7. Tipos de Datos</h2>
+  <table>
+    <tr><th>Tipo</th><th>Ejemplo</th></tr>
+    <tr><td>Cadena</td><td>"Hola mundo"</td></tr>
+    <tr><td>Número</td><td>42, 3.14</td></tr>
+    <tr><td>Booleano</td><td>true, false</td></tr>
+    <tr><td>Nulo</td><td>null, ~</td></tr>
+    <tr><td>Lista</td><td>- item1, - item2</td></tr>
+    <tr><td>Objeto</td><td>clave: valor</td></tr>
+  </table>
+
+  <h2>8. Cadenas Multilínea</h2>
+  <pre><code>description: |
+  Este es un texto
+  que ocupa varias líneas</code></pre>
+
+  <h2>9. Alias y Referencias</h2>
+  <pre><code>defaults: &common
+  theme: "dark"
+  lang: "es"
+
+user1:
+  <<: *common
+  name: "Luis"</code></pre>
+
+  <h2>10. Valores Vacíos y Nulos</h2>
+  <pre><code>empty_value: ""
+null_value: null
+another_null: ~</code></pre>
+
+  <h2>11. Estilos de Claves</h2>
+  <pre><code>name: Luis
+"full name": Luis
+"123": valor
+"true": valor</code></pre>
+
+  <h2>12. Errores Comunes</h2>
+  <ul>
+    <li>Usar tabuladores en lugar de espacios</li>
+    <li>Mezclar tipos de indentación</li>
+    <li>No cerrar comillas</li>
+    <li>Usar claves duplicadas en el mismo nivel</li>
+  </ul>
+
+  <h2>Ejemplo Completo</h2>
+  <pre><code>author:
+  name: "Luis"
+  email: "luis@example.com"
+  social_networks:
+    - type: "GitHub"
+      url: "https://github.com/luis"
+    - type: "LinkedIn"
+      url: "https://linkedin.com/in/luis"
+languages:
+  - Python
+  - JavaScript
+  - Bash
+active: true
+description: >
+  Este es un archivo YAML
+  que muestra múltiples conceptos.</code></pre>
+
+  <h2>Resumen de lo que debes dominar</h2>
+  <ul>
+    <li>Leer y escribir estructuras clave-valor</li>
+    <li>Crear listas y objetos anidados</li>
+    <li>Usar correctamente la indentación</li>
+    <li>Entender los tipos de datos</li>
+    <li>Comentar y documentar archivos</li>
+    <li>Validar sintaxis y evitar errores comunes</li>
+    <li>Reutilizar bloques con alias si es necesario</li>
+  </ul>
+</body>
+</html>
