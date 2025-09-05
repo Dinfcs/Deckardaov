@@ -134,20 +134,6 @@
             font-weight: 500;
             color: var(--primary-text-color);
         }
-
-        #skipApnValidation-label {
-            display: inline-flex; 
-            align-items: center; 
-            font-weight: normal; 
-            color: var(--secondary-text-color);
-            cursor: pointer;
-            margin-bottom: 1rem;
-        }
-
-        #skipApnValidation {
-            margin-right: 8px;
-            accent-color: var(--accent-color);
-        }
     </style>
 </head>
 <body>
@@ -235,16 +221,23 @@
             }
         }
         
+        // *** NEW, MORE ROBUST PARSING LOGIC ***
         function parseAddress(address, country) {
-            let cleanAddress = address.replace(/,/g, '').replace(/\s+/g, ' ').trim();
+            // 1. CLEANING AND PRE-NORMALIZATION
+            let cleanAddress = address.replace(/[.,]/g, '').replace(/\s+/g, ' ').trim();
             if (/p\.?o\.?\s+box|rr\s+\d+/i.test(cleanAddress)) return { error: "Non-standard address format (PO Box / RR). Formatter stopped." };
             
-            cleanAddress = titleCase(cleanAddress).replace(/\b(United States|Australia)\b/ig, '').trim();
+            // 2. NORMALIZE UNIT DESIGNATORS (THE CORE FIX)
+            // Replace word-based unit designators (e.g., "Apt", "apto")
+            cleanAddress = cleanAddress.replace(/\b(Apt|Apartment|Apto)\s+/ig, 'Unit ');
+            // Replace symbol-based unit designator (e.g., "#251", "# 251")
+            cleanAddress = cleanAddress.replace(/#\s*/g, 'Unit ');
             
-            // *** CRITICAL FIX: Robust Unit Standardization ***
-            cleanAddress = cleanAddress.replace(/\b(Apt|Apartment|#)\s?/ig, 'Unit ');
+            // 3. APPLY CASING AND CAPITALIZE UNIT NUMBER
+            cleanAddress = titleCase(cleanAddress).replace(/\b(United States|Australia)\b/ig, '').trim();
             cleanAddress = cleanAddress.replace(/(Unit\s)([\w-]+)/g, (match, unitText, unitNumber) => unitText + unitNumber.toUpperCase());
             
+            // 4. EXTRACT STATE AND ZIP
             const states = stateAbbreviations[country];
             const zipPattern = country === 'usa' ? '\\d{5}' : '\\d{4}';
             const stateRegex = new RegExp(`\\b(${states.join('|')})\\s+(${zipPattern})\\b`, 'i');
@@ -255,51 +248,61 @@
             const state = match[1].toUpperCase();
             const zip = match[2];
             let firstPart = cleanAddress.substring(0, match.index).trim();
-            let streetPart = firstPart, cityPart = '';
-            let words = firstPart.split(' ');
+            let streetPart = '', cityPart = '';
             
-            let suffixIndex = -1;
-            for (let i = words.length - 1; i >= 0; i--) {
-                let tempWord = words[i];
-                if (replacements[tempWord]) {
-                    words[i] = replacements[tempWord];
-                    tempWord = replacements[tempWord];
+            // 5. SPLIT STREET AND CITY (UNIT-FIRST STRATEGY)
+            const unitRegex = /(.*?\bUnit\s+[\w-]+)\b\s+(.*)/;
+            const unitMatch = firstPart.match(unitRegex);
+
+            if (unitMatch && unitMatch[1] && unitMatch[2]) {
+                // Strategy 1: A unit was found. This is the most reliable delimiter.
+                streetPart = unitMatch[1].trim();
+                cityPart = unitMatch[2].trim();
+            } else {
+                // Strategy 2 (Fallback): No unit found. Use street suffix logic.
+                let words = firstPart.split(' ');
+                let suffixIndex = -1;
+                
+                // Create a temporary array with words potentially abbreviated to find the last suffix
+                let tempWords = words.map(word => replacements[word] || word);
+                for (let i = tempWords.length - 1; i >= 0; i--) {
+                    if (replacementValues.includes(tempWords[i])) {
+                        suffixIndex = i;
+                        break;
+                    }
                 }
-                if (replacementValues.includes(tempWord)) { suffixIndex = i; break; }
+
+                if (suffixIndex !== -1) {
+                    streetPart = words.slice(0, suffixIndex + 1).join(' ');
+                    cityPart = words.slice(suffixIndex + 1).join(' ').trim();
+                } else {
+                    // Strategy 3 (Last Resort): Assume the last word is the city.
+                    let lastSpaceIndex = firstPart.lastIndexOf(' ');
+                    if (lastSpaceIndex > -1) {
+                        streetPart = firstPart.substring(0, lastSpaceIndex).trim();
+                        cityPart = firstPart.substring(lastSpaceIndex + 1).trim();
+                    } else {
+                        streetPart = firstPart;
+                        cityPart = "";
+                    }
+                }
             }
 
-            if (suffixIndex !== -1) {
-                streetPart = words.slice(0, suffixIndex + 1).join(' ');
-                cityPart = words.slice(suffixIndex + 1).join(' ').trim();
-            } else {
-                let lastSpaceIndex = firstPart.lastIndexOf(' ');
-                if (lastSpaceIndex !== -1) {
-                    streetPart = firstPart.substring(0, lastSpaceIndex);
-                    cityPart = firstPart.substring(lastSpaceIndex + 1);
-                }
-            }
-            
+            // 6. ABBREVIATE CARDINALS AND SUFFIXES IN THE FINAL STREET PART
             let streetWords = streetPart.split(' ');
-            if(streetWords.length > 1 && cardinalPoints[streetWords[1]]){
-                 streetWords[1] = cardinalPoints[streetWords[1]];
-                 streetPart = streetWords.join(' ');
-            }
-            
-            const unitInCityRegex = /^(Unit\s[\w-]+)\s(.+)/i;
-            if (unitInCityRegex.test(cityPart)){
-                const citySplit = cityPart.match(unitInCityRegex);
-                streetPart += ` ${citySplit[1]}`;
-                cityPart = citySplit[2];
-            }
+            streetWords = streetWords.map(word => replacements[word] || cardinalPoints[word] || word);
+            streetPart = streetWords.join(' ');
 
             return { streetPart, cityPart, state, zip };
         }
+
 
         function handleParseResult(parsed) {
             const notificationPanel = document.getElementById('notification-panel');
             if (parsed.error) {
                 notificationPanel.textContent = parsed.error;
                 notificationPanel.style.display = 'block';
+                document.querySelectorAll('.formatted-address').forEach(el => el.textContent = '');
                 return false;
             }
             return true;
