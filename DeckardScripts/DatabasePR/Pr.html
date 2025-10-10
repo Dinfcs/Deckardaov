@@ -118,7 +118,7 @@ a:hover:after {
 /* Estilos específicos para Important Info */
 td.important-info {
     white-space: normal;
-    text-align: left; /* Cambiado de justify a left para mejor legibilidad */
+    text-align: left;
     line-height: 1.6;
     padding: 18px;
     font-size: 14px;
@@ -126,9 +126,7 @@ td.important-info {
     border-left: none;
 }
 
-/* --- INICIO DE LA MODIFICACIÓN --- */
-/* Controla el espaciado de los elementos DENTRO de la celda "Important Info" */
-/* Este selector (espacio) afecta a CUALQUIER p, ul, h2, etc. dentro de la celda */
+
 td.important-info p,
 td.important-info ul,
 td.important-info ol,
@@ -136,14 +134,12 @@ td.important-info h2,
 td.important-info h3,
 td.important-info h4 {
     margin-top: 0;
-    margin-bottom: 10px; /* Espacio consistente y reducido entre elementos */
+    margin-bottom: 12px; /* Espacio consistente y reducido entre elementos */
 }
 
-/* Elimina el margen del último elemento para que no quede espacio extra al final de la celda */
 td.important-info > *:last-child {
     margin-bottom: 0;
 }
-/* --- FIN DE LA MODIFICACIÓN --- */
 
 
 /* Estilo para la barra de búsqueda */
@@ -413,17 +409,20 @@ td {
                             let infoContent = item[header] || '';
                             const creationDate = item.creationDateInfo;
                             const updateDate = item.lastUpdateInfo;
+
+                            // --- INICIO DE LA MODIFICACIÓN ---
+                            // Reemplaza todas las instancias de <p><br></p> con una cadena vacía para eliminar los saltos de línea extra.
+                            infoContent = infoContent.replace(/<p><br><\/p>/g, '');
+                            // --- FIN DE LA MODIFICACIÓN ---
+                            
                             let displayText = infoContent;
                             
-                            // --- INICIO DE LA MODIFICACIÓN ---
-                            // Se eliminan los estilos en línea 'style' para que el CSS tenga el control total
                             if (updateDate) {
                                 displayText += `<p class="update-info">Last updated: ${updateDate}</p>`;
                             }
                             if (creationDate) {
                                 displayText = `<p class="creation-info">Date of creation: ${creationDate}</p>` + displayText;
                             }
-                            // --- FIN DE LA MODIFICACIÓN ---
                             
                             td.innerHTML = displayText;
                         } 
