@@ -41,16 +41,26 @@ table {
     border-spacing: 0;
     margin: 0;
     border: none;
+    table-layout: fixed; /* Asegura que los anchos se respeten */
 }
 
 th, td {
     padding: 15px 20px;
     text-align: left;
-    max-width: 200px;
     word-wrap: break-word;
     border: none;
-    vertical-align: top; /* <-- MODIFICACIÓN AÑADIDA AQUÍ */
+    vertical-align: top;
 }
+
+/* --- INICIO DE LA MODIFICACIÓN --- */
+/* Asignación de anchos específicos para cada columna */
+th:nth-child(1), td:nth-child(1) { width: 15%; } /* Project */
+th:nth-child(2), td:nth-child(2) { width: 15%; } /* Public Records & GIS */
+th:nth-child(3), td:nth-child(3) { width: 10%; } /* License List */
+th:nth-child(4), td:nth-child(4) { width: 40%; } /* Important Info */
+th:nth-child(5), td:nth-child(5) { width: 20%; } /* Media */
+/* --- FIN DE LA MODIFICACIÓN --- */
+
 
 th {
     background-color: #093140;
@@ -323,8 +333,6 @@ td {
             }
         }
 
-        // --- INICIO DE LA MODIFICACIÓN ---
-        // Función unificada para obtener y mostrar datos siempre desde el servidor
         async function fetchAndDisplayData() {
             const updateButton = document.getElementById('updateButton');
             updateButton.classList.add('updating');
@@ -344,7 +352,6 @@ td {
             updateButton.classList.remove('updating');
             updateButton.disabled = false;
         }
-        // --- FIN DE LA MODIFICACIÓN ---
 
         function displayTable(data) {
             data.sort((a, b) => (a.Project || '').localeCompare(b.Project || ''));
@@ -364,7 +371,6 @@ td {
     
             const tbody = document.createElement('tbody');
             if (data.length === 0) {
-                 // Si no hay datos (por ej. búsqueda sin resultados), muestra un mensaje
                 const row = document.createElement('tr');
                 const cell = document.createElement('td');
                 cell.colSpan = headers.length;
@@ -475,16 +481,11 @@ td {
             displayTable(filteredData);
         }
     
-        // --- INICIO DE LA MODIFICACIÓN ---
-        // El botón de actualizar ahora llama a la nueva función de carga
         document.getElementById('updateButton').addEventListener('click', fetchAndDisplayData);
     
-        // Cargar los datos desde el servidor al iniciar la página
         fetchAndDisplayData();
 
-        // Iniciar la actualización automática cada minuto
         setInterval(fetchAndDisplayData, 60000);
-        // --- FIN DE LA MODIFICACIÓN ---
     </script>
     
 </body>
