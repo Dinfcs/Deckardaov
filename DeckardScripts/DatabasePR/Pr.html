@@ -41,7 +41,7 @@ table {
     border-spacing: 0;
     margin: 0;
     border: none;
-    table-layout: fixed; /* Asegura que los anchos se respeten */
+    table-layout: fixed; 
 }
 
 th, td {
@@ -118,13 +118,33 @@ a:hover:after {
 /* Estilos específicos para Important Info */
 td.important-info {
     white-space: normal;
-    text-align: justify;
-    line-height: 1.7;
+    text-align: left; /* Cambiado de justify a left para mejor legibilidad */
+    line-height: 1.6;
     padding: 18px;
     font-size: 14px;
     background-color: inherit;
     border-left: none;
 }
+
+/* --- INICIO DE LA MODIFICACIÓN --- */
+/* Controla el espaciado de los elementos DENTRO de la celda "Important Info" */
+/* Este selector (espacio) afecta a CUALQUIER p, ul, h2, etc. dentro de la celda */
+td.important-info p,
+td.important-info ul,
+td.important-info ol,
+td.important-info h2,
+td.important-info h3,
+td.important-info h4 {
+    margin-top: 0;
+    margin-bottom: 10px; /* Espacio consistente y reducido entre elementos */
+}
+
+/* Elimina el margen del último elemento para que no quede espacio extra al final de la celda */
+td.important-info > *:last-child {
+    margin-bottom: 0;
+}
+/* --- FIN DE LA MODIFICACIÓN --- */
+
 
 /* Estilo para la barra de búsqueda */
 #searchBar {
@@ -165,7 +185,6 @@ td.important-info {
     box-shadow: 0 4px 15px rgba(9, 49, 64, 0.3);
 }
 
-/* --- NUEVO: Animación para el botón de actualizar --- */
 @keyframes pulse {
     0% { transform: scale(1); opacity: 1; }
     50% { transform: scale(1.05); opacity: 0.7; }
@@ -340,17 +359,14 @@ td {
             if (serverData && serverData.tabla) {
                 projectData = serverData.tabla;
                 
-                // --- INICIO DE LA MODIFICACIÓN: Aplicar filtro guardado al cargar ---
                 const savedQuery = localStorage.getItem('lastSearchQuery') || '';
-                document.getElementById('searchBar').value = savedQuery; // Pone el texto en la barra de búsqueda
+                document.getElementById('searchBar').value = savedQuery; 
 
-                // Filtra los datos iniciales si hay una búsqueda guardada
                 const filteredData = projectData.filter(project => 
                     (project.Project || '').toLowerCase().includes(savedQuery.toLowerCase())
                 );
                 
-                displayTable(filteredData); // Muestra la tabla (filtrada o completa)
-                // --- FIN DE LA MODIFICACIÓN ---
+                displayTable(filteredData);
 
                 console.log("Tabla actualizada con datos del servidor.");
             } else {
@@ -398,13 +414,16 @@ td {
                             const creationDate = item.creationDateInfo;
                             const updateDate = item.lastUpdateInfo;
                             let displayText = infoContent;
-
+                            
+                            // --- INICIO DE LA MODIFICACIÓN ---
+                            // Se eliminan los estilos en línea 'style' para que el CSS tenga el control total
                             if (updateDate) {
-                                displayText += `<br><p style="margin-top:8px; font-size:12px; color:#555; font-style:italic;">Last updated: ${updateDate}</p>`;
+                                displayText += `<p class="update-info">Last updated: ${updateDate}</p>`;
                             }
                             if (creationDate) {
-                                displayText = `<p style="margin-bottom:5px; font-weight:bold; font-size:12px; color:#333;">Date of creation: ${creationDate}</p>` + displayText;
+                                displayText = `<p class="creation-info">Date of creation: ${creationDate}</p>` + displayText;
                             }
+                            // --- FIN DE LA MODIFICACIÓN ---
                             
                             td.innerHTML = displayText;
                         } 
@@ -485,9 +504,7 @@ td {
     
         function searchProjects() {
             const input = document.getElementById('searchBar').value;
-            // --- INICIO DE LA MODIFICACIÓN: Guardar búsqueda en localStorage ---
             localStorage.setItem('lastSearchQuery', input);
-            // --- FIN DE LA MODIFICACIÓN ---
 
             const filteredData = projectData.filter(project => (project.Project || '').toLowerCase().includes(input.toLowerCase()));
             displayTable(filteredData);
