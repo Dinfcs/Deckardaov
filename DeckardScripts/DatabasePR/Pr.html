@@ -52,14 +52,12 @@ th, td {
     vertical-align: top;
 }
 
-/* --- INICIO DE LA MODIFICACIÓN --- */
 /* Asignación de anchos específicos para cada columna */
 th:nth-child(1), td:nth-child(1) { width: 15%; } /* Project */
 th:nth-child(2), td:nth-child(2) { width: 15%; } /* Public Records & GIS */
 th:nth-child(3), td:nth-child(3) { width: 10%; } /* License List */
 th:nth-child(4), td:nth-child(4) { width: 40%; } /* Important Info */
 th:nth-child(5), td:nth-child(5) { width: 20%; } /* Media */
-/* --- FIN DE LA MODIFICACIÓN --- */
 
 
 th {
@@ -320,13 +318,11 @@ td {
     
         async function fetchServerData() {
             try {
-                // La opción "no-store" le indica al navegador que no guarde en caché esta solicitud
                 const response = await fetch(jsonURL, { cache: "no-store" });
                 if (!response.ok) throw new Error(`Error al leer la base de datos: ${response.statusText}`);
                 return await response.json();
             } catch (error) {
                 console.error('Error al cargar los datos:', error);
-                // Muestra un error en la tabla para el usuario
                 const tableContainer = document.getElementById('tableContainer');
                 tableContainer.innerHTML = `<p style="text-align:center; padding: 20px; color: red;">Error: No se pudieron cargar los datos del proyecto. Inténtelo de nuevo más tarde.</p>`;
                 return null;
@@ -343,7 +339,19 @@ td {
             
             if (serverData && serverData.tabla) {
                 projectData = serverData.tabla;
-                displayTable(projectData);
+                
+                // --- INICIO DE LA MODIFICACIÓN: Aplicar filtro guardado al cargar ---
+                const savedQuery = localStorage.getItem('lastSearchQuery') || '';
+                document.getElementById('searchBar').value = savedQuery; // Pone el texto en la barra de búsqueda
+
+                // Filtra los datos iniciales si hay una búsqueda guardada
+                const filteredData = projectData.filter(project => 
+                    (project.Project || '').toLowerCase().includes(savedQuery.toLowerCase())
+                );
+                
+                displayTable(filteredData); // Muestra la tabla (filtrada o completa)
+                // --- FIN DE LA MODIFICACIÓN ---
+
                 console.log("Tabla actualizada con datos del servidor.");
             } else {
                 console.log("No se recibieron datos válidos del servidor.");
@@ -356,7 +364,7 @@ td {
         function displayTable(data) {
             data.sort((a, b) => (a.Project || '').localeCompare(b.Project || ''));
             const tableContainer = document.getElementById('tableContainer');
-            tableContainer.innerHTML = ''; // Limpia la tabla anterior
+            tableContainer.innerHTML = ''; 
             const table = document.createElement('table');
             const headers = ['Project', 'Public Records & GIS', 'License List', 'Important Info', 'Media'];
             const thead = document.createElement('thead');
@@ -476,8 +484,12 @@ td {
         });
     
         function searchProjects() {
-            const input = document.getElementById('searchBar').value.toLowerCase();
-            const filteredData = projectData.filter(project => (project.Project || '').toLowerCase().includes(input));
+            const input = document.getElementById('searchBar').value;
+            // --- INICIO DE LA MODIFICACIÓN: Guardar búsqueda en localStorage ---
+            localStorage.setItem('lastSearchQuery', input);
+            // --- FIN DE LA MODIFICACIÓN ---
+
+            const filteredData = projectData.filter(project => (project.Project || '').toLowerCase().includes(input.toLowerCase()));
             displayTable(filteredData);
         }
     
