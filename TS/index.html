@@ -189,21 +189,28 @@ tr.selected {
     font-size: 0.85rem;
 }
 
-/* <!-- MODIFICADO: Estilo para que la etiqueta del logo y la lupa estén en la misma línea --> */
-.input-label-flex {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+/* --- MODIFICADO: Nuevos estilos para la previsualización del logo --- */
+.logo-input-container {
+    position: relative;
     width: 100%;
 }
 
-.logo-visualizer-icon {
+#logoPreview {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 28px;
+    background-color: #252830;
+    border: 1px solid #4b5563;
+    border-radius: 4px;
+    object-fit: contain; /* Para que la imagen no se deforme */
     cursor: pointer;
-    font-size: 16px;
-    margin-left: 10px;
-    user-select: none;
+    display: none; /* Oculto por defecto */
+    transition: opacity 0.2s ease-in-out;
 }
-/* <!-- FIN DE LA MODIFICACIÓN --> */
+/* --- FIN DE LA MODIFICACIÓN --- */
 
 .input-field {
     width: 100%;
@@ -214,6 +221,11 @@ tr.selected {
     font-size: 0.85rem;
     color: #e2e8f0;
     transition: all 0.2s ease;
+}
+
+/* Añadimos un poco de padding a la derecha para que el texto no quede debajo de la previsualización */
+#logoUrl.input-field {
+    padding-right: 42px;
 }
 
 .input-field:focus {
@@ -549,14 +561,14 @@ input:disabled, button:disabled, select:disabled {
                     <h2>Requirements</h2>
         
                     <div class="input-group">
-                        <!-- <!-- MODIFICADO: Añadido el visualizador de logo (lupa) -->
-                        <label for="logoUrl" class="input-label input-label-flex">
-                            Logo Link
-                            <span id="logoVisualizer" class="logo-visualizer-icon" title="Previsualizar el logo enlazado">🔍</span>
-                        </label>
-                        <!-- <!-- FIN DE LA MODIFICACIÓN --> -->
-                        <input type="text" id="logoUrl" class="input-field" placeholder="Example: https://mi-servidor.com/logo.png" required>
+                        <!-- --- MODIFICADO: Estructura HTML para la previsualización del logo --- -->
+                        <label for="logoUrl" class="input-label">Logo Link</label>
+                        <div class="logo-input-container">
+                            <input type="text" id="logoUrl" class="input-field" placeholder="https://mi-servidor.com/logo.png" required>
+                            <img id="logoPreview" src="" alt="Logo Preview">
+                        </div>
                         <div class="error-message" id="logoUrl-error">This field is required</div>
+                        <!-- --- FIN DE LA MODIFICACIÓN --- -->
                     </div>
                     
                     <div class="input-group">
@@ -664,15 +676,17 @@ input:disabled, button:disabled, select:disabled {
             return str.replace(/_/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
         }
 
+// --- COPIA Y REEMPLAZA ESTA FUNCIÓN COMPLETA ---
+
         function generateConfig() {
+            // ... (toda la lógica inicial de la función permanece igual)
             const placeKey = document.getElementById("placeKey").value.trim().toLowerCase();
             const state = document.getElementById("state").value.trim();
             const county = document.getElementById("county").value.trim().toLowerCase().replace(/ /g, "_");
             const city = document.getElementById("city").value.trim().toLowerCase().replace(/ /g, "_");
             
-            // Obtener el campo correcto según el tipo (placens, countyns o cousubns)
             let placeNsValue = '';
-            let placeNsField = 'placens'; // Valor por defecto
+            let placeNsField = 'placens'; 
             
             if (document.getElementById("countyns")) {
                 placeNsValue = document.getElementById("countyns").value.trim();
@@ -691,41 +705,41 @@ input:disabled, button:disabled, select:disabled {
             const pdf = document.getElementById("pdf").checked;
             const warmCache = document.getElementById("warmCache").checked;
             const includeCities = document.getElementById("includeCities").checked;
-            const enablePropertyDetails = document.getElementById("enablePropertyDetails").checked; // Nuevo checkbox
+            const enablePropertyDetails = document.getElementById("enablePropertyDetails").checked;
 
             if (!state || !county) {
                 alert("Por favor, ingresa un Place Key válido.");
                 return;
             }
+            
             let placeName = '';
-    if (filaSeleccionada !== null) {
-        const fila = datosFiltrados[filaSeleccionada];
-        let nombreDesdeTabla = '';
-        
-        // Buscar el string_name en diferentes formatos de columna
-        if (fila['string_name']) {
-            nombreDesdeTabla = fila['string_name'];
-        } else if (fila['String_name']) {
-            nombreDesdeTabla = fila['String_name'];
-        } else if (fila['string name']) {
-            nombreDesdeTabla = fila['string name'];
-        }
+            if (filaSeleccionada !== null) {
+                const fila = datosFiltrados[filaSeleccionada];
+                let nombreDesdeTabla = '';
+                
+                if (fila['string_name']) {
+                    nombreDesdeTabla = fila['string_name'];
+                } else if (fila['String_name']) {
+                    nombreDesdeTabla = fila['String_name'];
+                } else if (fila['string name']) {
+                    nombreDesdeTabla = fila['string name'];
+                }
 
-        // Si encontramos un nombre en la tabla, asegurarnos que tiene el state
-        if (nombreDesdeTabla) {
-            // Verificar si ya incluye el state
-            if (nombreDesdeTabla.includes(',')) {
-                placeName = nombreDesdeTabla;
-            } else {
-                // Si no tiene coma, agregar el state
-                placeName = `${nombreDesdeTabla}, ${state}`;
+                if (nombreDesdeTabla) {
+                    // Se aplica .trim() aquí por seguridad
+                    nombreDesdeTabla = nombreDesdeTabla.trim(); 
+                    if (nombreDesdeTabla.includes(',')) {
+                        placeName = nombreDesdeTabla;
+                    } else {
+                        placeName = `${nombreDesdeTabla}, ${state}`;
+                    }
+                }
             }
-        }
-    }
+
             let inputLogoUrl = document.getElementById("logoUrl").value.trim();
             let logoUrl = inputLogoUrl;
 
-            // Construir el YAML manualmente
+            // --- Construcción del YAML (sin cambios) ---
             let yamlOutput = `logo: ${logoUrl}\n`;
             yamlOutput += `modules:\n`;
             yamlOutput += `  notes:\n`;
@@ -737,7 +751,6 @@ input:disabled, button:disabled, select:disabled {
             yamlOutput += `      - ${placeKey}\n`;
             yamlOutput += `  rentalscape:\n`;
             
-            // Solo incluir propertyDetails si el checkbox está seleccionado
             if (enablePropertyDetails) {
                 yamlOutput += `    propertyDetails:\n`;
                 yamlOutput += `      tabs:\n`;
@@ -767,7 +780,6 @@ input:disabled, button:disabled, select:disabled {
             yamlOutput += `      previous: Previously an STR\n`;
             yamlOutput += `      unavailable: Unavailable\n`;
             
-            // Solo incluir showSuggestions si el checkbox está seleccionado
             if (showSuggestions) {
                 yamlOutput += `    showSuggestions: true\n`;
             }
@@ -776,7 +788,17 @@ input:disabled, button:disabled, select:disabled {
             yamlOutput += `pdf: ${pdf ? "true" : "false"}\n`;
             yamlOutput += `${placeNsField}: '${placeNsValue}'`;
 
-            document.getElementById("output").textContent = yamlOutput;
+            // --- ✅ INICIO DE LA SOLUCIÓN ---
+            // Procesa el YAML final para eliminar espacios en blanco al final de cada línea.
+            // Esto replica el comportamiento de .TrimEnd() de PowerShell.
+            const cleanedYaml = yamlOutput
+                .split('\n') // 1. Divide el string en un array de líneas
+                .map(line => line.trimEnd()) // 2. Elimina los espacios finales de CADA línea
+                .join('\n'); // 3. Vuelve a unir las líneas en un solo string
+
+            // Muestra el resultado limpio en el área de texto
+            document.getElementById("output").textContent = cleanedYaml;
+            // --- ✅ FIN DE LA SOLUCIÓN ---
         }
 
 
@@ -1060,11 +1082,10 @@ input:disabled, button:disabled, select:disabled {
             });
         }
         
-        // <!-- MODIFICADO: Funciones y listeners integrados desde iframe-helper.js -->
+        // --- MODIFICADO: Nueva lógica para la previsualización del logo ---
         
-        // Función para mostrar la previsualización de la imagen
+        // La función para mostrar el overlay grande permanece igual
         const showImageOverlay = (src) => {
-            // Eliminar cualquier overlay anterior para evitar duplicados
             document.getElementById('image-overlay-userscript')?.remove();
             
             const overlay = document.createElement('div');
@@ -1077,7 +1098,6 @@ input:disabled, button:disabled, select:disabled {
             
             const imagePreview = document.createElement('img');
             imagePreview.src = src;
-            // Manejo de errores si la imagen no carga
             imagePreview.onerror = () => { 
                 overlay.innerText = 'Error al cargar la imagen. ¿El enlace es correcto?'; 
                 imagePreview.remove(); 
@@ -1085,45 +1105,59 @@ input:disabled, button:disabled, select:disabled {
             imagePreview.style.cssText = 'max-width: 90%; max-height: 90%; border: 4px solid white; border-radius: 8px; box-shadow: 0 0 25px rgba(0,0,0,0.5);';
             
             overlay.appendChild(imagePreview);
-            // Hacer clic en cualquier lugar del overlay lo cierra
             overlay.addEventListener('click', () => overlay.remove());
             document.body.appendChild(overlay);
         };
 
-        // Listener para la comunicación con Jira
+        // El listener para recibir mensajes de Jira permanece igual
         window.addEventListener('message', (event) => {
-            // Medida de seguridad: solo aceptar mensajes desde el dominio de Jira
             if (event.origin !== 'https://deckardtech.atlassian.net') {
                 return;
             }
-
-            // Si el mensaje tiene el formato esperado...
             if (event.data && event.data.type === 'AUTOFILL_SEARCH' && event.data.payload) {
                 const textoDeJira = event.data.payload;
                 const inputElement = document.getElementById('buscarSplit');
                 if (inputElement) {
                     inputElement.value = textoDeJira;
-                    // Dispara un evento "input" para que la página reaccione
-                    // como si el usuario hubiera escrito manualmente.
                     inputElement.dispatchEvent(new Event('input', { bubbles: true, cancelable: true }));
                 }
             }
         });
         
-        // Listener para el icono de la lupa
-        document.getElementById('logoVisualizer').addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            const logoInput = document.getElementById('logoUrl');
-            const imageUrl = logoInput.value.trim();
-            if (imageUrl) {
-                showImageOverlay(imageUrl);
+        // --- Nueva Lógica ---
+        const logoUrlInput = document.getElementById('logoUrl');
+        const logoPreview = document.getElementById('logoPreview');
+
+        // 1. Listener para actualizar la miniatura mientras escribes
+        logoUrlInput.addEventListener('input', () => {
+            const url = logoUrlInput.value.trim();
+            if (url) {
+                logoPreview.src = url;
             } else {
-                alert('El campo "Logo Link" está vacío.');
+                logoPreview.style.display = 'none'; // Ocultar si el campo está vacío
             }
         });
 
-        // <!-- FIN DE LA MODIFICACIÓN -->
+        // 2. Listener para cuando la imagen se carga correctamente
+        logoPreview.onload = () => {
+            logoPreview.style.display = 'block'; // Mostrar la miniatura
+        };
+
+        // 3. Listener para cuando la URL es incorrecta y la imagen no carga
+        logoPreview.onerror = () => {
+            logoPreview.style.display = 'none'; // Ocultar la miniatura si hay error
+        };
+
+        // 4. Listener para hacer clic en la miniatura y verla en grande
+        logoPreview.addEventListener('click', (e) => {
+            e.stopPropagation(); // Evitar que otros eventos se disparen
+            const imageUrl = logoUrlInput.value.trim();
+            if (imageUrl) {
+                showImageOverlay(imageUrl);
+            }
+        });
+
+        // --- FIN DE LA MODIFICACIÓN ---
     </script>
 </body>
 </html>
