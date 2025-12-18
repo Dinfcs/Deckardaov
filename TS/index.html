@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -244,6 +244,8 @@
             display: none;
             z-index: 1000;
             animation: slideIn 0.3s ease-out;
+            max-width: 400px;
+            word-break: break-all;
         }
 
         @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
@@ -257,14 +259,14 @@
 
     <div class="top-section glass-card">
         <div class="search-grid">
-            <input type="text" id="buscarSplit" class="styled-input" placeholder="UT - City of Cottonwood Heights" oninput="autoSplitSearch()">
-            <input type="text" id="buscar1" class="styled-input" placeholder="Filtro 1" oninput="filtrarTabla()">
-            <input type="text" id="buscar2" class="styled-input" placeholder="Filtro 2" oninput="filtrarTabla()">
+            <input type="text" id="buscarSplit" class="styled-input" placeholder="Paste Ex: UT - City of Cottonwood Heights" oninput="autoSplitSearch()">
+            <input type="text" id="buscar1" class="styled-input" placeholder="Filter 1 (State/County)" oninput="filtrarTabla()">
+            <input type="text" id="buscar2" class="styled-input" placeholder="Filter 2 (City)" oninput="filtrarTabla()">
             <button class="btn-s3" onclick="window.open('https://webapp-8ba8c4de11154ee89.transfer-webapp.us-west-2.on.aws/', '_blank')">S3 BUCKET</button>
         </div>
         
         <div class="table-wrapper">
-            <div id="loader" style="display:none; text-align:center; padding:20px; color: var(--text-dim);">Cargando datos...</div>
+            <div id="loader" style="display:none; text-align:center; padding:20px; color: var(--text-dim);">Loading database...</div>
             <div id="tabla-container"></div>
         </div>
         
@@ -280,7 +282,7 @@
 
             <div class="input-group relative">
                 <label>LOGO LINK</label>
-                <input type="text" id="logoUrl" class="styled-input" oninput="generateConfig()" placeholder="URL automática...">
+                <input type="text" id="logoUrl" class="styled-input" oninput="generateConfig()" placeholder="Automatic URL...">
                 <div class="logo-preview-box" onclick="expandLogo()">
                     <img id="logoPreview" src="" alt="">
                 </div>
@@ -289,11 +291,11 @@
             <div class="grid grid-cols-2 gap-2">
                 <div class="input-group">
                     <label>PLACE KEY</label>
-                    <input type="text" id="placeKey" class="styled-input" oninput="autoFillFields(); generateConfig()">
+                    <input type="text" id="placeKey" class="styled-input" oninput="autoFillFields(); generateConfig()" placeholder="ex: fl-miami">
                 </div>
                 <div class="input-group">
-                    <label>NS CODE</label>
-                    <input type="text" id="placens" class="styled-input" oninput="generateConfig()">
+                    <label>NS CODE (8 DIGITS)</label>
+                    <input type="text" id="placens" class="styled-input" oninput="generateConfig()" placeholder="02411805">
                 </div>
             </div>
 
@@ -310,12 +312,12 @@
 
             <div class="py-2">
                 <label class="px-4 pb-2">PREFERENCES</label>
-                <label class="check-container"><input type="checkbox" id="enableNotes" checked onchange="generateConfig()"><span>Enable Notes</span></label>
-                <label class="check-container"><input type="checkbox" id="showSuggestions" checked onchange="generateConfig()"><span>Suggestions</span></label>
-                <label class="check-container"><input type="checkbox" id="pdf" checked onchange="generateConfig()"><span>PDF Scraping</span></label>
-                <label class="check-container"><input type="checkbox" id="warmCache" checked onchange="generateConfig()"><span>Warm Cache</span></label>
+                <label class="check-container"><input type="checkbox" id="enableNotes" checked onchange="generateConfig()"><span>Enable Internal Notes</span></label>
+                <label class="check-container"><input type="checkbox" id="showSuggestions" checked onchange="generateConfig()"><span>Show Suggestions (Demo)</span></label>
+                <label class="check-container"><input type="checkbox" id="pdf" checked onchange="generateConfig()"><span>Enable PDF Scraping</span></label>
+                <label class="check-container"><input type="checkbox" id="warmCache" checked onchange="generateConfig()"><span>Enable Cache Warm-up</span></label>
                 <label class="check-container"><input type="checkbox" id="includeCities" onchange="generateConfig()"><span>Include Cities</span></label>
-                <label class="check-container"><input type="checkbox" id="enablePropertyDetails" onchange="generateConfig()"><span>Special Provider (HdL...)</span></label>
+                <label class="check-container"><input type="checkbox" id="enablePropertyDetails" onchange="generateConfig()"><span>Is HdL/Rivertree/Azavar</span></label>
             </div>
         </div>
 
@@ -327,10 +329,9 @@
                         <span class="w-3 h-3 rounded-full bg-yellow-500/20 border border-yellow-500/50"></span>
                         <span class="w-3 h-3 rounded-full bg-green-500/20 border border-green-500/50"></span>
                     </div>
-                    <!-- CONTENEDOR DE NOMBRE DINÁMICO -->
                     <div class="filename-container">
                         <span id="ymlFileName" class="text-xs font-mono text-indigo-400">generated_config.yml</span>
-                        <button onclick="copiarNombreArchivo()" class="text-gray-500 hover:text-white transition-colors" title="Copiar nombre del archivo">
+                        <button onclick="copiarNombreArchivo()" class="text-gray-500 hover:text-white transition-colors" title="Copy filename">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" />
                             </svg>
@@ -343,23 +344,26 @@
         </div>
     </div>
 
-    <div id="notificacion">Copiado</div>
+    <div id="notificacion">Notification placeholder</div>
 
     <script>
         const S3_BASE_URL = "https://rentalscape-assets-prod-usw2.s3.us-west-2.amazonaws.com/customer_logos/";
 
         function capitalize(str) { return str.replace(/_/g, ' ').replace(/\b\w/g, char => char.toUpperCase()); }
 
+        // --- UPDATED: SHOWS ACTUAL CONTENT COPIED ---
         function copiarTexto(texto) {
             if (!texto) return;
-            navigator.clipboard.writeText(texto).then(() => mostrarNotificacion("Texto copiado"));
+            navigator.clipboard.writeText(texto).then(() => {
+                mostrarNotificacion("Copied: " + texto);
+            });
         }
 
-        // --- NUEVA FUNCIÓN PARA COPIAR SOLO EL NOMBRE DEL ARCHIVO ---
+        // --- UPDATED: SHOWS FILENAME COPIED ---
         function copiarNombreArchivo() {
             const fileName = document.getElementById("ymlFileName").textContent;
             navigator.clipboard.writeText(fileName).then(() => {
-                mostrarNotificacion("Nombre de archivo copiado");
+                mostrarNotificacion("Copied: " + fileName);
             });
         }
 
@@ -383,7 +387,7 @@
             const nights = days - 1;
 
             if (!placeKeyInput) { 
-                document.getElementById("output").textContent = "# Selecciona un lugar de la tabla..."; 
+                document.getElementById("output").textContent = "# Please select a row from the table or type a Place Key..."; 
                 document.getElementById("ymlFileName").textContent = "generated_config.yml";
                 return; 
             }
@@ -395,8 +399,6 @@
                 const fila = datosFiltrados[filaSeleccionada];
                 let rawName = fila['string_name'] || fila['String_name'] || fila['string name'] || "";
                 
-                // LÓGICA DE NOMBRE DE ARCHIVO
-                // Tomamos el nombre, quitamos la coma si tiene (ej: "Simsbury, CT" -> "Simsbury")
                 let baseName = rawName.split(',')[0].trim();
                 fileName = baseName.toLowerCase().replace(/\s+/g, '_') + ".yml";
                 document.getElementById("ymlFileName").textContent = fileName;
@@ -510,13 +512,13 @@
 
         function copiarYAML() {
             navigator.clipboard.writeText(document.getElementById("output").textContent);
-            mostrarNotificacion("¡YAML Copiado!");
+            mostrarNotificacion("Full YAML Copied!");
         }
 
         function mostrarNotificacion(mensaje) {
             const n = document.getElementById("notificacion");
             n.textContent = mensaje; n.style.display = "block"; 
-            setTimeout(() => n.style.display = "none", 2000);
+            setTimeout(() => n.style.display = "none", 2500);
         }
 
         function expandLogo() {
