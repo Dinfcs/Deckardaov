@@ -6,554 +6,53 @@
     <title>Turn on Cyborg Projects</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
-/* ... (TUS ESTILOS CSS PERMANECEN EXACTAMENTE IGUALES, SIN CAMBIOS) ... */
-body {
-    background-color: #121418;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    color: #e2e8f0;
-    margin: 0;
-    transition: all 0.3s ease;
-    height: 100vh;
-    overflow: auto;
-}
-
-.main-container {
-    max-width: 100%;
-    min-height: 100vh;
-    margin: 0;
-    padding: 0.75rem;
-    display: flex;
-    flex-direction: column;
-}
-
-.filters-container {
-    padding: 0.5rem 0;
-    margin-bottom: 0.75rem;
-}
-
-.search-container {
-    background-color: #1a1d24;
-    border-radius: 0.5rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    padding: 0.75rem;
-    display: flex;
-    gap: 0.75rem;
-    border: 1px solid #30363d;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.search-input {
-    flex: 1;
-    min-width: 200px;
-    padding: 0.5rem;
-    border: 1px solid #30363d;
-    border-radius: 0.375rem;
-    background-color: #252830;
-    font-size: 0.85rem;
-    color: #e2e8f0;
-}
-
-.search-input:focus {
-    outline: none;
-    border-color: #6366f1;
-    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
-}
-
-.search-split-container {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-}
-
-.content-container {
-    display: flex;
-    gap: 1rem;
-    flex: 1;
-    min-height: 500px;
-    margin-bottom: 1rem;
-}
-
-.form-section {
-    width: 30%;
-    min-width: 300px;
-    display: flex;
-    flex-direction: column;
-}
-
-.output-section {
-    width: 70%;
-    display: flex;
-    flex-direction: column;
-}
-
-.form-container, .output-container {
-    background-color: #1a1d24;
-    border-radius: 0.5rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    padding: 1rem;
-    border: 1px solid #30363d;
-    position: relative;
-    margin-bottom: 1rem;
-}
-
-/* Contenedor de Requirements sin scroll y altura flexible */
-.form-container {
-    flex: 1;
-    overflow-y: visible; /* Cambiado de auto a visible */
-    height: auto; /* Altura automática según contenido */
-    max-height: none; /* Eliminado el máximo height */
-}
-
-/* Contenedor de YAML con misma altura que Requirements */
-.output-container {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    height: auto; /* Altura automática para igualar a Requirements */
-}
-
-.output-pre {
-    flex: 1;
-    min-height: 300px;
-    background-color: #1e2029;
-    border-radius: 0.375rem;
-    padding: 0.75rem;
-    overflow-y: auto;
-    font-family: 'JetBrains Mono', 'Fira Code', monospace;
-    white-space: pre-wrap;
-    font-size: 0.85rem;
-    line-height: 1.4;
-    color: #c9d1d9;
-    border: 1px solid #30363d;
-}
-
-/* Tabla que se ajusta al tamaño de filas filtradas */
-.table-container {
-    width: 100%;
-    background-color: #1a1d24;
-    border-radius: 0.5rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    border: 1px solid #30363d;
-    overflow: hidden;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    height: auto; /* Altura automática según contenido */
-}
-
-.table-data-container {
-    flex: 1;
-    overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: #4b5563 #252830;
-    padding: 0 0.25rem;
-}
-
-/* Estilo para fila seleccionada */
-tr.selected {
-    background-color: #3b82f6 !important; /* Color azul que contrasta con texto blanco */
-    color: white;
-}
-
-/* El resto de tus estilos permanecen igual */
-::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: #252830;
-    border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: #4b5563;
-    border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background-color: #6366f1;
-}
-
-.input-group {
-    margin-bottom: 1rem;
-}
-
-.input-label {
-    display: block;
-    margin-bottom: 0.35rem;
-    font-weight: 500;
-    color: #a0aec0;
-    font-size: 0.85rem;
-}
-
-/* --- MODIFICADO: Nuevos estilos para la previsualización del logo --- */
-.logo-input-container {
-    position: relative;
-    width: 100%;
-}
-
-#logoPreview {
-    position: absolute;
-    right: 8px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 28px;
-    height: 28px;
-    background-color: #252830;
-    border: 1px solid #4b5563;
-    border-radius: 4px;
-    object-fit: contain; /* Para que la imagen no se deforme */
-    cursor: pointer;
-    display: none; /* Oculto por defecto */
-    transition: opacity 0.2s ease-in-out;
-}
-/* --- FIN DE LA MODIFICACIÓN --- */
-
-.input-field {
-    width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #30363d;
-    border-radius: 0.375rem;
-    background-color: #252830;
-    font-size: 0.85rem;
-    color: #e2e8f0;
-    transition: all 0.2s ease;
-}
-
-/* Añadimos un poco de padding a la derecha para que el texto no quede debajo de la previsualización */
-#logoUrl.input-field {
-    padding-right: 42px;
-}
-
-.input-field:focus {
-    outline: none;
-    border-color: #6366f1;
-    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
-}
-
-.checkbox-group {
-    display: flex;
-    align-items: center;
-    margin-bottom: 0.75rem;
-    font-size: 0.85rem;
-    color: #a0aec0;
-}
-
-.checkbox-group input {
-    margin-right: 0.5rem;
-    accent-color: #6366f1;
-    width: 0.9rem;
-    height: 0.9rem;
-}
-
-.generate-btn {
-    width: 100%;
-    padding: 0.6rem 0.75rem;
-    background-color: #6366f1;
-    color: white;
-    border: none;
-    border-radius: 0.375rem;
-    font-weight: 600;
-    font-size: 0.85rem;
-    cursor: pointer;
-    margin-top: 0.75rem;
-    transition: all 0.2s ease;
-}
-
-.button-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 0.5rem;
-    margin-bottom: 0.75rem;
-    position: relative;
-    z-index: 5;
-}
-
-.copy-btn {
-    padding: 0.35rem 0.6rem;
-    background-color: #0ea5e9;
-    color: white;
-    border: none;
-    border-radius: 0.375rem;
-    font-size: 0.8rem;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-}
-
-.split-btn {
-    padding: 0.35rem 0.6rem;
-    background-color: #8b5cf6;
-    color: white;
-    border: none;
-    border-radius: 0.375rem;
-    font-size: 0.8rem;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-}
-
-.generate-btn:hover {
-    background-color: #5151e5;
-    transform: translateY(-1px);
-    box-shadow: 0 2px 6px rgba(99, 102, 241, 0.3);
-}
-
-.copy-btn:hover {
-    background-color: #0284c7;
-    transform: translateY(-1px);
-}
-
-.split-btn:hover {
-    background-color: #7c3aed;
-    transform: translateY(-1px);
-}
-
-.btn {
-    padding: 0.5rem 0.75rem;
-    font-size: 0.85rem;
-    cursor: pointer;
-    border: none;
-    border-radius: 0.375rem;
-    background-color: #6366f1;
-    color: white;
-    font-weight: 500;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-    white-space: nowrap;
-}
-
-.btn:hover {
-    background-color: #5151e5;
-    transform: translateY(-1px);
-    box-shadow: 0 2px 6px rgba(99, 102, 241, 0.3);
-}
-
-.btn-clear {
-    background-color: #f43f5e;
-}
-
-.btn-clear:hover {
-    background-color: #e11d48;
-    box-shadow: 0 2px 6px rgba(244, 63, 94, 0.3);
-}
-
-.btn:disabled {
-    background-color: #4b5563;
-    cursor: not-allowed;
-    opacity: 0.7;
-    transform: none;
-    box-shadow: none;
-}
-
-h2 {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    color: #e2e8f0;
-    border-bottom: 1px solid #30363d;
-    padding-bottom: 0.5rem;
-}
-
-h3 {
-    font-size: 0.95rem;
-    font-weight: 600;
-    margin-bottom: 0.75rem;
-    color: #e2e8f0;
-}
-
-table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-    font-size: 0.85rem;
-}
-
-th, td {
-    padding: 0.6rem;
-    text-align: left;
-    border-bottom: 1px solid #30363d;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-th {
-    background-color: #252830;
-    color: #e2e8f0;
-    font-weight: 600;
-    cursor: pointer;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-}
-
-th:hover {
-    background-color: #2d3038;
-}
-
-tr:hover {
-    background-color: #23262f;
-}
-
-.row-selector {
-    width: 40px;
-    text-align: center;
-}
-
-.pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem;
-    background-color: #1a1d24;
-    border-top: 1px solid #30363d;
-}
-
-.pagination button {
-    padding: 0.35rem 0.6rem;
-    background-color: #252830;
-    color: #e2e8f0;
-    border: 1px solid #30363d;
-    border-radius: 0.25rem;
-    cursor: pointer;
-    font-size: 0.8rem;
-    transition: all 0.2s ease;
-}
-
-.pagination button:hover {
-    background-color: #2d3038;
-}
-
-.pagination button.active {
-    background-color: #6366f1;
-    border-color: #6366f1;
-}
-
-#loader {
-    display: none;
-    text-align: center;
-    margin: 0.75rem 0;
-    color: #a0aec0;
-}
-
-#notificacion {
-    position: fixed;
-    bottom: 1.5rem;
-    right: 1.5rem;
-    background-color: #059669;
-    color: white;
-    padding: 0.6rem 1rem;
-    border-radius: 0.375rem;
-    display: none;
-    z-index: 1000;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-    animation: fadeIn 0.3s ease;
-    font-size: 0.85rem;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.input-field:invalid {
-    border-color: #f43f5e;
-    box-shadow: 0 0 0 2px rgba(244, 63, 94, 0.2);
-}
-
-.error-message {
-    color: #f43f5e;
-    font-size: 0.75rem;
-    margin-top: 0.35rem;
-    display: none;
-}
-
-button:focus, input:focus, select:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.3);
-}
-
-input:disabled, button:disabled, select:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-}
-
-@media (max-width: 1280px) {
-    .form-section {
-        width: 35%;
-    }
-    
-    .output-section {
-        width: 65%;
-    }
-}
-
-@media (max-width: 992px) {
-    .content-container {
-        flex-direction: column;
-    }
-    
-    .form-section, .output-section {
-        width: 100%;
-        min-width: 100%;
-    }
-}
-
-@media (max-width: 640px) {
-    .search-container {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    .search-split-container {
-        width: 100%;
-        justify-content: space-between;
-    }
-    
-    .button-actions {
-        flex-wrap: wrap;
-    }
-}
+        /* Estilos base */
+        body { background-color: #121418; font-family: 'Inter', system-ui, -apple-system, sans-serif; color: #e2e8f0; margin: 0; height: 100vh; overflow: auto; }
+        .main-container { max-width: 100%; min-height: 100vh; margin: 0; padding: 0.75rem; display: flex; flex-direction: column; }
+        .filters-container { padding: 0.5rem 0; margin-bottom: 0.75rem; }
+        .search-container { background-color: #1a1d24; border-radius: 0.5rem; padding: 0.75rem; display: flex; gap: 0.75rem; border: 1px solid #30363d; align-items: center; flex-wrap: wrap; }
+        .search-input { flex: 1; min-width: 200px; padding: 0.5rem; border: 1px solid #30363d; border-radius: 0.375rem; background-color: #252830; font-size: 0.85rem; color: #e2e8f0; }
+        .content-container { display: flex; gap: 1rem; flex: 1; min-height: 500px; margin-bottom: 1rem; }
+        .form-section { width: 30%; min-width: 300px; display: flex; flex-direction: column; }
+        .output-section { width: 70%; display: flex; flex-direction: column; }
+        .form-container, .output-container { background-color: #1a1d24; border-radius: 0.5rem; padding: 1rem; border: 1px solid #30363d; position: relative; margin-bottom: 1rem; flex: 1; }
+        .output-pre { flex: 1; min-height: 300px; background-color: #1e2029; border-radius: 0.375rem; padding: 0.75rem; overflow-y: auto; font-family: 'JetBrains Mono', monospace; white-space: pre-wrap; font-size: 0.85rem; color: #c9d1d9; border: 1px solid #30363d; }
+        .table-container { width: 100%; background-color: #1a1d24; border-radius: 0.5rem; border: 1px solid #30363d; overflow: hidden; display: flex; flex-direction: column; }
+        .table-data-container { flex: 1; overflow-y: auto; padding: 0 0.25rem; max-height: 250px; }
+        .logo-input-container { position: relative; width: 100%; }
+        #logoPreview { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); width: 28px; height: 28px; background-color: #252830; border: 1px solid #4b5563; border-radius: 4px; object-fit: contain; display: none; cursor: pointer; }
+        .input-group { margin-bottom: 1rem; }
+        .input-label { display: block; margin-bottom: 0.35rem; font-weight: 500; color: #a0aec0; font-size: 0.85rem; }
+        .input-field { width: 100%; padding: 0.5rem; border: 1px solid #30363d; border-radius: 0.375rem; background-color: #252830; font-size: 0.85rem; color: #e2e8f0; }
+        #logoUrl.input-field { padding-right: 42px; }
+        .checkbox-group { display: flex; align-items: center; margin-bottom: 0.75rem; font-size: 0.85rem; color: #a0aec0; }
+        .checkbox-group input { margin-right: 0.5rem; accent-color: #6366f1; }
+        .copy-btn { padding: 0.35rem 0.6rem; background-color: #0ea5e9; color: white; border-radius: 0.375rem; font-size: 0.8rem; cursor: pointer; margin-bottom: 0.5rem; }
+        .btn { padding: 0.5rem 0.75rem; font-size: 0.85rem; cursor: pointer; border-radius: 0.375rem; background-color: #6366f1; color: white; border: none; }
+        table { width: 100%; border-collapse: separate; font-size: 0.85rem; }
+        th, td { padding: 0.6rem; text-align: left; border-bottom: 1px solid #30363d; }
+        th { background-color: #252830; position: sticky; top: 0; }
+        #notificacion { position: fixed; bottom: 1.5rem; right: 1.5rem; background-color: #059669; color: white; padding: 0.6rem 1rem; border-radius: 0.375rem; display: none; z-index: 1000; }
     </style>
 </head>
 <body>
-    <!-- Filtros arriba de todo -->
     <div class="filters-container">
         <div class="search-container">
             <div class="search-split-container">
                 <input type="text" id="buscarSplit" class="search-input" placeholder="Ej: UT - City of Cottonwood Heights" oninput="autoSplitSearch()">
             </div>
-            <input type="text" id="buscar1" class="search-input" placeholder="Filtro 1" oninput="autoSplitSearch(); filtrarTabla()">
+            <input type="text" id="buscar1" class="search-input" placeholder="Filtro 1" oninput="filtrarTabla()">
             <input type="text" id="buscar2" class="search-input" placeholder="Filtro 2" oninput="filtrarTabla()">
-            <!-- Este botón ya estaba, así que lo mantenemos. -->
-            <button class="btn" style="background-color: #ff9900; color: white;" onclick="window.open('https://webapp-8ba8c4de11154ee89.transfer-webapp.us-west-2.on.aws/', '_blank')">S3</button>
+            <button class="btn" style="background-color: #ff9900;" onclick="window.open('https://webapp-8ba8c4de11154ee89.transfer-webapp.us-west-2.on.aws/', '_blank')">S3</button>
         </div>
         
-        <!-- Tabla de datos -->
-        <div class="table-container" id="tableContainer">
-            <div id="loader">
-                <img src="https://i.gifer.com/ZZ5H.gif" alt="Cargando..." width="50">
-                <p>Cargando datos...</p>
-            </div>
-            
+        <div class="table-container">
+            <div id="loader" style="display:none; text-align:center; padding:10px;">Cargando...</div>
             <div class="table-data-container" id="tabla-container"></div>
-            <div class="pagination" id="paginacion"></div>
+            <div class="pagination" id="paginacion" style="display:flex; justify-content:center; gap:10px; padding:10px;"></div>
         </div>
     </div>
-    </div>
 
-    <!-- Contenido principal -->
     <div class="main-container">
         <div class="content-container">
             <div class="form-section">
@@ -561,603 +60,245 @@ input:disabled, button:disabled, select:disabled {
                     <h2>Requirements</h2>
         
                     <div class="input-group">
-                        <!-- --- MODIFICADO: Estructura HTML para la previsualización del logo --- -->
                         <label for="logoUrl" class="input-label">Logo Link</label>
                         <div class="logo-input-container">
-                            <input type="text" id="logoUrl" class="input-field" placeholder="https://mi-servidor.com/logo.png" required>
+                            <input type="text" id="logoUrl" class="input-field" oninput="generateConfig()" required>
                             <img id="logoPreview" src="" alt="Logo Preview">
                         </div>
-                        <div class="error-message" id="logoUrl-error">This field is required</div>
-                        <!-- --- FIN DE LA MODIFICACIÓN --- -->
                     </div>
                     
                     <div class="input-group">
                         <label for="placeKey" class="input-label">Place Key</label>
-                        <input type="text" id="placeKey" class="input-field" placeholder="Example: fl-okaloosa-city_of_destin" oninput="autoFillFields()" required>
-                        <div class="error-message" id="placeKey-error">This field is required</div>
+                        <input type="text" id="placeKey" class="input-field" oninput="autoFillFields(); generateConfig()" required>
                     </div>
         
                     <div class="input-group">
                         <label for="state" class="input-label">State</label>
-                        <input type="text" id="state" class="input-field" placeholder="Example: FL" readonly required>
-                        <div class="error-message" id="state-error">This field is required</div>
+                        <input type="text" id="state" class="input-field" readonly>
                     </div>
-        
                     <div class="input-group">
                         <label for="county" class="input-label">County</label>
-                        <input type="text" id="county" class="input-field" placeholder="Example: Okaloosa" readonly required>
-                        <div class="error-message" id="county-error">This field is required</div>
+                        <input type="text" id="county" class="input-field" readonly>
                     </div>
-        
                     <div class="input-group">
                         <label for="city" class="input-label">City</label>
-                        <input type="text" id="city" class="input-field" placeholder="Example: Destin" readonly>
+                        <input type="text" id="city" class="input-field" readonly>
                     </div>
         
                     <div class="input-group">
-                        <label for="placens" class="input-label">Code (8 digits)</label>
-                        <input type="text" id="placens" class="input-field" placeholder="Example: 02411805" required pattern="[0-9]{8}" title="Debe contener exactamente 8 dígitos">
-                        <div class="error-message" id="placens-error">Must contain exactly 8 digits</div>
+                        <label id="nsLabel" for="placens" class="input-label">Code (8 digits)</label>
+                        <input type="text" id="placens" class="input-field" oninput="generateConfig()" required pattern="[0-9]{8}">
                     </div>
         
                     <div class="input-group">
                         <label for="days" class="input-label">Rental days</label>
-                        <input type="number" id="days" class="input-field" value="30" min="1" required>
-                        <div class="error-message" id="days-error">Must be a number greater than 0</div>
+                        <input type="number" id="days" class="input-field" value="30" oninput="generateConfig()">
                     </div>
                     
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="enableNotes" checked>
-                        <label for="enableNotes">Enable Notes</label>
-                    </div>
-
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="showSuggestions" checked>
-                        <label for="showSuggestions">Enable suggestions (demos only)</label>
-                    </div>
-
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="pdf" checked>
-                        <label for="pdf">Enable PDF scraping</label>
-                    </div>
-
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="warmCache" checked>
-                        <label for="warmCache">Enable Cache Warm-up (Cyborg)</label>
-                    </div>
-
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="includeCities">
-                        <label for="includeCities">Include cities</label>
-                    </div>
-                    
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="enablePropertyDetails">
-                        <label for="enablePropertyDetails">Is HdL, Rivertree or Azavar</label>
-                    </div>
-                    
-
-                    <button onclick="generateConfig()" class="generate-btn">
-                        Generate Configuration
-                    </button>
+                    <div class="checkbox-group"><input type="checkbox" id="enableNotes" checked onchange="generateConfig()"><label>Enable Notes</label></div>
+                    <div class="checkbox-group"><input type="checkbox" id="showSuggestions" checked onchange="generateConfig()"><label>Enable suggestions</label></div>
+                    <div class="checkbox-group"><input type="checkbox" id="pdf" checked onchange="generateConfig()"><label>Enable PDF scraping</label></div>
+                    <div class="checkbox-group"><input type="checkbox" id="warmCache" checked onchange="generateConfig()"><label>Enable Cache Warm-up</label></div>
+                    <div class="checkbox-group"><input type="checkbox" id="includeCities" onchange="generateConfig()"><label>Include cities</label></div>
+                    <div class="checkbox-group"><input type="checkbox" id="enablePropertyDetails" onchange="generateConfig()"><label>Is HdL/Rivertree/Azavar</label></div>
                 </div>
             </div>
 
             <div class="output-section">
                 <div class="output-container">
                     <h3>YAML Generated:</h3>
-                    <button id="copyYamlBtn" class="copy-btn" onclick="copiarYAML()">COPY YAML</button>
+                    <button class="copy-btn" onclick="copiarYAML()">COPY YAML</button>
                     <pre id="output" class="output-pre"></pre>
                 </div>
             </div>
         </div>
+    </div>
 
     <div id="notificacion">Copiado</div>
 
     <script>
-        // ... (TUS FUNCIONES DE LÓGICA DE NEGOCIO PERMANECEN IGUALES) ...
-        // Funciones para el generador de YAML
+        const S3_BASE_URL = "https://rentalscape-assets-prod-usw2.s3.us-west-2.amazonaws.com/customer_logos/";
+
+        function capitalize(str) { 
+            return str.replace(/_/g, ' ').replace(/\b\w/g, char => char.toUpperCase()); 
+        }
+
         function autoFillFields() {
             const placeKey = document.getElementById("placeKey").value.trim().toLowerCase();
             const parts = placeKey.split("-");
-
-            if (parts.length === 2) {
+            if (parts.length >= 2) {
                 document.getElementById("state").value = parts[0].toUpperCase();
-                document.getElementById("county").value = capitalize(parts[1].replace(/_/g, " "));
-                document.getElementById("city").value = "";
-            } else if (parts.length >= 3) {
-                document.getElementById("state").value = parts[0].toUpperCase();
-                document.getElementById("county").value = capitalize(parts[1].replace(/_/g, " "));
-                document.getElementById("city").value = capitalize(parts.slice(2).join("-").replace(/_/g, " ").replace("city of ", ""));
+                document.getElementById("county").value = capitalize(parts[1]);
+                document.getElementById("city").value = parts.length >= 3 ? capitalize(parts.slice(2).join("-").replace("city of ", "")) : "";
             }
         }
-
-        function capitalize(str) {
-            return str.replace(/_/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
-        }
-
-// --- COPIA Y REEMPLAZA ESTA FUNCIÓN COMPLETA ---
 
         function generateConfig() {
-            // ... (toda la lógica inicial de la función permanece igual)
             const placeKey = document.getElementById("placeKey").value.trim().toLowerCase();
             const state = document.getElementById("state").value.trim();
-            const county = document.getElementById("county").value.trim().toLowerCase().replace(/ /g, "_");
-            const city = document.getElementById("city").value.trim().toLowerCase().replace(/ /g, "_");
-            
-            let placeNsValue = '';
-            let placeNsField = 'placens'; 
-            
-            if (document.getElementById("countyns")) {
-                placeNsValue = document.getElementById("countyns").value.trim();
-                placeNsField = 'countyns';
-            } else if (document.getElementById("cousubns")) {
-                placeNsValue = document.getElementById("cousubns").value.trim();
-                placeNsField = 'cousubns';
-            } else {
-                placeNsValue = document.getElementById("placens").value.trim();
-            }
-            
-            const days = parseInt(document.getElementById("days").value, 10);
+            const logoUrl = document.getElementById("logoUrl").value.trim();
+            const nsInput = document.getElementById("placens");
+            const nsField = nsInput.dataset.currentId || "placens";
+            const days = parseInt(document.getElementById("days").value) || 30;
             const nights = days - 1;
-            const enableNotes = document.getElementById("enableNotes").checked;
-            const showSuggestions = document.getElementById("showSuggestions").checked;
-            const pdf = document.getElementById("pdf").checked;
-            const warmCache = document.getElementById("warmCache").checked;
-            const includeCities = document.getElementById("includeCities").checked;
-            const enablePropertyDetails = document.getElementById("enablePropertyDetails").checked;
 
-            if (!state || !county) {
-                alert("Por favor, ingresa un Place Key válido.");
-                return;
-            }
-            
-            let placeName = '';
+            if (!placeKey) { document.getElementById("output").textContent = ""; return; }
+
+            let placeName = "";
             if (filaSeleccionada !== null) {
                 const fila = datosFiltrados[filaSeleccionada];
-                let nombreDesdeTabla = '';
-                
-                if (fila['string_name']) {
-                    nombreDesdeTabla = fila['string_name'];
-                } else if (fila['String_name']) {
-                    nombreDesdeTabla = fila['String_name'];
-                } else if (fila['string name']) {
-                    nombreDesdeTabla = fila['string name'];
-                }
-
-                if (nombreDesdeTabla) {
-                    // Se aplica .trim() aquí por seguridad
-                    nombreDesdeTabla = nombreDesdeTabla.trim(); 
-                    if (nombreDesdeTabla.includes(',')) {
-                        placeName = nombreDesdeTabla;
-                    } else {
-                        placeName = `${nombreDesdeTabla}, ${state}`;
-                    }
-                }
+                let rawName = fila['string_name'] || fila['String_name'] || fila['string name'] || "";
+                placeName = rawName.includes(',') ? rawName : `${rawName}, ${state}`;
             }
 
-            let inputLogoUrl = document.getElementById("logoUrl").value.trim();
-            let logoUrl = inputLogoUrl;
+            let yaml = `logo: ${logoUrl}\n`;
+            yaml += `modules:\n`;
+            yaml += `  notes:\n`;
+            yaml += `    mode: ${document.getElementById("enableNotes").checked ? "enabled" : "disabled"}\n`;
+            yaml += `    read:\n      - admin\n      - ${placeKey}\n`;
+            yaml += `    rw:\n      - ${placeKey}\n`;
+            yaml += `  rentalscape:\n`;
 
-            // --- Construcción del YAML (sin cambios) ---
-            let yamlOutput = `logo: ${logoUrl}\n`;
-            yamlOutput += `modules:\n`;
-            yamlOutput += `  notes:\n`;
-            yamlOutput += `    mode: ${enableNotes ? "enabled" : "disabled"}\n`;
-            yamlOutput += `    read:\n`;
-            yamlOutput += `      - admin\n`;
-            yamlOutput += `      - ${placeKey}\n`;
-            yamlOutput += `    rw:\n`;
-            yamlOutput += `      - ${placeKey}\n`;
-            yamlOutput += `  rentalscape:\n`;
-            
-            if (enablePropertyDetails) {
-                yamlOutput += `    propertyDetails:\n`;
-                yamlOutput += `      tabs:\n`;
-                yamlOutput += `        activity:\n`;
-                yamlOutput += `          enabled: true\n`;
-                yamlOutput += `        history:\n`;
-                yamlOutput += `          enabled: true\n`;
-                yamlOutput += `        license:\n`;
-                yamlOutput += `          enabled: false\n`;
+            if (document.getElementById("enablePropertyDetails").checked) {
+                yaml += `    propertyDetails:\n      tabs:\n        activity:\n          enabled: true\n        history:\n          enabled: true\n        license:\n          enabled: false\n`;
             }
-            
-            if (includeCities) {
-                yamlOutput += `    includeCities: true\n`;
-            }
-            yamlOutput += `    licenseEditMode: rs_on_page\n`;
-            yamlOutput += `    emailCcDeckard: Rentalscape Support <rentalscape@deckard.com>\n`;
-            yamlOutput += `    propertySummaryMode: IDENTIFIED\n`;
-            yamlOutput += `    production:\n`;
-            yamlOutput += `      warm: ${warmCache ? "true" : "false"}\n`;
-            yamlOutput += `    rentalPeriod:\n`;
-            yamlOutput += `      days: ${days}\n`;
-            yamlOutput += `    rentalTypes:\n`;
-            yamlOutput += `      current: Current STR (${nights} nights or less)\n`;
-            yamlOutput += `      hotel: Hotel/Timeshare\n`;
-            yamlOutput += `      ltr: Long Term Rental\n`;
-            yamlOutput += `      other: Other Rental\n`;
-            yamlOutput += `      previous: Previously an STR\n`;
-            yamlOutput += `      unavailable: Unavailable\n`;
-            
-            if (showSuggestions) {
-                yamlOutput += `    showSuggestions: true\n`;
-            }
-            
-            yamlOutput += `name: ${placeName}\n`;
-            yamlOutput += `pdf: ${pdf ? "true" : "false"}\n`;
-            yamlOutput += `${placeNsField}: '${placeNsValue}'`;
 
-            // --- ✅ INICIO DE LA SOLUCIÓN ---
-            // Procesa el YAML final para eliminar espacios en blanco al final de cada línea.
-            // Esto replica el comportamiento de .TrimEnd() de PowerShell.
-            const cleanedYaml = yamlOutput
-                .split('\n') // 1. Divide el string en un array de líneas
-                .map(line => line.trimEnd()) // 2. Elimina los espacios finales de CADA línea
-                .join('\n'); // 3. Vuelve a unir las líneas en un solo string
+            if (document.getElementById("includeCities").checked) yaml += `    includeCities: true\n`;
+            yaml += `    licenseEditMode: rs_on_page\n`;
+            yaml += `    emailCcDeckard: Rentalscape Support <rentalscape@deckard.com>\n`;
+            yaml += `    propertySummaryMode: IDENTIFIED\n`;
+            yaml += `    production:\n      warm: ${document.getElementById("warmCache").checked}\n`;
+            yaml += `    rentalPeriod:\n      days: ${days}\n`;
+            yaml += `    rentalTypes:\n      current: Current STR (${nights} nights or less)\n      hotel: Hotel/Timeshare\n      ltr: Long Term Rental\n      other: Other Rental\n      previous: Previously an STR\n      unavailable: Unavailable\n`;
+            
+            if (document.getElementById("showSuggestions").checked) yaml += `    showSuggestions: true\n`;
+            
+            yaml += `name: ${placeName}\n`;
+            yaml += `pdf: ${document.getElementById("pdf").checked}\n`;
+            yaml += `${nsField}: '${nsInput.value.trim()}'`; // Quitamos los \n de aquí
 
-            // Muestra el resultado limpio en el área de texto
+            // Procesamos y forzamos exactamente UN salto de línea al final
+            const cleanedYaml = yaml.split('\n')
+                .map(l => l.trimEnd())
+                .join('\n')
+                .trimEnd() + "\n"; 
+
             document.getElementById("output").textContent = cleanedYaml;
-            // --- ✅ FIN DE LA SOLUCIÓN ---
-        }
-
-
-        function copiarYAML() {
-            const yamlText = document.getElementById("output").textContent;
-            if (!yamlText) {
-                mostrarNotificacion("No hay YAML para copiar", false);
-                return;
-            }
             
-            navigator.clipboard.writeText(yamlText).then(() => {
-                mostrarNotificacion("YAML copiado al portapapeles");
-            }).catch(err => {
-                mostrarNotificacion("Error al copiar", false);
-                console.error("Error al copiar: ", err);
-            });
+            const preview = document.getElementById("logoPreview");
+            if (logoUrl) { preview.src = logoUrl; preview.style.display = "block"; }
+            else { preview.style.display = "none"; }
         }
 
-        function mostrarNotificacion(mensaje, exito = true) {
-            const notificacion = document.getElementById("notificacion");
-            notificacion.textContent = mensaje;
-            notificacion.style.backgroundColor = exito ? "#10b981" : "#ef4444";
-            notificacion.style.display = "block";
-            notificacion.style.opacity = "1";
+        function seleccionarFila(index) {
+            filaSeleccionada = index;
+            const fila = datosFiltrados[index];
+            if (!fila) return;
 
-            setTimeout(() => {
-                notificacion.style.opacity = "0";
-                setTimeout(() => notificacion.style.display = "none", 300);
-            }, 2000);
+            // 1. Place Name para el Logo Link (Literal como viene en la tabla)
+            const rawPlaceNameFromTable = fila['place_name'] || fila['Place_name'] || fila['Place Name'] || "";
+            
+            // 2. Rellenar Logo Link con el valor exacto solicitado
+            document.getElementById("logoUrl").value = S3_BASE_URL + rawPlaceNameFromTable + ".png";
+
+            // 3. Place Key para los otros campos
+            document.getElementById("placeKey").value = rawPlaceNameFromTable;
+            autoFillFields();
+
+            // 4. NS Logic
+            const nsInput = document.getElementById("placens");
+            const nsLabel = document.getElementById("nsLabel");
+            const type = (fila['place'] || "").toLowerCase();
+            
+            if (type === 'county') { nsLabel.textContent = "CountyNS"; nsInput.dataset.currentId = "countyns"; }
+            else if (type === 'cousub') { nsLabel.textContent = "CousubNS"; nsInput.dataset.currentId = "cousubns"; }
+            else { nsLabel.textContent = "PlaceNS"; nsInput.dataset.currentId = "placens"; }
+            
+            nsInput.value = fila['code'] || fila['Code'] || fila['place_code'] || "";
+
+            actualizarTabla();
+            generateConfig();
         }
 
-        // Funciones para la tabla
-        let datosCompletos = [];
-        let datosFiltrados = [];
-        let filasPorPagina = 5;
-        let paginaActual = 1;
-        let encabezados = [];
-        let filaSeleccionada = null;
+        // --- FUNCIONES DE TABLA ---
+        let datosCompletos = [], datosFiltrados = [], encabezados = [], filaSeleccionada = null;
+        let paginaActual = 1, filasPorPagina = 5;
 
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("loader").style.display = "block";
             fetch("https://dinfcs.github.io/Deckardaov/TS/datos_exportados.json")
-                .then(response => response.json())
-                .then(datos => {
+                .then(r => r.json()).then(d => {
                     document.getElementById("loader").style.display = "none";
-                    procesarDatos(datos);
-                })
-                .catch(error => console.error("Error al cargar JSON:", error));
+                    encabezados = d[0];
+                    datosCompletos = d.slice(1).map(f => {
+                        let o = {}; encabezados.forEach((c, i) => o[c] = f[i] || ""); return o;
+                    });
+                    datosFiltrados = [...datosCompletos];
+                    actualizarTabla();
+                });
         });
 
-        function procesarDatos(datos) {
-            encabezados = datos[0];
-            datosCompletos = datos.slice(1).map(fila => {
-                let obj = {};
-                encabezados.forEach((col, index) => {
-                    obj[col] = fila[index] || "";
-                });
-                return obj;
-            });
-            datosFiltrados = [...datosCompletos];
+        function filtrarTabla() {
+            const f1 = document.getElementById("buscar1").value.toLowerCase();
+            const f2 = document.getElementById("buscar2").value.toLowerCase();
+            datosFiltrados = datosCompletos.filter(f => 
+                (f1 === "" || Object.values(f).some(v => v.toString().toLowerCase().includes(f1))) &&
+                (f2 === "" || Object.values(f).some(v => v.toString().toLowerCase().includes(f2)))
+            );
+            if (datosFiltrados.length === 1) seleccionarFila(0);
+            else filaSeleccionada = null;
+            paginaActual = 1;
             actualizarTabla();
-        }
-
-        function autoSplitSearch() {
-            const input = document.getElementById("buscarSplit").value.trim();
-            if (input.includes("-")) {
-                const [parte1, parte2] = input.split("-").map(p => p.trim());
-                document.getElementById("buscar1").value = parte1;
-                document.getElementById("buscar2").value = parte2;
-                filtrarTabla();
-            }
         }
 
         function actualizarTabla() {
             let inicio = (paginaActual - 1) * filasPorPagina;
-            let fin = inicio + filasPorPagina;
-            let datosPaginados = datosFiltrados.slice(inicio, fin);
-
-            let tabla = "<table><tr><th class='row-selector'>Sel</th>";
-            encabezados.forEach(header => {
-                tabla += `<th onclick="ordenarPor('${header}')">${header}</th>`;
+            let paged = datosFiltrados.slice(inicio, inicio + filasPorPagina);
+            let h = "<table><tr><th>Sel</th>" + encabezados.map(e => `<th>${e}</th>`).join("") + "</tr>";
+            paged.forEach((f, i) => {
+                const isSel = filaSeleccionada !== null && datosFiltrados[filaSeleccionada] === f;
+                h += `<tr style="${isSel ? 'background:#3b82f6' : ''}">
+                    <td><input type="radio" name="sel" ${isSel ? 'checked' : ''} onclick="seleccionarFila(${inicio + i})"></td>
+                    ${encabezados.map(e => `<td>${f[e]}</td>`).join("")}</tr>`;
             });
-            tabla += "</tr>";
-
-            datosPaginados.forEach((fila, index) => {
-                const isChecked = (filaSeleccionada !== null && datosFiltrados[filaSeleccionada] === fila) || 
-                                (datosFiltrados.length === 1 && index === 0); // Esta línea es nueva
-                tabla += `<tr ${isChecked ? 'style="background-color: #6366F1;"' : ''}>`;
-                tabla += `<td class="row-selector"><input type="radio" name="filaSeleccionada" ${isChecked ? 'checked' : ''} 
-                        onclick="seleccionarFila(${inicio + index})"></td>`;
-                
-                encabezados.forEach(col => {
-                    let textoCelda = fila[col] ? fila[col].toString().replace(/'/g, "\\'") : "";
-                    tabla += `<td onclick="copiarTexto('${textoCelda}')">${fila[col]}</td>`;
-                });
-                tabla += "</tr>";
-            });
-
-            tabla += "</table>";
-            document.getElementById("tabla-container").innerHTML = tabla;
-
+            document.getElementById("tabla-container").innerHTML = h + "</table>";
             actualizarPaginacion();
-            ajustarPosicionTabla();
-        }
-
-        function ajustarPosicionTabla() {
-            const tableContainer = document.getElementById("tableContainer");
-            const buscar1 = document.getElementById("buscar1").value;
-            const buscar2 = document.getElementById("buscar2").value;
-            
-            if (buscar1 || buscar2) {
-                tableContainer.style.marginTop = "0";
-            } else {
-                tableContainer.style.marginTop = "0.5rem";
-            }
-        }
-
-        function seleccionarFila(index) {
-        filaSeleccionada = index;
-        const fila = datosFiltrados[index];
-        
-        // Limpiar/resetear todos los campos relevantes primero
-        document.getElementById("placeKey").value = "";
-        document.getElementById("state").value = "";
-        document.getElementById("county").value = "";
-        document.getElementById("city").value = "";
-        
-        // Resetear el campo de código a su estado inicial
-        const placeNsLabel = document.querySelector('label[for="placens"], label[for="countyns"], label[for="cousubns"]');
-        const placeNsInput = document.getElementById("placens") || document.getElementById("countyns") || document.getElementById("cousubns");
-        
-        // Volver al estado inicial (placens)
-        placeNsLabel.textContent = 'Code (8 digits)';
-        placeNsLabel.htmlFor = 'placens';
-        placeNsInput.id = 'placens';
-        placeNsInput.value = "";
-        placeNsInput.placeholder = "Example: 02411805";
-        
-        if (fila) {
-            // Mapeo de campos de la tabla al formulario
-            if (fila['Place_name']) {
-                document.getElementById("placeKey").value = fila['Place_name'];
-                autoFillFields();
-            } else if (fila['place_name']) {
-                document.getElementById("placeKey").value = fila['place_name'];
-                autoFillFields();
-            } else if (fila['Place Name']) {
-                document.getElementById("placeKey").value = fila['Place Name'];
-                autoFillFields();
-            }
-            
-            // Determinar el tipo de place (city, county o cousub)
-            let placeType = 'placens'; // Valor por defecto
-            if (fila['place'] && fila['place'].toLowerCase() === 'county') {
-                placeType = 'countyns';
-            } else if (fila['place'] && fila['place'].toLowerCase() === 'cousub') {
-                placeType = 'cousubns';
-            }
-            
-            // Actualizar el label y el ID del campo según el tipo de place
-            if (placeType === 'countyns') {
-                placeNsLabel.textContent = 'CountyNS (8 dígitos)';
-                placeNsInput.id = 'countyns';
-                placeNsLabel.htmlFor = 'countyns';
-            } else if (placeType === 'cousubns') {
-                placeNsLabel.textContent = 'CousubNS (8 dígitos)';
-                placeNsInput.id = 'cousubns';
-                placeNsLabel.htmlFor = 'cousubns';
-            } else {
-                placeNsLabel.textContent = 'PlaceNS (8 dígitos)';
-                placeNsInput.id = 'placens';
-                placeNsLabel.htmlFor = 'placens';
-            }
-            
-            // Llenar el valor del campo correspondiente
-            if (fila['code']) {
-                placeNsInput.value = fila['code'];
-            } else if (fila['Code']) {
-                placeNsInput.value = fila['Code'];
-            } else if (fila['place_code']) {
-                placeNsInput.value = fila['place_code'];
-            }
-        }
-        
-        actualizarTabla();
-    }
-
-        function splitSearch() {
-            const input = document.getElementById("buscarSplit").value.trim();
-            if (!input) return;
-            
-            // Dividir por el primer guión encontrado
-            const splitIndex = input.indexOf('-');
-            if (splitIndex === -1) {
-                mostrarNotificacion("Formato incorrecto. Use: 'A - B'", false);
-                return;
-            }
-            
-            const parte1 = input.substring(0, splitIndex).trim();
-            const parte2 = input.substring(splitIndex + 1).trim();
-            
-            document.getElementById("buscar1").value = parte1;
-            document.getElementById("buscar2").value = parte2;
-            document.getElementById("buscarSplit").value = "";
-            
-            filtrarTabla();
         }
 
         function actualizarPaginacion() {
-            let totalPaginas = Math.ceil(datosFiltrados.length / filasPorPagina);
-            let botonesHTML = `
-                <button class="btn" onclick="cambiarPagina(-1)" ${paginaActual === 1 ? "disabled" : ""}>⬅️ </button> 
-                Página ${paginaActual} de ${totalPaginas} 
-                <button class="btn" onclick="cambiarPagina(1)" ${paginaActual >= totalPaginas ? "disabled" : ""}> ➡️</button>`;
-
-            document.getElementById("paginacion").innerHTML = totalPaginas > 1 ? botonesHTML : "";
+            let total = Math.ceil(datosFiltrados.length / filasPorPagina);
+            document.getElementById("paginacion").innerHTML = total > 1 ? 
+                `<button onclick="cambiarPagina(-1)">⬅️</button> ${paginaActual}/${total} <button onclick="cambiarPagina(1)">➡️</button>` : "";
         }
 
-        function cambiarPagina(direccion) {
-            let totalPaginas = Math.ceil(datosFiltrados.length / filasPorPagina);
-            paginaActual += direccion;
-            if (paginaActual < 1) paginaActual = 1;
-            if (paginaActual > totalPaginas) paginaActual = totalPaginas;
-            actualizarTabla();
-        }
+        function cambiarPagina(d) { paginaActual += d; actualizarTabla(); }
 
-        function filtrarTabla() {
-            let input1 = document.getElementById("buscar1").value.toLowerCase();
-            let input2 = document.getElementById("buscar2").value.toLowerCase();
-
-            datosFiltrados = datosCompletos.filter(fila => {
-                const match1 = input1 === "" || Object.values(fila).some(
-                    celda => celda && celda.toString().toLowerCase().includes(input1)
-                );
-                const match2 = input2 === "" || Object.values(fila).some(
-                    celda => celda && celda.toString().toLowerCase().includes(input2)
-                );
-                return match1 && match2;
-            });
-
-            // Autoseleccionar si solo queda una fila después de filtrar
-            if (datosFiltrados.length === 1) {
-                filaSeleccionada = 0; // Seleccionar la primera (y única) fila
-                // Llenar automáticamente los campos del formulario
-                seleccionarFila(filaSeleccionada);
-            } else {
-                filaSeleccionada = null;
+        function autoSplitSearch() {
+            const v = document.getElementById("buscarSplit").value;
+            if (v.includes("-")) {
+                const [p1, p2] = v.split("-").map(s => s.trim());
+                document.getElementById("buscar1").value = p1;
+                document.getElementById("buscar2").value = p2;
+                filtrarTabla();
             }
-
-            paginaActual = 1;
-            actualizarTabla();
         }
 
-        function limpiarFiltros() {
-            document.getElementById("buscar1").value = "";
-            document.getElementById("buscar2").value = "";
-            document.getElementById("buscarSplit").value = "";
-            datosFiltrados = [...datosCompletos];
-            filaSeleccionada = null;
-            paginaActual = 1;
-            actualizarTabla();
+        function copiarYAML() {
+            navigator.clipboard.writeText(document.getElementById("output").textContent);
+            const n = document.getElementById("notificacion");
+            n.style.display = "block"; setTimeout(() => n.style.display = "none", 2000);
         }
 
-        function ordenarPor(columna) {
-            datosFiltrados.sort((a, b) => {
-                let valA = a[columna] || "";
-                let valB = b[columna] || "";
-                if (valA < valB) return -1;
-                if (valA > valB) return 1;
-                return 0;
-            });
-            filaSeleccionada = null;
-            actualizarTabla();
-        }
-
-        function copiarTexto(texto) {
-            if (!texto) return;
-            texto = texto.replace(/\\'/g, "'");
-            navigator.clipboard.writeText(texto).then(() => {
-                mostrarNotificacion("Texto copiado");
-            });
-        }
-        
-        // --- MODIFICADO: Nueva lógica para la previsualización del logo ---
-        
-        // La función para mostrar el overlay grande permanece igual
-        const showImageOverlay = (src) => {
-            document.getElementById('image-overlay-userscript')?.remove();
-            
-            const overlay = document.createElement('div');
-            overlay.id = 'image-overlay-userscript';
-            Object.assign(overlay.style, {
-                position: 'fixed', top: '0', left: '0', width: '100%', height: '100%',
-                backgroundColor: 'rgba(0, 0, 0, 0.85)', zIndex: '20000', display: 'flex',
-                justifyContent: 'center', alignItems: 'center', cursor: 'pointer'
-            });
-            
-            const imagePreview = document.createElement('img');
-            imagePreview.src = src;
-            imagePreview.onerror = () => { 
-                overlay.innerText = 'Error al cargar la imagen. ¿El enlace es correcto?'; 
-                imagePreview.remove(); 
-            };
-            imagePreview.style.cssText = 'max-width: 90%; max-height: 90%; border: 4px solid white; border-radius: 8px; box-shadow: 0 0 25px rgba(0,0,0,0.5);';
-            
-            overlay.appendChild(imagePreview);
-            overlay.addEventListener('click', () => overlay.remove());
-            document.body.appendChild(overlay);
+        document.getElementById("logoPreview").onclick = function() {
+            const img = document.createElement("img");
+            img.src = this.src;
+            const div = document.createElement("div");
+            div.style = "position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);display:flex;justify-content:center;align-items:center;z-index:9999;";
+            img.style = "max-width:90%;max-height:90%;border:5px solid white;";
+            div.appendChild(img);
+            div.onclick = () => div.remove();
+            document.body.appendChild(div);
         };
-
-        // El listener para recibir mensajes de Jira permanece igual
-        window.addEventListener('message', (event) => {
-            if (event.origin !== 'https://deckardtech.atlassian.net') {
-                return;
-            }
-            if (event.data && event.data.type === 'AUTOFILL_SEARCH' && event.data.payload) {
-                const textoDeJira = event.data.payload;
-                const inputElement = document.getElementById('buscarSplit');
-                if (inputElement) {
-                    inputElement.value = textoDeJira;
-                    inputElement.dispatchEvent(new Event('input', { bubbles: true, cancelable: true }));
-                }
-            }
-        });
-        
-        // --- Nueva Lógica ---
-        const logoUrlInput = document.getElementById('logoUrl');
-        const logoPreview = document.getElementById('logoPreview');
-
-        // 1. Listener para actualizar la miniatura mientras escribes
-        logoUrlInput.addEventListener('input', () => {
-            const url = logoUrlInput.value.trim();
-            if (url) {
-                logoPreview.src = url;
-            } else {
-                logoPreview.style.display = 'none'; // Ocultar si el campo está vacío
-            }
-        });
-
-        // 2. Listener para cuando la imagen se carga correctamente
-        logoPreview.onload = () => {
-            logoPreview.style.display = 'block'; // Mostrar la miniatura
-        };
-
-        // 3. Listener para cuando la URL es incorrecta y la imagen no carga
-        logoPreview.onerror = () => {
-            logoPreview.style.display = 'none'; // Ocultar la miniatura si hay error
-        };
-
-        // 4. Listener para hacer clic en la miniatura y verla en grande
-        logoPreview.addEventListener('click', (e) => {
-            e.stopPropagation(); // Evitar que otros eventos se disparen
-            const imageUrl = logoUrlInput.value.trim();
-            if (imageUrl) {
-                showImageOverlay(imageUrl);
-            }
-        });
-
-        // --- FIN DE LA MODIFICACIÓN ---
     </script>
 </body>
 </html>
