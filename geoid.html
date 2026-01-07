@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscador de GEOID - US Census API</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #555;
+            font-weight: bold;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box; /* Asegura que el padding no rompa el ancho */
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        button:disabled {
+            background-color: #95a5a6;
+            cursor: not-allowed;
+        }
+        #results {
+            margin-top: 1.5rem;
+            border-top: 1px solid #eee;
+            padding-top: 1rem;
+        }
+        .result-item {
+            background: #f8f9fa;
+            padding: 10px;
+            margin-bottom: 8px;
+            border-left: 5px solid #2ecc71;
+            border-radius: 3px;
+        }
+        .result-title {
+            font-weight: bold;
+            color: #333;
+            display: block;
+        }
+        .result-value {
+            font-family: monospace;
+            color: #d35400;
+            font-size: 1.1em;
+        }
+        .error {
+            color: #e74c3c;
+            background: #fadbd8;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .loading {
+            text-align: center;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Buscador de GEOID</h1>
+    <div class="form-group">
+        <label for="addressInput">Ingresa la dirección completa (EE.UU.):</label>
+        <input type="text" id="addressInput" placeholder="Ej: 1600 Pennsylvania Ave NW, Washington, DC">
+    </div>
+    <button id="searchBtn" onclick="buscarGeoID()">Buscar GEOID</button>
+
+    <div id="results"></div>
+</div>
+
+<script>
+    async function buscarGeoID() {
+        const address = document.getElementById('addressInput').value;
+        const resultsDiv = document.getElementById('results');
+        const btn = document.getElementById('searchBtn');
+
+        // Limpiar resultados anteriores y validación simple
+        resultsDiv.innerHTML = '';
+        if (!address.trim()) {
+            resultsDiv.innerHTML = '<div class="error">Por favor ingresa una dirección.</div>';
+            return;
+        }
+
+        // Estado de carga
+        btn.disabled = true;
+        btn.innerText = 'Buscando...';
+        resultsDiv.innerHTML = '<div class="loading">Consultando Census API...</div>';
+
+        // Configuración de la URL
+        // benchmark: Public_AR_Current (Address Ranges actuales)
+        // vintage: Current_Current (Datos censales actuales)
+        const baseUrl = 'https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress';
+        const params = new URLSearchParams({
+            address: address,
+            benchmark: 'Public_AR_Current',
+            vintage: 'Current_Current',
+            format: 'json'
+        });
+
+        try {
+            const response = await fetch(`${baseUrl}?${params.toString()}`);
+            
+            if (!response.ok) {
+                throw new Error('Error en la conexión con la API');
+            }
+
+            const data = await response.json();
+
+            // Verificar si hay coincidencias
+            if (data.result && data.result.addressMatches && data.result.addressMatches.length > 0) {
+                const match = data.result.addressMatches[0];
+                const geos = match.geographies;
+                
+                let htmlContent = `<h3>Resultados para: <small>${match.matchedAddress}</small></h3>`;
+
+                // 1. Extraer GEOID del Estado
+                if (geos.States && geos.States.length > 0) {
+                    htmlContent += createResultItem('Estado (State)', geos.States[0].NAME, geos.States[0].GEOID);
+                }
+
+                // 2. Extraer GEOID del Condado
+                if (geos.Counties && geos.Counties.length > 0) {
+                    htmlContent += createResultItem('Condado (County)', geos.Counties[0].NAME, geos.Counties[0].GEOID);
+                }
+
+                // 3. Extraer GEOID de la Ciudad (Incorporated Places)
+                // Nota: No todas las direcciones están en un "Incorporated Place".
+                if (geos['Incorporated Places'] && geos['Incorporated Places'].length > 0) {
+                    htmlContent += createResultItem('Ciudad (Inc. Place)', geos['Incorporated Places'][0].NAME, geos['Incorporated Places'][0].GEOID);
+                } else if (geos['Census Designated Places'] && geos['Census Designated Places'].length > 0) {
+                     htmlContent += createResultItem('Lugar Designado (CDP)', geos['Census Designated Places'][0].NAME, geos['Census Designated Places'][0].GEOID);
+                } else {
+                    htmlContent += '<div class="result-item" style="border-left-color: #ccc">No pertenece a una ciudad incorporada (Unincorporated).</div>';
+                }
+
+                // 4. Extraer Census Tract y Block (el nivel más profundo)
+                if (geos['Census Tracts'] && geos['Census Tracts'].length > 0) {
+                    htmlContent += createResultItem('Census Tract', geos['Census Tracts'][0].NAME, geos['Census Tracts'][0].GEOID);
+                }
+
+                resultsDiv.innerHTML = htmlContent;
+
+            } else {
+                resultsDiv.innerHTML = '<div class="error">No se encontraron resultados para esa dirección. Intenta ser más específico (Calle, Ciudad, Estado).</div>';
+            }
+
+        } catch (error) {
+            console.error(error);
+            resultsDiv.innerHTML = `<div class="error">Ocurrió un error: ${error.message}</div>`;
+        } finally {
+            btn.disabled = false;
+            btn.innerText = 'Buscar GEOID';
+        }
+    }
+
+    function createResultItem(label, name, geoid) {
+        return `
+            <div class="result-item">
+                <span class="result-title">${label}: ${name}</span>
+                GEOID: <span class="result-value">${geoid}</span>
+            </div>
+        `;
+    }
+</script>
+
+</body>
+</html>
