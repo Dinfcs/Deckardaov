@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +12,8 @@
             --primary: #1e293b;
             --accent: #3b82f6;
             --accent-hover: #2563eb;
+            --success: #10b981;
+            --success-hover: #059669;
             --bg: #f8fafc;
             --card-bg: #ffffff;
             --text-main: #0f172a;
@@ -52,7 +54,7 @@
             gap: 1rem;
         }
 
-        @media (min-width: 768px) {
+        @media (min-width: 1024px) {
             .header-container {
                 flex-direction: row;
                 align-items: center;
@@ -83,13 +85,13 @@
         .search-update-container {
             display: flex;
             gap: 12px;
-            flex-grow: 1;
-            max-width: 600px;
+            flex-wrap: wrap;
+            align-items: center;
         }
 
         .search-wrapper {
             position: relative;
-            flex-grow: 1;
+            min-width: 300px;
         }
 
         #searchBar {
@@ -118,10 +120,8 @@
             pointer-events: none;
         }
 
-        #updateButton {
-            background-color: var(--primary);
-            color: white;
-            padding: 10px 20px;
+        .btn {
+            padding: 10px 18px;
             border: none;
             border-radius: 10px;
             cursor: pointer;
@@ -133,13 +133,27 @@
             white-space: nowrap;
         }
 
+        #updateButton {
+            background-color: var(--primary);
+            color: white;
+        }
+
         #updateButton:hover:not(:disabled) {
             background-color: #334155;
             transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
-        #updateButton:disabled {
+        #exportButton {
+            background-color: var(--success);
+            color: white;
+        }
+
+        #exportButton:hover {
+            background-color: var(--success-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn:disabled {
             opacity: 0.6;
             cursor: not-allowed;
         }
@@ -156,7 +170,7 @@
             background: white;
             border-radius: 16px;
             border: 1px solid var(--border);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
             overflow: hidden;
         }
 
@@ -193,11 +207,11 @@
         }
 
         /* Column widths */
-        th:nth-child(1) { width: 14%; } /* Project */
-        th:nth-child(2) { width: 14%; } /* Records */
-        th:nth-child(3) { width: 12%; } /* Licenses */
-        th:nth-child(4) { width: 42%; } /* Info */
-        th:nth-child(5) { width: 18%; } /* Media */
+        th:nth-child(1) { width: 14%; }
+        th:nth-child(2) { width: 14%; }
+        th:nth-child(3) { width: 12%; }
+        th:nth-child(4) { width: 42%; }
+        th:nth-child(5) { width: 18%; }
 
         /* Link Styling */
         a {
@@ -242,11 +256,6 @@
             cursor: zoom-in;
         }
 
-        .media-container img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        }
-
         /* Modal */
         #imageModal {
             display: none;
@@ -264,7 +273,6 @@
             max-width: 100%;
             max-height: 100%;
             border-radius: 12px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
 
         #closeModal {
@@ -303,7 +311,6 @@
             animation: spin 0.8s linear infinite;
         }
 
-        /* Mobile specific */
         @media (max-width: 1024px) {
             table { width: 1000px; }
             .table-card { overflow-x: auto; }
@@ -322,18 +329,21 @@
                     </span>
                     <input type="text" id="searchBar" onkeyup="searchProjects()" placeholder="Search project by name...">
                 </div>
-                <button id="updateButton">
+                <button id="updateButton" class="btn">
                     <span id="btnText">Update</span>
+                </button>
+                <button id="exportButton" class="btn" onclick="exportToCSV()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    Export CSV
                 </button>
             </div>
         </div>
     </header>
 
     <main id="tableContainer">
-        <!-- Loader inicial -->
         <div style="text-align: center; padding: 4rem;">
             <div class="spinner" style="border-top-color: var(--accent); width: 40px; height: 40px;"></div>
-            <p style="color: var(--text-muted); margin-top: 1rem;">Cargando proyectos...</p>
+            <p style="color: var(--text-muted); margin-top: 1rem;">Loading projects...</p>
         </div>
     </main>
 
@@ -346,6 +356,7 @@
         const jsonURL = 'https://script.google.com/macros/s/AKfycbzKRzrnEtgTaGmSDN0daIjtquhBWL5rwn_ZQR8FRYbn5fHtODKSQSTKoi1bXWmrlR0vSg/exec';
         const NO_PREVIEW_IMAGE = "https://dinfcs.github.io/Deckardaov/DeckardScripts/DatabasePR/imagen.png";
         let projectData = [];
+        let currentFilteredData = [];
 
         async function fetchServerData() {
             try {
@@ -356,7 +367,7 @@
                 console.error('Fetch error:', error);
                 document.getElementById('tableContainer').innerHTML = `
                     <div style="background: #fee2e2; color: #991b1b; padding: 2rem; border-radius: 12px; text-align: center;">
-                        <strong>Error de conexión:</strong> No se pudieron cargar los datos. Por favor reintente.
+                        <strong>Connection Error:</strong> Data could not be loaded.
                     </div>`;
                 return null;
             }
@@ -384,10 +395,10 @@
         }
 
         function filterAndDisplay(query) {
-            const filtered = projectData.filter(p => 
+            currentFilteredData = projectData.filter(p => 
                 (p.Project || '').toLowerCase().includes(query.toLowerCase())
             );
-            displayTable(filtered);
+            displayTable(currentFilteredData);
         }
 
         function displayTable(data) {
@@ -395,7 +406,7 @@
             const container = document.getElementById('tableContainer');
             
             if (data.length === 0) {
-                container.innerHTML = '<div style="text-align:center; padding: 4rem; color: var(--text-muted);">No se encontraron proyectos con ese nombre.</div>';
+                container.innerHTML = '<div style="text-align:center; padding: 4rem; color: var(--text-muted);">No projects found.</div>';
                 return;
             }
 
@@ -418,10 +429,8 @@
             const tbody = document.createElement('tbody');
             data.forEach(item => {
                 const tr = document.createElement('tr');
-                
                 headers.forEach(header => {
                     const td = document.createElement('td');
-                    
                     if (header === 'Project') {
                         td.style.fontWeight = '700';
                         td.style.color = 'var(--primary)';
@@ -430,36 +439,31 @@
                     else if (header === 'Important Info') {
                         td.className = 'important-info-cell';
                         let content = (item[header] || '').replace(/<p><br><\/p>/g, '');
-                        
                         let meta = '';
-                        if (item.creationDateInfo) meta += `<span class="date-badge creation-info">Creado: ${item.creationDateInfo}</span><br>`;
-                        
+                        if (item.creationDateInfo) meta += `<span class="date-badge creation-info">Created: ${item.creationDateInfo}</span><br>`;
                         td.innerHTML = meta + content;
-                        if (item.lastUpdateInfo) {
-                            td.innerHTML += `<div class="date-badge update-info">Última actualización: ${item.lastUpdateInfo}</div>`;
-                        }
+                        if (item.lastUpdateInfo) td.innerHTML += `<div class="date-badge update-info">Last updated: ${item.lastUpdateInfo}</div>`;
                     } 
                     else if (['Public Records & GIS', 'License List'].includes(header) && Array.isArray(item[header])) {
                         item[header].forEach(link => {
                             const a = document.createElement('a');
                             a.href = link.url;
                             a.target = '_blank';
-                            a.innerHTML = `<span>${link.type}</span> <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>`;
+                            a.innerHTML = `<span>${link.type}</span>`;
                             td.appendChild(a);
                             td.appendChild(document.createElement('br'));
                         });
                     }
                     else if (header === 'Media' && Array.isArray(item[header])) {
                         const mDiv = document.createElement('div');
-                        mDiv.className = 'media-container';
                         item[header].forEach(media => {
                             if (media.url === 'N/A') return;
-                            
                             if (media.url.includes('drive.google.com')) {
                                 fetchGoogleDriveImage(media.url).then(b64 => {
                                     if (b64) {
                                         const img = document.createElement('img');
                                         img.src = b64;
+                                        img.style.width = '60px';
                                         img.onclick = () => openModal(b64);
                                         mDiv.appendChild(img);
                                     }
@@ -469,15 +473,14 @@
                                 a.href = media.url; a.target = '_blank';
                                 const img = document.createElement('img');
                                 img.src = NO_PREVIEW_IMAGE;
+                                img.style.width = '60px';
                                 a.appendChild(img);
                                 mDiv.appendChild(a);
                             }
                         });
                         td.appendChild(mDiv);
                     }
-                    else {
-                        td.textContent = item[header] || '-';
-                    }
+                    else { td.textContent = item[header] || '-'; }
                     tr.appendChild(td);
                 });
                 tbody.appendChild(tr);
@@ -487,6 +490,39 @@
             card.appendChild(table);
             container.innerHTML = '';
             container.appendChild(card);
+        }
+
+        function exportToCSV() {
+            if (currentFilteredData.length === 0) return;
+
+            const headers = ['Project', 'Public Records & GIS', 'License List', 'Important Info', 'Creation Date', 'Last Update', 'Media Links'];
+            const rows = currentFilteredData.map(item => {
+                const cleanInfo = (item['Important Info'] || '').replace(/<[^>]*>?/gm, ' ').replace(/\s\s+/g, ' ').trim();
+                
+                const formatLinks = (arr) => Array.isArray(arr) ? arr.map(l => `${l.type}: ${l.url}`).join(' | ') : '';
+                const formatMedia = (arr) => Array.isArray(arr) ? arr.filter(m => m.url !== 'N/A').map(m => m.url).join(' | ') : '';
+
+                return [
+                    item.Project || '',
+                    formatLinks(item['Public Records & GIS']),
+                    formatLinks(item['License List']),
+                    cleanInfo,
+                    item.creationDateInfo || '',
+                    item.lastUpdateInfo || '',
+                    formatMedia(item.Media)
+                ].map(val => `"${val.replace(/"/g, '""')}"`);
+            });
+
+            const csvContent = [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+            link.setAttribute('href', url);
+            link.setAttribute('download', `projects_export_${new Date().toISOString().split('T')[0]}.csv`);
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
 
         async function fetchGoogleDriveImage(imageUrl) {
@@ -508,10 +544,6 @@
             document.getElementById('imageModal').style.display = 'none';
         };
 
-        window.onclick = (e) => {
-            if (e.target.id === 'imageModal') document.getElementById('imageModal').style.display = 'none';
-        }
-
         function searchProjects() {
             const val = document.getElementById('searchBar').value;
             localStorage.setItem('lastSearchQuery', val);
@@ -519,8 +551,6 @@
         }
 
         document.getElementById('updateButton').addEventListener('click', fetchAndDisplayData);
-
-        // Init
         fetchAndDisplayData();
         setInterval(fetchAndDisplayData, 60000);
     </script>
