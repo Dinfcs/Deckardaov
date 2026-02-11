@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cápsula del Tiempo - Trivia Familiar</title>
+    <style>
+        :root {
+            --primary: #6c5ce7;
+            --bg: #f0f2f5;
+            --text: #2d3436;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+        }
+
+        h1 { color: var(--primary); margin-bottom: 10px; }
+        #counter { font-size: 0.8rem; color: #a4b0be; margin-bottom: 20px; }
+
+        #display-container {
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f9fa;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 2px dashed #dfe4ea;
+        }
+
+        #display {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        .spinning {
+            filter: blur(2px);
+            opacity: 0.5;
+        }
+
+        button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 8px 15px rgba(108, 92, 231, 0.3);
+            transition: all 0.2s;
+            width: 100%;
+        }
+
+        button:hover { background: #5b49cf; }
+        button:active { transform: translateY(4px); box-shadow: none; }
+        button:disabled { background: #b2bec3; cursor: not-allowed; }
+
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>🕰️ Cápsula del Tiempo</h1>
+        <div id="counter">Preguntas restantes: --</div>
+        
+        <div id="display-container">
+            <div id="display">¿Listos para recordar?</div>
+        </div>
+
+        <button id="spin-btn" onclick="lanzarRuleta()">¡NUEVA PREGUNTA!</button>
+    </div>
+
+    <script>
+        // Lista única mezclada (Niñez y Adolescencia)
+        let preguntasOriginales = [
+            "¿Cuál era tu juguete favorito y qué pasó con él?",
+            "¿A qué solías jugar en el recreo de la escuela primaria?",
+            "¿Cuál es el recuerdo más antiguo que tienes de tu casa?",
+            "¿Qué querías ser de grande cuando tenías 7 años?",
+            "¿Quién era tu mejor amigo/a en la infancia y cómo eran?",
+            "¿Qué comida odiabas de niño y ahora te encanta?",
+            "¿Cuál era tu dibujo animado o programa favorito?",
+            "¿Alguna travesura por la que te regañaron mucho?",
+            "¿Cómo celebraban tus cumpleaños cuando eras pequeño?",
+            "¿Cuál fue el primer disco o canción que te obsesionó?",
+            "¿Cómo era tu estilo de vestir adolescente? ¿Hay fotos?",
+            "¿Cuál fue tu primera 'escapada' o rebeldía adolescente?",
+            "¿Quién fue tu primer amor o 'crush' platónico?",
+            "¿En qué gastabas tu primer dinero o mesada?",
+            "¿Cuál era el lugar donde siempre te juntabas con amigos?",
+            "¿Qué póster o decoración tenías en tu habitación?",
+            "¿Cuál fue la mayor locura que hiciste con amigos de secundaria?",
+            "¿Qué olor te transporta inmediatamente a tu infancia?",
+            "¿Cuál fue el regalo de Navidad que más te emocionó?",
+            "¿Qué materia del colegio era tu peor pesadilla?"
+        ];
+
+        // Copia para trabajar y poder eliminar elementos
+        let preguntasDisponibles = [...preguntasOriginales];
+
+        function actualizarContador() {
+            document.getElementById('counter').innerText = `Preguntas restantes: ${preguntasDisponibles.length}`;
+        }
+
+        function lanzarRuleta() {
+            const display = document.getElementById('display');
+            const btn = document.getElementById('spin-btn');
+            
+            if (preguntasDisponibles.length === 0) {
+                display.innerText = "¡Se acabaron las preguntas! Reiniciando mazo...";
+                preguntasDisponibles = [...preguntasOriginales];
+                actualizarContador();
+                return;
+            }
+
+            btn.disabled = true;
+            display.classList.add('spinning');
+
+            let cambios = 0;
+            const intervalo = setInterval(() => {
+                // Efecto visual: muestra preguntas al azar muy rápido
+                const randomIdx = Math.floor(Math.random() * preguntasOriginales.length);
+                display.innerText = preguntasOriginales[randomIdx];
+                cambios++;
+
+                if (cambios > 12) {
+                    clearInterval(intervalo);
+                    mostrarPreguntaFinal();
+                }
+            }, 80);
+        }
+
+        function mostrarPreguntaFinal() {
+            const display = document.getElementById('display');
+            const btn = document.getElementById('spin-btn');
+
+            // Seleccionar una de las DISPONIBLES y eliminarla del array
+            const indexAleatorio = Math.floor(Math.random() * preguntasDisponibles.length);
+            const seleccionada = preguntasDisponibles.splice(indexAleatorio, 1)[0];
+
+            display.innerText = seleccionada;
+            display.classList.remove('spinning');
+            btn.disabled = false;
+            
+            actualizarContador();
+        }
+
+        // Inicializar contador al cargar
+        actualizarContador();
+    </script>
+</body>
+</html>
