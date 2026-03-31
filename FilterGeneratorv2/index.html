@@ -3,32 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Generador de Filtros Avanzados v3</title>
+  <title>Generador de Filtros Avanzados PRO</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
   
   <!-- =================================================================
-       INICIO: ESTILOS CSS
+       INICIO: ESTILOS CSS - INTERFAZ PREMIUM
        ================================================================= -->
   <style>
-    /* --- VARIABLES Y RESET BÁSICO --- */
+    /* --- VARIABLES (PALETA MODERNA) --- */
     :root {
-      --primary-color: #5a9bd4;
-      --primary-hover: #4a8cc2;
-      --secondary-color: #6c757d;
-      --danger-color: #ff6b6b;
-      --danger-hover: #ff4b4b;
-      --success-color: #28a745;
-      --light-color: #e0e0e0;
-      --dark-color: #ffffff;
-      --border-color: #4a4a6a;
-      --bg-color: #1e1e2f;
-      --card-bg: #2e2e3e;
-      --input-bg: #3a3a4e;
-      --font-family: 'Poppins', sans-serif;
-      --border-radius: 8px;
-      --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      --bg-main: #0f172a;       /* Slate 900 - Fondo principal */
+      --bg-card: #1e293b;       /* Slate 800 - Fondo de tarjetas */
+      --bg-input: #334155;      /* Slate 700 - Fondo inputs */
+      --bg-input-hover: #475569;/* Slate 600 */
+      
+      --accent-primary: #3b82f6; /* Blue 500 - Botones principales */
+      --accent-hover: #2563eb;   /* Blue 600 */
+      
+      --danger: #ef4444;         /* Red 500 */
+      --danger-hover: #dc2626;   /* Red 600 */
+      
+      --success: #10b981;        /* Emerald 500 */
+      
+      --text-main: #f8fafc;      /* Slate 50 */
+      --text-muted: #94a3b8;     /* Slate 400 */
+      
+      --border-color: #334155;
+      --border-focus: #60a5fa;   /* Blue 400 */
+      
+      --font-ui: 'Inter', sans-serif;
+      --font-code: 'Fira Code', monospace;
+      
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-pill: 999px;
+      
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.3);
+      --shadow-glow: 0 0 0 3px rgba(59, 130, 246, 0.3);
     }
 
     * {
@@ -37,209 +53,189 @@
       box-sizing: border-box;
     }
 
+    /* Scrollbar personalizado */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-main); }
+    ::-webkit-scrollbar-thumb { background: var(--bg-input); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--bg-input-hover); }
+
     body {
-      font-family: var(--font-family);
-      background-color: var(--bg-color);
-      color: var(--light-color);
-      line-height: 1.6;
+      font-family: var(--font-ui);
+      background-color: var(--bg-main);
+      background-image: radial-gradient(circle at top, #1e293b 0%, transparent 40%);
+      color: var(--text-main);
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
     .container {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 1rem;
+      max-width: 1000px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+      width: 100%;
     }
 
+    /* --- ENCABEZADO --- */
     header {
       text-align: center;
-      margin-bottom: 2.5rem;
+      margin-bottom: 3rem;
     }
 
     header h1 {
-      font-size: 2.5rem;
-      color: var(--primary-color);
-      font-weight: 600;
+      font-size: 2.75rem;
+      font-weight: 700;
+      background: linear-gradient(to right, #60a5fa, #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.025em;
     }
 
     header p {
       font-size: 1.1rem;
-      color: var(--secondary-color);
+      color: var(--text-muted);
     }
 
     main {
-      display: grid;
-      gap: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
     }
 
-    /* --- ESTILO DE TARJETAS (CARDS) --- */
+    /* --- TARJETAS --- */
     .card {
-      background-color: var(--card-bg);
-      border-radius: var(--border-radius);
-      padding: 1.5rem;
-      box-shadow: var(--box-shadow);
+      background-color: var(--bg-card);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      box-shadow: var(--shadow-lg);
       border: 1px solid var(--border-color);
+      position: relative;
+      overflow: visible;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent-primary), transparent);
+      border-top-left-radius: var(--radius-md);
+      border-top-right-radius: var(--radius-md);
+      opacity: 0.5;
     }
 
     .card h2 {
-      font-size: 1.4rem;
-      margin-bottom: 1rem;
-      font-weight: 500;
-      padding-bottom: 0.5rem;
-      border-bottom: 1px solid var(--border-color);
-    }
-
-    /* --- SECCIÓN DEL CONSTRUCTOR DE FILTROS --- */
-    .builder-controls {
-      display: grid;
-      grid-template-columns: auto 1fr auto 1fr;
-      gap: 1rem;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      display: flex;
       align-items: center;
+      gap: 0.5rem;
+      color: #e2e8f0;
     }
 
-    .control-element {
-      padding: 0.6rem 0.8rem;
-      font-size: 1rem;
-      border: 1px solid var(--border-color);
-      border-radius: var(--border-radius);
-      background-color: var(--input-bg);
-      color: var(--light-color);
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-    
-    select {
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
-      background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23b0b0b0%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22/%3E%3C/svg%3E');
-      background-repeat: no-repeat;
-      background-position: right .7em top 50%;
-      background-size: .65em auto;
-      padding-right: 2.5em;
+    .card h2 .step-num {
+      background: var(--bg-input);
+      color: var(--accent-primary);
+      width: 28px; height: 28px;
+      display: inline-flex; justify-content: center; align-items: center;
+      border-radius: 50%;
+      font-size: 0.9rem;
+      font-weight: 700;
     }
 
-    .control-element:focus {
-      outline: none;
-      border-color: var(--primary-color);
-      box-shadow: 0 0 0 3px rgba(90, 155, 212, 0.3);
-    }
-    
-    input::placeholder {
-        color: #8a8a9e;
+    /* --- CONSTRUCTOR (INPUTS) --- */
+    .builder-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr 1.5fr 2fr;
+      gap: 1rem;
+      align-items: start;
     }
 
-    #logical-operator-select {
-      visibility: hidden;
-    }
-
-    .value-container {
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
       position: relative;
     }
 
-    .builder-actions {
-      margin-top: 1.5rem;
-      display: flex;
-      gap: 0.75rem;
+    .input-group label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-left: 2px;
     }
 
-    /* --- ESTILOS DE BOTONES --- */
+    .form-control {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      font-size: 0.95rem;
+      font-family: var(--font-ui);
+      background-color: var(--bg-input);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      border-radius: var(--radius-sm);
+      transition: all 0.2s ease;
+      height: 46px;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--border-focus);
+      box-shadow: var(--shadow-glow);
+      background-color: #3b4b63;
+    }
+
+    .form-control:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    select.form-control {
+      cursor: pointer;
+      appearance: none;
+      background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2220%22%20height%3D%2220%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%2394a3b8%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C/polyline%3E%3C/svg%3E');
+      background-repeat: no-repeat;
+      background-position: right 0.75rem center;
+      padding-right: 2.5rem;
+    }
+
+    /* --- BOTONES --- */
+    .actions-row {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
     .btn {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 0.5rem;
-      padding: 0.6rem 1.2rem;
-      font-size: 1rem;
-      font-weight: 500;
+      padding: 0.75rem 1.5rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      font-family: var(--font-ui);
       border: none;
-      border-radius: var(--border-radius);
+      border-radius: var(--radius-sm);
       cursor: pointer;
-      transition: background-color 0.2s, transform 0.1s;
+      transition: all 0.2s ease;
+      height: 46px;
     }
 
-    .btn:hover:not(:disabled) {
-      transform: translateY(-1px);
-    }
+    .btn:active { transform: scale(0.98); }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 
-    .btn:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-      transform: none;
-    }
+    .btn-primary { background-color: var(--accent-primary); color: white; box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3); }
+    .btn-primary:hover:not(:disabled) { background-color: var(--accent-hover); box-shadow: 0 6px 15px rgba(59, 130, 246, 0.4); }
+    
+    .btn-secondary { background-color: var(--bg-input); color: var(--text-main); border: 1px solid var(--border-color); }
+    .btn-secondary:hover:not(:disabled) { background-color: var(--bg-input-hover); }
 
-    .btn-primary { background-color: var(--primary-color); color: var(--dark-color); }
-    .btn-primary:hover:not(:disabled) { background-color: var(--primary-hover); }
-    .btn-secondary { background-color: var(--secondary-color); color: white; }
-    .btn-secondary:hover:not(:disabled) { background-color: #555; }
-    .btn-danger { background-color: var(--danger-color); color: white; }
-    .btn-danger:hover:not(:disabled) { background-color: var(--danger-hover); }
-
-    /* --- SECCIÓN DE FILTROS ACTIVOS --- */
-    #active-filters-section { display: flex; flex-direction: column; }
-    #filter-list-container { flex-grow: 1; min-height: 50px; }
-    #no-filters-message { color: var(--secondary-color); }
-    #filter-list { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.5rem; }
-
-    .filter-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background-color: #4a4a6a;
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      animation: fadeIn 0.3s ease;
-    }
-    .filter-item .logical-op { font-weight: bold; color: #a9c5e2; }
-    .filter-item .value-text { background: rgba(0,0,0,0.2); padding: 2px 6px; border-radius: 4px; }
-    .filter-item .actions { margin-left: 0.5rem; display: flex; gap: 0.25rem; }
-    .filter-item button {
-      background: none;
-      border: 1px solid transparent;
-      color: var(--light-color);
-      cursor: pointer;
-      padding: 2px 6px;
-      border-radius: 4px;
-      transition: all 0.2s;
-    }
-    .filter-item button:hover { background-color: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); }
-    .filter-item .btn-edit { color: #81c784; }
-    .filter-item .btn-remove { color: var(--danger-color); }
-    .filter-item .btn-edit:hover { background-color: #81c784; color: black; }
-    .filter-item .btn-remove:hover { background-color: var(--danger-color); color: white; }
-
-    #clear-filters-btn { align-self: flex-end; margin-top: 1rem; }
-
-    /* --- SECCIÓN DEL SCRIPT FINAL --- */
-    #final-script-section { display: flex; flex-direction: column; }
-    #final-script {
-      width: 100%;
-      min-height: 120px;
-      font-family: 'Courier New', Courier, monospace;
-      font-size: 1rem;
-      padding: 0.75rem;
-      border: 1px solid var(--border-color);
-      border-radius: var(--border-radius);
-      resize: vertical;
-      background-color: var(--input-bg);
-      color: var(--light-color);
-    }
-    #copy-button { align-self: flex-end; margin-top: 1rem; }
-
-    /* --- NOTIFICACIÓN --- */
-    #notification {
-      position: fixed;
-      bottom: -100px; /* Start off-screen */
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: var(--success-color);
-      color: white;
-      padding: 12px 24px;
-      border-radius: var(--border-radius);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-      z-index: 1001;
-      transition: bottom 0.5s ease-in-out;
-    }
-    #notification.show { bottom: 20px; }
+    .btn-danger { background-color: transparent; color: var(--danger); border: 1px solid var(--danger); }
+    .btn-danger:hover:not(:disabled) { background-color: var(--danger); color: white; }
 
     /* --- SUGERENCIAS --- */
     #suggestions-container {
@@ -248,47 +244,197 @@
       top: 100%;
       left: 0;
       right: 0;
-      background-color: var(--input-bg);
-      border: 1px solid var(--primary-color);
-      border-top: none;
-      border-radius: 0 0 var(--border-radius) var(--border-radius);
-      box-shadow: var(--box-shadow);
-      max-height: 200px;
+      margin-top: 0.5rem;
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-lg);
+      max-height: 220px;
       overflow-y: auto;
-      z-index: 1000;
+      z-index: 100;
     }
-    .suggestion-item { padding: 0.6rem 0.8rem; cursor: pointer; }
-    .suggestion-item:hover { background-color: var(--primary-color); color: var(--dark-color); }
+
+    .suggestion-item {
+      padding: 0.75rem 1rem;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background-color 0.15s;
+    }
+
+    .suggestion-item:hover {
+      background-color: var(--bg-input);
+      color: var(--accent-primary);
+    }
+
+    /* --- FILTROS ACTIVOS (CHIPS) --- */
+    #filter-list-container { min-height: 60px; }
+    #no-filters-message { color: var(--text-muted); font-style: italic; font-size: 0.95rem; }
+    
+    #filter-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .filter-chip {
+      display: inline-flex;
+      align-items: center;
+      background-color: var(--bg-input);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      font-size: 0.85rem;
+      animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .chip-logical {
+      background-color: rgba(96, 165, 250, 0.15);
+      color: #93c5fd;
+      padding: 0.5rem 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      border-right: 1px solid var(--border-color);
+    }
+
+    .chip-content {
+      padding: 0.5rem 0.75rem;
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .chip-col { color: #f8fafc; font-weight: 600; }
+    .chip-op { color: var(--accent-primary); font-family: var(--font-code); }
+    .chip-val { 
+      background: rgba(0,0,0,0.2); 
+      padding: 0.1rem 0.4rem; 
+      border-radius: 4px; 
+      color: #a78bfa; 
+      font-family: var(--font-code); 
+    }
+
+    .chip-actions {
+      display: flex;
+      border-left: 1px solid var(--border-color);
+    }
+
+    .chip-btn {
+      background: transparent;
+      border: none;
+      padding: 0.5rem;
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .chip-btn:hover { background-color: var(--bg-input-hover); }
+    .chip-btn.edit:hover { color: var(--success); }
+    .chip-btn.delete:hover { color: var(--danger); background-color: rgba(239, 68, 68, 0.1); }
+
+    .header-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+    .header-actions h2 { margin-bottom: 0; }
+
+    /* --- SCRIPT FINAL --- */
+    .script-wrapper {
+      position: relative;
+    }
+
+    #final-script {
+      width: 100%;
+      min-height: 140px;
+      font-family: var(--font-code);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      padding: 1.25rem;
+      padding-bottom: 3rem; /* Espacio para el botón de copia */
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      resize: vertical;
+      background-color: #0b1120; /* Más oscuro para parecer terminal */
+      color: #38bdf8; /* Cyan claro */
+    }
+
+    .btn-copy-absolute {
+      position: absolute;
+      bottom: 1rem;
+      right: 1rem;
+      padding: 0.4rem 0.8rem;
+      font-size: 0.85rem;
+      height: auto;
+      background: rgba(59, 130, 246, 0.2);
+      color: #60a5fa;
+    }
+    .btn-copy-absolute:hover:not(:disabled) {
+      background: var(--accent-primary);
+      color: white;
+    }
+
+    /* --- NOTIFICACIÓN TOAST --- */
+    #toast {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background-color: var(--success);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius-pill);
+      font-weight: 500;
+      box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
+      z-index: 1001;
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    #toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
     /* --- PANTALLA DE CARGA --- */
     #loading-container {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: var(--bg-color);
+      background: var(--bg-main);
       display: flex;
       justify-content: center;
       align-items: center;
-      flex-direction: column;
       z-index: 9999;
-      transition: opacity 0.5s ease;
+      transition: opacity 0.4s ease;
     }
     #loading-container.hidden { opacity: 0; pointer-events: none; }
-    #loading-logo { width: 150px; height: auto; margin-bottom: 20px; }
-    #loading-circle {
+    
+    .spinner {
       width: 50px; height: 50px;
-      border: 5px solid var(--primary-color);
+      border: 4px solid var(--bg-input);
       border-radius: 50%;
-      border-top-color: transparent;
-      animation: spin 1s linear infinite;
+      border-top-color: var(--accent-primary);
+      animation: spin 1s ease-in-out infinite;
     }
-    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-    /* --- RESPONSIVIDAD --- */
-    @keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
-    @media (max-width: 768px) {
-      .builder-controls { grid-template-columns: 1fr; }
-      #logical-operator-select { visibility: visible; }
+    /* --- ANIMACIONES Y MEDIA QUERIES --- */
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes slideIn { 
+      from { opacity: 0; transform: translateY(10px) scale(0.95); } 
+      to { opacity: 1; transform: translateY(0) scale(1); } 
     }
+
+    @media (max-width: 800px) {
+      .builder-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+      .actions-row { flex-direction: column; }
+      header h1 { font-size: 2rem; }
+    }
+    
+    /* Iconos SVG utilitarios */
+    svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
   </style>
   <!-- =================================================================
        FIN: ESTILOS CSS
@@ -296,103 +442,134 @@
 </head>
 <body>
 
-  <!-- Contenedor del logo de carga -->
+  <!-- PANTALLA DE CARGA -->
   <div id="loading-container">
-    <!-- Si tienes un logo.png, mantenlo. Si no, puedes borrar la línea img -->
-    <img src="logo.png" alt="Cargando..." id="loading-logo" onerror="this.style.display='none'">
-    <div id="loading-circle"></div>
+    <div class="spinner"></div>
   </div>
 
   <div class="container">
     <header>
-      <h1>Generador de Filtros Avanzados</h1>
-      <p>Construye, edita y guarda consultas complejas de forma sencilla.</p>
+      <h1>Filtros Avanzados</h1>
+      <p>Construye y visualiza consultas complejas en segundos.</p>
     </header>
 
     <main>
-      <!-- SECCIÓN PARA CONSTRUIR/EDITAR FILTRO -->
+      <!-- ==========================================
+           SECCIÓN 1: CONSTRUCTOR
+           ========================================== -->
       <section class="card" id="builder-section">
-        <h2 id="builder-title">1. Añadir Nueva Condición</h2>
-        <div class="builder-controls">
-          <select id="logical-operator-select" class="control-element" aria-label="Operador Lógico">
-            <option value="and" selected>AND</option>
-            <option value="or">OR</option>
-            <option value="and not">AND NOT</option>
-          </select>
+        <h2><span class="step-num">1</span> <span id="builder-title">Añadir Nueva Condición</span></h2>
+        
+        <div class="builder-grid">
+          
+          <div class="input-group" id="logical-group" style="visibility: hidden;">
+            <label for="logical-operator-select">Lógica</label>
+            <select id="logical-operator-select" class="form-control">
+              <option value="and" selected>AND</option>
+              <option value="or">OR</option>
+              <option value="and not">AND NOT</option>
+            </select>
+          </div>
 
-          <select id="column-select" class="control-element" aria-label="Columna">
-            <option value="">Seleccionar Columna</option>
-            <option value="title">title</option>
-            <option value="description">description</option>
-            <option value="host_name">host_name</option>
-            <option value="location_exact">location_exact (bool)</option>
-            <option value="visibility">visibility</option>
-            <option value="activity">activity</option>
-            <option value="by_who">by_who</option>
-            <option value="updated_at">updated_at (fecha)</option>
-            <option value="hoe_violation">hoe_violation (bool)</option>
-            <option value="suggest_qa">suggest_qa (bool)</option>
-            <option value="apn_mapped_via_cyborg">apn_mapped_via_cyborg</option>
-            <option value="resolved_apn">resolved_apn</option>
-            <option value="partial_apn">partial_apn</option>
-            <option value="property_type">property_type</option>
-            <option value="bathrooms">bathrooms</option>
-            <option value="bedrooms">bedrooms</option>
-            <option value="occupancy">occupancy</option>
-            <option value="deckard_id">deckard_id</option>
-            <option value="geo_cluster">geo_cluster</option>
-            <option value="structure">structure</option>
-            <option value="rental">rental</option>
-            <option value="address">address</option>
-            <option value="override_address">override_address</option>
-            <option value="unit_number">unit_number</option>
-            <option value="use_type">use_type</option>
-          </select>
+          <div class="input-group">
+            <label for="column-select">Columna</label>
+            <select id="column-select" class="form-control">
+              <option value="">Seleccionar...</option>
+              <option value="title">title</option>
+              <option value="description">description</option>
+              <option value="host_name">host_name</option>
+              <option value="location_exact">location_exact (bool)</option>
+              <option value="STR">STR (bool)</option>
+              <option value="visibility">visibility</option>
+              <option value="activity">activity</option>
+              <option value="by_who">by_who</option>
+              <option value="updated_at">updated_at (fecha)</option>
+              <option value="hoe_violation">hoe_violation (bool)</option>
+              <option value="suggest_qa">suggest_qa (bool)</option>
+              <option value="apn_mapped_via_cyborg">apn_mapped_via_cyborg</option>
+              <option value="resolved_apn">resolved_apn</option>
+              <option value="partial_apn">partial_apn</option>
+              <option value="property_type">property_type</option>
+              <option value="bathrooms">bathrooms</option>
+              <option value="bedrooms">bedrooms</option>
+              <option value="occupancy">occupancy</option>
+              <option value="deckard_id">deckard_id</option>
+              <option value="geo_cluster">geo_cluster</option>
+              <option value="structure">structure</option>
+              <option value="rental">rental</option>
+              <option value="address">address</option>
+              <option value="override_address">override_address</option>
+              <option value="unit_number">unit_number</option>
+              <option value="use_type">use_type</option>
+            </select>
+          </div>
 
-          <select id="operator-select" class="control-element" aria-label="Operador de Comparación">
-            <!-- Las opciones se generan dinámicamente -->
-          </select>
+          <div class="input-group">
+            <label for="operator-select">Operador</label>
+            <select id="operator-select" class="form-control">
+              <!-- Opciones dinámicas -->
+            </select>
+          </div>
 
-          <div class="value-container">
-            <input type="text" id="value-input" class="control-element" placeholder="Valor" autocomplete="off">
+          <div class="input-group">
+            <label for="value-input">Valor</label>
+            <input type="text" id="value-input" class="form-control" placeholder="Ej: Apartment" autocomplete="off">
             <div id="suggestions-container"></div>
           </div>
+          
         </div>
-        <div class="builder-actions">
+
+        <div class="actions-row">
           <button id="add-filter-btn" class="btn btn-primary">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg>
-            Agregar Filtro
+            <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <span id="btn-text">Agregar Filtro</span>
           </button>
-          <button id="clear-fields-btn" class="btn btn-secondary">Limpiar Campos</button>
+          <button id="clear-fields-btn" class="btn btn-secondary">
+            <svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
+            Limpiar Campos
+          </button>
         </div>
       </section>
 
-      <!-- SECCIÓN DE FILTROS APLICADOS -->
+      <!-- ==========================================
+           SECCIÓN 2: FILTROS ACTIVOS
+           ========================================== -->
       <section class="card" id="active-filters-section">
-          <h2>2. Filtros Activos</h2>
-          <div id="filter-list-container">
-            <p id="no-filters-message">Aún no se han añadido filtros.</p>
-            <div id="filter-list"></div>
-          </div>
-          <button id="clear-filters-btn" class="btn btn-danger">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/><path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/></svg>
-            Borrar Todos
+        <div class="header-actions">
+          <h2><span class="step-num">2</span> Filtros Aplicados</h2>
+          <button id="clear-filters-btn" class="btn btn-danger" disabled>
+            <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+            Borrar Todo
           </button>
+        </div>
+        
+        <div id="filter-list-container">
+          <p id="no-filters-message">No se han añadido filtros todavía. Empieza usando el formulario de arriba.</p>
+          <div id="filter-list"></div>
+        </div>
       </section>
       
-      <!-- SECCIÓN DEL SCRIPT FINAL -->
+      <!-- ==========================================
+           SECCIÓN 3: SCRIPT FINAL
+           ========================================== -->
       <section class="card" id="final-script-section">
-        <h2>3. Script Resultante</h2>
-        <textarea id="final-script" readonly placeholder="El script del filtro aparecerá aquí..."></textarea>
-        <button id="copy-button" class="btn btn-primary">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h6a.5.5 0 0 0 .5-.5zm0 3a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h6a.5.5 0 0 0 .5-.5zm0 3a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h6a.5.5 0 0 0 .5-.5zm-5 4a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4z"/><path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2zm10-1v12a3 3 0 0 1-3 3H2a3 3 0 0 1-3-3V4a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3z"/></svg>
-          Copiar Script
-        </button>
+        <h2><span class="step-num">3</span> Script Generado</h2>
+        <div class="script-wrapper">
+          <textarea id="final-script" readonly placeholder="SELECT * FROM table WHERE..."></textarea>
+          <button id="copy-button" class="btn btn-primary btn-copy-absolute" disabled>
+            <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            Copiar Código
+          </button>
+        </div>
       </section>
     </main>
   </div>
   
-  <div id="notification">¡Copiado al portapapeles!</div>
+  <!-- Notificación Toast -->
+  <div id="toast">
+    <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+    ¡Script copiado al portapapeles!
+  </div>
 
 <!-- =================================================================
      INICIO: LÓGICA JAVASCRIPT
@@ -402,6 +579,7 @@ let filters = [];
 let editIndex = null;
 
 // --- DOM ELEMENTOS ---
+const logicalGroup = document.getElementById('logical-group');
 const logicalOpSelect = document.getElementById('logical-operator-select');
 const columnSelect = document.getElementById('column-select');
 const operatorSelect = document.getElementById('operator-select');
@@ -415,10 +593,12 @@ const suggestionsContainer = document.getElementById('suggestions-container');
 const addFilterBtn = document.getElementById('add-filter-btn');
 const clearFieldsBtn = document.getElementById('clear-fields-btn');
 const builderTitle = document.getElementById('builder-title');
+const btnText = document.getElementById('btn-text');
 
 // --- DATOS Y CONFIGURACIÓN ---
 const columnSuggestions = {
   location_exact: ["true", "false"],
+  STR: ["true", "false"], 
   property_type: ["Apart-hotel", "Apartment", "B&B", "Barn", "Bed & breakfast", "Building", "Bungalow", "Bus", "Cabin", "Camp ground", "Camper/RV", "Castle", "Condo", "Corporate apartment", "Cottage", "Dome", "Earthen home", "Entire apartment", "Entire bungalow", "Entire cabin", "Entire chalet", "Entire condo", "Entire condominium", "Entire cottage", "Entire guest suite", "Entire guesthouse", "Entire holiday home", "Entire home", "Entire home/apt", "Entire home/flat", "Entire house", "Entire loft", "Entire place", "Entire rental unit", "Entire residential home", "Entire serviced apartment", "Entire townhouse", "Entire vacation home", "Entire villa", "Estate", "Farm stay", "Farmhouse", "Guest House", "Hotel", "House", "Hut", "Lodge", "Mobile Home", "Private room", "Room in hotel", "Studio", "Tent", "Townhome", "Villa", "Yurt"],
   visibility: ["now", "not_live", "upcoming", "no_bookings", "past_30"],
   activity: ["blocked", "upcoming", "no_bookings"],
@@ -429,12 +609,13 @@ const columnSuggestions = {
   suggest_qa: ["true", "false"]
 };
 
-const booleanColumns = ["location_exact", "hoe_violation", "suggest_qa"];
+// Columnas booleanas 
+const booleanColumns = ["location_exact", "hoe_violation", "suggest_qa", "STR"];
 
 const operatorOptions = {
     standard: `
         <option value="=" selected>=</option>
-        <option value="!=">≠</option>
+        <option value="!=">≠ (Distinto)</option>
         <option value="icontains">contiene</option>
         <option value="is blank">está vacío</option>
         <option value=">">></option>
@@ -451,7 +632,7 @@ const operatorOptions = {
         <option value="<=">≤</option>
     `,
     boolean: `
-        <option value="is" selected>=</option>
+        <option value="is" selected>is</option>
     `
 };
 
@@ -536,29 +717,28 @@ function editFilter(index) {
     editIndex = index;
 
     columnSelect.value = filter.column;
-    // Disparar el evento change para actualizar operadores y tipo de input
     columnSelect.dispatchEvent(new Event('change')); 
     
     logicalOpSelect.value = filter.logical;
     operatorSelect.value = filter.operator;
     valueInput.value = filter.value;
 
-    handleOperatorChange(); // Asegurarse que el input se deshabilite si es 'is blank'
+    handleOperatorChange(); 
 
-    builderTitle.textContent = "2. Editando Condición";
-    addFilterBtn.innerHTML = `
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm-2.206 2.206-8.5 8.5a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708 0l8.5-8.5a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/></svg>
-      Actualizar Filtro`;
-    builderTitle.scrollIntoView({ behavior: 'smooth' });
+    builderTitle.textContent = "Editando Condición";
+    btnText.textContent = "Actualizar Filtro";
+    
+    // Icono actualizar
+    addFilterBtn.querySelector('svg').innerHTML = `<polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>`;
+    
+    document.getElementById('builder-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 
 function removeFilter(index) {
-    if (confirm(`¿Eliminar el filtro: ${filters[index].column} ${filters[index].operator} ${filters[index].value}?`)) {
-        filters.splice(index, 1);
-        if (editIndex === index) resetBuilder();
-        render();
-    }
+    filters.splice(index, 1);
+    if (editIndex === index) resetBuilder();
+    render();
 }
 
 function clearAllFilters() {
@@ -575,10 +755,13 @@ function resetBuilder() {
     columnSelect.value = '';
     columnSelect.dispatchEvent(new Event('change'));
     valueInput.value = '';
-    builderTitle.textContent = "1. Añadir Nueva Condición";
-    addFilterBtn.innerHTML = `
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg>
-      Agregar Filtro`;
+    
+    builderTitle.textContent = "Añadir Nueva Condición";
+    btnText.textContent = "Agregar Filtro";
+    
+    // Icono más
+    addFilterBtn.querySelector('svg').innerHTML = `<line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line>`;
+    
     columnSelect.focus();
 }
 
@@ -595,22 +778,30 @@ function renderFilterList() {
     noFiltersMessage.style.display = filters.length === 0 ? 'block' : 'none';
 
     filters.forEach((filter, index) => {
-        const tag = document.createElement('div');
-        tag.className = 'filter-item';
+        const chip = document.createElement('div');
+        chip.className = 'filter-chip';
         
-        let logicalHTML = index > 0 ? `<span class="logical-op">${filter.logical.toUpperCase()}</span>` : '';
-        let valueHTML = `<span class="value-text">${filter.operator === 'is blank' ? '' : filter.value}</span>`;
-        let operatorText = operatorSelect.querySelector(`option[value="${filter.operator}"]`)?.textContent || filter.operator;
+        let logicalHTML = index > 0 ? `<span class="chip-logical">${filter.logical}</span>` : '';
+        let valueHTML = filter.operator === 'is blank' ? '' : `<span class="chip-val">${filter.value}</span>`;
+        let operatorText = operatorSelect.querySelector(`option[value="${filter.operator}"]`)?.textContent.split(' ')[0] || filter.operator;
         
-        tag.innerHTML = `
+        chip.innerHTML = `
             ${logicalHTML}
-            <span><strong>${filter.column}</strong> ${operatorText} ${valueHTML}</span>
-            <span class="actions">
-              <button class="btn-edit" onclick="editFilter(${index})" title="Editar">✎</button>
-              <button class="btn-remove" onclick="removeFilter(${index})" title="Eliminar">✖</button>
-            </span>
+            <div class="chip-content">
+              <span class="chip-col">${filter.column}</span>
+              <span class="chip-op">${operatorText}</span>
+              ${valueHTML}
+            </div>
+            <div class="chip-actions">
+              <button class="chip-btn edit" onclick="editFilter(${index})" title="Editar">
+                <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+              </button>
+              <button class="chip-btn delete" onclick="removeFilter(${index})" title="Eliminar">
+                <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              </button>
+            </div>
         `;
-        filterList.appendChild(tag);
+        filterList.appendChild(chip);
     });
 }
 
@@ -625,31 +816,37 @@ function generateFinalScript() {
         if (operator === 'is blank') {
             return `(${column} = '' OR ${column} IS NULL)`;
         }
+        
+        // Verifica si es booleano para omitir comillas
         const isBool = booleanColumns.includes(column) && (value === "true" || value === "false");
         const formattedValue = isBool ? value : `'${value.replace(/'/g, "''")}'`;
         
+        // Retorna formato: (columna is true)
         return `(${column} ${operator} ${formattedValue})`;
     };
 
     let script = formatCondition(filters[0]);
     for (let i = 1; i < filters.length; i++) {
-        script += ` ${filters[i].logical.toUpperCase()} ${formatCondition(filters[i])}`;
+        script += `\n${filters[i].logical.toUpperCase()} ${formatCondition(filters[i])}`;
     }
 
-    finalScriptTextarea.value = script.replace(/\s\s+/g, ' ').trim();
+    finalScriptTextarea.value = script;
 }
 
 function updateUIState() {
     const hasFilters = filters.length > 0;
-    logicalOpSelect.style.visibility = hasFilters ? 'visible' : 'hidden';
+    
+    // Muestra u oculta la caja del operador lógico dependiendo si hay filtros
+    if (hasFilters || window.innerWidth <= 800) {
+      logicalGroup.style.visibility = hasFilters ? 'visible' : 'hidden';
+      if(window.innerWidth <= 800) logicalGroup.style.display = hasFilters ? 'flex' : 'none';
+    } else {
+      logicalGroup.style.visibility = 'hidden';
+      logicalGroup.style.display = 'flex';
+    }
+
     copyButton.disabled = !hasFilters;
     clearFiltersBtn.disabled = !hasFilters;
-
-    if (window.innerWidth <= 768) {
-       logicalOpSelect.style.display = hasFilters ? 'block' : 'none';
-    } else {
-       logicalOpSelect.style.display = 'block';
-    }
 }
 
 // --- MANEJADORES DE EVENTOS ---
@@ -662,7 +859,7 @@ function handleColumnChange() {
     } else if (booleanColumns.includes(selectedColumn)) {
         valueInput.type = 'text';
         operatorSelect.innerHTML = operatorOptions.boolean;
-        operatorSelect.value = '='; // 'is' no es un operador SQL estándar, usamos '='
+        operatorSelect.value = 'is';
     } else {
         valueInput.type = 'text';
         operatorSelect.innerHTML = operatorOptions.standard;
@@ -675,25 +872,25 @@ function handleColumnChange() {
 function handleOperatorChange() {
     valueInput.disabled = operatorSelect.value === 'is blank';
     valueInput.value = valueInput.disabled ? '' : valueInput.value;
-    valueInput.placeholder = valueInput.disabled ? 'No se necesita valor' : 'Valor';
+    valueInput.placeholder = valueInput.disabled ? 'No requerido para este operador' : 'Ej: Apartment';
 }
 
 function copyToClipboard() {
     if (!finalScriptTextarea.value) return;
     navigator.clipboard.writeText(finalScriptTextarea.value).then(() => {
-        const notification = document.getElementById('notification');
-        notification.classList.add('show');
-        setTimeout(() => notification.classList.remove('show'), 2000);
+        const toast = document.getElementById('toast');
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 3000);
     });
 }
 
 // --- PERSISTENCIA (localStorage) ---
 function saveFilters() {
-    localStorage.setItem('deckardFilterGenerator', JSON.stringify(filters));
+    localStorage.setItem('deckardFilterGenerator_v4', JSON.stringify(filters));
 }
 
 function loadFilters() {
-    const saved = localStorage.getItem('deckardFilterGenerator');
+    const saved = localStorage.getItem('deckardFilterGenerator_v4');
     if (saved) {
         try {
             filters = JSON.parse(saved);
@@ -707,11 +904,13 @@ function loadFilters() {
 
 // --- INICIALIZACIÓN ---
 document.addEventListener('DOMContentLoaded', () => {
-    // Event Listeners
+    // Listeners de botones
     addFilterBtn.addEventListener('click', addOrUpdateFilter);
     clearFieldsBtn.addEventListener('click', resetBuilder);
     clearFiltersBtn.addEventListener('click', clearAllFilters);
     copyButton.addEventListener('click', copyToClipboard);
+    
+    // Listeners de inputs
     columnSelect.addEventListener('change', handleColumnChange);
     operatorSelect.addEventListener('change', handleOperatorChange);
     valueInput.addEventListener('input', updateSuggestionsUI);
@@ -722,21 +921,26 @@ document.addEventListener('DOMContentLoaded', () => {
             addOrUpdateFilter();
         }
     });
+    
+    // Cerrar sugerencias al hacer clic fuera
     document.addEventListener('click', (e) => {
         if (!valueInput.contains(e.target) && !suggestionsContainer.contains(e.target)) {
             hideSuggestions();
         }
     });
 
-    // Estado inicial
+    // Ajustes responsive iniciales
+    window.addEventListener('resize', updateUIState);
+
+    // Iniciar
     handleColumnChange();
     loadFilters();
 
-    // Pantalla de carga
+    // Quitar pantalla de carga
     const loadingContainer = document.getElementById('loading-container');
     setTimeout(() => {
         loadingContainer.classList.add('hidden');
-    }, 500);
+    }, 600);
 });
 
 </script>
